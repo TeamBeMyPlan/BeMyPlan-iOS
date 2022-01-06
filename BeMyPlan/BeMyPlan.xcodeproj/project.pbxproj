@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		3DA6BF89CC2DB8CCD16827BF /* Pods_BeMyPlan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3B06D34F8CCE8B987563F36 /* Pods_BeMyPlan.framework */; };
+		F2C5F18E2786EACB00BE4036 /* MainCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C5F18D2786EACB00BE4036 /* MainCardView.swift */; };
+		F2C5F1902786EAE200BE4036 /* MainCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2C5F18F2786EAE200BE4036 /* MainCardView.xib */; };
+		F2C5F1922786EB3300BE4036 /* MainListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C5F1912786EB3300BE4036 /* MainListView.swift */; };
+		F2C5F1942786EB3C00BE4036 /* MainListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2C5F1932786EB3C00BE4036 /* MainListView.xib */; };
 		FD09DD5127855E33006DA050 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FD09DD5027855E32006DA050 /* GoogleService-Info.plist */; };
 		FD09DD9827856387006DA050 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD09DD9727856387006DA050 /* SystemConfiguration.framework */; };
 		FD09DD9A27856394006DA050 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD09DD9927856394006DA050 /* CoreLocation.framework */; };
@@ -92,6 +96,10 @@
 		B13B8456ECB953D5894B487B /* Pods-BeMyPlan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeMyPlan.release.xcconfig"; path = "Target Support Files/Pods-BeMyPlan/Pods-BeMyPlan.release.xcconfig"; sourceTree = "<group>"; };
 		D3B06D34F8CCE8B987563F36 /* Pods_BeMyPlan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeMyPlan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8AA4B1E5B49BFC40FA51456 /* Pods-BeMyPlan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeMyPlan.debug.xcconfig"; path = "Target Support Files/Pods-BeMyPlan/Pods-BeMyPlan.debug.xcconfig"; sourceTree = "<group>"; };
+		F2C5F18D2786EACB00BE4036 /* MainCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCardView.swift; sourceTree = "<group>"; };
+		F2C5F18F2786EAE200BE4036 /* MainCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainCardView.xib; sourceTree = "<group>"; };
+		F2C5F1912786EB3300BE4036 /* MainListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainListView.swift; sourceTree = "<group>"; };
+		F2C5F1932786EB3C00BE4036 /* MainListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainListView.xib; sourceTree = "<group>"; };
 		FD09DD5027855E32006DA050 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FD09DD9527856377006DA050 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		FD09DD9727856387006DA050 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -230,6 +238,24 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		F2C5F18B2786EA5100BE4036 /* MainCard */ = {
+			isa = PBXGroup;
+			children = (
+				F2C5F18D2786EACB00BE4036 /* MainCardView.swift */,
+				F2C5F18F2786EAE200BE4036 /* MainCardView.xib */,
+			);
+			path = MainCard;
+			sourceTree = "<group>";
+		};
+		F2C5F18C2786EA5C00BE4036 /* MainList */ = {
+			isa = PBXGroup;
+			children = (
+				F2C5F1912786EB3300BE4036 /* MainListView.swift */,
+				F2C5F1932786EB3C00BE4036 /* MainListView.xib */,
+			);
+			path = MainList;
+			sourceTree = "<group>";
+		};
 		FD09DDAB27856A31006DA050 /* DaumMap.embeddedframework */ = {
 			isa = PBXGroup;
 			children = (
@@ -339,6 +365,8 @@
 		FD09DE1827857CA6006DA050 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				F2C5F18C2786EA5C00BE4036 /* MainList */,
+				F2C5F18B2786EA5100BE4036 /* MainCard */,
 				FD09DE1D27857CDC006DA050 /* HomeVC.swift */,
 				FDF980C52786D1A40009A14E /* Home.storyboard */,
 			);
@@ -586,6 +614,7 @@
 				FD09DD5127855E33006DA050 /* GoogleService-Info.plist in Resources */,
 				FDF980BF2786CE700009A14E /* Spoqa_Han_Sans_Neo_Regular.otf in Resources */,
 				FDF980BD2786CE660009A14E /* Spoqa_Han_Sans_Neo_Bold.otf in Resources */,
+				F2C5F1902786EAE200BE4036 /* MainCardView.xib in Resources */,
 				FD09DDE027856A31006DA050 /* map_pin_red.png in Resources */,
 				FD09DDEA27856A31006DA050 /* map_present_background_update.png in Resources */,
 				FD09DDE427856A31006DA050 /* info_box_tail.png in Resources */,
@@ -608,6 +637,7 @@
 				FD09DDDE27856A31006DA050 /* map_pin@3x.png in Resources */,
 				FD09DDD627856A31006DA050 /* detail_button.png in Resources */,
 				FD09DDE827856A31006DA050 /* map_present.png in Resources */,
+				F2C5F1942786EB3C00BE4036 /* MainListView.xib in Resources */,
 				FD09DDDC27856A31006DA050 /* map_pin_red@3x.png in Resources */,
 				FD09DDD527856A31006DA050 /* map_pinup.png in Resources */,
 				FD09DDE727856A31006DA050 /* map_pin.png in Resources */,
@@ -691,10 +721,12 @@
 				FD09DE0727857971006DA050 /* calculateTopInset.swift in Sources */,
 				FDF980D42786D2F60009A14E /* PlanListVC.swift in Sources */,
 				FD3211AD27841948007D63D5 /* ViewController.swift in Sources */,
+				F2C5F18E2786EACB00BE4036 /* MainCardView.swift in Sources */,
 				FD09DE2227857D00006DA050 /* SplashVC.swift in Sources */,
 				FD09DDFC278578B1006DA050 /* ColorLiterals.swift in Sources */,
 				FD3211A927841948007D63D5 /* AppDelegate.swift in Sources */,
 				FD09DE1727857B5D006DA050 /* controllerFromStoryboard + UIViewController.swift in Sources */,
+				F2C5F1922786EB3300BE4036 /* MainListView.swift in Sources */,
 				FD3211AB27841948007D63D5 /* SceneDelegate.swift in Sources */,
 				FD09DE1127857A5C006DA050 /* pressAction.swift in Sources */,
 				FD09DE0B27857995006DA050 /* calculatePastTime.swift in Sources */,
