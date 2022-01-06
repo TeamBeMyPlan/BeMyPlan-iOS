@@ -135,7 +135,7 @@ DEPENDENCIES:
   - KakaoSDKUser
   - Kingfisher (~> 5.0)
   - lottie-ios
-  - Moya (~> 14.0)
+  - Moya
   - MSCircularSlider
   - Mute
   - SnapKit (~> 5.0.0)
@@ -201,6 +201,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
   Then: acfe0be7e98221c6204e12f8161459606d5d822d
 
-PODFILE CHECKSUM: 67f60b972b3c2aa76abeed24bee6a6bf58bf719d
+PODFILE CHECKSUM: 7bcc265d314551f3efbbad39723dd67918583a6c
 
 COCOAPODS: 1.11.2

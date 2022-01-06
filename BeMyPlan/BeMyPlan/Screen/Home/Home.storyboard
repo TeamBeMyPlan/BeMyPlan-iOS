@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
@@ -14,10 +14,32 @@
             <objects>
                 <viewController id="Y6W-OH-hqX" customClass="HomeVC" customModule="BeMyPlan" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cvV-LS-BMi">
+                                <rect key="frame" x="0.0" y="44" width="375" height="50"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="applogo" translatesAutoresizingMaskIntoConstraints="NO" id="vXd-Mr-rI1">
+                                        <rect key="frame" x="-62.666666666666657" y="6" width="500.33333333333326" height="37"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="vXd-Mr-rI1" firstAttribute="centerX" secondItem="cvV-LS-BMi" secondAttribute="centerX" id="2If-s5-dSX"/>
+                                    <constraint firstAttribute="height" constant="50" id="8HP-Pa-QXT"/>
+                                    <constraint firstItem="vXd-Mr-rI1" firstAttribute="top" secondItem="cvV-LS-BMi" secondAttribute="top" constant="6" id="ino-kN-6QX"/>
+                                    <constraint firstAttribute="bottom" secondItem="vXd-Mr-rI1" secondAttribute="bottom" constant="7" id="lSA-n7-Ld1"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="cvV-LS-BMi" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="EQ8-0k-xoV"/>
+                            <constraint firstItem="cvV-LS-BMi" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="S2z-ye-0HG"/>
+                            <constraint firstItem="cvV-LS-BMi" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="bko-zS-xw2"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -26,6 +48,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="applogo" width="500" height="500"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
