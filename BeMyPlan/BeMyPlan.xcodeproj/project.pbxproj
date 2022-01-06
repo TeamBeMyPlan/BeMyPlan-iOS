@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3DA6BF89CC2DB8CCD16827BF /* Pods_BeMyPlan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3B06D34F8CCE8B987563F36 /* Pods_BeMyPlan.framework */; };
+		F261EC7927873A7D00AF094F /* MainCardCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F261EC7727873A7D00AF094F /* MainCardCVC.swift */; };
+		F261EC7A27873A7D00AF094F /* MainCardCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F261EC7827873A7D00AF094F /* MainCardCVC.xib */; };
 		F2C5F18E2786EACB00BE4036 /* MainCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C5F18D2786EACB00BE4036 /* MainCardView.swift */; };
 		F2C5F1902786EAE200BE4036 /* MainCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2C5F18F2786EAE200BE4036 /* MainCardView.xib */; };
 		F2C5F1922786EB3300BE4036 /* MainListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C5F1912786EB3300BE4036 /* MainListView.swift */; };
@@ -97,6 +99,8 @@
 		B13B8456ECB953D5894B487B /* Pods-BeMyPlan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeMyPlan.release.xcconfig"; path = "Target Support Files/Pods-BeMyPlan/Pods-BeMyPlan.release.xcconfig"; sourceTree = "<group>"; };
 		D3B06D34F8CCE8B987563F36 /* Pods_BeMyPlan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeMyPlan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8AA4B1E5B49BFC40FA51456 /* Pods-BeMyPlan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeMyPlan.debug.xcconfig"; path = "Target Support Files/Pods-BeMyPlan/Pods-BeMyPlan.debug.xcconfig"; sourceTree = "<group>"; };
+		F261EC7727873A7D00AF094F /* MainCardCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCardCVC.swift; sourceTree = "<group>"; };
+		F261EC7827873A7D00AF094F /* MainCardCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainCardCVC.xib; sourceTree = "<group>"; };
 		F2C5F18D2786EACB00BE4036 /* MainCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCardView.swift; sourceTree = "<group>"; };
 		F2C5F18F2786EAE200BE4036 /* MainCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainCardView.xib; sourceTree = "<group>"; };
 		F2C5F1912786EB3300BE4036 /* MainListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainListView.swift; sourceTree = "<group>"; };
@@ -240,9 +244,19 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		F261EC7627873A3F00AF094F /* MainCardItem */ = {
+			isa = PBXGroup;
+			children = (
+				F261EC7727873A7D00AF094F /* MainCardCVC.swift */,
+				F261EC7827873A7D00AF094F /* MainCardCVC.xib */,
+			);
+			path = MainCardItem;
+			sourceTree = "<group>";
+		};
 		F2C5F18B2786EA5100BE4036 /* MainCard */ = {
 			isa = PBXGroup;
 			children = (
+				F261EC7627873A3F00AF094F /* MainCardItem */,
 				F2C5F18D2786EACB00BE4036 /* MainCardView.swift */,
 				F2C5F18F2786EAE200BE4036 /* MainCardView.xib */,
 			);
@@ -645,6 +659,7 @@
 				FD09DDD527856A31006DA050 /* map_pinup.png in Resources */,
 				FD09DDE727856A31006DA050 /* map_pin.png in Resources */,
 				FDF980CC2786D2470009A14E /* Splash.storyboard in Resources */,
+				F261EC7A27873A7D00AF094F /* MainCardCVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -745,6 +760,7 @@
 				FD09DE092785797B006DA050 /* addToolBar.swift in Sources */,
 				FD09DDF527857809006DA050 /* Config.swift in Sources */,
 				FD09DE1327857AE1006DA050 /* successCatch + Result.swift in Sources */,
+				F261EC7927873A7D00AF094F /* MainCardCVC.swift in Sources */,
 				FD09DDF727857841006DA050 /* UITableViewRegisterable.swift in Sources */,
 				FD09DE0D278579CC006DA050 /* showNetworkAlert.swift in Sources */,
 				FD09DDF927857858006DA050 /* UICollectionViewRegisterable.swift in Sources */,
