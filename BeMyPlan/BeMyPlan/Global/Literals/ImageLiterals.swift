@@ -10,7 +10,8 @@ import Foundation
 struct ImageLiterals{
   
   struct Components{
-    
+		static let applogo = UIImage(named: "applogo")!
+      
   }
 
 }
