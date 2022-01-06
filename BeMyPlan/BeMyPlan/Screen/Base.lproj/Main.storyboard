@@ -48,19 +48,35 @@
                                     <action selector="drawLIneButonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YPd-Ws-ONK"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="안녕하세요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E5y-yJ-Cbc">
+                                <rect key="frame" x="148.5" y="434" width="117" height="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="안녕하세요2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9w8-NQ-APh">
+                                <rect key="frame" x="30" y="527" width="133.5" height="32.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="JcM-46-y85" secondAttribute="trailing" constant="50" id="IH7-bq-1uV"/>
                             <constraint firstItem="Krg-HY-K0m" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Ifu-e9-dAz"/>
+                            <constraint firstItem="E5y-yJ-Cbc" firstAttribute="top" secondItem="JcM-46-y85" secondAttribute="bottom" constant="40" id="Iu9-ma-u1f"/>
                             <constraint firstItem="Krg-HY-K0m" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="200" id="KVf-te-FVl"/>
                             <constraint firstItem="1Ys-Fl-upW" firstAttribute="top" secondItem="Krg-HY-K0m" secondAttribute="bottom" constant="50" id="Kz2-jR-RwC"/>
+                            <constraint firstItem="9w8-NQ-APh" firstAttribute="top" secondItem="E5y-yJ-Cbc" secondAttribute="bottom" constant="60" id="S4D-mD-RDq"/>
                             <constraint firstItem="1Ys-Fl-upW" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="VeG-v3-zLV"/>
                             <constraint firstItem="eYT-8y-GNk" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Xmg-S5-KPQ"/>
                             <constraint firstItem="JcM-46-y85" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="YWk-45-azp"/>
                             <constraint firstItem="eYT-8y-GNk" firstAttribute="top" secondItem="1Ys-Fl-upW" secondAttribute="bottom" constant="30" id="YZA-kD-aGC"/>
                             <constraint firstItem="JcM-46-y85" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="oMu-y5-qXL"/>
+                            <constraint firstItem="9w8-NQ-APh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="ovR-Ez-uPa"/>
+                            <constraint firstItem="E5y-yJ-Cbc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xHO-HM-Ioy"/>
                         </constraints>
                     </view>
                     <connections>

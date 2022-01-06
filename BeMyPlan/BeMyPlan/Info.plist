@@ -2,6 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIUserInterfaceStyle</key>
+	<string>Light</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Spoqa_Han_Sans_Neo_Regular.otf</string>
+		<string>paybooc_OTF_Bold.otf</string>
+		<string>Spoqa_Han_Sans_Neo_Bold.otf</string>
+	</array>
 	<key>KAKAO_APP_KEY</key>
 	<string>8813c8c6fdcec872713a666700d19b80</string>
 	<key>UIApplicationSceneManifest</key>

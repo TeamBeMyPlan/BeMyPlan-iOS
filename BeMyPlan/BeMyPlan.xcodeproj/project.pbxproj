@@ -73,6 +73,19 @@
 		FD3211B227841949007D63D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD3211B127841949007D63D5 /* Assets.xcassets */; };
 		FD3211B527841949007D63D5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD3211B327841949007D63D5 /* LaunchScreen.storyboard */; };
 		FD3211C3278433CF007D63D5 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = FD3211C2278433CF007D63D5 /* .swiftlint.yml */; };
+		FDF980BC2786CE660009A14E /* paybooc_OTF_Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = FDF980BA2786CE660009A14E /* paybooc_OTF_Bold.otf */; };
+		FDF980BD2786CE660009A14E /* Spoqa_Han_Sans_Neo_Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = FDF980BB2786CE660009A14E /* Spoqa_Han_Sans_Neo_Bold.otf */; };
+		FDF980BF2786CE700009A14E /* Spoqa_Han_Sans_Neo_Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = FDF980BE2786CE700009A14E /* Spoqa_Han_Sans_Neo_Regular.otf */; };
+		FDF980C12786D14B0009A14E /* setDefaultFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF980C02786D14B0009A14E /* setDefaultFonts.swift */; };
+		FDF980C62786D1A40009A14E /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDF980C52786D1A40009A14E /* Home.storyboard */; };
+		FDF980C82786D2360009A14E /* PlanList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDF980C72786D2360009A14E /* PlanList.storyboard */; };
+		FDF980CA2786D23D0009A14E /* TravelSpot.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDF980C92786D23D0009A14E /* TravelSpot.storyboard */; };
+		FDF980CC2786D2470009A14E /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDF980CB2786D2470009A14E /* Splash.storyboard */; };
+		FDF980CE2786D2550009A14E /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDF980CD2786D2550009A14E /* Login.storyboard */; };
+		FDF980D02786D2600009A14E /* MyPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDF980CF2786D2600009A14E /* MyPage.storyboard */; };
+		FDF980D22786D2EB0009A14E /* TravelSpotVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF980D12786D2EB0009A14E /* TravelSpotVC.swift */; };
+		FDF980D42786D2F60009A14E /* PlanListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF980D32786D2F60009A14E /* PlanListVC.swift */; };
+		FDF980D62786D5320009A14E /* makePayBoocFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF980D52786D5320009A14E /* makePayBoocFont.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -159,6 +172,19 @@
 		FD3211B427841949007D63D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FD3211B627841949007D63D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FD3211C2278433CF007D63D5 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		FDF980BA2786CE660009A14E /* paybooc_OTF_Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = paybooc_OTF_Bold.otf; sourceTree = "<group>"; };
+		FDF980BB2786CE660009A14E /* Spoqa_Han_Sans_Neo_Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Spoqa_Han_Sans_Neo_Bold.otf; sourceTree = "<group>"; };
+		FDF980BE2786CE700009A14E /* Spoqa_Han_Sans_Neo_Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Spoqa_Han_Sans_Neo_Regular.otf; sourceTree = "<group>"; };
+		FDF980C02786D14B0009A14E /* setDefaultFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = setDefaultFonts.swift; sourceTree = "<group>"; };
+		FDF980C52786D1A40009A14E /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		FDF980C72786D2360009A14E /* PlanList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PlanList.storyboard; sourceTree = "<group>"; };
+		FDF980C92786D23D0009A14E /* TravelSpot.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TravelSpot.storyboard; sourceTree = "<group>"; };
+		FDF980CB2786D2470009A14E /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
+		FDF980CD2786D2550009A14E /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		FDF980CF2786D2600009A14E /* MyPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyPage.storyboard; sourceTree = "<group>"; };
+		FDF980D12786D2EB0009A14E /* TravelSpotVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelSpotVC.swift; sourceTree = "<group>"; };
+		FDF980D32786D2F60009A14E /* PlanListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanListVC.swift; sourceTree = "<group>"; };
+		FDF980D52786D5320009A14E /* makePayBoocFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = makePayBoocFont.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -304,6 +330,8 @@
 				FD09DE0E27857A2E006DA050 /* makeAlert.swift */,
 				FD09DE1027857A5C006DA050 /* pressAction.swift */,
 				FD09DE1427857B36006DA050 /* getClassName.swift */,
+				FDF980C02786D14B0009A14E /* setDefaultFonts.swift */,
+				FDF980D52786D5320009A14E /* makePayBoocFont.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -312,6 +340,7 @@
 			isa = PBXGroup;
 			children = (
 				FD09DE1D27857CDC006DA050 /* HomeVC.swift */,
+				FDF980C52786D1A40009A14E /* Home.storyboard */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -320,6 +349,7 @@
 			isa = PBXGroup;
 			children = (
 				FD09DE2127857D00006DA050 /* SplashVC.swift */,
+				FDF980CB2786D2470009A14E /* Splash.storyboard */,
 			);
 			path = Splash;
 			sourceTree = "<group>";
@@ -328,6 +358,7 @@
 			isa = PBXGroup;
 			children = (
 				FD09DE1F27857CF2006DA050 /* LoginVC.swift */,
+				FDF980CD2786D2550009A14E /* Login.storyboard */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -336,6 +367,7 @@
 			isa = PBXGroup;
 			children = (
 				FD09DE2327857D0F006DA050 /* MyPageVC.swift */,
+				FDF980CF2786D2600009A14E /* MyPage.storyboard */,
 			);
 			path = MyPage;
 			sourceTree = "<group>";
@@ -397,6 +429,8 @@
 		FD3211C627843F64007D63D5 /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				FDF980C42786D1900009A14E /* PlanList */,
+				FDF980C32786D1670009A14E /* TravelSpot */,
 				FD09DE1927857CAA006DA050 /* Splash */,
 				FD09DE1A27857CB0006DA050 /* Login */,
 				FD09DE1827857CA6006DA050 /* Home */,
@@ -429,6 +463,7 @@
 		FD3211C927843FA5007D63D5 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				FDF980B92786CE1A0009A14E /* Fonts */,
 				FD3211B127841949007D63D5 /* Assets.xcassets */,
 			);
 			path = Resource;
@@ -441,6 +476,34 @@
 				FD09DDF827857858006DA050 /* UICollectionViewRegisterable.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		FDF980B92786CE1A0009A14E /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				FDF980BE2786CE700009A14E /* Spoqa_Han_Sans_Neo_Regular.otf */,
+				FDF980BA2786CE660009A14E /* paybooc_OTF_Bold.otf */,
+				FDF980BB2786CE660009A14E /* Spoqa_Han_Sans_Neo_Bold.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		FDF980C32786D1670009A14E /* TravelSpot */ = {
+			isa = PBXGroup;
+			children = (
+				FDF980C92786D23D0009A14E /* TravelSpot.storyboard */,
+				FDF980D12786D2EB0009A14E /* TravelSpotVC.swift */,
+			);
+			path = TravelSpot;
+			sourceTree = "<group>";
+		};
+		FDF980C42786D1900009A14E /* PlanList */ = {
+			isa = PBXGroup;
+			children = (
+				FDF980C72786D2360009A14E /* PlanList.storyboard */,
+				FDF980D32786D2F60009A14E /* PlanListVC.swift */,
+			);
+			path = PlanList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -511,25 +574,33 @@
 				FD3211C3278433CF007D63D5 /* .swiftlint.yml in Resources */,
 				FD09DDD427856A31006DA050 /* shadow_balloon.png in Resources */,
 				FD09DDE627856A31006DA050 /* map_present_direction.png in Resources */,
+				FDF980C62786D1A40009A14E /* Home.storyboard in Resources */,
 				FD09DDDF27856A31006DA050 /* map_present_tracking.png in Resources */,
 				FD09DDD727856A31006DA050 /* map_pin_custom@3x.png in Resources */,
 				FD09DDDA27856A31006DA050 /* copyright.png in Resources */,
 				FD09DDD827856A31006DA050 /* map_pinup@3x.png in Resources */,
+				FDF980CE2786D2550009A14E /* Login.storyboard in Resources */,
 				FD3211B527841949007D63D5 /* LaunchScreen.storyboard in Resources */,
 				FD09DDE927856A31006DA050 /* noimage.png in Resources */,
 				FD09DDEB27856A31006DA050 /* daum_th_line.png in Resources */,
 				FD09DD5127855E33006DA050 /* GoogleService-Info.plist in Resources */,
+				FDF980BF2786CE700009A14E /* Spoqa_Han_Sans_Neo_Regular.otf in Resources */,
+				FDF980BD2786CE660009A14E /* Spoqa_Han_Sans_Neo_Bold.otf in Resources */,
 				FD09DDE027856A31006DA050 /* map_pin_red.png in Resources */,
 				FD09DDEA27856A31006DA050 /* map_present_background_update.png in Resources */,
 				FD09DDE427856A31006DA050 /* info_box_tail.png in Resources */,
+				FDF980C82786D2360009A14E /* PlanList.storyboard in Resources */,
 				FD09DDEC27856A31006DA050 /* map_pin_shadow.png in Resources */,
 				FD09DDD927856A31006DA050 /* map_pin_shadow@3x.png in Resources */,
+				FDF980CA2786D23D0009A14E /* TravelSpot.storyboard in Resources */,
 				FD09DDE527856A31006DA050 /* noimage256.png in Resources */,
 				FD3211B227841949007D63D5 /* Assets.xcassets in Resources */,
+				FDF980D02786D2600009A14E /* MyPage.storyboard in Resources */,
 				FD09DDD227856A31006DA050 /* map_pinup_custom@3x.png in Resources */,
 				FD09DDE327856A31006DA050 /* map_pinup_custom.png in Resources */,
 				FD3211B027841948007D63D5 /* Main.storyboard in Resources */,
 				FD09DDDD27856A31006DA050 /* daum_copyright.png in Resources */,
+				FDF980BC2786CE660009A14E /* paybooc_OTF_Bold.otf in Resources */,
 				FD09DDDB27856A31006DA050 /* th_line.png in Resources */,
 				FD09DDE227856A31006DA050 /* point_sprite.png in Resources */,
 				FD09DDE127856A31006DA050 /* info_box.png in Resources */,
@@ -540,6 +611,7 @@
 				FD09DDDC27856A31006DA050 /* map_pin_red@3x.png in Resources */,
 				FD09DDD527856A31006DA050 /* map_pinup.png in Resources */,
 				FD09DDE727856A31006DA050 /* map_pin.png in Resources */,
+				FDF980CC2786D2470009A14E /* Splash.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -613,8 +685,11 @@
 				FD09DE052785795D006DA050 /* applyShadow.swift in Sources */,
 				FD09DE2027857CF2006DA050 /* LoginVC.swift in Sources */,
 				FD09DDF1278577CF006DA050 /* BaseService.swift in Sources */,
+				FDF980D22786D2EB0009A14E /* TravelSpotVC.swift in Sources */,
 				FD09DE2927857E25006DA050 /* StoryboardLiterals.swift in Sources */,
+				FDF980C12786D14B0009A14E /* setDefaultFonts.swift in Sources */,
 				FD09DE0727857971006DA050 /* calculateTopInset.swift in Sources */,
+				FDF980D42786D2F60009A14E /* PlanListVC.swift in Sources */,
 				FD3211AD27841948007D63D5 /* ViewController.swift in Sources */,
 				FD09DE2227857D00006DA050 /* SplashVC.swift in Sources */,
 				FD09DDFC278578B1006DA050 /* ColorLiterals.swift in Sources */,
@@ -624,6 +699,7 @@
 				FD09DE1127857A5C006DA050 /* pressAction.swift in Sources */,
 				FD09DE0B27857995006DA050 /* calculatePastTime.swift in Sources */,
 				FD09DE00278578C4006DA050 /* ImageLiterals.swift in Sources */,
+				FDF980D62786D5320009A14E /* makePayBoocFont.swift in Sources */,
 				FD09DDF3278577F4006DA050 /* BaseAPI.swift in Sources */,
 				FD09DE2427857D0F006DA050 /* MyPageVC.swift in Sources */,
 				FD09DE1E27857CDC006DA050 /* HomeVC.swift in Sources */,
