@@ -1,0 +1,9 @@
+app_identifier("com.release.BeMyPlan") # The bundle identifier of your app
+apple_id("i.colours.u@gmail.com") # Your Apple email address
+
+ENV["FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD"] = "jxey-crdw-ftmv-votr"
+ENV["FASTLANE_PASSWORD"] = "Piecesofyou+123"
+ENV["SLACK_URL"] = "https://hooks.slack.com/services/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"
+
+itc_team_id("121887102") # App Store Connect Team ID
+team_id("L9D5M5DM3Y") # Developer Portal Team ID
