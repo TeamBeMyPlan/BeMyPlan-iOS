@@ -12,6 +12,7 @@
 		F2C5F1902786EAE200BE4036 /* MainCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2C5F18F2786EAE200BE4036 /* MainCardView.xib */; };
 		F2C5F1922786EB3300BE4036 /* MainListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C5F1912786EB3300BE4036 /* MainListView.swift */; };
 		F2C5F1942786EB3C00BE4036 /* MainListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2C5F1932786EB3C00BE4036 /* MainListView.xib */; };
+		F2C5F1962786EF0000BE4036 /* addSubViewFromNib.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C5F1952786EF0000BE4036 /* addSubViewFromNib.swift */; };
 		FD09DD5127855E33006DA050 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FD09DD5027855E32006DA050 /* GoogleService-Info.plist */; };
 		FD09DD9827856387006DA050 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD09DD9727856387006DA050 /* SystemConfiguration.framework */; };
 		FD09DD9A27856394006DA050 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD09DD9927856394006DA050 /* CoreLocation.framework */; };
@@ -100,6 +101,7 @@
 		F2C5F18F2786EAE200BE4036 /* MainCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainCardView.xib; sourceTree = "<group>"; };
 		F2C5F1912786EB3300BE4036 /* MainListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainListView.swift; sourceTree = "<group>"; };
 		F2C5F1932786EB3C00BE4036 /* MainListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainListView.xib; sourceTree = "<group>"; };
+		F2C5F1952786EF0000BE4036 /* addSubViewFromNib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addSubViewFromNib.swift; sourceTree = "<group>"; };
 		FD09DD5027855E32006DA050 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FD09DD9527856377006DA050 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		FD09DD9727856387006DA050 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -484,6 +486,7 @@
 			children = (
 				FD09DE1227857AE1006DA050 /* successCatch + Result.swift */,
 				FD09DE1627857B5D006DA050 /* controllerFromStoryboard + UIViewController.swift */,
+				F2C5F1952786EF0000BE4036 /* addSubViewFromNib.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -712,6 +715,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FD09DE0F27857A2E006DA050 /* makeAlert.swift in Sources */,
+				F2C5F1962786EF0000BE4036 /* addSubViewFromNib.swift in Sources */,
 				FD09DE052785795D006DA050 /* applyShadow.swift in Sources */,
 				FD09DE2027857CF2006DA050 /* LoginVC.swift in Sources */,
 				FD09DDF1278577CF006DA050 /* BaseService.swift in Sources */,
