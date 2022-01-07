@@ -8,10 +8,22 @@
 import UIKit
 
 class MainCardCVC: UICollectionViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
+  
+  static let identifier = "MainCardCVC"
+  
+  @IBOutlet var mainCardImageView: UIImageView!
+  @IBOutlet var mainCardCategory: UILabel!
+  @IBOutlet var mainCardTitle: UILabel!
+  
+  // MARK: - Life Cycle
+  override func awakeFromNib() {
+    super.awakeFromNib()
+  }
+  
+  // MARK: - Custom Method
+  func setData(appData: MainCardData){
+    mainCardImageView.image = appData.makeItemImage()
+    mainCardCategory.text = appData.category
+    mainCardTitle.text = appData.title
+  }
 }

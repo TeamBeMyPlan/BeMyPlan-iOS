@@ -6,3 +6,14 @@
 //
 
 import Foundation
+
+struct MainCardData {
+  
+  var image : String
+  var category : String
+  var title : String
+  
+  func makeItemImage() -> UIImage? {
+    return UIImage(named: image)
+  }
+}
