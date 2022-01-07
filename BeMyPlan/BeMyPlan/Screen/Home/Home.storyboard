@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="94" width="375" height="1252"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ANe-oB-DEM">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1252"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1136"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pTm-bx-Af2" customClass="MainCardView" customModule="BeMyPlan" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="572"/>
@@ -50,6 +50,7 @@
                                             <constraint firstItem="pTm-bx-Af2" firstAttribute="top" secondItem="ANe-oB-DEM" secondAttribute="top" id="6F8-Bh-p7I"/>
                                             <constraint firstItem="xVa-eQ-Xsp" firstAttribute="top" secondItem="pTm-bx-Af2" secondAttribute="bottom" id="8fX-rx-TZf"/>
                                             <constraint firstItem="xVa-eQ-Xsp" firstAttribute="leading" secondItem="ANe-oB-DEM" secondAttribute="leading" id="Bht-vG-iQk"/>
+                                            <constraint firstAttribute="bottom" secondItem="UoV-za-b1N" secondAttribute="bottom" id="F1I-lt-eR6"/>
                                             <constraint firstAttribute="trailing" secondItem="xVa-eQ-Xsp" secondAttribute="trailing" id="QRN-6Z-V52"/>
                                             <constraint firstAttribute="trailing" secondItem="pTm-bx-Af2" secondAttribute="trailing" id="b4A-tQ-afb"/>
                                             <constraint firstItem="UoV-za-b1N" firstAttribute="leading" secondItem="ANe-oB-DEM" secondAttribute="leading" id="d3H-da-9Av"/>
