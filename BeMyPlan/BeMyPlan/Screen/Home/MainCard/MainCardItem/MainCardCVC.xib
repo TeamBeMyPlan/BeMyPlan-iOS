@@ -61,6 +61,7 @@
             <size key="customSize" width="202" height="327"/>
             <connections>
                 <outlet property="mainCardCategory" destination="7sc-eY-h3N" id="yrI-NV-Yby"/>
+                <outlet property="mainCardImageLayer" destination="0k1-OF-xMI" id="1gl-Hk-SMr"/>
                 <outlet property="mainCardImageView" destination="WIY-aK-dJd" id="XE2-Wc-Iq9"/>
                 <outlet property="mainCardTitle" destination="hOH-qX-7Xg" id="4gj-bj-ITQ"/>
             </connections>
