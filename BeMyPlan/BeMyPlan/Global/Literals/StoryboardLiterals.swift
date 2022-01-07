@@ -14,7 +14,13 @@ import UIKit
           스토리보드를 추가할때마다 case 과 값을 추가하면 됩니다!
 */
 enum Storyboards: String {
-  case main = "Main"
+  case base = "Base"
+  case splash = "Spalsh"
+  case login = "Login"
+  case home = "Home"
+  case travelSpot = "TravelSpot"
+  case scrap = "Scrap"
+  case myPlan = "MyPlan"
 }
 
 extension UIStoryboard{
