@@ -10,7 +10,6 @@ import UIKit
 class MainListView: UIView {
 
   // MARK: - Vars & Lets Part
-  private var currentIndex : CGFloat = 0
   var mainListDataList: [MainListData] = []
   
   override init(frame: CGRect) {
@@ -32,6 +31,7 @@ class MainListView: UIView {
   // MARK: - UI Component Part
   @IBOutlet var mainListCategotyLabel: UILabel!
   @IBOutlet var mainListCV: UICollectionView!
+  
   @IBOutlet var mainListCVCHeightConstraint: NSLayoutConstraint!{
     didSet {
       let screenWidth = UIScreen.main.bounds.width
@@ -70,7 +70,6 @@ class MainListView: UIView {
     
     let mainListCVC = UINib(nibName: MainListCVC.identifier, bundle: nil)
     mainListCV.register(mainListCVC, forCellWithReuseIdentifier: MainListCVC.identifier)
-    
   }
   
   func initMainListDataList(){
@@ -109,7 +108,7 @@ extension MainListView: UICollectionViewDelegateFlowLayout {
   
   //주석
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-    return UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+    return UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 8)
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -123,20 +122,25 @@ extension MainListView: UICollectionViewDelegateFlowLayout {
 
 
 extension MainListView : UIScrollViewDelegate {
-  
   func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
 //    let page = Int(targetContentOffset.pointee.x / self.frame.width)
+    
+    //item의 사이즈와 item 간의 간격 사이즈를 구해서 하나의 item 크기로 결정
+    //160, 12
     let layout = mainListCV.collectionViewLayout as! UICollectionViewFlowLayout
     let cellWidthIncludingSpacing = layout.itemSize.width + layout.minimumLineSpacing
     
+    //targetContentOffset을 이용하여 x좌표가 얼마나 이동했는지 확인
+    //이동한 x좌표 값과 item의 크기를 비교하여 몇 페이징이 될것인지 값 설정
     var offSet = targetContentOffset.pointee
     let index = (offSet.x + scrollView.contentInset.left) / cellWidthIncludingSpacing
     let roundedIndex = round(index)
     
+    //위 코드를 통해 페이징 될 좌표값을 targetContentOffset에 대입하면 된다.
     offSet = CGPoint(x: roundedIndex * cellWidthIncludingSpacing - scrollView.contentInset.left,
                      y: -scrollView.contentInset.top)
     targetContentOffset.pointee = offSet
-//    self.pageControl.currentPage = Int(roundedIndex)
+//    self.pageControl.currentPage = Int(roundedIndex)ㄴ
   }
   
 }

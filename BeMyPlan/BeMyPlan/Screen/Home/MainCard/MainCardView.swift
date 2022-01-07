@@ -10,7 +10,6 @@ import UIKit
 class MainCardView: UIView {
   
   // MARK: - Vars & Lets Part
-  private var currentIndex : CGFloat = 0
   var mainCardDataList: [MainCardData] = []
   
   // MARK: - Life Cycle Part
@@ -104,7 +103,7 @@ extension MainCardView: UICollectionViewDelegateFlowLayout {
   
   //주석
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-    return UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+    return UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 20)
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
