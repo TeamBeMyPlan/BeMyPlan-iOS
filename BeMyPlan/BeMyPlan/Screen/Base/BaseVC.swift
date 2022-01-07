@@ -35,6 +35,7 @@ class BaseVC: UIViewController {
     }
   
   override func viewDidAppear(_ animated: Bool) {
+    showContainerView()
     navigationController?.interactivePopGestureRecognizer?.delegate = nil
     navigationController?.interactivePopGestureRecognizer?.isEnabled = false
   }
@@ -46,6 +47,7 @@ class BaseVC: UIViewController {
   // MARK: - Custom Method Part
   private func setContainerView(){
     for (index,item) in containerViewList.enumerated(){
+      item.alpha = 0
       let vc = item.getTabVC(makeTabList(index: index))
       vc.view.translatesAutoresizingMaskIntoConstraints = false
       self.addChild(vc)
@@ -54,6 +56,12 @@ class BaseVC: UIViewController {
         $0.top.leading.bottom.trailing.equalToSuperview()
       }
       vc.didMove(toParent: self)
+    }
+  }
+  
+  private func showContainerView(){
+    UIView.animate(withDuration: 0.4) { [unowned self] in
+      self.containerViewList[self.clickedIndex.rawValue].alpha = 1
     }
   }
   
@@ -81,6 +89,7 @@ class BaseVC: UIViewController {
   
   private func runTabClickAction(){
     setTabIcon(isFirstRun: false)
+    showContainerView()
     setContainerLeading()
   }
   
@@ -99,6 +108,7 @@ class BaseVC: UIViewController {
 // MARK: - Extension Part
 extension BaseVC : TabBarDelegate{
   func tabClicked(index: TabList) {
+    containerViewList[clickedIndex.rawValue].alpha = 0
     clickedIndex = index
   }
 }

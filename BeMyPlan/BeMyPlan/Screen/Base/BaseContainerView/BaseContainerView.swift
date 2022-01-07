@@ -7,11 +7,11 @@
 
 import UIKit
 
-enum TabList{
-  case home
-  case travelSpot
-  case scrap
-  case myPlan
+enum TabList : Int{
+  case home = 0
+  case travelSpot = 1
+  case scrap = 2
+  case myPlan = 3
 }
 
 class BaseContainerView: XibView{

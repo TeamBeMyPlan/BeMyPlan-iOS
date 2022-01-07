@@ -101,6 +101,13 @@
 		FDF980F6278826140009A14E /* TabBarIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF980F5278826140009A14E /* TabBarIconView.swift */; };
 		FDF980F8278827000009A14E /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FDF980F7278827000009A14E /* Colors.xcassets */; };
 		FDF980FA2788AE8D0009A14E /* Base.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDF980F92788AE8C0009A14E /* Base.storyboard */; };
+		FDF980FD2788C9170009A14E /* PlanPreview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDF980FC2788C9170009A14E /* PlanPreview.storyboard */; };
+		FDF980FF2788C9220009A14E /* PlanPreviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF980FE2788C9220009A14E /* PlanPreviewVC.swift */; };
+		FDF981022788D49C0009A14E /* PlanPreviewWriterTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF981012788D49C0009A14E /* PlanPreviewWriterTVC.swift */; };
+		FDF981042788D4AB0009A14E /* PlanPreviewDescriptionTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF981032788D4AB0009A14E /* PlanPreviewDescriptionTVC.swift */; };
+		FDF981062788D4C00009A14E /* PlanPreviewPhotoTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF981052788D4C00009A14E /* PlanPreviewPhotoTVC.swift */; };
+		FDF981082788D4CF0009A14E /* PlanPreviewSummaryTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF981072788D4CF0009A14E /* PlanPreviewSummaryTVC.swift */; };
+		FDF9810A2788D4DD0009A14E /* PlanPreviewRecommendTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF981092788D4DD0009A14E /* PlanPreviewRecommendTVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -215,6 +222,13 @@
 		FDF980F5278826140009A14E /* TabBarIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarIconView.swift; sourceTree = "<group>"; };
 		FDF980F7278827000009A14E /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		FDF980F92788AE8C0009A14E /* Base.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Base.storyboard; sourceTree = "<group>"; };
+		FDF980FC2788C9170009A14E /* PlanPreview.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PlanPreview.storyboard; sourceTree = "<group>"; };
+		FDF980FE2788C9220009A14E /* PlanPreviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanPreviewVC.swift; sourceTree = "<group>"; };
+		FDF981012788D49C0009A14E /* PlanPreviewWriterTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanPreviewWriterTVC.swift; sourceTree = "<group>"; };
+		FDF981032788D4AB0009A14E /* PlanPreviewDescriptionTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanPreviewDescriptionTVC.swift; sourceTree = "<group>"; };
+		FDF981052788D4C00009A14E /* PlanPreviewPhotoTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanPreviewPhotoTVC.swift; sourceTree = "<group>"; };
+		FDF981072788D4CF0009A14E /* PlanPreviewSummaryTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanPreviewSummaryTVC.swift; sourceTree = "<group>"; };
+		FDF981092788D4DD0009A14E /* PlanPreviewRecommendTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanPreviewRecommendTVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -473,8 +487,9 @@
 				FDF980D92786E02C0009A14E /* Base */,
 				FD09DE1827857CA6006DA050 /* Home */,
 				FDF980C32786D1670009A14E /* TravelSpot */,
-				FDF980ED278821A30009A14E /* Scrab */,
+				FDF980ED278821A30009A14E /* Scrap */,
 				FDF980E62786F1810009A14E /* MyPlan */,
+				FDF980FB2788C9040009A14E /* PlanPreview */,
 				FDF980C42786D1900009A14E /* PlanList */,
 				FD09DE1927857CAA006DA050 /* Splash */,
 				FD09DE1A27857CB0006DA050 /* Login */,
@@ -581,13 +596,13 @@
 			path = MyPlan;
 			sourceTree = "<group>";
 		};
-		FDF980ED278821A30009A14E /* Scrab */ = {
+		FDF980ED278821A30009A14E /* Scrap */ = {
 			isa = PBXGroup;
 			children = (
 				FDF980EE278821AD0009A14E /* Scrap.storyboard */,
 				FDF980F0278821E90009A14E /* ScrapVC.swift */,
 			);
-			path = Scrab;
+			path = Scrap;
 			sourceTree = "<group>";
 		};
 		FDF980F2278825E00009A14E /* TabBar */ = {
@@ -597,6 +612,28 @@
 				FDF980F5278826140009A14E /* TabBarIconView.swift */,
 			);
 			path = TabBar;
+			sourceTree = "<group>";
+		};
+		FDF980FB2788C9040009A14E /* PlanPreview */ = {
+			isa = PBXGroup;
+			children = (
+				FDF981002788D4770009A14E /* Cells */,
+				FDF980FC2788C9170009A14E /* PlanPreview.storyboard */,
+				FDF980FE2788C9220009A14E /* PlanPreviewVC.swift */,
+			);
+			path = PlanPreview;
+			sourceTree = "<group>";
+		};
+		FDF981002788D4770009A14E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				FDF981012788D49C0009A14E /* PlanPreviewWriterTVC.swift */,
+				FDF981032788D4AB0009A14E /* PlanPreviewDescriptionTVC.swift */,
+				FDF981052788D4C00009A14E /* PlanPreviewPhotoTVC.swift */,
+				FDF981072788D4CF0009A14E /* PlanPreviewSummaryTVC.swift */,
+				FDF981092788D4DD0009A14E /* PlanPreviewRecommendTVC.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -670,6 +707,7 @@
 				FD09DDDA27856A31006DA050 /* copyright.png in Resources */,
 				FD09DDD827856A31006DA050 /* map_pinup@3x.png in Resources */,
 				FDF980CE2786D2550009A14E /* Login.storyboard in Resources */,
+				FDF980FD2788C9170009A14E /* PlanPreview.storyboard in Resources */,
 				FD3211B527841949007D63D5 /* LaunchScreen.storyboard in Resources */,
 				FD09DDE927856A31006DA050 /* noimage.png in Resources */,
 				FD09DDEB27856A31006DA050 /* daum_th_line.png in Resources */,
@@ -797,15 +835,21 @@
 				F2C5F18E2786EACB00BE4036 /* MainCardView.swift in Sources */,
 				FD09DE2227857D00006DA050 /* SplashVC.swift in Sources */,
 				FD09DDFC278578B1006DA050 /* ColorLiterals.swift in Sources */,
+				FDF9810A2788D4DD0009A14E /* PlanPreviewRecommendTVC.swift in Sources */,
 				FD3211A927841948007D63D5 /* AppDelegate.swift in Sources */,
 				FD09DE1727857B5D006DA050 /* controllerFromStoryboard + UIViewController.swift in Sources */,
 				F2C5F1922786EB3300BE4036 /* MainListView.swift in Sources */,
+				FDF980FF2788C9220009A14E /* PlanPreviewVC.swift in Sources */,
+				FDF981022788D49C0009A14E /* PlanPreviewWriterTVC.swift in Sources */,
+				FDF981042788D4AB0009A14E /* PlanPreviewDescriptionTVC.swift in Sources */,
 				FD3211AB27841948007D63D5 /* SceneDelegate.swift in Sources */,
 				FD09DE1127857A5C006DA050 /* pressAction.swift in Sources */,
 				FD09DE0B27857995006DA050 /* calculatePastTime.swift in Sources */,
 				FD09DE00278578C4006DA050 /* ImageLiterals.swift in Sources */,
+				FDF981082788D4CF0009A14E /* PlanPreviewSummaryTVC.swift in Sources */,
 				FDF980D62786D5320009A14E /* makePayBoocFont.swift in Sources */,
 				FD09DDF3278577F4006DA050 /* BaseAPI.swift in Sources */,
+				FDF981062788D4C00009A14E /* PlanPreviewPhotoTVC.swift in Sources */,
 				FD09DE1E27857CDC006DA050 /* HomeVC.swift in Sources */,
 				FD09DDFE278578BA006DA050 /* StringLiterals.swift in Sources */,
 				FD09DE2727857DE3006DA050 /* GenericResponse.swift in Sources */,
