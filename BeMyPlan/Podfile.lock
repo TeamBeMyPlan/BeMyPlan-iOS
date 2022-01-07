@@ -108,9 +108,9 @@ PODS:
     - Kingfisher/Core (= 5.15.8)
   - Kingfisher/Core (5.15.8)
   - lottie-ios (3.3.0)
-  - Moya (14.0.0):
-    - Moya/Core (= 14.0.0)
-  - Moya/Core (14.0.0):
+  - Moya (15.0.0):
+    - Moya/Core (= 15.0.0)
+  - Moya/Core (15.0.0):
     - Alamofire (~> 5.0)
   - MSCircularSlider (1.3.2)
   - Mute (0.6.0)
@@ -190,7 +190,7 @@ SPEC CHECKSUMS:
   KakaoSDKUser: d878977e0ba6b365cfeac3b6319cdf4231713bea
   Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
   lottie-ios: 6ac74dcc09904798f59b18cb3075c089d76be9ae
-  Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
+  Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
   MSCircularSlider: 07fe922e6a7e05fb67e876d449e365327fdad3d1
   Mute: 66213d0aced6a074c7ab88b45ec20a9d54b1b7fb
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96

@@ -7,12 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3DA6BF89CC2DB8CCD16827BF /* Pods_BeMyPlan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3B06D34F8CCE8B987563F36 /* Pods_BeMyPlan.framework */; };
+		B3A5D5BD1298F79618E1515D /* Pods_BeMyPlan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74E77840A5DD129FEA46D8E0 /* Pods_BeMyPlan.framework */; };
 		F2C5F18E2786EACB00BE4036 /* MainCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C5F18D2786EACB00BE4036 /* MainCardView.swift */; };
 		F2C5F1902786EAE200BE4036 /* MainCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2C5F18F2786EAE200BE4036 /* MainCardView.xib */; };
 		F2C5F1922786EB3300BE4036 /* MainListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C5F1912786EB3300BE4036 /* MainListView.swift */; };
 		F2C5F1942786EB3C00BE4036 /* MainListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2C5F1932786EB3C00BE4036 /* MainListView.xib */; };
-		F2C5F1962786EF0000BE4036 /* addSubViewFromNib.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C5F1952786EF0000BE4036 /* addSubViewFromNib.swift */; };
 		FD09DD5127855E33006DA050 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FD09DD5027855E32006DA050 /* GoogleService-Info.plist */; };
 		FD09DD9827856387006DA050 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD09DD9727856387006DA050 /* SystemConfiguration.framework */; };
 		FD09DD9A27856394006DA050 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD09DD9927856394006DA050 /* CoreLocation.framework */; };
@@ -67,7 +66,6 @@
 		FD09DE1E27857CDC006DA050 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD09DE1D27857CDC006DA050 /* HomeVC.swift */; };
 		FD09DE2027857CF2006DA050 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD09DE1F27857CF2006DA050 /* LoginVC.swift */; };
 		FD09DE2227857D00006DA050 /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD09DE2127857D00006DA050 /* SplashVC.swift */; };
-		FD09DE2427857D0F006DA050 /* MyPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD09DE2327857D0F006DA050 /* MyPageVC.swift */; };
 		FD09DE2727857DE3006DA050 /* GenericResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD09DE2627857DE3006DA050 /* GenericResponse.swift */; };
 		FD09DE2927857E25006DA050 /* StoryboardLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD09DE2827857E25006DA050 /* StoryboardLiterals.swift */; };
 		FD09DE2D27858B41006DA050 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD09DE2C27858B41006DA050 /* Metal.framework */; };
@@ -87,21 +85,32 @@
 		FDF980CA2786D23D0009A14E /* TravelSpot.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDF980C92786D23D0009A14E /* TravelSpot.storyboard */; };
 		FDF980CC2786D2470009A14E /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDF980CB2786D2470009A14E /* Splash.storyboard */; };
 		FDF980CE2786D2550009A14E /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDF980CD2786D2550009A14E /* Login.storyboard */; };
-		FDF980D02786D2600009A14E /* MyPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDF980CF2786D2600009A14E /* MyPage.storyboard */; };
 		FDF980D22786D2EB0009A14E /* TravelSpotVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF980D12786D2EB0009A14E /* TravelSpotVC.swift */; };
 		FDF980D42786D2F60009A14E /* PlanListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF980D32786D2F60009A14E /* PlanListVC.swift */; };
 		FDF980D62786D5320009A14E /* makePayBoocFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF980D52786D5320009A14E /* makePayBoocFont.swift */; };
+		FDF980DB2786E2F60009A14E /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF980DA2786E2F60009A14E /* BaseVC.swift */; };
+		FDF980DE2786E6090009A14E /* addSubViewFromNib.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF980DD2786E6090009A14E /* addSubViewFromNib.swift */; };
+		FDF980E12786E7DB0009A14E /* BaseContainerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDF980E02786E7DB0009A14E /* BaseContainerView.xib */; };
+		FDF980E32786E7E90009A14E /* BaseContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF980E22786E7E90009A14E /* BaseContainerView.swift */; };
+		FDF980E52786E8370009A14E /* XibPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF980E42786E8370009A14E /* XibPresentable.swift */; };
+		FDF980E82786F1910009A14E /* MyPlanVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF980E72786F1910009A14E /* MyPlanVC.swift */; };
+		FDF980EA2786F19D0009A14E /* MyPlan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDF980E92786F19D0009A14E /* MyPlan.storyboard */; };
+		FDF980EF278821AD0009A14E /* Scrap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDF980EE278821AD0009A14E /* Scrap.storyboard */; };
+		FDF980F1278821E90009A14E /* ScrapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF980F0278821E90009A14E /* ScrapVC.swift */; };
+		FDF980F4278825EF0009A14E /* TabBarIconView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDF980F3278825EF0009A14E /* TabBarIconView.xib */; };
+		FDF980F6278826140009A14E /* TabBarIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF980F5278826140009A14E /* TabBarIconView.swift */; };
+		FDF980F8278827000009A14E /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FDF980F7278827000009A14E /* Colors.xcassets */; };
+		FDF980FA2788AE8D0009A14E /* Base.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDF980F92788AE8C0009A14E /* Base.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B13B8456ECB953D5894B487B /* Pods-BeMyPlan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeMyPlan.release.xcconfig"; path = "Target Support Files/Pods-BeMyPlan/Pods-BeMyPlan.release.xcconfig"; sourceTree = "<group>"; };
-		D3B06D34F8CCE8B987563F36 /* Pods_BeMyPlan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeMyPlan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D8AA4B1E5B49BFC40FA51456 /* Pods-BeMyPlan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeMyPlan.debug.xcconfig"; path = "Target Support Files/Pods-BeMyPlan/Pods-BeMyPlan.debug.xcconfig"; sourceTree = "<group>"; };
+		38ABC24E3B24EC24D66A4B11 /* Pods-BeMyPlan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeMyPlan.release.xcconfig"; path = "Target Support Files/Pods-BeMyPlan/Pods-BeMyPlan.release.xcconfig"; sourceTree = "<group>"; };
+		716DC40F7639EE8814004C67 /* Pods-BeMyPlan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeMyPlan.debug.xcconfig"; path = "Target Support Files/Pods-BeMyPlan/Pods-BeMyPlan.debug.xcconfig"; sourceTree = "<group>"; };
+		74E77840A5DD129FEA46D8E0 /* Pods_BeMyPlan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeMyPlan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2C5F18D2786EACB00BE4036 /* MainCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCardView.swift; sourceTree = "<group>"; };
 		F2C5F18F2786EAE200BE4036 /* MainCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainCardView.xib; sourceTree = "<group>"; };
 		F2C5F1912786EB3300BE4036 /* MainListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainListView.swift; sourceTree = "<group>"; };
 		F2C5F1932786EB3C00BE4036 /* MainListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainListView.xib; sourceTree = "<group>"; };
-		F2C5F1952786EF0000BE4036 /* addSubViewFromNib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addSubViewFromNib.swift; sourceTree = "<group>"; };
 		FD09DD5027855E32006DA050 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FD09DD9527856377006DA050 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		FD09DD9727856387006DA050 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -169,7 +178,6 @@
 		FD09DE1D27857CDC006DA050 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		FD09DE1F27857CF2006DA050 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		FD09DE2127857D00006DA050 /* SplashVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
-		FD09DE2327857D0F006DA050 /* MyPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageVC.swift; sourceTree = "<group>"; };
 		FD09DE2627857DE3006DA050 /* GenericResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericResponse.swift; sourceTree = "<group>"; };
 		FD09DE2827857E25006DA050 /* StoryboardLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardLiterals.swift; sourceTree = "<group>"; };
 		FD09DE2C27858B41006DA050 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
@@ -191,10 +199,22 @@
 		FDF980C92786D23D0009A14E /* TravelSpot.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TravelSpot.storyboard; sourceTree = "<group>"; };
 		FDF980CB2786D2470009A14E /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
 		FDF980CD2786D2550009A14E /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
-		FDF980CF2786D2600009A14E /* MyPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyPage.storyboard; sourceTree = "<group>"; };
 		FDF980D12786D2EB0009A14E /* TravelSpotVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelSpotVC.swift; sourceTree = "<group>"; };
 		FDF980D32786D2F60009A14E /* PlanListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanListVC.swift; sourceTree = "<group>"; };
 		FDF980D52786D5320009A14E /* makePayBoocFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = makePayBoocFont.swift; sourceTree = "<group>"; };
+		FDF980DA2786E2F60009A14E /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
+		FDF980DD2786E6090009A14E /* addSubViewFromNib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addSubViewFromNib.swift; sourceTree = "<group>"; };
+		FDF980E02786E7DB0009A14E /* BaseContainerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseContainerView.xib; sourceTree = "<group>"; };
+		FDF980E22786E7E90009A14E /* BaseContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseContainerView.swift; sourceTree = "<group>"; };
+		FDF980E42786E8370009A14E /* XibPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibPresentable.swift; sourceTree = "<group>"; };
+		FDF980E72786F1910009A14E /* MyPlanVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlanVC.swift; sourceTree = "<group>"; };
+		FDF980E92786F19D0009A14E /* MyPlan.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyPlan.storyboard; sourceTree = "<group>"; };
+		FDF980EE278821AD0009A14E /* Scrap.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Scrap.storyboard; sourceTree = "<group>"; };
+		FDF980F0278821E90009A14E /* ScrapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapVC.swift; sourceTree = "<group>"; };
+		FDF980F3278825EF0009A14E /* TabBarIconView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabBarIconView.xib; sourceTree = "<group>"; };
+		FDF980F5278826140009A14E /* TabBarIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarIconView.swift; sourceTree = "<group>"; };
+		FDF980F7278827000009A14E /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		FDF980F92788AE8C0009A14E /* Base.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Base.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,7 +227,7 @@
 				FD09DDED27856A31006DA050 /* DaumMap.framework in Frameworks */,
 				FD09DD9A27856394006DA050 /* CoreLocation.framework in Frameworks */,
 				FD09DD9827856387006DA050 /* SystemConfiguration.framework in Frameworks */,
-				3DA6BF89CC2DB8CCD16827BF /* Pods_BeMyPlan.framework in Frameworks */,
+				B3A5D5BD1298F79618E1515D /* Pods_BeMyPlan.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,7 +246,7 @@
 				FD09DD9927856394006DA050 /* CoreLocation.framework */,
 				FD09DD9727856387006DA050 /* SystemConfiguration.framework */,
 				FD09DD9527856377006DA050 /* OpenGLES.framework */,
-				D3B06D34F8CCE8B987563F36 /* Pods_BeMyPlan.framework */,
+				74E77840A5DD129FEA46D8E0 /* Pods_BeMyPlan.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -234,8 +254,8 @@
 		6F77842C2239262E3D685F1B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				D8AA4B1E5B49BFC40FA51456 /* Pods-BeMyPlan.debug.xcconfig */,
-				B13B8456ECB953D5894B487B /* Pods-BeMyPlan.release.xcconfig */,
+				716DC40F7639EE8814004C67 /* Pods-BeMyPlan.debug.xcconfig */,
+				38ABC24E3B24EC24D66A4B11 /* Pods-BeMyPlan.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -393,15 +413,6 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
-		FD09DE1B27857CB8006DA050 /* MyPage */ = {
-			isa = PBXGroup;
-			children = (
-				FD09DE2327857D0F006DA050 /* MyPageVC.swift */,
-				FDF980CF2786D2600009A14E /* MyPage.storyboard */,
-			);
-			path = MyPage;
-			sourceTree = "<group>";
-		};
 		FD09DE2527857DD6006DA050 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -459,12 +470,14 @@
 		FD3211C627843F64007D63D5 /* Screen */ = {
 			isa = PBXGroup;
 			children = (
-				FDF980C42786D1900009A14E /* PlanList */,
+				FDF980D92786E02C0009A14E /* Base */,
+				FD09DE1827857CA6006DA050 /* Home */,
 				FDF980C32786D1670009A14E /* TravelSpot */,
+				FDF980ED278821A30009A14E /* Scrab */,
+				FDF980E62786F1810009A14E /* MyPlan */,
+				FDF980C42786D1900009A14E /* PlanList */,
 				FD09DE1927857CAA006DA050 /* Splash */,
 				FD09DE1A27857CB0006DA050 /* Login */,
-				FD09DE1827857CA6006DA050 /* Home */,
-				FD09DE1B27857CB8006DA050 /* MyPage */,
 				FD3211AC27841948007D63D5 /* ViewController.swift */,
 				FD3211AE27841948007D63D5 /* Main.storyboard */,
 			);
@@ -486,7 +499,7 @@
 			children = (
 				FD09DE1227857AE1006DA050 /* successCatch + Result.swift */,
 				FD09DE1627857B5D006DA050 /* controllerFromStoryboard + UIViewController.swift */,
-				F2C5F1952786EF0000BE4036 /* addSubViewFromNib.swift */,
+				FDF980DD2786E6090009A14E /* addSubViewFromNib.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -496,6 +509,7 @@
 			children = (
 				FDF980B92786CE1A0009A14E /* Fonts */,
 				FD3211B127841949007D63D5 /* Assets.xcassets */,
+				FDF980F7278827000009A14E /* Colors.xcassets */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -505,6 +519,7 @@
 			children = (
 				FD09DDF627857841006DA050 /* UITableViewRegisterable.swift */,
 				FD09DDF827857858006DA050 /* UICollectionViewRegisterable.swift */,
+				FDF980E42786E8370009A14E /* XibPresentable.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -537,6 +552,53 @@
 			path = PlanList;
 			sourceTree = "<group>";
 		};
+		FDF980D92786E02C0009A14E /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				FDF980F2278825E00009A14E /* TabBar */,
+				FDF980DF2786E7C60009A14E /* BaseContainerView */,
+				FDF980DA2786E2F60009A14E /* BaseVC.swift */,
+				FDF980F92788AE8C0009A14E /* Base.storyboard */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		FDF980DF2786E7C60009A14E /* BaseContainerView */ = {
+			isa = PBXGroup;
+			children = (
+				FDF980E02786E7DB0009A14E /* BaseContainerView.xib */,
+				FDF980E22786E7E90009A14E /* BaseContainerView.swift */,
+			);
+			path = BaseContainerView;
+			sourceTree = "<group>";
+		};
+		FDF980E62786F1810009A14E /* MyPlan */ = {
+			isa = PBXGroup;
+			children = (
+				FDF980E72786F1910009A14E /* MyPlanVC.swift */,
+				FDF980E92786F19D0009A14E /* MyPlan.storyboard */,
+			);
+			path = MyPlan;
+			sourceTree = "<group>";
+		};
+		FDF980ED278821A30009A14E /* Scrab */ = {
+			isa = PBXGroup;
+			children = (
+				FDF980EE278821AD0009A14E /* Scrap.storyboard */,
+				FDF980F0278821E90009A14E /* ScrapVC.swift */,
+			);
+			path = Scrab;
+			sourceTree = "<group>";
+		};
+		FDF980F2278825E00009A14E /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				FDF980F3278825EF0009A14E /* TabBarIconView.xib */,
+				FDF980F5278826140009A14E /* TabBarIconView.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -544,20 +606,18 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FD3211B927841949007D63D5 /* Build configuration list for PBXNativeTarget "BeMyPlan" */;
 			buildPhases = (
-				4A4D1846FD26CBDD885E6550 /* [CP] Check Pods Manifest.lock */,
+				9B010469FD4AA3A70FBC5764 /* [CP] Check Pods Manifest.lock */,
 				FD3211A127841947007D63D5 /* Sources */,
 				FD3211A227841947007D63D5 /* Frameworks */,
 				FD3211A327841947007D63D5 /* Resources */,
 				FD3211C127843342007D63D5 /* ShellScript */,
-				8D65AB50CAB04D2D20506625 /* [CP] Embed Pods Frameworks */,
+				B16B0B0D5AD88746DBC7A363 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = BeMyPlan;
-			packageProductDependencies = (
-			);
 			productName = BeMyPlan;
 			productReference = FD3211A527841948007D63D5 /* BeMyPlan.app */;
 			productType = "com.apple.product-type.application";
@@ -586,8 +646,6 @@
 				Base,
 			);
 			mainGroup = FD32119C27841947007D63D5;
-			packageReferences = (
-			);
 			productRefGroup = FD3211A627841948007D63D5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -602,6 +660,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FDF980F8278827000009A14E /* Colors.xcassets in Resources */,
 				FD3211C3278433CF007D63D5 /* .swiftlint.yml in Resources */,
 				FD09DDD427856A31006DA050 /* shadow_balloon.png in Resources */,
 				FD09DDE627856A31006DA050 /* map_present_direction.png in Resources */,
@@ -621,14 +680,16 @@
 				FD09DDE027856A31006DA050 /* map_pin_red.png in Resources */,
 				FD09DDEA27856A31006DA050 /* map_present_background_update.png in Resources */,
 				FD09DDE427856A31006DA050 /* info_box_tail.png in Resources */,
+				FDF980EF278821AD0009A14E /* Scrap.storyboard in Resources */,
 				FDF980C82786D2360009A14E /* PlanList.storyboard in Resources */,
 				FD09DDEC27856A31006DA050 /* map_pin_shadow.png in Resources */,
 				FD09DDD927856A31006DA050 /* map_pin_shadow@3x.png in Resources */,
+				FDF980EA2786F19D0009A14E /* MyPlan.storyboard in Resources */,
 				FDF980CA2786D23D0009A14E /* TravelSpot.storyboard in Resources */,
 				FD09DDE527856A31006DA050 /* noimage256.png in Resources */,
 				FD3211B227841949007D63D5 /* Assets.xcassets in Resources */,
-				FDF980D02786D2600009A14E /* MyPage.storyboard in Resources */,
 				FD09DDD227856A31006DA050 /* map_pinup_custom@3x.png in Resources */,
+				FDF980F4278825EF0009A14E /* TabBarIconView.xib in Resources */,
 				FD09DDE327856A31006DA050 /* map_pinup_custom.png in Resources */,
 				FD3211B027841948007D63D5 /* Main.storyboard in Resources */,
 				FD09DDDD27856A31006DA050 /* daum_copyright.png in Resources */,
@@ -644,14 +705,16 @@
 				FD09DDDC27856A31006DA050 /* map_pin_red@3x.png in Resources */,
 				FD09DDD527856A31006DA050 /* map_pinup.png in Resources */,
 				FD09DDE727856A31006DA050 /* map_pin.png in Resources */,
+				FDF980FA2788AE8D0009A14E /* Base.storyboard in Resources */,
 				FDF980CC2786D2470009A14E /* Splash.storyboard in Resources */,
+				FDF980E12786E7DB0009A14E /* BaseContainerView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4A4D1846FD26CBDD885E6550 /* [CP] Check Pods Manifest.lock */ = {
+		9B010469FD4AA3A70FBC5764 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -673,7 +736,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8D65AB50CAB04D2D20506625 /* [CP] Embed Pods Frameworks */ = {
+		B16B0B0D5AD88746DBC7A363 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -714,16 +777,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FDF980E82786F1910009A14E /* MyPlanVC.swift in Sources */,
+				FDF980F6278826140009A14E /* TabBarIconView.swift in Sources */,
 				FD09DE0F27857A2E006DA050 /* makeAlert.swift in Sources */,
-				F2C5F1962786EF0000BE4036 /* addSubViewFromNib.swift in Sources */,
+				FDF980DB2786E2F60009A14E /* BaseVC.swift in Sources */,
 				FD09DE052785795D006DA050 /* applyShadow.swift in Sources */,
+				FDF980DE2786E6090009A14E /* addSubViewFromNib.swift in Sources */,
 				FD09DE2027857CF2006DA050 /* LoginVC.swift in Sources */,
 				FD09DDF1278577CF006DA050 /* BaseService.swift in Sources */,
 				FDF980D22786D2EB0009A14E /* TravelSpotVC.swift in Sources */,
 				FD09DE2927857E25006DA050 /* StoryboardLiterals.swift in Sources */,
 				FDF980C12786D14B0009A14E /* setDefaultFonts.swift in Sources */,
 				FD09DE0727857971006DA050 /* calculateTopInset.swift in Sources */,
+				FDF980E32786E7E90009A14E /* BaseContainerView.swift in Sources */,
 				FDF980D42786D2F60009A14E /* PlanListVC.swift in Sources */,
+				FDF980E52786E8370009A14E /* XibPresentable.swift in Sources */,
+				FDF980F1278821E90009A14E /* ScrapVC.swift in Sources */,
 				FD3211AD27841948007D63D5 /* ViewController.swift in Sources */,
 				F2C5F18E2786EACB00BE4036 /* MainCardView.swift in Sources */,
 				FD09DE2227857D00006DA050 /* SplashVC.swift in Sources */,
@@ -737,7 +806,6 @@
 				FD09DE00278578C4006DA050 /* ImageLiterals.swift in Sources */,
 				FDF980D62786D5320009A14E /* makePayBoocFont.swift in Sources */,
 				FD09DDF3278577F4006DA050 /* BaseAPI.swift in Sources */,
-				FD09DE2427857D0F006DA050 /* MyPageVC.swift in Sources */,
 				FD09DE1E27857CDC006DA050 /* HomeVC.swift in Sources */,
 				FD09DDFE278578BA006DA050 /* StringLiterals.swift in Sources */,
 				FD09DE2727857DE3006DA050 /* GenericResponse.swift in Sources */,
@@ -892,7 +960,7 @@
 		};
 		FD3211BA27841949007D63D5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D8AA4B1E5B49BFC40FA51456 /* Pods-BeMyPlan.debug.xcconfig */;
+			baseConfigurationReference = 716DC40F7639EE8814004C67 /* Pods-BeMyPlan.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -928,7 +996,7 @@
 		};
 		FD3211BB27841949007D63D5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B13B8456ECB953D5894B487B /* Pods-BeMyPlan.release.xcconfig */;
+			baseConfigurationReference = 38ABC24E3B24EC24D66A4B11 /* Pods-BeMyPlan.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
