@@ -18,7 +18,7 @@ class MainCardView: UIView {
     addSubviewFromNib(view: self)
     initMainCardDataList()
     registerCVC()
-    setMainCardCV()
+//    setMainCardCV()
   }
   
   required init?(coder aDecoder: NSCoder) {
@@ -72,6 +72,10 @@ class MainCardView: UIView {
   func initMainCardDataList(){
     mainCardDataList.append(contentsOf: [
       MainCardData(image: "maincard1", category: "인기여행일정", title: "제주도 & 우도 인생샷 투어"),
+      MainCardData(image: "maincard2", category: "인기여행일정", title: "바다와 함께하는 산책 투어"),
+      MainCardData(image: "maincard1", category: "인기여행일정", title: "제주도 & 우도 인생샷 투어"),
+      MainCardData(image: "maincard2", category: "인기여행일정", title: "바다와 함께하는 산책 투어"),
+      MainCardData(image: "maincard1", category: "인기여행일정", title: "제주도 & 우도 인생샷 투어"),
       MainCardData(image: "maincard2", category: "인기여행일정", title: "바다와 함께하는 산책 투어")
     ])
   }
@@ -94,16 +98,16 @@ extension MainCardView: UICollectionViewDataSource {
 
 extension MainCardView: UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//    let screenWidth = UIScreen.main.bounds.width
-//    let cellWidth = screenWidth * (327/375)
-//    let cellHeight = cellWidth * (435/327)
-//    return CGSize(width: cellWidth, height: cellHeight)
-    return CGSize(width:327, height:435)
+    let screenWidth = UIScreen.main.bounds.width
+    let cellWidth = screenWidth * (327/375)
+    let cellHeight = cellWidth * (435/327)
+    return CGSize(width: cellWidth, height: cellHeight)
+
   }
   
   //주석
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-    return UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 20)
+    return UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 24)
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -111,7 +115,7 @@ extension MainCardView: UICollectionViewDelegateFlowLayout {
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-    12
+    0
   }
 }
 
@@ -123,9 +127,11 @@ extension MainCardView : UIScrollViewDelegate {
     let layout = mainCardCV.collectionViewLayout as! UICollectionViewFlowLayout
     let cellWidthIncludingSpacing = layout.itemSize.width + layout.minimumLineSpacing
     
+    
     var offSet = targetContentOffset.pointee
     let index = (offSet.x + scrollView.contentInset.left) / cellWidthIncludingSpacing
     let roundedIndex = round(index)
+    
     
     offSet = CGPoint(x: roundedIndex * cellWidthIncludingSpacing - scrollView.contentInset.left,
                      y: -scrollView.contentInset.top)

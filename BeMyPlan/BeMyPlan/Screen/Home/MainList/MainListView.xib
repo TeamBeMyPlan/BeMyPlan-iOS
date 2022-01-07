@@ -39,7 +39,7 @@
                         <action selector="touchUpToGoGallery:" destination="-1" eventType="touchUpInside" id="nFm-tM-fjc"/>
                     </connections>
                 </button>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="jAs-06-MqO">
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="jAs-06-MqO">
                     <rect key="frame" x="0.0" y="29" width="375" height="208"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
