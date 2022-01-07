@@ -22,8 +22,8 @@ struct ImageLiterals{
     static let myPlanIcon = UIImage(named: "icon_myplan")!
     static let myPlanIconSelected = UIImage(named: "icon_myplan_selected")!
   }
-  
   struct Components{
+		static let applogo = UIImage(named: "applogo")!
   }
 
 }

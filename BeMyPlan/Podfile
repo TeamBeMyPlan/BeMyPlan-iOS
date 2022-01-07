@@ -17,7 +17,7 @@ target 'BeMyPlan' do
   pod 'Then'
   pod 'HGCircularSlider'
   pod 'MSCircularSlider'
-  pod 'Moya', '~> 14.0'
+  pod 'Moya'
   pod 'SwiftyJSON', '~> 4.0'
   pod 'Mute'
   pod 'SRScratchView'

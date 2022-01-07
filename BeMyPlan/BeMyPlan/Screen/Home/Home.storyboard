@@ -14,10 +14,90 @@
             <objects>
                 <viewController storyboardIdentifier="HomeVC" id="Y6W-OH-hqX" customClass="HomeVC" customModule="BeMyPlan" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1380"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cvV-LS-BMi">
+                                <rect key="frame" x="0.0" y="44" width="375" height="50"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="applogo" translatesAutoresizingMaskIntoConstraints="NO" id="vXd-Mr-rI1">
+                                        <rect key="frame" x="169" y="6" width="37" height="37"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="37" id="BYc-EY-xEF"/>
+                                            <constraint firstAttribute="width" constant="37" id="fiu-M6-Tdv"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="vXd-Mr-rI1" firstAttribute="centerX" secondItem="cvV-LS-BMi" secondAttribute="centerX" id="2If-s5-dSX"/>
+                                    <constraint firstAttribute="height" constant="50" id="8HP-Pa-QXT"/>
+                                    <constraint firstItem="vXd-Mr-rI1" firstAttribute="top" secondItem="cvV-LS-BMi" secondAttribute="top" constant="6" id="ino-kN-6QX"/>
+                                </constraints>
+                            </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zdd-3a-XQA">
+                                <rect key="frame" x="0.0" y="94" width="375" height="1252"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ANe-oB-DEM">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1252"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pTm-bx-Af2" customClass="MainCardView" customModule="BeMyPlan" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="572"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="572" id="IjL-Id-SuA"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xVa-eQ-Xsp">
+                                                <rect key="frame" x="0.0" y="572" width="375" height="282"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="282" id="b6F-XO-3YH"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UoV-za-b1N">
+                                                <rect key="frame" x="0.0" y="854" width="375" height="282"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="282" id="DDc-up-8CZ"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="pTm-bx-Af2" firstAttribute="top" secondItem="ANe-oB-DEM" secondAttribute="top" id="6F8-Bh-p7I"/>
+                                            <constraint firstItem="xVa-eQ-Xsp" firstAttribute="top" secondItem="pTm-bx-Af2" secondAttribute="bottom" id="8fX-rx-TZf"/>
+                                            <constraint firstItem="xVa-eQ-Xsp" firstAttribute="leading" secondItem="ANe-oB-DEM" secondAttribute="leading" id="Bht-vG-iQk"/>
+                                            <constraint firstAttribute="trailing" secondItem="xVa-eQ-Xsp" secondAttribute="trailing" id="QRN-6Z-V52"/>
+                                            <constraint firstAttribute="trailing" secondItem="pTm-bx-Af2" secondAttribute="trailing" id="b4A-tQ-afb"/>
+                                            <constraint firstItem="UoV-za-b1N" firstAttribute="leading" secondItem="ANe-oB-DEM" secondAttribute="leading" id="d3H-da-9Av"/>
+                                            <constraint firstItem="UoV-za-b1N" firstAttribute="top" secondItem="xVa-eQ-Xsp" secondAttribute="bottom" id="hZe-Ri-jEq"/>
+                                            <constraint firstItem="pTm-bx-Af2" firstAttribute="leading" secondItem="ANe-oB-DEM" secondAttribute="leading" id="pPN-QW-3KD"/>
+                                            <constraint firstAttribute="trailing" secondItem="UoV-za-b1N" secondAttribute="trailing" id="zTX-Ol-kD7"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="ANe-oB-DEM" firstAttribute="height" secondItem="zdd-3a-XQA" secondAttribute="height" priority="999" id="348-dN-ZqH"/>
+                                    <constraint firstAttribute="bottom" secondItem="ANe-oB-DEM" secondAttribute="bottom" id="8wn-ns-8sc"/>
+                                    <constraint firstItem="ANe-oB-DEM" firstAttribute="width" secondItem="zdd-3a-XQA" secondAttribute="width" id="C1i-UF-fE3"/>
+                                    <constraint firstItem="ANe-oB-DEM" firstAttribute="leading" secondItem="zdd-3a-XQA" secondAttribute="leading" id="UFF-AI-JRR"/>
+                                    <constraint firstAttribute="trailing" secondItem="ANe-oB-DEM" secondAttribute="trailing" id="csj-Gf-asv"/>
+                                    <constraint firstItem="ANe-oB-DEM" firstAttribute="top" secondItem="zdd-3a-XQA" secondAttribute="top" id="wFT-0r-M1O"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="zdd-3a-XQA" firstAttribute="top" secondItem="cvV-LS-BMi" secondAttribute="bottom" id="KLS-DU-hO7"/>
+                            <constraint firstItem="zdd-3a-XQA" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="QTk-8G-iaX"/>
+                            <constraint firstItem="zdd-3a-XQA" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="S7b-nM-cKj"/>
+                            <constraint firstItem="cvV-LS-BMi" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Vdl-l6-VpJ"/>
+                            <constraint firstItem="cvV-LS-BMi" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="YBx-AQ-WTb"/>
+                            <constraint firstItem="zdd-3a-XQA" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="m4U-my-CFg"/>
+                            <constraint firstItem="cvV-LS-BMi" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="xHu-sF-lSy"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Y1n-Rx-qNR"/>
                 </viewController>
@@ -27,6 +107,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="applogo" width="500" height="500"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
