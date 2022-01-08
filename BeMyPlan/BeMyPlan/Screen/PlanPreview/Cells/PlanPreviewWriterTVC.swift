@@ -8,35 +8,43 @@
 import UIKit
 
 class PlanPreviewWriterTVC: UITableViewCell {
-
+  
   // MARK: - Vars & Lets Part
-
-
+  
+  
   // MARK: - UI Component Part
-
+  
+  @IBOutlet var authorLabel: UILabel!
+  @IBOutlet var titleLabel: UITextView!{
+    didSet{
+      titleLabel.contentInset = .zero
+    }
+  }
   
   // MARK: - Life Cycle Part
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-    }
-    
+  
+  override func awakeFromNib() {
+    super.awakeFromNib()
+  }
+  
+  override func setSelected(_ selected: Bool, animated: Bool) {
+    super.setSelected(selected, animated: animated)
+  }
+  
   // MARK: - IBAction Part
-
+  
   
   // MARK: - Custom Method Part
-
   
-  // MARK: - @objc Function Part
-
+  func setHeaderData(author: String, title : String){
+    authorLabel.text = author
+    titleLabel.text = title
+    titleLabel.sizeToFit()
+  }
+  
+  
 }
 
-// MARK: - Extension Part
 
 
 

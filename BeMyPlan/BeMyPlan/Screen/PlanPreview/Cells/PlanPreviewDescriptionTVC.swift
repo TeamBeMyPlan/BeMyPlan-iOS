@@ -11,10 +11,8 @@ class PlanPreviewDescriptionTVC: UITableViewCell {
 
   // MARK: - Vars & Lets Part
 
-
   // MARK: - UI Component Part
 
-  
   // MARK: - Life Cycle Part
 
     override func awakeFromNib() {

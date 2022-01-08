@@ -51,4 +51,18 @@ struct I18N {
       static let article = "게시물"
     }
   }
+  
+  struct PlanPreview{
+    struct Recommend{
+      static let title = "콘텐츠를 구매하시면 이런 내용을 볼 수 있어요!"
+      static let content =
+"""
+✔️  장소를 핀한 지도
+✔️  정류장 형식 일정
+✔️  솔직 후기
+✔️  가본 사람만 알 수 있는 꿀팁
+✔️  다음 장소로 이동할 때의 교통편
+"""
+    }
+  }
 }

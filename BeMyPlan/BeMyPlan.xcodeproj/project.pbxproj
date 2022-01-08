@@ -76,6 +76,12 @@
 		FD3211B227841949007D63D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD3211B127841949007D63D5 /* Assets.xcassets */; };
 		FD3211B527841949007D63D5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD3211B327841949007D63D5 /* LaunchScreen.storyboard */; };
 		FD3211C3278433CF007D63D5 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = FD3211C2278433CF007D63D5 /* .swiftlint.yml */; };
+		FDC47DEB278951FF00A152E8 /* PreviewHeaderData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC47DEA278951FF00A152E8 /* PreviewHeaderData.swift */; };
+		FDC47DED2789521000A152E8 /* PreviewDescriptionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC47DEC2789521000A152E8 /* PreviewDescriptionData.swift */; };
+		FDC47DEF2789521C00A152E8 /* PreviewPhotoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC47DEE2789521C00A152E8 /* PreviewPhotoData.swift */; };
+		FDC47DF12789524000A152E8 /* PreviewSummaryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC47DF02789524000A152E8 /* PreviewSummaryData.swift */; };
+		FDC47DF32789524A00A152E8 /* PreviewRecommendData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC47DF22789524A00A152E8 /* PreviewRecommendData.swift */; };
+		FDC47DF527895DDB00A152E8 /* PreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC47DF427895DDB00A152E8 /* PreviewData.swift */; };
 		FDF980BC2786CE660009A14E /* paybooc_OTF_Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = FDF980BA2786CE660009A14E /* paybooc_OTF_Bold.otf */; };
 		FDF980BD2786CE660009A14E /* Spoqa_Han_Sans_Neo_Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = FDF980BB2786CE660009A14E /* Spoqa_Han_Sans_Neo_Bold.otf */; };
 		FDF980BF2786CE700009A14E /* Spoqa_Han_Sans_Neo_Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = FDF980BE2786CE700009A14E /* Spoqa_Han_Sans_Neo_Regular.otf */; };
@@ -197,6 +203,12 @@
 		FD3211B427841949007D63D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FD3211B627841949007D63D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FD3211C2278433CF007D63D5 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		FDC47DEA278951FF00A152E8 /* PreviewHeaderData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewHeaderData.swift; sourceTree = "<group>"; };
+		FDC47DEC2789521000A152E8 /* PreviewDescriptionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewDescriptionData.swift; sourceTree = "<group>"; };
+		FDC47DEE2789521C00A152E8 /* PreviewPhotoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewPhotoData.swift; sourceTree = "<group>"; };
+		FDC47DF02789524000A152E8 /* PreviewSummaryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewSummaryData.swift; sourceTree = "<group>"; };
+		FDC47DF22789524A00A152E8 /* PreviewRecommendData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewRecommendData.swift; sourceTree = "<group>"; };
+		FDC47DF427895DDB00A152E8 /* PreviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewData.swift; sourceTree = "<group>"; };
 		FDF980BA2786CE660009A14E /* paybooc_OTF_Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = paybooc_OTF_Bold.otf; sourceTree = "<group>"; };
 		FDF980BB2786CE660009A14E /* Spoqa_Han_Sans_Neo_Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Spoqa_Han_Sans_Neo_Bold.otf; sourceTree = "<group>"; };
 		FDF980BE2786CE700009A14E /* Spoqa_Han_Sans_Neo_Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Spoqa_Han_Sans_Neo_Regular.otf; sourceTree = "<group>"; };
@@ -430,6 +442,7 @@
 		FD09DE2527857DD6006DA050 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FDC47DE9278951EF00A152E8 /* Preview */,
 				FD09DE2627857DE3006DA050 /* GenericResponse.swift */,
 			);
 			path = Model;
@@ -537,6 +550,19 @@
 				FDF980E42786E8370009A14E /* XibPresentable.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		FDC47DE9278951EF00A152E8 /* Preview */ = {
+			isa = PBXGroup;
+			children = (
+				FDC47DF427895DDB00A152E8 /* PreviewData.swift */,
+				FDC47DEA278951FF00A152E8 /* PreviewHeaderData.swift */,
+				FDC47DEC2789521000A152E8 /* PreviewDescriptionData.swift */,
+				FDC47DEE2789521C00A152E8 /* PreviewPhotoData.swift */,
+				FDC47DF02789524000A152E8 /* PreviewSummaryData.swift */,
+				FDC47DF22789524A00A152E8 /* PreviewRecommendData.swift */,
+			);
+			path = Preview;
 			sourceTree = "<group>";
 		};
 		FDF980B92786CE1A0009A14E /* Fonts */ = {
@@ -819,17 +845,21 @@
 				FDF980F6278826140009A14E /* TabBarIconView.swift in Sources */,
 				FD09DE0F27857A2E006DA050 /* makeAlert.swift in Sources */,
 				FDF980DB2786E2F60009A14E /* BaseVC.swift in Sources */,
+				FDC47DF527895DDB00A152E8 /* PreviewData.swift in Sources */,
 				FD09DE052785795D006DA050 /* applyShadow.swift in Sources */,
 				FDF980DE2786E6090009A14E /* addSubViewFromNib.swift in Sources */,
 				FD09DE2027857CF2006DA050 /* LoginVC.swift in Sources */,
 				FD09DDF1278577CF006DA050 /* BaseService.swift in Sources */,
 				FDF980D22786D2EB0009A14E /* TravelSpotVC.swift in Sources */,
 				FD09DE2927857E25006DA050 /* StoryboardLiterals.swift in Sources */,
+				FDC47DF32789524A00A152E8 /* PreviewRecommendData.swift in Sources */,
 				FDF980C12786D14B0009A14E /* setDefaultFonts.swift in Sources */,
 				FD09DE0727857971006DA050 /* calculateTopInset.swift in Sources */,
 				FDF980E32786E7E90009A14E /* BaseContainerView.swift in Sources */,
 				FDF980D42786D2F60009A14E /* PlanListVC.swift in Sources */,
 				FDF980E52786E8370009A14E /* XibPresentable.swift in Sources */,
+				FDC47DEF2789521C00A152E8 /* PreviewPhotoData.swift in Sources */,
+				FDC47DEB278951FF00A152E8 /* PreviewHeaderData.swift in Sources */,
 				FDF980F1278821E90009A14E /* ScrapVC.swift in Sources */,
 				FD3211AD27841948007D63D5 /* ViewController.swift in Sources */,
 				F2C5F18E2786EACB00BE4036 /* MainCardView.swift in Sources */,
@@ -840,9 +870,11 @@
 				FD09DE1727857B5D006DA050 /* controllerFromStoryboard + UIViewController.swift in Sources */,
 				F2C5F1922786EB3300BE4036 /* MainListView.swift in Sources */,
 				FDF980FF2788C9220009A14E /* PlanPreviewVC.swift in Sources */,
+				FDC47DF12789524000A152E8 /* PreviewSummaryData.swift in Sources */,
 				FDF981022788D49C0009A14E /* PlanPreviewWriterTVC.swift in Sources */,
 				FDF981042788D4AB0009A14E /* PlanPreviewDescriptionTVC.swift in Sources */,
 				FD3211AB27841948007D63D5 /* SceneDelegate.swift in Sources */,
+				FDC47DED2789521000A152E8 /* PreviewDescriptionData.swift in Sources */,
 				FD09DE1127857A5C006DA050 /* pressAction.swift in Sources */,
 				FD09DE0B27857995006DA050 /* calculatePastTime.swift in Sources */,
 				FD09DE00278578C4006DA050 /* ImageLiterals.swift in Sources */,
