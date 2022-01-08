@@ -10,21 +10,27 @@ import UIKit
 enum MainListViewType{
   case editorRecommend
   case recently
-  
 }
 
 class MainListView: UIView {
 
   // MARK: - Vars & Lets Part
-  var mainListDataList: [MainListData] = []
-  var type : MainListViewType = .recently
+  var mainListDataList: [MainListData] = [] {
+    didSet {
+      mainListCV.reloadData()
+    }
+  }
+  var type : MainListViewType = .recently {
+    didSet {
+      setTitle()
+    }
+  }
   private var currentIndex : CGFloat = 0
 
   
   override init(frame: CGRect) {
     super.init(frame: frame)
     addSubviewFromNib(view: self)
-    initMainListDataList()
     registerCVC()
     setTitle()
     setMainListCV()
@@ -33,7 +39,6 @@ class MainListView: UIView {
   required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
     addSubviewFromNib(view: self)
-    initMainListDataList()
     registerCVC()
     setTitle()
     setMainListCV()
@@ -59,7 +64,7 @@ class MainListView: UIView {
   // MARK: - Custom Method Part
   
   private func setTitle(){
-    mainListCategotyLabel.text = (type == .recently ? "최신~" : "에디터~")
+    mainListCategotyLabel.text = (type == .recently ? "최신 여행 일정" : "에디터 추천 여행 일정")
   }
   
   
@@ -93,19 +98,6 @@ class MainListView: UIView {
     
     let mainListCVC = UINib(nibName: MainListCVC.identifier, bundle: nil)
     mainListCV.register(mainListCVC, forCellWithReuseIdentifier: MainListCVC.identifier)
-  }
-  
-  func initMainListDataList(){
-    mainListDataList.append(contentsOf: [
-      MainListData(image: "mainlist1", title: "푸드파이터들을 위한 찐먹킷리스트투어"),
-      MainListData(image: "mainlist2", title: "부모님과 함께하는 3박4일 제주 서부 여행"),
-      MainListData(image: "mainlist1", title: "푸드파이터들을 위한 찐먹킷리스트투어"),
-      MainListData(image: "mainlist2", title: "부모님과 함께하는 3박4일 제주 서부 여행"),
-      MainListData(image: "mainlist1", title: "푸드파이터들을 위한 찐먹킷리스트투어"),
-      MainListData(image: "mainlist2", title: "부모님과 함께하는 3박4일 제주 서부 여행"),
-      MainListData(image: "mainlist1", title: "푸드파이터들을 위한 찐먹킷리스트투어"),
-      MainListData(image: "mainlist2", title: "부모님과 함께하는 3박4일 제주 서부 여행")
-    ])
   }
   
 }

@@ -102,6 +102,9 @@
                     </view>
                     <size key="freeformSize" width="375" height="1380"/>
                     <connections>
+                        <outlet property="mainCardView" destination="pTm-bx-Af2" id="Rcm-2L-Z6m"/>
+                        <outlet property="mainEditorListView" destination="UoV-za-b1N" id="T6Y-uw-KIw"/>
+                        <outlet property="mainListView" destination="xVa-eQ-Xsp" id="pEt-8x-sHF"/>
                         <outlet property="naviView" destination="cvV-LS-BMi" id="REs-2z-PM2"/>
                     </connections>
                 </viewController>
