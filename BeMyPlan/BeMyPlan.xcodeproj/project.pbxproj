@@ -7,7 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B3A5D5BD1298F79618E1515D /* Pods_BeMyPlan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74E77840A5DD129FEA46D8E0 /* Pods_BeMyPlan.framework */; };
+		1246F9A15026B9140068B450 /* Pods_BeMyPlan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 157C68C73D70C0EBBD4C1608 /* Pods_BeMyPlan.framework */; };
+		F261EC7927873A7D00AF094F /* MainCardCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F261EC7727873A7D00AF094F /* MainCardCVC.swift */; };
+		F261EC7A27873A7D00AF094F /* MainCardCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F261EC7827873A7D00AF094F /* MainCardCVC.xib */; };
+		F261EC7C27873D3C00AF094F /* MainCardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F261EC7B27873D3C00AF094F /* MainCardData.swift */; };
+		F266412D2788262800CCC751 /* MainListCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F266412A2788262800CCC751 /* MainListCVC.xib */; };
+		F266412E2788262800CCC751 /* MainListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F266412B2788262800CCC751 /* MainListData.swift */; };
+		F266412F2788262800CCC751 /* MainListCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F266412C2788262800CCC751 /* MainListCVC.swift */; };
 		F2C5F18E2786EACB00BE4036 /* MainCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C5F18D2786EACB00BE4036 /* MainCardView.swift */; };
 		F2C5F1902786EAE200BE4036 /* MainCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2C5F18F2786EAE200BE4036 /* MainCardView.xib */; };
 		F2C5F1922786EB3300BE4036 /* MainListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C5F1912786EB3300BE4036 /* MainListView.swift */; };
@@ -104,9 +110,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		38ABC24E3B24EC24D66A4B11 /* Pods-BeMyPlan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeMyPlan.release.xcconfig"; path = "Target Support Files/Pods-BeMyPlan/Pods-BeMyPlan.release.xcconfig"; sourceTree = "<group>"; };
-		716DC40F7639EE8814004C67 /* Pods-BeMyPlan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeMyPlan.debug.xcconfig"; path = "Target Support Files/Pods-BeMyPlan/Pods-BeMyPlan.debug.xcconfig"; sourceTree = "<group>"; };
-		74E77840A5DD129FEA46D8E0 /* Pods_BeMyPlan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeMyPlan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		14A3BD93097A9388E90E2EA9 /* Pods-BeMyPlan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeMyPlan.release.xcconfig"; path = "Target Support Files/Pods-BeMyPlan/Pods-BeMyPlan.release.xcconfig"; sourceTree = "<group>"; };
+		157C68C73D70C0EBBD4C1608 /* Pods_BeMyPlan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeMyPlan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		774099387DB391F46194C33D /* Pods-BeMyPlan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeMyPlan.debug.xcconfig"; path = "Target Support Files/Pods-BeMyPlan/Pods-BeMyPlan.debug.xcconfig"; sourceTree = "<group>"; };
+		F261EC7727873A7D00AF094F /* MainCardCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCardCVC.swift; sourceTree = "<group>"; };
+		F261EC7827873A7D00AF094F /* MainCardCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainCardCVC.xib; sourceTree = "<group>"; };
+		F261EC7B27873D3C00AF094F /* MainCardData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCardData.swift; sourceTree = "<group>"; };
+		F266412A2788262800CCC751 /* MainListCVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainListCVC.xib; sourceTree = "<group>"; };
+		F266412B2788262800CCC751 /* MainListData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainListData.swift; sourceTree = "<group>"; };
+		F266412C2788262800CCC751 /* MainListCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainListCVC.swift; sourceTree = "<group>"; };
 		F2C5F18D2786EACB00BE4036 /* MainCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCardView.swift; sourceTree = "<group>"; };
 		F2C5F18F2786EAE200BE4036 /* MainCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainCardView.xib; sourceTree = "<group>"; };
 		F2C5F1912786EB3300BE4036 /* MainListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainListView.swift; sourceTree = "<group>"; };
@@ -175,7 +187,7 @@
 		FD09DE1227857AE1006DA050 /* successCatch + Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "successCatch + Result.swift"; sourceTree = "<group>"; };
 		FD09DE1427857B36006DA050 /* getClassName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getClassName.swift; sourceTree = "<group>"; };
 		FD09DE1627857B5D006DA050 /* controllerFromStoryboard + UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "controllerFromStoryboard + UIViewController.swift"; sourceTree = "<group>"; };
-		FD09DE1D27857CDC006DA050 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		FD09DE1D27857CDC006DA050 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; usesTabs = 0; };
 		FD09DE1F27857CF2006DA050 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		FD09DE2127857D00006DA050 /* SplashVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
 		FD09DE2627857DE3006DA050 /* GenericResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericResponse.swift; sourceTree = "<group>"; };
@@ -227,7 +239,7 @@
 				FD09DDED27856A31006DA050 /* DaumMap.framework in Frameworks */,
 				FD09DD9A27856394006DA050 /* CoreLocation.framework in Frameworks */,
 				FD09DD9827856387006DA050 /* SystemConfiguration.framework in Frameworks */,
-				B3A5D5BD1298F79618E1515D /* Pods_BeMyPlan.framework in Frameworks */,
+				1246F9A15026B9140068B450 /* Pods_BeMyPlan.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,7 +258,7 @@
 				FD09DD9927856394006DA050 /* CoreLocation.framework */,
 				FD09DD9727856387006DA050 /* SystemConfiguration.framework */,
 				FD09DD9527856377006DA050 /* OpenGLES.framework */,
-				74E77840A5DD129FEA46D8E0 /* Pods_BeMyPlan.framework */,
+				157C68C73D70C0EBBD4C1608 /* Pods_BeMyPlan.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -254,15 +266,36 @@
 		6F77842C2239262E3D685F1B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				716DC40F7639EE8814004C67 /* Pods-BeMyPlan.debug.xcconfig */,
-				38ABC24E3B24EC24D66A4B11 /* Pods-BeMyPlan.release.xcconfig */,
+				774099387DB391F46194C33D /* Pods-BeMyPlan.debug.xcconfig */,
+				14A3BD93097A9388E90E2EA9 /* Pods-BeMyPlan.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		F261EC7627873A3F00AF094F /* MainCardItem */ = {
+			isa = PBXGroup;
+			children = (
+				F261EC7727873A7D00AF094F /* MainCardCVC.swift */,
+				F261EC7827873A7D00AF094F /* MainCardCVC.xib */,
+				F261EC7B27873D3C00AF094F /* MainCardData.swift */,
+			);
+			path = MainCardItem;
+			sourceTree = "<group>";
+		};
+		F26641292788262800CCC751 /* MainListItem */ = {
+			isa = PBXGroup;
+			children = (
+				F266412B2788262800CCC751 /* MainListData.swift */,
+				F266412A2788262800CCC751 /* MainListCVC.xib */,
+				F266412C2788262800CCC751 /* MainListCVC.swift */,
+			);
+			path = MainListItem;
 			sourceTree = "<group>";
 		};
 		F2C5F18B2786EA5100BE4036 /* MainCard */ = {
 			isa = PBXGroup;
 			children = (
+				F261EC7627873A3F00AF094F /* MainCardItem */,
 				F2C5F18D2786EACB00BE4036 /* MainCardView.swift */,
 				F2C5F18F2786EAE200BE4036 /* MainCardView.xib */,
 			);
@@ -272,6 +305,7 @@
 		F2C5F18C2786EA5C00BE4036 /* MainList */ = {
 			isa = PBXGroup;
 			children = (
+				F26641292788262800CCC751 /* MainListItem */,
 				F2C5F1912786EB3300BE4036 /* MainListView.swift */,
 				F2C5F1932786EB3C00BE4036 /* MainListView.xib */,
 			);
@@ -606,12 +640,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FD3211B927841949007D63D5 /* Build configuration list for PBXNativeTarget "BeMyPlan" */;
 			buildPhases = (
-				9B010469FD4AA3A70FBC5764 /* [CP] Check Pods Manifest.lock */,
+				55DC6006633604672924B353 /* [CP] Check Pods Manifest.lock */,
 				FD3211A127841947007D63D5 /* Sources */,
 				FD3211A227841947007D63D5 /* Frameworks */,
 				FD3211A327841947007D63D5 /* Resources */,
 				FD3211C127843342007D63D5 /* ShellScript */,
-				B16B0B0D5AD88746DBC7A363 /* [CP] Embed Pods Frameworks */,
+				925C77FBEE2DC4D6BCD604EE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -690,6 +724,7 @@
 				FD3211B227841949007D63D5 /* Assets.xcassets in Resources */,
 				FD09DDD227856A31006DA050 /* map_pinup_custom@3x.png in Resources */,
 				FDF980F4278825EF0009A14E /* TabBarIconView.xib in Resources */,
+				F266412D2788262800CCC751 /* MainListCVC.xib in Resources */,
 				FD09DDE327856A31006DA050 /* map_pinup_custom.png in Resources */,
 				FD3211B027841948007D63D5 /* Main.storyboard in Resources */,
 				FD09DDDD27856A31006DA050 /* daum_copyright.png in Resources */,
@@ -708,13 +743,14 @@
 				FDF980FA2788AE8D0009A14E /* Base.storyboard in Resources */,
 				FDF980CC2786D2470009A14E /* Splash.storyboard in Resources */,
 				FDF980E12786E7DB0009A14E /* BaseContainerView.xib in Resources */,
+				F261EC7A27873A7D00AF094F /* MainCardCVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		9B010469FD4AA3A70FBC5764 /* [CP] Check Pods Manifest.lock */ = {
+		55DC6006633604672924B353 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -736,7 +772,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B16B0B0D5AD88746DBC7A363 /* [CP] Embed Pods Frameworks */ = {
+		925C77FBEE2DC4D6BCD604EE /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -784,6 +820,7 @@
 				FD09DE052785795D006DA050 /* applyShadow.swift in Sources */,
 				FDF980DE2786E6090009A14E /* addSubViewFromNib.swift in Sources */,
 				FD09DE2027857CF2006DA050 /* LoginVC.swift in Sources */,
+				F266412E2788262800CCC751 /* MainListData.swift in Sources */,
 				FD09DDF1278577CF006DA050 /* BaseService.swift in Sources */,
 				FDF980D22786D2EB0009A14E /* TravelSpotVC.swift in Sources */,
 				FD09DE2927857E25006DA050 /* StoryboardLiterals.swift in Sources */,
@@ -810,10 +847,13 @@
 				FD09DDFE278578BA006DA050 /* StringLiterals.swift in Sources */,
 				FD09DE2727857DE3006DA050 /* GenericResponse.swift in Sources */,
 				FD09DE1527857B36006DA050 /* getClassName.swift in Sources */,
+				F266412F2788262800CCC751 /* MainListCVC.swift in Sources */,
 				FD09DE092785797B006DA050 /* addToolBar.swift in Sources */,
 				FD09DDF527857809006DA050 /* Config.swift in Sources */,
 				FD09DE1327857AE1006DA050 /* successCatch + Result.swift in Sources */,
+				F261EC7927873A7D00AF094F /* MainCardCVC.swift in Sources */,
 				FD09DDF727857841006DA050 /* UITableViewRegisterable.swift in Sources */,
+				F261EC7C27873D3C00AF094F /* MainCardData.swift in Sources */,
 				FD09DE0D278579CC006DA050 /* showNetworkAlert.swift in Sources */,
 				FD09DDF927857858006DA050 /* UICollectionViewRegisterable.swift in Sources */,
 				FD09DE032785794B006DA050 /* makeVibrate.swift in Sources */,
@@ -960,7 +1000,7 @@
 		};
 		FD3211BA27841949007D63D5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 716DC40F7639EE8814004C67 /* Pods-BeMyPlan.debug.xcconfig */;
+			baseConfigurationReference = 774099387DB391F46194C33D /* Pods-BeMyPlan.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -996,7 +1036,7 @@
 		};
 		FD3211BB27841949007D63D5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 38ABC24E3B24EC24D66A4B11 /* Pods-BeMyPlan.release.xcconfig */;
+			baseConfigurationReference = 14A3BD93097A9388E90E2EA9 /* Pods-BeMyPlan.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
