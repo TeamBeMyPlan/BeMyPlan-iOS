@@ -88,6 +88,12 @@
 		FDC47DF12789524000A152E8 /* PreviewSummaryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC47DF02789524000A152E8 /* PreviewSummaryData.swift */; };
 		FDC47DF32789524A00A152E8 /* PreviewRecommendData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC47DF22789524A00A152E8 /* PreviewRecommendData.swift */; };
 		FDC47DF527895DDB00A152E8 /* PreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC47DF427895DDB00A152E8 /* PreviewData.swift */; };
+		FDC47E0C2789742800A152E8 /* TravelSpotCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDC47E062789742800A152E8 /* TravelSpotCVC.xib */; };
+		FDC47E0D2789742800A152E8 /* TravelSpotDetailTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC47E072789742800A152E8 /* TravelSpotDetailTVC.swift */; };
+		FDC47E0E2789742800A152E8 /* TravelSpotCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC47E082789742800A152E8 /* TravelSpotCVC.swift */; };
+		FDC47E0F2789742800A152E8 /* TravelSpotDetailTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDC47E092789742800A152E8 /* TravelSpotDetailTVC.xib */; };
+		FDC47E102789742800A152E8 /* TravelSpotHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC47E0A2789742800A152E8 /* TravelSpotHeaderView.swift */; };
+		FDC47E112789742800A152E8 /* TravelSpotDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC47E0B2789742800A152E8 /* TravelSpotDetailVC.swift */; };
 		FDF980BC2786CE660009A14E /* paybooc_OTF_Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = FDF980BA2786CE660009A14E /* paybooc_OTF_Bold.otf */; };
 		FDF980BD2786CE660009A14E /* Spoqa_Han_Sans_Neo_Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = FDF980BB2786CE660009A14E /* Spoqa_Han_Sans_Neo_Bold.otf */; };
 		FDF980BF2786CE700009A14E /* Spoqa_Han_Sans_Neo_Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = FDF980BE2786CE700009A14E /* Spoqa_Han_Sans_Neo_Regular.otf */; };
@@ -221,6 +227,12 @@
 		FDC47DF02789524000A152E8 /* PreviewSummaryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewSummaryData.swift; sourceTree = "<group>"; };
 		FDC47DF22789524A00A152E8 /* PreviewRecommendData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewRecommendData.swift; sourceTree = "<group>"; };
 		FDC47DF427895DDB00A152E8 /* PreviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewData.swift; sourceTree = "<group>"; };
+		FDC47E062789742800A152E8 /* TravelSpotCVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TravelSpotCVC.xib; sourceTree = "<group>"; };
+		FDC47E072789742800A152E8 /* TravelSpotDetailTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TravelSpotDetailTVC.swift; sourceTree = "<group>"; };
+		FDC47E082789742800A152E8 /* TravelSpotCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TravelSpotCVC.swift; sourceTree = "<group>"; };
+		FDC47E092789742800A152E8 /* TravelSpotDetailTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TravelSpotDetailTVC.xib; sourceTree = "<group>"; };
+		FDC47E0A2789742800A152E8 /* TravelSpotHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TravelSpotHeaderView.swift; sourceTree = "<group>"; };
+		FDC47E0B2789742800A152E8 /* TravelSpotDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TravelSpotDetailVC.swift; sourceTree = "<group>"; };
 		FDF980BA2786CE660009A14E /* paybooc_OTF_Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = paybooc_OTF_Bold.otf; sourceTree = "<group>"; };
 		FDF980BB2786CE660009A14E /* Spoqa_Han_Sans_Neo_Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Spoqa_Han_Sans_Neo_Bold.otf; sourceTree = "<group>"; };
 		FDF980BE2786CE700009A14E /* Spoqa_Han_Sans_Neo_Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Spoqa_Han_Sans_Neo_Regular.otf; sourceTree = "<group>"; };
@@ -612,6 +624,12 @@
 		FDF980C32786D1670009A14E /* TravelSpot */ = {
 			isa = PBXGroup;
 			children = (
+				FDC47E082789742800A152E8 /* TravelSpotCVC.swift */,
+				FDC47E062789742800A152E8 /* TravelSpotCVC.xib */,
+				FDC47E072789742800A152E8 /* TravelSpotDetailTVC.swift */,
+				FDC47E092789742800A152E8 /* TravelSpotDetailTVC.xib */,
+				FDC47E0B2789742800A152E8 /* TravelSpotDetailVC.swift */,
+				FDC47E0A2789742800A152E8 /* TravelSpotHeaderView.swift */,
 				FDF980C92786D23D0009A14E /* TravelSpot.storyboard */,
 				FDF980D12786D2EB0009A14E /* TravelSpotVC.swift */,
 			);
@@ -779,6 +797,7 @@
 				FD09DDEA27856A31006DA050 /* map_present_background_update.png in Resources */,
 				FD09DDE427856A31006DA050 /* info_box_tail.png in Resources */,
 				FDF980EF278821AD0009A14E /* Scrap.storyboard in Resources */,
+				FDC47E0C2789742800A152E8 /* TravelSpotCVC.xib in Resources */,
 				FDF980C82786D2360009A14E /* PlanList.storyboard in Resources */,
 				FD09DDEC27856A31006DA050 /* map_pin_shadow.png in Resources */,
 				FD09DDD927856A31006DA050 /* map_pin_shadow@3x.png in Resources */,
@@ -795,6 +814,7 @@
 				FDF980BC2786CE660009A14E /* paybooc_OTF_Bold.otf in Resources */,
 				FD09DDDB27856A31006DA050 /* th_line.png in Resources */,
 				FD09DDE227856A31006DA050 /* point_sprite.png in Resources */,
+				FDC47E0F2789742800A152E8 /* TravelSpotDetailTVC.xib in Resources */,
 				FD09DDE127856A31006DA050 /* info_box.png in Resources */,
 				FD09DDD327856A31006DA050 /* map_pin_custom.png in Resources */,
 				FD09DDDE27856A31006DA050 /* map_pin@3x.png in Resources */,
@@ -913,8 +933,10 @@
 				FD3211AB27841948007D63D5 /* SceneDelegate.swift in Sources */,
 				FDC47DED2789521000A152E8 /* PreviewDescriptionData.swift in Sources */,
 				FD09DE1127857A5C006DA050 /* pressAction.swift in Sources */,
+				FDC47E0D2789742800A152E8 /* TravelSpotDetailTVC.swift in Sources */,
 				FD09DE0B27857995006DA050 /* calculatePastTime.swift in Sources */,
 				FD09DE00278578C4006DA050 /* ImageLiterals.swift in Sources */,
+				FDC47E112789742800A152E8 /* TravelSpotDetailVC.swift in Sources */,
 				FDF981082788D4CF0009A14E /* PlanPreviewSummaryTVC.swift in Sources */,
 				FDF980D62786D5320009A14E /* makePayBoocFont.swift in Sources */,
 				FD09DDF3278577F4006DA050 /* BaseAPI.swift in Sources */,
@@ -922,8 +944,10 @@
 				FD09DE1E27857CDC006DA050 /* HomeVC.swift in Sources */,
 				FD09DDFE278578BA006DA050 /* StringLiterals.swift in Sources */,
 				FD09DE2727857DE3006DA050 /* GenericResponse.swift in Sources */,
+				FDC47E102789742800A152E8 /* TravelSpotHeaderView.swift in Sources */,
 				FD09DE1527857B36006DA050 /* getClassName.swift in Sources */,
 				F266412F2788262800CCC751 /* MainListCVC.swift in Sources */,
+				FDC47E0E2789742800A152E8 /* TravelSpotCVC.swift in Sources */,
 				FD09DE092785797B006DA050 /* addToolBar.swift in Sources */,
 				FD09DDF527857809006DA050 /* Config.swift in Sources */,
 				FD09DE1327857AE1006DA050 /* successCatch + Result.swift in Sources */,
