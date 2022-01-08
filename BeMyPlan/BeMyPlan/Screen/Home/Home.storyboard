@@ -103,8 +103,11 @@
                     <size key="freeformSize" width="375" height="1380"/>
                     <connections>
                         <outlet property="mainCardView" destination="pTm-bx-Af2" id="Rcm-2L-Z6m"/>
+                        <outlet property="mainCardViewHeightConstraint" destination="IjL-Id-SuA" id="9pV-cn-Pzt"/>
                         <outlet property="mainEditorListView" destination="UoV-za-b1N" id="T6Y-uw-KIw"/>
+                        <outlet property="mainEditorViewHeightConstraint" destination="DDc-up-8CZ" id="Aa5-4f-5Xo"/>
                         <outlet property="mainListView" destination="xVa-eQ-Xsp" id="pEt-8x-sHF"/>
+                        <outlet property="mainListViewHeightConstraint" destination="b6F-XO-3YH" id="RXQ-ND-awE"/>
                         <outlet property="naviBarTopConstraint" destination="1g7-jS-ErV" id="UIS-df-b0F"/>
                         <outlet property="naviView" destination="cvV-LS-BMi" id="REs-2z-PM2"/>
                     </connections>

@@ -91,6 +91,8 @@ extension MainCardView: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainCardCVC.identifier, for: indexPath) as? MainCardCVC else {return UICollectionViewCell()}
     
+    cell.layer.cornerRadius = 5
+    cell.clipsToBounds = true
     cell.setData(appData: mainCardDataList[indexPath.row])
     return cell
   }
