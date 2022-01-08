@@ -21,9 +21,15 @@ class HomeVC: UIViewController {
 //      naviView.layer.shadowOpacity = 1
 //      naviView.layer.shadowRadius = 8
 //      naviView.layer.masksToBounds = false
+      naviView.layer.applyShadow(color: UIColor(displayP3Red: 0.796, green: 0.796, blue: 0.796, alpha: 0.25), alpha: 1, x: 1, y: 4, blur: 8, spread: 1)
     }
   }
   
+  @IBOutlet var naviBarTopConstraint: NSLayoutConstraint!{
+    didSet {
+      naviBarTopConstraint.constant = calculateTopInset()
+    }
+  }
   @IBOutlet var mainCardView: MainCardView!
   @IBOutlet var mainListView: MainListView! {
     didSet {
