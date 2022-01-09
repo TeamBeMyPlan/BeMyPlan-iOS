@@ -69,7 +69,9 @@ class PlanPreviewVC: UIViewController {
 }
   // MARK: - Extension Part
 extension PlanPreviewVC : UITableViewDelegate{
-  
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    return UITableView.automaticDimension
+  }
 }
 extension PlanPreviewVC : UITableViewDataSource{
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -77,8 +79,28 @@ extension PlanPreviewVC : UITableViewDataSource{
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    return UITableViewCell()
+    
+    let viewCase = contentList[indexPath.row]
+    
+    switch(viewCase){
+      case .header:
+        guard let headerCell = tableView.dequeueReusableCell(withIdentifier: "", for: indexPath) as? PlanPreviewWriterTVC else {return}
+        
+        let headerCell = tableView.de
+        
+        return headerCell
+      case .description:
+        tableView.dequeueCell(cell: <#T##UITableViewCell#>, indexPath: <#T##IndexPath#>, Type: <#T##T#>)
+      case .photo:
+        <#code#>
+      case .summary:
+        <#code#>
+      case .recommend:
+        <#code#>
+    }
   }
   
   
 }
+
+

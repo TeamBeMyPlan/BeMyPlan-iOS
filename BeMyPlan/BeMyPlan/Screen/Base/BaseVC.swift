@@ -60,7 +60,7 @@ class BaseVC: UIViewController {
   }
   
   private func showContainerView(){
-    UIView.animate(withDuration: 0.4) { [unowned self] in
+    UIView.animate(withDuration: 0.3) { [unowned self] in
       self.containerViewList[self.clickedIndex.rawValue].alpha = 1
     }
   }
@@ -108,7 +108,12 @@ class BaseVC: UIViewController {
 // MARK: - Extension Part
 extension BaseVC : TabBarDelegate{
   func tabClicked(index: TabList) {
-    containerViewList[clickedIndex.rawValue].alpha = 0
-    clickedIndex = index
+    if index != self.clickedIndex{
+      UIView.animate(withDuration: 0.25) {
+        self.containerViewList[self.clickedIndex.rawValue].alpha = 0
+      }completion: { _ in
+          self.clickedIndex = index
+        }
+      }
   }
 }
