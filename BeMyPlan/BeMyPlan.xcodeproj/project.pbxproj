@@ -14,6 +14,7 @@
 		F266412D2788262800CCC751 /* MainListCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F266412A2788262800CCC751 /* MainListCVC.xib */; };
 		F266412E2788262800CCC751 /* MainListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F266412B2788262800CCC751 /* MainListData.swift */; };
 		F266412F2788262800CCC751 /* MainListCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F266412C2788262800CCC751 /* MainListCVC.swift */; };
+		F273216F278BEB7700A9B0CC /* MainCardCarouselLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F273216E278BEB7700A9B0CC /* MainCardCarouselLayout.swift */; };
 		F2C5F18E2786EACB00BE4036 /* MainCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C5F18D2786EACB00BE4036 /* MainCardView.swift */; };
 		F2C5F1902786EAE200BE4036 /* MainCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2C5F18F2786EAE200BE4036 /* MainCardView.xib */; };
 		F2C5F1922786EB3300BE4036 /* MainListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C5F1912786EB3300BE4036 /* MainListView.swift */; };
@@ -138,6 +139,7 @@
 		F266412A2788262800CCC751 /* MainListCVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainListCVC.xib; sourceTree = "<group>"; };
 		F266412B2788262800CCC751 /* MainListData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainListData.swift; sourceTree = "<group>"; };
 		F266412C2788262800CCC751 /* MainListCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainListCVC.swift; sourceTree = "<group>"; };
+		F273216E278BEB7700A9B0CC /* MainCardCarouselLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCardCarouselLayout.swift; sourceTree = "<group>"; };
 		F2C5F18D2786EACB00BE4036 /* MainCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCardView.swift; sourceTree = "<group>"; };
 		F2C5F18F2786EAE200BE4036 /* MainCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainCardView.xib; sourceTree = "<group>"; };
 		F2C5F1912786EB3300BE4036 /* MainListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainListView.swift; sourceTree = "<group>"; };
@@ -336,6 +338,7 @@
 				F261EC7627873A3F00AF094F /* MainCardItem */,
 				F2C5F18D2786EACB00BE4036 /* MainCardView.swift */,
 				F2C5F18F2786EAE200BE4036 /* MainCardView.xib */,
+				F273216E278BEB7700A9B0CC /* MainCardCarouselLayout.swift */,
 			);
 			path = MainCard;
 			sourceTree = "<group>";
@@ -948,6 +951,7 @@
 				FD09DE1527857B36006DA050 /* getClassName.swift in Sources */,
 				F266412F2788262800CCC751 /* MainListCVC.swift in Sources */,
 				FDC47E0E2789742800A152E8 /* TravelSpotCVC.swift in Sources */,
+				F273216F278BEB7700A9B0CC /* MainCardCarouselLayout.swift in Sources */,
 				FD09DE092785797B006DA050 /* addToolBar.swift in Sources */,
 				FD09DDF527857809006DA050 /* Config.swift in Sources */,
 				FD09DE1327857AE1006DA050 /* successCatch + Result.swift in Sources */,
