@@ -10,8 +10,18 @@ import Foundation
 extension PlanPreview{
   struct DescriptionData{
     var descriptionContent : String
-    var summary : [SummaryCase] = [.theme,.spotCount,.restaurantCount,.dayCount,
-                                   .peopleCase,.budget,.transport,.month]
+    var summary : IconData
+  }
+  
+  struct IconData{
+    var theme : String
+    var spotCount : String
+    var restaurantCount : String
+    var dayCount : String
+    var peopleCase : String
+    var budget : String
+    var transport : String
+    var month : String
   }
   
   enum SummaryCase{
