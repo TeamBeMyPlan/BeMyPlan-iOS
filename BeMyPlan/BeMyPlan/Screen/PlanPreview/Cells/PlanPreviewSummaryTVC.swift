@@ -11,10 +11,26 @@ class PlanPreviewSummaryTVC: UITableViewCell {
 
   // MARK: - Vars & Lets Part
 
-
+  
   // MARK: - UI Component Part
 
-  
+  @IBOutlet var summaryContentTextView: UITextView!{
+    didSet{
+      let style = NSMutableParagraphStyle()
+      style.lineHeightMultiple = 1.3
+      let attributes = [NSAttributedString.Key.paragraphStyle: style]  as [NSAttributedString.Key: Any]
+      
+      summaryContentTextView.attributedText = NSAttributedString(
+          string: summaryContentTextView.text,
+          attributes: attributes)
+
+      summaryContentTextView.font = UIFont.systemFont(ofSize: 14)
+      summaryContentTextView.textColor = .grey01
+      summaryContentTextView.textContainer.lineFragmentPadding = .zero
+      
+    }
+  }
+    
   // MARK: - Life Cycle Part
 
     override func awakeFromNib() {
@@ -30,6 +46,10 @@ class PlanPreviewSummaryTVC: UITableViewCell {
 
   
   // MARK: - Custom Method Part
+  
+  func setSummaryData(content : String?){
+    summaryContentTextView.text = (content != nil) ? content : ""
+  }
 
   
   // MARK: - @objc Function Part

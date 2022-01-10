@@ -82,6 +82,9 @@
 		FD3211B227841949007D63D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD3211B127841949007D63D5 /* Assets.xcassets */; };
 		FD3211B527841949007D63D5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD3211B327841949007D63D5 /* LaunchScreen.storyboard */; };
 		FD3211C3278433CF007D63D5 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = FD3211C2278433CF007D63D5 /* .swiftlint.yml */; };
+		FD4C86B0278BD17F00D37A2D /* setImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4C86AF278BD17F00D37A2D /* setImage.swift */; };
+		FD4C86B3278BD81900D37A2D /* PreviewIconContainerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD4C86B2278BD81900D37A2D /* PreviewIconContainerView.xib */; };
+		FD4C86B5278BD82D00D37A2D /* PreviewIconContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4C86B4278BD82D00D37A2D /* PreviewIconContainerView.swift */; };
 		FDC47DEB278951FF00A152E8 /* PreviewHeaderData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC47DEA278951FF00A152E8 /* PreviewHeaderData.swift */; };
 		FDC47DED2789521000A152E8 /* PreviewDescriptionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC47DEC2789521000A152E8 /* PreviewDescriptionData.swift */; };
 		FDC47DEF2789521C00A152E8 /* PreviewPhotoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC47DEE2789521C00A152E8 /* PreviewPhotoData.swift */; };
@@ -222,6 +225,9 @@
 		FD3211B427841949007D63D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FD3211B627841949007D63D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FD3211C2278433CF007D63D5 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		FD4C86AF278BD17F00D37A2D /* setImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = setImage.swift; sourceTree = "<group>"; };
+		FD4C86B2278BD81900D37A2D /* PreviewIconContainerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreviewIconContainerView.xib; sourceTree = "<group>"; };
+		FD4C86B4278BD82D00D37A2D /* PreviewIconContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewIconContainerView.swift; sourceTree = "<group>"; };
 		FDC47DEA278951FF00A152E8 /* PreviewHeaderData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewHeaderData.swift; sourceTree = "<group>"; };
 		FDC47DEC2789521000A152E8 /* PreviewDescriptionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewDescriptionData.swift; sourceTree = "<group>"; };
 		FDC47DEE2789521C00A152E8 /* PreviewPhotoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewPhotoData.swift; sourceTree = "<group>"; };
@@ -455,6 +461,7 @@
 				FDF980C02786D14B0009A14E /* setDefaultFonts.swift */,
 				FDF980D52786D5320009A14E /* makePayBoocFont.swift */,
 				FDC47E122789875800A152E8 /* makeCellInstance.swift */,
+				FD4C86AF278BD17F00D37A2D /* setImage.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -601,6 +608,15 @@
 			path = Protocol;
 			sourceTree = "<group>";
 		};
+		FD4C86B1278BD80500D37A2D /* IconContainerView */ = {
+			isa = PBXGroup;
+			children = (
+				FD4C86B2278BD81900D37A2D /* PreviewIconContainerView.xib */,
+				FD4C86B4278BD82D00D37A2D /* PreviewIconContainerView.swift */,
+			);
+			path = IconContainerView;
+			sourceTree = "<group>";
+		};
 		FDC47DE9278951EF00A152E8 /* Preview */ = {
 			isa = PBXGroup;
 			children = (
@@ -708,6 +724,7 @@
 		FDF981002788D4770009A14E /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				FD4C86B1278BD80500D37A2D /* IconContainerView */,
 				FDF981012788D49C0009A14E /* PlanPreviewWriterTVC.swift */,
 				FDF981032788D4AB0009A14E /* PlanPreviewDescriptionTVC.swift */,
 				FDF981052788D4C00009A14E /* PlanPreviewPhotoTVC.swift */,
@@ -800,6 +817,7 @@
 				FD09DDEA27856A31006DA050 /* map_present_background_update.png in Resources */,
 				FD09DDE427856A31006DA050 /* info_box_tail.png in Resources */,
 				FDF980EF278821AD0009A14E /* Scrap.storyboard in Resources */,
+				FD4C86B3278BD81900D37A2D /* PreviewIconContainerView.xib in Resources */,
 				FDC47E0C2789742800A152E8 /* TravelSpotCVC.xib in Resources */,
 				FDF980C82786D2360009A14E /* PlanList.storyboard in Resources */,
 				FD09DDEC27856A31006DA050 /* map_pin_shadow.png in Resources */,
@@ -916,6 +934,7 @@
 				FDF980C12786D14B0009A14E /* setDefaultFonts.swift in Sources */,
 				FD09DE0727857971006DA050 /* calculateTopInset.swift in Sources */,
 				FDF980E32786E7E90009A14E /* BaseContainerView.swift in Sources */,
+				FD4C86B0278BD17F00D37A2D /* setImage.swift in Sources */,
 				FDF980D42786D2F60009A14E /* PlanListVC.swift in Sources */,
 				FDF980E52786E8370009A14E /* XibPresentable.swift in Sources */,
 				FDC47E132789875800A152E8 /* makeCellInstance.swift in Sources */,
@@ -928,6 +947,7 @@
 				FD09DDFC278578B1006DA050 /* ColorLiterals.swift in Sources */,
 				FDF9810A2788D4DD0009A14E /* PlanPreviewRecommendTVC.swift in Sources */,
 				FD3211A927841948007D63D5 /* AppDelegate.swift in Sources */,
+				FD4C86B5278BD82D00D37A2D /* PreviewIconContainerView.swift in Sources */,
 				FD09DE1727857B5D006DA050 /* controllerFromStoryboard + UIViewController.swift in Sources */,
 				F2C5F1922786EB3300BE4036 /* MainListView.swift in Sources */,
 				FDF980FF2788C9220009A14E /* PlanPreviewVC.swift in Sources */,
