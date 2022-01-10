@@ -120,7 +120,6 @@ extension MainListView: UICollectionViewDelegateFlowLayout {
 
 }
 
-
 extension MainListView : UIScrollViewDelegate {
   
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
