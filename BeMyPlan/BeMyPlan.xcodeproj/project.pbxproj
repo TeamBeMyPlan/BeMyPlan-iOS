@@ -94,6 +94,7 @@
 		FD2D4DD8278DB054002084B9 /* PlanDetailSummaryFoldTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2D4DD6278DB054002084B9 /* PlanDetailSummaryFoldTVC.swift */; };
 		FD2D4DDA278DB179002084B9 /* PlanDetailSummaryFoldTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD2D4DD7278DB054002084B9 /* PlanDetailSummaryFoldTVC.xib */; };
 		FD2D4DDC278DC22C002084B9 /* PlanDetailSummaryTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2D4DB3278D3DB6002084B9 /* PlanDetailSummaryTVC.swift */; };
+		FD2D4DDE278DDB93002084B9 /* Spoqa_Han_Sans_Neo_Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = FD2D4DDD278DDB93002084B9 /* Spoqa_Han_Sans_Neo_Medium.otf */; };
 		FD3151A3278D0C7B0076D92E /* PlanDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD3151A2278D0C7B0076D92E /* PlanDetail.storyboard */; };
 		FD3151A5278D0C880076D92E /* PlanDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3151A4278D0C880076D92E /* PlanDetailVC.swift */; };
 		FD3211A927841948007D63D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3211A827841948007D63D5 /* AppDelegate.swift */; };
@@ -259,6 +260,7 @@
 		FD2D4DD0278D90DB002084B9 /* PlanDetailData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDetailData.swift; sourceTree = "<group>"; };
 		FD2D4DD6278DB054002084B9 /* PlanDetailSummaryFoldTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDetailSummaryFoldTVC.swift; sourceTree = "<group>"; };
 		FD2D4DD7278DB054002084B9 /* PlanDetailSummaryFoldTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanDetailSummaryFoldTVC.xib; sourceTree = "<group>"; };
+		FD2D4DDD278DDB93002084B9 /* Spoqa_Han_Sans_Neo_Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Spoqa_Han_Sans_Neo_Medium.otf; sourceTree = "<group>"; };
 		FD3151A2278D0C7B0076D92E /* PlanDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PlanDetail.storyboard; sourceTree = "<group>"; };
 		FD3151A4278D0C880076D92E /* PlanDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDetailVC.swift; sourceTree = "<group>"; };
 		FD3211A527841948007D63D5 /* BeMyPlan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeMyPlan.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -801,6 +803,7 @@
 		FDF980B92786CE1A0009A14E /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				FD2D4DDD278DDB93002084B9 /* Spoqa_Han_Sans_Neo_Medium.otf */,
 				FDF980BE2786CE700009A14E /* Spoqa_Han_Sans_Neo_Regular.otf */,
 				FDF980BA2786CE660009A14E /* paybooc_OTF_Bold.otf */,
 				FDF980BB2786CE660009A14E /* Spoqa_Han_Sans_Neo_Bold.otf */,
@@ -986,6 +989,7 @@
 				FD09DDE027856A31006DA050 /* map_pin_red.png in Resources */,
 				FD09DDEA27856A31006DA050 /* map_present_background_update.png in Resources */,
 				FD2D4DBE278D3FA5002084B9 /* PlanDetailDayCVC.xib in Resources */,
+				FD2D4DDE278DDB93002084B9 /* Spoqa_Han_Sans_Neo_Medium.otf in Resources */,
 				FD09DDE427856A31006DA050 /* info_box_tail.png in Resources */,
 				FD2D4DBA278D3DCE002084B9 /* PlanDetailInformationTVC.xib in Resources */,
 				FD4C86B8278C7A7200D37A2D /* Payment.storyboard in Resources */,
