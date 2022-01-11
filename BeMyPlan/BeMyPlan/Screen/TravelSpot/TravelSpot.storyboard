@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8uG-eS-VYR">
-
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ytf-Oh-BAZ">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -23,8 +23,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mPh-Z6-q6l">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mPh-Z6-q6l">
                                 <rect key="frame" x="0.0" y="94" width="414" height="768"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Cy6-WL-Xqt">
                                     <size key="itemSize" width="128" height="128"/>
@@ -93,14 +94,18 @@
                                 </constraints>
                             </view>
                         </subviews>
-
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Vix-i0-12b" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="5ak-gt-CyY"/>
+                            <constraint firstItem="Vix-i0-12b" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="fdc-4b-Gut"/>
+                            <constraint firstItem="Vix-i0-12b" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="gFP-6V-xZH"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="913.04347826086962" y="59.598214285714285"/>
+            <point key="canvasLocation" x="858" y="60"/>
         </scene>
         <!--Travel Spot DetailVC-->
         <scene sceneID="MXz-Ki-r25">
@@ -200,7 +205,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GFj-Xt-x2a">
-                                <rect key="frame" x="0.0" y="44" width="414" height="278"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="360"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cLt-mt-ODd">
                                         <rect key="frame" x="194" y="26" width="26" height="17"/>
@@ -370,7 +375,7 @@
                                     <constraint firstAttribute="trailing" secondItem="wpS-Oj-dfj" secondAttribute="trailing" id="kbh-M5-Hvi"/>
                                     <constraint firstItem="pfx-tM-m9E" firstAttribute="top" secondItem="34o-z2-YnO" secondAttribute="bottom" id="nvB-T2-Yu1"/>
                                     <constraint firstItem="MId-Bn-Ey5" firstAttribute="top" secondItem="GFj-Xt-x2a" secondAttribute="top" constant="160" id="oUz-fJ-in1"/>
-                                    <constraint firstAttribute="height" constant="278" id="rqF-YE-Ugj"/>
+                                    <constraint firstAttribute="height" constant="360" id="rqF-YE-Ugj"/>
                                     <constraint firstAttribute="trailing" secondItem="pfx-tM-m9E" secondAttribute="trailing" id="sDD-aI-JPV"/>
                                     <constraint firstAttribute="trailing" secondItem="BBn-Os-u1z" secondAttribute="trailing" id="sS2-cM-yhf"/>
                                     <constraint firstItem="cLt-mt-ODd" firstAttribute="centerX" secondItem="GFj-Xt-x2a" secondAttribute="centerX" id="tdb-W3-p8d"/>
@@ -423,7 +428,6 @@
         <image name="icnArrow" width="24" height="24"/>
         <image name="icnCheck" width="24" height="24"/>
         <image name="icnOrder" width="47" height="24"/>
-
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
