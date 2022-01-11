@@ -16,7 +16,7 @@ import UIKit
           요 값들은 나중에 Identifier에 잘 써먹을 수 있습니다 ^__^
 */
 
-extension UIViewController {
+extension NSObject {
     static var className: String {
         NSStringFromClass(self.classForCoder()).components(separatedBy: ".").last!
     }
@@ -25,11 +25,3 @@ extension UIViewController {
     }
 }
 
-extension UIView {
-    static var className: String {
-        NSStringFromClass(self.classForCoder()).components(separatedBy: ".").last!
-    }
-     var className: String {
-        NSStringFromClass(self.classForCoder).components(separatedBy: ".").last!
-    }
-}

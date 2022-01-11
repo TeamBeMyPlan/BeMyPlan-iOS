@@ -14,6 +14,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     guard let _ = (scene as? UIWindowScene) else { return }
     window!.rootViewController = UIStoryboard(name: "TravelSpot", bundle: nil).instantiateInitialViewController()!
+
   }
 
   func sceneDidDisconnect(_ scene: UIScene) {

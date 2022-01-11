@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8uG-eS-VYR">
+
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
-        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -93,23 +93,10 @@
                                 </constraints>
                             </view>
                         </subviews>
+
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="mPh-Z6-q6l" secondAttribute="trailing" id="0Lk-LF-PvH"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="mPh-Z6-q6l" secondAttribute="bottom" id="2mK-Ps-ieM"/>
-                            <constraint firstItem="Vix-i0-12b" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="NG3-Ic-sc8"/>
-                            <constraint firstItem="mPh-Z6-q6l" firstAttribute="top" secondItem="Vix-i0-12b" secondAttribute="bottom" id="SKW-QM-Euy"/>
-                            <constraint firstItem="Vix-i0-12b" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="ZXC-K2-oBe"/>
-                            <constraint firstItem="mPh-Z6-q6l" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="x9F-M4-nd8"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Vix-i0-12b" secondAttribute="trailing" id="zIW-0l-oeL"/>
-                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Z3T-YL-dqc"/>
-                    <connections>
-                        <outlet property="locationCollectionView" destination="mPh-Z6-q6l" id="rr9-f7-BIX"/>
-                        <outlet property="logoView" destination="Vix-i0-12b" id="h8W-ku-0pI"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -436,6 +423,7 @@
         <image name="icnArrow" width="24" height="24"/>
         <image name="icnCheck" width="24" height="24"/>
         <image name="icnOrder" width="47" height="24"/>
+
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
