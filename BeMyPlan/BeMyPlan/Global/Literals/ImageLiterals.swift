@@ -27,6 +27,14 @@ struct ImageLiterals{
 		static let scrabIcon = UIImage(named: "icon_scrab")!
 		static let scrabIconSelected = UIImage(named: "icon_scrab_selected")!
 	}
+	
+	struct PlanDetail{
+		static let walkIcon = UIImage(named: "icn_walk")!
+		static let busIcon = UIImage(named: "icn_commute")!
+		static let carIcon = UIImage(named: "icn_car")!
+		static let foldIcon = UIImage(named : "icn_fold")!
+		static let moreIcon = UIImage(named: "icn_more")!
+	}
   struct Components{
 		static let applogo = UIImage(named: "applogo")!
   }
