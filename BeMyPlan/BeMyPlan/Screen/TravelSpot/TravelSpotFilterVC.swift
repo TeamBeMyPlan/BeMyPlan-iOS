@@ -35,7 +35,7 @@ class TravelSpotFilterVC: UIViewController {
   //        self.alpha = 0
   //    })
   //  }
-  
+  // MARK
   
   // MARK: - IBAction Part
   @IBAction func recentBtn(_ sender: Any) {
