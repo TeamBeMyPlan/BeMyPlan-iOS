@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlanDetailSummaryRouteTVC" rowHeight="103" id="KGk-i7-Jjw" customClass="PlanDetailSummaryRouteTVC" customModule="BeMyPlan" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="380" height="103"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="380" height="103"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_blue_dot" translatesAutoresizingMaskIntoConstraints="NO" id="oXX-Nb-wdQ">
+                        <rect key="frame" x="72" y="26" width="10" height="10"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="10" id="GrK-2y-QPD"/>
+                            <constraint firstAttribute="width" constant="10" id="kEm-sE-a9b"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="산방산" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kqp-H7-0ig">
+                        <rect key="frame" x="102" y="22.5" width="37" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" name="grey1"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icn_transfortaion" translatesAutoresizingMaskIntoConstraints="NO" id="uyo-37-hOp">
+                        <rect key="frame" x="20" y="42" width="16" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="16" id="cHf-R7-6T8"/>
+                            <constraint firstAttribute="height" constant="16" id="rIY-oE-bsO"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3분" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aRY-Ho-SbI">
+                        <rect key="frame" x="37" y="42.5" width="18" height="15"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" name="grey3"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="uyo-37-hOp" firstAttribute="top" secondItem="oXX-Nb-wdQ" secondAttribute="top" constant="16" id="Odl-51-jFg"/>
+                    <constraint firstItem="aRY-Ho-SbI" firstAttribute="leading" secondItem="uyo-37-hOp" secondAttribute="trailing" constant="1" id="TP0-VC-keh"/>
+                    <constraint firstItem="uyo-37-hOp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Wfb-b0-4v5"/>
+                    <constraint firstItem="oXX-Nb-wdQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="26" id="Z9p-hJ-Frs"/>
+                    <constraint firstItem="kqp-H7-0ig" firstAttribute="leading" secondItem="oXX-Nb-wdQ" secondAttribute="trailing" constant="20" id="caR-6R-mCo"/>
+                    <constraint firstItem="aRY-Ho-SbI" firstAttribute="centerY" secondItem="uyo-37-hOp" secondAttribute="centerY" id="jiK-0J-IsI"/>
+                    <constraint firstItem="oXX-Nb-wdQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="72" id="kPJ-ue-heb"/>
+                    <constraint firstItem="kqp-H7-0ig" firstAttribute="centerY" secondItem="oXX-Nb-wdQ" secondAttribute="centerY" id="u5w-e1-4En"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="dotIconView" destination="oXX-Nb-wdQ" id="kyG-mU-G9h"/>
+                <outlet property="dotTopConstraint" destination="Z9p-hJ-Frs" id="f1V-0M-fJh"/>
+                <outlet property="locationNameLabel" destination="kqp-H7-0ig" id="7u1-vB-fTW"/>
+                <outlet property="transportIconView" destination="uyo-37-hOp" id="DbB-wq-mrB"/>
+                <outlet property="transportTimeLabel" destination="aRY-Ho-SbI" id="ZlW-4t-1gj"/>
+            </connections>
+            <point key="canvasLocation" x="173.91304347826087" y="101.45089285714285"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="icn_transfortaion" width="16" height="16"/>
+        <image name="img_blue_dot" width="10" height="10"/>
+        <namedColor name="grey1">
+            <color red="0.19215686274509805" green="0.21568627450980393" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="grey3">
+            <color red="0.5690000057220459" green="0.60799998044967651" blue="0.67100000381469727" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

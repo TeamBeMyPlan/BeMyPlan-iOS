@@ -21,6 +21,7 @@ enum Storyboards: String {
   case travelSpot = "TravelSpot"
   case scrap = "Scrap"
   case myPlan = "MyPlan"
+  case payment = "Payment"
 }
 
 extension UIStoryboard{

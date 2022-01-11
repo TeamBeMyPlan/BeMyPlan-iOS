@@ -7,11 +7,10 @@
 
 import UIKit
 
-class PlanPreviewWriterTVC: UITableViewCell {
+class PlanPreviewWriterTVC: UITableViewCell,UITableViewRegisterable{
   
   // MARK: - Vars & Lets Part
-  
-  
+  static var isFromNib: Bool = true
   // MARK: - UI Component Part
   
   @IBOutlet var authorLabel: UILabel!

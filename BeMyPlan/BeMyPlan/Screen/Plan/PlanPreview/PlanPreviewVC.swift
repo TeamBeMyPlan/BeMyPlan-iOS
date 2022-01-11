@@ -33,7 +33,7 @@ class PlanPreviewVC: UIViewController {
   // MARK: - UI Component Part
   
   @IBOutlet var scrabButton: UIButton!
-  
+  @IBOutlet var buyButton: UIButton!
   @IBOutlet var scrabIconImageView: UIImageView!
   @IBOutlet var headerTitleLabel: UILabel!
   @IBOutlet var previewContentTV: UITableView!{
@@ -58,6 +58,10 @@ class PlanPreviewVC: UIViewController {
   private func addButtonActions(){
     scrabButton.press {
       self.isScrabed = !self.isScrabed
+    }
+    buyButton.press {
+      guard let paymentVC = UIStoryboard.list(.payment).instantiateViewController(withIdentifier: PaymentSelectVC.className) as? PaymentSelectVC else {return}
+      self.navigationController?.pushViewController(paymentVC, animated: true)
     }
   }
   
