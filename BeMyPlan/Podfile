@@ -23,5 +23,5 @@ target 'BeMyPlan' do
   pod 'SRScratchView'
   pod 'Firebase/Analytics'
   pod 'Firebase/Crashlytics'
-
+  pod 'PanModal'
 end
