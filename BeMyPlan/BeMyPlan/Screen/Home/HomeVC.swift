@@ -43,6 +43,37 @@ class HomeVC: UIViewController {
   }
   
   
+  @IBOutlet var mainCardViewHeightConstraint: NSLayoutConstraint! {
+    didSet {
+      let screenWidth = UIScreen.main.bounds.width
+      let cellWidth = screenWidth * (327/375)
+      let cellHeight = cellWidth * (435/327)
+      mainCardViewHeightConstraint.constant = cellHeight + 137
+    }
+  }
+  
+  @IBOutlet var mainListViewHeightConstraint: NSLayoutConstraint! {
+    didSet {
+      let screenWidth = UIScreen.main.bounds.width
+      let cellWidth = screenWidth * (160/375)
+      let cellHeight = cellWidth * (208/160)
+      
+      mainListViewHeightConstraint.constant = cellHeight + 75
+    }
+  }
+  
+  @IBOutlet var mainEditorViewHeightConstraint: NSLayoutConstraint! {
+    didSet {
+      let screenWidth = UIScreen.main.bounds.width
+      let cellWidth = screenWidth * (160/375)
+      let cellHeight = cellWidth * (208/160)
+      
+      mainEditorViewHeightConstraint.constant = cellHeight + 75
+    }
+  }
+  
+  
+  
   // MARK: - Life Cycle Part
   
   override func viewDidLoad() {

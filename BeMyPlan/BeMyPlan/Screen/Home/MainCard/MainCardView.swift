@@ -18,7 +18,7 @@ class MainCardView: UIView {
     addSubviewFromNib(view: self)
     initMainCardDataList()
     registerCVC()
-//    setMainCardCV()
+    setMainCardCV()
   }
   
   required init?(coder aDecoder: NSCoder) {
@@ -26,6 +26,7 @@ class MainCardView: UIView {
     addSubviewFromNib(view: self)
     initMainCardDataList()
     registerCVC()
+    setMainCardCV()
   }
   
   // MARK: - UI Component Part
@@ -43,21 +44,32 @@ class MainCardView: UIView {
   
   // MARK: - Custom Method Part
   private func setMainCardCV(){
+    
+    let layout = MainCardCarouselLayout()
 
     let screenWidth = UIScreen.main.bounds.width
     let cellWidth = (327/375) * screenWidth
     let cellHeight = cellWidth * (435/327)
-
-    let insetX = (20/375) * screenWidth
-    let layout = mainCardCV.collectionViewLayout as! UICollectionViewFlowLayout
-
+    
+//    let centerItemWidthScale: CGFloat = (327/375) * screenWidth
+//    let centerItemHeightScale: CGFloat = 1
+    let insetX : CGFloat = 24
+    
+//    layout.itemSize = CGSize(width: mainCardCV.frame.size.width*centerItemWidthScale, height: mainCardCV.frame.size.height*centerItemHeightScale)
+    
+    //sideItemScale
+    layout.sideItemScale = 310/327
+    layout.spacing = 6
+    layout.sideItemAlpha = 0.5
+    
     layout.itemSize = CGSize(width: cellWidth, height: cellHeight)
-    layout.minimumLineSpacing = 12
+    layout.minimumInteritemSpacing = 0
+    
 
-    layout.scrollDirection = .horizontal
-    mainCardCV.contentInset = UIEdgeInsets(top: 0, left: insetX, bottom: 0, right: insetX)
+    mainCardCV.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     mainCardCV.decelerationRate = .fast
-
+    mainCardCV.collectionViewLayout = layout
+    
   }
   
   func registerCVC() {
@@ -97,26 +109,26 @@ extension MainCardView: UICollectionViewDataSource {
 }
 
 extension MainCardView: UICollectionViewDelegateFlowLayout {
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    let screenWidth = UIScreen.main.bounds.width
-    let cellWidth = screenWidth * (327/375)
-    let cellHeight = cellWidth * (435/327)
-    return CGSize(width: cellWidth, height: cellHeight)
-
-  }
-  
-  //주석
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-    return UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 24)
-  }
-  
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-    12
-  }
-  
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-    0
-  }
+//  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//    let screenWidth = UIScreen.main.bounds.width
+//    let cellWidth = screenWidth * (327/375)
+//    let cellHeight = cellWidth * (435/327)
+//    return CGSize(width: cellWidth, height: cellHeight)
+//
+//  }
+//
+//  //주석
+//  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+//    return UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 24)
+//  }
+//
+//  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+//    12
+//  }
+//
+//  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+//    0
+//  }
 }
 
 
