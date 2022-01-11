@@ -19,10 +19,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LM2-dA-Vyp">
-                        <rect key="frame" x="0.0" y="0.0" width="327" height="292"/>
+                        <rect key="frame" x="0.0" y="0.0" width="327" height="277"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3bF-vi-abI">
-                        <rect key="frame" x="0.0" y="313" width="150" height="17"/>
+                        <rect key="frame" x="0.0" y="298" width="150" height="17"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="17" id="0xe-zf-RPn"/>
                             <constraint firstAttribute="width" constant="150" id="Z3r-wt-f0s"/>
@@ -32,22 +32,6 @@
                                 <attributes>
                                     <color key="NSColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <font key="NSFont" size="14" name="SpoqaHanSansNeo-Regular"/>
-                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                </attributes>
-                            </fragment>
-                        </attributedString>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qya-Vm-PHC">
-                        <rect key="frame" x="0.0" y="338" width="327" height="24"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="327" id="CzG-fd-Qda"/>
-                            <constraint firstAttribute="height" constant="24" id="zeE-ZN-dnh"/>
-                        </constraints>
-                        <attributedString key="attributedText">
-                            <fragment content="Label">
-                                <attributes>
-                                    <font key="NSFont" size="20" name="SpoqaHanSansNeo-Bold"/>
                                     <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                 </attributes>
                             </fragment>
@@ -75,30 +59,45 @@
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="plain" image="icnFree" title=""/>
                     </button>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qQi-WG-5rs">
+                        <rect key="frame" x="0.0" y="323" width="327" height="40"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <attributedString key="attributedText">
+                            <fragment content="Label">
+                                <attributes>
+                                    <color key="NSColor" systemColor="labelColor"/>
+                                    <font key="NSFont" size="20" name="SpoqaHanSansNeo-Bold"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="LM2-dA-Vyp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="4Yz-Uo-oZa"/>
+                    <constraint firstItem="qQi-WG-5rs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="AWY-8r-JlF"/>
                     <constraint firstAttribute="trailing" secondItem="LM2-dA-Vyp" secondAttribute="trailing" id="B3g-xS-Sy4"/>
-                    <constraint firstItem="MS1-U3-UqK" firstAttribute="top" secondItem="qya-Vm-PHC" secondAttribute="bottom" constant="21" id="ChV-wy-eQl"/>
                     <constraint firstAttribute="bottom" secondItem="MS1-U3-UqK" secondAttribute="bottom" constant="36" id="EmH-XG-eV2"/>
                     <constraint firstItem="6N9-Us-88j" firstAttribute="leading" secondItem="mSJ-l4-K62" secondAttribute="trailing" constant="1" id="Fg8-6Z-Fb9"/>
-                    <constraint firstItem="qya-Vm-PHC" firstAttribute="top" secondItem="3bF-vi-abI" secondAttribute="bottom" constant="8" id="Jgb-TV-4oL"/>
+                    <constraint firstItem="MS1-U3-UqK" firstAttribute="top" secondItem="qQi-WG-5rs" secondAttribute="bottom" constant="20" id="QRf-23-Mnb"/>
                     <constraint firstItem="LM2-dA-Vyp" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="RuM-hq-Fnn"/>
-                    <constraint firstItem="qya-Vm-PHC" firstAttribute="leading" secondItem="LM2-dA-Vyp" secondAttribute="leading" id="S7P-ND-X6Z"/>
                     <constraint firstItem="3bF-vi-abI" firstAttribute="leading" secondItem="LM2-dA-Vyp" secondAttribute="leading" id="XhF-fY-GKr"/>
+                    <constraint firstItem="qQi-WG-5rs" firstAttribute="top" secondItem="3bF-vi-abI" secondAttribute="bottom" constant="8" id="btu-C1-qXX"/>
                     <constraint firstItem="3bF-vi-abI" firstAttribute="top" secondItem="LM2-dA-Vyp" secondAttribute="bottom" constant="21" id="c8y-0D-j8K"/>
                     <constraint firstAttribute="trailing" secondItem="6N9-Us-88j" secondAttribute="trailing" constant="10" id="hNz-uP-xGh"/>
                     <constraint firstItem="mSJ-l4-K62" firstAttribute="centerY" secondItem="6N9-Us-88j" secondAttribute="centerY" id="khO-FJ-dw9"/>
                     <constraint firstItem="6N9-Us-88j" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="qce-Po-YLC"/>
                     <constraint firstAttribute="trailing" secondItem="MS1-U3-UqK" secondAttribute="trailing" id="vGE-Xr-JIs"/>
                     <constraint firstItem="MS1-U3-UqK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="wwC-zs-jcn"/>
+                    <constraint firstAttribute="trailing" secondItem="qQi-WG-5rs" secondAttribute="trailing" id="xhd-fz-rjF"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="contentImage" destination="LM2-dA-Vyp" id="Hpy-pr-1eV"/>
                 <outlet property="nickNameLabel" destination="3bF-vi-abI" id="1N1-Bx-O4l"/>
-                <outlet property="titleLabel" destination="qya-Vm-PHC" id="DpO-sz-Juq"/>
+                <outlet property="titleTextView" destination="qQi-WG-5rs" id="ILT-dz-NeF"/>
             </connections>
             <point key="canvasLocation" x="132.60869565217394" y="79.6875"/>
         </tableViewCell>
@@ -106,6 +105,12 @@
     <resources>
         <image name="bookmark" width="24" height="24"/>
         <image name="icnFree" width="41" height="19"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

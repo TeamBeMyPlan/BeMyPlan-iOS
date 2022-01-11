@@ -13,7 +13,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
 
     guard let _ = (scene as? UIWindowScene) else { return }
-    window!.rootViewController = UIStoryboard(name: "PlanDetail", bundle: nil).instantiateInitialViewController()!
+    window!.rootViewController = UIStoryboard(name: "TravelSpot", bundle: nil).instantiateInitialViewController()!
+
   }
 
   func sceneDidDisconnect(_ scene: UIScene) {
