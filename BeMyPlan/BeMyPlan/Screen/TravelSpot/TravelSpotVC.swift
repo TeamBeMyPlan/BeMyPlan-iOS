@@ -12,7 +12,13 @@ class TravelSpotVC: UIViewController {
   // MARK: - Vars & Lets Part
   let screenWidth = UIScreen.main.bounds.width
   
-  @IBOutlet var logoView: UIView!
+  @IBOutlet var logoView: UIView!{
+    didSet {
+      self.logoView.layer.applyShadow(color: UIColor(displayP3Red: 0.796, green: 0.796, blue: 0.796, alpha: 0.25), alpha: 1, x: 1, y: 4, blur: 8, spread: 1)
+    }
+  }
+  
+  
   @IBOutlet var locationCollectionView: UICollectionView!
   
   // MARK: - UI Component Part
@@ -51,7 +57,6 @@ extension TravelSpotVC: UICollectionViewDataSource {
     return CGSize(width: width, height: height)
   }
 }
-
 
 extension TravelSpotVC: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

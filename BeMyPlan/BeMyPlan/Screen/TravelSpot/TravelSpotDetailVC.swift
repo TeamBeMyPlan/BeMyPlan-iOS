@@ -36,6 +36,12 @@ class TravelSpotDetailVC: UIViewController {
   @IBAction func backBtn(_ sender: Any) {
     self.navigationController?.popViewController(animated: true)
   }
+  @IBAction func filterBtn(_ sender: Any) {
+    guard let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "TravelSpotFilterVC") as? TravelSpotFilterVC else {return}
+    nextVC.modalPresentationStyle = .overCurrentContext
+    nextVC.modalTransitionStyle = .crossDissolve
+    self.present(nextVC, animated: true, completion: nil)    
+  }
   
   // MARK: - Custom Method Part
   
@@ -48,9 +54,9 @@ extension TravelSpotDetailVC: UITableViewDelegate {
     return UITableView.automaticDimension
   }
   
-  //  func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-  //    return UITableView.automaticDimension
-  //  }
+//  func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+//    return UITableView.automaticDimension
+//  }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
   }
@@ -66,8 +72,8 @@ extension TravelSpotDetailVC: UITableViewDataSource {
       return UITableViewCell()
     }
     cell.selectionStyle = .none
-    cell.titleLabel.text = "비마쁠 아요팀 힘내랏!!!!!!!!!!!!!!!!!!"
-    cell.nickNameLabel.text = "yangwon9616"
+    cell.titleTextView.text = "제발 젭발 제발 젭발 제발 젭발 제발 젭발 제발 젭발 제발 젭발 제발 젭발 제발 젭발 제발 젭발 제발 젭발 제발 젭발 제발 젭발"
+    cell.nickNameLabel.text = "yangwon9616yangwon9616yangwon9616yangwon9616yangwon9616yangwon9616yangwon9616yangwon9616yangwon9616yangwon9616"
     cell.contentImage.image = UIImage(named: "img")
     return cell
   }

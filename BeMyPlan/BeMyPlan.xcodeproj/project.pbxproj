@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1246F9A15026B9140068B450 /* Pods_BeMyPlan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 157C68C73D70C0EBBD4C1608 /* Pods_BeMyPlan.framework */; };
+		52E26A8D278C17A800D84F0C /* TravelSpotFilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E26A8C278C17A800D84F0C /* TravelSpotFilterVC.swift */; };
 		F261EC7927873A7D00AF094F /* MainCardCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F261EC7727873A7D00AF094F /* MainCardCVC.swift */; };
 		F261EC7A27873A7D00AF094F /* MainCardCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F261EC7827873A7D00AF094F /* MainCardCVC.xib */; };
 		F261EC7C27873D3C00AF094F /* MainCardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F261EC7B27873D3C00AF094F /* MainCardData.swift */; };
@@ -92,7 +93,6 @@
 		FDC47E0D2789742800A152E8 /* TravelSpotDetailTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC47E072789742800A152E8 /* TravelSpotDetailTVC.swift */; };
 		FDC47E0E2789742800A152E8 /* TravelSpotCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC47E082789742800A152E8 /* TravelSpotCVC.swift */; };
 		FDC47E0F2789742800A152E8 /* TravelSpotDetailTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDC47E092789742800A152E8 /* TravelSpotDetailTVC.xib */; };
-		FDC47E102789742800A152E8 /* TravelSpotHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC47E0A2789742800A152E8 /* TravelSpotHeaderView.swift */; };
 		FDC47E112789742800A152E8 /* TravelSpotDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC47E0B2789742800A152E8 /* TravelSpotDetailVC.swift */; };
 		FDF980BC2786CE660009A14E /* paybooc_OTF_Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = FDF980BA2786CE660009A14E /* paybooc_OTF_Bold.otf */; };
 		FDF980BD2786CE660009A14E /* Spoqa_Han_Sans_Neo_Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = FDF980BB2786CE660009A14E /* Spoqa_Han_Sans_Neo_Bold.otf */; };
@@ -131,6 +131,7 @@
 /* Begin PBXFileReference section */
 		14A3BD93097A9388E90E2EA9 /* Pods-BeMyPlan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeMyPlan.release.xcconfig"; path = "Target Support Files/Pods-BeMyPlan/Pods-BeMyPlan.release.xcconfig"; sourceTree = "<group>"; };
 		157C68C73D70C0EBBD4C1608 /* Pods_BeMyPlan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeMyPlan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		52E26A8C278C17A800D84F0C /* TravelSpotFilterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelSpotFilterVC.swift; sourceTree = "<group>"; };
 		774099387DB391F46194C33D /* Pods-BeMyPlan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeMyPlan.debug.xcconfig"; path = "Target Support Files/Pods-BeMyPlan/Pods-BeMyPlan.debug.xcconfig"; sourceTree = "<group>"; };
 		F261EC7727873A7D00AF094F /* MainCardCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCardCVC.swift; sourceTree = "<group>"; };
 		F261EC7827873A7D00AF094F /* MainCardCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainCardCVC.xib; sourceTree = "<group>"; };
@@ -231,7 +232,6 @@
 		FDC47E072789742800A152E8 /* TravelSpotDetailTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TravelSpotDetailTVC.swift; sourceTree = "<group>"; };
 		FDC47E082789742800A152E8 /* TravelSpotCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TravelSpotCVC.swift; sourceTree = "<group>"; };
 		FDC47E092789742800A152E8 /* TravelSpotDetailTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TravelSpotDetailTVC.xib; sourceTree = "<group>"; };
-		FDC47E0A2789742800A152E8 /* TravelSpotHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TravelSpotHeaderView.swift; sourceTree = "<group>"; };
 		FDC47E0B2789742800A152E8 /* TravelSpotDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TravelSpotDetailVC.swift; sourceTree = "<group>"; };
 		FDF980BA2786CE660009A14E /* paybooc_OTF_Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = paybooc_OTF_Bold.otf; sourceTree = "<group>"; };
 		FDF980BB2786CE660009A14E /* Spoqa_Han_Sans_Neo_Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Spoqa_Han_Sans_Neo_Bold.otf; sourceTree = "<group>"; };
@@ -624,14 +624,14 @@
 		FDF980C32786D1670009A14E /* TravelSpot */ = {
 			isa = PBXGroup;
 			children = (
-				FDC47E082789742800A152E8 /* TravelSpotCVC.swift */,
-				FDC47E062789742800A152E8 /* TravelSpotCVC.xib */,
-				FDC47E072789742800A152E8 /* TravelSpotDetailTVC.swift */,
-				FDC47E092789742800A152E8 /* TravelSpotDetailTVC.xib */,
-				FDC47E0B2789742800A152E8 /* TravelSpotDetailVC.swift */,
-				FDC47E0A2789742800A152E8 /* TravelSpotHeaderView.swift */,
 				FDF980C92786D23D0009A14E /* TravelSpot.storyboard */,
 				FDF980D12786D2EB0009A14E /* TravelSpotVC.swift */,
+				FDC47E062789742800A152E8 /* TravelSpotCVC.xib */,
+				FDC47E082789742800A152E8 /* TravelSpotCVC.swift */,
+				FDC47E0B2789742800A152E8 /* TravelSpotDetailVC.swift */,
+				FDC47E092789742800A152E8 /* TravelSpotDetailTVC.xib */,
+				FDC47E072789742800A152E8 /* TravelSpotDetailTVC.swift */,
+				52E26A8C278C17A800D84F0C /* TravelSpotFilterVC.swift */,
 			);
 			path = TravelSpot;
 			sourceTree = "<group>";
@@ -944,10 +944,10 @@
 				FD09DE1E27857CDC006DA050 /* HomeVC.swift in Sources */,
 				FD09DDFE278578BA006DA050 /* StringLiterals.swift in Sources */,
 				FD09DE2727857DE3006DA050 /* GenericResponse.swift in Sources */,
-				FDC47E102789742800A152E8 /* TravelSpotHeaderView.swift in Sources */,
 				FD09DE1527857B36006DA050 /* getClassName.swift in Sources */,
 				F266412F2788262800CCC751 /* MainListCVC.swift in Sources */,
 				FDC47E0E2789742800A152E8 /* TravelSpotCVC.swift in Sources */,
+				52E26A8D278C17A800D84F0C /* TravelSpotFilterVC.swift in Sources */,
 				FD09DE092785797B006DA050 /* addToolBar.swift in Sources */,
 				FD09DDF527857809006DA050 /* Config.swift in Sources */,
 				FD09DE1327857AE1006DA050 /* successCatch + Result.swift in Sources */,
@@ -1106,7 +1106,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = L9D5M5DM3Y;
+				DEVELOPMENT_TEAM = Z266W6SNQH;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
