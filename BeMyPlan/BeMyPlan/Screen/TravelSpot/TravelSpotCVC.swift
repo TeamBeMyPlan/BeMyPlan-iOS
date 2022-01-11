@@ -21,11 +21,9 @@ class TravelSpotCVC: UICollectionViewCell {
     lockImageView.layer.cornerRadius = 5
   }
   
-
-  
   //    func setData(locationName: String, locationImage: UIImage?) {
   //      locationImageView.image = locationImage
   //      locationLabel.text = locationName
   //    }
-  
 }
+

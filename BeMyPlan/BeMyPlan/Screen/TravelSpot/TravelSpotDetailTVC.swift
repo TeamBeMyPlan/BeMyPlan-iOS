@@ -13,7 +13,7 @@ class TravelSpotDetailTVC: UITableViewCell {
   
   @IBOutlet var contentImage: UIImageView!
   @IBOutlet var nickNameLabel: UILabel!
-  @IBOutlet var titleLabel: UILabel!
+  @IBOutlet var titleTextView: UITextView!
   
   override func awakeFromNib() {
     super.awakeFromNib()
