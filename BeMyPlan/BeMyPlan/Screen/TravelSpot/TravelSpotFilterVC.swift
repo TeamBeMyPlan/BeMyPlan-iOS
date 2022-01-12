@@ -21,7 +21,6 @@ class TravelSpotFilterVC: UIViewController {
   @IBOutlet var manyScrapImg: UIButton!
   @IBOutlet var mayScrapBtn: UIButton!
   
-  
   // MARK: - Life Cycle Part
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -30,6 +29,7 @@ class TravelSpotFilterVC: UIViewController {
   
   // MARK: - Set Function Part
   private func setUIs() {
+    view.clipsToBounds = true
     filterHandleView.layer.cornerRadius = 2
     filterView.layer.cornerRadius = 5
 
@@ -71,11 +71,9 @@ class TravelSpotFilterVC: UIViewController {
   }
   
   // MARK: - Custom Method Part
- 
   
+  // MARK: - @objc Function Part
   
-  
-  // MARK: - @objc Function Part  
 }
 
 // MARK: - Extension Part
@@ -87,13 +85,15 @@ extension TravelSpotFilterVC: PanModalPresentable {
 
   // 처음 시작 위치
   var shortFormHeight: PanModalHeight {
-    return .contentHeight(278)
+    return .contentHeightIgnoringSafeArea(278)
+//    return .contentHeight(312)
   }
 
   var longFormHeight: PanModalHeight {
-    return .maxHeightWithTopInset(350)
+    return .contentHeightIgnoringSafeArea(278)
+//    return .maxHeight(346)
   }
-  
+
   var dragIndicatorBackgroundColor: UIColor {
     return .clear
   }
