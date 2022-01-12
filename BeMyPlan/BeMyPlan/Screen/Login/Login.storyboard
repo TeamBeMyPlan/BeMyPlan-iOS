@@ -16,16 +16,90 @@
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_logo_eg" translatesAutoresizingMaskIntoConstraints="NO" id="NNm-dB-tcq">
+                                <rect key="frame" x="96.5" y="224" width="221" height="221"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jKA-p7-nkg">
+                                <rect key="frame" x="24" y="575" width="366" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="jKA-p7-nkg" secondAttribute="height" multiplier="327:50" id="HBT-H3-iSV"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" backgroundImage="btn_kakao"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tn5-mD-Svy">
+                                <rect key="frame" x="24" y="646" width="366" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="tn5-mD-Svy" secondAttribute="height" multiplier="327:50" id="f9f-Ha-24E"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" backgroundImage="btn_apple"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2YE-3c-MF3">
+                                <rect key="frame" x="183" y="728.5" width="48.5" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="18" id="eQH-zv-sEv"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="둘러보기">
+                                        <attributes>
+                                            <color key="NSColor" name="beMyBlue"/>
+                                            <font key="NSFont" metaFont="system" size="14"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            <integer key="NSUnderline" value="1"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aXd-a3-e1W">
+                                <rect key="frame" x="163" y="717" width="88" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="88" id="Uec-kN-kmG"/>
+                                    <constraint firstAttribute="height" constant="41" id="jzD-Sq-CWV"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <connections>
+                                    <action selector="touchUpToGoBaseView:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="e8T-bm-pOW"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="tn5-mD-Svy" secondAttribute="trailing" constant="24" id="CCU-wa-VXw"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="jKA-p7-nkg" secondAttribute="trailing" constant="24" id="El6-Y8-Ty7"/>
+                            <constraint firstItem="NNm-dB-tcq" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="HFv-ae-uCs"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="aXd-a3-e1W" secondAttribute="bottom" constant="104" id="LRR-xK-jz5"/>
+                            <constraint firstItem="NNm-dB-tcq" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="180" id="M1j-ao-VY7"/>
+                            <constraint firstItem="aXd-a3-e1W" firstAttribute="centerY" secondItem="2YE-3c-MF3" secondAttribute="centerY" id="YlG-IH-qwA"/>
+                            <constraint firstItem="jKA-p7-nkg" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="24" id="k34-Wj-r7d"/>
+                            <constraint firstItem="aXd-a3-e1W" firstAttribute="top" secondItem="tn5-mD-Svy" secondAttribute="bottom" constant="15" id="rFK-Cu-6Co"/>
+                            <constraint firstItem="tn5-mD-Svy" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="24" id="rJt-hz-vgg"/>
+                            <constraint firstItem="tn5-mD-Svy" firstAttribute="top" secondItem="jKA-p7-nkg" secondAttribute="bottom" constant="15" id="rgK-GY-5I7"/>
+                            <constraint firstItem="aXd-a3-e1W" firstAttribute="centerX" secondItem="2YE-3c-MF3" secondAttribute="centerX" id="t7s-CA-auE"/>
+                            <constraint firstItem="2YE-3c-MF3" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="vQY-EJ-8Vf"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="appleLoginBtn" destination="tn5-mD-Svy" id="h56-8f-ciB"/>
+                        <outlet property="kakaoLoginBtn" destination="jKA-p7-nkg" id="lJv-Ee-xfP"/>
+                        <outlet property="searchLabel" destination="2YE-3c-MF3" id="TbQ-cB-aBh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3" y="60"/>
+            <point key="canvasLocation" x="2.8985507246376816" y="59.598214285714285"/>
         </scene>
     </scenes>
     <resources>
+        <image name="btn_apple" width="327" height="50"/>
+        <image name="btn_kakao" width="327" height="50"/>
+        <image name="img_logo_eg" width="221" height="221"/>
+        <namedColor name="beMyBlue">
+            <color red="0.0" green="0.46666666666666667" blue="0.69019607843137254" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

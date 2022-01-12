@@ -2,8 +2,25 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UIUserInterfaceStyle</key>
-	<string>Light</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string></string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>kakao904d52aff326e5526e945eee5dfb8efd</string>
+			</array>
+		</dict>
+	</array>
+	<key>KAKAO_APP_KEY</key>
+	<string>8813c8c6fdcec872713a666700d19b80</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>kakaokompassauth</string>
+	</array>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Spoqa_Han_Sans_Neo_Regular.otf</string>
@@ -11,8 +28,6 @@
 		<string>Spoqa_Han_Sans_Neo_Bold.otf</string>
 		<string>Spoqa_Han_Sans_Neo_Medium.otf</string>
 	</array>
-	<key>KAKAO_APP_KEY</key>
-	<string>8813c8c6fdcec872713a666700d19b80</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
