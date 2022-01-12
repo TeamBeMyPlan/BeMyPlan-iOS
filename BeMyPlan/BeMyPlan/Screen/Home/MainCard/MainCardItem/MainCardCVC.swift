@@ -24,9 +24,13 @@ class MainCardCVC: UICollectionViewCell {
   
   // MARK: - Custom Method
   func setUI(){
+    contentView.layer.masksToBounds = true
+    contentView.layer.cornerRadius = 5
     mainCardImageLayer.layer.cornerRadius = 5
     //이미지를 radius 적용안 한것을 줄 경우
     mainCardImageView.layer.cornerRadius = 5
+    
+    
   }
   
   func setData(appData: MainCardData){
