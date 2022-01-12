@@ -15,6 +15,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     window!.rootViewController = UIStoryboard(name: "Base", bundle: nil).instantiateInitialViewController()!
     guard let _ = (scene as? UIWindowScene) else { return }
+  }
 
   
   func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
