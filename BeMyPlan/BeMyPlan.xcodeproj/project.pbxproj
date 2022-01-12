@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1246F9A15026B9140068B450 /* Pods_BeMyPlan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 157C68C73D70C0EBBD4C1608 /* Pods_BeMyPlan.framework */; };
+		2972C397D40E36F815A978D7 /* Pods_BeMyPlan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0439E65ACFE841D361CB7900 /* Pods_BeMyPlan.framework */; };
 		52E26A8D278C17A800D84F0C /* TravelSpotFilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E26A8C278C17A800D84F0C /* TravelSpotFilterVC.swift */; };
 		F261EC7927873A7D00AF094F /* MainCardCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F261EC7727873A7D00AF094F /* MainCardCVC.swift */; };
 		F261EC7A27873A7D00AF094F /* MainCardCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F261EC7827873A7D00AF094F /* MainCardCVC.xib */; };
@@ -80,6 +80,19 @@
 		FD09DE2727857DE3006DA050 /* GenericResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD09DE2627857DE3006DA050 /* GenericResponse.swift */; };
 		FD09DE2927857E25006DA050 /* StoryboardLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD09DE2827857E25006DA050 /* StoryboardLiterals.swift */; };
 		FD09DE2D27858B41006DA050 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD09DE2C27858B41006DA050 /* Metal.framework */; };
+		FD20C609278EB94100AC6E34 /* MyPlanCVUserResuableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD20C608278EB94100AC6E34 /* MyPlanCVUserResuableView.swift */; };
+		FD20C60B278EBBB500AC6E34 /* MyPlanBuyContentCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD20C60A278EBBB500AC6E34 /* MyPlanBuyContentCVC.swift */; };
+		FD20C60E278EBF1800AC6E34 /* MyPlanData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD20C60D278EBF1800AC6E34 /* MyPlanData.swift */; };
+		FD20C610278EBF2800AC6E34 /* MyPlanBuyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD20C60F278EBF2800AC6E34 /* MyPlanBuyData.swift */; };
+		FD20C612278EC29600AC6E34 /* setTextLineHeight + UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD20C611278EC29600AC6E34 /* setTextLineHeight + UILabel.swift */; };
+		FD20C615278ECBE800AC6E34 /* MyPlanEmptyBuyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD20C614278ECBE800AC6E34 /* MyPlanEmptyBuyListView.swift */; };
+		FD20C617278ECBF000AC6E34 /* MyPlanEmptyBuyListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD20C616278ECBF000AC6E34 /* MyPlanEmptyBuyListView.xib */; };
+		FD20C61A278EDCF900AC6E34 /* BaseVC + Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD20C619278EDCF900AC6E34 /* BaseVC + Notification.swift */; };
+		FD20C61C278EEFAB00AC6E34 /* addObserverAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD20C61B278EEFAB00AC6E34 /* addObserverAction.swift */; };
+		FD20C620278EF0C900AC6E34 /* MyPlanSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD20C61F278EF0C900AC6E34 /* MyPlanSettingVC.swift */; };
+		FD20C623278EF11000AC6E34 /* MyPlanWithdrawVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD20C622278EF11000AC6E34 /* MyPlanWithdrawVC.swift */; };
+		FD20C626278EF6AE00AC6E34 /* BarSelectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD20C625278EF6AE00AC6E34 /* BarSelectButton.swift */; };
+		FD20C628278EF6CA00AC6E34 /* BarFullButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD20C627278EF6CA00AC6E34 /* BarFullButton.swift */; };
 		FD2D4DA9278D3C55002084B9 /* PlanDetailMapContainerTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2D4DA7278D3C55002084B9 /* PlanDetailMapContainerTVC.swift */; };
 		FD2D4DAA278D3C55002084B9 /* PlanDetailMapContainerTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD2D4DA8278D3C55002084B9 /* PlanDetailMapContainerTVC.xib */; };
 		FD2D4DAF278D3D0A002084B9 /* PlanDetailSelectDayTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2D4DAD278D3D0A002084B9 /* PlanDetailSelectDayTVC.swift */; };
@@ -162,10 +175,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		14A3BD93097A9388E90E2EA9 /* Pods-BeMyPlan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeMyPlan.release.xcconfig"; path = "Target Support Files/Pods-BeMyPlan/Pods-BeMyPlan.release.xcconfig"; sourceTree = "<group>"; };
-		157C68C73D70C0EBBD4C1608 /* Pods_BeMyPlan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeMyPlan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0439E65ACFE841D361CB7900 /* Pods_BeMyPlan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeMyPlan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D2A2785C068D6F29C524F4D /* Pods-BeMyPlan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeMyPlan.release.xcconfig"; path = "Target Support Files/Pods-BeMyPlan/Pods-BeMyPlan.release.xcconfig"; sourceTree = "<group>"; };
 		52E26A8C278C17A800D84F0C /* TravelSpotFilterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelSpotFilterVC.swift; sourceTree = "<group>"; };
-		774099387DB391F46194C33D /* Pods-BeMyPlan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeMyPlan.debug.xcconfig"; path = "Target Support Files/Pods-BeMyPlan/Pods-BeMyPlan.debug.xcconfig"; sourceTree = "<group>"; };
+		DAC8660B79B9BFADE94033DF /* Pods-BeMyPlan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeMyPlan.debug.xcconfig"; path = "Target Support Files/Pods-BeMyPlan/Pods-BeMyPlan.debug.xcconfig"; sourceTree = "<group>"; };
 		F261EC7727873A7D00AF094F /* MainCardCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCardCVC.swift; sourceTree = "<group>"; };
 		F261EC7827873A7D00AF094F /* MainCardCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainCardCVC.xib; sourceTree = "<group>"; };
 		F261EC7B27873D3C00AF094F /* MainCardData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCardData.swift; sourceTree = "<group>"; };
@@ -251,6 +264,19 @@
 		FD09DE2627857DE3006DA050 /* GenericResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericResponse.swift; sourceTree = "<group>"; };
 		FD09DE2827857E25006DA050 /* StoryboardLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardLiterals.swift; sourceTree = "<group>"; };
 		FD09DE2C27858B41006DA050 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
+		FD20C608278EB94100AC6E34 /* MyPlanCVUserResuableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlanCVUserResuableView.swift; sourceTree = "<group>"; };
+		FD20C60A278EBBB500AC6E34 /* MyPlanBuyContentCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlanBuyContentCVC.swift; sourceTree = "<group>"; };
+		FD20C60D278EBF1800AC6E34 /* MyPlanData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlanData.swift; sourceTree = "<group>"; };
+		FD20C60F278EBF2800AC6E34 /* MyPlanBuyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlanBuyData.swift; sourceTree = "<group>"; };
+		FD20C611278EC29600AC6E34 /* setTextLineHeight + UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "setTextLineHeight + UILabel.swift"; sourceTree = "<group>"; };
+		FD20C614278ECBE800AC6E34 /* MyPlanEmptyBuyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlanEmptyBuyListView.swift; sourceTree = "<group>"; };
+		FD20C616278ECBF000AC6E34 /* MyPlanEmptyBuyListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyPlanEmptyBuyListView.xib; sourceTree = "<group>"; };
+		FD20C619278EDCF900AC6E34 /* BaseVC + Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BaseVC + Notification.swift"; sourceTree = "<group>"; };
+		FD20C61B278EEFAB00AC6E34 /* addObserverAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addObserverAction.swift; sourceTree = "<group>"; };
+		FD20C61F278EF0C900AC6E34 /* MyPlanSettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlanSettingVC.swift; sourceTree = "<group>"; };
+		FD20C622278EF11000AC6E34 /* MyPlanWithdrawVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlanWithdrawVC.swift; sourceTree = "<group>"; };
+		FD20C625278EF6AE00AC6E34 /* BarSelectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarSelectButton.swift; sourceTree = "<group>"; };
+		FD20C627278EF6CA00AC6E34 /* BarFullButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarFullButton.swift; sourceTree = "<group>"; };
 		FD2D4DA7278D3C55002084B9 /* PlanDetailMapContainerTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDetailMapContainerTVC.swift; sourceTree = "<group>"; };
 		FD2D4DA8278D3C55002084B9 /* PlanDetailMapContainerTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanDetailMapContainerTVC.xib; sourceTree = "<group>"; };
 		FD2D4DAD278D3D0A002084B9 /* PlanDetailSelectDayTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDetailSelectDayTVC.swift; sourceTree = "<group>"; };
@@ -344,7 +370,7 @@
 				FD09DDED27856A31006DA050 /* DaumMap.framework in Frameworks */,
 				FD09DD9A27856394006DA050 /* CoreLocation.framework in Frameworks */,
 				FD09DD9827856387006DA050 /* SystemConfiguration.framework in Frameworks */,
-				1246F9A15026B9140068B450 /* Pods_BeMyPlan.framework in Frameworks */,
+				2972C397D40E36F815A978D7 /* Pods_BeMyPlan.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,7 +389,7 @@
 				FD09DD9927856394006DA050 /* CoreLocation.framework */,
 				FD09DD9727856387006DA050 /* SystemConfiguration.framework */,
 				FD09DD9527856377006DA050 /* OpenGLES.framework */,
-				157C68C73D70C0EBBD4C1608 /* Pods_BeMyPlan.framework */,
+				0439E65ACFE841D361CB7900 /* Pods_BeMyPlan.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -371,8 +397,8 @@
 		6F77842C2239262E3D685F1B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				774099387DB391F46194C33D /* Pods-BeMyPlan.debug.xcconfig */,
-				14A3BD93097A9388E90E2EA9 /* Pods-BeMyPlan.release.xcconfig */,
+				DAC8660B79B9BFADE94033DF /* Pods-BeMyPlan.debug.xcconfig */,
+				4D2A2785C068D6F29C524F4D /* Pods-BeMyPlan.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -539,6 +565,7 @@
 				FDF980D52786D5320009A14E /* makePayBoocFont.swift */,
 				FDC47E122789875800A152E8 /* makeCellInstance.swift */,
 				FD4C86AF278BD17F00D37A2D /* setImage.swift */,
+				FD20C61B278EEFAB00AC6E34 /* addObserverAction.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -576,11 +603,82 @@
 		FD09DE2527857DD6006DA050 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FD20C60C278EBF0100AC6E34 /* MyPlan */,
 				FD2D4DCD278D90BA002084B9 /* PlanDetail */,
 				FDC47DE9278951EF00A152E8 /* Preview */,
 				FD09DE2627857DE3006DA050 /* GenericResponse.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		FD20C607278EB91100AC6E34 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				FD20C608278EB94100AC6E34 /* MyPlanCVUserResuableView.swift */,
+				FD20C60A278EBBB500AC6E34 /* MyPlanBuyContentCVC.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		FD20C60C278EBF0100AC6E34 /* MyPlan */ = {
+			isa = PBXGroup;
+			children = (
+				FD20C60D278EBF1800AC6E34 /* MyPlanData.swift */,
+				FD20C60F278EBF2800AC6E34 /* MyPlanBuyData.swift */,
+			);
+			path = MyPlan;
+			sourceTree = "<group>";
+		};
+		FD20C613278EC9BE00AC6E34 /* EmptyView */ = {
+			isa = PBXGroup;
+			children = (
+				FD20C614278ECBE800AC6E34 /* MyPlanEmptyBuyListView.swift */,
+				FD20C616278ECBF000AC6E34 /* MyPlanEmptyBuyListView.xib */,
+			);
+			path = EmptyView;
+			sourceTree = "<group>";
+		};
+		FD20C618278EDCB800AC6E34 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				FD20C619278EDCF900AC6E34 /* BaseVC + Notification.swift */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
+		FD20C61D278EF0A800AC6E34 /* BuyList */ = {
+			isa = PBXGroup;
+			children = (
+				FD20C613278EC9BE00AC6E34 /* EmptyView */,
+				FD20C607278EB91100AC6E34 /* Cells */,
+				FDF980E72786F1910009A14E /* MyPlanVC.swift */,
+			);
+			path = BuyList;
+			sourceTree = "<group>";
+		};
+		FD20C61E278EF0B500AC6E34 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				FD20C61F278EF0C900AC6E34 /* MyPlanSettingVC.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		FD20C621278EF0E100AC6E34 /* WithDraw */ = {
+			isa = PBXGroup;
+			children = (
+				FD20C622278EF11000AC6E34 /* MyPlanWithdrawVC.swift */,
+			);
+			path = WithDraw;
+			sourceTree = "<group>";
+		};
+		FD20C624278EF6A200AC6E34 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				FD20C625278EF6AE00AC6E34 /* BarSelectButton.swift */,
+				FD20C627278EF6CA00AC6E34 /* BarFullButton.swift */,
+			);
+			path = Button;
 			sourceTree = "<group>";
 		};
 		FD2D4DA2278D3B98002084B9 /* Cells */ = {
@@ -635,6 +733,7 @@
 		FD2D4DBF278D579A002084B9 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				FD20C624278EF6A200AC6E34 /* Button */,
 				FD2D4DC0278D57A5002084B9 /* ProgressBar.xib */,
 				FD2D4DC2278D57B7002084B9 /* ProgressBar.swift */,
 			);
@@ -774,6 +873,7 @@
 				FD09DE1627857B5D006DA050 /* controllerFromStoryboard + UIViewController.swift */,
 				FDF980DD2786E6090009A14E /* addSubViewFromNib.swift */,
 				FD2D4DCB278D8636002084B9 /* drawDashedLine + UIView.swift */,
+				FD20C611278EC29600AC6E34 /* setTextLineHeight + UILabel.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -868,6 +968,7 @@
 		FDF980D92786E02C0009A14E /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				FD20C618278EDCB800AC6E34 /* Notification */,
 				FDF980F2278825E00009A14E /* TabBar */,
 				FDF980DF2786E7C60009A14E /* BaseContainerView */,
 				FDF980DA2786E2F60009A14E /* BaseVC.swift */,
@@ -888,7 +989,9 @@
 		FDF980E62786F1810009A14E /* MyPlan */ = {
 			isa = PBXGroup;
 			children = (
-				FDF980E72786F1910009A14E /* MyPlanVC.swift */,
+				FD20C621278EF0E100AC6E34 /* WithDraw */,
+				FD20C61E278EF0B500AC6E34 /* Setting */,
+				FD20C61D278EF0A800AC6E34 /* BuyList */,
 				FDF980E92786F19D0009A14E /* MyPlan.storyboard */,
 			);
 			path = MyPlan;
@@ -942,12 +1045,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FD3211B927841949007D63D5 /* Build configuration list for PBXNativeTarget "BeMyPlan" */;
 			buildPhases = (
-				55DC6006633604672924B353 /* [CP] Check Pods Manifest.lock */,
+				35DC898809162C23FDC2678C /* [CP] Check Pods Manifest.lock */,
 				FD3211A127841947007D63D5 /* Sources */,
 				FD3211A227841947007D63D5 /* Frameworks */,
 				FD3211A327841947007D63D5 /* Resources */,
 				FD3211C127843342007D63D5 /* ShellScript */,
-				925C77FBEE2DC4D6BCD604EE /* [CP] Embed Pods Frameworks */,
+				CC0E9CB5ED29DA55C707CB26 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1048,6 +1151,7 @@
 				FD09DDE127856A31006DA050 /* info_box.png in Resources */,
 				FD2D4DCA278D8190002084B9 /* PlanDetailSummaryRouteTVC.xib in Resources */,
 				FD09DDD327856A31006DA050 /* map_pin_custom.png in Resources */,
+				FD20C617278ECBF000AC6E34 /* MyPlanEmptyBuyListView.xib in Resources */,
 				FD09DDDE27856A31006DA050 /* map_pin@3x.png in Resources */,
 				FD09DDD627856A31006DA050 /* detail_button.png in Resources */,
 				FD2D4DB6278D3DB6002084B9 /* PlanDetailSummaryTVC.xib in Resources */,
@@ -1067,7 +1171,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		55DC6006633604672924B353 /* [CP] Check Pods Manifest.lock */ = {
+		35DC898809162C23FDC2678C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1089,7 +1193,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		925C77FBEE2DC4D6BCD604EE /* [CP] Embed Pods Frameworks */ = {
+		CC0E9CB5ED29DA55C707CB26 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1143,6 +1247,7 @@
 				FD09DE2027857CF2006DA050 /* LoginVC.swift in Sources */,
 				FD2D4DD8278DB054002084B9 /* PlanDetailSummaryFoldTVC.swift in Sources */,
 				F266412E2788262800CCC751 /* MainListData.swift in Sources */,
+				FD20C610278EBF2800AC6E34 /* MyPlanBuyData.swift in Sources */,
 				FD09DDF1278577CF006DA050 /* BaseService.swift in Sources */,
 				FDF980D22786D2EB0009A14E /* TravelSpotVC.swift in Sources */,
 				FD09DE2927857E25006DA050 /* StoryboardLiterals.swift in Sources */,
@@ -1151,6 +1256,7 @@
 				FD09DE0727857971006DA050 /* calculateTopInset.swift in Sources */,
 				FDF980E32786E7E90009A14E /* BaseContainerView.swift in Sources */,
 				FD4C86B0278BD17F00D37A2D /* setImage.swift in Sources */,
+				FD20C612278EC29600AC6E34 /* setTextLineHeight + UILabel.swift in Sources */,
 				FDF980D42786D2F60009A14E /* PlanListVC.swift in Sources */,
 				FDF980E52786E8370009A14E /* XibPresentable.swift in Sources */,
 				FDC47E132789875800A152E8 /* makeCellInstance.swift in Sources */,
@@ -1158,6 +1264,7 @@
 				FDC47DEF2789521C00A152E8 /* PreviewPhotoData.swift in Sources */,
 				FDC47DEB278951FF00A152E8 /* PreviewHeaderData.swift in Sources */,
 				FD2D4DC9278D8190002084B9 /* PlanDetailSummaryRouteTVC.swift in Sources */,
+				FD20C609278EB94100AC6E34 /* MyPlanCVUserResuableView.swift in Sources */,
 				FDF980F1278821E90009A14E /* ScrapVC.swift in Sources */,
 				FD3211AD27841948007D63D5 /* ViewController.swift in Sources */,
 				F2C5F18E2786EACB00BE4036 /* MainCardView.swift in Sources */,
@@ -1165,6 +1272,8 @@
 				FD09DDFC278578B1006DA050 /* ColorLiterals.swift in Sources */,
 				FDF9810A2788D4DD0009A14E /* PlanPreviewRecommendTVC.swift in Sources */,
 				FD2D4DCF278D90D0002084B9 /* PlanDetailSummaryDataModel.swift in Sources */,
+				FD20C60E278EBF1800AC6E34 /* MyPlanData.swift in Sources */,
+				FD20C61A278EDCF900AC6E34 /* BaseVC + Notification.swift in Sources */,
 				FD3211A927841948007D63D5 /* AppDelegate.swift in Sources */,
 				FD4C86B5278BD82D00D37A2D /* PreviewIconContainerView.swift in Sources */,
 				FD09DE1727857B5D006DA050 /* controllerFromStoryboard + UIViewController.swift in Sources */,
@@ -1172,9 +1281,14 @@
 				FD4C86BE278C9AF900D37A2D /* PaymentCompleteVC.swift in Sources */,
 				FDF980FF2788C9220009A14E /* PlanPreviewVC.swift in Sources */,
 				FDC47DF12789524000A152E8 /* PreviewSummaryData.swift in Sources */,
+				FD20C620278EF0C900AC6E34 /* MyPlanSettingVC.swift in Sources */,
+				FD20C628278EF6CA00AC6E34 /* BarFullButton.swift in Sources */,
 				FD2D4DB9278D3DCE002084B9 /* PlanDetailInformationTVC.swift in Sources */,
+				FD20C60B278EBBB500AC6E34 /* MyPlanBuyContentCVC.swift in Sources */,
 				FDF981022788D49C0009A14E /* PlanPreviewWriterTVC.swift in Sources */,
 				FDF981042788D4AB0009A14E /* PlanPreviewDescriptionTVC.swift in Sources */,
+				FD20C615278ECBE800AC6E34 /* MyPlanEmptyBuyListView.swift in Sources */,
+				FD20C61C278EEFAB00AC6E34 /* addObserverAction.swift in Sources */,
 				FD3211AB27841948007D63D5 /* SceneDelegate.swift in Sources */,
 				FD2D4DAF278D3D0A002084B9 /* PlanDetailSelectDayTVC.swift in Sources */,
 				FDC47DED2789521000A152E8 /* PreviewDescriptionData.swift in Sources */,
@@ -1190,10 +1304,12 @@
 				FD09DDF3278577F4006DA050 /* BaseAPI.swift in Sources */,
 				FDF981062788D4C00009A14E /* PlanPreviewPhotoTVC.swift in Sources */,
 				FD09DE1E27857CDC006DA050 /* HomeVC.swift in Sources */,
+				FD20C623278EF11000AC6E34 /* MyPlanWithdrawVC.swift in Sources */,
 				FD09DDFE278578BA006DA050 /* StringLiterals.swift in Sources */,
 				F294EC2B278EBC66001069F8 /* LoginVC + AppleLogin.swift in Sources */,
 				FD09DE2727857DE3006DA050 /* GenericResponse.swift in Sources */,
 				FD09DE1527857B36006DA050 /* getClassName.swift in Sources */,
+				FD20C626278EF6AE00AC6E34 /* BarSelectButton.swift in Sources */,
 				F266412F2788262800CCC751 /* MainListCVC.swift in Sources */,
 				F294EC2F278EBD7E001069F8 /* SignUpNicknameVC.swift in Sources */,
 				FDC47E0E2789742800A152E8 /* TravelSpotCVC.swift in Sources */,
@@ -1354,7 +1470,7 @@
 		};
 		FD3211BA27841949007D63D5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 774099387DB391F46194C33D /* Pods-BeMyPlan.debug.xcconfig */;
+			baseConfigurationReference = DAC8660B79B9BFADE94033DF /* Pods-BeMyPlan.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1392,7 +1508,7 @@
 		};
 		FD3211BB27841949007D63D5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 14A3BD93097A9388E90E2EA9 /* Pods-BeMyPlan.release.xcconfig */;
+			baseConfigurationReference = 4D2A2785C068D6F29C524F4D /* Pods-BeMyPlan.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

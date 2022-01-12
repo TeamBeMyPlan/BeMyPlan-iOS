@@ -65,4 +65,10 @@ struct I18N {
 """
     }
   }
+  
+  struct MyPlan{
+    struct Withdraw{
+      static let placeHolder = "직접 입력해주세요."
+    }
+  }
 }
