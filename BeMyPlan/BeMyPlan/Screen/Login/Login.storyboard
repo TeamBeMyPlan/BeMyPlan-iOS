@@ -45,7 +45,7 @@
                                     <fragment content="둘러보기">
                                         <attributes>
                                             <color key="NSColor" name="beMyBlue"/>
-                                            <font key="NSFont" size="14" name=".AppleSDGothicNeoI-Regular"/>
+                                            <font key="NSFont" metaFont="system" size="14"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                             <integer key="NSUnderline" value="1"/>
                                         </attributes>
@@ -83,6 +83,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="appleLoginBtn" destination="tn5-mD-Svy" id="h56-8f-ciB"/>
+                        <outlet property="kakaoLoginBtn" destination="jKA-p7-nkg" id="lJv-Ee-xfP"/>
                         <outlet property="searchLabel" destination="2YE-3c-MF3" id="TbQ-cB-aBh"/>
                     </connections>
                 </viewController>

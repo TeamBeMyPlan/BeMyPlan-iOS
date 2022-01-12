@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import KakaoSDKAuth
+import KakaoSDKUser
 
 class LoginVC: UIViewController {
   
@@ -13,12 +15,15 @@ class LoginVC: UIViewController {
   
   // MARK: - UI Component Part
   @IBOutlet var searchLabel: UILabel!
+  @IBOutlet var kakaoLoginBtn: UIButton!
+  @IBOutlet var appleLoginBtn: UIButton!
   
   
   // MARK: - Life Cycle Part
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    setBtnActions()
   }
   
   // MARK: - IBAction Part
@@ -26,7 +31,16 @@ class LoginVC: UIViewController {
   }
   
   // MARK: - Custom Method Part
-  
+  func setBtnActions() {
+    //IBAction 대용으로 만든 함수
+    self.kakaoLoginBtn.press {
+      self.kakaoLogin()
+    }
+    
+    self.appleLoginBtn.press {
+      
+    }
+  }
   
   // MARK: - @objc Function Part
   
