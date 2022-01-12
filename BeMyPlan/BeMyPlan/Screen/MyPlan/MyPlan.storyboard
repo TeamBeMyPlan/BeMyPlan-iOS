@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AHq-qD-cX8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wiG-cm-Kbu">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -201,6 +201,7 @@
                         <outlet property="emptyView" destination="4vw-pH-s6w" id="WjW-JU-gqi"/>
                         <outlet property="emptyViewHeightConstraint" destination="dsw-kq-pag" id="LLs-2a-hye"/>
                         <outlet property="mainContentCV" destination="02N-Lh-QlW" id="jzi-3j-4ei"/>
+                        <outlet property="settingButton" destination="ixF-lN-zZq" id="Uh8-tc-TIS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -525,14 +526,14 @@
                                             <constraint firstAttribute="width" constant="24" id="fhp-rO-u2E"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Muy-3N-boN">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Muy-3N-boN">
                                         <rect key="frame" x="10" y="45" width="50" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="7lx-M1-bbq"/>
                                             <constraint firstAttribute="width" constant="50" id="ZKt-ju-jOS"/>
                                         </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain"/>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -546,20 +547,20 @@
                                     <constraint firstItem="hWg-wq-7lF" firstAttribute="centerX" secondItem="bsd-zv-rUU" secondAttribute="centerX" id="wFU-Ni-o4O"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="탈퇴하시는 이유릉 알려주세요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1DS-dQ-IeO">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="탈퇴하시는 이유를 알려주세요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1DS-dQ-IeO">
                                 <rect key="frame" x="24" y="124" width="193" height="19.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="직접 입력" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t8L-nt-gs7">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="직접 입력해주세요." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="t8L-nt-gs7">
                                 <rect key="frame" x="24" y="163.5" width="366" height="377.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <color key="textColor" name="grey1"/>
+                                <color key="textColor" name="grey4"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N3A-z7-J7W">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N3A-z7-J7W" customClass="BarFullButton" customModule="BeMyPlan" customModuleProvider="target">
                                 <rect key="frame" x="24" y="561" width="366" height="48"/>
                                 <color key="backgroundColor" name="grey4"/>
                                 <constraints>
@@ -588,6 +589,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="contentTextView" destination="t8L-nt-gs7" id="bkX-dV-G62"/>
+                        <outlet property="nextButton" destination="N3A-z7-J7W" id="osp-I8-rdQ"/>
                         <outlet property="nextButtonBottomConstraint" destination="Jiz-Kw-QVY" id="9gT-NY-Zky"/>
                     </connections>
                 </viewController>

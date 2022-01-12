@@ -13,6 +13,7 @@ enum BaseNotiList{
   case moveScrapTab
   case moveMyPlanTab
   case moveSettingView
+  case moveSettingWithdrawView
   
   static func makeNotiName(list : BaseNotiList) -> NSNotification.Name{
     return Notification.Name(String(describing: list))
@@ -21,10 +22,18 @@ enum BaseNotiList{
 }
 
 extension BaseVC{
-  private func addObservers(){
-    addObserverAction(keyName: BaseNotiList.moveSettingView) { _ in
-      guard let setting
+  func addObservers(){
+    addObserverAction(keyName: BaseNotiList.makeNotiName(list: .moveSettingView)) { _ in
+      guard let settingVC = UIStoryboard.list(.myPlan).instantiateViewController(withIdentifier: MyPlanSettingVC.className) as? MyPlanSettingVC else {return}
+      self.navigationController?.pushViewController(settingVC, animated: true)
     }
+    
+    addObserverAction(keyName: BaseNotiList.makeNotiName(list: .moveSettingWithdrawView)) { _ in
+      guard let withdrawVC = UIStoryboard.list(.myPlan).instantiateViewController(withIdentifier: MyPlanWithdrawVC.className) as? MyPlanWithdrawVC else {return}
+      self.navigationController?.pushViewController(withdrawVC, animated: true)
+    }
+    
+    
 
   }
 }

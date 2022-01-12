@@ -12,19 +12,20 @@ class MyPlanVC: UIViewController {
   // MARK: - Vars & Lets Part
   
   var buyContentList : [MyPlanData.BuyList] = [
-//    MyPlanData.BuyList.init(imageURL: "", title: "워케이션을 위한 카페투어asdfasdfsadfasfasdfsdafsadfsad", id: 0),
-//    MyPlanData.BuyList.init(imageURL: "", title: "27년 제주 토박이의 히든 플레이스 투어 ", id: 0),
-//    MyPlanData.BuyList.init(imageURL: "", title: "안녕안녕안녕 워케이션을 위한 카페투어 ", id: 0),
-//    MyPlanData.BuyList.init(imageURL: "", title: "푸드파이터들을 위한 찐먹킷리스트 투어", id: 0)
+    //    MyPlanData.BuyList.init(imageURL: "", title: "워케이션을 위한 카페투어asdfasdfsadfasfasdfsdafsadfsad", id: 0),
+    //    MyPlanData.BuyList.init(imageURL: "", title: "27년 제주 토박이의 히든 플레이스 투어 ", id: 0),
+    //    MyPlanData.BuyList.init(imageURL: "", title: "안녕안녕안녕 워케이션을 위한 카페투어 ", id: 0),
+    //    MyPlanData.BuyList.init(imageURL: "", title: "푸드파이터들을 위한 찐먹킷리스트 투어", id: 0)
   ]{
     didSet{
       mainContentCV.reloadData()
       setEmptyView()
     }
   }
-
+  
   // MARK: - UI Component Part
-
+  
+  @IBOutlet var settingButton: UIButton!
   @IBOutlet var mainContentCV: UICollectionView!{
     didSet{
       mainContentCV.delegate = self
@@ -32,19 +33,25 @@ class MyPlanVC: UIViewController {
     }
   }
   @IBOutlet var emptyView: MyPlanEmptyBuyListView!
-  
   @IBOutlet var emptyViewHeightConstraint: NSLayoutConstraint!
   // MARK: - Life Cycle Part
   
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    setButtonAction()
+  }
+  
   override func viewDidLayoutSubviews() {
     setEmptyView()
-
   }
-    
+  
   // MARK: - Custom Method Part
+  
+  private func setButtonAction(){
+    settingButton.press {
+      NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .moveSettingView), object: nil)
+    }
+  }
   
   private func setEmptyView(){
     emptyViewHeightConstraint.constant = mainContentCV.bounds.height - 224
@@ -54,7 +61,7 @@ class MyPlanVC: UIViewController {
 // MARK: - Extension Part
 extension MyPlanVC :UICollectionViewDelegate{
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-      return CGSize(width: screenWidth, height: 224)
+    return CGSize(width: screenWidth, height: 224)
   }
   
 }
@@ -81,7 +88,6 @@ extension MyPlanVC : UICollectionViewDataSource{
     contentCell.setContentata(title: buyContentList[indexPath.row].title, imageURL: buyContentList[indexPath.row].imageURL)
     return contentCell
   }
-  
   
 }
 

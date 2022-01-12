@@ -11,7 +11,7 @@ class BarFullButton : UIButton{
   func setButtonState(isSelected : Bool,title : String){
     layer.cornerRadius = 5
     titleLabel?.textColor = .white
-    backgroundColor = isSelected ? UIColor.bemyBlue : UIColor.white
+    backgroundColor = isSelected ? UIColor.bemyBlue : UIColor.grey04
     titleLabel?.textColor = .white
     titleLabel?.text = title
   }

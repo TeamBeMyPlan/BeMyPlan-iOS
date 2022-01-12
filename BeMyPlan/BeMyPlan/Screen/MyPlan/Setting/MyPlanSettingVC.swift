@@ -26,7 +26,6 @@ class MyPlanSettingVC: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     addButtonActions()
-    
   }
   
   // MARK: - IBAction Part
@@ -52,8 +51,9 @@ class MyPlanSettingVC: UIViewController {
     }
     
     withdrawButton.press {
-      
+        NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .moveSettingWithdrawView), object: nil)
     }
+
   }
   
   

@@ -12,7 +12,7 @@ let screenWidth = UIScreen.main.bounds.width
 let screenHeight = UIScreen.main.bounds.height
 
 class BaseVC: UIViewController {
-
+  
   // MARK: - Vars & Lets Part
   
   var clickedIndex : TabList = .home{
@@ -20,7 +20,7 @@ class BaseVC: UIViewController {
       runTabClickAction()
     }
   }
-
+  
   // MARK: - UI Component Part
   
   @IBOutlet var containerViewList: [BaseContainerView]!
@@ -28,20 +28,21 @@ class BaseVC: UIViewController {
   
   // MARK: - Life Cycle Part
   
-    override func viewDidLoad() {
-        super.viewDidLoad()
-      setContainerView()
-      setTabIcon()
-    }
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    setContainerView()
+    setTabIcon()
+    addObservers()
+  }
   
   override func viewDidAppear(_ animated: Bool) {
     showContainerView()
     navigationController?.interactivePopGestureRecognizer?.delegate = nil
     navigationController?.interactivePopGestureRecognizer?.isEnabled = false
   }
-    
+  
   // MARK: - Constraint Part
-
+  
   @IBOutlet var tabContainerLeading: NSLayoutConstraint!
   
   // MARK: - Custom Method Part
@@ -101,9 +102,9 @@ class BaseVC: UIViewController {
       default : return .myPlan
     }
   }
-
+  
   // MARK: - @objc Function Part
-
+  
 }
 // MARK: - Extension Part
 extension BaseVC : TabBarDelegate{
@@ -112,8 +113,8 @@ extension BaseVC : TabBarDelegate{
       UIView.animate(withDuration: 0.25) {
         self.containerViewList[self.clickedIndex.rawValue].alpha = 0
       }completion: { _ in
-          self.clickedIndex = index
-        }
+        self.clickedIndex = index
       }
+    }
   }
 }
