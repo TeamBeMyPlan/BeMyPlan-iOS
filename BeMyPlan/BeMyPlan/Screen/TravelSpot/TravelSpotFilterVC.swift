@@ -86,7 +86,6 @@ extension TravelSpotFilterVC: PanModalPresentable {
   // 처음 시작 위치
   var shortFormHeight: PanModalHeight {
     return .contentHeightIgnoringSafeArea(278)
-//    return .contentHeight(312)
   }
 
   var longFormHeight: PanModalHeight {
