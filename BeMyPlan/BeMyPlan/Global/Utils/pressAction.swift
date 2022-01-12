@@ -31,7 +31,7 @@ extension UIButton {
   func clickedAnimation() {
     makeVibrate(degree: .medium)
     UIView.animate(withDuration: 0.1, animations: {
-      self.transform = CGAffineTransform(scaleX: 0.75, y: 0.75) }, completion: { (finish: Bool) in
+      self.transform = CGAffineTransform(scaleX: 0.9, y: 0.9) }, completion: { (finish: Bool) in
         UIView.animate(withDuration: 0.1, animations: {
           self.transform = CGAffineTransform.identity
         })

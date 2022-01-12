@@ -1,13 +1,13 @@
 //
-//  MyPlanVC.swift
+//  MyPlanWithdrawVC.swift
 //  BeMyPlan
 //
-//  Created by 송지훈 on 2022/01/06.
+//  Created by 송지훈 on 2022/01/12.
 //
 
 import UIKit
 
-class MyPlanVC: UIViewController {
+class MyPlanWithdrawVC: UIViewController {
 
   // MARK: - Vars & Lets Part
 
@@ -15,10 +15,12 @@ class MyPlanVC: UIViewController {
   // MARK: - UI Component Part
 
   
+  @IBOutlet var nextButtonBottomConstraint: NSLayoutConstraint!
   // MARK: - Life Cycle Part
   
     override func viewDidLoad() {
         super.viewDidLoad()
+         
     }
     
   // MARK: - IBAction Part
