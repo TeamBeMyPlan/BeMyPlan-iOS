@@ -6,25 +6,44 @@
 //
 
 import UIKit
+import KakaoSDKAuth
+import KakaoSDKUser
+import AuthenticationServices
 
 class LoginVC: UIViewController {
-
+  
   // MARK: - Vars & Lets Part
   
   // MARK: - UI Component Part
-
+  @IBOutlet var searchLabel: UILabel!
+  @IBOutlet var kakaoLoginBtn: UIButton!
+  @IBOutlet var appleLoginBtn: UIButton!
+  
+  
   // MARK: - Life Cycle Part
   
-    override func viewDidLoad() {
-        super.viewDidLoad()
-         
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    setBtnActions()
+  }
+  
+  // MARK: - IBAction Part
+  @IBAction func touchUpToGoBaseView(_ sender: Any) {
+  }
+  
+  // MARK: - Custom Method Part
+  func setBtnActions() {
+    //IBAction 대용으로 만든 함수
+    self.kakaoLoginBtn.press {
+      self.kakaoLogin()
     }
     
-  // MARK: - IBAction Part
-
-  // MARK: - Custom Method Part
-
+    self.appleLoginBtn.press {
+      self.appleLogin()
+    }
+  }
+  
   // MARK: - @objc Function Part
-
+  
 }
 // MARK: - Extension Part
