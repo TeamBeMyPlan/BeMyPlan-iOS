@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		1246F9A15026B9140068B450 /* Pods_BeMyPlan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 157C68C73D70C0EBBD4C1608 /* Pods_BeMyPlan.framework */; };
+		52B0A593278F309C00242D35 /* ScrapContainerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52B0A592278F309C00242D35 /* ScrapContainerView.xib */; };
+		52B0A595278F30B500242D35 /* ScrapEmptyContainerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52B0A594278F30B500242D35 /* ScrapEmptyContainerView.xib */; };
+		52B0A599278F32AB00242D35 /* ScrapContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B0A598278F32AB00242D35 /* ScrapContainerView.swift */; };
+		52B0A59B278F32D400242D35 /* ScrapEmptyContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B0A59A278F32D400242D35 /* ScrapEmptyContainerView.swift */; };
+		52B0A59E278F420C00242D35 /* ScrapContainerCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B0A59C278F420C00242D35 /* ScrapContainerCVC.swift */; };
+		52B0A59F278F420C00242D35 /* ScrapContainerCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52B0A59D278F420C00242D35 /* ScrapContainerCVC.xib */; };
+		52B0A5A4278F424700242D35 /* ScrapEmptyCotainerCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B0A5A2278F424700242D35 /* ScrapEmptyCotainerCVC.swift */; };
+		52B0A5A5278F424700242D35 /* ScrapEmptyCotainerCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52B0A5A3278F424700242D35 /* ScrapEmptyCotainerCVC.xib */; };
 		52E26A8D278C17A800D84F0C /* TravelSpotFilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E26A8C278C17A800D84F0C /* TravelSpotFilterVC.swift */; };
 		F261EC7927873A7D00AF094F /* MainCardCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F261EC7727873A7D00AF094F /* MainCardCVC.swift */; };
 		F261EC7A27873A7D00AF094F /* MainCardCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F261EC7827873A7D00AF094F /* MainCardCVC.xib */; };
@@ -164,6 +172,14 @@
 /* Begin PBXFileReference section */
 		14A3BD93097A9388E90E2EA9 /* Pods-BeMyPlan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeMyPlan.release.xcconfig"; path = "Target Support Files/Pods-BeMyPlan/Pods-BeMyPlan.release.xcconfig"; sourceTree = "<group>"; };
 		157C68C73D70C0EBBD4C1608 /* Pods_BeMyPlan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeMyPlan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		52B0A592278F309C00242D35 /* ScrapContainerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScrapContainerView.xib; sourceTree = "<group>"; };
+		52B0A594278F30B500242D35 /* ScrapEmptyContainerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScrapEmptyContainerView.xib; sourceTree = "<group>"; };
+		52B0A598278F32AB00242D35 /* ScrapContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapContainerView.swift; sourceTree = "<group>"; };
+		52B0A59A278F32D400242D35 /* ScrapEmptyContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapEmptyContainerView.swift; sourceTree = "<group>"; };
+		52B0A59C278F420C00242D35 /* ScrapContainerCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapContainerCVC.swift; sourceTree = "<group>"; };
+		52B0A59D278F420C00242D35 /* ScrapContainerCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScrapContainerCVC.xib; sourceTree = "<group>"; };
+		52B0A5A2278F424700242D35 /* ScrapEmptyCotainerCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapEmptyCotainerCVC.swift; sourceTree = "<group>"; };
+		52B0A5A3278F424700242D35 /* ScrapEmptyCotainerCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScrapEmptyCotainerCVC.xib; sourceTree = "<group>"; };
 		52E26A8C278C17A800D84F0C /* TravelSpotFilterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelSpotFilterVC.swift; sourceTree = "<group>"; };
 		774099387DB391F46194C33D /* Pods-BeMyPlan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeMyPlan.debug.xcconfig"; path = "Target Support Files/Pods-BeMyPlan/Pods-BeMyPlan.debug.xcconfig"; sourceTree = "<group>"; };
 		F261EC7727873A7D00AF094F /* MainCardCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCardCVC.swift; sourceTree = "<group>"; };
@@ -897,8 +913,16 @@
 		FDF980ED278821A30009A14E /* Scrap */ = {
 			isa = PBXGroup;
 			children = (
-				FDF980EE278821AD0009A14E /* Scrap.storyboard */,
 				FDF980F0278821E90009A14E /* ScrapVC.swift */,
+				FDF980EE278821AD0009A14E /* Scrap.storyboard */,
+				52B0A598278F32AB00242D35 /* ScrapContainerView.swift */,
+				52B0A592278F309C00242D35 /* ScrapContainerView.xib */,
+				52B0A59C278F420C00242D35 /* ScrapContainerCVC.swift */,
+				52B0A59D278F420C00242D35 /* ScrapContainerCVC.xib */,
+				52B0A59A278F32D400242D35 /* ScrapEmptyContainerView.swift */,
+				52B0A594278F30B500242D35 /* ScrapEmptyContainerView.xib */,
+				52B0A5A2278F424700242D35 /* ScrapEmptyCotainerCVC.swift */,
+				52B0A5A3278F424700242D35 /* ScrapEmptyCotainerCVC.xib */,
 			);
 			path = Scrap;
 			sourceTree = "<group>";
@@ -1025,6 +1049,7 @@
 				FD4C86B8278C7A7200D37A2D /* Payment.storyboard in Resources */,
 				FDF980EF278821AD0009A14E /* Scrap.storyboard in Resources */,
 				FD2D4DC1278D57A5002084B9 /* ProgressBar.xib in Resources */,
+				52B0A593278F309C00242D35 /* ScrapContainerView.xib in Resources */,
 				FD4C86B3278BD81900D37A2D /* PreviewIconContainerView.xib in Resources */,
 				FDC47E0C2789742800A152E8 /* TravelSpotCVC.xib in Resources */,
 				FDF980C82786D2360009A14E /* PlanList.storyboard in Resources */,
@@ -1044,6 +1069,9 @@
 				FDF980BC2786CE660009A14E /* paybooc_OTF_Bold.otf in Resources */,
 				FD09DDDB27856A31006DA050 /* th_line.png in Resources */,
 				FD09DDE227856A31006DA050 /* point_sprite.png in Resources */,
+				52B0A5A5278F424700242D35 /* ScrapEmptyCotainerCVC.xib in Resources */,
+				52B0A595278F30B500242D35 /* ScrapEmptyContainerView.xib in Resources */,
+				52B0A59F278F420C00242D35 /* ScrapContainerCVC.xib in Resources */,
 				FDC47E0F2789742800A152E8 /* TravelSpotDetailTVC.xib in Resources */,
 				FD09DDE127856A31006DA050 /* info_box.png in Resources */,
 				FD2D4DCA278D8190002084B9 /* PlanDetailSummaryRouteTVC.xib in Resources */,
@@ -1152,6 +1180,7 @@
 				FDF980E32786E7E90009A14E /* BaseContainerView.swift in Sources */,
 				FD4C86B0278BD17F00D37A2D /* setImage.swift in Sources */,
 				FDF980D42786D2F60009A14E /* PlanListVC.swift in Sources */,
+				52B0A5A4278F424700242D35 /* ScrapEmptyCotainerCVC.swift in Sources */,
 				FDF980E52786E8370009A14E /* XibPresentable.swift in Sources */,
 				FDC47E132789875800A152E8 /* makeCellInstance.swift in Sources */,
 				FD2D4DC3278D57B7002084B9 /* ProgressBar.swift in Sources */,
@@ -1175,6 +1204,7 @@
 				FD2D4DB9278D3DCE002084B9 /* PlanDetailInformationTVC.swift in Sources */,
 				FDF981022788D49C0009A14E /* PlanPreviewWriterTVC.swift in Sources */,
 				FDF981042788D4AB0009A14E /* PlanPreviewDescriptionTVC.swift in Sources */,
+				52B0A59B278F32D400242D35 /* ScrapEmptyContainerView.swift in Sources */,
 				FD3211AB27841948007D63D5 /* SceneDelegate.swift in Sources */,
 				FD2D4DAF278D3D0A002084B9 /* PlanDetailSelectDayTVC.swift in Sources */,
 				FDC47DED2789521000A152E8 /* PreviewDescriptionData.swift in Sources */,
@@ -1190,6 +1220,7 @@
 				FD09DDF3278577F4006DA050 /* BaseAPI.swift in Sources */,
 				FDF981062788D4C00009A14E /* PlanPreviewPhotoTVC.swift in Sources */,
 				FD09DE1E27857CDC006DA050 /* HomeVC.swift in Sources */,
+				52B0A599278F32AB00242D35 /* ScrapContainerView.swift in Sources */,
 				FD09DDFE278578BA006DA050 /* StringLiterals.swift in Sources */,
 				F294EC2B278EBC66001069F8 /* LoginVC + AppleLogin.swift in Sources */,
 				FD09DE2727857DE3006DA050 /* GenericResponse.swift in Sources */,
@@ -1198,6 +1229,7 @@
 				F294EC2F278EBD7E001069F8 /* SignUpNicknameVC.swift in Sources */,
 				FDC47E0E2789742800A152E8 /* TravelSpotCVC.swift in Sources */,
 				52E26A8D278C17A800D84F0C /* TravelSpotFilterVC.swift in Sources */,
+				52B0A59E278F420C00242D35 /* ScrapContainerCVC.swift in Sources */,
 				FD2D4DCC278D8636002084B9 /* drawDashedLine + UIView.swift in Sources */,
 				F273216F278BEB7700A9B0CC /* MainCardCarouselLayout.swift in Sources */,
 				FD09DE092785797B006DA050 /* addToolBar.swift in Sources */,

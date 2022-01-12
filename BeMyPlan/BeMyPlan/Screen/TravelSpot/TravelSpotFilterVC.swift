@@ -96,9 +96,6 @@ extension TravelSpotFilterVC: PanModalPresentable {
   var dragIndicatorBackgroundColor: UIColor {
     return .clear
   }
-
-  
-
   
 }
 
