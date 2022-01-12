@@ -19,6 +19,7 @@
 		F294EC28278EBC2C001069F8 /* LoginVC + KakaoLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F294EC27278EBC2C001069F8 /* LoginVC + KakaoLogin.swift */; };
 		F294EC2B278EBC66001069F8 /* LoginVC + AppleLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F294EC2A278EBC66001069F8 /* LoginVC + AppleLogin.swift */; };
 		F294EC2F278EBD7E001069F8 /* SignUpNicknameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F294EC2E278EBD7E001069F8 /* SignUpNicknameVC.swift */; };
+		F294EC32278EFA0F001069F8 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F294EC31278EFA0F001069F8 /* SignUp.storyboard */; };
 		F2C5F18E2786EACB00BE4036 /* MainCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C5F18D2786EACB00BE4036 /* MainCardView.swift */; };
 		F2C5F1902786EAE200BE4036 /* MainCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2C5F18F2786EAE200BE4036 /* MainCardView.xib */; };
 		F2C5F1922786EB3300BE4036 /* MainListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C5F1912786EB3300BE4036 /* MainListView.swift */; };
@@ -177,6 +178,7 @@
 		F294EC2A278EBC66001069F8 /* LoginVC + AppleLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginVC + AppleLogin.swift"; sourceTree = "<group>"; };
 		F294EC2E278EBD7E001069F8 /* SignUpNicknameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpNicknameVC.swift; sourceTree = "<group>"; };
 		F294EC30278EDB82001069F8 /* BeMyPlan.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BeMyPlan.entitlements; sourceTree = "<group>"; };
+		F294EC31278EFA0F001069F8 /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		F2C5F18D2786EACB00BE4036 /* MainCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCardView.swift; sourceTree = "<group>"; };
 		F2C5F18F2786EAE200BE4036 /* MainCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainCardView.xib; sourceTree = "<group>"; };
 		F2C5F1912786EB3300BE4036 /* MainListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainListView.swift; sourceTree = "<group>"; };
@@ -410,6 +412,7 @@
 			isa = PBXGroup;
 			children = (
 				F294EC2E278EBD7E001069F8 /* SignUpNicknameVC.swift */,
+				F294EC31278EFA0F001069F8 /* SignUp.storyboard */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -1010,6 +1013,7 @@
 				FD2D4DDA278DB179002084B9 /* PlanDetailSummaryFoldTVC.xib in Resources */,
 				FD3211B527841949007D63D5 /* LaunchScreen.storyboard in Resources */,
 				FD09DDE927856A31006DA050 /* noimage.png in Resources */,
+				F294EC32278EFA0F001069F8 /* SignUp.storyboard in Resources */,
 				FD09DDEB27856A31006DA050 /* daum_th_line.png in Resources */,
 				FD09DD5127855E33006DA050 /* GoogleService-Info.plist in Resources */,
 				FDF980BF2786CE700009A14E /* Spoqa_Han_Sans_Neo_Regular.otf in Resources */,

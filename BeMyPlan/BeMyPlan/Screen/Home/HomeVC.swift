@@ -8,12 +8,10 @@
 import UIKit
 
 class HomeVC: UIViewController {
-  
-  // MARK: - Vars & Lets Part
-  
-  
+
   
   // MARK: - UI Component Part
+  let a = MainCardView()
   @IBOutlet var naviView: UIView!{
     didSet {
 //      naviView.layer.shadowColor = UIColor(red: 0.796, green: 0.796, blue: 0.796, alpha: 0.25).cgColor
@@ -41,7 +39,6 @@ class HomeVC: UIViewController {
       mainEditorListView.type = .editorRecommend
     }
   }
-  
   
   @IBOutlet var mainCardViewHeightConstraint: NSLayoutConstraint! {
     didSet {
@@ -73,15 +70,12 @@ class HomeVC: UIViewController {
   }
   
   
-  
   // MARK: - Life Cycle Part
-  
   override func viewDidLoad() {
     super.viewDidLoad()
     setDummyData()
   }
   
-  // MARK: - IBAction Part
   
   // MARK: - Custom Method Part
   func setDummyData(){
