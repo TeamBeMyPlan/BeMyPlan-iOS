@@ -8,6 +8,7 @@
 import UIKit
 import KakaoSDKAuth
 import KakaoSDKUser
+import AuthenticationServices
 
 class LoginVC: UIViewController {
   
@@ -38,7 +39,7 @@ class LoginVC: UIViewController {
     }
     
     self.appleLoginBtn.press {
-      
+      self.appleLogin()
     }
   }
   
