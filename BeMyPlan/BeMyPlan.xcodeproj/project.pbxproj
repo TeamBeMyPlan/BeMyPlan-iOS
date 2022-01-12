@@ -140,6 +140,7 @@
 		FDC47E0F2789742800A152E8 /* TravelSpotDetailTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDC47E092789742800A152E8 /* TravelSpotDetailTVC.xib */; };
 		FDC47E112789742800A152E8 /* TravelSpotDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC47E0B2789742800A152E8 /* TravelSpotDetailVC.swift */; };
 		FDC47E132789875800A152E8 /* makeCellInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC47E122789875800A152E8 /* makeCellInstance.swift */; };
+		FDCDCB31278F4C2B002CEA15 /* PlanDetailSpotDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCDCB30278F4C2B002CEA15 /* PlanDetailSpotDataModel.swift */; };
 		FDF980BC2786CE660009A14E /* paybooc_OTF_Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = FDF980BA2786CE660009A14E /* paybooc_OTF_Bold.otf */; };
 		FDF980BD2786CE660009A14E /* Spoqa_Han_Sans_Neo_Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = FDF980BB2786CE660009A14E /* Spoqa_Han_Sans_Neo_Bold.otf */; };
 		FDF980BF2786CE700009A14E /* Spoqa_Han_Sans_Neo_Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = FDF980BE2786CE700009A14E /* Spoqa_Han_Sans_Neo_Regular.otf */; };
@@ -326,6 +327,7 @@
 		FDC47E092789742800A152E8 /* TravelSpotDetailTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TravelSpotDetailTVC.xib; sourceTree = "<group>"; };
 		FDC47E0B2789742800A152E8 /* TravelSpotDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TravelSpotDetailVC.swift; sourceTree = "<group>"; };
 		FDC47E122789875800A152E8 /* makeCellInstance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = makeCellInstance.swift; sourceTree = "<group>"; };
+		FDCDCB30278F4C2B002CEA15 /* PlanDetailSpotDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDetailSpotDataModel.swift; sourceTree = "<group>"; };
 		FDF980BA2786CE660009A14E /* paybooc_OTF_Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = paybooc_OTF_Bold.otf; sourceTree = "<group>"; };
 		FDF980BB2786CE660009A14E /* Spoqa_Han_Sans_Neo_Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Spoqa_Han_Sans_Neo_Bold.otf; sourceTree = "<group>"; };
 		FDF980BE2786CE700009A14E /* Spoqa_Han_Sans_Neo_Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Spoqa_Han_Sans_Neo_Regular.otf; sourceTree = "<group>"; };
@@ -754,6 +756,7 @@
 		FD2D4DCD278D90BA002084B9 /* PlanDetail */ = {
 			isa = PBXGroup;
 			children = (
+				FDCDCB30278F4C2B002CEA15 /* PlanDetailSpotDataModel.swift */,
 				FD2D4DCE278D90D0002084B9 /* PlanDetailSummaryDataModel.swift */,
 				FD2D4DD0278D90DB002084B9 /* PlanDetailData.swift */,
 			);
@@ -1279,6 +1282,7 @@
 				FD09DE1727857B5D006DA050 /* controllerFromStoryboard + UIViewController.swift in Sources */,
 				F2C5F1922786EB3300BE4036 /* MainListView.swift in Sources */,
 				FD4C86BE278C9AF900D37A2D /* PaymentCompleteVC.swift in Sources */,
+				FDCDCB31278F4C2B002CEA15 /* PlanDetailSpotDataModel.swift in Sources */,
 				FDF980FF2788C9220009A14E /* PlanPreviewVC.swift in Sources */,
 				FDC47DF12789524000A152E8 /* PreviewSummaryData.swift in Sources */,
 				FD20C620278EF0C900AC6E34 /* MyPlanSettingVC.swift in Sources */,
