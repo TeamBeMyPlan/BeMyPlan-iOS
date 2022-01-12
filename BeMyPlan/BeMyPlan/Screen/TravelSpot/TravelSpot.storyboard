@@ -205,7 +205,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GFj-Xt-x2a">
-                                <rect key="frame" x="0.0" y="44" width="414" height="360"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="278"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cLt-mt-ODd">
                                         <rect key="frame" x="194" y="26" width="26" height="17"/>
@@ -329,7 +329,7 @@
                                                 <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="14"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="스크랩 많은 순">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="titleColor" systemColor="tintColor"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="manyScrapBtn:" destination="poI-w5-kQ4" eventType="touchUpInside" id="AH6-3y-B09"/>
@@ -375,7 +375,7 @@
                                     <constraint firstAttribute="trailing" secondItem="wpS-Oj-dfj" secondAttribute="trailing" id="kbh-M5-Hvi"/>
                                     <constraint firstItem="pfx-tM-m9E" firstAttribute="top" secondItem="34o-z2-YnO" secondAttribute="bottom" id="nvB-T2-Yu1"/>
                                     <constraint firstItem="MId-Bn-Ey5" firstAttribute="top" secondItem="GFj-Xt-x2a" secondAttribute="top" constant="160" id="oUz-fJ-in1"/>
-                                    <constraint firstAttribute="height" constant="360" id="rqF-YE-Ugj"/>
+                                    <constraint firstAttribute="height" constant="278" id="rqF-YE-Ugj"/>
                                     <constraint firstAttribute="trailing" secondItem="pfx-tM-m9E" secondAttribute="trailing" id="sDD-aI-JPV"/>
                                     <constraint firstAttribute="trailing" secondItem="BBn-Os-u1z" secondAttribute="trailing" id="sS2-cM-yhf"/>
                                     <constraint firstItem="cLt-mt-ODd" firstAttribute="centerX" secondItem="GFj-Xt-x2a" secondAttribute="centerX" id="tdb-W3-p8d"/>
@@ -398,6 +398,9 @@
                         <outlet property="filterView" destination="GFj-Xt-x2a" id="CLc-wd-5Re"/>
                         <outlet property="manyBuyCheckImg" destination="pn1-7M-pX1" id="HsZ-3U-Rul"/>
                         <outlet property="manyScrapImg" destination="aEc-er-aCH" id="UsN-1C-RJo"/>
+                        <outlet property="mayBuyBtn" destination="tGy-0B-u2F" id="POJ-h4-zdx"/>
+                        <outlet property="mayScrapBtn" destination="tnM-L2-1tz" id="Spm-cx-UAU"/>
+                        <outlet property="recentBtn" destination="zeX-yW-KX0" id="tdH-bv-sfK"/>
                         <outlet property="recentCheckImg" destination="aR5-CB-ahC" id="sth-1a-qmj"/>
                     </connections>
                 </viewController>
@@ -436,6 +439,9 @@
         </systemColor>
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tintColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

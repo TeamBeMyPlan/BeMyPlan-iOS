@@ -10,72 +10,74 @@ import PanModal
 
 class TravelSpotFilterVC: UIViewController {
   // MARK: - Vars & Lets Part
-  var bottomValue:Float = 1
   
   // MARK: - UI Component Part
-//  @IBOutlet var backGroundView: UIView!
   @IBOutlet var filterView: UIView!
   @IBOutlet var filterHandleView: UIView!
   @IBOutlet var recentCheckImg: UIButton!
+  @IBOutlet var recentBtn: UIButton!
   @IBOutlet var manyBuyCheckImg: UIButton!
+  @IBOutlet var mayBuyBtn: UIButton!
   @IBOutlet var manyScrapImg: UIButton!
+  @IBOutlet var mayScrapBtn: UIButton!
   
-  @IBOutlet var filterViewBottomConstraints: NSLayoutConstraint!
   
   // MARK: - Life Cycle Part
   override func viewDidLoad() {
     super.viewDidLoad()
     setUIs()
-    // setPanGesture()
   }
   
   // MARK: - Set Function Part
-  
-  //  func setAlpha() {
-  //    UIView.animate(withDuration: 0.5, animations: {
-  //        self.alpha = 0
-  //    })
-  //  }
-  // MARK
+  private func setUIs() {
+    filterHandleView.layer.cornerRadius = 2
+    filterView.layer.cornerRadius = 5
+
+    manyBuyCheckImg.isHidden = true
+    manyScrapImg.isHidden = true
+    
+    recentBtn.setTitleColor(.bemyBlue, for: .normal)
+    mayBuyBtn.setTitleColor(.grey02, for: .normal)
+    mayScrapBtn.setTitleColor(.grey02, for: .normal)
+  }
+
   
   // MARK: - IBAction Part
   @IBAction func recentBtn(_ sender: Any) {
     recentCheckImg.isHidden = false
+    recentBtn.setTitleColor(.bemyBlue, for: .normal)
     manyBuyCheckImg.isHidden = true
+    mayBuyBtn.setTitleColor(.grey02, for: .normal)
     manyScrapImg.isHidden = true
+    mayScrapBtn.setTitleColor(.grey02, for: .normal)
   }
   
   @IBAction func manyBuyBtn(_ sender: Any) {
     recentCheckImg.isHidden = true
+    recentBtn.setTitleColor(.grey02, for: .normal)
     manyBuyCheckImg.isHidden = false
+    mayBuyBtn.setTitleColor(.bemyBlue, for: .normal)
     manyScrapImg.isHidden = true
+    mayScrapBtn.setTitleColor(.grey02, for: .normal)
   }
   
   @IBAction func manyScrapBtn(_ sender: Any) {
     recentCheckImg.isHidden = true
+    recentBtn.setTitleColor(.grey02, for: .normal)
     manyBuyCheckImg.isHidden = true
+    mayBuyBtn.setTitleColor(.grey02, for: .normal)
     manyScrapImg.isHidden = false
+    mayScrapBtn.setTitleColor(.bemyBlue, for: .normal)
   }
   
   // MARK: - Custom Method Part
-  private func setUIs() {
-//    backGroundView.alpha = 0.5
-    filterHandleView.layer.cornerRadius = 2
-    filterView.layer.cornerRadius = 5
-//    filterView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
-
-    //    filterView.layer.masksToBounds = true
-    //    UIView.animate(withDuration: 0.5, animations: {
-    //      self.backGroundView.alpha = 1
-    //    })
-  }
  
   
   
   
-  // MARK: - @objc Function Part
-  
+  // MARK: - @objc Function Part  
 }
+
 // MARK: - Extension Part
 extension TravelSpotFilterVC: PanModalPresentable {
   
@@ -88,14 +90,17 @@ extension TravelSpotFilterVC: PanModalPresentable {
     return .contentHeight(278)
   }
 
-  
   var longFormHeight: PanModalHeight {
-    return .maxHeightWithTopInset(278)
+    return .maxHeightWithTopInset(350)
   }
   
   var dragIndicatorBackgroundColor: UIColor {
     return .clear
   }
+
+  
+
+  
 }
 
 

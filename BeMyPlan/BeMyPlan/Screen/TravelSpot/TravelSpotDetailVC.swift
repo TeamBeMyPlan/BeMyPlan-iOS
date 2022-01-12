@@ -37,6 +37,7 @@ class TravelSpotDetailVC: UIViewController {
   @IBAction func backBtn(_ sender: Any) {
     self.navigationController?.popViewController(animated: true)
   }
+  
   @IBAction func filterBtn(_ sender: Any) {
     let vc = UIStoryboard(name: "TravelSpot", bundle: nil).instantiateViewController(withIdentifier: "TravelSpotFilterVC") as! TravelSpotFilterVC
     presentPanModal(vc)
