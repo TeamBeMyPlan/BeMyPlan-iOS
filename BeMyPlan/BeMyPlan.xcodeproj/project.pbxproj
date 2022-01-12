@@ -16,6 +16,9 @@
 		F266412E2788262800CCC751 /* MainListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F266412B2788262800CCC751 /* MainListData.swift */; };
 		F266412F2788262800CCC751 /* MainListCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F266412C2788262800CCC751 /* MainListCVC.swift */; };
 		F273216F278BEB7700A9B0CC /* MainCardCarouselLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F273216E278BEB7700A9B0CC /* MainCardCarouselLayout.swift */; };
+		F294EC28278EBC2C001069F8 /* LoginVC + KakaoLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F294EC27278EBC2C001069F8 /* LoginVC + KakaoLogin.swift */; };
+		F294EC2B278EBC66001069F8 /* LoginVC + AppleLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F294EC2A278EBC66001069F8 /* LoginVC + AppleLogin.swift */; };
+		F294EC2F278EBD7E001069F8 /* SignUpNicknameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F294EC2E278EBD7E001069F8 /* SignUpNicknameVC.swift */; };
 		F2C5F18E2786EACB00BE4036 /* MainCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C5F18D2786EACB00BE4036 /* MainCardView.swift */; };
 		F2C5F1902786EAE200BE4036 /* MainCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2C5F18F2786EAE200BE4036 /* MainCardView.xib */; };
 		F2C5F1922786EB3300BE4036 /* MainListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C5F1912786EB3300BE4036 /* MainListView.swift */; };
@@ -170,6 +173,9 @@
 		F266412B2788262800CCC751 /* MainListData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainListData.swift; sourceTree = "<group>"; };
 		F266412C2788262800CCC751 /* MainListCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainListCVC.swift; sourceTree = "<group>"; };
 		F273216E278BEB7700A9B0CC /* MainCardCarouselLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCardCarouselLayout.swift; sourceTree = "<group>"; };
+		F294EC27278EBC2C001069F8 /* LoginVC + KakaoLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginVC + KakaoLogin.swift"; sourceTree = "<group>"; };
+		F294EC2A278EBC66001069F8 /* LoginVC + AppleLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginVC + AppleLogin.swift"; sourceTree = "<group>"; };
+		F294EC2E278EBD7E001069F8 /* SignUpNicknameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpNicknameVC.swift; sourceTree = "<group>"; };
 		F2C5F18D2786EACB00BE4036 /* MainCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCardView.swift; sourceTree = "<group>"; };
 		F2C5F18F2786EAE200BE4036 /* MainCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainCardView.xib; sourceTree = "<group>"; };
 		F2C5F1912786EB3300BE4036 /* MainListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainListView.swift; sourceTree = "<group>"; };
@@ -390,6 +396,23 @@
 			path = MainListItem;
 			sourceTree = "<group>";
 		};
+		F294EC29278EBC4D001069F8 /* Social Login */ = {
+			isa = PBXGroup;
+			children = (
+				F294EC27278EBC2C001069F8 /* LoginVC + KakaoLogin.swift */,
+				F294EC2A278EBC66001069F8 /* LoginVC + AppleLogin.swift */,
+			);
+			path = "Social Login";
+			sourceTree = "<group>";
+		};
+		F294EC2D278EBD58001069F8 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				F294EC2E278EBD7E001069F8 /* SignUpNicknameVC.swift */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
 		F2C5F18B2786EA5100BE4036 /* MainCard */ = {
 			isa = PBXGroup;
 			children = (
@@ -542,6 +565,7 @@
 		FD09DE1A27857CB0006DA050 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				F294EC29278EBC4D001069F8 /* Social Login */,
 				FD09DE1F27857CF2006DA050 /* LoginVC.swift */,
 				FDF980CD2786D2550009A14E /* Login.storyboard */,
 			);
@@ -723,6 +747,7 @@
 				FD4C86B6278C7A3800D37A2D /* Payment */,
 				FDF980C42786D1900009A14E /* PlanList */,
 				FD09DE1927857CAA006DA050 /* Splash */,
+				F294EC2D278EBD58001069F8 /* SignUp */,
 				FD09DE1A27857CB0006DA050 /* Login */,
 				FD3211AC27841948007D63D5 /* ViewController.swift */,
 				FD3211AE27841948007D63D5 /* Main.storyboard */,
@@ -1164,9 +1189,11 @@
 				FDF981062788D4C00009A14E /* PlanPreviewPhotoTVC.swift in Sources */,
 				FD09DE1E27857CDC006DA050 /* HomeVC.swift in Sources */,
 				FD09DDFE278578BA006DA050 /* StringLiterals.swift in Sources */,
+				F294EC2B278EBC66001069F8 /* LoginVC + AppleLogin.swift in Sources */,
 				FD09DE2727857DE3006DA050 /* GenericResponse.swift in Sources */,
 				FD09DE1527857B36006DA050 /* getClassName.swift in Sources */,
 				F266412F2788262800CCC751 /* MainListCVC.swift in Sources */,
+				F294EC2F278EBD7E001069F8 /* SignUpNicknameVC.swift in Sources */,
 				FDC47E0E2789742800A152E8 /* TravelSpotCVC.swift in Sources */,
 				52E26A8D278C17A800D84F0C /* TravelSpotFilterVC.swift in Sources */,
 				FD2D4DCC278D8636002084B9 /* drawDashedLine + UIView.swift in Sources */,
@@ -1177,6 +1204,7 @@
 				F261EC7927873A7D00AF094F /* MainCardCVC.swift in Sources */,
 				FD09DDF727857841006DA050 /* UITableViewRegisterable.swift in Sources */,
 				F261EC7C27873D3C00AF094F /* MainCardData.swift in Sources */,
+				F294EC28278EBC2C001069F8 /* LoginVC + KakaoLogin.swift in Sources */,
 				FD09DE0D278579CC006DA050 /* showNetworkAlert.swift in Sources */,
 				FD09DDF927857858006DA050 /* UICollectionViewRegisterable.swift in Sources */,
 				FD09DE032785794B006DA050 /* makeVibrate.swift in Sources */,
