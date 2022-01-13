@@ -10,7 +10,23 @@ import UIKit
 class SignUpVC: UIViewController {
   
   // MARK: - Vars & Lets Part
+  var totalAgreeStatus: Bool = false {
+    didSet {
+      setCheckTotalImage()
+    }
+  }
   
+  var useAgreeStatus: Bool = false {
+    didSet {
+      setCheckUseImage()
+    }
+  }
+  
+  var infoAgreeStatus: Bool = false {
+    didSet {
+      setCheckInfoImage()
+    }
+  }
   
   // MARK: - UI Component Part
   
@@ -41,10 +57,13 @@ class SignUpVC: UIViewController {
   }
   
   @IBAction func pressTotalAgree(_ sender: Any) {
+    totalAgreeStatus = !totalAgreeStatus
   }
   @IBAction func pressUseAgree(_ sender: Any) {
+    useAgreeStatus = !useAgreeStatus
   }
   @IBAction func pressInfoAgree(_ sender: Any) {
+    infoAgreeStatus = !infoAgreeStatus
   }
   
   @IBAction func pressUseDetail(_ sender: Any) {
@@ -58,15 +77,31 @@ class SignUpVC: UIViewController {
   
   
   // MARK: - Custom Method Part
-  func setBoxViewUI() {
+  private func setBoxViewUI() {
     boxView.layer.borderWidth = 1
     boxView.layer.cornerRadius = 5
     boxView.layer.borderColor = UIColor.grey04.cgColor
   }
   
-  func setStartBtnUI() {
+  private func setStartBtnUI() {
     //닉네임 입력 했을 때 --> 시작하기 활성화
   }
+  
+  private func setCheckTotalImage() {
+    totalAgreeImageView.image = totalAgreeStatus ? ImageLiterals.SignUp.checkonIcon : ImageLiterals.SignUp.checkoffIcon
+    useAgreeImageView.image = totalAgreeStatus ? ImageLiterals.SignUp.checkonIcon : ImageLiterals.SignUp.checkoffIcon
+    infoAgreeImageView.image = totalAgreeStatus ? ImageLiterals.SignUp.checkonIcon : ImageLiterals.SignUp.checkoffIcon
+  }
+  
+  private func setCheckUseImage() {
+    useAgreeImageView.image = useAgreeStatus ? ImageLiterals.SignUp.checkonIcon : ImageLiterals.SignUp.checkoffIcon
+  }
+  
+  private func setCheckInfoImage() {
+    infoAgreeImageView.image = infoAgreeStatus ? ImageLiterals.SignUp.checkonIcon : ImageLiterals.SignUp.checkoffIcon
+  }
+  
+  
   
   // MARK: - @objc Function Part
   

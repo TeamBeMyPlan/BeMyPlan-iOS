@@ -38,5 +38,9 @@ struct ImageLiterals{
   struct Components{
 		static let applogo = UIImage(named: "applogo")!
   }
+	struct SignUp{
+		static let checkoffIcon = UIImage(named: "check_off_silver")
+		static let checkonIcon = UIImage(named: "check_on_blue")
+	}
 
 }
