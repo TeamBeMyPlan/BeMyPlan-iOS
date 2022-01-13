@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import PanModal
 
 class TravelSpotDetailVC: UIViewController {
   
@@ -36,11 +37,10 @@ class TravelSpotDetailVC: UIViewController {
   @IBAction func backBtn(_ sender: Any) {
     self.navigationController?.popViewController(animated: true)
   }
+  
   @IBAction func filterBtn(_ sender: Any) {
-    guard let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "TravelSpotFilterVC") as? TravelSpotFilterVC else {return}
-    nextVC.modalPresentationStyle = .overCurrentContext
-    nextVC.modalTransitionStyle = .crossDissolve
-    self.present(nextVC, animated: true, completion: nil)    
+    let vc = UIStoryboard(name: "TravelSpot", bundle: nil).instantiateViewController(withIdentifier: "TravelSpotFilterVC") as! TravelSpotFilterVC
+    presentPanModal(vc)
   }
   
   // MARK: - Custom Method Part

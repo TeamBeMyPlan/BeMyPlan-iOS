@@ -119,6 +119,7 @@ PODS:
     - nanopb/encode (= 2.30908.0)
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
+  - PanModal (1.2.7)
   - PromisesObjC (2.0.0)
   - SnapKit (5.0.1)
   - SRScratchView (1.0.0)
@@ -138,6 +139,7 @@ DEPENDENCIES:
   - Moya
   - MSCircularSlider
   - Mute
+  - PanModal
   - SnapKit (~> 5.0.0)
   - SRScratchView
   - SwiftLint
@@ -166,6 +168,7 @@ SPEC REPOS:
     - MSCircularSlider
     - Mute
     - nanopb
+    - PanModal
     - PromisesObjC
     - SnapKit
     - SRScratchView
@@ -194,6 +197,7 @@ SPEC CHECKSUMS:
   MSCircularSlider: 07fe922e6a7e05fb67e876d449e365327fdad3d1
   Mute: 66213d0aced6a074c7ab88b45ec20a9d54b1b7fb
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
+  PanModal: 3e16ead1a907fb06f4df3f13492fd00149fa4974
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SRScratchView: 75cac075964f569bb3dc411cd14636a42e0cc48c
@@ -201,6 +205,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
   Then: acfe0be7e98221c6204e12f8161459606d5d822d
 
-PODFILE CHECKSUM: 7bcc265d314551f3efbbad39723dd67918583a6c
+PODFILE CHECKSUM: 96d645f2a277f854144b2e3679722ca17022a9be
 
 COCOAPODS: 1.11.2
