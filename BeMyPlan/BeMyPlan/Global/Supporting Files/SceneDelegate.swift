@@ -15,6 +15,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     window!.rootViewController = UIStoryboard(name: "PlanDetail", bundle: nil).instantiateInitialViewController()!
     guard let _ = (scene as? UIWindowScene) else { return }
+    window!.rootViewController = UIStoryboard(name: "Scrap", bundle: nil).instantiateInitialViewController()!
   }
 
   

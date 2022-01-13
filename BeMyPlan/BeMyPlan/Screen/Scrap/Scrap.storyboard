@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,18 +16,74 @@
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JOJ-TQ-LTh">
+                                <rect key="frame" x="0.0" y="44" width="414" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2DW-NW-yrS">
+                                        <rect key="frame" x="182" y="14" width="50" height="22"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="스크랩">
+                                                <attributes>
+                                                    <font key="NSFont" size="18" name="SpoqaHanSansNeo-Bold"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="2DW-NW-yrS" firstAttribute="centerX" secondItem="JOJ-TQ-LTh" secondAttribute="centerX" id="8AN-E3-lL4"/>
+                                    <constraint firstItem="2DW-NW-yrS" firstAttribute="centerY" secondItem="JOJ-TQ-LTh" secondAttribute="centerY" id="fOh-3F-qJ1"/>
+                                    <constraint firstAttribute="height" constant="50" id="rAT-4o-nyw"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wpR-Pc-poT" customClass="ScrapEmptyContainerView" customModule="BeMyPlan" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="94" width="414" height="768"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b6e-Vk-Odj" customClass="ScrapContainerView" customModule="BeMyPlan" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="94" width="414" height="768"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="b6e-Vk-Odj" firstAttribute="top" secondItem="JOJ-TQ-LTh" secondAttribute="bottom" id="Gaw-Hj-peT"/>
+                            <constraint firstItem="wpR-Pc-poT" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="IWb-eo-OTG"/>
+                            <constraint firstItem="JOJ-TQ-LTh" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="R2E-Og-Cnd"/>
+                            <constraint firstItem="b6e-Vk-Odj" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="Td9-hi-VQM"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="JOJ-TQ-LTh" secondAttribute="trailing" id="VlH-N6-kwo"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="wpR-Pc-poT" secondAttribute="bottom" id="aAr-Z3-HsC"/>
+                            <constraint firstItem="wpR-Pc-poT" firstAttribute="top" secondItem="JOJ-TQ-LTh" secondAttribute="bottom" id="bXj-zM-uFk"/>
+                            <constraint firstItem="wpR-Pc-poT" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="d6L-Di-DYc"/>
+                            <constraint firstItem="JOJ-TQ-LTh" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="dHG-EL-nli"/>
+                            <constraint firstItem="b6e-Vk-Odj" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="j8K-h7-stS"/>
+                            <constraint firstItem="b6e-Vk-Odj" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="jox-uF-Ubk"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="scrapEmptyView" destination="wpR-Pc-poT" id="ht3-um-Bix"/>
+                        <outlet property="scrapView" destination="b6e-Vk-Odj" id="rQL-yI-RBP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="106" y="74"/>
+            <point key="canvasLocation" x="105.79710144927537" y="73.660714285714278"/>
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemIndigoColor">
-            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

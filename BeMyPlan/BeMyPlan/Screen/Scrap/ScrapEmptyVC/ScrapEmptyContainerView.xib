@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Spoqa_Han_Sans_Neo_Regular.otf">
+            <string>SpoqaHanSansNeo-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ScrapEmptyContainerView" customModule="BeMyPlan" customModuleProvider="target">
+            <connections>
+                <outlet property="contentCV" destination="oJp-Rp-s4F" id="fYV-Tw-GML"/>
+                <outlet property="emptyLabel" destination="VMz-qp-1sN" id="RqQ-1b-Wj1"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="768"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bOU-iP-O7H">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="380"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imgScrapEmpty" translatesAutoresizingMaskIntoConstraints="NO" id="fIR-HU-qaT">
+                            <rect key="frame" x="163" y="93" width="88" height="88"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="88" id="PFB-HQ-Y0k"/>
+                                <constraint firstAttribute="height" constant="88" id="ngq-NF-CtX"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rsj-Sb-EdC">
+                            <rect key="frame" x="24" y="359" width="177.5" height="19"/>
+                            <attributedString key="attributedText">
+                                <fragment content="이런 여행일정은 어떠세요?">
+                                    <attributes>
+                                        <font key="NSFont" size="16" name="SpoqaHanSansNeo-Bold"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                    </attributes>
+                                </fragment>
+                            </attributedString>
+                            <color key="highlightedColor" name="grey3"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="아직 스크랩한 일정이 없어요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VMz-qp-1sN">
+                            <rect key="frame" x="123" y="206" width="168.5" height="17"/>
+                            <color key="tintColor" name="grey3"/>
+                            <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="14"/>
+                            <color key="textColor" name="grey3"/>
+                            <color key="highlightedColor" name="grey3"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="Rsj-Sb-EdC" secondAttribute="bottom" constant="2" id="3ZX-fg-2fy"/>
+                        <constraint firstItem="VMz-qp-1sN" firstAttribute="centerX" secondItem="bOU-iP-O7H" secondAttribute="centerX" id="Gvk-vS-B0W"/>
+                        <constraint firstItem="Rsj-Sb-EdC" firstAttribute="leading" secondItem="bOU-iP-O7H" secondAttribute="leading" constant="24" id="Shs-Ia-eug"/>
+                        <constraint firstItem="fIR-HU-qaT" firstAttribute="centerX" secondItem="bOU-iP-O7H" secondAttribute="centerX" id="fnb-fP-y9s"/>
+                        <constraint firstAttribute="height" constant="380" id="hjJ-4b-iZ2"/>
+                        <constraint firstItem="VMz-qp-1sN" firstAttribute="top" secondItem="fIR-HU-qaT" secondAttribute="bottom" constant="25" id="iOo-hT-uPR"/>
+                        <constraint firstItem="fIR-HU-qaT" firstAttribute="top" secondItem="bOU-iP-O7H" secondAttribute="top" constant="93" id="roL-r5-GYs"/>
+                    </constraints>
+                </view>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="oJp-Rp-s4F">
+                    <rect key="frame" x="24" y="380" width="390" height="250"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="250" id="4Ka-2c-miD"/>
+                    </constraints>
+                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="5fP-XM-pPD">
+                        <size key="itemSize" width="128" height="128"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="bOU-iP-O7H" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="PML-xN-IHW"/>
+                <constraint firstAttribute="trailing" secondItem="bOU-iP-O7H" secondAttribute="trailing" id="ZpF-YJ-ZxE"/>
+                <constraint firstAttribute="trailing" secondItem="oJp-Rp-s4F" secondAttribute="trailing" id="cv0-0U-9Lo"/>
+                <constraint firstItem="oJp-Rp-s4F" firstAttribute="top" secondItem="bOU-iP-O7H" secondAttribute="bottom" id="sEq-PJ-3dR"/>
+                <constraint firstItem="bOU-iP-O7H" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="snM-iz-mKj"/>
+                <constraint firstItem="oJp-Rp-s4F" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="24" id="zFw-mL-Ffs"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="182.60869565217394" y="-17.410714285714285"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="imgScrapEmpty" width="88" height="88"/>
+        <namedColor name="grey3">
+            <color red="0.5690000057220459" green="0.60799998044967651" blue="0.67100000381469727" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
