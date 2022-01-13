@@ -71,4 +71,10 @@ struct I18N {
       static let placeHolder = "직접 입력해주세요."
     }
   }
+  
+  struct SignUp{
+    struct NickName{
+      static let placeHolder = "20자 이내로 입력해주세요."
+    }
+  }
 }

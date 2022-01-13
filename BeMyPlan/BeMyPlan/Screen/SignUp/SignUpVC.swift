@@ -36,15 +36,14 @@ class SignUpVC: UIViewController {
       let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 13, height: nicknameInputTextField.frame.height))
       nicknameInputTextField.leftView = paddingView
       nicknameInputTextField.leftViewMode = UITextField.ViewMode.always
-      
+      nicknameInputTextField.delegate = self
     }
   }
   @IBOutlet var boxView: UIView!
-  @IBOutlet var startBtn: UIButton!
   @IBOutlet var totalAgreeImageView: UIImageView!
   @IBOutlet var useAgreeImageView: UIImageView!
   @IBOutlet var infoAgreeImageView: UIImageView!
-  
+  @IBOutlet var startBtn: UIButton!
   
   // MARK: - Life Cycle Part
   
@@ -53,6 +52,8 @@ class SignUpVC: UIViewController {
     setBoxViewUI()
     addTapGesture()
     addToolbar(textfields: [nicknameInputTextField])
+    setBtn()
+    setTextField()
   }
   
   // MARK: - IBAction Part
@@ -104,9 +105,51 @@ class SignUpVC: UIViewController {
     infoAgreeImageView.image = infoAgreeStatus ? ImageLiterals.SignUp.checkonIcon : ImageLiterals.SignUp.checkoffIcon
   }
   
+  private func setBtn() {
+    startBtn.isEnabled = false
+    startBtn.backgroundColor = .grey04
+  }
+  
+  private func setTextField() {
+    nicknameInputTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+  }
   
   
   // MARK: - @objc Function Part
+  @objc func textFieldDidChange(_ sender:Any?) -> Void {
+    startBtn.isEnabled = nicknameInputTextField.hasText
+    if startBtn.isEnabled == true {
+      startBtn.backgroundColor = .bemyBlue
+    } else{
+      startBtn.backgroundColor = .grey04
+    }
+  }
   
 }
 // MARK: - Extension Part
+extension SignUpVC : UITextFieldDelegate{
+  func textViewDidBeginEditing(_ textField: UITextField) {
+    //텍스트가 있을 경우
+    if textField.text == I18N.SignUp.NickName.placeHolder{
+      nicknameInputTextField.text = ""
+      nicknameInputTextField.textColor = .black
+    }
+    nicknameInputTextField.layer.borderColor = UIColor.alertRed.cgColor
+  }
+  
+  func textViewDidEndEditing(_ textField: UITextField) {
+    //비어있을 경우 --> 아무것도 뭐 없는디 ..
+    if textField.text == nil {
+      textField.text = I18N.MyPlan.Withdraw.placeHolder
+      textField.textColor = .black
+    }
+    nicknameInputTextField.layer.borderColor = UIColor.grey04.cgColor
+  }
+  
+  //  func textViewDidChange(_ textView: UITextView) {
+  //    startBtn.setButtonState(isSelected: !nicknameInputTextField.text.isEmpty, title: I18N.Components.next)
+  //  }
+}
+
+
+
