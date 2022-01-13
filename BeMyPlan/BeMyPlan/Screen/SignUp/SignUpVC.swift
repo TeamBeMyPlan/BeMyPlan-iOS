@@ -36,6 +36,7 @@ class SignUpVC: UIViewController {
       let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 13, height: nicknameInputTextField.frame.height))
       nicknameInputTextField.leftView = paddingView
       nicknameInputTextField.leftViewMode = UITextField.ViewMode.always
+      
     }
   }
   @IBOutlet var boxView: UIView!
@@ -50,6 +51,8 @@ class SignUpVC: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     setBoxViewUI()
+    addTapGesture()
+    addToolbar(textfields: [nicknameInputTextField])
   }
   
   // MARK: - IBAction Part
