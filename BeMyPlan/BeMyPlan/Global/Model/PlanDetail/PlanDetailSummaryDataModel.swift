@@ -12,5 +12,5 @@ extension PlanDetailData{
     var transportCase : TransportCase?
     var locationName : String
     var time : String?
-  }
+      }
 }
