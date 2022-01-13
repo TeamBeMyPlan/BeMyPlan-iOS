@@ -12,16 +12,7 @@ class HomeVC: UIViewController {
   
   // MARK: - UI Component Part
   let a = MainCardView()
-  @IBOutlet var naviView: UIView!{
-    didSet {
-//      naviView.layer.shadowColor = UIColor(red: 0.796, green: 0.796, blue: 0.796, alpha: 0.25).cgColor
-//      naviView.layer.shadowOffset = CGSize(width: 1, height: 4)
-//      naviView.layer.shadowOpacity = 1
-//      naviView.layer.shadowRadius = 8
-//      naviView.layer.masksToBounds = false
-      naviView.layer.applyShadow(color: UIColor(displayP3Red: 0.796, green: 0.796, blue: 0.796, alpha: 0.25), alpha: 1, x: 1, y: 4, blur: 8, spread: 1)
-    }
-  }
+  @IBOutlet var naviView: UIView!
   
   @IBOutlet var naviBarTopConstraint: NSLayoutConstraint!{
     didSet {
@@ -58,14 +49,13 @@ class HomeVC: UIViewController {
       mainListViewHeightConstraint.constant = cellHeight + 75
     }
   }
+    
   
   @IBOutlet var mainEditorViewHeightConstraint: NSLayoutConstraint! {
     didSet {
       let screenWidth = UIScreen.main.bounds.width
       let cellWidth = screenWidth * (160/375)
       let cellHeight = cellWidth * (208/160)
-      
-      mainEditorViewHeightConstraint.constant = cellHeight + 75
     }
   }
   
@@ -74,6 +64,10 @@ class HomeVC: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     setDummyData()
+  }
+  
+  override func viewDidLayoutSubviews() {
+    naviView.layer.applyShadow(color: UIColor(displayP3Red: 0.796, green: 0.796, blue: 0.796, alpha: 0.25), alpha: 1, x: 1, y: 4, blur: 8, spread: 1)
   }
   
   

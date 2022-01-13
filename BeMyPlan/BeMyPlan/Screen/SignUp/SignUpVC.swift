@@ -37,6 +37,8 @@ class SignUpVC: UIViewController {
       nicknameInputTextField.leftView = paddingView
       nicknameInputTextField.leftViewMode = UITextField.ViewMode.always
       nicknameInputTextField.delegate = self
+      
+      setTextField()
     }
   }
   @IBOutlet var boxView: UIView!
@@ -53,7 +55,7 @@ class SignUpVC: UIViewController {
     addTapGesture()
     addToolbar(textfields: [nicknameInputTextField])
     setBtn()
-    setTextField()
+    
   }
   
   // MARK: - IBAction Part
@@ -146,9 +148,25 @@ extension SignUpVC : UITextFieldDelegate{
     nicknameInputTextField.layer.borderColor = UIColor.grey04.cgColor
   }
   
-  //  func textViewDidChange(_ textView: UITextView) {
-  //    startBtn.setButtonState(isSelected: !nicknameInputTextField.text.isEmpty, title: I18N.Components.next)
-  //  }
+  func textViewDidChange(_ textField: UITextField) {
+    //      startBtn.setButtonState(isSelected: !nicknameInputTextField.text.isEmpty, title: I18N.Components.next)
+    if let textField = textField as? UITextField {
+      if let text = nicknameInputTextField.text {
+        if text.count > 20 {
+          // 🪓 주어진 인덱스에서 특정 거리만큼 떨어진 인덱스 반환
+          let maxIndex = text.index(text.startIndex, offsetBy: 20)
+          // 🪓 문자열 자르기
+          let newString = String(text[text.startIndex..<maxIndex])
+          nicknameInputTextField.text = newString
+          
+          //경고문구..!까지 띄우기
+          
+        }
+      }
+    }
+  }
+  
+  
 }
 
 
