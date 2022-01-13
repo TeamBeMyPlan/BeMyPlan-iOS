@@ -29,6 +29,9 @@
                             </constraints>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                             <state key="normal" image="icnOrder"/>
+                            <connections>
+                                <action selector="filterBtn:" destination="-1" eventType="touchUpInside" id="9mS-KQ-LBY"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -38,7 +41,7 @@
                         <constraint firstAttribute="trailing" secondItem="jyU-ne-tno" secondAttribute="trailing" constant="24" id="zhG-XB-Jjw"/>
                     </constraints>
                 </view>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="PYP-3v-pCb">
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="PYP-3v-pCb">
                     <rect key="frame" x="0.0" y="36" width="414" height="732"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Ab9-7b-TC7">

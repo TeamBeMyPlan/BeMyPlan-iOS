@@ -17,20 +17,20 @@
                 <rect key="frame" x="0.0" y="0.0" width="160" height="227"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ncT-qe-use">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mainlist1" translatesAutoresizingMaskIntoConstraints="NO" id="ncT-qe-use">
                         <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="160" id="17s-PU-Qf1"/>
                             <constraint firstAttribute="width" constant="160" id="ipA-GX-qqa"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hxw-Hd-M1d">
-                        <rect key="frame" x="0.0" y="172" width="149" height="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hxw-Hd-M1d">
+                        <rect key="frame" x="0.0" y="172" width="160" height="34"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="lessThanOrEqual" constant="40" id="X7H-BM-7e5"/>
                         </constraints>
                         <attributedString key="attributedText">
-                            <fragment content="워케이션을 위한 카페투어">
+                            <fragment content="워케이션을 위한 카페투어어어어어러">
                                 <attributes>
                                     <font key="NSFont" size="14" name="SpoqaHanSansNeo-Bold"/>
                                     <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
@@ -46,10 +46,14 @@
                 <constraint firstItem="ncT-qe-use" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="3xT-LU-DfP"/>
                 <constraint firstItem="ncT-qe-use" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="WRP-8M-sBa"/>
                 <constraint firstItem="hxw-Hd-M1d" firstAttribute="top" secondItem="ncT-qe-use" secondAttribute="bottom" constant="12" id="b4d-7T-y5g"/>
+                <constraint firstItem="hxw-Hd-M1d" firstAttribute="trailing" secondItem="ncT-qe-use" secondAttribute="trailing" id="sli-Ix-8BI"/>
                 <constraint firstItem="hxw-Hd-M1d" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="wFo-6g-gRB"/>
             </constraints>
             <size key="customSize" width="160" height="227"/>
             <point key="canvasLocation" x="217.39130434782609" y="167.07589285714286"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="mainlist1" width="160" height="160"/>
+    </resources>
 </document>

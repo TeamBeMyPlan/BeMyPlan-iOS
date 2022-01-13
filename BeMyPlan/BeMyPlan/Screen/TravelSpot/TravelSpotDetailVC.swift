@@ -30,7 +30,7 @@ class TravelSpotDetailVC: UIViewController {
   
   private func regiterXib() {
     let xibName = UINib(nibName: TravelSpotDetailTVC.identifier, bundle: nil)
-    contentTableView.register(xibName, forCellReuseIdentifier: TravelSpotDetailTVC.identifier)
+    contentTableView.register(xibName, forCellReuseIdentifier: TravelSpotDetailTVC.className)
   }
   
   // MARK: - IBAction Part
@@ -39,8 +39,7 @@ class TravelSpotDetailVC: UIViewController {
   }
   
   @IBAction func filterBtn(_ sender: Any) {
-    let vc = UIStoryboard(name: "TravelSpot", bundle: nil).instantiateViewController(withIdentifier: "TravelSpotFilterVC") as! TravelSpotFilterVC
-    presentPanModal(vc)
+    
   }
   
   // MARK: - Custom Method Part
@@ -53,11 +52,7 @@ extension TravelSpotDetailVC: UITableViewDelegate {
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return UITableView.automaticDimension
   }
-  
-//  func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-//    return UITableView.automaticDimension
-//  }
-  
+    
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
   }
 }
@@ -68,7 +63,7 @@ extension TravelSpotDetailVC: UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: TravelSpotDetailTVC.identifier) as? TravelSpotDetailTVC else {
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: TravelSpotDetailTVC.className) as? TravelSpotDetailTVC else {
       return UITableViewCell()
     }
     cell.selectionStyle = .none
@@ -78,5 +73,3 @@ extension TravelSpotDetailVC: UITableViewDataSource {
     return cell
   }
 }
-
-

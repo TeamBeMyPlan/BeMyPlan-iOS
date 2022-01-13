@@ -90,17 +90,12 @@ extension TravelSpotFilterVC: PanModalPresentable {
 
   var longFormHeight: PanModalHeight {
     return .contentHeightIgnoringSafeArea(278)
-//    return .maxHeight(346)
   }
 
   var dragIndicatorBackgroundColor: UIColor {
     return .clear
   }
-  
 }
-
-
-
 
 
 
@@ -120,9 +115,7 @@ extension TravelSpotFilterVC: PanModalPresentable {
  override func viewDidLoad() {
  super.viewDidLoad()
  }
- 
- // MARK: - Set Function Part
- 
+  
  // MARK: - IBAction Part
  
  // MARK: - Custom Method Part

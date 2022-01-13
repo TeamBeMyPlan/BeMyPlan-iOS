@@ -12,10 +12,10 @@
 		52B0A595278F30B500242D35 /* ScrapEmptyContainerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52B0A594278F30B500242D35 /* ScrapEmptyContainerView.xib */; };
 		52B0A599278F32AB00242D35 /* ScrapContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B0A598278F32AB00242D35 /* ScrapContainerView.swift */; };
 		52B0A59B278F32D400242D35 /* ScrapEmptyContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B0A59A278F32D400242D35 /* ScrapEmptyContainerView.swift */; };
-		52B0A59E278F420C00242D35 /* ScrapContainerCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B0A59C278F420C00242D35 /* ScrapContainerCVC.swift */; };
 		52B0A59F278F420C00242D35 /* ScrapContainerCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52B0A59D278F420C00242D35 /* ScrapContainerCVC.xib */; };
 		52B0A5A4278F424700242D35 /* ScrapEmptyCotainerCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B0A5A2278F424700242D35 /* ScrapEmptyCotainerCVC.swift */; };
 		52B0A5A5278F424700242D35 /* ScrapEmptyCotainerCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52B0A5A3278F424700242D35 /* ScrapEmptyCotainerCVC.xib */; };
+		52B0A5A8278F569800242D35 /* ScrapContainerCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B0A59C278F420C00242D35 /* ScrapContainerCVC.swift */; };
 		52E26A8D278C17A800D84F0C /* TravelSpotFilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E26A8C278C17A800D84F0C /* TravelSpotFilterVC.swift */; };
 		F261EC7927873A7D00AF094F /* MainCardCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F261EC7727873A7D00AF094F /* MainCardCVC.swift */; };
 		F261EC7A27873A7D00AF094F /* MainCardCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F261EC7827873A7D00AF094F /* MainCardCVC.xib */; };
@@ -382,6 +382,28 @@
 				157C68C73D70C0EBBD4C1608 /* Pods_BeMyPlan.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		52B0A5A6278F54C600242D35 /* ScrapVC */ = {
+			isa = PBXGroup;
+			children = (
+				52B0A598278F32AB00242D35 /* ScrapContainerView.swift */,
+				52B0A592278F309C00242D35 /* ScrapContainerView.xib */,
+				52B0A59C278F420C00242D35 /* ScrapContainerCVC.swift */,
+				52B0A59D278F420C00242D35 /* ScrapContainerCVC.xib */,
+			);
+			path = ScrapVC;
+			sourceTree = "<group>";
+		};
+		52B0A5A7278F54DE00242D35 /* ScrapEmptyVC */ = {
+			isa = PBXGroup;
+			children = (
+				52B0A59A278F32D400242D35 /* ScrapEmptyContainerView.swift */,
+				52B0A594278F30B500242D35 /* ScrapEmptyContainerView.xib */,
+				52B0A5A2278F424700242D35 /* ScrapEmptyCotainerCVC.swift */,
+				52B0A5A3278F424700242D35 /* ScrapEmptyCotainerCVC.xib */,
+			);
+			path = ScrapEmptyVC;
 			sourceTree = "<group>";
 		};
 		6F77842C2239262E3D685F1B /* Pods */ = {
@@ -915,14 +937,8 @@
 			children = (
 				FDF980F0278821E90009A14E /* ScrapVC.swift */,
 				FDF980EE278821AD0009A14E /* Scrap.storyboard */,
-				52B0A598278F32AB00242D35 /* ScrapContainerView.swift */,
-				52B0A592278F309C00242D35 /* ScrapContainerView.xib */,
-				52B0A59C278F420C00242D35 /* ScrapContainerCVC.swift */,
-				52B0A59D278F420C00242D35 /* ScrapContainerCVC.xib */,
-				52B0A59A278F32D400242D35 /* ScrapEmptyContainerView.swift */,
-				52B0A594278F30B500242D35 /* ScrapEmptyContainerView.xib */,
-				52B0A5A2278F424700242D35 /* ScrapEmptyCotainerCVC.swift */,
-				52B0A5A3278F424700242D35 /* ScrapEmptyCotainerCVC.xib */,
+				52B0A5A6278F54C600242D35 /* ScrapVC */,
+				52B0A5A7278F54DE00242D35 /* ScrapEmptyVC */,
 			);
 			path = Scrap;
 			sourceTree = "<group>";
@@ -1219,6 +1235,7 @@
 				FD2D4DBD278D3FA5002084B9 /* PlanDetailDayCVC.swift in Sources */,
 				FD09DDF3278577F4006DA050 /* BaseAPI.swift in Sources */,
 				FDF981062788D4C00009A14E /* PlanPreviewPhotoTVC.swift in Sources */,
+				52B0A5A8278F569800242D35 /* ScrapContainerCVC.swift in Sources */,
 				FD09DE1E27857CDC006DA050 /* HomeVC.swift in Sources */,
 				52B0A599278F32AB00242D35 /* ScrapContainerView.swift in Sources */,
 				FD09DDFE278578BA006DA050 /* StringLiterals.swift in Sources */,
@@ -1229,7 +1246,6 @@
 				F294EC2F278EBD7E001069F8 /* SignUpNicknameVC.swift in Sources */,
 				FDC47E0E2789742800A152E8 /* TravelSpotCVC.swift in Sources */,
 				52E26A8D278C17A800D84F0C /* TravelSpotFilterVC.swift in Sources */,
-				52B0A59E278F420C00242D35 /* ScrapContainerCVC.swift in Sources */,
 				FD2D4DCC278D8636002084B9 /* drawDashedLine + UIView.swift in Sources */,
 				F273216F278BEB7700A9B0CC /* MainCardCarouselLayout.swift in Sources */,
 				FD09DE092785797B006DA050 /* addToolBar.swift in Sources */,
