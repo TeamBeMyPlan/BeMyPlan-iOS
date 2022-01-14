@@ -40,6 +40,10 @@ class PlanDetailInformationTVC: UITableViewCell,UITableViewRegisterable {
   @IBOutlet var nextTripLocationNameLabel: UILabel!
   @IBOutlet var nextTripTimeLabel: UILabel!
   
+  @IBOutlet var nextLocationGuideLabelCenterLayout: NSLayoutConstraint!{
+    didSet{
+    }
+  }
   @IBOutlet var nextLocationGuideLabelWidth: NSLayoutConstraint!{
     didSet{
       nextLocationGuideLabelWidth.constant = screenWidth - 88
@@ -81,6 +85,12 @@ class PlanDetailInformationTVC: UITableViewCell,UITableViewRegisterable {
     
   }
   
+  private func setNextLocationLabelCenter(){
+    let fullLabelWidth = nextTripTimeLabel.frame.width + nextTripLocationNameLabel.frame.width
+    let farWidth = fullLabelWidth / 2 - nextTripLocationNameLabel.frame.width / 2
+    nextLocationGuideLabelCenterLayout.constant = -1 * farWidth
+  }
+  
   func setData(title : String, address : String,
                imgUrls: [String],content : String,nextTravel : PlanDetailData.Summary?){
     if let nextTravel = nextTravel,
@@ -95,7 +105,10 @@ class PlanDetailInformationTVC: UITableViewCell,UITableViewRegisterable {
     titleLabel.text = title
     addressLabel.text = address
     contentTextView.text = content
+    nextTripLocationNameLabel.sizeToFit()
+    nextTripTimeLabel.sizeToFit()
     // 이미지는 나중에 넣어야 함.
+    setNextLocationLabelCenter()
   }
   
   private func registerCells(){
@@ -157,34 +170,4 @@ extension PlanDetailInformationTVC : UIScrollViewDelegate{
     currentIndex = Int(floor(point))
   }
 
-//  func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>)
-//  {
-//    let layout = self.contentCV.collectionViewLayout as! UICollectionViewFlowLayout
-//    let cellWidthIncludingSpacing = layout.itemSize.width + layout.minimumLineSpacing
-//
-//    var offset = targetContentOffset.pointee
-//    let index = (offset.x + scrollView.contentInset.left) / cellWidthIncludingSpacing
-//    var roundedIndex = round(index)
-//
-//
-//    if scrollView.contentOffset.x > targetContentOffset.pointee.x {
-//      roundedIndex = floor(index)
-//    } else if scrollView.contentOffset.x < targetContentOffset.pointee.x {
-//      roundedIndex = ceil(index)
-//    } else {
-//      roundedIndex = round(index)
-//    }
-//
-//    if currentIndex > roundedIndex {
-//      currentIndex -= 1
-//      roundedIndex = currentIndex
-//    } else if currentIndex < roundedIndex {
-//      currentIndex += 1
-//      roundedIndex = currentIndex
-//    }
-//
-//    offset = CGPoint(x: roundedIndex * cellWidthIncludingSpacing - scrollView.contentInset.left, y: -scrollView.contentInset.top)
-//    targetContentOffset.pointee = offset
-//    print("CURRENTINDEX",currentIndex)
-//  }
 }

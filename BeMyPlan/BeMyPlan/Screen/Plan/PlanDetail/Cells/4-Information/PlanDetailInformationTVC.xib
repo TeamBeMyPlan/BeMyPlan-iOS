@@ -146,6 +146,7 @@
                 <outlet property="addressLabelMaxWidthConstraint" destination="q32-HO-qKP" id="iVY-O8-qCp"/>
                 <outlet property="contentCV" destination="OYo-SC-HEx" id="PTU-mh-bdE"/>
                 <outlet property="contentTextView" destination="Nmx-nZ-WHz" id="EuZ-aR-415"/>
+                <outlet property="nextLocationGuideLabelCenterLayout" destination="4iV-dx-UPl" id="KNq-4W-61o"/>
                 <outlet property="nextLocationGuideLabelWidth" destination="Sa6-1V-nXK" id="A0u-4d-nFw"/>
                 <outlet property="nextTripLocationNameLabel" destination="VL5-6L-dSd" id="hO3-Yp-bBA"/>
                 <outlet property="nextTripTimeLabel" destination="lv9-9Q-E7d" id="O3H-0r-4zb"/>

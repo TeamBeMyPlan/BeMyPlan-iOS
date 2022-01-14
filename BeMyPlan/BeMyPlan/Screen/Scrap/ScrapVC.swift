@@ -9,7 +9,6 @@
  NotificationCenter.default.post(name: NSNotification.Name("headerReload"),
                                  object: nil)
 
- 
  NotificationCenter.default.addObserver(self,
                                         selector: #selector(headerReload),
                                         name: NSNotification.Name("headerReload"),
@@ -17,7 +16,6 @@
  
  let vc = UIStoryboard(name: "TravelSpot", bundle: nil).instantiateViewController(withIdentifier: "TravelSpotFilterVC") as! TravelSpotFilterVC
  presentPanModal(vc)
-
  */
 
 import UIKit
@@ -29,7 +27,7 @@ class ScrapVC: UIViewController {
   @IBOutlet var scrapEmptyView: ScrapEmptyContainerView!
   
   // MARK: - Vars & Lets Part
-  let contentData: Bool = true
+  let contentData: Bool = false
 
   // MARK: - UI Component Part
   

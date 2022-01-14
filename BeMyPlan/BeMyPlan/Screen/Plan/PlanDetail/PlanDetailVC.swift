@@ -18,21 +18,20 @@ class PlanDetailVC: UIViewController {
                                  : "제주특별자치도 제주시 애월읍 유수암리 산138",
                                  imagerUrls: [],
                                  textContent: "테스트",
-                                 nextLocationData: PlanDetailData.Summary.init(transportCase: .walk, locationName: "다음장소", time: "5분")),
+                                 nextLocationData: PlanDetailData.Summary.init(transportCase: .walk, locationName: "22222222", time: "5분")),
     
-    PlanDetailData.SpotData.init(locationTitle: "산방2",
+    PlanDetailData.SpotData.init(locationTitle: "산방22222222",
                                  address
                                  : "제주특별자치도 제주시 애월읍 유수암리 산138",
                                  imagerUrls: [],
                                  textContent: "테스트",
-                                 nextLocationData: PlanDetailData.Summary.init(transportCase: .walk, locationName: "다음장소", time: "5분")),
+                                 nextLocationData: PlanDetailData.Summary.init(transportCase: .walk, locationName: "산방3333333", time: "5분")),
     
-    PlanDetailData.SpotData.init(locationTitle: "산방3",
+    PlanDetailData.SpotData.init(locationTitle: "33333333",
                                  address
                                  : "제주특별자치도 제주시 애월읍 유수암리 산138",
                                  imagerUrls: [],
-                                 textContent: "테스트",
-                                 nextLocationData: PlanDetailData.Summary.init(transportCase: .walk, locationName: "다음장소", time: "5분"))
+                                 textContent: "테스트")
   
   ]
 
