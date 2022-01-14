@@ -24,7 +24,7 @@
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G7o-88-iOG">
                                         <rect key="frame" x="24" y="355.5" width="366" height="185"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="회원가입을 그만두시겠습니까?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FyR-mn-acb">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="회원가입을 그만두시겠습니까?" textAlignment="center" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FyR-mn-acb">
                                                 <rect key="frame" x="50" y="64" width="266" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" name="grey2"/>
@@ -126,7 +126,6 @@
                                             <constraint firstItem="PIT-PS-6LT" firstAttribute="leading" secondItem="G7o-88-iOG" secondAttribute="leading" constant="65" id="okZ-BN-KW4"/>
                                             <constraint firstItem="dUr-eZ-x0G" firstAttribute="centerX" secondItem="G7o-88-iOG" secondAttribute="centerX" id="pHH-Js-zfr"/>
                                             <constraint firstItem="EpO-B4-qDc" firstAttribute="centerX" secondItem="G7o-88-iOG" secondAttribute="centerX" id="rJZ-K4-LwO"/>
-                                            <constraint firstItem="FyR-mn-acb" firstAttribute="top" secondItem="G7o-88-iOG" secondAttribute="top" constant="64" id="zBF-Fe-UEx"/>
                                         </constraints>
                                     </view>
                                 </subviews>

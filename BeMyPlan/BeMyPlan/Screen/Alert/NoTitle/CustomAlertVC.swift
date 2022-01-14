@@ -23,7 +23,11 @@ class CustomAlertVC: UIViewController {
   // MARK: - UI Component Part
   @IBOutlet var alertLayer: UIView!
   @IBOutlet var alertTitleLabel: UILabel!
-  @IBOutlet var alertContentLabel: UILabel!
+  @IBOutlet var alertContentLabel: UILabel!{
+    didSet {
+      alertContentLabel.numberOfLines = 0
+    }
+  }
   @IBOutlet var cancellLabel: UILabel!
   @IBOutlet var cancelBtnArea: UIButton!
   @IBOutlet var confirmLabel: UILabel!
@@ -63,7 +67,6 @@ class CustomAlertVC: UIViewController {
     }
     if let alertContent = alertContent {
       alertContentLabel.text = alertContent
-      alertContentLabel.sizeToFit()
     }
     
   }
