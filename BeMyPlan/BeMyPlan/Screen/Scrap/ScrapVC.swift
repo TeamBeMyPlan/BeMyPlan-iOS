@@ -8,7 +8,7 @@
 /*
  NotificationCenter.default.post(name: NSNotification.Name("headerReload"),
                                  object: nil)
-
+ 
  NotificationCenter.default.addObserver(self,
                                         selector: #selector(headerReload),
                                         name: NSNotification.Name("headerReload"),
@@ -64,4 +64,3 @@ class ScrapVC: UIViewController {
 }
 
 // MARK: - Extension Part
-

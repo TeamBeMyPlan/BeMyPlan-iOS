@@ -11,8 +11,6 @@ class HomeVC: UIViewController {
   
   // MARK: - Vars & Lets Part
   
-  
-  
   // MARK: - UI Component Part
   @IBOutlet var naviView: UIView!{
     didSet {
@@ -42,7 +40,6 @@ class HomeVC: UIViewController {
     }
   }
   
-  
   @IBOutlet var mainCardViewHeightConstraint: NSLayoutConstraint! {
     didSet {
       let screenWidth = UIScreen.main.bounds.width
@@ -67,12 +64,9 @@ class HomeVC: UIViewController {
       let screenWidth = UIScreen.main.bounds.width
       let cellWidth = screenWidth * (160/375)
       let cellHeight = cellWidth * (208/160)
-      
       mainEditorViewHeightConstraint.constant = cellHeight + 75
     }
   }
-  
-  
   
   // MARK: - Life Cycle Part
   
