@@ -50,9 +50,9 @@ class SignUpVC: UIViewController {
     setBoxViewUI()
     addTapGesture()
     addToolbar(textfields: [nicknameInputTextField])
-    setBtn()
+    setBtnStatus()
     setTextField()
-    
+    addBtnActions()
   }
   
   // MARK: - IBAction Part
@@ -71,16 +71,6 @@ class SignUpVC: UIViewController {
     statusList[2] = !statusList[2]
     manageTotalStatus()
   }
-  
-  @IBAction func pressUseDetail(_ sender: Any) {
-  }
-  @IBAction func pressInfoDetail(_ sender: Any) {
-  }
-  
-  @IBAction func pressStart(_ sender: Any) {
-  }
-  
-  
   
   // MARK: - Custom Method Part
   private func setBoxViewUI() {
@@ -123,7 +113,7 @@ class SignUpVC: UIViewController {
     infoAgreeImageView.image = statusList[2] ? ImageLiterals.SignUp.checkonIcon : ImageLiterals.SignUp.checkoffIcon
   }
   
-  private func setBtn() {
+  private func setBtnStatus() {
     startBtn.isEnabled = false
     startBtn.backgroundColor = .grey04
   }
@@ -131,7 +121,6 @@ class SignUpVC: UIViewController {
   private func setTextField() {
     nicknameInputTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
   }
-  
   
   private func setCountLabel(){
     if let count = nicknameInputTextField.text?.count{
@@ -150,13 +139,11 @@ class SignUpVC: UIViewController {
         nicknameInputTextField.layer.borderColor = UIColor.alertRed.cgColor
         isNicknameValid = false
         
-        
         if text.count > 20{
           let maxIndex = text.index(text.startIndex, offsetBy: 20)
           let newString = String(text[text.startIndex..<maxIndex])
           nicknameInputTextField.text = newString
         }
-        
         //경고문구..!까지 띄우기
         
       }else{
@@ -173,10 +160,7 @@ class SignUpVC: UIViewController {
           nicknameInputTextField.layer.cornerRadius = 5
           nicknameInputTextField.layer.borderColor = UIColor.alertRed.cgColor
           isNicknameValid = false
-
-          
         }
-
       }
     }
   }
@@ -191,13 +175,23 @@ class SignUpVC: UIViewController {
     return pred.evaluate(with: nickname)
   }
   
+  private func addBtnActions() {
+    startBtn.press {
+      self.makeAlert(alertCase: .requestAlert, content: "회원가입을 그만두시겠습니까?") {
+        //실제로는 이방법이 아니라 dismiss 되었을때 completion에 새로운 escaping closure를 선언해서 파라미터로 받아와서 해야한다....!
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.001) {
+          self.makeAlert(alertCase:   .requestAlert, content: "닉네임을 수정할 수 없습니다.\n이대로 가입을 진행할까요?") {
+            print("SignUp 커스텀 Alert 완료")
+          }
+        }
+      }
+    }
+  }
   
   // MARK: - @objc Function Part
   @objc func textFieldDidChange() {
     checkMaxLabelCount()
     setCountLabel()
-    
-    
   }
   
 }
