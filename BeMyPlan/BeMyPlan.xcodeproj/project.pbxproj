@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2972C397D40E36F815A978D7 /* Pods_BeMyPlan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0439E65ACFE841D361CB7900 /* Pods_BeMyPlan.framework */; };
 		52E26A8D278C17A800D84F0C /* TravelSpotFilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E26A8C278C17A800D84F0C /* TravelSpotFilterVC.swift */; };
+		F21AFAA027919A8000A84633 /* NoTitleCustomAlert.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F21AFA9F27919A8000A84633 /* NoTitleCustomAlert.storyboard */; };
+		F21AFAA827919BA200A84633 /* NoTitleCustomAlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21AFAA727919BA200A84633 /* NoTitleCustomAlertVC.swift */; };
 		F261EC7927873A7D00AF094F /* MainCardCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F261EC7727873A7D00AF094F /* MainCardCVC.swift */; };
 		F261EC7A27873A7D00AF094F /* MainCardCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F261EC7827873A7D00AF094F /* MainCardCVC.xib */; };
 		F261EC7C27873D3C00AF094F /* MainCardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F261EC7B27873D3C00AF094F /* MainCardData.swift */; };
@@ -180,6 +182,8 @@
 		4D2A2785C068D6F29C524F4D /* Pods-BeMyPlan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeMyPlan.release.xcconfig"; path = "Target Support Files/Pods-BeMyPlan/Pods-BeMyPlan.release.xcconfig"; sourceTree = "<group>"; };
 		52E26A8C278C17A800D84F0C /* TravelSpotFilterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelSpotFilterVC.swift; sourceTree = "<group>"; };
 		DAC8660B79B9BFADE94033DF /* Pods-BeMyPlan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeMyPlan.debug.xcconfig"; path = "Target Support Files/Pods-BeMyPlan/Pods-BeMyPlan.debug.xcconfig"; sourceTree = "<group>"; };
+		F21AFA9F27919A8000A84633 /* NoTitleCustomAlert.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NoTitleCustomAlert.storyboard; sourceTree = "<group>"; };
+		F21AFAA727919BA200A84633 /* NoTitleCustomAlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoTitleCustomAlertVC.swift; sourceTree = "<group>"; };
 		F261EC7727873A7D00AF094F /* MainCardCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCardCVC.swift; sourceTree = "<group>"; };
 		F261EC7827873A7D00AF094F /* MainCardCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainCardCVC.xib; sourceTree = "<group>"; };
 		F261EC7B27873D3C00AF094F /* MainCardData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCardData.swift; sourceTree = "<group>"; };
@@ -403,6 +407,23 @@
 				4D2A2785C068D6F29C524F4D /* Pods-BeMyPlan.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		F21AFA9A279187E900A84633 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				F21AFAA327919AA400A84633 /* NoTitle */,
+			);
+			path = Alert;
+			sourceTree = "<group>";
+		};
+		F21AFAA327919AA400A84633 /* NoTitle */ = {
+			isa = PBXGroup;
+			children = (
+				F21AFA9F27919A8000A84633 /* NoTitleCustomAlert.storyboard */,
+				F21AFAA727919BA200A84633 /* NoTitleCustomAlertVC.swift */,
+			);
+			path = NoTitle;
 			sourceTree = "<group>";
 		};
 		F261EC7627873A3F00AF094F /* MainCardItem */ = {
@@ -841,6 +862,7 @@
 		FD3211C627843F64007D63D5 /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				F21AFA9A279187E900A84633 /* Alert */,
 				FD2D4DBF278D579A002084B9 /* Components */,
 				FD3151A0278D0C5D0076D92E /* Plan */,
 				FDF980D92786E02C0009A14E /* Base */,
@@ -1108,6 +1130,7 @@
 				FD09DDE627856A31006DA050 /* map_present_direction.png in Resources */,
 				FDF980C62786D1A40009A14E /* Home.storyboard in Resources */,
 				FD09DDDF27856A31006DA050 /* map_present_tracking.png in Resources */,
+				F21AFAA027919A8000A84633 /* NoTitleCustomAlert.storyboard in Resources */,
 				FD09DDD727856A31006DA050 /* map_pin_custom@3x.png in Resources */,
 				FD09DDDA27856A31006DA050 /* copyright.png in Resources */,
 				FD09DDD827856A31006DA050 /* map_pinup@3x.png in Resources */,
@@ -1256,6 +1279,7 @@
 				FDF980D22786D2EB0009A14E /* TravelSpotVC.swift in Sources */,
 				FD09DE2927857E25006DA050 /* StoryboardLiterals.swift in Sources */,
 				FDC47DF32789524A00A152E8 /* PreviewRecommendData.swift in Sources */,
+				F21AFAA827919BA200A84633 /* NoTitleCustomAlertVC.swift in Sources */,
 				FDF980C12786D14B0009A14E /* setDefaultFonts.swift in Sources */,
 				FD09DE0727857971006DA050 /* calculateTopInset.swift in Sources */,
 				FDF980E32786E7E90009A14E /* BaseContainerView.swift in Sources */,

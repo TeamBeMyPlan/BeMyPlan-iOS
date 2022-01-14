@@ -254,10 +254,17 @@
                                     <action selector="startSignUp:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="sFo-Ca-uDO"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/20" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kaj-LT-t0c">
+                                <rect key="frame" x="363.5" y="232" width="26.5" height="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" name="grey3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="kaj-LT-t0c" firstAttribute="top" secondItem="M0P-MK-AlA" secondAttribute="bottom" constant="6" id="3Pl-9W-QRQ"/>
                             <constraint firstItem="H3g-ei-6b6" firstAttribute="trailing" secondItem="M0P-MK-AlA" secondAttribute="trailing" id="4f3-DT-1jL"/>
                             <constraint firstItem="H3g-ei-6b6" firstAttribute="leading" secondItem="M0P-MK-AlA" secondAttribute="leading" id="DNM-1J-sF2"/>
                             <constraint firstItem="M0P-MK-AlA" firstAttribute="top" secondItem="Whc-qG-lYu" secondAttribute="bottom" constant="20" id="FNj-Ga-oju"/>
@@ -271,6 +278,7 @@
                             <constraint firstItem="Whc-qG-lYu" firstAttribute="leading" secondItem="4D1-oW-2sI" secondAttribute="leading" id="YXT-QM-8To"/>
                             <constraint firstItem="4D1-oW-2sI" firstAttribute="top" secondItem="sSf-Ao-gO3" secondAttribute="bottom" constant="29" id="bf2-dN-xaC"/>
                             <constraint firstItem="ije-MF-ydR" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="gKS-oD-3xb"/>
+                            <constraint firstItem="kaj-LT-t0c" firstAttribute="trailing" secondItem="M0P-MK-AlA" secondAttribute="trailing" id="hAR-Sn-k5A"/>
                             <constraint firstItem="Whc-qG-lYu" firstAttribute="top" secondItem="4D1-oW-2sI" secondAttribute="bottom" constant="4" id="ifY-hm-tLS"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="ije-MF-ydR" secondAttribute="trailing" id="xQs-GU-gaj"/>
                         </constraints>
@@ -278,6 +286,7 @@
                     <connections>
                         <outlet property="boxView" destination="H3g-ei-6b6" id="Cbz-IG-elB"/>
                         <outlet property="infoAgreeImageView" destination="yOu-Tf-OKn" id="hQW-Hw-fLa"/>
+                        <outlet property="nicknameCountLabel" destination="kaj-LT-t0c" id="E0a-QU-UW9"/>
                         <outlet property="nicknameInputTextField" destination="M0P-MK-AlA" id="4y7-9a-lIB"/>
                         <outlet property="startBtn" destination="ije-MF-ydR" id="yOq-Md-7Me"/>
                         <outlet property="totalAgreeImageView" destination="xs7-Hq-lrY" id="Iht-d4-Vvy"/>
@@ -301,6 +310,9 @@
         </namedColor>
         <namedColor name="grey2">
             <color red="0.36470588235294116" green="0.40784313725490196" blue="0.47843137254901963" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="grey3">
+            <color red="0.5690000057220459" green="0.60799998044967651" blue="0.67100000381469727" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="grey4">
             <color red="0.79607843137254897" green="0.81568627450980391" blue="0.84313725490196079" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

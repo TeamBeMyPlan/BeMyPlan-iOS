@@ -10,26 +10,23 @@ import UIKit
 class SignUpVC: UIViewController {
   
   // MARK: - Vars & Lets Part
-  var totalAgreeStatus: Bool = false {
+  
+  private var isNicknameValid : Bool = false {
     didSet {
-      setCheckTotalImage()
+      setStartBtnStatus()
+    }
+  }
+  private var statusList : [Bool] = [false,false,false]{
+    didSet{
+      showCheckImageForStatus()
+      setStartBtnStatus()
     }
   }
   
-  var useAgreeStatus: Bool = false {
-    didSet {
-      setCheckUseImage()
-    }
-  }
-  
-  var infoAgreeStatus: Bool = false {
-    didSet {
-      setCheckInfoImage()
-    }
-  }
   
   // MARK: - UI Component Part
   
+  @IBOutlet var nicknameCountLabel: UILabel!
   
   @IBOutlet var nicknameInputTextField: UITextField! {
     didSet {
@@ -38,7 +35,6 @@ class SignUpVC: UIViewController {
       nicknameInputTextField.leftViewMode = UITextField.ViewMode.always
       nicknameInputTextField.delegate = self
       
-      setTextField()
     }
   }
   @IBOutlet var boxView: UIView!
@@ -55,6 +51,7 @@ class SignUpVC: UIViewController {
     addTapGesture()
     addToolbar(textfields: [nicknameInputTextField])
     setBtn()
+    setTextField()
     
   }
   
@@ -63,13 +60,16 @@ class SignUpVC: UIViewController {
   }
   
   @IBAction func pressTotalAgree(_ sender: Any) {
-    totalAgreeStatus = !totalAgreeStatus
+    statusList[0] = !statusList[0]
+    manageStatusList()
   }
   @IBAction func pressUseAgree(_ sender: Any) {
-    useAgreeStatus = !useAgreeStatus
+    statusList[1] = !statusList[1]
+    manageTotalStatus()
   }
   @IBAction func pressInfoAgree(_ sender: Any) {
-    infoAgreeStatus = !infoAgreeStatus
+    statusList[2] = !statusList[2]
+    manageTotalStatus()
   }
   
   @IBAction func pressUseDetail(_ sender: Any) {
@@ -93,18 +93,34 @@ class SignUpVC: UIViewController {
     //닉네임 입력 했을 때 --> 시작하기 활성화
   }
   
-  private func setCheckTotalImage() {
-    totalAgreeImageView.image = totalAgreeStatus ? ImageLiterals.SignUp.checkonIcon : ImageLiterals.SignUp.checkoffIcon
-    useAgreeImageView.image = totalAgreeStatus ? ImageLiterals.SignUp.checkonIcon : ImageLiterals.SignUp.checkoffIcon
-    infoAgreeImageView.image = totalAgreeStatus ? ImageLiterals.SignUp.checkonIcon : ImageLiterals.SignUp.checkoffIcon
+  private func setStartBtnStatus(){
+    if statusList[0] && isNicknameValid{
+      startBtn.backgroundColor = .bemyBlue
+      startBtn.isEnabled = true
+    } else {
+      startBtn.backgroundColor = .grey04
+      startBtn.isEnabled = false
+    }
   }
   
-  private func setCheckUseImage() {
-    useAgreeImageView.image = useAgreeStatus ? ImageLiterals.SignUp.checkonIcon : ImageLiterals.SignUp.checkoffIcon
+  
+  private func manageStatusList(){
+    statusList[1] = statusList[0]
+    statusList[2] = statusList[0]
   }
   
-  private func setCheckInfoImage() {
-    infoAgreeImageView.image = infoAgreeStatus ? ImageLiterals.SignUp.checkonIcon : ImageLiterals.SignUp.checkoffIcon
+  private func manageTotalStatus(){
+    if statusList[1] && statusList[2]{
+      statusList[0] = true
+    }else{
+      statusList[0] = false
+    }
+  }
+  
+  private func showCheckImageForStatus(){
+    totalAgreeImageView.image = statusList[0] ? ImageLiterals.SignUp.checkonIcon : ImageLiterals.SignUp.checkoffIcon
+    useAgreeImageView.image = statusList[1] ? ImageLiterals.SignUp.checkonIcon : ImageLiterals.SignUp.checkoffIcon
+    infoAgreeImageView.image = statusList[2] ? ImageLiterals.SignUp.checkonIcon : ImageLiterals.SignUp.checkoffIcon
   }
   
   private func setBtn() {
@@ -117,14 +133,71 @@ class SignUpVC: UIViewController {
   }
   
   
-  // MARK: - @objc Function Part
-  @objc func textFieldDidChange(_ sender:Any?) -> Void {
-    startBtn.isEnabled = nicknameInputTextField.hasText
-    if startBtn.isEnabled == true {
-      startBtn.backgroundColor = .bemyBlue
-    } else{
-      startBtn.backgroundColor = .grey04
+  private func setCountLabel(){
+    if let count = nicknameInputTextField.text?.count{
+      nicknameCountLabel.text = String(count) + "/20"
     }
+  }
+  
+  private func checkMaxLabelCount(){
+    if let text = nicknameInputTextField.text {
+      if text.count > 20 || text.count < 2{
+        // 🪓 주어진 인덱스에서 특정 거리만큼 떨어진 인덱스 반환
+        // 🪓 문자열 자르기
+        nicknameCountLabel.textColor = .alertRed
+        nicknameInputTextField.layer.borderWidth = 1
+        nicknameInputTextField.layer.cornerRadius = 5
+        nicknameInputTextField.layer.borderColor = UIColor.alertRed.cgColor
+        isNicknameValid = false
+        
+        
+        if text.count > 20{
+          let maxIndex = text.index(text.startIndex, offsetBy: 20)
+          let newString = String(text[text.startIndex..<maxIndex])
+          nicknameInputTextField.text = newString
+        }
+        
+        //경고문구..!까지 띄우기
+        
+      }else{
+        
+        if isValidNickname(nickname: nicknameInputTextField.text){
+          isNicknameValid = true
+          nicknameCountLabel.textColor = .grey03
+          nicknameInputTextField.layer.borderWidth = 1
+          nicknameInputTextField.layer.cornerRadius = 5
+          nicknameInputTextField.layer.borderColor = UIColor.grey04.cgColor
+        }else{
+          nicknameCountLabel.textColor = .alertRed
+          nicknameInputTextField.layer.borderWidth = 1
+          nicknameInputTextField.layer.cornerRadius = 5
+          nicknameInputTextField.layer.borderColor = UIColor.alertRed.cgColor
+          isNicknameValid = false
+
+          
+        }
+
+      }
+    }
+  }
+  
+  private func isValidNickname(nickname: String?) -> Bool {
+    guard nickname != nil else { return false }
+    
+    let nickRegEx = "[가-힣A-Za-z0-9]{2,20}"
+    
+    let pred = NSPredicate(format:"SELF MATCHES %@", nickRegEx)
+    print("NICKNAME",nickname,pred.evaluate(with: nickname))
+    return pred.evaluate(with: nickname)
+  }
+  
+  
+  // MARK: - @objc Function Part
+  @objc func textFieldDidChange() {
+    checkMaxLabelCount()
+    setCountLabel()
+    
+    
   }
   
 }
@@ -148,23 +221,23 @@ extension SignUpVC : UITextFieldDelegate{
     nicknameInputTextField.layer.borderColor = UIColor.grey04.cgColor
   }
   
-  func textViewDidChange(_ textField: UITextField) {
-    //      startBtn.setButtonState(isSelected: !nicknameInputTextField.text.isEmpty, title: I18N.Components.next)
-    if let textField = textField as? UITextField {
-      if let text = nicknameInputTextField.text {
-        if text.count > 20 {
-          // 🪓 주어진 인덱스에서 특정 거리만큼 떨어진 인덱스 반환
-          let maxIndex = text.index(text.startIndex, offsetBy: 20)
-          // 🪓 문자열 자르기
-          let newString = String(text[text.startIndex..<maxIndex])
-          nicknameInputTextField.text = newString
-          
-          //경고문구..!까지 띄우기
-          
-        }
-      }
-    }
-  }
+  //  func textViewDidChange(_ textField: UITextField) {
+  //    //      startBtn.setButtonState(isSelected: !nicknameInputTextField.text.isEmpty, title: I18N.Components.next)
+  //    if let textField = textField as? UITextField {
+  //      if let text = nicknameInputTextField.text {
+  //        if text.count > 20 {
+  //          // 🪓 주어진 인덱스에서 특정 거리만큼 떨어진 인덱스 반환
+  //          let maxIndex = text.index(text.startIndex, offsetBy: 20)
+  //          // 🪓 문자열 자르기
+  //          let newString = String(text[text.startIndex..<maxIndex])
+  //          nicknameInputTextField.text = newString
+  //
+  //          //경고문구..!까지 띄우기
+  //
+  //        }
+  //      }
+  //    }
+  //  }
   
   
 }
