@@ -14,9 +14,11 @@ class TravelSpotDetailTVC: UITableViewCell {
   @IBOutlet var contentImage: UIImageView!
   @IBOutlet var nickNameLabel: UILabel!
   @IBOutlet var titleTextView: UITextView!
+  @IBOutlet var scrapBtn: UIButton!
   
   override func awakeFromNib() {
     super.awakeFromNib()
+    setUIs()
   }
   
   override func setSelected(_ selected: Bool, animated: Bool) {
@@ -27,4 +29,12 @@ class TravelSpotDetailTVC: UITableViewCell {
     super.layoutSubviews()
   }
   
+  private func setUIs() {
+    titleTextView.textContainer.maximumNumberOfLines = 2
+    titleTextView.textContainerInset = UIEdgeInsets(top: 0, left: -5, bottom: 0, right: 0)
+  }
+  
+  @IBAction func scrapBtnTapped(_ sender: Any) {
+    scrapBtn.isSelected.toggle()
+  }
 }

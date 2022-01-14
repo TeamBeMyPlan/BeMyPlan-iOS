@@ -83,11 +83,12 @@ extension TravelSpotVC: UICollectionViewDelegateFlowLayout {
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-    let inset = screenWidth * (24/375)
-    return UIEdgeInsets(top: 0, left: inset, bottom: 0, right: inset)
+    return UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 24)
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-    return 20
+//    let inset = screenHeight * (20/812)
+    let inset = screenWidth * (20/375)
+    return inset
   }
 }
