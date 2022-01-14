@@ -56,7 +56,14 @@ class MyPlanWithdrawVC: UIViewController {
   
   private func setButtonActions(){
     nextButton.press {
-      print("다음")
+      self.makeAlert(alertCase: .requestAlert, title: "탈퇴하기", content: "정말 탈퇴하시겠습니까?") {
+        //실제로는 이방법이 아니라 dismiss 되었을때 completion에 새로운 escaping closure를 선언해서 파라미터로 받아와서 해야한다....!
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.001) {
+          self.makeAlert(alertCase: .simpleAlert, title: "탈퇴하기", content: "탈퇴 완료되었습니다.") {
+            print("탈퇴하기 커스텀 Alert 완료")
+          }
+        }
+      }
     }
   }
   
@@ -78,8 +85,8 @@ class MyPlanWithdrawVC: UIViewController {
   @objc private func keyboardWillShow(_ notification: Notification) {
     let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as! Double
     if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-        let keyboardRectangle = keyboardFrame.cgRectValue
-        let keyboardHeight = keyboardRectangle.height
+      let keyboardRectangle = keyboardFrame.cgRectValue
+      let keyboardHeight = keyboardRectangle.height
       nextButtonBottomConstraint.constant = keyboardHeight
     }
     
