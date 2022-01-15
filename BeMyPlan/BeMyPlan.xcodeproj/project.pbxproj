@@ -159,8 +159,6 @@
 		FDF980E52786E8370009A14E /* XibPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF980E42786E8370009A14E /* XibPresentable.swift */; };
 		FDF980E82786F1910009A14E /* MyPlanVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF980E72786F1910009A14E /* MyPlanVC.swift */; };
 		FDF980EA2786F19D0009A14E /* MyPlan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDF980E92786F19D0009A14E /* MyPlan.storyboard */; };
-		FDF980EF278821AD0009A14E /* Scrap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDF980EE278821AD0009A14E /* Scrap.storyboard */; };
-		FDF980F1278821E90009A14E /* ScrapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF980F0278821E90009A14E /* ScrapVC.swift */; };
 		FDF980F4278825EF0009A14E /* TabBarIconView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDF980F3278825EF0009A14E /* TabBarIconView.xib */; };
 		FDF980F6278826140009A14E /* TabBarIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF980F5278826140009A14E /* TabBarIconView.swift */; };
 		FDF980F8278827000009A14E /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FDF980F7278827000009A14E /* Colors.xcassets */; };
@@ -345,8 +343,6 @@
 		FDF980E42786E8370009A14E /* XibPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibPresentable.swift; sourceTree = "<group>"; };
 		FDF980E72786F1910009A14E /* MyPlanVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlanVC.swift; sourceTree = "<group>"; };
 		FDF980E92786F19D0009A14E /* MyPlan.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyPlan.storyboard; sourceTree = "<group>"; };
-		FDF980EE278821AD0009A14E /* Scrap.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Scrap.storyboard; sourceTree = "<group>"; };
-		FDF980F0278821E90009A14E /* ScrapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapVC.swift; sourceTree = "<group>"; };
 		FDF980F3278825EF0009A14E /* TabBarIconView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabBarIconView.xib; sourceTree = "<group>"; };
 		FDF980F5278826140009A14E /* TabBarIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarIconView.swift; sourceTree = "<group>"; };
 		FDF980F7278827000009A14E /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
@@ -843,7 +839,6 @@
 				FDF980D92786E02C0009A14E /* Base */,
 				FD09DE1827857CA6006DA050 /* Home */,
 				FDF980C32786D1670009A14E /* TravelSpot */,
-				FDF980ED278821A30009A14E /* Scrap */,
 				FDF980E62786F1810009A14E /* MyPlan */,
 				FD4C86B6278C7A3800D37A2D /* Payment */,
 				FDF980C42786D1900009A14E /* PlanList */,
@@ -997,15 +992,6 @@
 			path = MyPlan;
 			sourceTree = "<group>";
 		};
-		FDF980ED278821A30009A14E /* Scrap */ = {
-			isa = PBXGroup;
-			children = (
-				FDF980EE278821AD0009A14E /* Scrap.storyboard */,
-				FDF980F0278821E90009A14E /* ScrapVC.swift */,
-			);
-			path = Scrap;
-			sourceTree = "<group>";
-		};
 		FDF980F2278825E00009A14E /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -1126,7 +1112,6 @@
 				FD09DDE427856A31006DA050 /* info_box_tail.png in Resources */,
 				FD2D4DBA278D3DCE002084B9 /* PlanDetailInformationTVC.xib in Resources */,
 				FD4C86B8278C7A7200D37A2D /* Payment.storyboard in Resources */,
-				FDF980EF278821AD0009A14E /* Scrap.storyboard in Resources */,
 				FD2D4DC1278D57A5002084B9 /* ProgressBar.xib in Resources */,
 				FD4C86B3278BD81900D37A2D /* PreviewIconContainerView.xib in Resources */,
 				FDC47E0C2789742800A152E8 /* TravelSpotCVC.xib in Resources */,
@@ -1265,7 +1250,6 @@
 				FDC47DEB278951FF00A152E8 /* PreviewHeaderData.swift in Sources */,
 				FD2D4DC9278D8190002084B9 /* PlanDetailSummaryRouteTVC.swift in Sources */,
 				FD20C609278EB94100AC6E34 /* MyPlanCVUserResuableView.swift in Sources */,
-				FDF980F1278821E90009A14E /* ScrapVC.swift in Sources */,
 				FD3211AD27841948007D63D5 /* ViewController.swift in Sources */,
 				F2C5F18E2786EACB00BE4036 /* MainCardView.swift in Sources */,
 				FD09DE2227857D00006DA050 /* SplashVC.swift in Sources */,
