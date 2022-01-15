@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeVC: UIViewController {
+class HomeVC: UIViewController, UIGestureRecognizerDelegate {
   
 
   
@@ -65,6 +65,11 @@ class HomeVC: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     setDummyData()
+  }
+  
+  override func viewDidAppear(_ animated: Bool) {
+//    navigationController?.interactivePopGestureRecognizer?.delegate = self
+//    navigationController?.interactivePopGestureRecognizer?.isEnabled = true
   }
   
   override func viewDidLayoutSubviews() {

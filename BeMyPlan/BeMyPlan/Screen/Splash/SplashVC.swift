@@ -27,7 +27,7 @@ class SplashVC: UIViewController {
   // MARK: - Custom Method Part
   
   private func startSplash(){
-    UIView.animateKeyframes(withDuration: 3, delay: 0, options: .allowUserInteraction) {
+    UIView.animateKeyframes(withDuration: 2.5, delay: 0, options: .allowUserInteraction) {
       UIView.addKeyframe(withRelativeStartTime: 1/6,
                          relativeDuration: 1/3) {
         self.splashIcon.alpha = 1
@@ -39,14 +39,15 @@ class SplashVC: UIViewController {
         self.splashIconNoTitle.alpha = 0
       }
     } completion: { _ in
-      
+      self.moveBaseVC()
     }
   }
   
   private func moveBaseVC(){
-    let baseVC = UIStoryboard.list(.base).instantiateInitialViewController()!
-    
-    self.navigationController?.pushViewController(baseVC, animated: false)
+    guard let baseVC = UIStoryboard.list(.base).instantiateViewController(withIdentifier: BaseNC.className) as? BaseNC else {return}
+    baseVC.modalPresentationStyle = .fullScreen
+    self.present(baseVC, animated: false, completion: nil)
+//    self.navigationController?.pushViewController(baseVC, animated: false)
   }
   
   // MARK: - @objc Function Part

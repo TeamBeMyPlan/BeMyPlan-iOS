@@ -52,12 +52,3 @@ class PlanPreviewRecommendTVC: UITableViewCell {
   // MARK: - @objc Function Part
 
 }
-
-// MARK: - Extension Part
-
-
-
-
-
-
-

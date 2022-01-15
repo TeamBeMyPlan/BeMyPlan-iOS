@@ -137,6 +137,7 @@
 		FD3566532792AF2C0082B4CE /* ScrapEmptyContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3566492792AF2C0082B4CE /* ScrapEmptyContainerView.swift */; };
 		FD3566542792AF2C0082B4CE /* ScrapEmptyContainerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD35664A2792AF2C0082B4CE /* ScrapEmptyContainerView.xib */; };
 		FD3566552792AFCD0082B4CE /* PlanDetailSelectDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD61AFA427902C9400D39F47 /* PlanDetailSelectDayView.swift */; };
+		FD3566572792B2530082B4CE /* BaseNC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3566562792B2530082B4CE /* BaseNC.swift */; };
 		FD4C86B0278BD17F00D37A2D /* setImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4C86AF278BD17F00D37A2D /* setImage.swift */; };
 		FD4C86B3278BD81900D37A2D /* PreviewIconContainerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD4C86B2278BD81900D37A2D /* PreviewIconContainerView.xib */; };
 		FD4C86B5278BD82D00D37A2D /* PreviewIconContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4C86B4278BD82D00D37A2D /* PreviewIconContainerView.swift */; };
@@ -346,6 +347,7 @@
 		FD3566482792AF2C0082B4CE /* ScrapEmptyCotainerCVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScrapEmptyCotainerCVC.xib; sourceTree = "<group>"; };
 		FD3566492792AF2C0082B4CE /* ScrapEmptyContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrapEmptyContainerView.swift; sourceTree = "<group>"; };
 		FD35664A2792AF2C0082B4CE /* ScrapEmptyContainerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScrapEmptyContainerView.xib; sourceTree = "<group>"; };
+		FD3566562792B2530082B4CE /* BaseNC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNC.swift; sourceTree = "<group>"; };
 		FD4C86AF278BD17F00D37A2D /* setImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = setImage.swift; sourceTree = "<group>"; };
 		FD4C86B2278BD81900D37A2D /* PreviewIconContainerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreviewIconContainerView.xib; sourceTree = "<group>"; };
 		FD4C86B4278BD82D00D37A2D /* PreviewIconContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewIconContainerView.swift; sourceTree = "<group>"; };
@@ -1101,6 +1103,7 @@
 				FDF980F2278825E00009A14E /* TabBar */,
 				FDF980DF2786E7C60009A14E /* BaseContainerView */,
 				FDF980DA2786E2F60009A14E /* BaseVC.swift */,
+				FD3566562792B2530082B4CE /* BaseNC.swift */,
 				FDF980F92788AE8C0009A14E /* Base.storyboard */,
 			);
 			path = Base;
@@ -1397,6 +1400,7 @@
 				FDC47DEF2789521C00A152E8 /* PreviewPhotoData.swift in Sources */,
 				FDC47DEB278951FF00A152E8 /* PreviewHeaderData.swift in Sources */,
 				FD2D4DC9278D8190002084B9 /* PlanDetailSummaryRouteTVC.swift in Sources */,
+				FD3566572792B2530082B4CE /* BaseNC.swift in Sources */,
 				FD20C609278EB94100AC6E34 /* MyPlanCVUserResuableView.swift in Sources */,
 				FD3211AD27841948007D63D5 /* ViewController.swift in Sources */,
 				F2C5F18E2786EACB00BE4036 /* MainCardView.swift in Sources */,
