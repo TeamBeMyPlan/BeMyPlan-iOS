@@ -96,6 +96,13 @@ class MainCardView: UIView {
 }
 
 // MARK: - Extension Part
+
+extension MainCardView : UICollectionViewDelegate{
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .movePlanPreview), object: nil)
+  }
+}
+
 extension MainCardView: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return mainCardDataList.count

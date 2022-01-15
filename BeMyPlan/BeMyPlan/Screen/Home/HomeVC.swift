@@ -8,6 +8,7 @@
 import UIKit
 
 class HomeVC: UIViewController {
+  
 
   
   // MARK: - UI Component Part
@@ -56,9 +57,9 @@ class HomeVC: UIViewController {
       let screenWidth = UIScreen.main.bounds.width
       let cellWidth = screenWidth * (160/375)
       let cellHeight = cellWidth * (208/160)
+      mainEditorViewHeightConstraint.constant = cellHeight + 75
     }
   }
-  
   
   // MARK: - Life Cycle Part
   override func viewDidLoad() {

@@ -31,26 +31,26 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icn_transfortaion" translatesAutoresizingMaskIntoConstraints="NO" id="uyo-37-hOp">
-                        <rect key="frame" x="20" y="42" width="16" height="16"/>
+                        <rect key="frame" x="20" y="52" width="16" height="16"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="16" id="cHf-R7-6T8"/>
                             <constraint firstAttribute="height" constant="16" id="rIY-oE-bsO"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3분" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aRY-Ho-SbI">
-                        <rect key="frame" x="37" y="42.5" width="18" height="15"/>
+                        <rect key="frame" x="37" y="53.5" width="18" height="15"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" name="grey3"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="uyo-37-hOp" firstAttribute="top" secondItem="oXX-Nb-wdQ" secondAttribute="top" constant="16" id="Odl-51-jFg"/>
+                    <constraint firstItem="uyo-37-hOp" firstAttribute="top" secondItem="oXX-Nb-wdQ" secondAttribute="top" constant="26" id="Odl-51-jFg"/>
                     <constraint firstItem="aRY-Ho-SbI" firstAttribute="leading" secondItem="uyo-37-hOp" secondAttribute="trailing" constant="1" id="TP0-VC-keh"/>
                     <constraint firstItem="uyo-37-hOp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Wfb-b0-4v5"/>
                     <constraint firstItem="oXX-Nb-wdQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="26" id="Z9p-hJ-Frs"/>
                     <constraint firstItem="kqp-H7-0ig" firstAttribute="leading" secondItem="oXX-Nb-wdQ" secondAttribute="trailing" constant="20" id="caR-6R-mCo"/>
-                    <constraint firstItem="aRY-Ho-SbI" firstAttribute="centerY" secondItem="uyo-37-hOp" secondAttribute="centerY" id="jiK-0J-IsI"/>
+                    <constraint firstItem="aRY-Ho-SbI" firstAttribute="centerY" secondItem="uyo-37-hOp" secondAttribute="centerY" constant="1" id="jiK-0J-IsI"/>
                     <constraint firstItem="oXX-Nb-wdQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="72" id="kPJ-ue-heb"/>
                     <constraint firstItem="kqp-H7-0ig" firstAttribute="centerY" secondItem="oXX-Nb-wdQ" secondAttribute="centerY" id="u5w-e1-4En"/>
                 </constraints>

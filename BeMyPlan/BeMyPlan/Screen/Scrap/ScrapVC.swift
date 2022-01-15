@@ -51,4 +51,3 @@ class ScrapVC: UIViewController {
 }
 
 // MARK: - Extension Part
-

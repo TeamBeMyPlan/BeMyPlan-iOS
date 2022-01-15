@@ -12,8 +12,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
   var window: UIWindow?
   func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-
-    window!.rootViewController = UIStoryboard(name: "SignUp", bundle: nil).instantiateInitialViewController()!
     guard let _ = (scene as? UIWindowScene) else { return }
     window!.rootViewController = UIStoryboard(name: "Base", bundle: nil).instantiateInitialViewController()!
   }

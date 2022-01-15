@@ -53,6 +53,9 @@ class PlanPreviewVC: UIViewController {
     setScrabImage()
     addButtonActions()
   }
+  @IBAction func backButtonClicked(_ sender: Any) {
+    self.navigationController?.popViewController(animated: true)
+  }
   // MARK: - Custom Method Part
   
   private func addButtonActions(){

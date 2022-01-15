@@ -18,7 +18,7 @@ class PlanDetailSummaryRouteTVC: UITableViewCell,UITableViewRegisterable {
   // middle 6, top 26, final
   
   override func awakeFromNib() {
-        super.awakeFromNib()
+    super.awakeFromNib()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -55,6 +55,7 @@ class PlanDetailSummaryRouteTVC: UITableViewCell,UITableViewRegisterable {
       case .final:
         dotTopConstraint.constant = 6
     }
+    self.contentView.layoutIfNeeded()
     drawLine(order: order)
   }
   
@@ -63,41 +64,39 @@ class PlanDetailSummaryRouteTVC: UITableViewCell,UITableViewRegisterable {
     var endPoint :CGPoint
     switch(order){
       case .first:
-        startPoint = CGPoint(x: dotIconView.bounds.midX,
-                             y: dotIconView.bounds.midY)
-        endPoint = CGPoint(x: dotIconView.bounds.midX,
-                           y: dotIconView.bounds.midY + 50)
+        startPoint = CGPoint(x: dotIconView.frame.midX,
+                             y: dotIconView.frame.midY )
+        endPoint = CGPoint(x: dotIconView.frame.midX,
+                           y: dotIconView.frame.midY + 60)
         
       case .middle:
-        startPoint = CGPoint(x: dotIconView.bounds.midX,
-                             y: dotIconView.bounds.midY - 8)
-        endPoint = CGPoint(x: dotIconView.bounds.midX,
-                           y: dotIconView.bounds.midY + 50)
-        
+        startPoint = CGPoint(x: dotIconView.frame.midX,
+                             y: dotIconView.frame.midY - 16)
+        endPoint = CGPoint(x: dotIconView.frame.midX,
+                           y: dotIconView.frame.midY + 55)
         
       case .final:
-        startPoint = CGPoint(x: dotIconView.bounds.midX,
-                             y: dotIconView.bounds.midY - 8)
-        endPoint = CGPoint(x: dotIconView.bounds.midX,
-                           y: dotIconView.bounds.midY)
+        startPoint = CGPoint(x: dotIconView.frame.midX,
+                             y: dotIconView.frame.midY - 46 )
+        endPoint = CGPoint(x: dotIconView.frame.midX,
+                           y: dotIconView.frame.midY - 15)
         
     }
-  
-    
+    print("dotPoint",startPoint,endPoint)
     contentView.createDashedLine(from: startPoint,
                                  to: endPoint,
                                  color: .bemyBlue,
-                                 strokeLength: 100,
+                                 strokeLength: 2,
                                  gapLength: 2,
                                  width: 1)
   }
     
 }
 
-enum TransportCase{
-  case walk
-  case bus
-  case car
+enum TransportCase : String{
+  case walk = "도보"
+  case bus = "버스"
+  case car = "택시"
 }
 
 enum OrderCase{

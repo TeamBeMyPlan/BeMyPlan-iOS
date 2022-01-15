@@ -14,6 +14,9 @@ enum BaseNotiList{
   case moveMyPlanTab
   case moveSettingView
   case moveSettingWithdrawView
+  case movePlanPreview // 미리보기 뷰
+  case movePlanList // 여행지 목록
+  case movePlanDetail // 구매후 뷰
   
   static func makeNotiName(list : BaseNotiList) -> NSNotification.Name{
     return Notification.Name(String(describing: list))
@@ -33,7 +36,31 @@ extension BaseVC{
       self.navigationController?.pushViewController(withdrawVC, animated: true)
     }
     
+    // Home
     
-
+    addObserverAction(keyName: BaseNotiList.makeNotiName(list: .movePlanPreview)) { _ in
+      guard let previewVC = UIStoryboard.list(.planPreview).instantiateViewController(withIdentifier: PlanPreviewVC.className) as? PlanPreviewVC else {return}
+      self.navigationController?.pushViewController(previewVC, animated: true)
+    }
+    
+    addObserverAction(keyName: BaseNotiList.makeNotiName(list: .movePlanDetail)) { _ in
+      guard let previewVC = UIStoryboard.list(.planDetail).instantiateViewController(withIdentifier: PlanDetailVC.className) as? PlanDetailVC else {return}
+      self.navigationController?.pushViewController(previewVC, animated: true)
+    }
+    
+    addObserverAction(keyName: BaseNotiList.makeNotiName(list: .movePlanList)) { _ in
+      guard let spotlistVC = UIStoryboard.list(.planList).instantiateViewController(withIdentifier: PlanListVC.className) as? PlanListVC else {return}
+      self.navigationController?.pushViewController(spotlistVC, animated: true)
+    }
+    
+    /**
+    hello my name is hyunju An
+    whats your name???
+    DDogak DDogak
+     */
+    addObserverAction(keyName: BaseNotiList.makeNotiName(list: .movePlanDetail)) { _ in
+      
+    }
+    
   }
 }
