@@ -138,6 +138,7 @@
 		FD3566542792AF2C0082B4CE /* ScrapEmptyContainerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD35664A2792AF2C0082B4CE /* ScrapEmptyContainerView.xib */; };
 		FD3566552792AFCD0082B4CE /* PlanDetailSelectDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD61AFA427902C9400D39F47 /* PlanDetailSelectDayView.swift */; };
 		FD3566572792B2530082B4CE /* BaseNC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3566562792B2530082B4CE /* BaseNC.swift */; };
+		FD3566592792BA190082B4CE /* LoginNC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3566582792BA190082B4CE /* LoginNC.swift */; };
 		FD4C86B0278BD17F00D37A2D /* setImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4C86AF278BD17F00D37A2D /* setImage.swift */; };
 		FD4C86B3278BD81900D37A2D /* PreviewIconContainerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD4C86B2278BD81900D37A2D /* PreviewIconContainerView.xib */; };
 		FD4C86B5278BD82D00D37A2D /* PreviewIconContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4C86B4278BD82D00D37A2D /* PreviewIconContainerView.swift */; };
@@ -348,6 +349,7 @@
 		FD3566492792AF2C0082B4CE /* ScrapEmptyContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrapEmptyContainerView.swift; sourceTree = "<group>"; };
 		FD35664A2792AF2C0082B4CE /* ScrapEmptyContainerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScrapEmptyContainerView.xib; sourceTree = "<group>"; };
 		FD3566562792B2530082B4CE /* BaseNC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNC.swift; sourceTree = "<group>"; };
+		FD3566582792BA190082B4CE /* LoginNC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNC.swift; sourceTree = "<group>"; };
 		FD4C86AF278BD17F00D37A2D /* setImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = setImage.swift; sourceTree = "<group>"; };
 		FD4C86B2278BD81900D37A2D /* PreviewIconContainerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreviewIconContainerView.xib; sourceTree = "<group>"; };
 		FD4C86B4278BD82D00D37A2D /* PreviewIconContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewIconContainerView.swift; sourceTree = "<group>"; };
@@ -673,6 +675,7 @@
 				F294EC29278EBC4D001069F8 /* Social Login */,
 				FD09DE1F27857CF2006DA050 /* LoginVC.swift */,
 				FDF980CD2786D2550009A14E /* Login.storyboard */,
+				FD3566582792BA190082B4CE /* LoginNC.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1383,6 +1386,7 @@
 				FDF980D22786D2EB0009A14E /* TravelSpotVC.swift in Sources */,
 				FD008829278FE94C00C194B5 /* PlanDetailInfoPhotoCVC.swift in Sources */,
 				FD3566512792AF2C0082B4CE /* ScrapEmptyCotainerCVC.swift in Sources */,
+				FD3566592792BA190082B4CE /* LoginNC.swift in Sources */,
 				FD09DE2927857E25006DA050 /* StoryboardLiterals.swift in Sources */,
 				FDC47DF32789524A00A152E8 /* PreviewRecommendData.swift in Sources */,
 				F21AFAA827919BA200A84633 /* CustomAlertVC.swift in Sources */,

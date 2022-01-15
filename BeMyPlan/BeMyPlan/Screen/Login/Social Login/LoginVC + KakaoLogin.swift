@@ -32,6 +32,7 @@ extension LoginVC {
                         dump(error)
                     }
                     //성공해서 성공 VC로 이동
+                  self.moveSignup()
                 }
             }
         }

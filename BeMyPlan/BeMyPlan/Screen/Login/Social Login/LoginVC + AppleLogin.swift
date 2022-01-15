@@ -40,6 +40,8 @@ extension LoginVC : ASAuthorizationControllerDelegate {
       
       //성공할 때 성공VC로 이동
       print("SOCIAL TOKEN", tokenString)
+        self.moveBaseVC()
+
     default:
       //실패할 때 실패VC로 이동
       break

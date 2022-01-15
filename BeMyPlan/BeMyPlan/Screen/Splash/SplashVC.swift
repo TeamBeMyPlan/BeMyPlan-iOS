@@ -11,6 +11,8 @@ class SplashVC: UIViewController {
   
   // MARK: - Vars & Lets Part
   
+  var isLoginComplete = false
+  
   // MARK: - UI Component Part
   @IBOutlet var splashIconNoTitle: UIImageView!
   @IBOutlet var splashIcon: UIImageView!
@@ -39,7 +41,7 @@ class SplashVC: UIViewController {
         self.splashIconNoTitle.alpha = 0
       }
     } completion: { _ in
-      self.moveBaseVC()
+      self.isLoginComplete ? self.moveBaseVC() : self.moveLoginVC()
     }
   }
   
@@ -47,7 +49,15 @@ class SplashVC: UIViewController {
     guard let baseVC = UIStoryboard.list(.base).instantiateViewController(withIdentifier: BaseNC.className) as? BaseNC else {return}
     baseVC.modalPresentationStyle = .fullScreen
     self.present(baseVC, animated: false, completion: nil)
-//    self.navigationController?.pushViewController(baseVC, animated: false)
+  }
+  
+  private func moveLoginVC(){
+    guard let loginVC = UIStoryboard.list(.login).instantiateViewController(withIdentifier: LoginNC.className) as? LoginNC else {return}
+    loginVC
+      .modalPresentationStyle = .fullScreen
+
+    self.present(loginVC, animated: false, completion: nil)
+
   }
   
   // MARK: - @objc Function Part
