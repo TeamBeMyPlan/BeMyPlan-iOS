@@ -9,10 +9,19 @@ import UIKit
 
 class ScrapEmptyCotainerCVC: UICollectionViewCell,UICollectionViewRegisterable {
   static var isFromNib: Bool = true
-
-      override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+  @IBOutlet var titleLabel: UILabel! {
+    didSet {
+      self.titleLabel.text = "여행여행여행여행여행여행여행여행여행여행여행여행여행여행여행여행여행여행여행여행여행여행여행여행여행여행여행여행"
     }
-
+  }
+  
+  
+  override func awakeFromNib() {
+    super.awakeFromNib()
+    setUIs()
+  }
+  
+  private func setUIs() {
+  }
+  
 }

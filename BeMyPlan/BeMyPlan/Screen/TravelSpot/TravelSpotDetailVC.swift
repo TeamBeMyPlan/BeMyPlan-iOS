@@ -39,10 +39,14 @@ class TravelSpotDetailVC: UIViewController {
   }
   
   @IBAction func filterBtn(_ sender: Any) {
-    
+    let vc = UIStoryboard(name: "TravelSpot", bundle: nil).instantiateViewController(withIdentifier: "TravelSpotFilterVC") as! TravelSpotFilterVC
+    presentPanModal(vc)
   }
   
   // MARK: - Custom Method Part
+  private func setUIs() {
+  
+  }
   
   // MARK: - @objc Function Part
 }
@@ -58,8 +62,8 @@ extension TravelSpotDetailVC: UITableViewDataSource {
       return UITableViewCell()
     }
     cell.selectionStyle = .none
-    cell.titleTextView.text = "가나다라마바사아자차카타파하가나다라마바사아자차카타파하"
-    cell.nickNameLabel.text = "yangwon9616yangwon9616yangwon9616"
+    cell.titleTextView.text = "부모님과 함께하는 3박4일 제주 서부 여행 부모님과 함께하는 3박4일"
+    cell.nickNameLabel.text = "thisisuzzwon"
     cell.contentImage.image = UIImage(named: "img")
     return cell
   }
@@ -85,9 +89,6 @@ extension TravelSpotDetailVC: UICollectionViewDelegateFlowLayout {
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//    let inset = screenHeight * (20/812)
-//    let inset = screenWidth * (20/375)
-//    return inset
     return 38
   }
 }

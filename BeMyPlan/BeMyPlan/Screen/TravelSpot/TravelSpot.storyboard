@@ -92,7 +92,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Vix-i0-12b" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="5ak-gt-CyY"/>
-                            <constraint firstItem="Vix-i0-12b" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="fdc-4b-Gut"/>
+                            <constraint firstItem="Vix-i0-12b" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="-44" id="fdc-4b-Gut"/>
                             <constraint firstItem="Vix-i0-12b" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="gFP-6V-xZH"/>
                             <constraint firstItem="mPh-Z6-q6l" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="iFu-1C-jnn"/>
                             <constraint firstItem="mPh-Z6-q6l" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="ofi-kR-3Hq"/>
@@ -101,6 +101,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="headerTopConstraint" destination="fdc-4b-Gut" id="7G9-e2-vvU"/>
                         <outlet property="locationCollectionView" destination="mPh-Z6-q6l" id="AMH-5x-NNG"/>
                         <outlet property="logoView" destination="Vix-i0-12b" id="GmR-tl-AvQ"/>
                     </connections>
