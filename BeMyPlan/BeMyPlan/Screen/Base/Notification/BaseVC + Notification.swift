@@ -58,8 +58,9 @@ extension BaseVC{
     whats your name???
     DDogak DDogak
      */
-    addObserverAction(keyName: BaseNotiList.makeNotiName(list: .movePlanDetail)) { _ in
-      
+    
+    addObserverAction(keyName: BaseNotiList.makeNotiName(list: .moveHomeTab)) { _ in
+      self.tabClicked(index: .home)
     }
     
   }

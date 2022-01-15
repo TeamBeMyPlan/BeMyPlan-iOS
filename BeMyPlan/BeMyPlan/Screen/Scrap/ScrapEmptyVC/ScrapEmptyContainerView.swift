@@ -73,6 +73,12 @@ extension ScrapEmptyContainerView: UICollectionViewDataSource {
   }  
 }
 
+extension ScrapEmptyContainerView : UICollectionViewDelegate{
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .movePlanPreview), object: nil)
+  }
+}
+
 
 extension ScrapEmptyContainerView: UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
