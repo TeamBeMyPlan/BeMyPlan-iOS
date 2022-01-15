@@ -85,7 +85,9 @@ extension ScrapEmptyContainerView: UICollectionViewDelegateFlowLayout {
     let inset = screenWidth * (24/375)
     return UIEdgeInsets(top: 0, left: inset, bottom: 0, right: inset)
   }
-  
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+    return 12
+  }
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
     return 12
   }

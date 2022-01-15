@@ -62,16 +62,8 @@ class PlanPreviewDescriptionTVC: UITableViewCell {
     }
   }
 
-  
   // MARK: - @objc Function Part
 
 }
-
-// MARK: - Extension Part
-
-
-
-
-
 
 

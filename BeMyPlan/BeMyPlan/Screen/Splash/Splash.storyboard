@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="O31-l2-Tgq">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -12,20 +12,67 @@
         <!--SplashVC-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" customClass="SplashVC" customModule="BeMyPlan" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SplashVC" id="Y6W-OH-hqX" customClass="SplashVC" customModule="BeMyPlan" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_splash_notitle" translatesAutoresizingMaskIntoConstraints="NO" id="Kpp-X1-d0c">
+                                <rect key="frame" x="132" y="373" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="kWr-Gq-MCF"/>
+                                    <constraint firstAttribute="width" constant="150" id="r5j-Ys-uwa"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_splash" translatesAutoresizingMaskIntoConstraints="NO" id="Y3c-WN-lcN">
+                                <rect key="frame" x="132" y="373" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="WNx-T9-d3X"/>
+                                    <constraint firstAttribute="height" constant="150" id="Wd7-cy-XvK"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Kpp-X1-d0c" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="CW5-5p-iyd"/>
+                            <constraint firstItem="Kpp-X1-d0c" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="VZt-vT-dFK"/>
+                            <constraint firstItem="Y3c-WN-lcN" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="dE9-ey-PGT"/>
+                            <constraint firstItem="Y3c-WN-lcN" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="fmo-Wo-DCQ"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Sjm-QX-RHP"/>
+                    <connections>
+                        <outlet property="splashIcon" destination="Y3c-WN-lcN" id="Gkx-XW-fVi"/>
+                        <outlet property="splashIconNoTitle" destination="Kpp-X1-d0c" id="yI7-sM-aMj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3" y="60"/>
+            <point key="canvasLocation" x="913.04347826086962" y="59.598214285714285"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="bc9-yb-elw">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="O31-l2-Tgq" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Vmm-4v-WpO">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="iiO-Si-gM1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="39g-YI-Zdi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2.8985507246376816" y="59.598214285714285"/>
         </scene>
     </scenes>
     <resources>
+        <image name="img_splash" width="199" height="199"/>
+        <image name="img_splash_notitle" width="199" height="199"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

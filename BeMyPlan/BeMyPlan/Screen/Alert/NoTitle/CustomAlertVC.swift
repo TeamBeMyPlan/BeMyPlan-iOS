@@ -73,15 +73,19 @@ class CustomAlertVC: UIViewController {
   
   func setButtonActions(){
     confirmBtnArea.press {
-      (self.okAction ?? self.emptyActions)()
-      self.dismiss(animated: true, completion: nil)
+      self.dismiss(animated: true){
+        (self.okAction ?? self.emptyActions)()
+      }
     }
     simpleConfirmBtnArea.press {
-      (self.okAction ?? self.emptyActions)()
-      self.dismiss(animated: true, completion: nil)
+      self.dismiss(animated: true){
+        (self.okAction ?? self.emptyActions)()
+      }
     }
     cancelBtnArea.press {
-      self.dismiss(animated: true, completion: nil)
+      self.dismiss(animated: true){
+        (self.okAction ?? self.emptyActions)()
+      }
     }
   }
   

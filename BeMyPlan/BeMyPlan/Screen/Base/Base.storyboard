@@ -13,7 +13,7 @@
         <!--BaseVC-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" customClass="BaseVC" customModule="BeMyPlan" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BaseVC" id="Y6W-OH-hqX" customClass="BaseVC" customModule="BeMyPlan" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -113,10 +113,10 @@
             </objects>
             <point key="canvasLocation" x="1042.0289855072465" y="115.84821428571428"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--BaseNC-->
         <scene sceneID="FfJ-aX-vQt">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="02V-jM-Hgu" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="BaseNC" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="02V-jM-Hgu" customClass="BaseNC" customModule="BeMyPlan" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedTopBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ITO-hN-6e3">

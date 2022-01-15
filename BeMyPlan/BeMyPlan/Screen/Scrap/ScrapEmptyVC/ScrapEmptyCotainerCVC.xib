@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -12,21 +11,17 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ScrapEmptyCotainerCVC" customModule="BeMyPlan" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="160" height="227"/>
+            <rect key="frame" x="0.0" y="0.0" width="552" height="337"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="160" height="227"/>
+                <rect key="frame" x="0.0" y="0.0" width="552" height="337"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mainlist1" translatesAutoresizingMaskIntoConstraints="NO" id="ncT-qe-use">
-                        <rect key="frame" x="0.0" y="0.0" width="160" height="160"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="160" id="17s-PU-Qf1"/>
-                            <constraint firstAttribute="width" constant="160" id="ipA-GX-qqa"/>
-                        </constraints>
+                        <rect key="frame" x="0.0" y="0.0" width="552" height="254.5"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hxw-Hd-M1d">
-                        <rect key="frame" x="0.0" y="172" width="160" height="40"/>
+                        <rect key="frame" x="0.0" y="266.5" width="552" height="16.5"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="lessThanOrEqual" constant="40" id="X7H-BM-7e5"/>
                         </constraints>
@@ -35,7 +30,7 @@
                                 <attributes>
                                     <color key="NSColor" name="grey1"/>
                                     <font key="NSFont" size="14" name="SpoqaHanSansNeo-Bold"/>
-                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="6" tighteningFactorForTruncation="0.0"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="6" tighteningFactorForTruncation="0.0"/>
                                 </attributes>
                             </fragment>
                         </attributedString>
@@ -46,16 +41,19 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
                 <constraint firstItem="ncT-qe-use" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="3xT-LU-DfP"/>
+                <constraint firstItem="hxw-Hd-M1d" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="59q-9X-ehZ"/>
+                <constraint firstAttribute="trailing" secondItem="hxw-Hd-M1d" secondAttribute="trailing" id="JHA-cA-S34"/>
+                <constraint firstItem="ncT-qe-use" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="160/212" id="L9N-q5-nG7"/>
                 <constraint firstItem="ncT-qe-use" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="WRP-8M-sBa"/>
                 <constraint firstItem="hxw-Hd-M1d" firstAttribute="top" secondItem="ncT-qe-use" secondAttribute="bottom" constant="12" id="b4d-7T-y5g"/>
-                <constraint firstItem="hxw-Hd-M1d" firstAttribute="trailing" secondItem="ncT-qe-use" secondAttribute="trailing" id="sli-Ix-8BI"/>
-                <constraint firstItem="hxw-Hd-M1d" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="wFo-6g-gRB"/>
+                <constraint firstItem="hxw-Hd-M1d" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="bOY-M7-bWz"/>
+                <constraint firstAttribute="trailing" secondItem="ncT-qe-use" secondAttribute="trailing" id="eRq-XP-5n9"/>
             </constraints>
-            <size key="customSize" width="160" height="227"/>
+            <size key="customSize" width="552" height="337"/>
             <connections>
                 <outlet property="titleLabel" destination="hxw-Hd-M1d" id="OTt-dL-2eH"/>
             </connections>
-            <point key="canvasLocation" x="217.39130434782609" y="167.07589285714286"/>
+            <point key="canvasLocation" x="501.44927536231887" y="203.90625"/>
         </collectionViewCell>
     </objects>
     <resources>

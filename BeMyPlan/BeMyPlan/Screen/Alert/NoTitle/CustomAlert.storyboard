@@ -31,13 +31,13 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="취소" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PIT-PS-6LT">
-                                                <rect key="frame" x="65" y="147" width="28" height="20"/>
+                                                <rect key="frame" x="0.0" y="147" width="183" height="20"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                 <color key="textColor" name="grey3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="확인" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OYi-S7-j4S">
-                                                <rect key="frame" x="269" y="147" width="28" height="20"/>
+                                                <rect key="frame" x="183" y="147" width="183" height="20"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                 <color key="textColor" name="beMyBlue"/>
                                                 <nil key="highlightedColor"/>
@@ -104,6 +104,7 @@
                                             <constraint firstAttribute="height" constant="185" id="5po-Wb-gy0"/>
                                             <constraint firstItem="DDT-1n-n4E" firstAttribute="leading" secondItem="G7o-88-iOG" secondAttribute="leading" id="8X3-4J-pg5"/>
                                             <constraint firstItem="EpO-B4-qDc" firstAttribute="top" secondItem="G7o-88-iOG" secondAttribute="top" constant="34" id="8id-PM-uy6"/>
+                                            <constraint firstItem="PIT-PS-6LT" firstAttribute="leading" secondItem="G7o-88-iOG" secondAttribute="leading" id="ABS-Zj-Umu"/>
                                             <constraint firstAttribute="trailing" secondItem="DDT-1n-n4E" secondAttribute="trailing" id="Ab3-XO-lyV"/>
                                             <constraint firstItem="OAi-VM-olj" firstAttribute="width" secondItem="G7o-88-iOG" secondAttribute="width" multiplier="0.5" id="CWI-yI-blL"/>
                                             <constraint firstAttribute="trailing" secondItem="OAi-VM-olj" secondAttribute="trailing" id="Coi-nR-51j"/>
@@ -112,20 +113,21 @@
                                             <constraint firstItem="0qj-h4-7PR" firstAttribute="leading" secondItem="G7o-88-iOG" secondAttribute="leading" id="GsJ-ra-fQo"/>
                                             <constraint firstItem="FyR-mn-acb" firstAttribute="leading" secondItem="G7o-88-iOG" secondAttribute="leading" constant="50" id="IzH-UC-xGU"/>
                                             <constraint firstItem="FyR-mn-acb" firstAttribute="centerX" secondItem="G7o-88-iOG" secondAttribute="centerX" id="O1c-Ne-bW7"/>
+                                            <constraint firstItem="OYi-S7-j4S" firstAttribute="width" secondItem="G7o-88-iOG" secondAttribute="width" multiplier="1/2" id="Sc5-JV-wVD"/>
                                             <constraint firstAttribute="bottom" secondItem="DDT-1n-n4E" secondAttribute="bottom" constant="56" id="TEq-Co-oSa"/>
                                             <constraint firstAttribute="bottom" secondItem="0qj-h4-7PR" secondAttribute="bottom" id="UUa-Ym-2Hs"/>
+                                            <constraint firstAttribute="trailing" secondItem="OYi-S7-j4S" secondAttribute="trailing" id="X4a-Jz-jpl"/>
                                             <constraint firstItem="JPo-7y-diS" firstAttribute="width" secondItem="G7o-88-iOG" secondAttribute="width" multiplier="0.5" id="Z5X-Vy-MXi"/>
                                             <constraint firstItem="JPo-7y-diS" firstAttribute="top" secondItem="DDT-1n-n4E" secondAttribute="bottom" id="bBq-Gr-Q6p"/>
                                             <constraint firstItem="OAi-VM-olj" firstAttribute="top" secondItem="DDT-1n-n4E" secondAttribute="bottom" id="cQR-MF-LGM"/>
-                                            <constraint firstAttribute="trailing" secondItem="OYi-S7-j4S" secondAttribute="trailing" constant="69" id="cw3-Ew-ZEs"/>
                                             <constraint firstAttribute="bottom" secondItem="OAi-VM-olj" secondAttribute="bottom" id="ecU-HK-IMF"/>
                                             <constraint firstItem="JPo-7y-diS" firstAttribute="leading" secondItem="G7o-88-iOG" secondAttribute="leading" id="jSu-RK-yFQ"/>
                                             <constraint firstAttribute="bottom" secondItem="JPo-7y-diS" secondAttribute="bottom" id="jqL-l5-VPO"/>
                                             <constraint firstItem="OYi-S7-j4S" firstAttribute="top" secondItem="DDT-1n-n4E" secondAttribute="bottom" constant="18" id="m3f-Kr-3BY"/>
                                             <constraint firstItem="PIT-PS-6LT" firstAttribute="top" secondItem="DDT-1n-n4E" secondAttribute="bottom" constant="18" id="mX8-k4-QDP"/>
-                                            <constraint firstItem="PIT-PS-6LT" firstAttribute="leading" secondItem="G7o-88-iOG" secondAttribute="leading" constant="65" id="okZ-BN-KW4"/>
                                             <constraint firstItem="dUr-eZ-x0G" firstAttribute="centerX" secondItem="G7o-88-iOG" secondAttribute="centerX" id="pHH-Js-zfr"/>
                                             <constraint firstItem="EpO-B4-qDc" firstAttribute="centerX" secondItem="G7o-88-iOG" secondAttribute="centerX" id="rJZ-K4-LwO"/>
+                                            <constraint firstItem="PIT-PS-6LT" firstAttribute="width" secondItem="G7o-88-iOG" secondAttribute="width" multiplier="1/2" id="sjO-gA-K1w"/>
                                         </constraints>
                                     </view>
                                 </subviews>

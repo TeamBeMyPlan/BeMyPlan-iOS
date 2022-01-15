@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JWc-nN-Kkg">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -82,13 +82,33 @@
                             <constraint firstItem="2YE-3c-MF3" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="vQY-EJ-8Vf"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="uJz-hs-RgI"/>
                     <connections>
                         <outlet property="appleLoginBtn" destination="tn5-mD-Svy" id="h56-8f-ciB"/>
                         <outlet property="kakaoLoginBtn" destination="jKA-p7-nkg" id="lJv-Ee-xfP"/>
+                        <outlet property="mainIcon" destination="NNm-dB-tcq" id="NNd-Cu-Dc5"/>
                         <outlet property="searchLabel" destination="2YE-3c-MF3" id="TbQ-cB-aBh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="913.04347826086962" y="59.598214285714285"/>
+        </scene>
+        <!--LoginNC-->
+        <scene sceneID="bla-0K-VOc">
+            <objects>
+                <navigationController storyboardIdentifier="LoginNC" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="JWc-nN-Kkg" customClass="LoginNC" customModule="BeMyPlan" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ts0-aA-KZk">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="Xsb-Iw-EXZ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xcd-IW-6G6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2.8985507246376816" y="59.598214285714285"/>
         </scene>

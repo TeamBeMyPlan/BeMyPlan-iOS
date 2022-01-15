@@ -36,8 +36,9 @@ class BaseVC: UIViewController {
   
   override func viewDidAppear(_ animated: Bool) {
     showContainerView()
-//    navigationController?.interactivePopGestureRecognizer?.delegate = nil
-//    navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+//    self.navigationController?.viewControllers.removeAll()
+    navigationController?.interactivePopGestureRecognizer?.delegate = nil
+    navigationController?.interactivePopGestureRecognizer?.isEnabled = false
   }
   
   open override func didMove(toParent parent: UIViewController?) {
