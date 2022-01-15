@@ -10,7 +10,8 @@ class TravelSpotVC: UIViewController {
   
   // MARK: - Vars & Lets Part
   let screenWidth = UIScreen.main.bounds.width
-  
+
+  // MARK: - UI Component Part
   @IBOutlet var logoView: UIView!{
     didSet {
       self.logoView.layer.applyShadow(color: UIColor(displayP3Red: 0.796, green: 0.796, blue: 0.796, alpha: 0.25), alpha: 1, x: 1, y: 4, blur: 8, spread: 1)
@@ -18,7 +19,9 @@ class TravelSpotVC: UIViewController {
   }
   @IBOutlet var locationCollectionView: UICollectionView!
   
-  // MARK: - UI Component Part
+  @IBOutlet var headerTopConstraint: NSLayoutConstraint!{
+    didSet{ headerTopConstraint.constant = calculateTopInset()}
+  }
   
   // MARK: - Life Cycle Part
   override func viewDidLoad() {
@@ -39,6 +42,7 @@ class TravelSpotVC: UIViewController {
   // MARK: - Custom Method Part
   
   // MARK: - @objc Function Part
+  
 }
 
 // MARK: - Extension Part
@@ -61,6 +65,7 @@ extension TravelSpotVC: UICollectionViewDelegate {
     return 20
   }
   
+  
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TravelSpotCVC.identifier, for: indexPath) as? TravelSpotCVC else {return UICollectionViewCell()}
     cell.layer.cornerRadius = 5
@@ -71,8 +76,7 @@ extension TravelSpotVC: UICollectionViewDelegate {
   }
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    guard let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "TravelSpotDetailVC") as? TravelSpotDetailVC else {return}
-    self.navigationController?.pushViewController(nextVC, animated: true)
+    NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .movePlanList), object: nil)
   }
 }
 
@@ -83,11 +87,11 @@ extension TravelSpotVC: UICollectionViewDelegateFlowLayout {
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-    let inset = screenWidth * (24/375)
-    return UIEdgeInsets(top: 0, left: inset, bottom: 0, right: inset)
+    return UIEdgeInsets(top: 0, left: 24, bottom: 24, right: 24)
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-    return 20
+    let inset = screenWidth * (20/375)
+    return inset
   }
 }

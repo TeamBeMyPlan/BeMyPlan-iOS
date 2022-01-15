@@ -30,7 +30,7 @@ class TravelSpotDetailVC: UIViewController {
   
   private func regiterXib() {
     let xibName = UINib(nibName: TravelSpotDetailTVC.identifier, bundle: nil)
-    contentTableView.register(xibName, forCellReuseIdentifier: TravelSpotDetailTVC.identifier)
+    contentTableView.register(xibName, forCellReuseIdentifier: TravelSpotDetailTVC.className)
   }
   
   // MARK: - IBAction Part
@@ -44,24 +44,14 @@ class TravelSpotDetailVC: UIViewController {
   }
   
   // MARK: - Custom Method Part
+  private func setUIs() {
+  
+  }
   
   // MARK: - @objc Function Part
 }
 
 // MARK: - Extension Part
-extension TravelSpotDetailVC: UITableViewDelegate {
-  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return UITableView.automaticDimension
-  }
-  
-//  func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-//    return UITableView.automaticDimension
-//  }
-  
-  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-  }
-}
-
 extension TravelSpotDetailVC: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return 20
@@ -72,11 +62,39 @@ extension TravelSpotDetailVC: UITableViewDataSource {
       return UITableViewCell()
     }
     cell.selectionStyle = .none
-    cell.titleTextView.text = "제발 젭발 제발 젭발 제발 젭발 제발 젭발 제발 젭발 제발 젭발 제발 젭발 제발 젭발 제발 젭발 제발 젭발 제발 젭발 제발 젭발"
-    cell.nickNameLabel.text = "yangwon9616yangwon9616yangwon9616yangwon9616yangwon9616yangwon9616yangwon9616yangwon9616yangwon9616yangwon9616"
+    cell.titleTextView.text = "부모님과 함께하는 3박4일 제주 서부 여행 부모님과 함께하는 3박4일"
+    cell.nickNameLabel.text = "thisisuzzwon"
     cell.contentImage.image = UIImage(named: "img")
     return cell
   }
 }
+
+extension TravelSpotDetailVC: UITableViewDelegate {
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    return UITableView.automaticDimension
+  }
+    
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+  }
+}
+
+extension TravelSpotDetailVC: UICollectionViewDelegateFlowLayout {
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    let cellWidth = screenWidth * (327/375)
+    return CGSize(width: cellWidth, height: cellWidth)
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    return 38
+  }
+}
+
+
+
+
 
 

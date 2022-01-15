@@ -9,10 +9,12 @@ import UIKit
 
 class PlanDetailMapContainerTVC: UITableViewCell,UITableViewRegisterable {
   
+  @IBOutlet var mapContainerView: UIView!
   static var isFromNib: Bool = true
   
   override func awakeFromNib() {
     super.awakeFromNib()
+    setUI()
   }
   
   override func setSelected(_ selected: Bool, animated: Bool) {
@@ -20,4 +22,7 @@ class PlanDetailMapContainerTVC: UITableViewCell,UITableViewRegisterable {
     
   }
   
+  private func setUI(){
+    mapContainerView.layer.cornerRadius = 5
+  }
 }

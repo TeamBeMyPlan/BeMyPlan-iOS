@@ -47,7 +47,14 @@ class MyPlanSettingVC: UIViewController {
     }
     
     logoutButton.press {
-      
+      self.makeAlert(alertCase: .requestAlert, title: "로그아웃", content: "로그아웃 하시겠습니까?") {
+        //실제로는 이방법이 아니라 dismiss 되었을때 completion에 새로운 escaping closure를 선언해서 파라미터로 받아와서 해야한다....!
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.001) {
+          self.makeAlert(alertCase: .simpleAlert, title: "로그아웃", content: "로그아웃 되었습니다.") {
+            print("로그아웃 커스텀 Alert 완료")
+          }
+        }
+      }
     }
     
     withdrawButton.press {

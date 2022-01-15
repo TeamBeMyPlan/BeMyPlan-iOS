@@ -59,7 +59,13 @@ class MainListView: UIView {
   
   // MARK: - @IBAction
   @IBAction func touchUpToGoGallery(_ sender: Any) {
+    
   }
+  
+  @IBAction func touchUpToPlanList(_ sender: Any) {
+    NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .movePlanList), object: nil)
+  }
+  
   
   // MARK: - Custom Method Part
   
@@ -69,8 +75,6 @@ class MainListView: UIView {
   
   
   private func setMainListCV(){
-
-    let screenWidth = UIScreen.main.bounds.width
 //    let cellWidth = (160/375) * screenWidth
 //    let cellHeight = cellWidth * (208/160)
 //
@@ -96,20 +100,26 @@ class MainListView: UIView {
     mainListCV.dataSource = self
     mainListCV.delegate = self
     
-    let mainListCVC = UINib(nibName: MainListCVC.identifier, bundle: nil)
-    mainListCV.register(mainListCVC, forCellWithReuseIdentifier: MainListCVC.identifier)
+    let mainListCVC = UINib(nibName: MainListCVC.className, bundle: nil)
+    mainListCV.register(mainListCVC, forCellWithReuseIdentifier: MainListCVC.className)
   }
   
 }
 
 // MARK: - Extension Part
+
+extension MainListView : UICollectionViewDelegate{
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .movePlanPreview), object: nil)
+  }
+}
 extension MainListView: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return mainListDataList.count
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainListCVC.identifier, for: indexPath) as? MainListCVC else {return UICollectionViewCell()}
+    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainListCVC.className, for: indexPath) as? MainListCVC else {return UICollectionViewCell()}
     
     cell.setData(appData: mainListDataList[indexPath.row])
     return cell
@@ -121,6 +131,7 @@ extension MainListView: UICollectionViewDelegateFlowLayout {
 }
 
 extension MainListView : UIScrollViewDelegate {
+
   
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
     print("CURRENt SCROLl pOINT",scrollView.contentOffset.x)

@@ -7,10 +7,12 @@
 
 import UIKit
 
+
+
 class MainCardView: UIView {
   
   // MARK: - Vars & Lets Part
-  var mainCardDataList: [MainCardData] = []
+  private var mainCardDataList: [MainCardData] = []
   
   // MARK: - Life Cycle Part
   override init(frame: CGRect) {
@@ -47,7 +49,6 @@ class MainCardView: UIView {
     
     let layout = MainCardCarouselLayout()
 
-    let screenWidth = UIScreen.main.bounds.width
     let cellWidth = (327/375) * screenWidth
     let cellHeight = cellWidth * (435/327)
     
@@ -76,8 +77,8 @@ class MainCardView: UIView {
     mainCardCV.dataSource = self
     mainCardCV.delegate = self
     
-    let mainCardCVC = UINib(nibName: MainCardCVC.identifier, bundle: nil)
-    mainCardCV.register(mainCardCVC, forCellWithReuseIdentifier: MainCardCVC.identifier)
+    let mainCardCVC = UINib(nibName: MainCardCVC.className, bundle: nil)
+    mainCardCV.register(mainCardCVC, forCellWithReuseIdentifier: MainCardCVC.className)
     
   }
   
@@ -95,13 +96,20 @@ class MainCardView: UIView {
 }
 
 // MARK: - Extension Part
+
+extension MainCardView : UICollectionViewDelegate{
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .movePlanPreview), object: nil)
+  }
+}
+
 extension MainCardView: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return mainCardDataList.count
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainCardCVC.identifier, for: indexPath) as? MainCardCVC else {return UICollectionViewCell()}
+    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainCardCVC.className, for: indexPath) as? MainCardCVC else {return UICollectionViewCell()}
     
     cell.setData(appData: mainCardDataList[indexPath.row])
     return cell

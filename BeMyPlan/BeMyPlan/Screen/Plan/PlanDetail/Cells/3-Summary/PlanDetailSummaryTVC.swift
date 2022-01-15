@@ -33,14 +33,21 @@ class PlanDetailSummaryTVC: UITableViewCell,UITableViewRegisterable{
       listTV.delegate = self
       listTV.dataSource = self
       listTV.allowsSelection = false
+      listTV.layer.cornerRadius = 5
+      listTV.separatorStyle = .none
+      listTV.layer.applyShadow(color: UIColor.init(red: 165/255,
+                                                   green: 165/255,
+                                                   blue: 165/255,
+                                                   alpha: 0.25),
+                               alpha: 1, x: 1, y: 1, blur: 10, spread: 0)
     }
   }
   @IBOutlet var listTVHeightConstraint: NSLayoutConstraint!
   
   override func awakeFromNib() {
     super.awakeFromNib()
-    addDummyData()
     registerCells()
+    addDummyData()
   }
   
   override func setSelected(_ selected: Bool, animated: Bool) {
@@ -150,10 +157,7 @@ extension PlanDetailSummaryTVC : UITableViewDataSource{
     var order : OrderCase
     
     guard let routeCell = tableView.dequeueReusableCell(withIdentifier: PlanDetailSummaryRouteTVC.className, for: indexPath) as? PlanDetailSummaryRouteTVC else {return UITableViewCell() }
-    
-    guard let moreCell = tableView.dequeueReusableCell(withIdentifier: PlanDetailSummaryFoldTVC.className, for: indexPath) as? PlanDetailSummaryFoldTVC else {return UITableViewCell() }
-    moreCell.setFoldState(isFolded: isFold)
-
+  
     if indexPath.row == 0{
       order = .first
     }else if indexPath.row == locationList.count - 1{
@@ -166,10 +170,12 @@ extension PlanDetailSummaryTVC : UITableViewDataSource{
                               locationName: locationList[indexPath.row].locationName,
                               transportCase: locationList[indexPath.row].transportCase,
                               time: locationList[indexPath.row].time)
-    
     if locationList.count <= 5{
       return routeCell
     }else{
+      guard let moreCell = tableView.dequeueReusableCell(withIdentifier: PlanDetailSummaryFoldTVC.className, for: indexPath) as? PlanDetailSummaryFoldTVC else {return UITableViewCell() }
+      moreCell.setFoldState(isFolded: isFold)
+      
       if isFold == true{
         if indexPath.row == 5 { return moreCell }
         else{ return routeCell }

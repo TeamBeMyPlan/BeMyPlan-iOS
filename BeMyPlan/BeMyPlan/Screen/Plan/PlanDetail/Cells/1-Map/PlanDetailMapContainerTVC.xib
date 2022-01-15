@@ -14,13 +14,16 @@
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlanDetailMapContainerTVC" rowHeight="233" id="KGk-i7-Jjw" customClass="PlanDetailMapContainerTVC" customModule="BeMyPlan" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="501" height="233"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="501" height="233"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HPC-pt-0JB">
-                        <rect key="frame" x="24" y="0.0" width="453" height="233"/>
+                        <rect key="frame" x="24" y="0.0" width="453" height="252"/>
                         <color key="backgroundColor" name="beMyBlue"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="252" id="j1o-p4-yN3"/>
+                        </constraints>
                     </view>
                 </subviews>
                 <constraints>
@@ -31,6 +34,9 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="mapContainerView" destination="HPC-pt-0JB" id="5Nl-EA-xJv"/>
+            </connections>
             <point key="canvasLocation" x="200.72463768115944" y="146.98660714285714"/>
         </tableViewCell>
     </objects>

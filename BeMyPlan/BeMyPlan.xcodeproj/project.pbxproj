@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2972C397D40E36F815A978D7 /* Pods_BeMyPlan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0439E65ACFE841D361CB7900 /* Pods_BeMyPlan.framework */; };
 		52E26A8D278C17A800D84F0C /* TravelSpotFilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E26A8C278C17A800D84F0C /* TravelSpotFilterVC.swift */; };
+		F21AFAA027919A8000A84633 /* CustomAlert.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F21AFA9F27919A8000A84633 /* CustomAlert.storyboard */; };
+		F21AFAA827919BA200A84633 /* CustomAlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21AFAA727919BA200A84633 /* CustomAlertVC.swift */; };
 		F261EC7927873A7D00AF094F /* MainCardCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F261EC7727873A7D00AF094F /* MainCardCVC.swift */; };
 		F261EC7A27873A7D00AF094F /* MainCardCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F261EC7827873A7D00AF094F /* MainCardCVC.xib */; };
 		F261EC7C27873D3C00AF094F /* MainCardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F261EC7B27873D3C00AF094F /* MainCardData.swift */; };
@@ -18,11 +19,16 @@
 		F273216F278BEB7700A9B0CC /* MainCardCarouselLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F273216E278BEB7700A9B0CC /* MainCardCarouselLayout.swift */; };
 		F294EC28278EBC2C001069F8 /* LoginVC + KakaoLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F294EC27278EBC2C001069F8 /* LoginVC + KakaoLogin.swift */; };
 		F294EC2B278EBC66001069F8 /* LoginVC + AppleLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F294EC2A278EBC66001069F8 /* LoginVC + AppleLogin.swift */; };
-		F294EC2F278EBD7E001069F8 /* SignUpNicknameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F294EC2E278EBD7E001069F8 /* SignUpNicknameVC.swift */; };
+		F294EC2F278EBD7E001069F8 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F294EC2E278EBD7E001069F8 /* SignUpVC.swift */; };
+		F294EC32278EFA0F001069F8 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F294EC31278EFA0F001069F8 /* SignUp.storyboard */; };
 		F2C5F18E2786EACB00BE4036 /* MainCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C5F18D2786EACB00BE4036 /* MainCardView.swift */; };
 		F2C5F1902786EAE200BE4036 /* MainCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2C5F18F2786EAE200BE4036 /* MainCardView.xib */; };
 		F2C5F1922786EB3300BE4036 /* MainListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C5F1912786EB3300BE4036 /* MainListView.swift */; };
 		F2C5F1942786EB3C00BE4036 /* MainListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2C5F1932786EB3C00BE4036 /* MainListView.xib */; };
+		FD008829278FE94C00C194B5 /* PlanDetailInfoPhotoCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD008827278FE94C00C194B5 /* PlanDetailInfoPhotoCVC.swift */; };
+		FD00882A278FE94C00C194B5 /* PlanDetailInfoPhotoCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD008828278FE94C00C194B5 /* PlanDetailInfoPhotoCVC.xib */; };
+		FD00882E278FF1EF00C194B5 /* PlanDetailWriterTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD00882C278FF1EF00C194B5 /* PlanDetailWriterTVC.swift */; };
+		FD00882F278FF1EF00C194B5 /* PlanDetailWriterTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD00882D278FF1EF00C194B5 /* PlanDetailWriterTVC.xib */; };
 		FD09DD5127855E33006DA050 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FD09DD5027855E32006DA050 /* GoogleService-Info.plist */; };
 		FD09DD9827856387006DA050 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD09DD9727856387006DA050 /* SystemConfiguration.framework */; };
 		FD09DD9A27856394006DA050 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD09DD9927856394006DA050 /* CoreLocation.framework */; };
@@ -95,8 +101,6 @@
 		FD20C628278EF6CA00AC6E34 /* BarFullButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD20C627278EF6CA00AC6E34 /* BarFullButton.swift */; };
 		FD2D4DA9278D3C55002084B9 /* PlanDetailMapContainerTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2D4DA7278D3C55002084B9 /* PlanDetailMapContainerTVC.swift */; };
 		FD2D4DAA278D3C55002084B9 /* PlanDetailMapContainerTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD2D4DA8278D3C55002084B9 /* PlanDetailMapContainerTVC.xib */; };
-		FD2D4DAF278D3D0A002084B9 /* PlanDetailSelectDayTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2D4DAD278D3D0A002084B9 /* PlanDetailSelectDayTVC.swift */; };
-		FD2D4DB0278D3D0A002084B9 /* PlanDetailSelectDayTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD2D4DAE278D3D0A002084B9 /* PlanDetailSelectDayTVC.xib */; };
 		FD2D4DB6278D3DB6002084B9 /* PlanDetailSummaryTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD2D4DB4278D3DB6002084B9 /* PlanDetailSummaryTVC.xib */; };
 		FD2D4DB9278D3DCE002084B9 /* PlanDetailInformationTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2D4DB7278D3DCE002084B9 /* PlanDetailInformationTVC.swift */; };
 		FD2D4DBA278D3DCE002084B9 /* PlanDetailInformationTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD2D4DB8278D3DCE002084B9 /* PlanDetailInformationTVC.xib */; };
@@ -122,12 +126,26 @@
 		FD3211B227841949007D63D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD3211B127841949007D63D5 /* Assets.xcassets */; };
 		FD3211B527841949007D63D5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD3211B327841949007D63D5 /* LaunchScreen.storyboard */; };
 		FD3211C3278433CF007D63D5 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = FD3211C2278433CF007D63D5 /* .swiftlint.yml */; };
+		FD35664B2792AF2C0082B4CE /* ScrapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD35663F2792AF2C0082B4CE /* ScrapVC.swift */; };
+		FD35664C2792AF2C0082B4CE /* ScrapContainerCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD3566412792AF2C0082B4CE /* ScrapContainerCVC.xib */; };
+		FD35664D2792AF2C0082B4CE /* ScrapContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3566422792AF2C0082B4CE /* ScrapContainerView.swift */; };
+		FD35664E2792AF2C0082B4CE /* ScrapContainerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD3566432792AF2C0082B4CE /* ScrapContainerView.xib */; };
+		FD35664F2792AF2C0082B4CE /* ScrapContainerCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3566442792AF2C0082B4CE /* ScrapContainerCVC.swift */; };
+		FD3566502792AF2C0082B4CE /* Scrap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD3566452792AF2C0082B4CE /* Scrap.storyboard */; };
+		FD3566512792AF2C0082B4CE /* ScrapEmptyCotainerCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3566472792AF2C0082B4CE /* ScrapEmptyCotainerCVC.swift */; };
+		FD3566522792AF2C0082B4CE /* ScrapEmptyCotainerCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD3566482792AF2C0082B4CE /* ScrapEmptyCotainerCVC.xib */; };
+		FD3566532792AF2C0082B4CE /* ScrapEmptyContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3566492792AF2C0082B4CE /* ScrapEmptyContainerView.swift */; };
+		FD3566542792AF2C0082B4CE /* ScrapEmptyContainerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD35664A2792AF2C0082B4CE /* ScrapEmptyContainerView.xib */; };
+		FD3566552792AFCD0082B4CE /* PlanDetailSelectDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD61AFA427902C9400D39F47 /* PlanDetailSelectDayView.swift */; };
 		FD4C86B0278BD17F00D37A2D /* setImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4C86AF278BD17F00D37A2D /* setImage.swift */; };
 		FD4C86B3278BD81900D37A2D /* PreviewIconContainerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD4C86B2278BD81900D37A2D /* PreviewIconContainerView.xib */; };
 		FD4C86B5278BD82D00D37A2D /* PreviewIconContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4C86B4278BD82D00D37A2D /* PreviewIconContainerView.swift */; };
 		FD4C86B8278C7A7200D37A2D /* Payment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD4C86B7278C7A7200D37A2D /* Payment.storyboard */; };
 		FD4C86BA278C7A8400D37A2D /* PaymentSelectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4C86B9278C7A8400D37A2D /* PaymentSelectVC.swift */; };
 		FD4C86BE278C9AF900D37A2D /* PaymentCompleteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4C86BD278C9AF900D37A2D /* PaymentCompleteVC.swift */; };
+		FD61AFA327902C7A00D39F47 /* PlanDetailSelectDayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD61AFA227902C7A00D39F47 /* PlanDetailSelectDayView.xib */; };
+		FD61AFDA2791DB9100D39F47 /* PanDirectionGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD61AFD92791DB9100D39F47 /* PanDirectionGesture.swift */; };
+		FD61AFDC2791DC6E00D39F47 /* UINavigation + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD61AFDB2791DC6E00D39F47 /* UINavigation + Extension.swift */; };
 		FDC47DEB278951FF00A152E8 /* PreviewHeaderData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC47DEA278951FF00A152E8 /* PreviewHeaderData.swift */; };
 		FDC47DED2789521000A152E8 /* PreviewDescriptionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC47DEC2789521000A152E8 /* PreviewDescriptionData.swift */; };
 		FDC47DEF2789521C00A152E8 /* PreviewPhotoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC47DEE2789521C00A152E8 /* PreviewPhotoData.swift */; };
@@ -140,6 +158,7 @@
 		FDC47E0F2789742800A152E8 /* TravelSpotDetailTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDC47E092789742800A152E8 /* TravelSpotDetailTVC.xib */; };
 		FDC47E112789742800A152E8 /* TravelSpotDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC47E0B2789742800A152E8 /* TravelSpotDetailVC.swift */; };
 		FDC47E132789875800A152E8 /* makeCellInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC47E122789875800A152E8 /* makeCellInstance.swift */; };
+		FDCDCB31278F4C2B002CEA15 /* PlanDetailSpotDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCDCB30278F4C2B002CEA15 /* PlanDetailSpotDataModel.swift */; };
 		FDF980BC2786CE660009A14E /* paybooc_OTF_Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = FDF980BA2786CE660009A14E /* paybooc_OTF_Bold.otf */; };
 		FDF980BD2786CE660009A14E /* Spoqa_Han_Sans_Neo_Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = FDF980BB2786CE660009A14E /* Spoqa_Han_Sans_Neo_Bold.otf */; };
 		FDF980BF2786CE700009A14E /* Spoqa_Han_Sans_Neo_Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = FDF980BE2786CE700009A14E /* Spoqa_Han_Sans_Neo_Regular.otf */; };
@@ -173,10 +192,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0439E65ACFE841D361CB7900 /* Pods_BeMyPlan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeMyPlan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4D2A2785C068D6F29C524F4D /* Pods-BeMyPlan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeMyPlan.release.xcconfig"; path = "Target Support Files/Pods-BeMyPlan/Pods-BeMyPlan.release.xcconfig"; sourceTree = "<group>"; };
+		52B0A592278F309C00242D35 /* ScrapContainerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScrapContainerView.xib; sourceTree = "<group>"; };
+		52B0A594278F30B500242D35 /* ScrapEmptyContainerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScrapEmptyContainerView.xib; sourceTree = "<group>"; };
+		52B0A598278F32AB00242D35 /* ScrapContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapContainerView.swift; sourceTree = "<group>"; };
+		52B0A59A278F32D400242D35 /* ScrapEmptyContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapEmptyContainerView.swift; sourceTree = "<group>"; };
+		52B0A59C278F420C00242D35 /* ScrapContainerCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapContainerCVC.swift; sourceTree = "<group>"; };
+		52B0A59D278F420C00242D35 /* ScrapContainerCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScrapContainerCVC.xib; sourceTree = "<group>"; };
+		52B0A5A2278F424700242D35 /* ScrapEmptyCotainerCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapEmptyCotainerCVC.swift; sourceTree = "<group>"; };
+		52B0A5A3278F424700242D35 /* ScrapEmptyCotainerCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScrapEmptyCotainerCVC.xib; sourceTree = "<group>"; };
 		52E26A8C278C17A800D84F0C /* TravelSpotFilterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelSpotFilterVC.swift; sourceTree = "<group>"; };
 		DAC8660B79B9BFADE94033DF /* Pods-BeMyPlan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeMyPlan.debug.xcconfig"; path = "Target Support Files/Pods-BeMyPlan/Pods-BeMyPlan.debug.xcconfig"; sourceTree = "<group>"; };
+		F21AFA9F27919A8000A84633 /* CustomAlert.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CustomAlert.storyboard; sourceTree = "<group>"; };
+		F21AFAA727919BA200A84633 /* CustomAlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertVC.swift; sourceTree = "<group>"; };
 		F261EC7727873A7D00AF094F /* MainCardCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCardCVC.swift; sourceTree = "<group>"; };
 		F261EC7827873A7D00AF094F /* MainCardCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainCardCVC.xib; sourceTree = "<group>"; };
 		F261EC7B27873D3C00AF094F /* MainCardData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCardData.swift; sourceTree = "<group>"; };
@@ -186,12 +213,17 @@
 		F273216E278BEB7700A9B0CC /* MainCardCarouselLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCardCarouselLayout.swift; sourceTree = "<group>"; };
 		F294EC27278EBC2C001069F8 /* LoginVC + KakaoLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginVC + KakaoLogin.swift"; sourceTree = "<group>"; };
 		F294EC2A278EBC66001069F8 /* LoginVC + AppleLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginVC + AppleLogin.swift"; sourceTree = "<group>"; };
-		F294EC2E278EBD7E001069F8 /* SignUpNicknameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpNicknameVC.swift; sourceTree = "<group>"; };
+		F294EC2E278EBD7E001069F8 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		F294EC30278EDB82001069F8 /* BeMyPlan.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BeMyPlan.entitlements; sourceTree = "<group>"; };
+		F294EC31278EFA0F001069F8 /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		F2C5F18D2786EACB00BE4036 /* MainCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCardView.swift; sourceTree = "<group>"; };
 		F2C5F18F2786EAE200BE4036 /* MainCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainCardView.xib; sourceTree = "<group>"; };
 		F2C5F1912786EB3300BE4036 /* MainListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainListView.swift; sourceTree = "<group>"; };
 		F2C5F1932786EB3C00BE4036 /* MainListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainListView.xib; sourceTree = "<group>"; };
+		FD008827278FE94C00C194B5 /* PlanDetailInfoPhotoCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDetailInfoPhotoCVC.swift; sourceTree = "<group>"; };
+		FD008828278FE94C00C194B5 /* PlanDetailInfoPhotoCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanDetailInfoPhotoCVC.xib; sourceTree = "<group>"; };
+		FD00882C278FF1EF00C194B5 /* PlanDetailWriterTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDetailWriterTVC.swift; sourceTree = "<group>"; };
+		FD00882D278FF1EF00C194B5 /* PlanDetailWriterTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanDetailWriterTVC.xib; sourceTree = "<group>"; };
 		FD09DD5027855E32006DA050 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FD09DD9527856377006DA050 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		FD09DD9727856387006DA050 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -277,8 +309,6 @@
 		FD20C627278EF6CA00AC6E34 /* BarFullButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarFullButton.swift; sourceTree = "<group>"; };
 		FD2D4DA7278D3C55002084B9 /* PlanDetailMapContainerTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDetailMapContainerTVC.swift; sourceTree = "<group>"; };
 		FD2D4DA8278D3C55002084B9 /* PlanDetailMapContainerTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanDetailMapContainerTVC.xib; sourceTree = "<group>"; };
-		FD2D4DAD278D3D0A002084B9 /* PlanDetailSelectDayTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDetailSelectDayTVC.swift; sourceTree = "<group>"; };
-		FD2D4DAE278D3D0A002084B9 /* PlanDetailSelectDayTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanDetailSelectDayTVC.xib; sourceTree = "<group>"; };
 		FD2D4DB3278D3DB6002084B9 /* PlanDetailSummaryTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDetailSummaryTVC.swift; sourceTree = "<group>"; };
 		FD2D4DB4278D3DB6002084B9 /* PlanDetailSummaryTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanDetailSummaryTVC.xib; sourceTree = "<group>"; };
 		FD2D4DB7278D3DCE002084B9 /* PlanDetailInformationTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDetailInformationTVC.swift; sourceTree = "<group>"; };
@@ -306,12 +336,26 @@
 		FD3211B427841949007D63D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FD3211B627841949007D63D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FD3211C2278433CF007D63D5 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		FD35663F2792AF2C0082B4CE /* ScrapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrapVC.swift; sourceTree = "<group>"; };
+		FD3566412792AF2C0082B4CE /* ScrapContainerCVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScrapContainerCVC.xib; sourceTree = "<group>"; };
+		FD3566422792AF2C0082B4CE /* ScrapContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrapContainerView.swift; sourceTree = "<group>"; };
+		FD3566432792AF2C0082B4CE /* ScrapContainerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScrapContainerView.xib; sourceTree = "<group>"; };
+		FD3566442792AF2C0082B4CE /* ScrapContainerCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrapContainerCVC.swift; sourceTree = "<group>"; };
+		FD3566452792AF2C0082B4CE /* Scrap.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Scrap.storyboard; sourceTree = "<group>"; };
+		FD3566472792AF2C0082B4CE /* ScrapEmptyCotainerCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrapEmptyCotainerCVC.swift; sourceTree = "<group>"; };
+		FD3566482792AF2C0082B4CE /* ScrapEmptyCotainerCVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScrapEmptyCotainerCVC.xib; sourceTree = "<group>"; };
+		FD3566492792AF2C0082B4CE /* ScrapEmptyContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrapEmptyContainerView.swift; sourceTree = "<group>"; };
+		FD35664A2792AF2C0082B4CE /* ScrapEmptyContainerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScrapEmptyContainerView.xib; sourceTree = "<group>"; };
 		FD4C86AF278BD17F00D37A2D /* setImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = setImage.swift; sourceTree = "<group>"; };
 		FD4C86B2278BD81900D37A2D /* PreviewIconContainerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreviewIconContainerView.xib; sourceTree = "<group>"; };
 		FD4C86B4278BD82D00D37A2D /* PreviewIconContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewIconContainerView.swift; sourceTree = "<group>"; };
 		FD4C86B7278C7A7200D37A2D /* Payment.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Payment.storyboard; sourceTree = "<group>"; };
 		FD4C86B9278C7A8400D37A2D /* PaymentSelectVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentSelectVC.swift; sourceTree = "<group>"; };
 		FD4C86BD278C9AF900D37A2D /* PaymentCompleteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentCompleteVC.swift; sourceTree = "<group>"; };
+		FD61AFA227902C7A00D39F47 /* PlanDetailSelectDayView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanDetailSelectDayView.xib; sourceTree = "<group>"; };
+		FD61AFA427902C9400D39F47 /* PlanDetailSelectDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDetailSelectDayView.swift; sourceTree = "<group>"; };
+		FD61AFD92791DB9100D39F47 /* PanDirectionGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanDirectionGesture.swift; sourceTree = "<group>"; };
+		FD61AFDB2791DC6E00D39F47 /* UINavigation + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigation + Extension.swift"; sourceTree = "<group>"; };
 		FDC47DEA278951FF00A152E8 /* PreviewHeaderData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewHeaderData.swift; sourceTree = "<group>"; };
 		FDC47DEC2789521000A152E8 /* PreviewDescriptionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewDescriptionData.swift; sourceTree = "<group>"; };
 		FDC47DEE2789521C00A152E8 /* PreviewPhotoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewPhotoData.swift; sourceTree = "<group>"; };
@@ -324,6 +368,7 @@
 		FDC47E092789742800A152E8 /* TravelSpotDetailTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TravelSpotDetailTVC.xib; sourceTree = "<group>"; };
 		FDC47E0B2789742800A152E8 /* TravelSpotDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TravelSpotDetailVC.swift; sourceTree = "<group>"; };
 		FDC47E122789875800A152E8 /* makeCellInstance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = makeCellInstance.swift; sourceTree = "<group>"; };
+		FDCDCB30278F4C2B002CEA15 /* PlanDetailSpotDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDetailSpotDataModel.swift; sourceTree = "<group>"; };
 		FDF980BA2786CE660009A14E /* paybooc_OTF_Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = paybooc_OTF_Bold.otf; sourceTree = "<group>"; };
 		FDF980BB2786CE660009A14E /* Spoqa_Han_Sans_Neo_Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Spoqa_Han_Sans_Neo_Bold.otf; sourceTree = "<group>"; };
 		FDF980BE2786CE700009A14E /* Spoqa_Han_Sans_Neo_Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Spoqa_Han_Sans_Neo_Regular.otf; sourceTree = "<group>"; };
@@ -366,7 +411,6 @@
 				FD09DDED27856A31006DA050 /* DaumMap.framework in Frameworks */,
 				FD09DD9A27856394006DA050 /* CoreLocation.framework in Frameworks */,
 				FD09DD9827856387006DA050 /* SystemConfiguration.framework in Frameworks */,
-				2972C397D40E36F815A978D7 /* Pods_BeMyPlan.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -385,7 +429,6 @@
 				FD09DD9927856394006DA050 /* CoreLocation.framework */,
 				FD09DD9727856387006DA050 /* SystemConfiguration.framework */,
 				FD09DD9527856377006DA050 /* OpenGLES.framework */,
-				0439E65ACFE841D361CB7900 /* Pods_BeMyPlan.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -394,9 +437,25 @@
 			isa = PBXGroup;
 			children = (
 				DAC8660B79B9BFADE94033DF /* Pods-BeMyPlan.debug.xcconfig */,
-				4D2A2785C068D6F29C524F4D /* Pods-BeMyPlan.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		F21AFA9A279187E900A84633 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				F21AFAA327919AA400A84633 /* NoTitle */,
+			);
+			path = Alert;
+			sourceTree = "<group>";
+		};
+		F21AFAA327919AA400A84633 /* NoTitle */ = {
+			isa = PBXGroup;
+			children = (
+				F21AFA9F27919A8000A84633 /* CustomAlert.storyboard */,
+				F21AFAA727919BA200A84633 /* CustomAlertVC.swift */,
+			);
+			path = NoTitle;
 			sourceTree = "<group>";
 		};
 		F261EC7627873A3F00AF094F /* MainCardItem */ = {
@@ -431,7 +490,8 @@
 		F294EC2D278EBD58001069F8 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
-				F294EC2E278EBD7E001069F8 /* SignUpNicknameVC.swift */,
+				F294EC2E278EBD7E001069F8 /* SignUpVC.swift */,
+				F294EC31278EFA0F001069F8 /* SignUp.storyboard */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -455,6 +515,24 @@
 				F2C5F1932786EB3C00BE4036 /* MainListView.xib */,
 			);
 			path = MainList;
+			sourceTree = "<group>";
+		};
+		FD008824278FE92100C194B5 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				FD008827278FE94C00C194B5 /* PlanDetailInfoPhotoCVC.swift */,
+				FD008828278FE94C00C194B5 /* PlanDetailInfoPhotoCVC.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		FD00882B278FF1D200C194B5 /* 0-Writer */ = {
+			isa = PBXGroup;
+			children = (
+				FD00882C278FF1EF00C194B5 /* PlanDetailWriterTVC.swift */,
+				FD00882D278FF1EF00C194B5 /* PlanDetailWriterTVC.xib */,
+			);
+			path = "0-Writer";
 			sourceTree = "<group>";
 		};
 		FD09DDAB27856A31006DA050 /* DaumMap.embeddedframework */ = {
@@ -562,6 +640,7 @@
 				FDC47E122789875800A152E8 /* makeCellInstance.swift */,
 				FD4C86AF278BD17F00D37A2D /* setImage.swift */,
 				FD20C61B278EEFAB00AC6E34 /* addObserverAction.swift */,
+				FD61AFD92791DB9100D39F47 /* PanDirectionGesture.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -680,6 +759,7 @@
 		FD2D4DA2278D3B98002084B9 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				FD00882B278FF1D200C194B5 /* 0-Writer */,
 				FD2D4DAB278D3C5A002084B9 /* 1-Map */,
 				FD2D4DAC278D3C61002084B9 /* 2-SelectDay */,
 				FD2D4DB1278D3D0E002084B9 /* 3-Summary */,
@@ -701,8 +781,8 @@
 			isa = PBXGroup;
 			children = (
 				FD2D4DDB278DC058002084B9 /* Cells */,
-				FD2D4DAD278D3D0A002084B9 /* PlanDetailSelectDayTVC.swift */,
-				FD2D4DAE278D3D0A002084B9 /* PlanDetailSelectDayTVC.xib */,
+				FD61AFA227902C7A00D39F47 /* PlanDetailSelectDayView.xib */,
+				FD61AFA427902C9400D39F47 /* PlanDetailSelectDayView.swift */,
 			);
 			path = "2-SelectDay";
 			sourceTree = "<group>";
@@ -720,6 +800,7 @@
 		FD2D4DB2278D3D6D002084B9 /* 4-Information */ = {
 			isa = PBXGroup;
 			children = (
+				FD008824278FE92100C194B5 /* Cells */,
 				FD2D4DB7278D3DCE002084B9 /* PlanDetailInformationTVC.swift */,
 				FD2D4DB8278D3DCE002084B9 /* PlanDetailInformationTVC.xib */,
 			);
@@ -750,6 +831,7 @@
 		FD2D4DCD278D90BA002084B9 /* PlanDetail */ = {
 			isa = PBXGroup;
 			children = (
+				FDCDCB30278F4C2B002CEA15 /* PlanDetailSpotDataModel.swift */,
 				FD2D4DCE278D90D0002084B9 /* PlanDetailSummaryDataModel.swift */,
 				FD2D4DD0278D90DB002084B9 /* PlanDetailData.swift */,
 			);
@@ -793,6 +875,7 @@
 				FD3211A627841948007D63D5 /* Products */,
 				6F77842C2239262E3D685F1B /* Pods */,
 				3908C59B3D500CBFB4DD622B /* Frameworks */,
+				FD35663D2792AEEA0082B4CE /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -834,12 +917,14 @@
 		FD3211C627843F64007D63D5 /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				F21AFA9A279187E900A84633 /* Alert */,
 				FD2D4DBF278D579A002084B9 /* Components */,
 				FD3151A0278D0C5D0076D92E /* Plan */,
 				FDF980D92786E02C0009A14E /* Base */,
 				FD09DE1827857CA6006DA050 /* Home */,
 				FDF980C32786D1670009A14E /* TravelSpot */,
 				FDF980E62786F1810009A14E /* MyPlan */,
+				FD35663E2792AF2C0082B4CE /* Scrap */,
 				FD4C86B6278C7A3800D37A2D /* Payment */,
 				FDF980C42786D1900009A14E /* PlanList */,
 				FD09DE1927857CAA006DA050 /* Splash */,
@@ -869,6 +954,7 @@
 				FDF980DD2786E6090009A14E /* addSubViewFromNib.swift */,
 				FD2D4DCB278D8636002084B9 /* drawDashedLine + UIView.swift */,
 				FD20C611278EC29600AC6E34 /* setTextLineHeight + UILabel.swift */,
+				FD61AFDB2791DC6E00D39F47 /* UINavigation + Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -891,6 +977,54 @@
 				FDF980E42786E8370009A14E /* XibPresentable.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		FD35663D2792AEEA0082B4CE /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				52B0A5A2278F424700242D35 /* ScrapEmptyCotainerCVC.swift */,
+				52B0A59A278F32D400242D35 /* ScrapEmptyContainerView.swift */,
+				52B0A59C278F420C00242D35 /* ScrapContainerCVC.swift */,
+				52B0A598278F32AB00242D35 /* ScrapContainerView.swift */,
+				52B0A592278F309C00242D35 /* ScrapContainerView.xib */,
+				52B0A5A3278F424700242D35 /* ScrapEmptyCotainerCVC.xib */,
+				52B0A594278F30B500242D35 /* ScrapEmptyContainerView.xib */,
+				52B0A59D278F420C00242D35 /* ScrapContainerCVC.xib */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		FD35663E2792AF2C0082B4CE /* Scrap */ = {
+			isa = PBXGroup;
+			children = (
+				FD35663F2792AF2C0082B4CE /* ScrapVC.swift */,
+				FD3566402792AF2C0082B4CE /* ScrapVC */,
+				FD3566452792AF2C0082B4CE /* Scrap.storyboard */,
+				FD3566462792AF2C0082B4CE /* ScrapEmptyVC */,
+			);
+			path = Scrap;
+			sourceTree = "<group>";
+		};
+		FD3566402792AF2C0082B4CE /* ScrapVC */ = {
+			isa = PBXGroup;
+			children = (
+				FD3566412792AF2C0082B4CE /* ScrapContainerCVC.xib */,
+				FD3566422792AF2C0082B4CE /* ScrapContainerView.swift */,
+				FD3566432792AF2C0082B4CE /* ScrapContainerView.xib */,
+				FD3566442792AF2C0082B4CE /* ScrapContainerCVC.swift */,
+			);
+			path = ScrapVC;
+			sourceTree = "<group>";
+		};
+		FD3566462792AF2C0082B4CE /* ScrapEmptyVC */ = {
+			isa = PBXGroup;
+			children = (
+				FD3566472792AF2C0082B4CE /* ScrapEmptyCotainerCVC.swift */,
+				FD3566482792AF2C0082B4CE /* ScrapEmptyCotainerCVC.xib */,
+				FD3566492792AF2C0082B4CE /* ScrapEmptyContainerView.swift */,
+				FD35664A2792AF2C0082B4CE /* ScrapEmptyContainerView.xib */,
+			);
+			path = ScrapEmptyVC;
 			sourceTree = "<group>";
 		};
 		FD4C86B1278BD80500D37A2D /* IconContainerView */ = {
@@ -1091,6 +1225,7 @@
 				FD09DDE627856A31006DA050 /* map_present_direction.png in Resources */,
 				FDF980C62786D1A40009A14E /* Home.storyboard in Resources */,
 				FD09DDDF27856A31006DA050 /* map_present_tracking.png in Resources */,
+				F21AFAA027919A8000A84633 /* CustomAlert.storyboard in Resources */,
 				FD09DDD727856A31006DA050 /* map_pin_custom@3x.png in Resources */,
 				FD09DDDA27856A31006DA050 /* copyright.png in Resources */,
 				FD09DDD827856A31006DA050 /* map_pinup@3x.png in Resources */,
@@ -1099,22 +1234,29 @@
 				FD2D4DDA278DB179002084B9 /* PlanDetailSummaryFoldTVC.xib in Resources */,
 				FD3211B527841949007D63D5 /* LaunchScreen.storyboard in Resources */,
 				FD09DDE927856A31006DA050 /* noimage.png in Resources */,
+				F294EC32278EFA0F001069F8 /* SignUp.storyboard in Resources */,
 				FD09DDEB27856A31006DA050 /* daum_th_line.png in Resources */,
 				FD09DD5127855E33006DA050 /* GoogleService-Info.plist in Resources */,
+				FD3566542792AF2C0082B4CE /* ScrapEmptyContainerView.xib in Resources */,
 				FDF980BF2786CE700009A14E /* Spoqa_Han_Sans_Neo_Regular.otf in Resources */,
 				FDF980BD2786CE660009A14E /* Spoqa_Han_Sans_Neo_Bold.otf in Resources */,
 				F2C5F1902786EAE200BE4036 /* MainCardView.xib in Resources */,
+				FD00882A278FE94C00C194B5 /* PlanDetailInfoPhotoCVC.xib in Resources */,
 				FD3151A3278D0C7B0076D92E /* PlanDetail.storyboard in Resources */,
 				FD09DDE027856A31006DA050 /* map_pin_red.png in Resources */,
 				FD09DDEA27856A31006DA050 /* map_present_background_update.png in Resources */,
+				FD3566522792AF2C0082B4CE /* ScrapEmptyCotainerCVC.xib in Resources */,
 				FD2D4DBE278D3FA5002084B9 /* PlanDetailDayCVC.xib in Resources */,
 				FD2D4DDE278DDB93002084B9 /* Spoqa_Han_Sans_Neo_Medium.otf in Resources */,
 				FD09DDE427856A31006DA050 /* info_box_tail.png in Resources */,
 				FD2D4DBA278D3DCE002084B9 /* PlanDetailInformationTVC.xib in Resources */,
 				FD4C86B8278C7A7200D37A2D /* Payment.storyboard in Resources */,
+				FD35664E2792AF2C0082B4CE /* ScrapContainerView.xib in Resources */,
 				FD2D4DC1278D57A5002084B9 /* ProgressBar.xib in Resources */,
 				FD4C86B3278BD81900D37A2D /* PreviewIconContainerView.xib in Resources */,
 				FDC47E0C2789742800A152E8 /* TravelSpotCVC.xib in Resources */,
+				FD61AFA327902C7A00D39F47 /* PlanDetailSelectDayView.xib in Resources */,
+				FD3566502792AF2C0082B4CE /* Scrap.storyboard in Resources */,
 				FDF980C82786D2360009A14E /* PlanList.storyboard in Resources */,
 				FD09DDEC27856A31006DA050 /* map_pin_shadow.png in Resources */,
 				FD09DDD927856A31006DA050 /* map_pin_shadow@3x.png in Resources */,
@@ -1127,6 +1269,7 @@
 				F266412D2788262800CCC751 /* MainListCVC.xib in Resources */,
 				FD2D4DAA278D3C55002084B9 /* PlanDetailMapContainerTVC.xib in Resources */,
 				FD09DDE327856A31006DA050 /* map_pinup_custom.png in Resources */,
+				FD00882F278FF1EF00C194B5 /* PlanDetailWriterTVC.xib in Resources */,
 				FD3211B027841948007D63D5 /* Main.storyboard in Resources */,
 				FD09DDDD27856A31006DA050 /* daum_copyright.png in Resources */,
 				FDF980BC2786CE660009A14E /* paybooc_OTF_Bold.otf in Resources */,
@@ -1144,9 +1287,9 @@
 				F2C5F1942786EB3C00BE4036 /* MainListView.xib in Resources */,
 				FD09DDDC27856A31006DA050 /* map_pin_red@3x.png in Resources */,
 				FD09DDD527856A31006DA050 /* map_pinup.png in Resources */,
-				FD2D4DB0278D3D0A002084B9 /* PlanDetailSelectDayTVC.xib in Resources */,
 				FD09DDE727856A31006DA050 /* map_pin.png in Resources */,
 				FDF980FA2788AE8D0009A14E /* Base.storyboard in Resources */,
+				FD35664C2792AF2C0082B4CE /* ScrapContainerCVC.xib in Resources */,
 				FDF980CC2786D2470009A14E /* Splash.storyboard in Resources */,
 				FDF980E12786E7DB0009A14E /* BaseContainerView.xib in Resources */,
 				F261EC7A27873A7D00AF094F /* MainCardCVC.xib in Resources */,
@@ -1235,8 +1378,11 @@
 				FD20C610278EBF2800AC6E34 /* MyPlanBuyData.swift in Sources */,
 				FD09DDF1278577CF006DA050 /* BaseService.swift in Sources */,
 				FDF980D22786D2EB0009A14E /* TravelSpotVC.swift in Sources */,
+				FD008829278FE94C00C194B5 /* PlanDetailInfoPhotoCVC.swift in Sources */,
+				FD3566512792AF2C0082B4CE /* ScrapEmptyCotainerCVC.swift in Sources */,
 				FD09DE2927857E25006DA050 /* StoryboardLiterals.swift in Sources */,
 				FDC47DF32789524A00A152E8 /* PreviewRecommendData.swift in Sources */,
+				F21AFAA827919BA200A84633 /* CustomAlertVC.swift in Sources */,
 				FDF980C12786D14B0009A14E /* setDefaultFonts.swift in Sources */,
 				FD09DE0727857971006DA050 /* calculateTopInset.swift in Sources */,
 				FDF980E32786E7E90009A14E /* BaseContainerView.swift in Sources */,
@@ -1245,7 +1391,9 @@
 				FDF980D42786D2F60009A14E /* PlanListVC.swift in Sources */,
 				FDF980E52786E8370009A14E /* XibPresentable.swift in Sources */,
 				FDC47E132789875800A152E8 /* makeCellInstance.swift in Sources */,
+				FD61AFDA2791DB9100D39F47 /* PanDirectionGesture.swift in Sources */,
 				FD2D4DC3278D57B7002084B9 /* ProgressBar.swift in Sources */,
+				FD00882E278FF1EF00C194B5 /* PlanDetailWriterTVC.swift in Sources */,
 				FDC47DEF2789521C00A152E8 /* PreviewPhotoData.swift in Sources */,
 				FDC47DEB278951FF00A152E8 /* PreviewHeaderData.swift in Sources */,
 				FD2D4DC9278D8190002084B9 /* PlanDetailSummaryRouteTVC.swift in Sources */,
@@ -1263,6 +1411,7 @@
 				FD09DE1727857B5D006DA050 /* controllerFromStoryboard + UIViewController.swift in Sources */,
 				F2C5F1922786EB3300BE4036 /* MainListView.swift in Sources */,
 				FD4C86BE278C9AF900D37A2D /* PaymentCompleteVC.swift in Sources */,
+				FDCDCB31278F4C2B002CEA15 /* PlanDetailSpotDataModel.swift in Sources */,
 				FDF980FF2788C9220009A14E /* PlanPreviewVC.swift in Sources */,
 				FDC47DF12789524000A152E8 /* PreviewSummaryData.swift in Sources */,
 				FD20C620278EF0C900AC6E34 /* MyPlanSettingVC.swift in Sources */,
@@ -1274,7 +1423,6 @@
 				FD20C615278ECBE800AC6E34 /* MyPlanEmptyBuyListView.swift in Sources */,
 				FD20C61C278EEFAB00AC6E34 /* addObserverAction.swift in Sources */,
 				FD3211AB27841948007D63D5 /* SceneDelegate.swift in Sources */,
-				FD2D4DAF278D3D0A002084B9 /* PlanDetailSelectDayTVC.swift in Sources */,
 				FDC47DED2789521000A152E8 /* PreviewDescriptionData.swift in Sources */,
 				FD2D4DA9278D3C55002084B9 /* PlanDetailMapContainerTVC.swift in Sources */,
 				FD09DE1127857A5C006DA050 /* pressAction.swift in Sources */,
@@ -1284,10 +1432,15 @@
 				FDC47E112789742800A152E8 /* TravelSpotDetailVC.swift in Sources */,
 				FDF981082788D4CF0009A14E /* PlanPreviewSummaryTVC.swift in Sources */,
 				FDF980D62786D5320009A14E /* makePayBoocFont.swift in Sources */,
+				FD3566532792AF2C0082B4CE /* ScrapEmptyContainerView.swift in Sources */,
 				FD2D4DBD278D3FA5002084B9 /* PlanDetailDayCVC.swift in Sources */,
+				FD3566552792AFCD0082B4CE /* PlanDetailSelectDayView.swift in Sources */,
+				FD35664B2792AF2C0082B4CE /* ScrapVC.swift in Sources */,
 				FD09DDF3278577F4006DA050 /* BaseAPI.swift in Sources */,
+				FD35664F2792AF2C0082B4CE /* ScrapContainerCVC.swift in Sources */,
 				FDF981062788D4C00009A14E /* PlanPreviewPhotoTVC.swift in Sources */,
 				FD09DE1E27857CDC006DA050 /* HomeVC.swift in Sources */,
+				FD61AFDC2791DC6E00D39F47 /* UINavigation + Extension.swift in Sources */,
 				FD20C623278EF11000AC6E34 /* MyPlanWithdrawVC.swift in Sources */,
 				FD09DDFE278578BA006DA050 /* StringLiterals.swift in Sources */,
 				F294EC2B278EBC66001069F8 /* LoginVC + AppleLogin.swift in Sources */,
@@ -1295,7 +1448,7 @@
 				FD09DE1527857B36006DA050 /* getClassName.swift in Sources */,
 				FD20C626278EF6AE00AC6E34 /* BarSelectButton.swift in Sources */,
 				F266412F2788262800CCC751 /* MainListCVC.swift in Sources */,
-				F294EC2F278EBD7E001069F8 /* SignUpNicknameVC.swift in Sources */,
+				F294EC2F278EBD7E001069F8 /* SignUpVC.swift in Sources */,
 				FDC47E0E2789742800A152E8 /* TravelSpotCVC.swift in Sources */,
 				52E26A8D278C17A800D84F0C /* TravelSpotFilterVC.swift in Sources */,
 				FD2D4DCC278D8636002084B9 /* drawDashedLine + UIView.swift in Sources */,
@@ -1309,6 +1462,7 @@
 				F294EC28278EBC2C001069F8 /* LoginVC + KakaoLogin.swift in Sources */,
 				FD09DE0D278579CC006DA050 /* showNetworkAlert.swift in Sources */,
 				FD09DDF927857858006DA050 /* UICollectionViewRegisterable.swift in Sources */,
+				FD35664D2792AF2C0082B4CE /* ScrapContainerView.swift in Sources */,
 				FD09DE032785794B006DA050 /* makeVibrate.swift in Sources */,
 				FD2D4DDC278DC22C002084B9 /* PlanDetailSummaryTVC.swift in Sources */,
 			);
@@ -1492,7 +1646,6 @@
 		};
 		FD3211BB27841949007D63D5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4D2A2785C068D6F29C524F4D /* Pods-BeMyPlan.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

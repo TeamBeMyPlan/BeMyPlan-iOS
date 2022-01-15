@@ -14,7 +14,6 @@ let screenHeight = UIScreen.main.bounds.height
 class BaseVC: UIViewController {
   
   // MARK: - Vars & Lets Part
-  
   var clickedIndex : TabList = .home{
     didSet{
       runTabClickAction()
@@ -37,9 +36,14 @@ class BaseVC: UIViewController {
   
   override func viewDidAppear(_ animated: Bool) {
     showContainerView()
-    navigationController?.interactivePopGestureRecognizer?.delegate = nil
-    navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+//    navigationController?.interactivePopGestureRecognizer?.delegate = nil
+//    navigationController?.interactivePopGestureRecognizer?.isEnabled = false
   }
+  
+  open override func didMove(toParent parent: UIViewController?) {
+    navigationController?.fixInteractivePopGestureRecognizer(delegate: self)
+  }
+  
   
   // MARK: - Constraint Part
   
@@ -117,4 +121,16 @@ extension BaseVC : TabBarDelegate{
       }
     }
   }
+}
+
+
+extension BaseVC : UIGestureRecognizerDelegate {
+  public func gestureRecognizer(
+    _ gestureRecognizer: UIGestureRecognizer,
+    shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer
+  ) -> Bool {
+    print("gesture",otherGestureRecognizer is PanDirectionGestureRecognizer)
+    return otherGestureRecognizer is PanDirectionGestureRecognizer
+  }
+
 }

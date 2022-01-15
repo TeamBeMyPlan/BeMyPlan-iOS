@@ -1,13 +1,13 @@
 //
-//  SignUpNicknameVC.swift
+//  MyPlanVC.swift
 //  BeMyPlan
 //
-//  Created by 안현주 on 2022/01/12.
+//  Created by 송지훈 on 2022/01/06.
 //
 
 import UIKit
 
-class SignUpNicknameVC: UIViewController {
+class MyPlanVC: UIViewController {
 
   // MARK: - Vars & Lets Part
 
@@ -19,7 +19,6 @@ class SignUpNicknameVC: UIViewController {
   
     override func viewDidLoad() {
         super.viewDidLoad()
-         
     }
     
   // MARK: - IBAction Part
