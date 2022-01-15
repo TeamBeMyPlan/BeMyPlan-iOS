@@ -19,11 +19,6 @@ class TravelSpotCVC: UICollectionViewCell {
     super.awakeFromNib()
     locationImageView.layer.cornerRadius = 5
     lockImageView.layer.cornerRadius = 5
-  }
-  
-  //    func setData(locationName: String, locationImage: UIImage?) {
-  //      locationImageView.image = locationImage
-  //      locationLabel.text = locationName
-  //    }
+  }  
 }
 

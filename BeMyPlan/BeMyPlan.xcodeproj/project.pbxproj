@@ -16,6 +16,8 @@
 		52B0A5A5278F424700242D35 /* ScrapEmptyCotainerCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52B0A5A3278F424700242D35 /* ScrapEmptyCotainerCVC.xib */; };
 		52B0A5A8278F569800242D35 /* ScrapContainerCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B0A59C278F420C00242D35 /* ScrapContainerCVC.swift */; };
 		52E26A8D278C17A800D84F0C /* TravelSpotFilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E26A8C278C17A800D84F0C /* TravelSpotFilterVC.swift */; };
+		F21AFAA027919A8000A84633 /* CustomAlert.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F21AFA9F27919A8000A84633 /* CustomAlert.storyboard */; };
+		F21AFAA827919BA200A84633 /* CustomAlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21AFAA727919BA200A84633 /* CustomAlertVC.swift */; };
 		F261EC7927873A7D00AF094F /* MainCardCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F261EC7727873A7D00AF094F /* MainCardCVC.swift */; };
 		F261EC7A27873A7D00AF094F /* MainCardCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F261EC7827873A7D00AF094F /* MainCardCVC.xib */; };
 		F261EC7C27873D3C00AF094F /* MainCardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F261EC7B27873D3C00AF094F /* MainCardData.swift */; };
@@ -25,7 +27,8 @@
 		F273216F278BEB7700A9B0CC /* MainCardCarouselLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F273216E278BEB7700A9B0CC /* MainCardCarouselLayout.swift */; };
 		F294EC28278EBC2C001069F8 /* LoginVC + KakaoLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F294EC27278EBC2C001069F8 /* LoginVC + KakaoLogin.swift */; };
 		F294EC2B278EBC66001069F8 /* LoginVC + AppleLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F294EC2A278EBC66001069F8 /* LoginVC + AppleLogin.swift */; };
-		F294EC2F278EBD7E001069F8 /* SignUpNicknameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F294EC2E278EBD7E001069F8 /* SignUpNicknameVC.swift */; };
+		F294EC2F278EBD7E001069F8 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F294EC2E278EBD7E001069F8 /* SignUpVC.swift */; };
+		F294EC32278EFA0F001069F8 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F294EC31278EFA0F001069F8 /* SignUp.storyboard */; };
 		F2C5F18E2786EACB00BE4036 /* MainCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C5F18D2786EACB00BE4036 /* MainCardView.swift */; };
 		F2C5F1902786EAE200BE4036 /* MainCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2C5F18F2786EAE200BE4036 /* MainCardView.xib */; };
 		F2C5F1922786EB3300BE4036 /* MainListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C5F1912786EB3300BE4036 /* MainListView.swift */; };
@@ -199,6 +202,8 @@
 		52B0A5A3278F424700242D35 /* ScrapEmptyCotainerCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScrapEmptyCotainerCVC.xib; sourceTree = "<group>"; };
 		52E26A8C278C17A800D84F0C /* TravelSpotFilterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelSpotFilterVC.swift; sourceTree = "<group>"; };
 		DAC8660B79B9BFADE94033DF /* Pods-BeMyPlan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeMyPlan.debug.xcconfig"; path = "Target Support Files/Pods-BeMyPlan/Pods-BeMyPlan.debug.xcconfig"; sourceTree = "<group>"; };
+		F21AFA9F27919A8000A84633 /* CustomAlert.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CustomAlert.storyboard; sourceTree = "<group>"; };
+		F21AFAA727919BA200A84633 /* CustomAlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertVC.swift; sourceTree = "<group>"; };
 		F261EC7727873A7D00AF094F /* MainCardCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCardCVC.swift; sourceTree = "<group>"; };
 		F261EC7827873A7D00AF094F /* MainCardCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainCardCVC.xib; sourceTree = "<group>"; };
 		F261EC7B27873D3C00AF094F /* MainCardData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCardData.swift; sourceTree = "<group>"; };
@@ -208,8 +213,9 @@
 		F273216E278BEB7700A9B0CC /* MainCardCarouselLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCardCarouselLayout.swift; sourceTree = "<group>"; };
 		F294EC27278EBC2C001069F8 /* LoginVC + KakaoLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginVC + KakaoLogin.swift"; sourceTree = "<group>"; };
 		F294EC2A278EBC66001069F8 /* LoginVC + AppleLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginVC + AppleLogin.swift"; sourceTree = "<group>"; };
-		F294EC2E278EBD7E001069F8 /* SignUpNicknameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpNicknameVC.swift; sourceTree = "<group>"; };
+		F294EC2E278EBD7E001069F8 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		F294EC30278EDB82001069F8 /* BeMyPlan.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BeMyPlan.entitlements; sourceTree = "<group>"; };
+		F294EC31278EFA0F001069F8 /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		F2C5F18D2786EACB00BE4036 /* MainCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCardView.swift; sourceTree = "<group>"; };
 		F2C5F18F2786EAE200BE4036 /* MainCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainCardView.xib; sourceTree = "<group>"; };
 		F2C5F1912786EB3300BE4036 /* MainListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainListView.swift; sourceTree = "<group>"; };
@@ -449,6 +455,23 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		F21AFA9A279187E900A84633 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				F21AFAA327919AA400A84633 /* NoTitle */,
+			);
+			path = Alert;
+			sourceTree = "<group>";
+		};
+		F21AFAA327919AA400A84633 /* NoTitle */ = {
+			isa = PBXGroup;
+			children = (
+				F21AFA9F27919A8000A84633 /* CustomAlert.storyboard */,
+				F21AFAA727919BA200A84633 /* CustomAlertVC.swift */,
+			);
+			path = NoTitle;
+			sourceTree = "<group>";
+		};
 		F261EC7627873A3F00AF094F /* MainCardItem */ = {
 			isa = PBXGroup;
 			children = (
@@ -481,7 +504,8 @@
 		F294EC2D278EBD58001069F8 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
-				F294EC2E278EBD7E001069F8 /* SignUpNicknameVC.swift */,
+				F294EC2E278EBD7E001069F8 /* SignUpVC.swift */,
+				F294EC31278EFA0F001069F8 /* SignUp.storyboard */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -906,6 +930,7 @@
 		FD3211C627843F64007D63D5 /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				F21AFA9A279187E900A84633 /* Alert */,
 				FD2D4DBF278D579A002084B9 /* Components */,
 				FD3151A0278D0C5D0076D92E /* Plan */,
 				FDF980D92786E02C0009A14E /* Base */,
@@ -1176,6 +1201,7 @@
 				FD09DDE627856A31006DA050 /* map_present_direction.png in Resources */,
 				FDF980C62786D1A40009A14E /* Home.storyboard in Resources */,
 				FD09DDDF27856A31006DA050 /* map_present_tracking.png in Resources */,
+				F21AFAA027919A8000A84633 /* CustomAlert.storyboard in Resources */,
 				FD09DDD727856A31006DA050 /* map_pin_custom@3x.png in Resources */,
 				FD09DDDA27856A31006DA050 /* copyright.png in Resources */,
 				FD09DDD827856A31006DA050 /* map_pinup@3x.png in Resources */,
@@ -1184,6 +1210,7 @@
 				FD2D4DDA278DB179002084B9 /* PlanDetailSummaryFoldTVC.xib in Resources */,
 				FD3211B527841949007D63D5 /* LaunchScreen.storyboard in Resources */,
 				FD09DDE927856A31006DA050 /* noimage.png in Resources */,
+				F294EC32278EFA0F001069F8 /* SignUp.storyboard in Resources */,
 				FD09DDEB27856A31006DA050 /* daum_th_line.png in Resources */,
 				FD09DD5127855E33006DA050 /* GoogleService-Info.plist in Resources */,
 				FDF980BF2786CE700009A14E /* Spoqa_Han_Sans_Neo_Regular.otf in Resources */,
@@ -1330,6 +1357,7 @@
 				FD008829278FE94C00C194B5 /* PlanDetailInfoPhotoCVC.swift in Sources */,
 				FD09DE2927857E25006DA050 /* StoryboardLiterals.swift in Sources */,
 				FDC47DF32789524A00A152E8 /* PreviewRecommendData.swift in Sources */,
+				F21AFAA827919BA200A84633 /* CustomAlertVC.swift in Sources */,
 				FDF980C12786D14B0009A14E /* setDefaultFonts.swift in Sources */,
 				FD09DE0727857971006DA050 /* calculateTopInset.swift in Sources */,
 				FDF980E32786E7E90009A14E /* BaseContainerView.swift in Sources */,
@@ -1397,7 +1425,7 @@
 				FD09DE1527857B36006DA050 /* getClassName.swift in Sources */,
 				FD20C626278EF6AE00AC6E34 /* BarSelectButton.swift in Sources */,
 				F266412F2788262800CCC751 /* MainListCVC.swift in Sources */,
-				F294EC2F278EBD7E001069F8 /* SignUpNicknameVC.swift in Sources */,
+				F294EC2F278EBD7E001069F8 /* SignUpVC.swift in Sources */,
 				FDC47E0E2789742800A152E8 /* TravelSpotCVC.swift in Sources */,
 				52E26A8D278C17A800D84F0C /* TravelSpotFilterVC.swift in Sources */,
 				FD2D4DCC278D8636002084B9 /* drawDashedLine + UIView.swift in Sources */,

@@ -4,10 +4,16 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Spoqa_Han_Sans_Neo_Regular.otf">
+            <string>SpoqaHanSansNeo-Regular</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -21,26 +27,18 @@
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LM2-dA-Vyp">
                         <rect key="frame" x="0.0" y="0.0" width="327" height="277"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3bF-vi-abI">
-                        <rect key="frame" x="0.0" y="298" width="150" height="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3bF-vi-abI">
+                        <rect key="frame" x="0.0" y="298" width="327" height="17"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="17" id="0xe-zf-RPn"/>
-                            <constraint firstAttribute="width" constant="150" id="Z3r-wt-f0s"/>
                         </constraints>
-                        <attributedString key="attributedText">
-                            <fragment content="Label">
-                                <attributes>
-                                    <color key="NSColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <font key="NSFont" size="14" name="SpoqaHanSansNeo-Regular"/>
-                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                </attributes>
-                            </fragment>
-                        </attributedString>
+                        <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="14"/>
+                        <color key="textColor" name="grey2"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MS1-U3-UqK">
                         <rect key="frame" x="0.0" y="383" width="327" height="1"/>
-                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                        <color key="backgroundColor" name="grey5"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="CLU-RP-Krf"/>
                         </constraints>
@@ -52,7 +50,11 @@
                             <constraint firstAttribute="height" constant="24" id="hwE-Ja-ocm"/>
                         </constraints>
                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                        <state key="normal" image="bookmark"/>
+                        <state key="normal" image="icnNotScrapWhite"/>
+                        <state key="selected" image="icnScrapWhite"/>
+                        <connections>
+                            <action selector="scrapBtnTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="jCX-Qs-C7o"/>
+                        </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mSJ-l4-K62">
                         <rect key="frame" x="227" y="10.5" width="65" height="33"/>
@@ -65,9 +67,9 @@
                         <attributedString key="attributedText">
                             <fragment content="Label">
                                 <attributes>
-                                    <color key="NSColor" systemColor="labelColor"/>
+                                    <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <font key="NSFont" size="20" name="SpoqaHanSansNeo-Bold"/>
-                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="8" tighteningFactorForTruncation="0.0"/>
                                 </attributes>
                             </fragment>
                         </attributedString>
@@ -78,6 +80,7 @@
                     <constraint firstItem="LM2-dA-Vyp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="4Yz-Uo-oZa"/>
                     <constraint firstItem="qQi-WG-5rs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="AWY-8r-JlF"/>
                     <constraint firstAttribute="trailing" secondItem="LM2-dA-Vyp" secondAttribute="trailing" id="B3g-xS-Sy4"/>
+                    <constraint firstItem="3bF-vi-abI" firstAttribute="trailing" secondItem="LM2-dA-Vyp" secondAttribute="trailing" id="CoV-OW-dsb"/>
                     <constraint firstAttribute="bottom" secondItem="MS1-U3-UqK" secondAttribute="bottom" constant="36" id="EmH-XG-eV2"/>
                     <constraint firstItem="6N9-Us-88j" firstAttribute="leading" secondItem="mSJ-l4-K62" secondAttribute="trailing" constant="1" id="Fg8-6Z-Fb9"/>
                     <constraint firstItem="MS1-U3-UqK" firstAttribute="top" secondItem="qQi-WG-5rs" secondAttribute="bottom" constant="20" id="QRf-23-Mnb"/>
@@ -97,22 +100,24 @@
             <connections>
                 <outlet property="contentImage" destination="LM2-dA-Vyp" id="Hpy-pr-1eV"/>
                 <outlet property="nickNameLabel" destination="3bF-vi-abI" id="1N1-Bx-O4l"/>
+                <outlet property="scrapBtn" destination="6N9-Us-88j" id="Qka-9q-bGr"/>
                 <outlet property="titleTextView" destination="qQi-WG-5rs" id="ILT-dz-NeF"/>
             </connections>
             <point key="canvasLocation" x="132.60869565217394" y="79.6875"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="bookmark" width="24" height="24"/>
         <image name="icnFree" width="41" height="19"/>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <image name="icnNotScrapWhite" width="24" height="24"/>
+        <image name="icnScrapWhite" width="24" height="24"/>
+        <namedColor name="grey2">
+            <color red="0.36470588235294116" green="0.40784313725490196" blue="0.47843137254901963" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="grey5">
+            <color red="0.90980392156862744" green="0.91764705882352937" blue="0.92941176470588238" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -25,7 +25,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="572"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="비마플님의 취향에 맞는여행            일정을 찾아보세요" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xfh-Hr-YeP">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내 취향에 맞는여행            일정을 찾아보세요" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xfh-Hr-YeP">
                     <rect key="frame" x="24" y="30" width="327" height="56"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="56" id="j5w-fD-zz8"/>
@@ -59,7 +59,7 @@
                 <constraint firstItem="xfh-Hr-YeP" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="24" id="vUm-cb-lyC"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="139.85507246376812" y="-62.276785714285708"/>
+            <point key="canvasLocation" x="40" y="-82"/>
         </view>
     </objects>
     <resources>

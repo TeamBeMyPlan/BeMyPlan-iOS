@@ -100,8 +100,8 @@ class MainListView: UIView {
     mainListCV.dataSource = self
     mainListCV.delegate = self
     
-    let mainListCVC = UINib(nibName: MainListCVC.identifier, bundle: nil)
-    mainListCV.register(mainListCVC, forCellWithReuseIdentifier: MainListCVC.identifier)
+    let mainListCVC = UINib(nibName: MainListCVC.className, bundle: nil)
+    mainListCV.register(mainListCVC, forCellWithReuseIdentifier: MainListCVC.className)
   }
   
 }
@@ -119,7 +119,7 @@ extension MainListView: UICollectionViewDataSource {
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainListCVC.identifier, for: indexPath) as? MainListCVC else {return UICollectionViewCell()}
+    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainListCVC.className, for: indexPath) as? MainListCVC else {return UICollectionViewCell()}
     
     cell.setData(appData: mainListDataList[indexPath.row])
     return cell

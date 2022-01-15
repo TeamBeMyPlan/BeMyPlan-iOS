@@ -24,23 +24,26 @@ import UIKit
 
 extension UIViewController
 {
-    func makeRequestAlert(title : String,
-                   message : String,
-                   okAction : ((UIAlertAction) -> Void)?,
-                   cancelAction : ((UIAlertAction) -> Void)? = nil,
-                   completion : (() -> Void)? = nil)
+  func makeAlert(alertCase : CustomAlertCase,
+      title : String? = nil,
+                   content : String,
+                   okAction : (() -> Void)? = nil)
     {
         
-        let generator = UIImpactFeedbackGenerator(style: .medium)
-        generator.impactOccurred()
-        let alertViewController = UIAlertController(title: title, message: message,
-                                                    preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "확인", style: .default, handler: okAction)
-        alertViewController.addAction(okAction)
-        let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: cancelAction)
-        alertViewController.addAction(cancelAction)
-        self.present(alertViewController, animated: true, completion: completion)
+      makeVibrate()
+      guard let alertVC = UIStoryboard.list(.alert).instantiateViewController(withIdentifier: CustomAlertVC.className) as? CustomAlertVC else {return}
+      
+      if let title = title{
+        alertVC.alertTitle = title
+      }
+      alertVC.alertContent = content
+      alertVC.okAction = okAction
+      alertVC.alertCase = alertCase
+      alertVC.modalTransitionStyle = .crossDissolve
+      alertVC.modalPresentationStyle = .overCurrentContext
+      self.present(alertVC, animated: true, completion: nil)
     }
+  
     
 /**
 
@@ -53,18 +56,18 @@ extension UIViewController
         위와 동일함.
   
  */
-  
-    func makeAlert(title : String,
-                   message : String,
-                   okAction : ((UIAlertAction) -> Void)? = nil,
-                   completion : (() -> Void)? = nil)
-    {
-        let generator = UIImpactFeedbackGenerator(style: .medium)
-        generator.impactOccurred()
-        let alertViewController = UIAlertController(title: title, message: message,
-                                                    preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "확인", style: .default, handler: okAction)
-        alertViewController.addAction(okAction)
-        self.present(alertViewController, animated: true, completion: completion)
-    }
+//
+//    func makeAlert(title : String,
+//                   message : String,
+//                   okAction : ((UIAlertAction) -> Void)? = nil,
+//                   completion : (() -> Void)? = nil)
+//    {
+//        let generator = UIImpactFeedbackGenerator(style: .medium)
+//        generator.impactOccurred()
+//        let alertViewController = UIAlertController(title: title, message: message,
+//                                                    preferredStyle: .alert)
+//        let okAction = UIAlertAction(title: "확인", style: .default, handler: okAction)
+//        alertViewController.addAction(okAction)
+//        self.present(alertViewController, animated: true, completion: completion)
+//    }
 }
