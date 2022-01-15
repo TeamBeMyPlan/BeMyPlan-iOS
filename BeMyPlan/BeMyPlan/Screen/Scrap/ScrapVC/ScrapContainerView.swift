@@ -35,14 +35,6 @@ class ScrapContainerView: XibView {
   }
 }
 
-//extension ScrapContainerView: UIViewController {
-//  func test() {
-//    let vc = UIStoryboard(name: "TravelSpot", bundle: nil).instantiateViewController(withIdentifier: "TravelSpotFilterVC") as! TravelSpotFilterVC
-//      presentPanModal(vc)
-//  }
-//
-//}
-
 
 extension ScrapContainerView: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -58,14 +50,14 @@ extension ScrapContainerView: UICollectionViewDataSource {
 
 extension ScrapContainerView: UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    let cellHeight = screenWidth * (190/375)
+    let cellHeight = screenWidth * (206/375)
     let cellWidth = screenWidth * (156/375)
     return CGSize(width: cellWidth, height: cellHeight)
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
     let inset = screenWidth * (24/375)
-    return UIEdgeInsets(top: 0, left: inset, bottom: 0, right: inset)
+    return UIEdgeInsets(top: 0, left: inset, bottom: inset, right: inset)
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

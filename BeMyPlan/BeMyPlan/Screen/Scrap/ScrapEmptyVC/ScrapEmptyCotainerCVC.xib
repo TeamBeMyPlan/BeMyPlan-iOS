@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -25,15 +26,16 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hxw-Hd-M1d">
-                        <rect key="frame" x="0.0" y="172" width="160" height="34"/>
+                        <rect key="frame" x="0.0" y="172" width="160" height="40"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="lessThanOrEqual" constant="40" id="X7H-BM-7e5"/>
                         </constraints>
                         <attributedString key="attributedText">
-                            <fragment content="워케이션을 위한 카페투어어어어어러">
+                            <fragment content="워케이션을 위한 카페투어어어어어러워케이션을 위한 카페투어어어어어러">
                                 <attributes>
+                                    <color key="NSColor" name="grey1"/>
                                     <font key="NSFont" size="14" name="SpoqaHanSansNeo-Bold"/>
-                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="6" tighteningFactorForTruncation="0.0"/>
                                 </attributes>
                             </fragment>
                         </attributedString>
@@ -50,10 +52,16 @@
                 <constraint firstItem="hxw-Hd-M1d" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="wFo-6g-gRB"/>
             </constraints>
             <size key="customSize" width="160" height="227"/>
+            <connections>
+                <outlet property="titleLabel" destination="hxw-Hd-M1d" id="OTt-dL-2eH"/>
+            </connections>
             <point key="canvasLocation" x="217.39130434782609" y="167.07589285714286"/>
         </collectionViewCell>
     </objects>
     <resources>
         <image name="mainlist1" width="160" height="160"/>
+        <namedColor name="grey1">
+            <color red="0.19215686274509805" green="0.21568627450980393" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>
