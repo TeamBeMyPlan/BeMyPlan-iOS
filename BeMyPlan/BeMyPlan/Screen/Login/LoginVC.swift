@@ -66,8 +66,9 @@ class LoginVC: UIViewController {
   }
   
   func moveSignup(){
-    guard let signupVC = UIStoryboard.list(.base).instantiateViewController(withIdentifier: SignUpVC.className) as? SignUpVC else {return}
+    guard let signupVC = UIStoryboard.list(.signup).instantiateViewController(withIdentifier: SignUpVC.className) as? SignUpVC else {return}
     signupVC.modalPresentationStyle = .overFullScreen
+    signupVC.delegate = self
     self.present(signupVC, animated: true, completion: nil)
   }
   
@@ -79,4 +80,9 @@ class LoginVC: UIViewController {
   // MARK: - @objc Function Part
   
 }
-// MARK: - Extension Part
+extension LoginVC : SignupDelegate{
+  func loginComplete() {
+    moveBaseVC()
+  }
+  
+}

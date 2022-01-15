@@ -10,7 +10,7 @@ import UIKit
 class SignUpVC: UIViewController {
   
   // MARK: - Vars & Lets Part
-  
+  var delegate : SignupDelegate?
   private var isNicknameValid : Bool = false {
     didSet {
       setStartBtnStatus()
@@ -176,13 +176,17 @@ class SignUpVC: UIViewController {
   }
   
   private func addBtnActions() {
-    startBtn.press {
-      self.makeAlert(alertCase: .requestAlert, content: "회원가입을 그만두시겠습니까?") {
-        //실제로는 이방법이 아니라 dismiss 되었을때 completion에 새로운 escaping closure를 선언해서 파라미터로 받아와서 해야한다....!
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.001) {
-          self.makeAlert(alertCase:   .requestAlert, content: "닉네임을 수정할 수 없습니다.\n이대로 가입을 진행할까요?") {
-            print("SignUp 커스텀 Alert 완료")
-          }
+    //실제로는 이방법이 아니라 dismiss 되었을때 completion에 새로운 escaping closure를 선언해서 파라미터로 받아와서 해야한다....!
+    startBtn.press{
+      self.showSignupAlert()
+    }
+  }
+  
+  private func showSignupAlert(){
+    self.makeAlert(alertCase: .requestAlert, content: "닉네임을 수정할 수 없습니다.\n이대로 가입을 진행할까요?") {
+      self.makeAlert(alertCase: .simpleAlert, title: "알림", content: "회원가입이 완료되었습니다."){
+        self.dismiss(animated: true) {
+          self.delegate?.loginComplete()
         }
       }
     }
@@ -235,6 +239,6 @@ extension SignUpVC : UITextFieldDelegate{
   
   
 }
-
-
-
+protocol SignupDelegate{
+  func loginComplete()
+}
