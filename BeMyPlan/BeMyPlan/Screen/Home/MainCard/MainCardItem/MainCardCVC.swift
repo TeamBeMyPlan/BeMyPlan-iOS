@@ -8,9 +8,7 @@
 import UIKit
 
 class MainCardCVC: UICollectionViewCell {
-  
-  static let identifier = "MainCardCVC"
-  
+ 
   @IBOutlet var mainCardImageLayer: UIView!
   @IBOutlet var mainCardImageView: UIImageView!
   @IBOutlet var mainCardCategory: UILabel!

@@ -9,8 +9,6 @@ import UIKit
 
 class MainListCVC: UICollectionViewCell {
   
-  static let identifier = "MainListCVC"
-  
   @IBOutlet var mainListImageView: UIImageView!
   @IBOutlet var mainListTitle: UILabel!
   
