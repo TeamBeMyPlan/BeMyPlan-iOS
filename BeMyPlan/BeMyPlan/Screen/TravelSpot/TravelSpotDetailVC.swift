@@ -73,8 +73,12 @@ extension TravelSpotDetailVC: UITableViewDelegate {
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return UITableView.automaticDimension
   }
-    
+  
+  func tableviewdidselect
+  
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .movePlanPreview), object: nil)
+
   }
 }
 

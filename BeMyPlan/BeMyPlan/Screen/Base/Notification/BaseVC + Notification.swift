@@ -49,7 +49,7 @@ extension BaseVC{
     }
     
     addObserverAction(keyName: BaseNotiList.makeNotiName(list: .movePlanList)) { _ in
-      guard let spotlistVC = UIStoryboard.list(.planList).instantiateViewController(withIdentifier: PlanListVC.className) as? PlanListVC else {return}
+      guard let spotlistVC = UIStoryboard.list(.travelSpot).instantiateViewController(withIdentifier: TravelSpotDetailVC.className) as? TravelSpotDetailVC else {return}
       self.navigationController?.pushViewController(spotlistVC, animated: true)
     }
     
