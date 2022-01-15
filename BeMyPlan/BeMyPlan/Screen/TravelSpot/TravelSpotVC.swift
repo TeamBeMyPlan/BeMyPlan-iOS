@@ -39,6 +39,7 @@ class TravelSpotVC: UIViewController {
   // MARK: - Custom Method Part
   
   // MARK: - @objc Function Part
+  
 }
 
 // MARK: - Extension Part
@@ -61,6 +62,7 @@ extension TravelSpotVC: UICollectionViewDelegate {
     return 20
   }
   
+  
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TravelSpotCVC.identifier, for: indexPath) as? TravelSpotCVC else {return UICollectionViewCell()}
     cell.layer.cornerRadius = 5
@@ -71,8 +73,7 @@ extension TravelSpotVC: UICollectionViewDelegate {
   }
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    guard let nextVC = self.storyboard?.instantiateViewController(withIdentifier: "TravelSpotDetailVC") as? TravelSpotDetailVC else {return}
-    self.navigationController?.pushViewController(nextVC, animated: true)
+    NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .movePlanList), object: nil)
   }
 }
 
