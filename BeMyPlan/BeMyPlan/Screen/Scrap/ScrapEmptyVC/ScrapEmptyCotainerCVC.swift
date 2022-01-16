@@ -11,7 +11,7 @@ class ScrapEmptyCotainerCVC: UICollectionViewCell,UICollectionViewRegisterable {
   static var isFromNib: Bool = true
   @IBOutlet var titleLabel: UILabel! {
     didSet {
-      self.titleLabel.text = "여행여행여행여행여행여행여행여행여행여행여행여행여행여행여행여행여행여행여행여행여행여행여행여행여행여행여행여행"
+      self.titleLabel.text = "여행의 즐거움을 느끼고 싶다면."
     }
   }
   

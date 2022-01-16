@@ -19,7 +19,6 @@ class PlanListVC: UIViewController {
   
     override func viewDidLoad() {
         super.viewDidLoad()
-         
     }
     
   // MARK: - IBAction Part

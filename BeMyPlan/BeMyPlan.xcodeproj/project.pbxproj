@@ -87,6 +87,7 @@
 		FD09DE2727857DE3006DA050 /* GenericResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD09DE2627857DE3006DA050 /* GenericResponse.swift */; };
 		FD09DE2927857E25006DA050 /* StoryboardLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD09DE2827857E25006DA050 /* StoryboardLiterals.swift */; };
 		FD09DE2D27858B41006DA050 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD09DE2C27858B41006DA050 /* Metal.framework */; };
+		FD1C568C2792DA7300EEDFCE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD3211B127841949007D63D5 /* Assets.xcassets */; };
 		FD20C609278EB94100AC6E34 /* MyPlanCVUserResuableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD20C608278EB94100AC6E34 /* MyPlanCVUserResuableView.swift */; };
 		FD20C60B278EBBB500AC6E34 /* MyPlanBuyContentCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD20C60A278EBBB500AC6E34 /* MyPlanBuyContentCVC.swift */; };
 		FD20C60E278EBF1800AC6E34 /* MyPlanData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD20C60D278EBF1800AC6E34 /* MyPlanData.swift */; };
@@ -124,7 +125,6 @@
 		FD3211AB27841948007D63D5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3211AA27841948007D63D5 /* SceneDelegate.swift */; };
 		FD3211AD27841948007D63D5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3211AC27841948007D63D5 /* ViewController.swift */; };
 		FD3211B027841948007D63D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD3211AE27841948007D63D5 /* Main.storyboard */; };
-		FD3211B227841949007D63D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD3211B127841949007D63D5 /* Assets.xcassets */; };
 		FD3211B527841949007D63D5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD3211B327841949007D63D5 /* LaunchScreen.storyboard */; };
 		FD3211C3278433CF007D63D5 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = FD3211C2278433CF007D63D5 /* .swiftlint.yml */; };
 		FD35664B2792AF2C0082B4CE /* ScrapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD35663F2792AF2C0082B4CE /* ScrapVC.swift */; };
@@ -1261,6 +1261,7 @@
 				FD2D4DBE278D3FA5002084B9 /* PlanDetailDayCVC.xib in Resources */,
 				FD2D4DDE278DDB93002084B9 /* Spoqa_Han_Sans_Neo_Medium.otf in Resources */,
 				FD09DDE427856A31006DA050 /* info_box_tail.png in Resources */,
+				FD1C568C2792DA7300EEDFCE /* Assets.xcassets in Resources */,
 				FD2D4DBA278D3DCE002084B9 /* PlanDetailInformationTVC.xib in Resources */,
 				FD4C86B8278C7A7200D37A2D /* Payment.storyboard in Resources */,
 				FD35664E2792AF2C0082B4CE /* ScrapContainerView.xib in Resources */,
@@ -1275,7 +1276,6 @@
 				FDF980EA2786F19D0009A14E /* MyPlan.storyboard in Resources */,
 				FDF980CA2786D23D0009A14E /* TravelSpot.storyboard in Resources */,
 				FD09DDE527856A31006DA050 /* noimage256.png in Resources */,
-				FD3211B227841949007D63D5 /* Assets.xcassets in Resources */,
 				FD09DDD227856A31006DA050 /* map_pinup_custom@3x.png in Resources */,
 				FDF980F4278825EF0009A14E /* TabBarIconView.xib in Resources */,
 				F266412D2788262800CCC751 /* MainListCVC.xib in Resources */,
@@ -1628,7 +1628,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = BeMyPlan/BeMyPlan.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = L9D5M5DM3Y;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1641,6 +1641,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
@@ -1666,7 +1667,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = BeMyPlan/BeMyPlan.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = L9D5M5DM3Y;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1679,6 +1680,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;

@@ -51,11 +51,11 @@ class PlanPreviewPhotoTVC: UITableViewCell {
     
   }
   func setPhotoData(url : String?, content :String?){
-    if let photoURL = url{
-      contentImageView.setImage(with: photoURL)
-    }else{
-      contentImageView.image = UIImage()
-    }
+//    if let photoURL = url{
+//      contentImageView.setImage(with: photoURL)
+//    }else{
+//      contentImageView.image = UIImage()
+//    }
     contentTextView.text = (content != nil) ? content : ""
   }
   

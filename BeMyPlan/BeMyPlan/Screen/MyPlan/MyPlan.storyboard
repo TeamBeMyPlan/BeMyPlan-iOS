@@ -491,7 +491,7 @@
                         <outlet property="askButton" destination="G45-lR-VGa" id="bah-pJ-dCK"/>
                         <outlet property="logoutButton" destination="MtY-vc-6v5" id="vMZ-Pe-s6b"/>
                         <outlet property="serviceTermButton" destination="xfJ-ma-H3z" id="YQW-el-F5E"/>
-                        <outlet property="uploadButton" destination="G45-lR-VGa" id="P06-ir-320"/>
+                        <outlet property="uploadButton" destination="NJ2-fQ-ilf" id="lkr-qt-SyC"/>
                         <outlet property="withdrawButton" destination="lak-SE-Kdd" id="I3s-2n-zcX"/>
                     </connections>
                 </viewController>

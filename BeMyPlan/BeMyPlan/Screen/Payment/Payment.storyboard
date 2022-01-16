@@ -54,7 +54,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VeP-PM-WLY">
-                                <rect key="frame" x="0.0" y="774" width="414" height="122"/>
+                                <rect key="frame" x="0.0" y="808" width="414" height="88"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="결제하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o5S-kk-PJ1">
                                         <rect key="frame" x="176" y="31" width="62.5" height="21"/>
@@ -63,7 +63,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3MY-4b-Pxc">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="122"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="88"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <connections>
                                             <action selector="paymentButtonClicked:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Dge-aa-ssY"/>
@@ -76,16 +76,16 @@
                                     <constraint firstItem="3MY-4b-Pxc" firstAttribute="top" secondItem="VeP-PM-WLY" secondAttribute="top" id="ELi-IR-DC8"/>
                                     <constraint firstItem="o5S-kk-PJ1" firstAttribute="centerX" secondItem="VeP-PM-WLY" secondAttribute="centerX" id="Rnr-8Q-lRj"/>
                                     <constraint firstAttribute="trailing" secondItem="3MY-4b-Pxc" secondAttribute="trailing" id="cB9-rU-enN"/>
-                                    <constraint firstAttribute="height" constant="122" id="ebB-Gg-Ycd"/>
+                                    <constraint firstAttribute="height" constant="88" id="ebB-Gg-Ycd"/>
                                     <constraint firstItem="o5S-kk-PJ1" firstAttribute="top" secondItem="VeP-PM-WLY" secondAttribute="top" constant="31" id="h3d-R0-cjR"/>
                                     <constraint firstAttribute="bottom" secondItem="3MY-4b-Pxc" secondAttribute="bottom" id="hJa-WD-LfB"/>
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qTF-rP-1AE">
-                                <rect key="frame" x="0.0" y="94" width="414" height="680"/>
+                                <rect key="frame" x="0.0" y="94" width="414" height="714"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JKn-jn-qEI">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="680"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="714"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b96-RL-bbk">
                                                 <rect key="frame" x="24" y="20" width="366" height="176"/>
@@ -169,7 +169,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="카카오페이">
-                                                    <color key="titleColor" name="beMyBlue"/>
+                                                    <color key="titleColor" name="grey1"/>
                                                 </state>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TZ3-UT-LJE" customClass="BarSelectButton" customModule="BeMyPlan" customModuleProvider="target">
@@ -180,7 +180,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="토스">
-                                                    <color key="titleColor" name="beMyBlue"/>
+                                                    <color key="titleColor" name="grey1"/>
                                                 </state>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BZd-br-VyB" customClass="BarSelectButton" customModule="BeMyPlan" customModuleProvider="target">
@@ -191,7 +191,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="네이버페이">
-                                                    <color key="titleColor" name="beMyBlue"/>
+                                                    <color key="titleColor" name="grey1"/>
                                                 </state>
                                             </button>
                                         </subviews>
@@ -243,6 +243,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="infoContentView" destination="b96-RL-bbk" id="RNE-20-jPQ"/>
                         <outlet property="moneyLabel" destination="Cyj-kq-g0E" id="Xzn-Ed-ufo"/>
                         <outlet property="titleLabel" destination="yAR-F7-j81" id="7u3-E7-55o"/>
                         <outlet property="writerLabel" destination="Kn2-OM-lqS" id="c9i-Xm-DxV"/>
@@ -395,19 +396,15 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xue-gG-FeF">
                                 <rect key="frame" x="24" y="530.5" width="366" height="48"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Vk-NR-qqQ">
-                                        <rect key="frame" x="0.0" y="0.0" width="178" height="48"/>
-                                        <color key="backgroundColor" name="beMyBlue"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="홈으로 가기"/>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jEp-z8-99T">
-                                        <rect key="frame" x="188" y="0.0" width="178" height="48"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="366" height="48"/>
                                         <color key="backgroundColor" name="beMyBlue"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="컨텐츠 보러 가기"/>
+                                        <connections>
+                                            <action selector="showContentButtonClicked:" destination="gYK-pO-SXL" eventType="touchUpInside" id="HHT-30-rwb"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>

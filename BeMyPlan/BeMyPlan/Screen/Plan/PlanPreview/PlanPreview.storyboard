@@ -166,12 +166,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="372"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img" translatesAutoresizingMaskIntoConstraints="NO" id="ZGA-tA-uBS">
-                                                    <rect key="frame" x="24" y="11" width="366" height="238.5"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="238.5" id="78B-e2-y5P"/>
-                                                    </constraints>
-                                                </imageView>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a8w-Cj-HDv">
                                                     <rect key="frame" x="24" y="269.5" width="366" height="66.5"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -182,6 +176,12 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img" translatesAutoresizingMaskIntoConstraints="NO" id="ZGA-tA-uBS">
+                                                    <rect key="frame" x="24" y="11" width="366" height="238.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="238.5" id="78B-e2-y5P"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="ZGA-tA-uBS" secondAttribute="trailing" constant="24" id="Ccv-8d-fkM"/>
@@ -292,14 +292,10 @@
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Do4-ZC-mS3">
-                                <rect key="frame" x="0.0" y="1923" width="414" height="122"/>
+                                <rect key="frame" x="0.0" y="1957" width="414" height="88"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gyg-JP-H2k">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="122"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                    </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6gZ-5Q-fRB">
-                                        <rect key="frame" x="191" y="0.0" width="223" height="122"/>
+                                        <rect key="frame" x="191" y="0.0" width="223" height="88"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PG7-Vd-pjN">
                                                 <rect key="frame" x="0.0" y="33" width="1" height="18"/>
@@ -329,6 +325,10 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gyg-JP-H2k">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="88"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" name="beMyBlue"/>
                                 <constraints>
@@ -343,7 +343,7 @@
                                     <constraint firstItem="Gyg-JP-H2k" firstAttribute="top" secondItem="Do4-ZC-mS3" secondAttribute="top" id="cL9-Nd-hNc"/>
                                     <constraint firstItem="tjV-rf-jVc" firstAttribute="leading" secondItem="Do4-ZC-mS3" secondAttribute="leading" id="kg4-dh-uBm"/>
                                     <constraint firstAttribute="trailing" secondItem="Gyg-JP-H2k" secondAttribute="trailing" id="wrc-4j-9he"/>
-                                    <constraint firstAttribute="height" constant="122" id="xVx-8a-jRo"/>
+                                    <constraint firstAttribute="height" constant="88" id="xVx-8a-jRo"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -353,7 +353,7 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="3c3-vB-ne6" secondAttribute="trailing" id="1Fe-Tf-0pb"/>
                             <constraint firstItem="xg5-nh-4sK" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="-44" id="4b9-LF-uJM"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Do4-ZC-mS3" secondAttribute="trailing" id="J89-p9-kgb"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Do4-ZC-mS3" secondAttribute="bottom" constant="-34" id="MEi-mH-NXl"/>
+                            <constraint firstAttribute="bottom" secondItem="Do4-ZC-mS3" secondAttribute="bottom" id="MEi-mH-NXl"/>
                             <constraint firstItem="Do4-ZC-mS3" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="WFp-mS-hPW"/>
                             <constraint firstItem="3c3-vB-ne6" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Z6E-Ht-DYM"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="xg5-nh-4sK" secondAttribute="trailing" id="dZG-5b-jEx"/>

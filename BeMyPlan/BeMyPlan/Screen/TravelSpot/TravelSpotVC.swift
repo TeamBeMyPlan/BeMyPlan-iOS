@@ -62,14 +62,14 @@ extension TravelSpotVC: UICollectionViewDataSource {
 
 extension TravelSpotVC: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 20
+    return 1
   }
   
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TravelSpotCVC.identifier, for: indexPath) as? TravelSpotCVC else {return UICollectionViewCell()}
     cell.layer.cornerRadius = 5
-    cell.lockImageView.image = UIImage(named: "imgLayer")
+//    cell.lockImageView.image = UIImage(named: "imgLayer")
     cell.locationImageView.image = UIImage(named: "img")
     cell.locationLabel.text = "서울"
     return cell

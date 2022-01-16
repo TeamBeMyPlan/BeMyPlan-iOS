@@ -21,7 +21,7 @@ class TravelSpotDetailVC: UIViewController {
     regiterXib()
     setTableViewDelegate()
   }
-  
+   
   // MARK: - Set Function Part
   private func setTableViewDelegate() {
     contentTableView.delegate = self
@@ -54,7 +54,7 @@ class TravelSpotDetailVC: UIViewController {
 // MARK: - Extension Part
 extension TravelSpotDetailVC: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 20
+    return 1
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -92,9 +92,3 @@ extension TravelSpotDetailVC: UICollectionViewDelegateFlowLayout {
     return 38
   }
 }
-
-
-
-
-
-
