@@ -34,6 +34,8 @@ struct ImageLiterals{
 		static let carIcon = UIImage(named: "icn_car")!
 		static let foldIcon = UIImage(named : "icn_fold")!
 		static let moreIcon = UIImage(named: "icn_more")!
+		static let mapSelectIcon = UIImage(named: "icn_mainpin_select")!
+		static let mapUnselectIcon = UIImage(named: "icn_subpin_unselect")!
 	}
   struct Components{
 		static let applogo = UIImage(named: "applogo")!
