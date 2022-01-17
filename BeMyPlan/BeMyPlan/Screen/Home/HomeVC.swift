@@ -9,7 +9,7 @@ import UIKit
 
 class HomeVC: UIViewController, UIGestureRecognizerDelegate {
   
-
+  
   
   // MARK: - UI Component Part
   let a = MainCardView()
@@ -50,7 +50,7 @@ class HomeVC: UIViewController, UIGestureRecognizerDelegate {
       mainListViewHeightConstraint.constant = cellHeight + 75
     }
   }
-    
+  
   
   @IBOutlet var mainEditorViewHeightConstraint: NSLayoutConstraint! {
     didSet {
@@ -68,8 +68,8 @@ class HomeVC: UIViewController, UIGestureRecognizerDelegate {
   }
   
   override func viewDidAppear(_ animated: Bool) {
-//    navigationController?.interactivePopGestureRecognizer?.delegate = self
-//    navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+    //    navigationController?.interactivePopGestureRecognizer?.delegate = self
+    //    navigationController?.interactivePopGestureRecognizer?.isEnabled = true
   }
   
   override func viewDidLayoutSubviews() {
@@ -93,14 +93,6 @@ class HomeVC: UIViewController, UIGestureRecognizerDelegate {
     mainEditorListView.mainListDataList = b
   }
   
-//  private func getHomeData(){
-//    BaseService.default.getPopularTripList { result in
-//      result.success { resultData in
-//        resultData.id
-//      }
-//    }
-//  }
-
   
   // MARK: - @objc Function Part
   
