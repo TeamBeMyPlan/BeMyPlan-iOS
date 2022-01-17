@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct HomeList : Codable{
+struct HomeListDataGettable : Codable{
   let id: Int
   let thumbnailURL: String
   let title: String
