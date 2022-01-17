@@ -15,19 +15,19 @@ import Foundation
 ///
 
 protocol HomeServiceType{
-  func getPopularTravelList(completion: @escaping (Result<HomeData.PopularList?, Error>) -> Void)
-  func getNewTravelList(completion: @escaping (Result<HomeData.NewList?, Error>) -> Void)
-  func getSuggestTravelList(completion: @escaping (Result<HomeData.SuggestList?, Error>) -> Void)
+  func getPopularTravelList(completion: @escaping (Result<[HomeListDataGettable ]?, Error>) -> Void)
+  func getNewTravelList(completion: @escaping (Result<[HomeListDataGettable ]?, Error>) -> Void)
+  func getSuggestTravelList(completion: @escaping (Result<[HomeListDataGettable ]?, Error>) -> Void)
 }
 
 extension BaseService : HomeServiceType {
-  func getPopularTravelList(completion: @escaping (Result<HomeData.PopularList?, Error>) -> Void) {
+  func getPopularTravelList(completion: @escaping (Result<[HomeListDataGettable ]?, Error>) -> Void) {
     requestObject(.getPopularTravelList, completion: completion)
   }
-  func getNewTravelList(completion: @escaping (Result<HomeData.NewList?, Error>) -> Void) {
+  func getNewTravelList(completion: @escaping (Result<[HomeListDataGettable ]?, Error>) -> Void) {
     requestObject(.getNewTravelList, completion: completion)
   }
-  func getSuggestTravelList(completion: @escaping (Result<HomeData.SuggestList?, Error>) -> Void) {
+  func getSuggestTravelList(completion: @escaping (Result<[HomeListDataGettable ]?, Error>) -> Void) {
     requestObject(.getSuggestTravelList, completion: completion)
   }
 }
