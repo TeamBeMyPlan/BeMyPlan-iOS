@@ -12,10 +12,8 @@ enum BaseAPI{
   // MARK: - 현주
   case getPopularTravelList
   
-  
   // MARK: - 양원
   case getTravelSpotList
-  
   
   // MARK: - 지훈
   case getBuyList(userID: Int)
@@ -67,13 +65,14 @@ extension BaseAPI: TargetType {
   ///
   var path: String {
     switch self{
+      case .getPopularTravelList:
+        return "/popular"
       case .getBuyList(let userID):
         return "/\(userID)"
       default :
         return ""
     }
   }
-  
   
   // MARK: - Method
   /// - note :

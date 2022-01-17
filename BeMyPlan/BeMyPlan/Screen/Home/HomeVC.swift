@@ -92,6 +92,14 @@ class HomeVC: UIViewController, UIGestureRecognizerDelegate {
     mainListView.mainListDataList = a
     mainEditorListView.mainListDataList = b
   }
+  
+  private func getHomeData(){
+    BaseService.default.getPopularTripList { result in
+      result.success { resultData in
+        resultData.id
+      }
+    }
+  }
 
   
   // MARK: - @objc Function Part
