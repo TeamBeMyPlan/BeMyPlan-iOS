@@ -10,6 +10,7 @@
 		39C361F098A3D9D313FC7446 /* Pods_BeMyPlan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C47CE9CE7AB4C82FA73EBDD /* Pods_BeMyPlan.framework */; };
 		52E26A8D278C17A800D84F0C /* TravelSpotFilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E26A8C278C17A800D84F0C /* TravelSpotFilterVC.swift */; };
 		F2191EEE2795BD880058EF9A /* HomePopularData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2191EED2795BD880058EF9A /* HomePopularData.swift */; };
+		F2191EF02795BE9E0058EF9A /* HomeNewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2191EEF2795BE9E0058EF9A /* HomeNewData.swift */; };
 		F21AFAA027919A8000A84633 /* CustomAlert.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F21AFA9F27919A8000A84633 /* CustomAlert.storyboard */; };
 		F21AFAA827919BA200A84633 /* CustomAlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21AFAA727919BA200A84633 /* CustomAlertVC.swift */; };
 		F261EC7927873A7D00AF094F /* MainCardCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F261EC7727873A7D00AF094F /* MainCardCVC.swift */; };
@@ -211,6 +212,7 @@
 		52E26A8C278C17A800D84F0C /* TravelSpotFilterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelSpotFilterVC.swift; sourceTree = "<group>"; };
 		9441BE8ABA1C240A411BD4C2 /* Pods-BeMyPlan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeMyPlan.debug.xcconfig"; path = "Target Support Files/Pods-BeMyPlan/Pods-BeMyPlan.debug.xcconfig"; sourceTree = "<group>"; };
 		F2191EED2795BD880058EF9A /* HomePopularData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePopularData.swift; sourceTree = "<group>"; };
+		F2191EEF2795BE9E0058EF9A /* HomeNewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNewData.swift; sourceTree = "<group>"; };
 		F21AFA9F27919A8000A84633 /* CustomAlert.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CustomAlert.storyboard; sourceTree = "<group>"; };
 		F21AFAA727919BA200A84633 /* CustomAlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertVC.swift; sourceTree = "<group>"; };
 		F261EC7727873A7D00AF094F /* MainCardCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCardCVC.swift; sourceTree = "<group>"; };
@@ -461,6 +463,7 @@
 			isa = PBXGroup;
 			children = (
 				F2191EED2795BD880058EF9A /* HomePopularData.swift */,
+				F2191EEF2795BE9E0058EF9A /* HomeNewData.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1408,6 +1411,7 @@
 				FD09DDF1278577CF006DA050 /* BaseService.swift in Sources */,
 				FDF980D22786D2EB0009A14E /* TravelSpotVC.swift in Sources */,
 				FD008829278FE94C00C194B5 /* PlanDetailInfoPhotoCVC.swift in Sources */,
+				F2191EF02795BE9E0058EF9A /* HomeNewData.swift in Sources */,
 				FD3566512792AF2C0082B4CE /* ScrapEmptyCotainerCVC.swift in Sources */,
 				FD3566592792BA190082B4CE /* LoginNC.swift in Sources */,
 				FD09DE2927857E25006DA050 /* StoryboardLiterals.swift in Sources */,
