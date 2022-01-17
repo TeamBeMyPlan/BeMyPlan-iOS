@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class MainListCVC: UICollectionViewCell {
   
@@ -23,8 +24,8 @@ class MainListCVC: UICollectionViewCell {
     mainListImageView.layer.cornerRadius = 5
   }
   
-  func setData(appData: MainListData){
-    mainListImageView.image = appData.makeItemImage()
+  func setData(appData: HomeListDataGettable){
+    mainListImageView.setImage(with: appData.thumbnailURL)
     mainListTitle.text = appData.title
   }
   

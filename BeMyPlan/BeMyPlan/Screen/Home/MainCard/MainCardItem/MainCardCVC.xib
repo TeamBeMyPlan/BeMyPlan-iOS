@@ -17,14 +17,14 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="435"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WIY-aK-dJd">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WIY-aK-dJd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="435"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="435" id="BL7-we-V79"/>
                             <constraint firstAttribute="width" constant="375" id="dfN-77-1U4"/>
                         </constraints>
                     </imageView>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0k1-OF-xMI">
+                    <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="0k1-OF-xMI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="435"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.19655422185430463" colorSpace="calibratedRGB"/>
                     </view>
