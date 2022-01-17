@@ -14,6 +14,7 @@ enum BaseAPI{
   
   // MARK: - 양원
   case getTravelSpotList
+  case getTravelSpotDetailList(area: Int, page: Int,sort:String)
   
   // MARK: - 지훈
   case getBuyList(userID: Int)
@@ -48,6 +49,9 @@ extension BaseAPI: TargetType {
 
       case .getBuyList:
         base += "/order"
+      
+      case .getTravelSpotDetailList:
+        base += "/area"
     }
     guard let url = URL(string: base) else {
       fatalError("baseURL could not be configured")
@@ -68,6 +72,9 @@ extension BaseAPI: TargetType {
         return "/popular"
       case .getBuyList(let userID):
         return "/\(userID)"
+      case .getTravelSpotDetailList(let area,_,_):
+      print("AREa",area)
+        return "/\(area)"
       default :
         return ""
     }
@@ -81,7 +88,7 @@ extension BaseAPI: TargetType {
     switch self{
       case .sampleAPI:
         return .post
-    
+
       default :
         return .get
 
@@ -106,6 +113,13 @@ extension BaseAPI: TargetType {
       case .sampleAPI(let email):
         params["email"] = email
         params["password"] = "여기에 필요한 Value값 넣기"
+    case .getTravelSpotDetailList(let area, let page, let sort):
+      print("PPP",page,sort)
+
+      params["page"] = page
+      params["pageSize"] = 5
+      params["sort"] = sort
+      
       default:
         break
 
@@ -137,7 +151,7 @@ extension BaseAPI: TargetType {
   ///
   private var parameterEncoding : ParameterEncoding{
     switch self {
-      case .sampleAPI:
+    case .sampleAPI, .getTravelSpotDetailList:
         return URLEncoding.init(destination: .queryString, arrayEncoding: .noBrackets, boolEncoding: .literal)
       default :
         return JSONEncoding.default
@@ -150,7 +164,7 @@ extension BaseAPI: TargetType {
   ///
   var task: Task {
     switch self{
-      case .sampleAPI:
+    case .sampleAPI,.getTravelSpotDetailList:
         return .requestParameters(parameters: bodyParameters ?? [:], encoding: parameterEncoding)
       default:
         return .requestPlain

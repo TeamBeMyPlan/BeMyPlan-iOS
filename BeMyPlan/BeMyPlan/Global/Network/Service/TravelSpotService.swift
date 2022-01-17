@@ -15,5 +15,4 @@ extension BaseService: TravelSpotService {
   func getTravelSpotList(completion: @escaping (Result<[TravelSpotDataGettable]?, Error>) -> Void) {
     requestObject(.getTravelSpotList, completion: completion)
   }
-  
 }

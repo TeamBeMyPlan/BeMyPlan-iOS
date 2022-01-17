@@ -5,12 +5,14 @@
 //  Created by 송지훈 on 2022/01/06.
 //
 import UIKit
+import Moya
 
 class TravelSpotVC: UIViewController {
   
   // MARK: - Vars & Lets Part
   var travelSpotDataList: [TravelSpotDataGettable] = []
   let screenWidth = UIScreen.main.bounds.width
+  var completionHandler: ((Int) -> (Int))?
 
   // MARK: - UI Component Part
   @IBOutlet var logoView: UIView!{
@@ -50,11 +52,14 @@ class TravelSpotVC: UIViewController {
 
         if let testedData = data {
           self.travelSpotDataList = testedData
-          dump("---> testedData \(String(describing: testedData))")
+//          dump("---> testedData \(String(describing: testedData))")
         }
         self.locationCollectionView.reloadData()
-      }.catch{ error in
-        dump("---> erererererer \(error)")
+      }.catch { error in
+        if let err = error as? MoyaError {
+          dump(err)
+        }
+//        dump("---> 에에에에에에에에 투에니원 \(error)")
       }
     }
   }
@@ -98,6 +103,9 @@ extension TravelSpotVC: UICollectionViewDelegate {
   }
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    _ = completionHandler?(indexPath.row)
+//    self.navigationController?.popViewController(animated: true)
+    
     NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .movePlanList), object: nil)
   }
 }

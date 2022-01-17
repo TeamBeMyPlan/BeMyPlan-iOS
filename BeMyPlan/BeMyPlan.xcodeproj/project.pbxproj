@@ -10,6 +10,8 @@
 		39C361F098A3D9D313FC7446 /* Pods_BeMyPlan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C47CE9CE7AB4C82FA73EBDD /* Pods_BeMyPlan.framework */; };
 		523C70A32795C3EF0073371D /* TravelSpotDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523C70A22795C3EF0073371D /* TravelSpotDataModel.swift */; };
 		523C70A52795D32E0073371D /* TravelSpotService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523C70A42795D32E0073371D /* TravelSpotService.swift */; };
+		523C70A82795E7560073371D /* TravelSpotDetailDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523C70A72795E7560073371D /* TravelSpotDetailDataModel.swift */; };
+		523C70AA2795EC770073371D /* TravelSpotDetailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523C70A92795EC770073371D /* TravelSpotDetailService.swift */; };
 		52E26A8D278C17A800D84F0C /* TravelSpotFilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E26A8C278C17A800D84F0C /* TravelSpotFilterVC.swift */; };
 		F21AFAA027919A8000A84633 /* CustomAlert.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F21AFA9F27919A8000A84633 /* CustomAlert.storyboard */; };
 		F21AFAA827919BA200A84633 /* CustomAlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21AFAA727919BA200A84633 /* CustomAlertVC.swift */; };
@@ -203,6 +205,8 @@
 		4E5C0ED1A372F84E7F4F783F /* Pods-BeMyPlan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeMyPlan.release.xcconfig"; path = "Target Support Files/Pods-BeMyPlan/Pods-BeMyPlan.release.xcconfig"; sourceTree = "<group>"; };
 		523C70A22795C3EF0073371D /* TravelSpotDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelSpotDataModel.swift; sourceTree = "<group>"; };
 		523C70A42795D32E0073371D /* TravelSpotService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelSpotService.swift; sourceTree = "<group>"; };
+		523C70A72795E7560073371D /* TravelSpotDetailDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelSpotDetailDataModel.swift; sourceTree = "<group>"; };
+		523C70A92795EC770073371D /* TravelSpotDetailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelSpotDetailService.swift; sourceTree = "<group>"; };
 		52B0A592278F309C00242D35 /* ScrapContainerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScrapContainerView.xib; sourceTree = "<group>"; };
 		52B0A594278F30B500242D35 /* ScrapEmptyContainerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScrapEmptyContainerView.xib; sourceTree = "<group>"; };
 		52B0A598278F32AB00242D35 /* ScrapContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapContainerView.swift; sourceTree = "<group>"; };
@@ -454,8 +458,17 @@
 			isa = PBXGroup;
 			children = (
 				523C70A22795C3EF0073371D /* TravelSpotDataModel.swift */,
+				523C70A62795E6DC0073371D /* TravelSpotDetail */,
 			);
 			path = TravelSpot;
+			sourceTree = "<group>";
+		};
+		523C70A62795E6DC0073371D /* TravelSpotDetail */ = {
+			isa = PBXGroup;
+			children = (
+				523C70A72795E7560073371D /* TravelSpotDetailDataModel.swift */,
+			);
+			path = TravelSpotDetail;
 			sourceTree = "<group>";
 		};
 		6F77842C2239262E3D685F1B /* Pods */ = {
@@ -637,6 +650,7 @@
 				FD09DDF0278577CF006DA050 /* BaseService.swift */,
 				FD1C568E2795893700EEDFCE /* HomeService.swift */,
 				523C70A42795D32E0073371D /* TravelSpotService.swift */,
+				523C70A92795EC770073371D /* TravelSpotDetailService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -1493,6 +1507,7 @@
 				F273216F278BEB7700A9B0CC /* MainCardCarouselLayout.swift in Sources */,
 				FD09DE092785797B006DA050 /* addToolBar.swift in Sources */,
 				FD09DDF527857809006DA050 /* Config.swift in Sources */,
+				523C70AA2795EC770073371D /* TravelSpotDetailService.swift in Sources */,
 				FD09DE1327857AE1006DA050 /* successCatch + Result.swift in Sources */,
 				F261EC7927873A7D00AF094F /* MainCardCVC.swift in Sources */,
 				FD09DDF727857841006DA050 /* UITableViewRegisterable.swift in Sources */,
@@ -1502,6 +1517,7 @@
 				FD09DDF927857858006DA050 /* UICollectionViewRegisterable.swift in Sources */,
 				FD35664D2792AF2C0082B4CE /* ScrapContainerView.swift in Sources */,
 				FD09DE032785794B006DA050 /* makeVibrate.swift in Sources */,
+				523C70A82795E7560073371D /* TravelSpotDetailDataModel.swift in Sources */,
 				FD2D4DDC278DC22C002084B9 /* PlanDetailSummaryTVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

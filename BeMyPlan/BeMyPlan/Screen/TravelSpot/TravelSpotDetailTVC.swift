@@ -46,6 +46,8 @@ class TravelSpotDetailTVC: UITableViewCell {
     titleTextView.textContainerInset = .zero
     titleTextView.textContainer.lineFragmentPadding = .zero
     titleTextView.textContainer.lineBreakMode = .byTruncatingTail
+    
+    contentImage.contentMode = .scaleAspectFill
   }
   
   func setFont () {
