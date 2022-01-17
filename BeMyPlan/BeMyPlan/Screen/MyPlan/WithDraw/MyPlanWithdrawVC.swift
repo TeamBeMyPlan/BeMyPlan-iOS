@@ -57,12 +57,29 @@ class MyPlanWithdrawVC: UIViewController {
   private func setButtonActions(){
     nextButton.press {
       self.makeAlert(alertCase: .requestAlert, title: "탈퇴하기", content: "정말 탈퇴하시겠습니까?") {
-        //실제로는 이방법이 아니라 dismiss 되었을때 completion에 새로운 escaping closure를 선언해서 파라미터로 받아와서 해야한다....!
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.001) {
-          self.makeAlert(alertCase: .simpleAlert, title: "탈퇴하기", content: "탈퇴 완료되었습니다.") {
-            print("탈퇴하기 커스텀 Alert 완료")
+        self.withdrawAction { result in
+          if result{
+            self.makeAlert(alertCase: .simpleAlert, title: "탈퇴하기", content: "탈퇴 완료되었습니다.") {
+              guard let loginVC = UIStoryboard.list(.login).instantiateViewController(withIdentifier: LoginNC.className) as? LoginNC else {return}
+              loginVC
+                .modalPresentationStyle = .fullScreen
+              self.present(loginVC, animated: false, completion: nil)
+            }
+          }else{
+            self.showNetworkErr()
           }
+
         }
+      }
+    }
+  }
+  
+  private func withdrawAction(completion: @escaping (Bool) -> ()){
+    BaseService.default.deleteUserWithdraw { result in
+      result.success { _ in
+        completion(true)
+      }.catch { _ in
+        completion(false)
       }
     }
   }

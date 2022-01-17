@@ -23,7 +23,7 @@ extension ResponseObject: Decodable where T: Decodable  {
   init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
     status = try? container.decode(Int.self, forKey: .status)
-    message = try? container.decode(String.self, forKey: .message) 
+    message = try? container.decode(String.self, forKey: .message)
     data = try? container.decode(T.self, forKey: .data)
   }
 }

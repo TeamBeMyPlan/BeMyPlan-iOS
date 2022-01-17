@@ -87,6 +87,8 @@
 		FD09DE2727857DE3006DA050 /* GenericResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD09DE2627857DE3006DA050 /* GenericResponse.swift */; };
 		FD09DE2927857E25006DA050 /* StoryboardLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD09DE2827857E25006DA050 /* StoryboardLiterals.swift */; };
 		FD09DE2D27858B41006DA050 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD09DE2C27858B41006DA050 /* Metal.framework */; };
+		FD1A78232795C69000FB10AB /* MyPlanSerivice.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1A78222795C69000FB10AB /* MyPlanSerivice.swift */; };
+		FD1A78262795DA7100FB10AB /* showNetworkErr + UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1A78252795DA7100FB10AB /* showNetworkErr + UIViewController.swift */; };
 		FD1C568C2792DA7300EEDFCE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD3211B127841949007D63D5 /* Assets.xcassets */; };
 		FD1C568F2795893700EEDFCE /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1C568E2795893700EEDFCE /* HomeService.swift */; };
 		FD1C569127958A9B00EEDFCE /* ResponseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1C569027958A9B00EEDFCE /* ResponseObject.swift */; };
@@ -301,6 +303,8 @@
 		FD09DE2627857DE3006DA050 /* GenericResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericResponse.swift; sourceTree = "<group>"; };
 		FD09DE2827857E25006DA050 /* StoryboardLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardLiterals.swift; sourceTree = "<group>"; };
 		FD09DE2C27858B41006DA050 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
+		FD1A78222795C69000FB10AB /* MyPlanSerivice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlanSerivice.swift; sourceTree = "<group>"; };
+		FD1A78252795DA7100FB10AB /* showNetworkErr + UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "showNetworkErr + UIViewController.swift"; sourceTree = "<group>"; };
 		FD1C568E2795893700EEDFCE /* HomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeService.swift; sourceTree = "<group>"; };
 		FD1C569027958A9B00EEDFCE /* ResponseObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseObject.swift; sourceTree = "<group>"; };
 		FD20C608278EB94100AC6E34 /* MyPlanCVUserResuableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlanCVUserResuableView.swift; sourceTree = "<group>"; };
@@ -624,6 +628,7 @@
 			children = (
 				FD09DDF0278577CF006DA050 /* BaseService.swift */,
 				FD1C568E2795893700EEDFCE /* HomeService.swift */,
+				FD1A78222795C69000FB10AB /* MyPlanSerivice.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -972,6 +977,7 @@
 				FD2D4DCB278D8636002084B9 /* drawDashedLine + UIView.swift */,
 				FD20C611278EC29600AC6E34 /* setTextLineHeight + UILabel.swift */,
 				FD61AFDB2791DC6E00D39F47 /* UINavigation + Extension.swift */,
+				FD1A78252795DA7100FB10AB /* showNetworkErr + UIViewController.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1454,12 +1460,14 @@
 				FDF981082788D4CF0009A14E /* PlanPreviewSummaryTVC.swift in Sources */,
 				FDF980D62786D5320009A14E /* makePayBoocFont.swift in Sources */,
 				FD3566532792AF2C0082B4CE /* ScrapEmptyContainerView.swift in Sources */,
+				FD1A78232795C69000FB10AB /* MyPlanSerivice.swift in Sources */,
 				FD2D4DBD278D3FA5002084B9 /* PlanDetailDayCVC.swift in Sources */,
 				FD3566552792AFCD0082B4CE /* PlanDetailSelectDayView.swift in Sources */,
 				FD35664B2792AF2C0082B4CE /* ScrapVC.swift in Sources */,
 				FD09DDF3278577F4006DA050 /* BaseAPI.swift in Sources */,
 				FD35664F2792AF2C0082B4CE /* ScrapContainerCVC.swift in Sources */,
 				FDF981062788D4C00009A14E /* PlanPreviewPhotoTVC.swift in Sources */,
+				FD1A78262795DA7100FB10AB /* showNetworkErr + UIViewController.swift in Sources */,
 				FD09DE1E27857CDC006DA050 /* HomeVC.swift in Sources */,
 				FD61AFDC2791DC6E00D39F47 /* UINavigation + Extension.swift in Sources */,
 				FD20C623278EF11000AC6E34 /* MyPlanWithdrawVC.swift in Sources */,
@@ -1636,7 +1644,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = BeMyPlan/BeMyPlan.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = L9D5M5DM3Y;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1675,7 +1683,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = BeMyPlan/BeMyPlan.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = L9D5M5DM3Y;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

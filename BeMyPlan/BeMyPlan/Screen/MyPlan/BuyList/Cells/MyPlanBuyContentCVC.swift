@@ -16,7 +16,6 @@ class MyPlanBuyContentCVC: UICollectionViewCell {
 
 //    titleLabel.setTextWithLineHeight(text: title, lineHeight: 1.3)
     titleLabel.text = title
-  
-//    contentImageView.setIm
+    contentImageView.setImage(with: imageURL)
   }
 }

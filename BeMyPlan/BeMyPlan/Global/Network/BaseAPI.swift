@@ -17,6 +17,7 @@ enum BaseAPI{
   
   // MARK: - 지훈
   case getBuyList(userID: Int)
+  case deleteUserWithdraw
 }
 
 extension BaseAPI: TargetType {
@@ -48,6 +49,9 @@ extension BaseAPI: TargetType {
 
       case .getBuyList:
         base += "/order"
+        
+      case .deleteUserWithdraw:
+        base += "/auth"
 
     }
     guard let url = URL(string: base) else {
@@ -69,6 +73,8 @@ extension BaseAPI: TargetType {
         return "/popular"
       case .getBuyList(let userID):
         return "/\(userID)"
+      case .deleteUserWithdraw:
+        return "/withdraw"
       default :
         return ""
     }
@@ -82,6 +88,8 @@ extension BaseAPI: TargetType {
     switch self{
       case .sampleAPI:
         return .post
+      case .deleteUserWithdraw:
+        return .delete
       default :
         return .get
 
