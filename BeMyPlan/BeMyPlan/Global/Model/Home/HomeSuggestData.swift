@@ -8,7 +8,7 @@
 import Foundation
 
 extension HomeData{
-  struct SuggestList{
+  struct SuggestList : Codable{
     var nickname : String
     var recommendation : Bool
   }

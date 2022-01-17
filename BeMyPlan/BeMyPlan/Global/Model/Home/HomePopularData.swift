@@ -8,6 +8,6 @@
 import Foundation
 
 extension HomeData{
-  struct PopularList{
+  struct PopularList : Codable{
   }
 }

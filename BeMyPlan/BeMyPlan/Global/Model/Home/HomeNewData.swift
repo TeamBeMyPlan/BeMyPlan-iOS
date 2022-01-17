@@ -8,7 +8,7 @@
 import Foundation
 
 extension HomeData{
-  struct NewList{
+  struct NewList : Codable {
     var nickname : String
   }
 }
