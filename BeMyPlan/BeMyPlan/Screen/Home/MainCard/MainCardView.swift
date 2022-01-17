@@ -12,7 +12,7 @@ class MainCardView: UIView {
   
   // MARK: - Vars & Lets Part
   private var mainCardDataList: [MainCardData] = []
-  var popularList: [HomeListDataGettable ] = []
+  var popularList: [HomeListDataGettable] = []
   
   // MARK: - Life Cycle Part
   override init(frame: CGRect) {
@@ -21,7 +21,7 @@ class MainCardView: UIView {
 //    initMainCardDataList()
     registerCVC()
     setMainCardCV()
-    getHomeData()
+    getCardData()
   }
   
   required init?(coder aDecoder: NSCoder) {
@@ -30,7 +30,7 @@ class MainCardView: UIView {
 //    initMainCardDataList()
     registerCVC()
     setMainCardCV()
-    getHomeData()
+    getCardData()
   }
   
   // MARK: - UI Component Part
@@ -95,7 +95,7 @@ class MainCardView: UIView {
 //    ])
 //  }
   
-  private func getHomeData(){
+  private func getCardData(){
     BaseService.default.getPopularTravelList { result in
       result.success { list in
         self.popularList = []
