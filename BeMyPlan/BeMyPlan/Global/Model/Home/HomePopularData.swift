@@ -7,10 +7,7 @@
 
 import Foundation
 
-extension HomePopularData{
+extension HomeData{
   struct PopularList{
-    var id : Int
-    var title : String
-    var photo : String
   }
 }
