@@ -11,6 +11,8 @@ enum BaseAPI{
   case sampleAPI(sample : String)
   // MARK: - 현주
   case getPopularTravelList
+  case getNewTravelList
+  case getRecommendTravelList
   
   // MARK: - 양원
   case getTravelSpotList

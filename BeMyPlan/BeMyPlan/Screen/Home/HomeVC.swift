@@ -93,13 +93,13 @@ class HomeVC: UIViewController, UIGestureRecognizerDelegate {
     mainEditorListView.mainListDataList = b
   }
   
-  private func getHomeData(){
-    BaseService.default.getPopularTripList { result in
-      result.success { resultData in
-        resultData.id
-      }
-    }
-  }
+//  private func getHomeData(){
+//    BaseService.default.getPopularTripList { result in
+//      result.success { resultData in
+//        resultData.id
+//      }
+//    }
+//  }
 
   
   // MARK: - @objc Function Part
