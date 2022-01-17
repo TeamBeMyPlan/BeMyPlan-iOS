@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		39C361F098A3D9D313FC7446 /* Pods_BeMyPlan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C47CE9CE7AB4C82FA73EBDD /* Pods_BeMyPlan.framework */; };
 		52E26A8D278C17A800D84F0C /* TravelSpotFilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E26A8C278C17A800D84F0C /* TravelSpotFilterVC.swift */; };
+		F2191EF62795DF600058EF9A /* HomeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2191EF52795DF600058EF9A /* HomeData.swift */; };
 		F21AFAA027919A8000A84633 /* CustomAlert.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F21AFA9F27919A8000A84633 /* CustomAlert.storyboard */; };
 		F21AFAA827919BA200A84633 /* CustomAlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21AFAA727919BA200A84633 /* CustomAlertVC.swift */; };
 		F261EC7927873A7D00AF094F /* MainCardCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F261EC7727873A7D00AF094F /* MainCardCVC.swift */; };
@@ -209,6 +210,7 @@
 		52B0A5A3278F424700242D35 /* ScrapEmptyCotainerCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScrapEmptyCotainerCVC.xib; sourceTree = "<group>"; };
 		52E26A8C278C17A800D84F0C /* TravelSpotFilterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelSpotFilterVC.swift; sourceTree = "<group>"; };
 		9441BE8ABA1C240A411BD4C2 /* Pods-BeMyPlan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeMyPlan.debug.xcconfig"; path = "Target Support Files/Pods-BeMyPlan/Pods-BeMyPlan.debug.xcconfig"; sourceTree = "<group>"; };
+		F2191EF52795DF600058EF9A /* HomeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeData.swift; sourceTree = "<group>"; };
 		F21AFA9F27919A8000A84633 /* CustomAlert.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CustomAlert.storyboard; sourceTree = "<group>"; };
 		F21AFAA727919BA200A84633 /* CustomAlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertVC.swift; sourceTree = "<group>"; };
 		F261EC7727873A7D00AF094F /* MainCardCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCardCVC.swift; sourceTree = "<group>"; };
@@ -455,6 +457,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		F2191EEC2795BD5E0058EF9A /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				F2191EF52795DF600058EF9A /* HomeData.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		F21AFA9A279187E900A84633 /* Alert */ = {
 			isa = PBXGroup;
 			children = (
@@ -695,6 +705,7 @@
 		FD09DE2527857DD6006DA050 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F2191EEC2795BD5E0058EF9A /* Home */,
 				FD20C60C278EBF0100AC6E34 /* MyPlan */,
 				FD2D4DCD278D90BA002084B9 /* PlanDetail */,
 				FDC47DE9278951EF00A152E8 /* Preview */,
@@ -1465,6 +1476,7 @@
 				FD20C623278EF11000AC6E34 /* MyPlanWithdrawVC.swift in Sources */,
 				FD09DDFE278578BA006DA050 /* StringLiterals.swift in Sources */,
 				FD1C569127958A9B00EEDFCE /* ResponseObject.swift in Sources */,
+				F2191EF62795DF600058EF9A /* HomeData.swift in Sources */,
 				F294EC2B278EBC66001069F8 /* LoginVC + AppleLogin.swift in Sources */,
 				FD09DE2727857DE3006DA050 /* GenericResponse.swift in Sources */,
 				FD09DE1527857B36006DA050 /* getClassName.swift in Sources */,

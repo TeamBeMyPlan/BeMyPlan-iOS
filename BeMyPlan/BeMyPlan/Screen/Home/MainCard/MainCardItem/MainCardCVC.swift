@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class MainCardCVC: UICollectionViewCell {
  
@@ -31,9 +32,10 @@ class MainCardCVC: UICollectionViewCell {
     
   }
   
-  func setData(appData: MainCardData){
-    mainCardImageView.image = appData.makeItemImage()
-    mainCardCategory.text = appData.category
+  func setData(appData: HomeListDataGettable ){
+//    mainCardImageView.image = appData.makeItemImage()
+    mainCardImageView.setImage(with: appData.thumbnailURL)
+//    mainCardCategory.text = appData.category
     mainCardTitle.text = appData.title
   }
 }

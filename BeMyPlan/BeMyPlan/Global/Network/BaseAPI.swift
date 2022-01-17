@@ -11,6 +11,8 @@ enum BaseAPI{
   case sampleAPI(sample : String)
   // MARK: - 현주
   case getPopularTravelList
+  case getNewTravelList
+  case getSuggestTravelList
   
   // MARK: - 양원
   case getTravelSpotList
@@ -20,7 +22,7 @@ enum BaseAPI{
 }
 
 extension BaseAPI: TargetType {
-
+  
   // MARK: - Base URL & Path
   /// - Parameters:
   ///   - base : 각 api case별로 앞에 공통적으로 붙는 주소 부분을 정의합니다.
@@ -37,18 +39,18 @@ extension BaseAPI: TargetType {
   public var baseURL: URL {
     var base = Config.Network.baseURL
     switch self{
-      case .sampleAPI:
-        base += ""
-        
-      case .getPopularTravelList:
-        base += "/post"
-        
-      case .getTravelSpotList:
-        base += "/area"
-
-      case .getBuyList:
-        base += "/order"
-
+    case .sampleAPI:
+      base += ""
+      
+    case .getPopularTravelList, .getNewTravelList, .getSuggestTravelList:
+      base += "/post"
+      
+    case .getTravelSpotList:
+      base += "/area"
+      
+    case .getBuyList:
+      base += "/order"
+      
     }
     guard let url = URL(string: base) else {
       fatalError("baseURL could not be configured")
@@ -65,12 +67,16 @@ extension BaseAPI: TargetType {
   ///
   var path: String {
     switch self{
-      case .getPopularTravelList:
-        return "/popular"
-      case .getBuyList(let userID):
-        return "/\(userID)"
-      default :
-        return ""
+    case .getPopularTravelList:
+      return "/popular"
+    case .getNewTravelList:
+      return "/new"
+    case .getSuggestTravelList:
+      return "/suggest"
+    case .getBuyList(let userID):
+      return "/\(userID)"
+    default :
+      return ""
     }
   }
   
@@ -80,11 +86,11 @@ extension BaseAPI: TargetType {
   
   var method: Moya.Method {
     switch self{
-      case .sampleAPI:
-        return .post
-      default :
-        return .get
-
+    case .sampleAPI:
+      return .post
+    default :
+      return .get
+      
     }
   }
   
@@ -103,12 +109,12 @@ extension BaseAPI: TargetType {
   private var bodyParameters: Parameters? {
     var params: Parameters = [:]
     switch self{
-      case .sampleAPI(let email):
-        params["email"] = email
-        params["password"] = "여기에 필요한 Value값 넣기"
-      default:
-        break
-
+    case .sampleAPI(let email):
+      params["email"] = email
+      params["password"] = "여기에 필요한 Value값 넣기"
+    default:
+      break
+      
     }
     return params
   }
@@ -120,41 +126,41 @@ extension BaseAPI: TargetType {
   ///
   private var multiparts: [Moya.MultipartFormData] {
     switch self{
-      case .sampleAPI(_):
-        var multiparts : [Moya.MultipartFormData] = []
-        multiparts.append(.init(provider: .data("".data(using: .utf8) ?? Data()), name: ""))
-        return multiparts
-      default : return []
-//        images.forEach {
-//          multiparts.append(.init(provider: .data($0), name: "images", fileName: "image.jpeg", mimeType: "image/jpeg"))
-//        }
+    case .sampleAPI(_):
+      var multiparts : [Moya.MultipartFormData] = []
+      multiparts.append(.init(provider: .data("".data(using: .utf8) ?? Data()), name: ""))
+      return multiparts
+    default : return []
+      //        images.forEach {
+      //          multiparts.append(.init(provider: .data($0), name: "images", fileName: "image.jpeg", mimeType: "image/jpeg"))
+      //        }
     }
   }
-
+  
   /// - note :
   ///  query문을 사용하는 경우 URLEncoding 을 사용해야 합니다
   ///  나머지는 그냥 전부 다 default 처리.
   ///
   private var parameterEncoding : ParameterEncoding{
     switch self {
-      case .sampleAPI:
-        return URLEncoding.init(destination: .queryString, arrayEncoding: .noBrackets, boolEncoding: .literal)
-      default :
-        return JSONEncoding.default
+    case .sampleAPI:
+      return URLEncoding.init(destination: .queryString, arrayEncoding: .noBrackets, boolEncoding: .literal)
+    default :
+      return JSONEncoding.default
     }
   }
-
+  
   /// - note :
   ///  body Parameters가 있는 경우 requestParameters  case 처리.
   ///  일반적인 처리는 모두 requestPlain으로 사용.
   ///
   var task: Task {
     switch self{
-      case .sampleAPI:
-        return .requestParameters(parameters: bodyParameters ?? [:], encoding: parameterEncoding)
-      default:
-        return .requestPlain
- 
+    case .sampleAPI:
+      return .requestParameters(parameters: bodyParameters ?? [:], encoding: parameterEncoding)
+    default:
+      return .requestPlain
+      
     }
   }
   
