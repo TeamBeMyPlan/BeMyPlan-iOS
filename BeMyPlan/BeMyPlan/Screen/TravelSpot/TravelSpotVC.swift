@@ -9,6 +9,7 @@ import UIKit
 class TravelSpotVC: UIViewController {
   
   // MARK: - Vars & Lets Part
+  var travelSpotDataList: [TravelSpotDataGettable] = []
   let screenWidth = UIScreen.main.bounds.width
 
   // MARK: - UI Component Part
@@ -27,6 +28,7 @@ class TravelSpotVC: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     configCollectionView()
+    fetchTravelSpotItemList()
   }
   
   // MARK: - Set Function Part
@@ -41,9 +43,25 @@ class TravelSpotVC: UIViewController {
   
   // MARK: - Custom Method Part
   
-  // MARK: - @objc Function Part
-  
+  private func fetchTravelSpotItemList() {
+    BaseService.default.getTravelSpotList { result in
+      result.success { data in
+        self.travelSpotDataList = []
+
+        if let testedData = data {
+          self.travelSpotDataList = testedData
+          dump("---> testedData \(String(describing: testedData))")
+        }
+        self.locationCollectionView.reloadData()
+      }.catch{ error in
+        dump("---> erererererer \(error)")
+      }
+    }
+  }
 }
+
+// MARK: - @objc Function Part
+
 
 // MARK: - Extension Part
 extension TravelSpotVC: UICollectionViewDataSource {
@@ -62,16 +80,20 @@ extension TravelSpotVC: UICollectionViewDataSource {
 
 extension TravelSpotVC: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 1
+    return travelSpotDataList.count
   }
   
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TravelSpotCVC.identifier, for: indexPath) as? TravelSpotCVC else {return UICollectionViewCell()}
     cell.layer.cornerRadius = 5
-//    cell.lockImageView.image = UIImage(named: "imgLayer")
-    cell.locationImageView.image = UIImage(named: "img")
-    cell.locationLabel.text = "서울"
+    cell.lockImageView.image = UIImage(named: "imgLayer")
+    cell.locationLabel.text = travelSpotDataList[indexPath.row].name
+    cell.locationImageView.setImage(with: "\(travelSpotDataList[indexPath.row].photoURL)")
+    
+    if travelSpotDataList[indexPath.row].isActivated == true {
+      cell.lockImageView.isHidden = true
+    }
     return cell
   }
   

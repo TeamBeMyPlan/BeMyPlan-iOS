@@ -48,7 +48,6 @@ extension BaseAPI: TargetType {
 
       case .getBuyList:
         base += "/order"
-
     }
     guard let url = URL(string: base) else {
       fatalError("baseURL could not be configured")
@@ -82,6 +81,7 @@ extension BaseAPI: TargetType {
     switch self{
       case .sampleAPI:
         return .post
+    
       default :
         return .get
 
