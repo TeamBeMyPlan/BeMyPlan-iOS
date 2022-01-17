@@ -9,10 +9,12 @@ import UIKit
 
 class HomeVC: UIViewController, UIGestureRecognizerDelegate {
   
-  
+  // MARK: - Vars & Lets Part
+  var newList: [HomeListDataGettable] = []
+  var suggestList: [HomeListDataGettable] = []
   
   // MARK: - UI Component Part
-  let a = MainCardView()
+  //  let a = MainCardView()
   @IBOutlet var naviView: UIView!
   
   @IBOutlet var naviBarTopConstraint: NSLayoutConstraint!{
@@ -64,7 +66,8 @@ class HomeVC: UIViewController, UIGestureRecognizerDelegate {
   // MARK: - Life Cycle Part
   override func viewDidLoad() {
     super.viewDidLoad()
-    setDummyData()
+    //    setDummyData()
+    getListData()
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -78,23 +81,55 @@ class HomeVC: UIViewController, UIGestureRecognizerDelegate {
   
   
   // MARK: - Custom Method Part
-  func setDummyData(){
-    let a = [
-      MainListData(image: "mainlist1", title: "푸드파이터들을 위한 찐먹킷리스트투어"),
-      MainListData(image: "mainlist2", title: "부모님과 함께하는 3박4일 제주 서부 여행")
-    ]
+  //  func setDummyData(){
+  //    let a = [
+  //      MainListData(image: "mainlist1", title: "푸드파이터들을 위한 찐먹킷리스트투어"),
+  //      MainListData(image: "mainlist2", title: "부모님과 함께하는 3박4일 제주 서부 여행")
+  //    ]
+  //
+  //    let b = [
+  //      MainListData(image: "mainlist3", title: "워케이션을 위한 카페투어"),
+  //      MainListData(image: "mainlist4", title: "27년 제주 토박이의 히든 플레이스 투어")
+  //    ]
+  //
+  //    mainListView.mainListDataList = a
+  //    mainEditorListView.mainListDataList = b
+  //  }
+  
+  private func getListData(){
+    BaseService.default.getNewTravelList { result in
+      result.success { list in
+        self.newList = []
+        
+        if let new = list {
+          
+          self.newList = new
+        }
+        
+        print("New List", self.newList)
+        self.mainListView.mainListCV.reloadData()
+        
+      }.catch{ error in
+        dump(error)
+      }
+    }
     
-    let b = [
-      MainListData(image: "mainlist3", title: "워케이션을 위한 카페투어"),
-      MainListData(image: "mainlist4", title: "27년 제주 토박이의 히든 플레이스 투어")
-    ]
-    
-    mainListView.mainListDataList = a
-    mainEditorListView.mainListDataList = b
+    BaseService.default.getSuggestTravelList { result in
+      result.success { list in
+        self.suggestList = []
+        
+        if let suggest = list {
+          
+          self.suggestList = suggest
+        }
+        
+        print("Suggest List", self.suggestList)
+        self.mainListView.mainListCV.reloadData()
+        
+      }.catch{ error in
+        dump(error)
+      }
+    }
   }
   
-  
-  // MARK: - @objc Function Part
-  
 }
-// MARK: - Extension Part
