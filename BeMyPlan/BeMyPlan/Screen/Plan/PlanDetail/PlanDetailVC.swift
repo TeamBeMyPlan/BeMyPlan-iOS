@@ -129,6 +129,7 @@ extension PlanDetailVC : UITableViewDataSource{
       return writerCell
     }else if indexPath.section == 1{
       guard let mapCell = tableView.dequeueReusableCell(withIdentifier: PlanDetailMapContainerTVC.className, for: indexPath) as? PlanDetailMapContainerTVC else {return UITableViewCell() }
+//      mapCell.contentView.disab
       return mapCell
     }else{
       

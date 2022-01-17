@@ -59,11 +59,10 @@ class PlanDetailMapContainerTVC: UITableViewCell,UITableViewRegisterable, MTMapV
       poiItem1?.customSelectedImage = ImageLiterals.PlanDetail.mapSelectIcon
       
       poiItem1?.markerSelectedType = .customImage
-      poiItem1?.
       poiItem1?.mapPoint = mapPoint1
       poiItem1?.itemName = "장소이름이 여기에 나올거에요~~~~~~"
       
-      poiItem2?.showAnimationType = .dropFromHeaven
+      poiItem2?.showAnimationType = .springFromGround
       self.mapPoint2 = MTMapPoint(geoCoord: MTMapPointGeo(latitude:  37.55768857834471, longitude: 126.9544990846229))
       
       poiItem2 = MTMapPOIItem()
