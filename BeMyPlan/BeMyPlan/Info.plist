@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>지도 데이터를 표기하기 위해 사용자의 위치정보가 필요합니다.</string>
+	<key>NSLocationUsageDescription</key>
+	<string>지도 데이터를 표기하기 위해 사용자의 위치정보가 필요합니다.</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>

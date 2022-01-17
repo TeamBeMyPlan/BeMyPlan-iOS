@@ -9,11 +9,14 @@ import UIKit
 
 class BarSelectButton : UIButton{
   func setButtonState(isSelected : Bool){
+    print("SETBUTTONSTATE",isSelected)
     layer.cornerRadius = 5
     layer.borderWidth = 1
     layer.borderColor = isSelected ? UIColor.bemyBlue.cgColor :
     UIColor.grey04.cgColor
     titleLabel?.textColor = isSelected ? .bemyBlue : .grey04
+    titleLabel?.highlightedTextColor = isSelected ? .bemyBlue : .grey04
+    setTitleColor(isSelected ? .bemyBlue : .grey01, for: .normal)
   }
 }
 

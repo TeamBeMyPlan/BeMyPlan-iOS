@@ -56,11 +56,11 @@ class LoginVC: UIViewController {
   }
   func setBtnActions() {
     //IBAction 대용으로 만든 함수
-    self.kakaoLoginBtn.press {
+    self.kakaoLoginBtn.press(animated: true) {
       self.kakaoLogin()
     }
-    
-    self.appleLoginBtn.press {
+
+    self.appleLoginBtn.press(animated: true) {
       self.appleLogin()
     }
   }

@@ -81,22 +81,10 @@ class HomeVC: UIViewController, UIGestureRecognizerDelegate {
   func setDummyData(){
     let a = [
       MainListData(image: "mainlist1", title: "푸드파이터들을 위한 찐먹킷리스트투어"),
-      MainListData(image: "mainlist2", title: "부모님과 함께하는 3박4일 제주 서부 여행"),
-      MainListData(image: "mainlist1", title: "푸드파이터들을 위한 찐먹킷리스트투어"),
-      MainListData(image: "mainlist2", title: "부모님과 함께하는 3박4일 제주 서부 여행"),
-      MainListData(image: "mainlist1", title: "푸드파이터들을 위한 찐먹킷리스트투어"),
-      MainListData(image: "mainlist2", title: "부모님과 함께하는 3박4일 제주 서부 여행"),
-      MainListData(image: "mainlist1", title: "푸드파이터들을 위한 찐먹킷리스트투어"),
       MainListData(image: "mainlist2", title: "부모님과 함께하는 3박4일 제주 서부 여행")
     ]
     
     let b = [
-      MainListData(image: "mainlist3", title: "워케이션을 위한 카페투어"),
-      MainListData(image: "mainlist4", title: "27년 제주 토박이의 히든 플레이스 투어"),
-      MainListData(image: "mainlist3", title: "워케이션을 위한 카페투어"),
-      MainListData(image: "mainlist4", title: "27년 제주 토박이의 히든 플레이스 투어"),
-      MainListData(image: "mainlist3", title: "워케이션을 위한 카페투어"),
-      MainListData(image: "mainlist4", title: "27년 제주 토박이의 히든 플레이스 투어"),
       MainListData(image: "mainlist3", title: "워케이션을 위한 카페투어"),
       MainListData(image: "mainlist4", title: "27년 제주 토박이의 히든 플레이스 투어")
     ]

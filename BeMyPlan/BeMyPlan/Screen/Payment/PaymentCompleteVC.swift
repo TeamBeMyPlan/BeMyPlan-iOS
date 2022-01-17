@@ -8,6 +8,9 @@ import UIKit
 
 class PaymentCompleteVC: UIViewController {
   
+  // MARK: - Var,Let Parts
+  var delegate : PaymentCompleteDelegate?
+  
   // MARK: - UI Component Part
   
   @IBOutlet var writerLabel: UILabel!
@@ -24,7 +27,15 @@ class PaymentCompleteVC: UIViewController {
   // MARK: - Custom Method Part
 
   
-  // MARK: - @objc Function Part
+  @IBAction func showContentButtonClicked(_ sender: Any) {
+    dismiss(animated: true) {
+      self.delegate?.completeButtonClicked()
+    }
+  }
 
 }
 // MARK: - Extension Part
+
+protocol PaymentCompleteDelegate{
+  func completeButtonClicked()
+}

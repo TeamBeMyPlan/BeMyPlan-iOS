@@ -35,15 +35,21 @@ class MyPlanSettingVC: UIViewController {
   
   private func addButtonActions(){
     uploadButton.press {
-      
+      guard let url = URL(string: "https://forms.gle/2v7NwcMb7F3Yuo4f8"), UIApplication.shared.canOpenURL(url) else { return }
+
+      UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     
     askButton.press {
-      
+      guard let url = URL(string: "https://flaxen-warlock-70e.notion.site/8dd759bd71d94caf82f52f177428060d"), UIApplication.shared.canOpenURL(url) else { return }
+
+      UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     
     serviceTermButton.press {
-      
+      guard let url = URL(string: "https://flaxen-warlock-70e.notion.site/c66b80b220814a94a699d83def211904"), UIApplication.shared.canOpenURL(url) else { return }
+
+      UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     
     logoutButton.press {
@@ -51,7 +57,11 @@ class MyPlanSettingVC: UIViewController {
         //실제로는 이방법이 아니라 dismiss 되었을때 completion에 새로운 escaping closure를 선언해서 파라미터로 받아와서 해야한다....!
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.001) {
           self.makeAlert(alertCase: .simpleAlert, title: "로그아웃", content: "로그아웃 되었습니다.") {
-            print("로그아웃 커스텀 Alert 완료")
+            guard let loginVC = UIStoryboard.list(.login).instantiateViewController(withIdentifier: LoginNC.className) as? LoginNC else {return}
+            loginVC
+              .modalPresentationStyle = .fullScreen
+
+            self.present(loginVC, animated: false, completion: nil)
           }
         }
       }
