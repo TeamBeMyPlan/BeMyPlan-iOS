@@ -49,7 +49,7 @@ class BaseService{
           switch error {
             case .underlying(let error, _):
               if error.asAFError?.isSessionTaskError ?? false {
-                
+              
               }
             default: break
           }

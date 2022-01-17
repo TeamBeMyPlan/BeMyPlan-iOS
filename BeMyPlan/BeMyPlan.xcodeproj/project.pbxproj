@@ -89,6 +89,9 @@
 		FD09DE2D27858B41006DA050 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD09DE2C27858B41006DA050 /* Metal.framework */; };
 		FD1A78232795C69000FB10AB /* MyPlanSerivice.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1A78222795C69000FB10AB /* MyPlanSerivice.swift */; };
 		FD1A78262795DA7100FB10AB /* showNetworkErr + UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1A78252795DA7100FB10AB /* showNetworkErr + UIViewController.swift */; };
+		FD1A78292795E45600FB10AB /* PlanPreviewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1A78282795E45600FB10AB /* PlanPreviewService.swift */; };
+		FD1A782B2795E63600FB10AB /* PreviewTagDataGettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1A782A2795E63600FB10AB /* PreviewTagDataGettable.swift */; };
+		FD1A782D2795EBEF00FB10AB /* PreviewDetailDataGettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1A782C2795EBEF00FB10AB /* PreviewDetailDataGettable.swift */; };
 		FD1C568C2792DA7300EEDFCE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD3211B127841949007D63D5 /* Assets.xcassets */; };
 		FD1C568F2795893700EEDFCE /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1C568E2795893700EEDFCE /* HomeService.swift */; };
 		FD1C569127958A9B00EEDFCE /* ResponseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1C569027958A9B00EEDFCE /* ResponseObject.swift */; };
@@ -305,6 +308,9 @@
 		FD09DE2C27858B41006DA050 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 		FD1A78222795C69000FB10AB /* MyPlanSerivice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlanSerivice.swift; sourceTree = "<group>"; };
 		FD1A78252795DA7100FB10AB /* showNetworkErr + UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "showNetworkErr + UIViewController.swift"; sourceTree = "<group>"; };
+		FD1A78282795E45600FB10AB /* PlanPreviewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanPreviewService.swift; sourceTree = "<group>"; };
+		FD1A782A2795E63600FB10AB /* PreviewTagDataGettable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewTagDataGettable.swift; sourceTree = "<group>"; };
+		FD1A782C2795EBEF00FB10AB /* PreviewDetailDataGettable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewDetailDataGettable.swift; sourceTree = "<group>"; };
 		FD1C568E2795893700EEDFCE /* HomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeService.swift; sourceTree = "<group>"; };
 		FD1C569027958A9B00EEDFCE /* ResponseObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseObject.swift; sourceTree = "<group>"; };
 		FD20C608278EB94100AC6E34 /* MyPlanCVUserResuableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlanCVUserResuableView.swift; sourceTree = "<group>"; };
@@ -629,6 +635,7 @@
 				FD09DDF0278577CF006DA050 /* BaseService.swift */,
 				FD1C568E2795893700EEDFCE /* HomeService.swift */,
 				FD1A78222795C69000FB10AB /* MyPlanSerivice.swift */,
+				FD1A78282795E45600FB10AB /* PlanPreviewService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -1078,6 +1085,8 @@
 				FDC47DEE2789521C00A152E8 /* PreviewPhotoData.swift */,
 				FDC47DF02789524000A152E8 /* PreviewSummaryData.swift */,
 				FDC47DF22789524A00A152E8 /* PreviewRecommendData.swift */,
+				FD1A782A2795E63600FB10AB /* PreviewTagDataGettable.swift */,
+				FD1A782C2795EBEF00FB10AB /* PreviewDetailDataGettable.swift */,
 			);
 			path = Preview;
 			sourceTree = "<group>";
@@ -1387,6 +1396,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FDF980E82786F1910009A14E /* MyPlanVC.swift in Sources */,
+				FD1A782D2795EBEF00FB10AB /* PreviewDetailDataGettable.swift in Sources */,
 				FDF980F6278826140009A14E /* TabBarIconView.swift in Sources */,
 				FD09DE0F27857A2E006DA050 /* makeAlert.swift in Sources */,
 				FDF980DB2786E2F60009A14E /* BaseVC.swift in Sources */,
@@ -1398,6 +1408,7 @@
 				FD3151A5278D0C880076D92E /* PlanDetailVC.swift in Sources */,
 				FD09DE2027857CF2006DA050 /* LoginVC.swift in Sources */,
 				FD2D4DD8278DB054002084B9 /* PlanDetailSummaryFoldTVC.swift in Sources */,
+				FD1A782B2795E63600FB10AB /* PreviewTagDataGettable.swift in Sources */,
 				F266412E2788262800CCC751 /* MainListData.swift in Sources */,
 				FD20C610278EBF2800AC6E34 /* MyPlanBuyData.swift in Sources */,
 				FD09DDF1278577CF006DA050 /* BaseService.swift in Sources */,
@@ -1429,6 +1440,7 @@
 				FD09DE2227857D00006DA050 /* SplashVC.swift in Sources */,
 				FD09DDFC278578B1006DA050 /* ColorLiterals.swift in Sources */,
 				FDF9810A2788D4DD0009A14E /* PlanPreviewRecommendTVC.swift in Sources */,
+				FD1A78292795E45600FB10AB /* PlanPreviewService.swift in Sources */,
 				FD2D4DCF278D90D0002084B9 /* PlanDetailSummaryDataModel.swift in Sources */,
 				FD20C60E278EBF1800AC6E34 /* MyPlanData.swift in Sources */,
 				FD20C61A278EDCF900AC6E34 /* BaseVC + Notification.swift in Sources */,

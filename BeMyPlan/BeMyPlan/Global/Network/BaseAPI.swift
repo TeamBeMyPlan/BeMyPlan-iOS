@@ -18,6 +18,8 @@ enum BaseAPI{
   // MARK: - 지훈
   case getBuyList(userID: Int)
   case deleteUserWithdraw
+  case getPlanPreviewHeaderData(idx : Int)
+  case getPlanPreviewData(idx : Int)
 }
 
 extension BaseAPI: TargetType {
@@ -52,6 +54,10 @@ extension BaseAPI: TargetType {
         
       case .deleteUserWithdraw:
         base += "/auth"
+        
+      case .getPlanPreviewHeaderData,
+          .getPlanPreviewData:
+        base += "/post"
 
     }
     guard let url = URL(string: base) else {
@@ -75,6 +81,11 @@ extension BaseAPI: TargetType {
         return "/\(userID)"
       case .deleteUserWithdraw:
         return "/withdraw"
+      case .getPlanPreviewHeaderData(let idx):
+        return "/\(idx)/preview/tag"
+      case .getPlanPreviewData(let idx):
+        return "/\(idx)/preview"
+        
       default :
         return ""
     }

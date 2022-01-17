@@ -11,6 +11,7 @@ class PlanPreviewVC: UIViewController {
   
   // MARK: - Vars & Lets Part
   
+  var idx : Int = 2
   private var isAnimationProceed: Bool = false
   private var lastContentOffset : CGFloat = 0
   private var isScrabed : Bool = false{
@@ -24,11 +25,11 @@ class PlanPreviewVC: UIViewController {
     }
   }
   
-  private var headerData : PlanPreview.HeaderData?
-  private var descriptionData : PlanPreview.DescriptionData?
-  private var photoData : [PlanPreview.PhotoData]?
-  private var summaryData : PlanPreview.SummaryData?
-  private var recommendData : PlanPreview.RecommendData?
+  private var headerData : PlanPreview.HeaderData? { didSet { setContentList() }}
+  private var descriptionData : PlanPreview.DescriptionData? { didSet { setContentList() }}
+  private var photoData : [PlanPreview.PhotoData]? { didSet { setContentList() }}
+  private var summaryData : PlanPreview.SummaryData? { didSet { setContentList() }}
+  private var recommendData : PlanPreview.RecommendData?{ didSet { setContentList() }}
   
   // MARK: - UI Component Part
   
@@ -90,6 +91,42 @@ class PlanPreviewVC: UIViewController {
     previewContentTV.reloadData()
   }
   
+  private func fetchTagData(){
+    BaseService.default.getPlanPreviewHeaderData(idx: idx) { result in
+      result.success { [weak self] data in
+        if let data = data{
+          self?.headerData = PlanPreview.HeaderData.init(writer: data.userNickname,
+                                                         title: data.title)
+          self?.descriptionData = PlanPreview.DescriptionData.init(descriptionContent: data.dataDescription,
+                                                                   summary: PlanPreview.IconData.init(theme: data.tagTheme,
+                                                                                                      spotCount: String(data.tagCountSpot),
+                                                                                                      restaurantCount: String(data.tagCountRestaurant),
+                                                                                                      dayCount: String(data.tagCountDay),
+                                                                                                      peopleCase: data.tagPartner,
+                                                                                                      budget: data.tagMoney,
+                                                                                                      transport: data.tagMobility,
+                                                                                                      month: String(data.tagMonth)))
+        }
+      }
+    }
+  }
+  
+  private func fetchDetailData(){
+    BaseService.default.getPlanPreviewDetailData(idx: idx) { result in
+      result.success { [weak self] data in
+        if let data = data{
+          var photoList : [PlanPreview.PhotoData] = []
+          
+          for (_,item) in data.enumerated(){
+            photoList.append(PlanPreview.PhotoData.init(photo: item.photoURL,
+                                                        content: item.description))
+          }
+          self?.photoData = photoList
+        }
+      }
+    }
+  }
+  
   private func setScrabImage(){
     scrabIconImageView.image = isScrabed ? ImageLiterals.Preview.scrabIconSelected : ImageLiterals.Preview.scrabIcon
   }
@@ -119,9 +156,7 @@ extension PlanPreviewVC : UITableViewDataSource{
         
       case .description:
         guard let descriptionCell = tableView.dequeueReusableCell(withIdentifier: PlanPreviewDescriptionTVC.className, for: indexPath) as? PlanPreviewDescriptionTVC else {return UITableViewCell() }
-        
         descriptionCell.setDescriptionData(contentData: descriptionData)
-        
         return descriptionCell
         
       case .photo:
