@@ -28,14 +28,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="435"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.19655422185430463" colorSpace="calibratedRGB"/>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7sc-eY-h3N">
-                        <rect key="frame" x="24" y="354" width="42.5" height="19.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="인기 여행 일정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7sc-eY-h3N">
+                        <rect key="frame" x="24" y="353.5" width="91" height="19.5"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hOH-qX-7Xg">
-                        <rect key="frame" x="24" y="381.5" width="51.5" height="24"/>
+                        <rect key="frame" x="24" y="381" width="51.5" height="24"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
@@ -45,10 +45,10 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
                 <constraint firstItem="WIY-aK-dJd" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="1NC-PF-6ba"/>
+                <constraint firstAttribute="bottom" secondItem="hOH-qX-7Xg" secondAttribute="bottom" constant="30" id="4y7-qP-oi8"/>
                 <constraint firstAttribute="bottom" secondItem="0k1-OF-xMI" secondAttribute="bottom" id="8kS-9f-kWB"/>
                 <constraint firstItem="hOH-qX-7Xg" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="24" id="C54-Q7-hyK"/>
                 <constraint firstAttribute="trailing" secondItem="WIY-aK-dJd" secondAttribute="trailing" id="Szu-Cp-74F"/>
-                <constraint firstItem="7sc-eY-h3N" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="354" id="Tu6-2X-xP2"/>
                 <constraint firstAttribute="trailing" secondItem="0k1-OF-xMI" secondAttribute="trailing" id="WjQ-V7-3xe"/>
                 <constraint firstItem="0k1-OF-xMI" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Wwn-lG-cKi"/>
                 <constraint firstAttribute="bottom" secondItem="WIY-aK-dJd" secondAttribute="bottom" id="ZMt-Kp-Glr"/>
