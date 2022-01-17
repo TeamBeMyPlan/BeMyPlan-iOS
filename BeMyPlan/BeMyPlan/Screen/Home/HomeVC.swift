@@ -106,6 +106,8 @@ class HomeVC: UIViewController, UIGestureRecognizerDelegate {
           self.newList = new
         }
         
+        self.mainListView.mainListDataList = self.newList
+        
         print("New List", self.newList)
         self.mainListView.mainListCV.reloadData()
         
@@ -123,8 +125,10 @@ class HomeVC: UIViewController, UIGestureRecognizerDelegate {
           self.suggestList = suggest
         }
         
+        self.mainEditorListView.mainListDataList = self.suggestList
+        
         print("Suggest List", self.suggestList)
-        self.mainListView.mainListCV.reloadData()
+        self.mainEditorListView.mainListCV.reloadData()
         
       }.catch{ error in
         dump(error)
