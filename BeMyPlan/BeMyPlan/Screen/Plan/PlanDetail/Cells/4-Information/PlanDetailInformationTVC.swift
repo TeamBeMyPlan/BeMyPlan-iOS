@@ -92,7 +92,7 @@ class PlanDetailInformationTVC: UITableViewCell,UITableViewRegisterable {
   }
   
   func setData(title : String, address : String,
-               imgUrls: [String],content : String,nextTravel : PlanDetailData.Summary?){
+               imgUrls: [String],content : String,nextTravel : PlanDetail.Summary?){
     if let nextTravel = nextTravel,
        let transportCase = nextTravel.transportCase,
        let time = nextTravel.time{
@@ -131,8 +131,6 @@ extension PlanDetailInformationTVC : UICollectionViewDataSource{
     photoCell.setImage(url: imgUrlList[indexPath.row])
     return photoCell
   }
-  
-  
 }
 
 extension PlanDetailInformationTVC: UICollectionViewDelegateFlowLayout{
@@ -171,3 +169,4 @@ extension PlanDetailInformationTVC : UIScrollViewDelegate{
   }
 
 }
+

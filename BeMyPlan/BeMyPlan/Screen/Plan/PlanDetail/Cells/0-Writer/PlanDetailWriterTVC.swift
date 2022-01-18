@@ -35,3 +35,9 @@ class PlanDetailWriterTVC: UITableViewCell,UITableViewRegisterable{
   }
   
 }
+
+
+struct DetailHeaderData{
+  var title : String
+  var writer : String
+}

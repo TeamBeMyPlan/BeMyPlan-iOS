@@ -13,6 +13,8 @@ class PlanDetailMapContainerTVC: UITableViewCell,UITableViewRegisterable, MTMapV
   static var isFromNib: Bool = true
   public let defaultPosition = MTMapPointGeo(latitude: 37.576568, longitude: 127.029148)
   
+  
+  var mapPointList : [PlanDetailMapData] = []
   var mapPoint1: MTMapPoint?
   var mapPoint2: MTMapPoint?
   var poiItem1: MTMapPOIItem?
@@ -78,7 +80,6 @@ class PlanDetailMapContainerTVC: UITableViewCell,UITableViewRegisterable, MTMapV
       poiItem2?.itemName = "장소이름이 여기에 나올거에요222~~~~~~"
       
       
-      
       mapView.add(poiItem1)
       mapView.add(poiItem2)
       self.mapContainerView.addSubview(mapView)
@@ -88,4 +89,11 @@ class PlanDetailMapContainerTVC: UITableViewCell,UITableViewRegisterable, MTMapV
       
     }
   }
+}
+
+
+struct PlanDetailMapData{
+  var title : String
+  var latitude : Double
+  var longtitude : Double
 }

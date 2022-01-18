@@ -9,31 +9,20 @@ import UIKit
 
 class PlanDetailVC: UIViewController {
 
-  // MARK: - Vars & Lets Part
-  var currentDay : Int = 1
-  private var writerBlockHeight :CGFloat = 0
-  var spotDataList : [PlanDetailData.SpotData] = [
-    PlanDetailData.SpotData.init(locationTitle: "산방산",
-                                 address
-                                 : "제주특별자치도 제주시 애월읍 유수암리 산138",
-                                 imagerUrls: [],
-                                 textContent: "테스트",
-                                 nextLocationData: PlanDetailData.Summary.init(transportCase: .walk, locationName: "22222222", time: "5분")),
-    
-    PlanDetailData.SpotData.init(locationTitle: "산방22222222",
-                                 address
-                                 : "제주특별자치도 제주시 애월읍 유수암리 산138",
-                                 imagerUrls: [],
-                                 textContent: "테스트",
-                                 nextLocationData: PlanDetailData.Summary.init(transportCase: .walk, locationName: "산방3333333", time: "5분")),
-    
-    PlanDetailData.SpotData.init(locationTitle: "33333333",
-                                 address
-                                 : "제주특별자치도 제주시 애월읍 유수암리 산138",
-                                 imagerUrls: [],
-                                 textContent: "테스트")
   
-  ]
+
+  // MARK: - Vars & Lets Part
+  var postIdx : Int = 5
+  
+  var headerData : DetailHeaderData?
+  var locationList : [[PlanDetailMapData]] = [[]]
+  var totalDay : Int = 1
+  var currentDay : Int = 1
+  var summaryList : [[PlanDetail.Summary]] = [[]]
+  var infoList : [[PlanDetail.SpotData]] = [[]]
+
+  private var writerBlockHeight :CGFloat = 0
+  
 
   // MARK: - UI Components Part
   
@@ -88,9 +77,9 @@ extension PlanDetailVC : UITableViewDataSource{
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     switch(section){
-      case 0: return 1
-      case 1: return 1
-      default : return spotDataList.count + 1
+      case 0: return (headerData != nil) ? 1 : 0
+      case 1: return (!locationList.isEmpty) ? 1 : 0
+      default : return !infoList.isEmpty ? infoList.count + 1 : 0
     }
   }
   func numberOfSections(in tableView: UITableView) -> Int {
@@ -112,7 +101,8 @@ extension PlanDetailVC : UITableViewDataSource{
   func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
     if section == 2{
       let selectView = PlanDetailSelectDayView()
-      selectView.totalDay = 3
+      selectView.totalDay = totalDay
+      selectView.delegate = self
       return selectView
     }else{
       return UIView()
@@ -123,37 +113,37 @@ extension PlanDetailVC : UITableViewDataSource{
     
     if indexPath.section == 0{
       guard let writerCell = tableView.dequeueReusableCell(withIdentifier: PlanDetailWriterTVC.className, for: indexPath) as? PlanDetailWriterTVC else {return UITableViewCell() }
-      
-      writerCell.setTitleData(title: "혜화동불가마", writer: "감성을 느낄 수 있는 힐링여행")
-
-      return writerCell
+      if let headerData = headerData{
+        writerCell.setTitleData(title: headerData.title,
+                                writer: headerData.writer)
+        return writerCell
+      }else{
+        return UITableViewCell()
+      }
     }else if indexPath.section == 1{
       guard let mapCell = tableView.dequeueReusableCell(withIdentifier: PlanDetailMapContainerTVC.className, for: indexPath) as? PlanDetailMapContainerTVC else {return UITableViewCell() }
 //      mapCell.contentView.disab
       return mapCell
     }else{
-      
+      switch(indexPath.row){
+        case 0:
+          guard let summaryCell = tableView.dequeueReusableCell(withIdentifier: PlanDetailSummaryTVC.className, for: indexPath) as? PlanDetailSummaryTVC else {return UITableViewCell() }
+          summaryCell.summaryList = self.summaryList
+          return summaryCell
+          
+        default:
+          guard infoList.count >= currentDay-1 else {return UITableViewCell()}
+          let spotData = infoList[currentDay-1][indexPath.row - 1]
+         guard let infoCell = tableView.dequeueReusableCell(withIdentifier: PlanDetailInformationTVC.className, for: indexPath) as? PlanDetailInformationTVC else {return UITableViewCell() }
+         infoCell.setData(title: spotData.locationTitle,
+                          address: spotData.address,
+                          imgUrls: spotData.imagerUrls,
+                          content: spotData.textContent,
+                          nextTravel: spotData.nextLocationData)
+         return infoCell
+      }
     }
-    
-    switch(indexPath.row){
-      case 0:
-        guard let summaryCell = tableView.dequeueReusableCell(withIdentifier: PlanDetailSummaryTVC.className, for: indexPath) as? PlanDetailSummaryTVC else {return UITableViewCell() }
-        return summaryCell
-        
-      default:
-        let spotData = spotDataList[indexPath.row - 1]
-       guard let infoCell = tableView.dequeueReusableCell(withIdentifier: PlanDetailInformationTVC.className, for: indexPath) as? PlanDetailInformationTVC else {return UITableViewCell() }
-       infoCell.setData(title: spotData.locationTitle,
-                        address: spotData.address,
-                        imgUrls: spotData.imagerUrls,
-                        content: spotData.textContent,
-                        nextTravel: spotData.nextLocationData)
-       return infoCell
-    }
-    
   }
-  
-  
 }
 
 
@@ -166,4 +156,11 @@ extension PlanDetailVC : UIScrollViewDelegate{
     }
   }
 
+}
+
+
+extension PlanDetailVC : PlanDetailDayDelegate{
+  func dayClicked(day: Int) {
+    currentDay = day
+  }
 }

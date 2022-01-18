@@ -22,6 +22,7 @@ enum BaseAPI{
   case deleteUserWithdraw
   case getPlanPreviewHeaderData(idx : Int)
   case getPlanPreviewData(idx : Int)
+  case getPlanDetailData(idx : Int)
 }
 
 extension BaseAPI: TargetType {
@@ -59,8 +60,11 @@ extension BaseAPI: TargetType {
         base += "/auth"
         
       case .getPlanPreviewHeaderData,
-          .getPlanPreviewData:
+          .getPlanPreviewData
+        , .getPlanDetailData:
         base += "/post"
+        
+        
 
       
 
@@ -99,6 +103,8 @@ extension BaseAPI: TargetType {
       return "/suggest"
     case .getBuyList(let userID):
       return "/\(userID)"
+      case .getPlanDetailData(let idx):
+        return "/\(idx)"
     default :
       return ""
     }

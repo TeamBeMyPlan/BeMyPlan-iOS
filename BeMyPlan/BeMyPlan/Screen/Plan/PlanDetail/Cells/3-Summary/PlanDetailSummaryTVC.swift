@@ -9,6 +9,8 @@ import UIKit
 
 class PlanDetailSummaryTVC: UITableViewCell,UITableViewRegisterable{
   
+  var summaryList : [[PlanDetail.Summary]] = [[]]
+  
   static var isFromNib: Bool = true
   private var isFold : Bool = true{
     didSet{
@@ -21,7 +23,7 @@ class PlanDetailSummaryTVC: UITableViewCell,UITableViewRegisterable{
       last : CGFloat = 0,
       additional : CGFloat = 0
   
-  var locationList : [PlanDetailData.Summary] = []{
+  var locationList : [PlanDetail.Summary] = []{
     didSet{
       calculateSummaryHeight()
       listTV.reloadData()
@@ -56,23 +58,23 @@ class PlanDetailSummaryTVC: UITableViewCell,UITableViewRegisterable{
   
   private func addDummyData(){
     locationList = [
-      PlanDetailData.Summary(transportCase: .walk,
+      PlanDetail.Summary(transportCase: .walk,
                              locationName: "1번 장소",
                              time: "20"),
       
-      PlanDetailData.Summary(transportCase: .car,
+      PlanDetail.Summary(transportCase: .car,
                              locationName: "2번 장소",
                              time: "50"),
       
-      PlanDetailData.Summary(transportCase: .bus,
+      PlanDetail.Summary(transportCase: .bus,
                              locationName: "3번 장소",
                              time: "100"),
       
-      PlanDetailData.Summary(transportCase: .walk,
+      PlanDetail.Summary(transportCase: .walk,
                              locationName: "4번 장소",
                              time: "80"),
       
-      PlanDetailData.Summary(transportCase: nil,
+      PlanDetail.Summary(transportCase: nil,
                              locationName: "5번 장소",
                              time: nil),
     ]
