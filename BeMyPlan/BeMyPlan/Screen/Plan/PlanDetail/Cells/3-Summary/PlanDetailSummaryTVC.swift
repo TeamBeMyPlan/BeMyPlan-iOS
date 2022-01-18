@@ -9,7 +9,8 @@ import UIKit
 
 class PlanDetailSummaryTVC: UITableViewCell,UITableViewRegisterable{
   
-  var summaryList : [[PlanDetail.Summary]] = [[]]
+  var summaryList : [PlanDetail.Summary] = []
+  var currentDay : Int = 1
   
   static var isFromNib: Bool = true
   private var isFold : Bool = true{

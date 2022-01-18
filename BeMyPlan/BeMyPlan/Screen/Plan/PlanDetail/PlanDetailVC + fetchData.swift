@@ -11,10 +11,14 @@ extension PlanDetailVC{
   func fetchPlanDetailData(){
     BaseService.default.getPlanDetailData(idx: postIdx) { result in
       result.success { [weak self] data in
+        self?.locationList.removeAll()
+        self?.summaryList.removeAll()
+        self?.infoList.removeAll()
         if let detailData = data{
           // 작성자 정보 가져오기
           self?.headerData = DetailHeaderData(title: detailData.title,
                                               writer : detailData.author)
+          self?.headerTitleLabel.text = detailData.title
           // 총 일차 가져오기
           self?.totalDay = detailData.totalDays
           // 각각 리스트 더해주기
@@ -22,7 +26,10 @@ extension PlanDetailVC{
             var mapPointList : [PlanDetailMapData] = []
             var summaryList : [PlanDetail.Summary] = []
             var infoList : [PlanDetail.SpotData] = []
+            print("DAYSPOTLIST",daySpotDataList.count)
+
             for (_,eachDayData) in daySpotDataList.enumerated(){
+
               if let dayData = eachDayData{
                 mapPointList.append(PlanDetailMapData.init(title: dayData.title,
                                                            latitude: dayData.latitude,
@@ -44,9 +51,14 @@ extension PlanDetailVC{
             self?.summaryList.append(summaryList)
             self?.infoList.append(infoList)
           }
-          self.mainContainerTV.reloadData()
-          
+          print(self?.locationList.count)
+          dump(self?.locationList)
+          print(self?.summaryList.count)
+          dump(dump(self?.locationList))
+          print(self?.infoList.count)
+          dump(self?.infoList)
 
+          self?.mainContainerTV.reloadData()
         }
       }
     }

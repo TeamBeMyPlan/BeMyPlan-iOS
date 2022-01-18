@@ -16,12 +16,8 @@ class PlanDetailSelectDayView: XibView{
   static var isFromNib: Bool = true
   var delegate :PlanDetailDayDelegate?
   
-  public var totalDay : Int = 4{
-    didSet{
-      dayContainerCV.reloadData()
-    }
-  }
-  public var currentDay : Int = 1{
+  public var totalDay : Int = 4
+  var currentDay : Int = 1{
     didSet{
       dayContainerCV.reloadData()
       delegate?.dayClicked(day: currentDay)

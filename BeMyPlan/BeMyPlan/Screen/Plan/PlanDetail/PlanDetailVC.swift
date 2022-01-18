@@ -12,12 +12,12 @@ class PlanDetailVC: UIViewController {
   
 
   // MARK: - Vars & Lets Part
-  var postIdx : Int = 5
+  var postIdx : Int = 3
   
   var headerData : DetailHeaderData?
   var locationList : [[PlanDetailMapData]] = [[]]
   var totalDay : Int = 1
-  var currentDay : Int = 1
+  var currentDay : Int = 1 { didSet{mainContainerTV.reloadData()} }
   var summaryList : [[PlanDetail.Summary]] = [[]]
   var infoList : [[PlanDetail.SpotData]] = [[]]
 
@@ -42,8 +42,8 @@ class PlanDetailVC: UIViewController {
       super.viewDidLoad()
       registerCells()
       mainContainerTV.reloadData()
-      setHeaderTitle()
       getWriterBlockHeight()
+      fetchPlanDetailData()
     }
   
   // MARK: - Custom Methods Parts
@@ -59,10 +59,6 @@ class PlanDetailVC: UIViewController {
     headerTitleLabel.isHidden = true
     let writerFrame = mainContainerTV.rectForRow(at: IndexPath(row: 0, section: 0))
     writerBlockHeight = writerFrame.height
-  }
-  
-  private func setHeaderTitle(){
-    headerTitleLabel.text = "감성을 느낄 수 있는 힐링여행"
   }
 
 }
@@ -102,6 +98,7 @@ extension PlanDetailVC : UITableViewDataSource{
     if section == 2{
       let selectView = PlanDetailSelectDayView()
       selectView.totalDay = totalDay
+      selectView.currentDay = currentDay
       selectView.delegate = self
       return selectView
     }else{
@@ -114,25 +111,30 @@ extension PlanDetailVC : UITableViewDataSource{
     if indexPath.section == 0{
       guard let writerCell = tableView.dequeueReusableCell(withIdentifier: PlanDetailWriterTVC.className, for: indexPath) as? PlanDetailWriterTVC else {return UITableViewCell() }
       if let headerData = headerData{
-        writerCell.setTitleData(title: headerData.title,
-                                writer: headerData.writer)
+        writerCell.setTitleData(title: headerData.writer,
+                                writer: headerData.title)
         return writerCell
       }else{
         return UITableViewCell()
       }
     }else if indexPath.section == 1{
       guard let mapCell = tableView.dequeueReusableCell(withIdentifier: PlanDetailMapContainerTVC.className, for: indexPath) as? PlanDetailMapContainerTVC else {return UITableViewCell() }
-//      mapCell.contentView.disab
+      mapCell.mapPointList = self.locationList
+      mapCell.currentDay = self.currentDay - 1
       return mapCell
     }else{
       switch(indexPath.row){
         case 0:
           guard let summaryCell = tableView.dequeueReusableCell(withIdentifier: PlanDetailSummaryTVC.className, for: indexPath) as? PlanDetailSummaryTVC else {return UITableViewCell() }
-          summaryCell.summaryList = self.summaryList
+          guard summaryList.count >= currentDay-1 else {return UITableViewCell()}
+          summaryCell.summaryList = self.summaryList[currentDay - 1]
+          summaryCell.currentDay = currentDay
           return summaryCell
           
         default:
-          guard infoList.count >= currentDay-1 else {return UITableViewCell()}
+          
+          guard infoList.count > currentDay-1 else {return UITableViewCell()}
+          guard infoList[currentDay-1].count > indexPath.row - 1 else {return UITableViewCell()}
           let spotData = infoList[currentDay-1][indexPath.row - 1]
          guard let infoCell = tableView.dequeueReusableCell(withIdentifier: PlanDetailInformationTVC.className, for: indexPath) as? PlanDetailInformationTVC else {return UITableViewCell() }
          infoCell.setData(title: spotData.locationTitle,
@@ -161,6 +163,6 @@ extension PlanDetailVC : UIScrollViewDelegate{
 
 extension PlanDetailVC : PlanDetailDayDelegate{
   func dayClicked(day: Int) {
-    currentDay = day
+    self.currentDay = day
   }
 }
