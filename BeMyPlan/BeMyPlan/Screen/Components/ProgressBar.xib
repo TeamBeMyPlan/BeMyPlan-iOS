@@ -19,7 +19,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nJw-Wi-GCM">
-                    <rect key="frame" x="0.0" y="0.0" width="256" height="57"/>
+                    <rect key="frame" x="0.0" y="0.0" width="406" height="57"/>
                     <color key="backgroundColor" name="grey1"/>
                 </view>
             </subviews>
@@ -28,7 +28,7 @@
                 <constraint firstItem="nJw-Wi-GCM" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="E0Q-iB-HMy"/>
                 <constraint firstAttribute="bottom" secondItem="nJw-Wi-GCM" secondAttribute="bottom" id="LPH-Bu-ysS"/>
                 <constraint firstItem="nJw-Wi-GCM" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="W05-fE-vGM"/>
-                <constraint firstAttribute="trailing" secondItem="nJw-Wi-GCM" secondAttribute="trailing" constant="150" id="qIk-Ck-0Ag"/>
+                <constraint firstAttribute="trailing" secondItem="nJw-Wi-GCM" secondAttribute="trailing" id="qIk-Ck-0Ag"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="126.08695652173914" y="-199.21875"/>

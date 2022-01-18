@@ -17,7 +17,11 @@ class PlanDetailInfoPhotoCVC: UICollectionViewCell,UICollectionViewRegisterable 
   }
   
   func setImage(url : String){
-//    contentImageView.setImage(with: url)
+    if url != ""{
+      contentImageView.setImage(with: url)
+    }else{
+      contentImageView.image = UIImage(named: "mainlist4")
+    }
   }
   
 }

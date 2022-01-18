@@ -9,12 +9,21 @@ import UIKit
 
 class PlanDetailInformationTVC: UITableViewCell,UITableViewRegisterable {
   
+  private var lastPointee : CGFloat = 0
   static var isFromNib: Bool = true
-  private var imgUrlList : [String] = ["","",""]
+  private var imgUrlList : [String] = []{
+    didSet {
+      if imgUrlList.count >= 1{
+        progressBar.setPercentage(ratio: CGFloat((currentIndex + 1)) / CGFloat(imgUrlList.count))
+      }else{
+        progressBar.setPercentage(ratio: 0)
+      }
+    }
+  }
   
   var currentIndex :Int = 0{
     didSet{
-      if imgUrlList.count > 0{
+      if imgUrlList.count >= 1{
         progressBar.setPercentage(ratio: CGFloat((currentIndex + 1)) / CGFloat(imgUrlList.count))
       }else{
         progressBar.setPercentage(ratio: 0)
@@ -33,6 +42,7 @@ class PlanDetailInformationTVC: UITableViewCell,UITableViewRegisterable {
   }
   @IBOutlet var progressBar: ProgressBar!{
     didSet{
+      
     }
   }
   @IBOutlet var contentTextView: UITextView!
@@ -56,6 +66,7 @@ class PlanDetailInformationTVC: UITableViewCell,UITableViewRegisterable {
   }
   override func awakeFromNib() {
     super.awakeFromNib()
+    currentIndex = 0
     registerCells()
     setUI()
     // Initialization code
@@ -92,12 +103,15 @@ class PlanDetailInformationTVC: UITableViewCell,UITableViewRegisterable {
   }
   
   func setData(title : String, address : String,
-               imgUrls: [String],content : String,nextTravel : PlanDetail.Summary?){
+               imgUrls: [String],content : String,
+               transport : TransportCase?,
+  transportTime : String?,
+               nextTravel : PlanDetail.Summary?){
     if let nextTravel = nextTravel,
-       let transportCase = nextTravel.transportCase,
-       let time = nextTravel.time{
+       let transportCase = transport,
+       let nextTime = transportTime{
       nextTripTimeView.isHidden = false
-      nextTripTimeLabel.text = transportCase.rawValue + " " + time
+      nextTripTimeLabel.text = transportCase.rawValue + " " + nextTime
       nextTripLocationNameLabel.text = title + " -> " + nextTravel.locationName
     }else{
       nextTripTimeView.isHidden = true
@@ -107,8 +121,16 @@ class PlanDetailInformationTVC: UITableViewCell,UITableViewRegisterable {
     contentTextView.text = content
     nextTripLocationNameLabel.sizeToFit()
     nextTripTimeLabel.sizeToFit()
-    // 이미지는 나중에 넣어야 함.
+    if imgUrls.count > 0{
+      imgUrlList = imgUrls
+    }else{
+      imgUrlList.removeAll()
+      imgUrlList.append("https://be-my-plan.s3.ap-northeast-2.amazonaws.com/images/728fe6ed-1073-48cc-9800-dd8bf69de114-123.png")
+    }
+    currentIndex = 0
+    
     setNextLocationLabelCenter()
+    contentCV.reloadData()
   }
   
   private func registerCells(){
@@ -163,9 +185,16 @@ extension PlanDetailInformationTVC : UIScrollViewDelegate{
   
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
     let collectionViewWidth = screenWidth - 48
-
     let point = scrollView.contentOffset.x / collectionViewWidth
-    currentIndex = Int(floor(point))
+
+    if lastPointee <= scrollView.contentOffset.x{
+      currentIndex = Int(ceil(point))
+    }else{
+      currentIndex = Int(floor(point))
+    }
+
+    
+    lastPointee = scrollView.contentOffset.x
   }
 
 }

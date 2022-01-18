@@ -67,6 +67,12 @@ extension PlanDetailVC : UITableViewDelegate{
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return UITableView.automaticDimension
   }
+  
+  func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    let animation = AnimationFactory.makeFadeAnimation(duration: 0.6, delayFactor: 0.08)
+    let animator = Animator(animation: animation)
+    animator.animate(cell: cell, at: indexPath, in: tableView)
+  }
 }
 
 extension PlanDetailVC : UITableViewDataSource{
@@ -141,7 +147,10 @@ extension PlanDetailVC : UITableViewDataSource{
                           address: spotData.address,
                           imgUrls: spotData.imagerUrls,
                           content: spotData.textContent,
-                          nextTravel: spotData.nextLocationData)
+                          transport: spotData.nextLocationData?.transportCase,
+                          transportTime: spotData.nextLocationData?.time,
+                          nextTravel: infoList[currentDay-1].count > indexPath.row ?
+                          infoList[currentDay-1][indexPath.row].nextLocationData : nil)
          return infoCell
       }
     }
@@ -157,12 +166,25 @@ extension PlanDetailVC : UIScrollViewDelegate{
       headerTitleLabel.isHidden = true
     }
   }
-
 }
-
 
 extension PlanDetailVC : PlanDetailDayDelegate{
   func dayClicked(day: Int) {
+    if self.currentDay != day{
+      var cells : [UITableViewCell] = []
+      
+      
+//      UIView.animate(withDuration: 1) {
+//        self.mainContainerTV.alpha = 0.0
+//      }completion: { _ in
+//        UIView.animate(withDuration: 1) {
+//          self.mainContainerTV.alpha = 1
+//        }
+//
+//      }
+//      self.mainContainerTV.visibleCells.
+      self.mainContainerTV.scrollToRow(at: IndexPath(row: 0, section: 0 ), at: .top, animated: true)
+    }
     self.currentDay = day
   }
 }

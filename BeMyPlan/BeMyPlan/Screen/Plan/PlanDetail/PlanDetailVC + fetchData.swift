@@ -53,8 +53,10 @@ extension PlanDetailVC{
           }
           print(self?.locationList.count)
           dump(self?.locationList)
+          
           print(self?.summaryList.count)
-          dump(dump(self?.locationList))
+          dump(self?.locationList)
+          
           print(self?.infoList.count)
           dump(self?.infoList)
 
