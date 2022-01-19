@@ -47,11 +47,8 @@ extension BaseAPI: TargetType {
     case .sampleAPI:
       base += ""
       
-<<<<<<< HEAD
-    case .getPopularTravelList:
-=======
+
     case .getPopularTravelList, .getNewTravelList, .getSuggestTravelList:
->>>>>>> 68e37420ee4e5ed41ae02dea2e4c1d3861c8553d
       base += "/post"
       
     case .getTravelSpotList:
@@ -60,7 +57,6 @@ extension BaseAPI: TargetType {
     case .getBuyList:
       base += "/order"
       
-<<<<<<< HEAD
     case .getTravelSpotDetailList:
       base += "/area"
       
@@ -75,8 +71,7 @@ extension BaseAPI: TargetType {
     case .postScrapBtn:
       base += "추후 수정"
       
-=======
->>>>>>> 68e37420ee4e5ed41ae02dea2e4c1d3861c8553d
+
     }
     
     
@@ -96,7 +91,6 @@ extension BaseAPI: TargetType {
   ///
   var path: String {
     switch self{
-<<<<<<< HEAD
       case .getPopularTravelList:
         return "/popular"
       case .getBuyList(let userID):
@@ -109,21 +103,13 @@ extension BaseAPI: TargetType {
       
     case .getScrapList(let userId, _, _, _):
       return "/\(userId)"
-      
-      default :
-        return ""
-=======
-    case .getPopularTravelList:
-      return "/popular"
+
     case .getNewTravelList:
       return "/new"
     case .getSuggestTravelList:
       return "/suggest"
-    case .getBuyList(let userID):
-      return "/\(userID)"
     default :
       return ""
->>>>>>> 68e37420ee4e5ed41ae02dea2e4c1d3861c8553d
     }
   }
   
@@ -133,20 +119,12 @@ extension BaseAPI: TargetType {
   
   var method: Moya.Method {
     switch self{
-<<<<<<< HEAD
       case .sampleAPI:
         return .post
 
       default :
         return .get
-
-=======
-    case .sampleAPI:
-      return .post
-    default :
-      return .get
       
->>>>>>> 68e37420ee4e5ed41ae02dea2e4c1d3861c8553d
     }
   }
   
@@ -165,7 +143,6 @@ extension BaseAPI: TargetType {
   private var bodyParameters: Parameters? {
     var params: Parameters = [:]
     switch self{
-<<<<<<< HEAD
       case .sampleAPI(let email):
         params["email"] = email
         params["password"] = "여기에 필요한 Value값 넣기"
@@ -184,13 +161,6 @@ extension BaseAPI: TargetType {
       params["pageSize"] = 5
       params["sort"] = sort
       
-      default:
-        break
-
-=======
-    case .sampleAPI(let email):
-      params["email"] = email
-      params["password"] = "여기에 필요한 Value값 넣기"
     case .getNewTravelList(let page):
       params["page"] = page
     case .getSuggestTravelList(let page):
@@ -198,7 +168,6 @@ extension BaseAPI: TargetType {
     default:
       break
       
->>>>>>> 68e37420ee4e5ed41ae02dea2e4c1d3861c8553d
     }
     return params
   }
@@ -227,17 +196,11 @@ extension BaseAPI: TargetType {
   ///
   private var parameterEncoding : ParameterEncoding{
     switch self {
-<<<<<<< HEAD
-    case .sampleAPI, .getTravelSpotDetailList, .getScrapList:
+    case .sampleAPI, .getTravelSpotDetailList, .getScrapList, .getNewTravelList, .getSuggestTravelList:
         return URLEncoding.init(destination: .queryString, arrayEncoding: .noBrackets, boolEncoding: .literal)
       default :
         return JSONEncoding.default
-=======
-    case .sampleAPI, .getNewTravelList, .getSuggestTravelList:
-      return URLEncoding.init(destination: .queryString, arrayEncoding: .noBrackets, boolEncoding: .literal)
-    default :
-      return JSONEncoding.default
->>>>>>> 68e37420ee4e5ed41ae02dea2e4c1d3861c8553d
+
     }
   }
   
@@ -247,19 +210,13 @@ extension BaseAPI: TargetType {
   ///
   var task: Task {
     switch self{
-<<<<<<< HEAD
-    case .sampleAPI,.getTravelSpotDetailList, .getScrapList:
+    case .sampleAPI,.getTravelSpotDetailList, .getScrapList,.getNewTravelList, .getSuggestTravelList:
         return .requestParameters(parameters: bodyParameters ?? [:], encoding: parameterEncoding)
       default:
         return .requestPlain
  
-=======
-    case .sampleAPI, .getNewTravelList, .getSuggestTravelList:
-      return .requestParameters(parameters: bodyParameters ?? [:], encoding: parameterEncoding)
-    default:
-      return .requestPlain
+
       
->>>>>>> 68e37420ee4e5ed41ae02dea2e4c1d3861c8553d
     }
   }
   

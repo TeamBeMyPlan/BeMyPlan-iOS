@@ -18,7 +18,6 @@
 		523C70B52796F11C0073371D /* ScrapBtnService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523C70B42796F11C0073371D /* ScrapBtnService.swift */; };
 		523C70B8279858040073371D /* HomeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523C70B7279858040073371D /* HomeData.swift */; };
 		52E26A8D278C17A800D84F0C /* TravelSpotFilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E26A8C278C17A800D84F0C /* TravelSpotFilterVC.swift */; };
-		F2191EF62795DF600058EF9A /* HomeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2191EF52795DF600058EF9A /* HomeData.swift */; };
 		F21AFAA027919A8000A84633 /* CustomAlert.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F21AFA9F27919A8000A84633 /* CustomAlert.storyboard */; };
 		F21AFAA827919BA200A84633 /* CustomAlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21AFAA727919BA200A84633 /* CustomAlertVC.swift */; };
 		F261EC7927873A7D00AF094F /* MainCardCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F261EC7727873A7D00AF094F /* MainCardCVC.swift */; };
@@ -1534,7 +1533,6 @@
 				FD20C623278EF11000AC6E34 /* MyPlanWithdrawVC.swift in Sources */,
 				FD09DDFE278578BA006DA050 /* StringLiterals.swift in Sources */,
 				FD1C569127958A9B00EEDFCE /* ResponseObject.swift in Sources */,
-				F2191EF62795DF600058EF9A /* HomeData.swift in Sources */,
 				F294EC2B278EBC66001069F8 /* LoginVC + AppleLogin.swift in Sources */,
 				FD09DE2727857DE3006DA050 /* GenericResponse.swift in Sources */,
 				FD09DE1527857B36006DA050 /* getClassName.swift in Sources */,
