@@ -30,7 +30,7 @@ class MainListView: UIView {
   }
   
   private var currentIndex : CGFloat = 0
-  private var listIndex = 0
+  private var listIndex = 1
   
   override init(frame: CGRect) {
     super.init(frame: frame)

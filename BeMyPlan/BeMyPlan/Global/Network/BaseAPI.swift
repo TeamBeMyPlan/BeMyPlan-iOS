@@ -147,7 +147,7 @@ extension BaseAPI: TargetType {
   ///
   private var parameterEncoding : ParameterEncoding{
     switch self {
-    case .sampleAPI, .getSuggestTravelList, .getSuggestTravelList:
+    case .sampleAPI, .getNewTravelList, .getSuggestTravelList:
       return URLEncoding.init(destination: .queryString, arrayEncoding: .noBrackets, boolEncoding: .literal)
     default :
       return JSONEncoding.default
@@ -160,7 +160,7 @@ extension BaseAPI: TargetType {
   ///
   var task: Task {
     switch self{
-    case .sampleAPI, .getSuggestTravelList, .getNewTravelList:
+    case .sampleAPI, .getNewTravelList, .getSuggestTravelList:
       return .requestParameters(parameters: bodyParameters ?? [:], encoding: parameterEncoding)
     default:
       return .requestPlain
