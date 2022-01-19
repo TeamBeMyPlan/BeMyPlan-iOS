@@ -11,8 +11,8 @@ enum BaseAPI{
   case sampleAPI(sample : String)
   // MARK: - 현주
   case getPopularTravelList
-  case getNewTravelList
-  case getSuggestTravelList
+  case getNewTravelList(page : Int)
+  case getSuggestTravelList(page : Int)
   
   // MARK: - 양원
   case getTravelSpotList
@@ -112,6 +112,10 @@ extension BaseAPI: TargetType {
     case .sampleAPI(let email):
       params["email"] = email
       params["password"] = "여기에 필요한 Value값 넣기"
+    case .getNewTravelList(let page):
+      params["page"] = page
+    case .getSuggestTravelList(let page):
+      params["page"] = page
     default:
       break
       
@@ -143,7 +147,7 @@ extension BaseAPI: TargetType {
   ///
   private var parameterEncoding : ParameterEncoding{
     switch self {
-    case .sampleAPI:
+    case .sampleAPI, .getNewTravelList, .getSuggestTravelList:
       return URLEncoding.init(destination: .queryString, arrayEncoding: .noBrackets, boolEncoding: .literal)
     default :
       return JSONEncoding.default
@@ -156,13 +160,14 @@ extension BaseAPI: TargetType {
   ///
   var task: Task {
     switch self{
-    case .sampleAPI:
+    case .sampleAPI, .getNewTravelList, .getSuggestTravelList:
       return .requestParameters(parameters: bodyParameters ?? [:], encoding: parameterEncoding)
     default:
       return .requestPlain
       
     }
   }
+  
   
   public var headers: [String: String]? {
     if let userToken = UserDefaults.standard.string(forKey: "userToken") {

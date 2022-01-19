@@ -9,10 +9,6 @@ import UIKit
 
 class HomeVC: UIViewController, UIGestureRecognizerDelegate {
   
-  // MARK: - Vars & Lets Part
-  var newList: [HomeListDataGettable] = []
-  var suggestList: [HomeListDataGettable] = []
-  
   // MARK: - UI Component Part
   //  let a = MainCardView()
   @IBOutlet var naviView: UIView!
@@ -67,7 +63,7 @@ class HomeVC: UIViewController, UIGestureRecognizerDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
     //    setDummyData()
-    getListData()
+//    getListData()
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -96,44 +92,7 @@ class HomeVC: UIViewController, UIGestureRecognizerDelegate {
   //    mainEditorListView.mainListDataList = b
   //  }
   
-  private func getListData(){
-    BaseService.default.getNewTravelList { result in
-      result.success { list in
-        self.newList = []
-        
-        if let new = list {
-          
-          self.newList = new
-        }
-        
-        self.mainListView.mainListDataList = self.newList
-        
-        print("New List", self.newList)
-        self.mainListView.mainListCV.reloadData()
-        
-      }.catch{ error in
-        dump(error)
-      }
-    }
-    
-    BaseService.default.getSuggestTravelList { result in
-      result.success { list in
-        self.suggestList = []
-        
-        if let suggest = list {
-          
-          self.suggestList = suggest
-        }
-        
-        self.mainEditorListView.mainListDataList = self.suggestList
-        
-        print("Suggest List", self.suggestList)
-        self.mainEditorListView.mainListCV.reloadData()
-        
-      }.catch{ error in
-        dump(error)
-      }
-    }
-  }
+  
+  
   
 }
