@@ -14,7 +14,7 @@ class ScrapVC: UIViewController {
   @IBOutlet var scrapEmptyView: ScrapEmptyContainerView!
   
   // MARK: - Vars & Lets Part
-  let contentData: Bool = false
+  let contentData: Bool = true
 
   // MARK: - UI Component Part
   
@@ -42,6 +42,8 @@ class ScrapVC: UIViewController {
                                            name: NSNotification.Name("filterBottomSheet"),
                                            object: nil)
   }
+  
+  
     
   // MARK: - @objc Function Part
   @objc func bottomSheetAction(_ notification: Notification) {

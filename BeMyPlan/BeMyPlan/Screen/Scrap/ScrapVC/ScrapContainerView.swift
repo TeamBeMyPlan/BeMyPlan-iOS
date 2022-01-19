@@ -7,43 +7,76 @@
 
 import UIKit
 import PanModal
+import Moya
 
 class ScrapContainerView: XibView {
   
   @IBOutlet var contentCV: UICollectionView!
+
+  var scrapDataList: [ScrapDataGettable] = []
   
   override init(frame: CGRect) {
     super.init(frame: frame)
-    registerCells()
-    contentCV.dataSource = self
-    contentCV.delegate = self
+    setAll()
   }
   
   required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
-    registerCells()
-    contentCV.dataSource = self
-    contentCV.delegate = self
+    setAll()
   }
   
   @IBAction func filterBtn(_ sender: Any) {
     NotificationCenter.default.post(name: NSNotification.Name("filterBottomSheet"), object: nil)
   }
   
-  func registerCells() {
+  private func setAll() {
+    registerCells()
+    fetchScrapItemList()
+    setDelegate()
+  }
+  
+  private func registerCells() {
     ScrapContainerCVC.register(target: contentCV)
   }
+  
+  private func setDelegate() {
+    contentCV.dataSource = self
+    contentCV.delegate = self
+  }
+  
+  private func fetchScrapItemList() {
+    BaseService.default.getScrapList(userId: 1, page: 0, pageSize: 5, sort: "created_at") { result in
+      result.success { data in
+        self.scrapDataList = []
+        if let testedData = data {
+          self.scrapDataList = testedData
+          dump("---> DDDD \(self.scrapDataList)")
+        }
+        self.contentCV.reloadData()
+      }.catch { error in
+        if let err = error as? MoyaError {
+          dump("---> ScrapContainer \(err)")
+        }
+      }
+    }
+  }
+  
+  
 }
 
 
 extension ScrapContainerView: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 20
+    return scrapDataList.count
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ScrapContainerCVC.className, for: indexPath) as? ScrapContainerCVC else {return UICollectionViewCell()
     }
+
+    cell.titleLabel.text = scrapDataList[indexPath.row].title
+    cell.contentImage.setImage(with: scrapDataList[indexPath.row].thumbnailURL)
+    
     return cell
   }
 }

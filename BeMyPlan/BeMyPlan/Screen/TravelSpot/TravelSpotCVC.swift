@@ -17,8 +17,14 @@ class TravelSpotCVC: UICollectionViewCell {
   
   override func awakeFromNib() {
     super.awakeFromNib()
+    setUIs()
+  }
+  
+  private func setUIs() {
     locationImageView.layer.cornerRadius = 5
     lockImageView.layer.cornerRadius = 5
-  }  
+    locationImageView.contentMode = .scaleAspectFill
+  }
+  
 }
 
