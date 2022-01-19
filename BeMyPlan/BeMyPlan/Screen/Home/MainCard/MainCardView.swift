@@ -109,7 +109,8 @@ class MainCardView: UIView {
         self.mainCardCV.reloadData()
         
       }.catch{ error in
-        dump(error)
+        print("CARDERR")
+        NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .showNetworkError), object: nil)
       }
     }
   }

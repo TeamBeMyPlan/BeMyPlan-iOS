@@ -9,6 +9,7 @@ import UIKit
 
 class PlanDetailInformationTVC: UITableViewCell,UITableViewRegisterable {
   
+  private var addressData : String = ""
   private var lastPointee : CGFloat = 0
   static var isFromNib: Bool = true
   private var imgUrlList : [String] = []{
@@ -80,7 +81,8 @@ class PlanDetailInformationTVC: UITableViewCell,UITableViewRegisterable {
   
   //MARK: - IBActions Part
   @IBAction func addressCopyButtonClicked(_ sender: Any) {
-    
+    UIPasteboard.general.string = addressData
+    NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .copyComplete), object: nil)
   }
   
   // MARK: - Custom Methods Parts
@@ -108,6 +110,7 @@ class PlanDetailInformationTVC: UITableViewCell,UITableViewRegisterable {
                transport : TransportCase?,
   transportTime : String?,
                nextTravel : PlanDetail.Summary?){
+    addressData = address
     if let nextTravel = nextTravel,
        let transportCase = transport,
        let nextTime = transportTime{

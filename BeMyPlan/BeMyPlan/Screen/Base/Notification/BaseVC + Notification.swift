@@ -8,6 +8,7 @@
 import UIKit
 
 enum BaseNotiList{
+  case copyComplete
   case showNotInstallKakaomap
   case moveHomeTab
   case moveTravelSpotTab
@@ -19,6 +20,8 @@ enum BaseNotiList{
   case movePlanList // 여행지 목록
   case movePlanDetail // 구매후 뷰
   
+  case showNetworkError
+  
   static func makeNotiName(list : BaseNotiList) -> NSNotification.Name{
     return Notification.Name(String(describing: list))
   }
@@ -28,8 +31,16 @@ enum BaseNotiList{
 extension BaseVC{
   func addObservers(){
     
+    addObserverAction(keyName: BaseNotiList.makeNotiName(list: .showNetworkError)) { _ in
+      self.makeAlert(alertCase: .simpleAlert, title: I18N.Alert.error, content: I18N.Alert.networkError)
+    }
+    
     addObserverAction(keyName: BaseNotiList.makeNotiName(list: .showNotInstallKakaomap)) { _ in
-      self.makeAlert(alertCase: .simpleAlert, title: "알림", content: I18N.Alert.notInstallKakaomap)
+      self.makeAlert(alertCase: .simpleAlert, title: I18N.Alert.alarm, content: I18N.Alert.notInstallKakaomap)
+    }
+    
+    addObserverAction(keyName: BaseNotiList.makeNotiName(list: .copyComplete)) { noti in
+      self.makeAlert(alertCase: .simpleAlert, title: I18N.Alert.alarm, content: I18N.Alert.copyComplete)
     }
     
     

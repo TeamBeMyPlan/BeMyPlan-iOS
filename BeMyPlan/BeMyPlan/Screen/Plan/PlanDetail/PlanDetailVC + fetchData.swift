@@ -66,6 +66,8 @@ extension PlanDetailVC{
           self?.setWriterView()
           self?.setMapContainerView()
         }
+      }.catch { err in
+        NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .showNetworkError), object: nil)
       }
     }
   }

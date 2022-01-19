@@ -124,6 +124,8 @@ class PlanPreviewVC: UIViewController {
           }
           self?.photoData = photoList
         }
+      }.catch { err in
+        NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .showNetworkError), object: nil)
       }
     }
   }
