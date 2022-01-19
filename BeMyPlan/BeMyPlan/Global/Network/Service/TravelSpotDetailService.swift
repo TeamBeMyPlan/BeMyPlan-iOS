@@ -8,11 +8,17 @@
 import Foundation
 
 protocol TravelSpotDetailService {
-  func getTravelSpotDetailList(area: Int, page: Int, sort : String, completion: @escaping (Result<TravelSpotDetailDataGettable?, Error>) -> Void)
+  func getTravelSpotDetailList(area: Int, page: Int, pageSize : Int, sort : String, completion: @escaping (Result<[HomeListDataGettable.Item]?, Error>) -> Void)
+  func getNicknameDetailList(userId: Int, page: Int, pageSize: Int, sort: String, completion: @escaping (Result<[HomeListDataGettable.Item]?, Error>) -> Void)
 }
 
 extension BaseService: TravelSpotDetailService {
-  func getTravelSpotDetailList(area: Int, page: Int, sort : String, completion: @escaping (Result<TravelSpotDetailDataGettable?, Error>) -> Void) {
-    requestObject(.getTravelSpotDetailList(area: area, page: page, sort : sort), completion: completion)
-  }  
+  
+  func getTravelSpotDetailList(area: Int, page: Int, pageSize : Int, sort : String, completion: @escaping (Result<[HomeListDataGettable.Item]?, Error>) -> Void) {
+    requestObject(.getTravelSpotDetailList(area: area, page: page, pageSize: pageSize, sort : sort), completion: completion)
+  }
+  
+  func getNicknameDetailList(userId: Int, page: Int, pageSize: Int, sort: String, completion: @escaping (Result<[HomeListDataGettable.Item]?, Error>) -> Void) {
+    requestObject(.getNicknameDetailList(userId: userId, page: page, pageSize: pageSize, sort: sort), completion: completion)
+  }
 }
