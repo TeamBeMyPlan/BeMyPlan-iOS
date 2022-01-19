@@ -488,6 +488,13 @@
 			path = Scrap;
 			sourceTree = "<group>";
 		};
+		523C70B62798574D0073371D /* Home */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		6F77842C2239262E3D685F1B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -741,6 +748,7 @@
 		FD09DE2527857DD6006DA050 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				523C70B62798574D0073371D /* Home */,
 				523C70A12795C1220073371D /* TravelSpot */,
 				523C70AD27969F1A0073371D /* Scrap */,
 				FD20C60C278EBF0100AC6E34 /* MyPlan */,
