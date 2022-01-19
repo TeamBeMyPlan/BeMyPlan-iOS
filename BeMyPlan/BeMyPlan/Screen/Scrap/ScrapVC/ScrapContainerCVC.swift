@@ -28,8 +28,10 @@ class ScrapContainerCVC: UICollectionViewCell, UICollectionViewRegisterable {
     scrapBtn.isSelected.toggle()
   }
   
-  func setFont() {
-//    setFontLabel(text: titleLabel.text ?? "", lineSpacing: 20, fontName: "SpoqaHanSansNeo-Bold", fontSize: 14, textColor: UIColor.grey01, textType: titleLabel)
+  public func setData(data: ScrapDataGettable) {
+    contentImage.setImage(with: data.thumbnailURL)
+    titleLabel.text = data.title
   }
+
   
 }

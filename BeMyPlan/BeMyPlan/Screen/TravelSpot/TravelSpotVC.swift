@@ -90,14 +90,12 @@ extension TravelSpotVC: UICollectionViewDelegate {
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TravelSpotCVC.identifier, for: indexPath) as? TravelSpotCVC else {return UICollectionViewCell()}
-    cell.layer.cornerRadius = 5
-    cell.lockImageView.image = UIImage(named: "imgLayer")
-    cell.locationLabel.text = travelSpotDataList[indexPath.row].name
-    cell.locationImageView.setImage(with: "\(travelSpotDataList[indexPath.row].photoURL)")
-    
+//    cell.layer.cornerRadius = 5
+    cell.setData(data: travelSpotDataList[indexPath.row])
     if travelSpotDataList[indexPath.row].isActivated == true {
       cell.lockImageView.isHidden = true
     }
+    
     return cell
   }
   

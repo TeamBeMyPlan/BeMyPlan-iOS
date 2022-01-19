@@ -30,7 +30,6 @@ class TravelSpotDetailTVC: UITableViewCell {
   override func awakeFromNib() {
     super.awakeFromNib()
     setUIs()
-    setFont ()
   }
   
   override func setSelected(_ selected: Bool, animated: Bool) {
@@ -50,10 +49,12 @@ class TravelSpotDetailTVC: UITableViewCell {
     contentImage.contentMode = .scaleAspectFill
   }
   
-  func setFont () {
+  public func setData(data: HomeListDataGettable.Item){
+    contentImage.setImage(with: data.thumbnailURL)
+    titleTextView.text = data.title
+    nickNameLabel.text = data.nickname
   }
-  
-  
+
   @IBAction func scrapBtnTapped(_ sender: Any) {
     scrapBtn.isSelected.toggle()
   }

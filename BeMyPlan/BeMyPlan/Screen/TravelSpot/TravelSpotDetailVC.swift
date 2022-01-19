@@ -109,13 +109,16 @@ class TravelSpotDetailVC: UIViewController {
                                             sort: "created_at",
                                             viewCase: type) { result in
       result.success { [weak self] list in
-        self?.planDataList.removeAll()
+        // self?.planDataList.removeAll()
+        print("---> RRRR")
         if let list = list {
           self?.planDataList = list
+          print("---> LLLL \(list)")
         }
         self?.contentTableView.reloadData()
         
       }.catch{ error in
+        print("---> EEEE")
         dump(error)
       }
     }
@@ -126,7 +129,6 @@ class TravelSpotDetailVC: UIViewController {
     refresh.addTarget(self, action: #selector(updateUI(refresh:)), for: .valueChanged)
     refresh.attributedTitle = NSAttributedString(string: "")
     contentTableView.refreshControl = refresh
-
   }
   
   
@@ -135,7 +137,7 @@ class TravelSpotDetailVC: UIViewController {
     DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
 //      self.fetchTravelSpotDetailItemList(refresh: true)
       self.contentTableView.reloadData()
-      refresh.endRefreshing() // 리프레쉬 종료
+      refresh.endRefreshing()
     }
   }
   
@@ -152,10 +154,7 @@ extension TravelSpotDetailVC: UITableViewDataSource {
       return UITableViewCell()
     }
     cell.selectionStyle = .none
-    
-    cell.nickNameLabel.text = "\(planDataList[indexPath.row].id)"
-    cell.titleTextView.text = "\(planDataList[indexPath.row].title)"
-    cell.contentImage.setImage(with: "\(planDataList[indexPath.row].thumbnailURL)")
+    cell.setData(data: planDataList[indexPath.row])
     
     return cell
   }
@@ -191,17 +190,21 @@ enum sortCase : String{
 }
 
 
-//extension TravelSpotDetailVC {
-//
-//  func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-//    let height = scrollView.frame.size.height
-//    let contentYoffset = scrollView.contentOffset.y
-//    let distanceFromBottom = scrollView.contentSize.height - contentYoffset
-//    if distanceFromBottom < height {
+extension TravelSpotDetailVC {
+  func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    let height = scrollView.frame.size.height
+    let contentYoffset = scrollView.contentOffset.y
+    let distanceFromBottom = scrollView.contentSize.height - contentYoffset
+    if distanceFromBottom < height {
+      
+      fetchTravelSpotDetailItemList()
+      
 //      if pageNum < totalPage {
 //        pageNum += 1
 //        fetchTravelSpotDetailItemList(refresh: false)
 //      }
-//    }
-//  }
-//}
+      
+      
+    }
+  }
+}
