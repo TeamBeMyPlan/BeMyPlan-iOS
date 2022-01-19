@@ -127,7 +127,7 @@ class MainListView: UIView {
   
   
   private func getSuggestListData(){
-    BaseService.default.getSuggestTravelList(page: listIndex) { result in
+    BaseService.default.getSuggestTravelList(page: listIndex, sort: "created_at") { result in
       result.success { [weak self] list in
         self?.mainListDataList.removeAll()
         if let list = list {
