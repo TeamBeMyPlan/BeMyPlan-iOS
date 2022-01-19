@@ -59,7 +59,6 @@ class TravelSpotVC: UIViewController {
         if let err = error as? MoyaError {
           dump(err)
         }
-//        dump("---> 에에에에에에에에 투에니원 \(error)")
       }
     }
   }

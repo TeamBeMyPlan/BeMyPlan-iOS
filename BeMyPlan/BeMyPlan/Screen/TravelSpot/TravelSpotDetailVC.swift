@@ -58,7 +58,7 @@ class TravelSpotDetailVC: UIViewController {
   }
   
   @IBAction func filterBtn(_ sender: Any) {
-    let vc = UIStoryboard(name: "TravelSpot", bundle: nil).instantiateViewController(withIdentifier: "TravelSpotFilterVC") as! TravelSpotFilterVC
+    let vc = UIStoryboard(name: "TravelSpot", bundle: nil).instantiateViewController(withIdentifier: TravelSpotVC.className) as! TravelSpotFilterVC
     presentPanModal(vc)
   }
   
@@ -82,9 +82,9 @@ class TravelSpotDetailVC: UIViewController {
         self.contentTableView.reloadData()
       }.catch { error in
         if let err = error as? MoyaError {
-          dump(err)
+          
+          dump("----> TravelSpotDetail \(err)")
         }
-        dump("---> 에에에에에에에에 투에니원 \(error)")
       }
     }
   }
