@@ -22,18 +22,23 @@ class TravelSpotDetailVC: UIViewController {
   // MARK: - Vars & Lets Part
   //  var travelSpotDetailDataList: [TravelSpotDetailData] = []
   var planDataList: [HomeListDataGettable.Item] = []
-  var areaNum: Int = 2
+  var areaNum: Int?
   
   var currentPageIndex = 1
-  var areaId = 1
-  var userId = 2
-  var type : TravelSpotDetailType = .nickname
+  var areaId: Int?
+  var userId: Int?
+  var type : TravelSpotDetailType = .travelspot
+  var sortcase : sortCase = .recently
   
   
   // MARK: - UI Component Part
   @IBOutlet var contentTableView: UITableView!
   
-  @IBOutlet var headerLabel: UILabel!
+  @IBOutlet var headerLabel: UILabel!{
+    didSet {
+      setHeaderLabel()
+    }
+  }
   
   // MARK: - Life Cycle Part
   override func viewDidLoad() {
@@ -41,9 +46,12 @@ class TravelSpotDetailVC: UIViewController {
     getAreaData()
     regiterXib()
     setTableViewDelegate()
-    fetchTravelSpotDetailItemList()
     setUIs()
     initRefresh()
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    fetchTravelSpotDetailItemList()
   }
   
   // MARK: - Set Function Part
@@ -81,77 +89,45 @@ class TravelSpotDetailVC: UIViewController {
     contentTableView.separatorStyle = .none
   }
   
-  private func fetchTravelSpotDetailItemList() {
+  private func setHeaderLabel() {
     switch (type){
-    case .new :
-      BaseService.default.getNewTravelList(page: currentPageIndex) { result in
-        result.success { [weak self] list in
-          self?.planDataList.removeAll()
-          if let list = list {
-            self?.planDataList = list
-          }
-          self?.headerLabel.text = "최신여행일정"
-          self?.contentTableView.reloadData()
-          
-        }.catch{ error in
-          dump(error)
-        }
-      }
-    case .suggest :
-      BaseService.default.getSuggestTravelList(page: currentPageIndex, sort: "created_at")  { result in
-        result.success { [weak self] list in
-          self?.planDataList.removeAll()
-          if let list = list {
-            self?.planDataList = list
-          }
-          self?.headerLabel.text = "에디터추천일정"
-          self?.contentTableView.reloadData()
-        }.catch{ error in
-          dump(error)
-        }
-      }
+    case .new:
+      self.headerLabel.text = "최신여행일정"
+    case .suggest:
+      self.headerLabel.text = "에디터추천일정"
+    case .nickname:
+      self.headerLabel.text = "닉네임"
+    case .travelspot:
+      self.headerLabel.text = "제주"
       
-    case .travelspot :
-      BaseService.default.getTravelSpotDetailList(area: areaId, page: currentPageIndex, pageSize: 5, sort: "created_at") { result in
-        result.success { [weak self] list in
-          self?.planDataList.removeAll()
-          if let list = list {
-            self?.planDataList = list
-          }
-          self?.headerLabel.text = "제주"
-          self?.contentTableView.reloadData()
-        }.catch{ error in
-          dump(error)
+    }
+  }
+  
+  private func fetchTravelSpotDetailItemList() {
+    BaseService.default.getPlanAllinOneList(area: areaId,
+                                            userId: userId,
+                                            page: currentPageIndex,
+                                            sort: "created_at",
+                                            viewCase: type) { result in
+      result.success { [weak self] list in
+        self?.planDataList.removeAll()
+        if let list = list {
+          self?.planDataList = list
         }
-      }
-      
-    case .nickname :
-      BaseService.default.getNicknameDetailList(userId: userId, page: currentPageIndex, pageSize: 5, sort: "created_at")  { result in
-        result.success { [weak self] list in
-          self?.planDataList.removeAll()
-          if let list = list {
-            self?.planDataList = list
-          }
-          self?.headerLabel.text = "닉네임"
-          self?.contentTableView.reloadData()
-        }.catch{ error in
-          dump(error)
-        }
+        self?.contentTableView.reloadData()
+        
+      }.catch{ error in
+        dump(error)
       }
     }
-    
   }
   
   private func initRefresh() {
     let refresh = UIRefreshControl()
     refresh.addTarget(self, action: #selector(updateUI(refresh:)), for: .valueChanged)
     refresh.attributedTitle = NSAttributedString(string: "")
-    
-    if #available(iOS 10.0, *) {
-      contentTableView.refreshControl = refresh
-    } else {
-      contentTableView.addSubview(refresh)
-    }
+    contentTableView.refreshControl = refresh
+
   }
   
   
@@ -208,4 +184,9 @@ extension TravelSpotDetailVC: UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
     return 38
   }
+}
+
+
+enum sortCase : String{
+  case recently = "created_at"
 }

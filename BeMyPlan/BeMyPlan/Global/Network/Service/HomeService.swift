@@ -15,12 +15,45 @@ import Foundation
 ///
 
 protocol HomeServiceType{
+  func getPlanAllinOneList(area:Int?, userId: Int?,
+                           page : Int, pageSize : Int,
+                           sort : String,
+                           viewCase : TravelSpotDetailType,completion: @escaping (Result<[HomeListDataGettable.Item]?, Error>) -> Void)
   func getPopularTravelList(completion: @escaping (Result<[HomeListDataGettable.Item]?, Error>) -> Void)
   func getNewTravelList(page: Int, completion: @escaping (Result<[HomeListDataGettable.Item]?, Error>) -> Void)
   func getSuggestTravelList(page: Int, sort: String, completion: @escaping (Result<[HomeListDataGettable.Item]?, Error>) -> Void)
 }
 
-extension BaseService : HomeServiceType {
+extension BaseService : HomeServiceType ,TravelSpotDetailService{
+
+  
+  
+  
+  // area , userId,
+  func getPlanAllinOneList(area:Int?, userId: Int?,
+                           page : Int, pageSize : Int = 5,
+                           sort : String,
+                           viewCase : TravelSpotDetailType,completion: @escaping (Result<[HomeListDataGettable.Item]?, Error>) -> Void) {
+  
+    switch(viewCase){
+    case .travelspot:
+      if let area = area {
+        requestObject(.getTravelSpotDetailList(area: area, page: page, pageSize: pageSize, sort : sort), completion: completion)
+      }
+    case .nickname:
+      if let userId = userId {
+        requestObject(.getNicknameDetailList(userId: userId, page: page, pageSize: pageSize, sort: sort), completion: completion)
+      }
+      
+    case .new:
+      requestObject(.getNewTravelList(page: page), completion: completion)
+
+    case .suggest:
+      requestObject(.getSuggestTravelList(page: page, sort: sort), completion: completion)
+    }
+  }
+  
+  
   func getPopularTravelList(completion: @escaping (Result<[HomeListDataGettable.Item]?, Error>) -> Void) {
     requestObject(.getPopularTravelList, completion: completion)
   }
@@ -30,4 +63,13 @@ extension BaseService : HomeServiceType {
   func getSuggestTravelList(page: Int, sort: String, completion: @escaping (Result<[HomeListDataGettable.Item]?, Error>) -> Void) {
     requestObject(.getSuggestTravelList(page: page, sort: sort), completion: completion)
   }
+  
+  func getTravelSpotDetailList(area: Int, page: Int, pageSize : Int, sort : String, completion: @escaping (Result<[HomeListDataGettable.Item]?, Error>) -> Void) {
+    requestObject(.getTravelSpotDetailList(area: area, page: page, pageSize: pageSize, sort : sort), completion: completion)
+  }
+  
+  func getNicknameDetailList(userId: Int, page: Int, pageSize: Int, sort: String, completion: @escaping (Result<[HomeListDataGettable.Item]?, Error>) -> Void) {
+    requestObject(.getNicknameDetailList(userId: userId, page: page, pageSize: pageSize, sort: sort), completion: completion)
+  }
+
 }
