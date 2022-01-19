@@ -12,7 +12,7 @@ class MainCardView: UIView {
   
   // MARK: - Vars & Lets Part
   private var mainCardDataList: [MainCardData] = []
-  var popularList: [HomeListDataGettable] = []
+  var popularList: [HomeListDataGettable.Item] = []
   
   // MARK: - Life Cycle Part
   override init(frame: CGRect) {

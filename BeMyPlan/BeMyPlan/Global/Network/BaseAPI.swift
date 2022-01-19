@@ -12,11 +12,15 @@ enum BaseAPI{
   // MARK: - 현주
   case getPopularTravelList
   case getNewTravelList(page : Int)
-  case getSuggestTravelList(page : Int)
+  case getSuggestTravelList(page : Int, sort: String)
+  
+  case getTravelSpotDetailList(area: Int, page: Int, pageSize: Int?, sort: String)
+  case getNicknameDetailList(userId: Int, page: Int, pageSize: Int?, sort: String)
+  
+  
   
   // MARK: - 양원
   case getTravelSpotList
-  case getTravelSpotDetailList(area: Int, page: Int,sort:String)
   case getRecentTripList(page: Int, pageSize: Int)
   case getScrapList(userId: Int, page: Int, pageSize: Int, sort: String)
   
@@ -80,16 +84,15 @@ extension BaseAPI: TargetType {
       
     case .getRecentTripList:
       base += "/post/new"
-     
+      
     case .getScrapList:
       base += "/scrap"
       
-  
+    case .getNicknameDetailList:
+      base += "/user"
       
     case .postScrapBtn:
       base += "추후 수정"
-      
-
     }
     
     
@@ -119,15 +122,18 @@ extension BaseAPI: TargetType {
         return "/\(idx)/preview/tag"
       case .getPlanPreviewData(let idx):
         return "/\(idx)/preview"
-      case .getTravelSpotDetailList(let area,_,_):
-        return "/\(area)"
+    case .getTravelSpotDetailList(let areaID):
+      return "/\(areaID)"
       
-//      case .getRecentTripList(let page, _):
-//      return ""
+    case .getNicknameDetailList(let userID):
+      return "/\(userID)/post"
+      
+      //      case .getRecentTripList(let page, _):
+      //      return ""
       
     case .getScrapList(let userId, _, _, _):
       return "/\(userId)"
-
+      
     case .getNewTravelList:
       return "/new"
     case .getSuggestTravelList:
@@ -172,18 +178,25 @@ extension BaseAPI: TargetType {
   private var bodyParameters: Parameters? {
     var params: Parameters = [:]
     switch self{
-      case .sampleAPI(let email):
-        params["email"] = email
-        params["password"] = "여기에 필요한 Value값 넣기"
+    case .sampleAPI(let email):
+      params["email"] = email
+      params["password"] = "여기에 필요한 Value값 넣기"
       
-      case .getTravelSpotDetailList(let area, let page, let sort):
-        params["page"] = page
-        params["pageSize"] = 5
-        params["sort"] = sort
+    case .getTravelSpotDetailList(let area, let page,_, let sort):
+      params["area_id"] = area
+      params["page"] = page
+      params["pageSize"] = 5
+      params["sort"] = sort
       
-//      case .getRecentTripList(let page, let pageSize):
-//        params["page"] = page
-//        params["pageSize"] = 5
+    case .getNicknameDetailList(let userId, let page, _, let sort):
+      params["userId"] = userId
+      params["page"] = page
+      params["pageSize"] = 5
+      params["sort"] = sort
+      
+      //      case .getRecentTripList(let page, let pageSize):
+      //        params["page"] = page
+      //        params["pageSize"] = 5
       
     case .getScrapList(_, let page, let pageSize, let sort):
       params["page"] = page
@@ -192,8 +205,9 @@ extension BaseAPI: TargetType {
       
     case .getNewTravelList(let page):
       params["page"] = page
-    case .getSuggestTravelList(let page):
+    case .getSuggestTravelList(let page, let sort):
       params["page"] = page
+      params["sort"] = sort
     default:
       break
       
@@ -225,11 +239,11 @@ extension BaseAPI: TargetType {
   ///
   private var parameterEncoding : ParameterEncoding{
     switch self {
-    case .sampleAPI, .getTravelSpotDetailList, .getScrapList, .getNewTravelList, .getSuggestTravelList:
-        return URLEncoding.init(destination: .queryString, arrayEncoding: .noBrackets, boolEncoding: .literal)
-      default :
-        return JSONEncoding.default
-
+    case .sampleAPI, .getTravelSpotDetailList, .getNicknameDetailList, .getScrapList, .getNewTravelList, .getSuggestTravelList:
+      return URLEncoding.init(destination: .queryString, arrayEncoding: .noBrackets, boolEncoding: .literal)
+    default :
+      return JSONEncoding.default
+      
     }
   }
   
@@ -239,12 +253,12 @@ extension BaseAPI: TargetType {
   ///
   var task: Task {
     switch self{
-    case .sampleAPI,.getTravelSpotDetailList, .getScrapList,.getNewTravelList, .getSuggestTravelList:
-        return .requestParameters(parameters: bodyParameters ?? [:], encoding: parameterEncoding)
-      default:
-        return .requestPlain
- 
-
+    case .sampleAPI,.getTravelSpotDetailList, .getNicknameDetailList, .getScrapList,.getNewTravelList, .getSuggestTravelList:
+      return .requestParameters(parameters: bodyParameters ?? [:], encoding: parameterEncoding)
+    default:
+      return .requestPlain
+      
+      
       
     }
   }

@@ -32,7 +32,7 @@ class MainCardCVC: UICollectionViewCell {
     
   }
   
-  func setData(appData: HomeListDataGettable ){
+  func setData(appData: HomeListDataGettable.Item){
 //    mainCardImageView.image = appData.makeItemImage()
     mainCardImageView.setImage(with: appData.thumbnailURL)
 //    mainCardCategory.text = appData.category

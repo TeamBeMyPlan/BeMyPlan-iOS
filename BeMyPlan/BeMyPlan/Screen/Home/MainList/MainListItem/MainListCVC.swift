@@ -24,7 +24,7 @@ class MainListCVC: UICollectionViewCell {
     mainListImageView.layer.cornerRadius = 5
   }
   
-  func setData(appData: HomeListDataGettable){
+  func setData(appData: HomeListDataGettable.Item){
     mainListImageView.setImage(with: appData.thumbnailURL)
     mainListTitle.text = appData.title
   }
