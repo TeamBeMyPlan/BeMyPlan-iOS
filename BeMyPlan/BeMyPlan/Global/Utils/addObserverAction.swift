@@ -15,3 +15,13 @@ extension UIViewController{
                                            using: action)
   }
 }
+
+extension UIView{
+  func addObserverAction(keyName : NSNotification.Name, action : @escaping (Notification) -> ()){
+    NotificationCenter.default.addObserver(forName: keyName,
+                                           object: nil,
+                                           queue: nil,
+                                           using: action)
+  }
+
+}

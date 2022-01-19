@@ -43,6 +43,7 @@ class PlanDetailMapContainerView: XibView,MTMapViewDelegate{
   private func setUI(){
     mapContainerView.layer.cornerRadius = 5
     mapView = MTMapView(frame: self.mapContainerView.bounds)
+    mapView?.layer.cornerRadius = 5
   }
   
   private func setMapPointCenterPoint(){

@@ -9,9 +9,8 @@ import UIKit
 
 class PlanDetailVC: UIViewController {
 
-  
-
   // MARK: - Vars & Lets Part
+  var isFullPage = false { didSet{ foldContentTableView() }}
   var postIdx : Int = 3
   var headerContentHeight : CGFloat = 0
   var headerData : DetailHeaderData?
@@ -29,7 +28,11 @@ class PlanDetailVC: UIViewController {
   @IBOutlet var headerTitleLabel: UILabel!
   
   @IBOutlet var writerContainerView: PlanDetailWriterContainerView!
-  @IBOutlet var mapContainerView: PlanDetailMapContainerView!
+  @IBOutlet var mapContainerView: PlanDetailMapContainerView!{
+    didSet{
+      mapContainerView.translatesAutoresizingMaskIntoConstraints = false
+    }
+  }
   @IBOutlet var mainContainerTV: UITableView!{
     didSet{
       mainContainerTV.contentInset = .zero
@@ -59,9 +62,16 @@ class PlanDetailVC: UIViewController {
       mainContainerTV.reloadData()
       getWriterBlockHeight()
       fetchPlanDetailData()
+      addObserver()
     }
   
   // MARK: - Custom Methods Parts
+  
+  private func addObserver(){
+    addObserverAction(keyName: NSNotification.Name.init(rawValue: "planDetailButtonClicked")) { _ in
+      self.isFullPage = !self.isFullPage
+    }
+  }
   
   private func registerCells(){
     PlanDetailSummaryTVC.register(target: mainContainerTV)
@@ -84,6 +94,21 @@ class PlanDetailVC: UIViewController {
   func setMapContainerView(){
     mapContainerView.mapPointList = self.locationList
     mapContainerView.currentDay = self.currentDay - 1
+  }
+  
+  private func foldContentTableView(){
+    if isFullPage {
+      mainTVTopConstraint.constant = -10
+    }else{
+      mainTVTopConstraint.constant = headerContentHeight
+    }
+    UIView.animate(withDuration: 0.5, delay: 0,
+                   options: .curveEaseOut) {
+      self.view.layoutIfNeeded()
+    } completion: { _ in
+      NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: "detailFoldComplete"), object: self.isFullPage)
+    }
+
   }
 
 }
@@ -111,7 +136,7 @@ extension PlanDetailVC : UITableViewDataSource{
 
   
   func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-    return 76
+    return 98
   }
   
   func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -126,12 +151,13 @@ extension PlanDetailVC : UITableViewDataSource{
       let selectView = PlanDetailSelectDayView()
       selectView.totalDay = totalDay
       selectView.currentDay = currentDay
+    selectView.setFoldImage(isFolded: isFullPage)
       selectView.delegate = self
       return selectView
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    
+     
       switch(indexPath.row){
         case 0:
           guard let summaryCell = tableView.dequeueReusableCell(withIdentifier: PlanDetailSummaryTVC.className, for: indexPath) as? PlanDetailSummaryTVC else {return UITableViewCell() }
@@ -167,12 +193,11 @@ extension PlanDetailVC : UIScrollViewDelegate{
     }else{
       headerTitleLabel.isHidden = true
     }
-    
-    if scrollView.contentOffset.y <= headerContentHeight + 10{
-      mainTVTopConstraint.constant = headerContentHeight - scrollView.contentOffset.y
-    }else{
-      mainTVTopConstraint.constant = -10
-    }
+//    if scrollView.contentOffset.y <= headerContentHeight + 10{
+//      mainTVTopConstraint.constant = headerContentHeight - scrollView.contentOffset.y
+//    }else{
+//      mainTVTopConstraint.constant = -10
+//    }
   }
 }
 
@@ -180,17 +205,6 @@ extension PlanDetailVC : PlanDetailDayDelegate{
   func dayClicked(day: Int) {
     if self.currentDay != day{
       var cells : [UITableViewCell] = []
-      
-      
-//      UIView.animate(withDuration: 1) {
-//        self.mainContainerTV.alpha = 0.0
-//      }completion: { _ in
-//        UIView.animate(withDuration: 1) {
-//          self.mainContainerTV.alpha = 1
-//        }
-//
-//      }
-//      self.mainContainerTV.visibleCells.
       self.mainContainerTV.scrollToRow(at: IndexPath(row: 0, section: 0 ), at: .top, animated: true)
     }
     self.currentDay = day

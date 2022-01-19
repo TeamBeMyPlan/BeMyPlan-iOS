@@ -19,7 +19,7 @@ extension PlanDetailVC{
           // 작성자 정보 가져오기
           self?.headerData = DetailHeaderData(title: detailData.title,
                                               writer : detailData.author)
-          self?.headerTitleLabel.text = detailData.title
+//          self?.headerTitleLabel.text = detailData.title
           self?.makeTopBlockHeight(content: detailData.title)
           // 총 일차 가져오기
           self?.totalDay = detailData.totalDays
@@ -88,7 +88,7 @@ extension PlanDetailVC{
     textViewForsizing.sizeToFit()
     textViewForsizing.frame.width <= screenWidth - 48 ? (writerTop = 90) : (writerTop = 115)
     writerBlockHeightConstraint.constant = writerTop
-    let mapContainerHeight = screenWidth * (291/375)
+    let mapContainerHeight : CGFloat = 212
     mainTVTopConstraint.constant = writerTop + mapContainerHeight
     headerContentHeight = writerTop + mapContainerHeight
     self.view.layoutIfNeeded()

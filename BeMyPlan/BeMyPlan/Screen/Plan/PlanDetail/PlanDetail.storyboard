@@ -32,8 +32,8 @@
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="감성을 느낄 수 있는 힐링여행" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Isu-J1-i5l">
-                                        <rect key="frame" x="48" y="59.5" width="318" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Isu-J1-i5l">
+                                        <rect key="frame" x="48" y="70" width="318" height="0.0"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <color key="textColor" name="grey1"/>
                                         <nil key="highlightedColor"/>
@@ -59,10 +59,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rOd-Cs-IhR" customClass="PlanDetailMapContainerView" customModule="BeMyPlan" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="224" width="414" height="321.5"/>
+                                <rect key="frame" x="0.0" y="224" width="414" height="212"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="rOd-Cs-IhR" secondAttribute="height" multiplier="375:291" id="DWY-qZ-xSd"/>
+                                    <constraint firstAttribute="height" constant="212" id="HcM-4q-EzZ"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oXT-Lw-aF3">
@@ -72,15 +72,15 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="rOd-Cs-IhR" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="1lO-qw-ArP"/>
+                            <constraint firstItem="rOd-Cs-IhR" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="1lO-qw-ArP"/>
                             <constraint firstItem="oXT-Lw-aF3" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="3IS-as-cl8"/>
                             <constraint firstItem="5u8-4D-ftu" firstAttribute="top" secondItem="8Qg-2G-i4E" secondAttribute="bottom" id="5JQ-eO-VtN"/>
                             <constraint firstItem="8Qg-2G-i4E" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="-44" id="5Ko-en-oQg"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="oXT-Lw-aF3" secondAttribute="trailing" id="9qN-7h-pf3"/>
+                            <constraint firstAttribute="trailing" secondItem="oXT-Lw-aF3" secondAttribute="trailing" id="9qN-7h-pf3"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="5u8-4D-ftu" secondAttribute="trailing" id="Bmh-zX-Y4T"/>
                             <constraint firstItem="8Qg-2G-i4E" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="S0N-DP-pC2"/>
                             <constraint firstItem="rOd-Cs-IhR" firstAttribute="top" secondItem="5u8-4D-ftu" secondAttribute="bottom" id="VP9-d6-XuO"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="rOd-Cs-IhR" secondAttribute="trailing" id="i7c-bP-tXP"/>
+                            <constraint firstAttribute="trailing" secondItem="rOd-Cs-IhR" secondAttribute="trailing" id="i7c-bP-tXP"/>
                             <constraint firstItem="oXT-Lw-aF3" firstAttribute="top" secondItem="8Qg-2G-i4E" secondAttribute="bottom" constant="350" id="jA0-NA-WbN"/>
                             <constraint firstAttribute="bottom" secondItem="oXT-Lw-aF3" secondAttribute="bottom" id="jAf-Ch-Zsc"/>
                             <constraint firstItem="5u8-4D-ftu" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="tUf-bd-i4f"/>
@@ -91,7 +91,6 @@
                         <outlet property="headerTitleLabel" destination="Isu-J1-i5l" id="6eN-Cu-Kdd"/>
                         <outlet property="mainContainerTV" destination="oXT-Lw-aF3" id="yjC-xw-1Tj"/>
                         <outlet property="mainTVTopConstraint" destination="jA0-NA-WbN" id="Vmw-H9-RNR"/>
-                        <outlet property="mapContainerHeightConstraint" destination="DWY-qZ-xSd" id="K2M-ai-gaM"/>
                         <outlet property="mapContainerView" destination="rOd-Cs-IhR" id="6aS-jB-YbL"/>
                         <outlet property="writerBlockHeightConstraint" destination="ppJ-l4-NN7" id="Uo1-cv-AEq"/>
                         <outlet property="writerContainerView" destination="5u8-4D-ftu" id="lLK-Qv-Usk"/>

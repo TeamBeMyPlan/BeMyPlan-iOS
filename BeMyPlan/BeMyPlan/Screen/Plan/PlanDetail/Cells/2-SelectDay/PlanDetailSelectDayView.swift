@@ -24,6 +24,7 @@ class PlanDetailSelectDayView: XibView{
     }
   }
   
+  @IBOutlet var foldIconImage: UIImageView!
   @IBOutlet var dayContainerCV: UICollectionView!{
     didSet{
       dayContainerCV.delegate = self
@@ -34,15 +35,36 @@ class PlanDetailSelectDayView: XibView{
   override init(frame: CGRect) {
     super.init(frame: frame)
     registerCells()
+    addObserver()
   }
   
   required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
     registerCells()
+    addObserver()
   }
   
+  @IBAction func foldButtonClicked(_ sender: Any) {
+    NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: "planDetailButtonClicked"), object: nil)
+  }
+  
+  func setFoldImage(isFolded: Bool){
+    if isFolded{
+      foldIconImage.image = ImageLiterals.PlanDetail.unfoldDetailIocn
+    }else{
+      foldIconImage.image = ImageLiterals.PlanDetail.foldDetailIcon
+    }
+  }
   private func registerCells(){
     PlanDetailDayCVC.register(target: dayContainerCV)
+  }
+  
+  private func addObserver(){
+    addObserverAction(keyName: NSNotification.Name.init(rawValue: "detailFoldComplete")) { noti in
+      if let result = noti.object as? Bool{
+        self.setFoldImage(isFolded: result)
+      }
+    }
   }
 }
 
