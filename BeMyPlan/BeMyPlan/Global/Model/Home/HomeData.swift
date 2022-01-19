@@ -7,7 +7,12 @@
 
 import Foundation
 
-struct HomeListDataGettable : Codable{
+struct HomeListDataGettable: Codable {
+  let items: [Item]
+  let totalPage: Int?
+}
+
+struct Item : Codable{
   let id: Int
   let thumbnailURL: String
   let title : String
@@ -18,3 +23,4 @@ struct HomeListDataGettable : Codable{
     case thumbnailURL = "thumbnail_url"
   }
 }
+
