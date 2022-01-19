@@ -27,6 +27,7 @@ class MapBallonView: XibView {
     layer.cornerRadius = 5
     layer.borderColor = UIColor.grey04.cgColor
     layer.borderWidth = 1
+    clipsToBounds = true
   }
 
   func setLabel(title : String){

@@ -18,7 +18,7 @@ struct I18N {
   struct Alert {
     static let alarm = "알림"
     static let error = "오류"
-    static let notInstallKakaomap = "카카오맵이 설치되지 않았습니다."
+    static let notInstallKakaomap = "네이버맵이 설치되지 않았습니다."
     static let networkError = "네트워크 상태를 확인해주세요"
   }
   

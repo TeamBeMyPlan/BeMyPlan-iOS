@@ -10,6 +10,8 @@ import UIKit
 class PlanDetailSummaryRouteTVC: UITableViewCell,UITableViewRegisterable {
   
   static var isFromNib: Bool = true
+  let shapeLayer = CAShapeLayer()
+  
   @IBOutlet var locationNameLabel: UILabel!
   @IBOutlet var transportIconView: UIImageView!
   @IBOutlet var transportTimeLabel: UILabel!
@@ -19,6 +21,12 @@ class PlanDetailSummaryRouteTVC: UITableViewCell,UITableViewRegisterable {
   
   override func awakeFromNib() {
     super.awakeFromNib()
+    removeDashedLine()
+//    self.layer.sublayers?.forEach { $0.removeFromSuperlayer() }
+    clipsToBounds = true
+//    self.contentView.layer.sublayers?.forEach { $0.removeFromSuperlayer() }
+//    self.layer.sublayers?.forEach { $0.removeFromSuperlayer() }
+    
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -40,11 +48,10 @@ class PlanDetailSummaryRouteTVC: UITableViewCell,UITableViewRegisterable {
         transportIconView.image = UIImage()
     }
     if let timeData = time{
-      transportTimeLabel.text = timeData + "분"
+      transportTimeLabel.text = timeData
     }else{
       transportTimeLabel.text = ""
     }
-    
     locationNameLabel.text = locationName
     
     switch(order){
@@ -54,9 +61,12 @@ class PlanDetailSummaryRouteTVC: UITableViewCell,UITableViewRegisterable {
         dotTopConstraint.constant = 6
       case .final:
         dotTopConstraint.constant = 6
+      case .onlyOne :
+        dotTopConstraint.constant = 26
     }
     self.contentView.layoutIfNeeded()
     drawLine(order: order)
+    layoutIfNeeded()
   }
   
   private func drawLine(order : OrderCase){
@@ -65,7 +75,7 @@ class PlanDetailSummaryRouteTVC: UITableViewCell,UITableViewRegisterable {
     switch(order){
       case .first:
         startPoint = CGPoint(x: dotIconView.frame.midX,
-                             y: dotIconView.frame.midY )
+                             y: dotIconView.frame.midY)
         endPoint = CGPoint(x: dotIconView.frame.midX,
                            y: dotIconView.frame.midY + 60)
         
@@ -77,18 +87,38 @@ class PlanDetailSummaryRouteTVC: UITableViewCell,UITableViewRegisterable {
         
       case .final:
         startPoint = CGPoint(x: dotIconView.frame.midX,
-                             y: dotIconView.frame.midY - 46 )
+                             y: dotIconView.frame.midY - 10)
         endPoint = CGPoint(x: dotIconView.frame.midX,
-                           y: dotIconView.frame.midY - 15)
+                           y: dotIconView.frame.midY)
+      default :
+        startPoint = CGPoint.zero
+        endPoint = CGPoint.zero
         
     }
     print("dotPoint",startPoint,endPoint)
-    contentView.createDashedLine(from: startPoint,
+    
+    makeDashedLine(from: startPoint,
                                  to: endPoint,
                                  color: .bemyBlue,
                                  strokeLength: 2,
                                  gapLength: 2,
                                  width: 1)
+  }
+  
+  func makeDashedLine(from point1: CGPoint, to point2: CGPoint, color: UIColor, strokeLength: NSNumber, gapLength: NSNumber, width: CGFloat) {
+
+
+      shapeLayer.strokeColor = color.cgColor
+      shapeLayer.lineWidth = width
+      shapeLayer.lineDashPattern = [strokeLength, gapLength]
+      let path = CGMutablePath()
+      path.addLines(between: [point1, point2])
+      shapeLayer.path = path
+      layer.addSublayer(shapeLayer)
+  }
+  
+  func removeDashedLine(){
+    shapeLayer.removeFromSuperlayer()
   }
     
 }
@@ -103,4 +133,5 @@ enum OrderCase{
   case first
   case middle
   case final
+  case onlyOne
 }

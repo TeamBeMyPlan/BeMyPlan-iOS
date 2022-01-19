@@ -25,7 +25,6 @@ class PlanDetailVC: UIViewController {
 
   private var writerBlockHeight :CGFloat = 0
   
-
   // MARK: - UI Components Part
   
   @IBOutlet var headerTitleLabel: UILabel!
@@ -122,8 +121,6 @@ extension PlanDetailVC : UITableViewDelegate{
     return UITableView.automaticDimension
   }
   
-   
-  
   func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
     let animation = AnimationFactory.makeFadeAnimation(duration: 0.6, delayFactor: 0.08)
     let animator = Animator(animation: animation)
@@ -154,7 +151,7 @@ extension PlanDetailVC : UITableViewDataSource{
       let selectView = PlanDetailSelectDayView()
       selectView.totalDay = totalDay
       selectView.currentDay = currentDay
-    selectView.setFoldImage(isFolded: isFullPage)
+      selectView.setFoldImage(isFolded: isFullPage)
       selectView.delegate = self
       return selectView
   }
@@ -165,7 +162,7 @@ extension PlanDetailVC : UITableViewDataSource{
         case 0:
           guard let summaryCell = tableView.dequeueReusableCell(withIdentifier: PlanDetailSummaryTVC.className, for: indexPath) as? PlanDetailSummaryTVC else {return UITableViewCell() }
           guard summaryList.count >= currentDay-1 else {return UITableViewCell()}
-          summaryCell.summaryList = self.summaryList[currentDay - 1]
+          summaryCell.locationList = self.summaryList[currentDay - 1]
           summaryCell.currentDay = currentDay
           return summaryCell
           

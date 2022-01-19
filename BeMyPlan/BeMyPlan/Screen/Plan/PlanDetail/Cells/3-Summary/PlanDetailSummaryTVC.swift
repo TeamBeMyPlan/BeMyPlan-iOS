@@ -26,6 +26,7 @@ class PlanDetailSummaryTVC: UITableViewCell,UITableViewRegisterable{
   
   var locationList : [PlanDetail.Summary] = []{
     didSet{
+      print("LOCATIONLISTADD",locationList)
       calculateSummaryHeight()
       listTV.reloadData()
     }
@@ -50,36 +51,12 @@ class PlanDetailSummaryTVC: UITableViewCell,UITableViewRegisterable{
   override func awakeFromNib() {
     super.awakeFromNib()
     registerCells()
-    addDummyData()
   }
   
   override func setSelected(_ selected: Bool, animated: Bool) {
     super.setSelected(selected, animated: animated)
   }
   
-  private func addDummyData(){
-    locationList = [
-      PlanDetail.Summary(transportCase: .walk,
-                             locationName: "1번 장소",
-                             time: "20"),
-      
-      PlanDetail.Summary(transportCase: .car,
-                             locationName: "2번 장소",
-                             time: "50"),
-      
-      PlanDetail.Summary(transportCase: .bus,
-                             locationName: "3번 장소",
-                             time: "100"),
-      
-      PlanDetail.Summary(transportCase: .walk,
-                             locationName: "4번 장소",
-                             time: "80"),
-      
-      PlanDetail.Summary(transportCase: nil,
-                             locationName: "5번 장소",
-                             time: nil),
-    ]
-  }
   
   private func calculateSummaryHeight(){
     var totalHeight : CGFloat = 0
@@ -161,7 +138,9 @@ extension PlanDetailSummaryTVC : UITableViewDataSource{
     
     guard let routeCell = tableView.dequeueReusableCell(withIdentifier: PlanDetailSummaryRouteTVC.className, for: indexPath) as? PlanDetailSummaryRouteTVC else {return UITableViewCell() }
   
-    if indexPath.row == 0{
+    if indexPath.row == 0 && locationList.count == 1{
+      order = .onlyOne
+    }else if indexPath.row == 0{
       order = .first
     }else if indexPath.row == locationList.count - 1{
       order = .final
@@ -171,8 +150,9 @@ extension PlanDetailSummaryTVC : UITableViewDataSource{
     
     routeCell.setLocationData(order: order,
                               locationName: locationList[indexPath.row].locationName,
-                              transportCase: locationList[indexPath.row].transportCase,
-                              time: locationList[indexPath.row].time)
+                              transportCase:  (locationList.count == indexPath.row + 1) ? nil : locationList[indexPath.row].transportCase,
+                              time: (locationList.count == indexPath.row + 1) ? "" : locationList[indexPath.row].time)
+                              
     if locationList.count <= 5{
       return routeCell
     }else{
