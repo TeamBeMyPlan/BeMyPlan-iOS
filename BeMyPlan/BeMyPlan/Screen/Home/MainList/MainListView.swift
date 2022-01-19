@@ -24,12 +24,13 @@ class MainListView: UIView {
   
   var type : MainListViewType = .recently {
     didSet {
-//      setTitle()
+      //      setTitle()
       type == .recently ? getRecentlyListData() : getSuggestListData()
     }
   }
-  private var currentIndex : CGFloat = 0
   
+  private var currentIndex : CGFloat = 0
+  private var listIndex = 0
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -37,7 +38,7 @@ class MainListView: UIView {
     registerCVC()
     setTitle()
     setMainListCV()
-//    getListData()
+    //    getListData()
   }
   
   required init?(coder aDecoder: NSCoder) {
@@ -46,7 +47,7 @@ class MainListView: UIView {
     registerCVC()
     setTitle()
     setMainListCV()
-//    getListData()
+    //    getListData()
   }
   
   // MARK: - UI Component Part
@@ -112,31 +113,31 @@ class MainListView: UIView {
   
   //mainListDataList 에 넣기
   private func getRecentlyListData(){
-    BaseService.default.getNewTravelList(page: Int) { result in
-        result.success { [weak self] list in
-          self?.mainListDataList.removeAll()
-          if let list = list {
-            self?.mainListDataList = list
-          }
-        }.catch{ error in
-          dump(error)
+    BaseService.default.getNewTravelList(page: listIndex) { result in
+      result.success { [weak self] list in
+        self?.mainListDataList.removeAll()
+        if let list = list {
+          self?.mainListDataList = list
         }
+      }.catch{ error in
+        dump(error)
       }
     }
-
-    
+  }
+  
+  
   private func getSuggestListData(){
-      BaseService.default.getSuggestTravelList(page: Int) { result in
-        result.success { [weak self] list in
-          self?.mainListDataList.removeAll()
-          if let list = list {
-            self?.mainListDataList = list
-          }
-        }.catch{ error in
-          dump(error)
+    BaseService.default.getSuggestTravelList(page: listIndex) { result in
+      result.success { [weak self] list in
+        self?.mainListDataList.removeAll()
+        if let list = list {
+          self?.mainListDataList = list
         }
+      }.catch{ error in
+        dump(error)
       }
     }
+  }
   
 }
 
@@ -147,6 +148,7 @@ extension MainListView : UICollectionViewDelegate{
     NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .movePlanPreview), object: nil)
   }
 }
+
 extension MainListView: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return mainListDataList.count
@@ -161,12 +163,9 @@ extension MainListView: UICollectionViewDataSource {
 }
 
 extension MainListView: UICollectionViewDelegateFlowLayout {
-  
 }
 
 extension MainListView : UIScrollViewDelegate {
-  
-  
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
     print("CURRENt SCROLl pOINT",scrollView.contentOffset.x)
   }
