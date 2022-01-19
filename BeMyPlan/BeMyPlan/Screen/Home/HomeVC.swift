@@ -67,7 +67,7 @@ class HomeVC: UIViewController, UIGestureRecognizerDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
     //    setDummyData()
-    getListData()
+//    getListData()
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -96,45 +96,7 @@ class HomeVC: UIViewController, UIGestureRecognizerDelegate {
   //    mainEditorListView.mainListDataList = b
   //  }
   
-  private func getListData(){
-    BaseService.default.getNewTravelList(page: Int) { result in
-      result.success { list in
-        self.newList = []
-        
-        if let new = list {
-          
-          self.newList = new
-        }
-        
-        self.mainListView.mainListDataList = self.newList
-        
-        print("New List", self.newList)
-        self.mainListView.mainListCV.reloadData()
-        
-      }.catch{ error in
-        dump(error)
-      }
-    }
-    
-    BaseService.default.getSuggestTravelList(page: Int) { result  in
-      result.success { list in
-        self.suggestList = []
-        
-        if let suggest = list {
-          
-          self.suggestList = suggest
-        }
-        
-        self.mainEditorListView.mainListDataList = self.suggestList
-        
-        print("Suggest List", self.suggestList)
-        self.mainEditorListView.mainListCV.reloadData()
-        
-      }.catch{ error in
-        dump(error)
-      }
-    }
-  }
+  
   
   
 }
