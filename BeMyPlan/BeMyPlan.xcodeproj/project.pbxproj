@@ -141,6 +141,7 @@
 		FD2D9C602797DF8C00688A42 /* PlanDetailWriterContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2D9C5F2797DF8C00688A42 /* PlanDetailWriterContainerView.swift */; };
 		FD2D9C63279835D600688A42 /* MapBallonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD2D9C62279835D600688A42 /* MapBallonView.xib */; };
 		FD2D9C6727983A4E00688A42 /* MapBallonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2D9C6627983A4E00688A42 /* MapBallonView.swift */; };
+		FD2D9C6A279881D400688A42 /* MyPlanApplicationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2D9C69279881D400688A42 /* MyPlanApplicationVC.swift */; };
 		FD3151A3278D0C7B0076D92E /* PlanDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD3151A2278D0C7B0076D92E /* PlanDetail.storyboard */; };
 		FD3151A5278D0C880076D92E /* PlanDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3151A4278D0C880076D92E /* PlanDetailVC.swift */; };
 		FD3211A927841948007D63D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3211A827841948007D63D5 /* AppDelegate.swift */; };
@@ -375,6 +376,7 @@
 		FD2D9C5F2797DF8C00688A42 /* PlanDetailWriterContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDetailWriterContainerView.swift; sourceTree = "<group>"; };
 		FD2D9C62279835D600688A42 /* MapBallonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapBallonView.xib; sourceTree = "<group>"; };
 		FD2D9C6627983A4E00688A42 /* MapBallonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapBallonView.swift; sourceTree = "<group>"; };
+		FD2D9C69279881D400688A42 /* MyPlanApplicationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlanApplicationVC.swift; sourceTree = "<group>"; };
 		FD3151A2278D0C7B0076D92E /* PlanDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PlanDetail.storyboard; sourceTree = "<group>"; };
 		FD3151A4278D0C880076D92E /* PlanDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDetailVC.swift; sourceTree = "<group>"; };
 		FD3211A527841948007D63D5 /* BeMyPlan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeMyPlan.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -961,6 +963,14 @@
 			path = BallonView;
 			sourceTree = "<group>";
 		};
+		FD2D9C68279881B900688A42 /* CreatorApplication */ = {
+			isa = PBXGroup;
+			children = (
+				FD2D9C69279881D400688A42 /* MyPlanApplicationVC.swift */,
+			);
+			path = CreatorApplication;
+			sourceTree = "<group>";
+		};
 		FD3151A0278D0C5D0076D92E /* Plan */ = {
 			isa = PBXGroup;
 			children = (
@@ -1238,6 +1248,7 @@
 		FDF980E62786F1810009A14E /* MyPlan */ = {
 			isa = PBXGroup;
 			children = (
+				FD2D9C68279881B900688A42 /* CreatorApplication */,
 				FD20C621278EF0E100AC6E34 /* WithDraw */,
 				FD20C61E278EF0B500AC6E34 /* Setting */,
 				FD20C61D278EF0A800AC6E34 /* BuyList */,
@@ -1510,6 +1521,7 @@
 				FD09DE2927857E25006DA050 /* StoryboardLiterals.swift in Sources */,
 				FDC47DF32789524A00A152E8 /* PreviewRecommendData.swift in Sources */,
 				F21AFAA827919BA200A84633 /* CustomAlertVC.swift in Sources */,
+				FD2D9C6A279881D400688A42 /* MyPlanApplicationVC.swift in Sources */,
 				FDF980C12786D14B0009A14E /* setDefaultFonts.swift in Sources */,
 				FD09DE0727857971006DA050 /* calculateTopInset.swift in Sources */,
 				FDF980E32786E7E90009A14E /* BaseContainerView.swift in Sources */,
