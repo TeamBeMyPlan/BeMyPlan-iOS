@@ -8,6 +8,7 @@
 import UIKit
 
 enum BaseNotiList{
+  case showNotInstallKakaomap
   case moveHomeTab
   case moveTravelSpotTab
   case moveScrapTab
@@ -26,6 +27,12 @@ enum BaseNotiList{
 
 extension BaseVC{
   func addObservers(){
+    
+    addObserverAction(keyName: BaseNotiList.makeNotiName(list: .showNotInstallKakaomap)) { _ in
+      self.makeAlert(alertCase: .simpleAlert, title: "알림", content: I18N.Alert.notInstallKakaomap)
+    }
+    
+    
     addObserverAction(keyName: BaseNotiList.makeNotiName(list: .moveSettingView)) { _ in
       guard let settingVC = UIStoryboard.list(.myPlan).instantiateViewController(withIdentifier: MyPlanSettingVC.className) as? MyPlanSettingVC else {return}
       self.navigationController?.pushViewController(settingVC, animated: true)

@@ -131,6 +131,8 @@
 		FD2D9C5A2796FDA400688A42 /* UITableViewCell + Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2D9C592796FDA400688A42 /* UITableViewCell + Animator.swift */; };
 		FD2D9C5C2797DC4B00688A42 /* PlanDetailMapContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2D9C5B2797DC4B00688A42 /* PlanDetailMapContainerView.swift */; };
 		FD2D9C602797DF8C00688A42 /* PlanDetailWriterContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2D9C5F2797DF8C00688A42 /* PlanDetailWriterContainerView.swift */; };
+		FD2D9C63279835D600688A42 /* MapBallonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD2D9C62279835D600688A42 /* MapBallonView.xib */; };
+		FD2D9C6727983A4E00688A42 /* MapBallonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2D9C6627983A4E00688A42 /* MapBallonView.swift */; };
 		FD3151A3278D0C7B0076D92E /* PlanDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD3151A2278D0C7B0076D92E /* PlanDetail.storyboard */; };
 		FD3151A5278D0C880076D92E /* PlanDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3151A4278D0C880076D92E /* PlanDetailVC.swift */; };
 		FD3211A927841948007D63D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3211A827841948007D63D5 /* AppDelegate.swift */; };
@@ -354,6 +356,8 @@
 		FD2D9C592796FDA400688A42 /* UITableViewCell + Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell + Animator.swift"; sourceTree = "<group>"; };
 		FD2D9C5B2797DC4B00688A42 /* PlanDetailMapContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDetailMapContainerView.swift; sourceTree = "<group>"; };
 		FD2D9C5F2797DF8C00688A42 /* PlanDetailWriterContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDetailWriterContainerView.swift; sourceTree = "<group>"; };
+		FD2D9C62279835D600688A42 /* MapBallonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapBallonView.xib; sourceTree = "<group>"; };
+		FD2D9C6627983A4E00688A42 /* MapBallonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapBallonView.swift; sourceTree = "<group>"; };
 		FD3151A2278D0C7B0076D92E /* PlanDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PlanDetail.storyboard; sourceTree = "<group>"; };
 		FD3151A4278D0C880076D92E /* PlanDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDetailVC.swift; sourceTree = "<group>"; };
 		FD3211A527841948007D63D5 /* BeMyPlan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeMyPlan.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -902,6 +906,8 @@
 		FD2D9C612798341400688A42 /* BallonView */ = {
 			isa = PBXGroup;
 			children = (
+				FD2D9C62279835D600688A42 /* MapBallonView.xib */,
+				FD2D9C6627983A4E00688A42 /* MapBallonView.swift */,
 			);
 			path = BallonView;
 			sourceTree = "<group>";
@@ -1318,6 +1324,7 @@
 				FD4C86B8278C7A7200D37A2D /* Payment.storyboard in Resources */,
 				FD35664E2792AF2C0082B4CE /* ScrapContainerView.xib in Resources */,
 				FD2D4DC1278D57A5002084B9 /* ProgressBar.xib in Resources */,
+				FD2D9C63279835D600688A42 /* MapBallonView.xib in Resources */,
 				FD4C86B3278BD81900D37A2D /* PreviewIconContainerView.xib in Resources */,
 				FDC47E0C2789742800A152E8 /* TravelSpotCVC.xib in Resources */,
 				FD61AFA327902C7A00D39F47 /* PlanDetailSelectDayView.xib in Resources */,
@@ -1433,6 +1440,7 @@
 				FDF980DB2786E2F60009A14E /* BaseVC.swift in Sources */,
 				FDC47DF527895DDB00A152E8 /* PreviewData.swift in Sources */,
 				FD09DE052785795D006DA050 /* applyShadow.swift in Sources */,
+				FD2D9C6727983A4E00688A42 /* MapBallonView.swift in Sources */,
 				FDF980DE2786E6090009A14E /* addSubViewFromNib.swift in Sources */,
 				FD2D4DD1278D90DB002084B9 /* PlanDetail.swift in Sources */,
 				FD4C86BA278C7A8400D37A2D /* PaymentSelectVC.swift in Sources */,

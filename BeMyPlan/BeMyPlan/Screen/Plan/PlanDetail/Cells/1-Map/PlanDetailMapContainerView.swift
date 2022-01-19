@@ -83,15 +83,15 @@ class PlanDetailMapContainerView: XibView,MTMapViewDelegate{
   private func makeMapItem(mapData : PlanDetailMapData,isEnabled : Bool) -> MTMapPOIItem{
     let mapItem = MTMapPOIItem()
     if isEnabled{
-      let view = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
-      view.backgroundColor = .blue
+//      let view = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+//      view.backgroundColor = .blue
       
       mapItem.customImage = ImageLiterals.PlanDetail.mapSelectIcon
       mapItem.markerType = .customImage
       mapItem.customSelectedImage = ImageLiterals.PlanDetail.mapSelectIconClicked
       mapItem.markerSelectedType = .customImage
       mapItem.itemName = mapData.title
-      mapItem.customCalloutBalloonView = view
+      mapItem.customCalloutBalloonView = makeBallonView(title: mapData.title)
     }else{
       mapItem.customImage = ImageLiterals.PlanDetail.mapUnselectIcon
       mapItem.markerType = .customImage
@@ -103,6 +103,25 @@ class PlanDetailMapContainerView: XibView,MTMapViewDelegate{
     
     print("만들어지는 아이템",mapData.title,mapData.latitude,mapData.longtitude,isEnabled)
     return mapItem
+  }
+  
+  private func makeBallonView(title : String) -> MapBallonView {
+    let ballonView = MapBallonView.init(frame: CGRect(x: -10, y:10, width: makeBallonWidth(name: title), height: 26 ))
+    ballonView.setLabel(title: title)
+    return ballonView
+  }
+  
+  private func makeBallonWidth(name : String) -> CGFloat{
+    let sizingLabel = UILabel()
+    sizingLabel.font = .systemFont(ofSize: 12)
+    sizingLabel.text = name
+    sizingLabel.sizeToFit()
+    print("SIZINGLABAEL",sizingLabel.frame.width, name)
+    if sizingLabel.frame.width <= 102{
+      return sizingLabel.frame.width + 30
+    }else{
+      return 102 + 30
+    }
   }
   
   private func setMapPoint(){
@@ -118,14 +137,9 @@ class PlanDetailMapContainerView: XibView,MTMapViewDelegate{
   }
   
   private func changedCurrentDay(){
-    
-    print("MAPPOINTLIST Count",mapPointList.count)
-    print("currentDay",currentDay)
-    
     if mapPointList.count >= currentDay && currentDay > 0 {
       showMapCenter(pointList: mapPointList[currentDay - 1])
     }
-    print("setMAPoint")
     setMapPoint()
   }
   
@@ -137,13 +151,44 @@ class PlanDetailMapContainerView: XibView,MTMapViewDelegate{
   }
   
   func mapView(_ mapView: MTMapView!, touchedCalloutBalloonOf poiItem: MTMapPOIItem!) {
-    print("터치?",poiItem.itemName)
+    if let placeName = poiItem.itemName{ openKaKaoMap(place: placeName) }
+  }
+  
+  private func openKaKaoMap(place : String){
+    let searchURL = makeMapsURL(place: place, platform: .kakao)
+    if let appUrl = searchURL{
+      if(UIApplication.shared.canOpenURL(appUrl)){
+        UIApplication.shared.open(appUrl, options: [:], completionHandler: nil)
+      }else{
+        let searchURL = makeMapsURL(place: place, platform: .kakao)
+        if let appUrl = searchURL{
+          if(UIApplication.shared.canOpenURL(appUrl)){
+            UIApplication.shared.open(appUrl, options: [:], completionHandler: nil)
+          }else{
+            NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .showNotInstallKakaomap), object: nil)
+          }
+        }
+      }
+    }
+  }
+  
+  private func makeMapsURL(place: String,platform : MapPlatform) -> URL?{
+    let urlString : String
+    platform == .naver ? (urlString = "nmap://search?query=\(place)&appname=com.release.BeMyPlan") : (urlString = "kakaomap://search?q=\(place)")
+    let encodedString = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+    let searchURL = URL(string: encodedString)
+    return searchURL
   }
 }
-
 
 struct PlanDetailMapData{
   var title : String
   var latitude : Double
   var longtitude : Double
+}
+
+
+enum MapPlatform{
+  case kakao
+  case naver
 }
