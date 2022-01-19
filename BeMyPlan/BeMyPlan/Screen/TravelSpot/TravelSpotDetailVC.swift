@@ -6,11 +6,18 @@
 //
 
 import UIKit
+import Moya
 import PanModal
+import AVFoundation
 
 class TravelSpotDetailVC: UIViewController {
   
   // MARK: - Vars & Lets Part
+  var travelSpotDetailDataList: [TravelSpotDetailData] = []
+  var areaNum: Int = 2
+  
+  
+  
   
   // MARK: - UI Component Part
   @IBOutlet var contentTableView: UITableView!
@@ -18,11 +25,24 @@ class TravelSpotDetailVC: UIViewController {
   // MARK: - Life Cycle Part
   override func viewDidLoad() {
     super.viewDidLoad()
+    getAreaData()
     regiterXib()
     setTableViewDelegate()
+    fetchTravelSpotDetailItemList()
+    setUIs()
+    initRefresh()
   }
-   
+  
   // MARK: - Set Function Part
+  
+  private func getAreaData() {
+    guard let vc = storyboard?.instantiateViewController(identifier: TravelSpotVC.className) as? TravelSpotVC else { return }
+    vc.completionHandler = { area in
+      self.areaNum = area
+      return area
+    }
+  }
+  
   private func setTableViewDelegate() {
     contentTableView.delegate = self
     contentTableView.dataSource = self
@@ -39,22 +59,66 @@ class TravelSpotDetailVC: UIViewController {
   }
   
   @IBAction func filterBtn(_ sender: Any) {
-    let vc = UIStoryboard(name: "TravelSpot", bundle: nil).instantiateViewController(withIdentifier: "TravelSpotFilterVC") as! TravelSpotFilterVC
+    let vc = UIStoryboard(name: "TravelSpot", bundle: nil).instantiateViewController(withIdentifier: TravelSpotVC.className) as! TravelSpotFilterVC
     presentPanModal(vc)
   }
   
   // MARK: - Custom Method Part
   private func setUIs() {
-  
+    contentTableView.separatorStyle = .none
   }
   
+  private func fetchTravelSpotDetailItemList() {
+    BaseService.default.getTravelSpotDetailList(area: areaNum, page: 0, sort: "created_at") { result in
+      print("---> area \(self.areaNum)")
+      dump("---> 리절트 \(result)")
+      
+      result.success { data in
+        self.travelSpotDetailDataList = []
+        
+        if let testedData = data {
+          self.travelSpotDetailDataList = testedData.items
+          dump("---> testedData \(String(describing: testedData))")
+        }
+        self.contentTableView.reloadData()
+      }.catch { error in
+        if let err = error as? MoyaError {
+          dump("----> TravelSpotDetail \(err)")
+        }
+      }
+    }
+  }
+  
+  private func initRefresh() {
+    let refresh = UIRefreshControl()
+    refresh.addTarget(self, action: #selector(updateUI(refresh:)), for: .valueChanged)
+    refresh.attributedTitle = NSAttributedString(string: "")
+    
+    if #available(iOS 10.0, *) {
+      contentTableView.refreshControl = refresh
+    } else {
+      contentTableView.addSubview(refresh)
+    }
+  }
+  
+  
+  
+  
   // MARK: - @objc Function Part
+  @objc func updateUI(refresh: UIRefreshControl) {
+    DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+      self.fetchTravelSpotDetailItemList()
+      self.contentTableView.reloadData()
+      refresh.endRefreshing() // 리프레쉬 종료
+    }
+  }
+
 }
 
 // MARK: - Extension Part
 extension TravelSpotDetailVC: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 1
+    return travelSpotDetailDataList.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -62,9 +126,11 @@ extension TravelSpotDetailVC: UITableViewDataSource {
       return UITableViewCell()
     }
     cell.selectionStyle = .none
-    cell.titleTextView.text = "부모님과 함께하는 3박4일 제주 서부 여행 부모님과 함께하는 3박4일"
-    cell.nickNameLabel.text = "thisisuzzwon"
-    cell.contentImage.image = UIImage(named: "img")
+    
+    cell.nickNameLabel.text = "\(travelSpotDetailDataList[indexPath.row].id)"
+    cell.titleTextView.text = "\(travelSpotDetailDataList[indexPath.row].title)"
+    cell.contentImage.setImage(with: "\(travelSpotDetailDataList[indexPath.row].thumbnailURL)")
+    
     return cell
   }
 }

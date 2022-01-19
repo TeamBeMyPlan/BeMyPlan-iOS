@@ -5,11 +5,14 @@
 //  Created by 송지훈 on 2022/01/06.
 //
 import UIKit
+import Moya
 
 class TravelSpotVC: UIViewController {
   
   // MARK: - Vars & Lets Part
+  var travelSpotDataList: [TravelSpotDataGettable] = []
   let screenWidth = UIScreen.main.bounds.width
+  var completionHandler: ((Int) -> (Int))?
 
   // MARK: - UI Component Part
   @IBOutlet var logoView: UIView!{
@@ -27,6 +30,7 @@ class TravelSpotVC: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     configCollectionView()
+    fetchTravelSpotItemList()
   }
   
   // MARK: - Set Function Part
@@ -41,9 +45,27 @@ class TravelSpotVC: UIViewController {
   
   // MARK: - Custom Method Part
   
-  // MARK: - @objc Function Part
-  
+  private func fetchTravelSpotItemList() {
+    BaseService.default.getTravelSpotList { result in
+      result.success { data in
+        self.travelSpotDataList = []
+
+        if let testedData = data {
+          self.travelSpotDataList = testedData
+//          dump("---> testedData \(String(describing: testedData))")
+        }
+        self.locationCollectionView.reloadData()
+      }.catch { error in
+        if let err = error as? MoyaError {
+          dump(err)
+        }
+      }
+    }
+  }
 }
+
+// MARK: - @objc Function Part
+
 
 // MARK: - Extension Part
 extension TravelSpotVC: UICollectionViewDataSource {
@@ -62,20 +84,27 @@ extension TravelSpotVC: UICollectionViewDataSource {
 
 extension TravelSpotVC: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 1
+    return travelSpotDataList.count
   }
   
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TravelSpotCVC.identifier, for: indexPath) as? TravelSpotCVC else {return UICollectionViewCell()}
     cell.layer.cornerRadius = 5
-//    cell.lockImageView.image = UIImage(named: "imgLayer")
-    cell.locationImageView.image = UIImage(named: "img")
-    cell.locationLabel.text = "서울"
+    cell.lockImageView.image = UIImage(named: "imgLayer")
+    cell.locationLabel.text = travelSpotDataList[indexPath.row].name
+    cell.locationImageView.setImage(with: "\(travelSpotDataList[indexPath.row].photoURL)")
+    
+    if travelSpotDataList[indexPath.row].isActivated == true {
+      cell.lockImageView.isHidden = true
+    }
     return cell
   }
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    _ = completionHandler?(indexPath.row)
+//    self.navigationController?.popViewController(animated: true)
+    
     NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .movePlanList), object: nil)
   }
 }

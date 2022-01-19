@@ -8,8 +8,10 @@
 import UIKit
 
 class ScrapContainerCVC: UICollectionViewCell, UICollectionViewRegisterable {
-  @IBOutlet var scrapBtn: UIButton!
   static var isFromNib: Bool = true
+
+  @IBOutlet var contentImage: UIImageView!
+  @IBOutlet var scrapBtn: UIButton!
   @IBOutlet var titleLabel: UILabel! {
     didSet {
       self.titleLabel.text = "어디로 여행을 어디로 여행을 어디로 여행을 어디로 여행을 어디로 여행을 어디로 여행을 어디로 여행을 어디로 여행을 어디로 여행을 "

@@ -77,6 +77,7 @@ class HomeVC: UIViewController, UIGestureRecognizerDelegate {
   
   
   // MARK: - Custom Method Part
+
   //  func setDummyData(){
   //    let a = [
   //      MainListData(image: "mainlist1", title: "푸드파이터들을 위한 찐먹킷리스트투어"),
