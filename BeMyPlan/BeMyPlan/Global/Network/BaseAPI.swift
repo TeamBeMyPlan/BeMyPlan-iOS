@@ -11,6 +11,8 @@ enum BaseAPI{
   case sampleAPI(sample : String)
   // MARK: - 현주
   case getPopularTravelList
+  case getNewTravelList(page : Int)
+  case getSuggestTravelList(page : Int)
   
   // MARK: - 양원
   case getTravelSpotList
@@ -25,7 +27,7 @@ enum BaseAPI{
 }
 
 extension BaseAPI: TargetType {
-
+  
   // MARK: - Base URL & Path
   /// - Parameters:
   ///   - base : 각 api case별로 앞에 공통적으로 붙는 주소 부분을 정의합니다.
@@ -45,7 +47,11 @@ extension BaseAPI: TargetType {
     case .sampleAPI:
       base += ""
       
+<<<<<<< HEAD
     case .getPopularTravelList:
+=======
+    case .getPopularTravelList, .getNewTravelList, .getSuggestTravelList:
+>>>>>>> 68e37420ee4e5ed41ae02dea2e4c1d3861c8553d
       base += "/post"
       
     case .getTravelSpotList:
@@ -54,6 +60,7 @@ extension BaseAPI: TargetType {
     case .getBuyList:
       base += "/order"
       
+<<<<<<< HEAD
     case .getTravelSpotDetailList:
       base += "/area"
       
@@ -68,6 +75,8 @@ extension BaseAPI: TargetType {
     case .postScrapBtn:
       base += "추후 수정"
       
+=======
+>>>>>>> 68e37420ee4e5ed41ae02dea2e4c1d3861c8553d
     }
     
     
@@ -87,6 +96,7 @@ extension BaseAPI: TargetType {
   ///
   var path: String {
     switch self{
+<<<<<<< HEAD
       case .getPopularTravelList:
         return "/popular"
       case .getBuyList(let userID):
@@ -102,6 +112,18 @@ extension BaseAPI: TargetType {
       
       default :
         return ""
+=======
+    case .getPopularTravelList:
+      return "/popular"
+    case .getNewTravelList:
+      return "/new"
+    case .getSuggestTravelList:
+      return "/suggest"
+    case .getBuyList(let userID):
+      return "/\(userID)"
+    default :
+      return ""
+>>>>>>> 68e37420ee4e5ed41ae02dea2e4c1d3861c8553d
     }
   }
   
@@ -111,12 +133,20 @@ extension BaseAPI: TargetType {
   
   var method: Moya.Method {
     switch self{
+<<<<<<< HEAD
       case .sampleAPI:
         return .post
 
       default :
         return .get
 
+=======
+    case .sampleAPI:
+      return .post
+    default :
+      return .get
+      
+>>>>>>> 68e37420ee4e5ed41ae02dea2e4c1d3861c8553d
     }
   }
   
@@ -135,6 +165,7 @@ extension BaseAPI: TargetType {
   private var bodyParameters: Parameters? {
     var params: Parameters = [:]
     switch self{
+<<<<<<< HEAD
       case .sampleAPI(let email):
         params["email"] = email
         params["password"] = "여기에 필요한 Value값 넣기"
@@ -156,6 +187,18 @@ extension BaseAPI: TargetType {
       default:
         break
 
+=======
+    case .sampleAPI(let email):
+      params["email"] = email
+      params["password"] = "여기에 필요한 Value값 넣기"
+    case .getNewTravelList(let page):
+      params["page"] = page
+    case .getSuggestTravelList(let page):
+      params["page"] = page
+    default:
+      break
+      
+>>>>>>> 68e37420ee4e5ed41ae02dea2e4c1d3861c8553d
     }
     return params
   }
@@ -167,43 +210,59 @@ extension BaseAPI: TargetType {
   ///
   private var multiparts: [Moya.MultipartFormData] {
     switch self{
-      case .sampleAPI(_):
-        var multiparts : [Moya.MultipartFormData] = []
-        multiparts.append(.init(provider: .data("".data(using: .utf8) ?? Data()), name: ""))
-        return multiparts
-      default : return []
-//        images.forEach {
-//          multiparts.append(.init(provider: .data($0), name: "images", fileName: "image.jpeg", mimeType: "image/jpeg"))
-//        }
+    case .sampleAPI(_):
+      var multiparts : [Moya.MultipartFormData] = []
+      multiparts.append(.init(provider: .data("".data(using: .utf8) ?? Data()), name: ""))
+      return multiparts
+    default : return []
+      //        images.forEach {
+      //          multiparts.append(.init(provider: .data($0), name: "images", fileName: "image.jpeg", mimeType: "image/jpeg"))
+      //        }
     }
   }
-
+  
   /// - note :
   ///  query문을 사용하는 경우 URLEncoding 을 사용해야 합니다
   ///  나머지는 그냥 전부 다 default 처리.
   ///
   private var parameterEncoding : ParameterEncoding{
     switch self {
+<<<<<<< HEAD
     case .sampleAPI, .getTravelSpotDetailList, .getScrapList:
         return URLEncoding.init(destination: .queryString, arrayEncoding: .noBrackets, boolEncoding: .literal)
       default :
         return JSONEncoding.default
+=======
+    case .sampleAPI, .getNewTravelList, .getSuggestTravelList:
+      return URLEncoding.init(destination: .queryString, arrayEncoding: .noBrackets, boolEncoding: .literal)
+    default :
+      return JSONEncoding.default
+>>>>>>> 68e37420ee4e5ed41ae02dea2e4c1d3861c8553d
     }
   }
-
+  
   /// - note :
   ///  body Parameters가 있는 경우 requestParameters  case 처리.
   ///  일반적인 처리는 모두 requestPlain으로 사용.
   ///
   var task: Task {
     switch self{
+<<<<<<< HEAD
     case .sampleAPI,.getTravelSpotDetailList, .getScrapList:
         return .requestParameters(parameters: bodyParameters ?? [:], encoding: parameterEncoding)
       default:
         return .requestPlain
  
+=======
+    case .sampleAPI, .getNewTravelList, .getSuggestTravelList:
+      return .requestParameters(parameters: bodyParameters ?? [:], encoding: parameterEncoding)
+    default:
+      return .requestPlain
+      
+>>>>>>> 68e37420ee4e5ed41ae02dea2e4c1d3861c8553d
     }
   }
+  
   
   public var headers: [String: String]? {
     if let userToken = UserDefaults.standard.string(forKey: "userToken") {

@@ -6,29 +6,31 @@
 //
 
 import UIKit
-
-
+import Moya
 
 class MainCardView: UIView {
   
   // MARK: - Vars & Lets Part
   private var mainCardDataList: [MainCardData] = []
+  var popularList: [HomeListDataGettable] = []
   
   // MARK: - Life Cycle Part
   override init(frame: CGRect) {
     super.init(frame: frame)
     addSubviewFromNib(view: self)
-    initMainCardDataList()
+//    initMainCardDataList()
     registerCVC()
     setMainCardCV()
+    getCardData()
   }
   
   required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
     addSubviewFromNib(view: self)
-    initMainCardDataList()
+//    initMainCardDataList()
     registerCVC()
     setMainCardCV()
+    getCardData()
   }
   
   // MARK: - UI Component Part
@@ -82,16 +84,62 @@ class MainCardView: UIView {
     
   }
   
-  func initMainCardDataList(){
-    mainCardDataList.append(contentsOf: [
-      MainCardData(image: "maincard1", category: "인기여행일정", title: "제주도 & 우도 인생샷 투어"),
-      MainCardData(image: "maincard2", category: "인기여행일정", title: "바다와 함께하는 산책 투어"),
-      MainCardData(image: "maincard1", category: "인기여행일정", title: "제주도 & 우도 인생샷 투어"),
-      MainCardData(image: "maincard2", category: "인기여행일정", title: "바다와 함께하는 산책 투어"),
-      MainCardData(image: "maincard1", category: "인기여행일정", title: "제주도 & 우도 인생샷 투어"),
-      MainCardData(image: "maincard2", category: "인기여행일정", title: "바다와 함께하는 산책 투어")
-    ])
+//  func initMainCardDataList(){
+//    mainCardDataList.append(contentsOf: [
+//      MainCardData(image: "maincard1", category: "인기여행일정", title: "제주도 & 우도 인생샷 투어"),
+//      MainCardData(image: "maincard2", category: "인기여행일정", title: "바다와 함께하는 산책 투어"),
+//      MainCardData(image: "maincard1", category: "인기여행일정", title: "제주도 & 우도 인생샷 투어"),
+//      MainCardData(image: "maincard2", category: "인기여행일정", title: "바다와 함께하는 산책 투어"),
+//      MainCardData(image: "maincard1", category: "인기여행일정", title: "제주도 & 우도 인생샷 투어"),
+//      MainCardData(image: "maincard2", category: "인기여행일정", title: "바다와 함께하는 산책 투어")
+//    ])
+//  }
+  
+  private func getCardData(){
+    BaseService.default.getPopularTravelList { result in
+      result.success { list in
+        self.popularList = []
+        
+        if let popular = list {
+      
+          self.popularList = popular
+        }
+        
+        print("Popular List", self.popularList)
+        self.mainCardCV.reloadData()
+        
+      }.catch{ error in
+        dump(error)
+      }
+    }
   }
+  
+//  var id : Int
+//  var title : String
+//  var photo : String
+
+  
+//  private func fetchEventItemList(){
+//    BaseService.default.getEventBannerList { result in
+//      result.success{ list in
+//        self.imageList = []
+//
+//        if let banner = list{
+//          self.imgList.append(contentsOf: [
+//            banner.eventImage1,
+//            banner.eventImage2,
+//            banner.eventImage3
+//          ])
+//          print("Banner List",self.imgList)
+//          self.eventCV.reloadData()
+//        }
+//      }.catch{ error in
+//        //                dump(error)
+//      }
+//    }
+//  }
+  
+  
   
 }
 
@@ -105,13 +153,13 @@ extension MainCardView : UICollectionViewDelegate{
 
 extension MainCardView: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return mainCardDataList.count
+    return popularList.count
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainCardCVC.className, for: indexPath) as? MainCardCVC else {return UICollectionViewCell()}
     
-    cell.setData(appData: mainCardDataList[indexPath.row])
+    cell.setData(appData: popularList[indexPath.row])
     return cell
   }
 }
