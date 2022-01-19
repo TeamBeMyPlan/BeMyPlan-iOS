@@ -10,13 +10,24 @@ import Moya
 import PanModal
 import AVFoundation
 
+enum TravelSpotDetailType{
+  case new
+  case suggest
+  case nickname
+  case travelspot
+}
+
 class TravelSpotDetailVC: UIViewController {
   
   // MARK: - Vars & Lets Part
-  var travelSpotDetailDataList: [TravelSpotDetailData] = []
+  //  var travelSpotDetailDataList: [TravelSpotDetailData] = []
+  var planDataList: [HomeListDataGettable.Item] = []
   var areaNum: Int = 2
   
-  
+  var currentPageIndex = 1
+  var areaId = 1
+  var userId = 2
+  var type : TravelSpotDetailType = .new
   
   
   // MARK: - UI Component Part
@@ -69,24 +80,60 @@ class TravelSpotDetailVC: UIViewController {
   }
   
   private func fetchTravelSpotDetailItemList() {
-    BaseService.default.getTravelSpotDetailList(area: areaNum, page: 0, sort: "created_at") { result in
-      print("---> area \(self.areaNum)")
-      dump("---> 리절트 \(result)")
-      
-      result.success { data in
-        self.travelSpotDetailDataList = []
-        
-        if let testedData = data {
-          self.travelSpotDetailDataList = testedData.items
-          dump("---> testedData \(String(describing: testedData))")
+    switch (type){
+    case .new :
+      BaseService.default.getNewTravelList(page: currentPageIndex) { result in
+        result.success { [weak self] list in
+          self?.planDataList.removeAll()
+          if let list = list {
+            self?.planDataList = list
+          }
+          self?.contentTableView.reloadData()
+          
+        }.catch{ error in
+          dump(error)
         }
-        self.contentTableView.reloadData()
-      }.catch { error in
-        if let err = error as? MoyaError {
-          dump("----> TravelSpotDetail \(err)")
+      }
+    case .suggest :
+      BaseService.default.getSuggestTravelList(page: currentPageIndex, sort: "created_at")  { result in
+        result.success { [weak self] list in
+          self?.planDataList.removeAll()
+          if let list = list {
+            self?.planDataList = list
+          }
+          self?.contentTableView.reloadData()
+        }.catch{ error in
+          dump(error)
+        }
+      }
+      
+    case .travelspot :
+      BaseService.default.getTravelSpotDetailList(area: areaId, page: currentPageIndex, pageSize: 5, sort: "created_at") { result in
+        result.success { [weak self] list in
+          self?.planDataList.removeAll()
+          if let list = list {
+            self?.planDataList = list
+          }
+          self?.contentTableView.reloadData()
+        }.catch{ error in
+          dump(error)
+        }
+      }
+      
+    case .nickname :
+      BaseService.default.getNicknameDetailList(userId: userId, page: currentPageIndex, pageSize: 5, sort: "created_at")  { result in
+        result.success { [weak self] list in
+          self?.planDataList.removeAll()
+          if let list = list {
+            self?.planDataList = list
+          }
+          self?.contentTableView.reloadData()
+        }.catch{ error in
+          dump(error)
         }
       }
     }
+    
   }
   
   private func initRefresh() {
@@ -102,8 +149,6 @@ class TravelSpotDetailVC: UIViewController {
   }
   
   
-  
-  
   // MARK: - @objc Function Part
   @objc func updateUI(refresh: UIRefreshControl) {
     DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
@@ -112,13 +157,13 @@ class TravelSpotDetailVC: UIViewController {
       refresh.endRefreshing() // 리프레쉬 종료
     }
   }
-
+  
 }
 
 // MARK: - Extension Part
 extension TravelSpotDetailVC: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return travelSpotDetailDataList.count
+    return planDataList.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -127,9 +172,9 @@ extension TravelSpotDetailVC: UITableViewDataSource {
     }
     cell.selectionStyle = .none
     
-    cell.nickNameLabel.text = "\(travelSpotDetailDataList[indexPath.row].id)"
-    cell.titleTextView.text = "\(travelSpotDetailDataList[indexPath.row].title)"
-    cell.contentImage.setImage(with: "\(travelSpotDetailDataList[indexPath.row].thumbnailURL)")
+    cell.nickNameLabel.text = "\(planDataList[indexPath.row].id)"
+    cell.titleTextView.text = "\(planDataList[indexPath.row].title)"
+    cell.contentImage.setImage(with: "\(planDataList[indexPath.row].thumbnailURL)")
     
     return cell
   }
