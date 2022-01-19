@@ -90,6 +90,7 @@ class TravelSpotDetailVC: UIViewController {
           if let list = list {
             self?.planDataList = list
           }
+          self?.headerLabel.text = "최신여행일정"
           self?.contentTableView.reloadData()
           
         }.catch{ error in
@@ -103,6 +104,7 @@ class TravelSpotDetailVC: UIViewController {
           if let list = list {
             self?.planDataList = list
           }
+          self?.headerLabel.text = "에디터추천일정"
           self?.contentTableView.reloadData()
         }.catch{ error in
           dump(error)
@@ -116,6 +118,7 @@ class TravelSpotDetailVC: UIViewController {
           if let list = list {
             self?.planDataList = list
           }
+          self?.headerLabel.text = "제주"
           self?.contentTableView.reloadData()
         }.catch{ error in
           dump(error)
@@ -129,6 +132,7 @@ class TravelSpotDetailVC: UIViewController {
           if let list = list {
             self?.planDataList = list
           }
+          self?.headerLabel.text = "닉네임"
           self?.contentTableView.reloadData()
         }.catch{ error in
           dump(error)
