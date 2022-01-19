@@ -10,17 +10,35 @@ import Moya
 import PanModal
 import AVFoundation
 
+enum TravelSpotDetailType{
+  case new
+  case suggest
+  case nickname
+  case travelspot
+}
+
 class TravelSpotDetailVC: UIViewController {
   
   // MARK: - Vars & Lets Part
-  private var travelSpotDetailDataList: [TravelSpotDetailData] = []
-  private var areaNum: Int = 2
-  private var pageNum: Int = 0
-  private var totalPage: Int = 0
-
+  //  var travelSpotDetailDataList: [TravelSpotDetailData] = []
+  var planDataList: [HomeListDataGettable.Item] = []
+  var areaNum: Int?
+  
+  var currentPageIndex = 1
+  var areaId: Int?
+  var userId: Int?
+  var type : TravelSpotDetailType = .travelspot
+  var sortcase : sortCase = .recently
+  
   
   // MARK: - UI Component Part
   @IBOutlet var contentTableView: UITableView!
+  
+  @IBOutlet var headerLabel: UILabel!{
+    didSet {
+      setHeaderLabel()
+    }
+  }
   
   // MARK: - Life Cycle Part
   override func viewDidLoad() {
@@ -28,11 +46,13 @@ class TravelSpotDetailVC: UIViewController {
     getAreaData()
     regiterXib()
     setTableViewDelegate()
-    fetchTravelSpotDetailItemList(refresh: false)
     setUIs()
     initRefresh()
   }
   
+  override func viewWillAppear(_ animated: Bool) {
+    fetchTravelSpotDetailItemList()
+  }
   
   // MARK: - Set Function Part
   private func getAreaData() {
@@ -68,22 +88,35 @@ class TravelSpotDetailVC: UIViewController {
     contentTableView.separatorStyle = .none
   }
   
-  private func fetchTravelSpotDetailItemList(refresh: Bool) {
-    BaseService.default.getTravelSpotDetailList(area: areaNum, page: pageNum, sort: "created_at") { result in
-      result.success { data in
-        if let testedData = data {
-          if refresh == false {
-            self.totalPage = testedData.totalPage - 1
-            self.travelSpotDetailDataList.append(testedData.items[0])
-          } else {
-            self.travelSpotDetailDataList = testedData.items
-          }
+  private func setHeaderLabel() {
+    switch (type){
+    case .new:
+      self.headerLabel.text = "최신여행일정"
+    case .suggest:
+      self.headerLabel.text = "에디터추천일정"
+    case .nickname:
+      self.headerLabel.text = "닉네임"
+    case .travelspot:
+      self.headerLabel.text = "제주"
+      
+    }
+  }
+  
+  private func fetchTravelSpotDetailItemList() {
+    BaseService.default.getPlanAllinOneList(area: areaId,
+                                            userId: userId,
+                                            page: currentPageIndex,
+                                            sort: "created_at",
+                                            viewCase: type) { result in
+      result.success { [weak self] list in
+        self?.planDataList.removeAll()
+        if let list = list {
+          self?.planDataList = list
         }
-        self.contentTableView.reloadData()
-      }.catch { error in
-        if let err = error as? MoyaError {
-          dump("----> TravelSpotDetail \(err)")
-        }
+        self?.contentTableView.reloadData()
+        
+      }.catch{ error in
+        dump(error)
       }
     }
   }
@@ -92,19 +125,15 @@ class TravelSpotDetailVC: UIViewController {
     let refresh = UIRefreshControl()
     refresh.addTarget(self, action: #selector(updateUI(refresh:)), for: .valueChanged)
     refresh.attributedTitle = NSAttributedString(string: "")
-    
-    if #available(iOS 10.0, *) {
-      contentTableView.refreshControl = refresh
-    } else {
-      contentTableView.addSubview(refresh)
-    }
+    contentTableView.refreshControl = refresh
+
   }
   
   
   // MARK: - @objc Function Part
   @objc func updateUI(refresh: UIRefreshControl) {
     DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
-      self.fetchTravelSpotDetailItemList(refresh: true)
+//      self.fetchTravelSpotDetailItemList(refresh: true)
       self.contentTableView.reloadData()
       refresh.endRefreshing() // 리프레쉬 종료
     }
@@ -115,7 +144,7 @@ class TravelSpotDetailVC: UIViewController {
 // MARK: - Extension Part
 extension TravelSpotDetailVC: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return travelSpotDetailDataList.count
+    return planDataList.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -123,9 +152,10 @@ extension TravelSpotDetailVC: UITableViewDataSource {
       return UITableViewCell()
     }
     cell.selectionStyle = .none
-    cell.nickNameLabel.text = "\(travelSpotDetailDataList[indexPath.row].id)"
-    cell.titleTextView.text = "\(travelSpotDetailDataList[indexPath.row].title)"
-    cell.contentImage.setImage(with: "\(travelSpotDetailDataList[indexPath.row].thumbnailURL)")
+    
+    cell.nickNameLabel.text = "\(planDataList[indexPath.row].id)"
+    cell.titleTextView.text = "\(planDataList[indexPath.row].title)"
+    cell.contentImage.setImage(with: "\(planDataList[indexPath.row].thumbnailURL)")
     
     return cell
   }
@@ -156,17 +186,22 @@ extension TravelSpotDetailVC: UICollectionViewDelegateFlowLayout {
 }
 
 
-extension TravelSpotDetailVC {
-  
-  func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-    let height = scrollView.frame.size.height
-    let contentYoffset = scrollView.contentOffset.y
-    let distanceFromBottom = scrollView.contentSize.height - contentYoffset
-    if distanceFromBottom < height {
-      if pageNum < totalPage {
-        pageNum += 1
-        fetchTravelSpotDetailItemList(refresh: false)
-      }
-    }
-  }
+enum sortCase : String{
+  case recently = "created_at"
 }
+
+
+//extension TravelSpotDetailVC {
+//
+//  func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+//    let height = scrollView.frame.size.height
+//    let contentYoffset = scrollView.contentOffset.y
+//    let distanceFromBottom = scrollView.contentSize.height - contentYoffset
+//    if distanceFromBottom < height {
+//      if pageNum < totalPage {
+//        pageNum += 1
+//        fetchTravelSpotDetailItemList(refresh: false)
+//      }
+//    }
+//  }
+//}
