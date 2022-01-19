@@ -133,7 +133,7 @@ class TravelSpotDetailVC: UIViewController {
   // MARK: - @objc Function Part
   @objc func updateUI(refresh: UIRefreshControl) {
     DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
-      self.fetchTravelSpotDetailItemList(refresh: true)
+//      self.fetchTravelSpotDetailItemList(refresh: true)
       self.contentTableView.reloadData()
       refresh.endRefreshing() // 리프레쉬 종료
     }
@@ -191,17 +191,17 @@ enum sortCase : String{
 }
 
 
-extension TravelSpotDetailVC {
-  
-  func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-    let height = scrollView.frame.size.height
-    let contentYoffset = scrollView.contentOffset.y
-    let distanceFromBottom = scrollView.contentSize.height - contentYoffset
-    if distanceFromBottom < height {
-      if pageNum < totalPage {
-        pageNum += 1
-        fetchTravelSpotDetailItemList(refresh: false)
-      }
-    }
-  }
-}
+//extension TravelSpotDetailVC {
+//
+//  func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+//    let height = scrollView.frame.size.height
+//    let contentYoffset = scrollView.contentOffset.y
+//    let distanceFromBottom = scrollView.contentSize.height - contentYoffset
+//    if distanceFromBottom < height {
+//      if pageNum < totalPage {
+//        pageNum += 1
+//        fetchTravelSpotDetailItemList(refresh: false)
+//      }
+//    }
+//  }
+//}
