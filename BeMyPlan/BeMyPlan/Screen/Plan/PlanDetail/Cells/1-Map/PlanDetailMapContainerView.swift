@@ -22,7 +22,6 @@ class PlanDetailMapContainerView: XibView,MTMapViewDelegate{
   var totalMapPointList : [PlanDetailMapData] = []
   var currentDay : Int = 1 { didSet {changedCurrentDay()}}
   
-  
   // MARK: - UI Components Parts
   
   var mapView: MTMapView?

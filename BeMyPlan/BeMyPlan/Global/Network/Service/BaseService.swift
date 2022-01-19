@@ -36,6 +36,8 @@ class BaseService{
   
   func requestObject<T: Decodable>(_ target: BaseAPI, completion: @escaping (Result<T?, Error>) -> Void) {
     provider.request(target) { response in
+      print("RequestObjectResponse!!")
+      dump(response)
       switch response {
         case .success(let value):
           do {

@@ -46,10 +46,11 @@ class TravelSpotDetailTVC: UITableViewCell {
     titleTextView.textContainerInset = .zero
     titleTextView.textContainer.lineFragmentPadding = .zero
     titleTextView.textContainer.lineBreakMode = .byTruncatingTail
+    
+    contentImage.contentMode = .scaleAspectFill
   }
   
   func setFont () {
-//    setFontTextView(text: titleTextView.text, lineSpacing: 20, fontName: "SpoqaHanSansNeo-Bold", fontSize: 20, textColor: UIColor.grey01, textType: titleTextView)
   }
   
   

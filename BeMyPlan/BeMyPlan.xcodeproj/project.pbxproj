@@ -8,8 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		39C361F098A3D9D313FC7446 /* Pods_BeMyPlan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C47CE9CE7AB4C82FA73EBDD /* Pods_BeMyPlan.framework */; };
+		523C70A32795C3EF0073371D /* TravelSpotDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523C70A22795C3EF0073371D /* TravelSpotDataModel.swift */; };
+		523C70A52795D32E0073371D /* TravelSpotService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523C70A42795D32E0073371D /* TravelSpotService.swift */; };
+		523C70A82795E7560073371D /* TravelSpotDetailDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523C70A72795E7560073371D /* TravelSpotDetailDataModel.swift */; };
+		523C70AA2795EC770073371D /* TravelSpotDetailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523C70A92795EC770073371D /* TravelSpotDetailService.swift */; };
+		523C70AF27969F340073371D /* ScrapDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523C70AE27969F340073371D /* ScrapDataModel.swift */; };
+		523C70B127969FF80073371D /* ScrapService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523C70B027969FF80073371D /* ScrapService.swift */; };
+		523C70B32796EC890073371D /* ScrapBtnDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523C70B22796EC890073371D /* ScrapBtnDataModel.swift */; };
+		523C70B52796F11C0073371D /* ScrapBtnService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523C70B42796F11C0073371D /* ScrapBtnService.swift */; };
+		523C70B8279858040073371D /* HomeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523C70B7279858040073371D /* HomeData.swift */; };
 		52E26A8D278C17A800D84F0C /* TravelSpotFilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E26A8C278C17A800D84F0C /* TravelSpotFilterVC.swift */; };
-		F2191EF62795DF600058EF9A /* HomeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2191EF52795DF600058EF9A /* HomeData.swift */; };
 		F21AFAA027919A8000A84633 /* CustomAlert.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F21AFA9F27919A8000A84633 /* CustomAlert.storyboard */; };
 		F21AFAA827919BA200A84633 /* CustomAlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21AFAA727919BA200A84633 /* CustomAlertVC.swift */; };
 		F261EC7927873A7D00AF094F /* MainCardCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F261EC7727873A7D00AF094F /* MainCardCVC.swift */; };
@@ -211,6 +219,15 @@
 /* Begin PBXFileReference section */
 		3C47CE9CE7AB4C82FA73EBDD /* Pods_BeMyPlan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeMyPlan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E5C0ED1A372F84E7F4F783F /* Pods-BeMyPlan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeMyPlan.release.xcconfig"; path = "Target Support Files/Pods-BeMyPlan/Pods-BeMyPlan.release.xcconfig"; sourceTree = "<group>"; };
+		523C70A22795C3EF0073371D /* TravelSpotDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelSpotDataModel.swift; sourceTree = "<group>"; };
+		523C70A42795D32E0073371D /* TravelSpotService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelSpotService.swift; sourceTree = "<group>"; };
+		523C70A72795E7560073371D /* TravelSpotDetailDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelSpotDetailDataModel.swift; sourceTree = "<group>"; };
+		523C70A92795EC770073371D /* TravelSpotDetailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelSpotDetailService.swift; sourceTree = "<group>"; };
+		523C70AE27969F340073371D /* ScrapDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapDataModel.swift; sourceTree = "<group>"; };
+		523C70B027969FF80073371D /* ScrapService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapService.swift; sourceTree = "<group>"; };
+		523C70B22796EC890073371D /* ScrapBtnDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapBtnDataModel.swift; sourceTree = "<group>"; };
+		523C70B42796F11C0073371D /* ScrapBtnService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapBtnService.swift; sourceTree = "<group>"; };
+		523C70B7279858040073371D /* HomeData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeData.swift; sourceTree = "<group>"; };
 		52B0A592278F309C00242D35 /* ScrapContainerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScrapContainerView.xib; sourceTree = "<group>"; };
 		52B0A594278F30B500242D35 /* ScrapEmptyContainerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScrapEmptyContainerView.xib; sourceTree = "<group>"; };
 		52B0A598278F32AB00242D35 /* ScrapContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapContainerView.swift; sourceTree = "<group>"; };
@@ -470,6 +487,40 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		523C70A12795C1220073371D /* TravelSpot */ = {
+			isa = PBXGroup;
+			children = (
+				523C70A22795C3EF0073371D /* TravelSpotDataModel.swift */,
+				523C70A62795E6DC0073371D /* TravelSpotDetail */,
+			);
+			path = TravelSpot;
+			sourceTree = "<group>";
+		};
+		523C70A62795E6DC0073371D /* TravelSpotDetail */ = {
+			isa = PBXGroup;
+			children = (
+				523C70A72795E7560073371D /* TravelSpotDetailDataModel.swift */,
+			);
+			path = TravelSpotDetail;
+			sourceTree = "<group>";
+		};
+		523C70AD27969F1A0073371D /* Scrap */ = {
+			isa = PBXGroup;
+			children = (
+				523C70AE27969F340073371D /* ScrapDataModel.swift */,
+				523C70B22796EC890073371D /* ScrapBtnDataModel.swift */,
+			);
+			path = Scrap;
+			sourceTree = "<group>";
+		};
+		523C70B62798574D0073371D /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				523C70B7279858040073371D /* HomeData.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		6F77842C2239262E3D685F1B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -477,14 +528,6 @@
 				4E5C0ED1A372F84E7F4F783F /* Pods-BeMyPlan.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		F2191EEC2795BD5E0058EF9A /* Home */ = {
-			isa = PBXGroup;
-			children = (
-				F2191EF52795DF600058EF9A /* HomeData.swift */,
-			);
-			path = Home;
 			sourceTree = "<group>";
 		};
 		F21AFA9A279187E900A84633 /* Alert */ = {
@@ -658,6 +701,10 @@
 				FD1A78222795C69000FB10AB /* MyPlanSerivice.swift */,
 				FD1A78282795E45600FB10AB /* PlanPreviewService.swift */,
 				FD2D9C552796ADC800688A42 /* PlanDetailService.swift */,
+				523C70A42795D32E0073371D /* TravelSpotService.swift */,
+				523C70A92795EC770073371D /* TravelSpotDetailService.swift */,
+				523C70B027969FF80073371D /* ScrapService.swift */,
+				523C70B42796F11C0073371D /* ScrapBtnService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -729,7 +776,9 @@
 		FD09DE2527857DD6006DA050 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				F2191EEC2795BD5E0058EF9A /* Home */,
+				523C70B62798574D0073371D /* Home */,
+				523C70A12795C1220073371D /* TravelSpot */,
+				523C70AD27969F1A0073371D /* Scrap */,
 				FD20C60C278EBF0100AC6E34 /* MyPlan */,
 				FD2D4DCD278D90BA002084B9 /* PlanDetail */,
 				FDC47DE9278951EF00A152E8 /* Preview */,
@@ -1057,6 +1106,7 @@
 				52B0A5A3278F424700242D35 /* ScrapEmptyCotainerCVC.xib */,
 				52B0A594278F30B500242D35 /* ScrapEmptyContainerView.xib */,
 				52B0A59D278F420C00242D35 /* ScrapContainerCVC.xib */,
+				F2191EF52795DF600058EF9A /* HomeData.swift */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -1075,9 +1125,9 @@
 		FD3566402792AF2C0082B4CE /* ScrapVC */ = {
 			isa = PBXGroup;
 			children = (
-				FD3566412792AF2C0082B4CE /* ScrapContainerCVC.xib */,
-				FD3566422792AF2C0082B4CE /* ScrapContainerView.swift */,
 				FD3566432792AF2C0082B4CE /* ScrapContainerView.xib */,
+				FD3566422792AF2C0082B4CE /* ScrapContainerView.swift */,
+				FD3566412792AF2C0082B4CE /* ScrapContainerCVC.xib */,
 				FD3566442792AF2C0082B4CE /* ScrapContainerCVC.swift */,
 			);
 			path = ScrapVC;
@@ -1439,6 +1489,7 @@
 				FD09DE0F27857A2E006DA050 /* makeAlert.swift in Sources */,
 				FDF980DB2786E2F60009A14E /* BaseVC.swift in Sources */,
 				FDC47DF527895DDB00A152E8 /* PreviewData.swift in Sources */,
+				523C70B8279858040073371D /* HomeData.swift in Sources */,
 				FD09DE052785795D006DA050 /* applyShadow.swift in Sources */,
 				FD2D9C6727983A4E00688A42 /* MapBallonView.swift in Sources */,
 				FDF980DE2786E6090009A14E /* addSubViewFromNib.swift in Sources */,
@@ -1472,8 +1523,10 @@
 				FD2D4DC3278D57B7002084B9 /* ProgressBar.swift in Sources */,
 				FDC47DEF2789521C00A152E8 /* PreviewPhotoData.swift in Sources */,
 				FDC47DEB278951FF00A152E8 /* PreviewHeaderData.swift in Sources */,
+				523C70AF27969F340073371D /* ScrapDataModel.swift in Sources */,
 				FD2D4DC9278D8190002084B9 /* PlanDetailSummaryRouteTVC.swift in Sources */,
 				FD3566572792B2530082B4CE /* BaseNC.swift in Sources */,
+				523C70B52796F11C0073371D /* ScrapBtnService.swift in Sources */,
 				FD20C609278EB94100AC6E34 /* MyPlanCVUserResuableView.swift in Sources */,
 				FD3211AD27841948007D63D5 /* ViewController.swift in Sources */,
 				FD2D9C602797DF8C00688A42 /* PlanDetailWriterContainerView.swift in Sources */,
@@ -1487,11 +1540,14 @@
 				FD20C61A278EDCF900AC6E34 /* BaseVC + Notification.swift in Sources */,
 				FD3211A927841948007D63D5 /* AppDelegate.swift in Sources */,
 				FD4C86B5278BD82D00D37A2D /* PreviewIconContainerView.swift in Sources */,
+				523C70B127969FF80073371D /* ScrapService.swift in Sources */,
 				FD1C568F2795893700EEDFCE /* HomeService.swift in Sources */,
 				FD09DE1727857B5D006DA050 /* controllerFromStoryboard + UIViewController.swift in Sources */,
 				F2C5F1922786EB3300BE4036 /* MainListView.swift in Sources */,
+				523C70A52795D32E0073371D /* TravelSpotService.swift in Sources */,
 				FD4C86BE278C9AF900D37A2D /* PaymentCompleteVC.swift in Sources */,
 				FDCDCB31278F4C2B002CEA15 /* PlanDetailSpotDataModel.swift in Sources */,
+				523C70A32795C3EF0073371D /* TravelSpotDataModel.swift in Sources */,
 				FDF980FF2788C9220009A14E /* PlanPreviewVC.swift in Sources */,
 				FDC47DF12789524000A152E8 /* PreviewSummaryData.swift in Sources */,
 				FD20C620278EF0C900AC6E34 /* MyPlanSettingVC.swift in Sources */,
@@ -1501,6 +1557,7 @@
 				FDF981022788D49C0009A14E /* PlanPreviewWriterTVC.swift in Sources */,
 				FDF981042788D4AB0009A14E /* PlanPreviewDescriptionTVC.swift in Sources */,
 				FD20C615278ECBE800AC6E34 /* MyPlanEmptyBuyListView.swift in Sources */,
+				523C70B32796EC890073371D /* ScrapBtnDataModel.swift in Sources */,
 				FD20C61C278EEFAB00AC6E34 /* addObserverAction.swift in Sources */,
 				FD2D9C582796B02000688A42 /* PlanDetailVC + fetchData.swift in Sources */,
 				FD3211AB27841948007D63D5 /* SceneDelegate.swift in Sources */,
@@ -1526,7 +1583,6 @@
 				FD20C623278EF11000AC6E34 /* MyPlanWithdrawVC.swift in Sources */,
 				FD09DDFE278578BA006DA050 /* StringLiterals.swift in Sources */,
 				FD1C569127958A9B00EEDFCE /* ResponseObject.swift in Sources */,
-				F2191EF62795DF600058EF9A /* HomeData.swift in Sources */,
 				F294EC2B278EBC66001069F8 /* LoginVC + AppleLogin.swift in Sources */,
 				FD09DE2727857DE3006DA050 /* GenericResponse.swift in Sources */,
 				FD09DE1527857B36006DA050 /* getClassName.swift in Sources */,
@@ -1540,6 +1596,7 @@
 				FD2D9C5C2797DC4B00688A42 /* PlanDetailMapContainerView.swift in Sources */,
 				FD09DE092785797B006DA050 /* addToolBar.swift in Sources */,
 				FD09DDF527857809006DA050 /* Config.swift in Sources */,
+				523C70AA2795EC770073371D /* TravelSpotDetailService.swift in Sources */,
 				FD09DE1327857AE1006DA050 /* successCatch + Result.swift in Sources */,
 				F261EC7927873A7D00AF094F /* MainCardCVC.swift in Sources */,
 				FD09DDF727857841006DA050 /* UITableViewRegisterable.swift in Sources */,
@@ -1550,6 +1607,7 @@
 				FD09DDF927857858006DA050 /* UICollectionViewRegisterable.swift in Sources */,
 				FD35664D2792AF2C0082B4CE /* ScrapContainerView.swift in Sources */,
 				FD09DE032785794B006DA050 /* makeVibrate.swift in Sources */,
+				523C70A82795E7560073371D /* TravelSpotDetailDataModel.swift in Sources */,
 				FD2D4DDC278DC22C002084B9 /* PlanDetailSummaryTVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

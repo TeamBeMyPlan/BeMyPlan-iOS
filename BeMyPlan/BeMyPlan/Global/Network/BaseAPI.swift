@@ -11,11 +11,16 @@ enum BaseAPI{
   case sampleAPI(sample : String)
   // MARK: - 현주
   case getPopularTravelList
-  case getNewTravelList
-  case getSuggestTravelList
+  case getNewTravelList(page : Int)
+  case getSuggestTravelList(page : Int)
   
   // MARK: - 양원
   case getTravelSpotList
+  case getTravelSpotDetailList(area: Int, page: Int,sort:String)
+  case getRecentTripList(page: Int, pageSize: Int)
+  case getScrapList(userId: Int, page: Int, pageSize: Int, sort: String)
+  
+  case postScrapBtn
   
   // MARK: - 지훈
   case getBuyList(userID: Int)
@@ -70,7 +75,25 @@ extension BaseAPI: TargetType {
 
 
       
+    case .getTravelSpotDetailList:
+      base += "/area"
+      
+    case .getRecentTripList:
+      base += "/post/new"
+     
+    case .getScrapList:
+      base += "/scrap"
+      
+  
+      
+    case .postScrapBtn:
+      base += "추후 수정"
+      
+
     }
+    
+    
+    
     guard let url = URL(string: base) else {
       fatalError("baseURL could not be configured")
     }
@@ -96,6 +119,14 @@ extension BaseAPI: TargetType {
         return "/\(idx)/preview/tag"
       case .getPlanPreviewData(let idx):
         return "/\(idx)/preview"
+      case .getTravelSpotDetailList(let area,_,_):
+        return "/\(area)"
+      
+//      case .getRecentTripList(let page, _):
+//      return ""
+      
+    case .getScrapList(let userId, _, _, _):
+      return "/\(userId)"
 
     case .getNewTravelList:
       return "/new"
@@ -141,9 +172,28 @@ extension BaseAPI: TargetType {
   private var bodyParameters: Parameters? {
     var params: Parameters = [:]
     switch self{
-    case .sampleAPI(let email):
-      params["email"] = email
-      params["password"] = "여기에 필요한 Value값 넣기"
+      case .sampleAPI(let email):
+        params["email"] = email
+        params["password"] = "여기에 필요한 Value값 넣기"
+      
+      case .getTravelSpotDetailList(let area, let page, let sort):
+        params["page"] = page
+        params["pageSize"] = 5
+        params["sort"] = sort
+      
+//      case .getRecentTripList(let page, let pageSize):
+//        params["page"] = page
+//        params["pageSize"] = 5
+      
+    case .getScrapList(_, let page, let pageSize, let sort):
+      params["page"] = page
+      params["pageSize"] = 5
+      params["sort"] = sort
+      
+    case .getNewTravelList(let page):
+      params["page"] = page
+    case .getSuggestTravelList(let page):
+      params["page"] = page
     default:
       break
       
@@ -175,10 +225,11 @@ extension BaseAPI: TargetType {
   ///
   private var parameterEncoding : ParameterEncoding{
     switch self {
-    case .sampleAPI:
-      return URLEncoding.init(destination: .queryString, arrayEncoding: .noBrackets, boolEncoding: .literal)
-    default :
-      return JSONEncoding.default
+    case .sampleAPI, .getTravelSpotDetailList, .getScrapList, .getNewTravelList, .getSuggestTravelList:
+        return URLEncoding.init(destination: .queryString, arrayEncoding: .noBrackets, boolEncoding: .literal)
+      default :
+        return JSONEncoding.default
+
     }
   }
   
@@ -188,19 +239,22 @@ extension BaseAPI: TargetType {
   ///
   var task: Task {
     switch self{
-    case .sampleAPI:
-      return .requestParameters(parameters: bodyParameters ?? [:], encoding: parameterEncoding)
-    default:
-      return .requestPlain
+    case .sampleAPI,.getTravelSpotDetailList, .getScrapList,.getNewTravelList, .getSuggestTravelList:
+        return .requestParameters(parameters: bodyParameters ?? [:], encoding: parameterEncoding)
+      default:
+        return .requestPlain
+ 
+
       
     }
   }
+  
   
   public var headers: [String: String]? {
     if let userToken = UserDefaults.standard.string(forKey: "userToken") {
       return ["Authorization": userToken,
               "Content-Type": "application/json"]
-    }else{
+    } else {
       return ["Content-Type": "application/json"]
     }
   }
