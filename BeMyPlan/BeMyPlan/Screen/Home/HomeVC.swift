@@ -97,7 +97,7 @@ class HomeVC: UIViewController, UIGestureRecognizerDelegate {
   //  }
   
   private func getListData(){
-    BaseService.default.getNewTravelList { result in
+    BaseService.default.getNewTravelList(page: Int) { result in
       result.success { list in
         self.newList = []
         
@@ -116,7 +116,7 @@ class HomeVC: UIViewController, UIGestureRecognizerDelegate {
       }
     }
     
-    BaseService.default.getSuggestTravelList { result in
+    BaseService.default.getSuggestTravelList(page: Int) { result  in
       result.success { list in
         self.suggestList = []
         
@@ -135,5 +135,6 @@ class HomeVC: UIViewController, UIGestureRecognizerDelegate {
       }
     }
   }
+  
   
 }
