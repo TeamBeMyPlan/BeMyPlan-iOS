@@ -14,8 +14,7 @@ struct HomeListDataGettable : Codable{
   let nickname: String?
   
   enum CodingKeys: String, CodingKey {
-    case id
+    case id, title, nickname
     case thumbnailURL = "thumbnail_url"
-    case title, nickname
   }
 }

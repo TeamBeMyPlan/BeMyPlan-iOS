@@ -12,7 +12,7 @@ enum BaseAPI{
   // MARK: - 현주
   case getPopularTravelList
   case getNewTravelList(page : Int)
-  case getSuggestTravelList(page : Int)
+  case getSuggestTravelList(page : Int, sort: String)
   
   // MARK: - 양원
   case getTravelSpotList
@@ -114,8 +114,9 @@ extension BaseAPI: TargetType {
       params["password"] = "여기에 필요한 Value값 넣기"
     case .getNewTravelList(let page):
       params["page"] = page
-    case .getSuggestTravelList(let page):
+    case .getSuggestTravelList(let page, let sort):
       params["page"] = page
+      params["sort"] = sort
     default:
       break
       
