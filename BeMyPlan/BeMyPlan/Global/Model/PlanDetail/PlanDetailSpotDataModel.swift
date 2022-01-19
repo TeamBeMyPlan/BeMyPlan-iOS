@@ -9,12 +9,12 @@ import Foundation
 
 
 
-extension PlanDetailData{
+extension PlanDetail{
   struct SpotData{
     var locationTitle : String
     var address : String
     var imagerUrls :[String]
     var textContent : String
-    var nextLocationData : PlanDetailData.Summary?
+    var nextLocationData : PlanDetail.Summary?
   }
 }

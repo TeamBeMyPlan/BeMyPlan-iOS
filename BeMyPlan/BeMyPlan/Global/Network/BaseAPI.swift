@@ -28,6 +28,10 @@ enum BaseAPI{
   
   // MARK: - 지훈
   case getBuyList(userID: Int)
+  case deleteUserWithdraw
+  case getPlanPreviewHeaderData(idx : Int)
+  case getPlanPreviewData(idx : Int)
+  case getPlanDetailData(idx : Int)
 }
 
 extension BaseAPI: TargetType {
@@ -48,17 +52,32 @@ extension BaseAPI: TargetType {
   public var baseURL: URL {
     var base = Config.Network.baseURL
     switch self{
-    case .sampleAPI:
-      base += ""
-      
+      case .sampleAPI:
+        base += ""
+        
     case .getPopularTravelList, .getNewTravelList, .getSuggestTravelList:
       base += "/post"
       
-    case .getTravelSpotList:
-      base += "/area"
+        
+      case .getTravelSpotList:
+        base += "/area"
+
+      case .getBuyList:
+        base += "/order"
+        
+      case .deleteUserWithdraw:
+        base += "/auth"
+        
+      case .getPlanPreviewHeaderData,
+          .getPlanPreviewData
+        , .getPlanDetailData:
+        base += "/post"
+        
+        
+
       
-    case .getBuyList:
-      base += "/order"
+
+
       
     case .getTravelSpotDetailList:
       base += "/area"
@@ -93,10 +112,16 @@ extension BaseAPI: TargetType {
   ///
   var path: String {
     switch self{
-    case .getPopularTravelList:
-      return "/popular"
-    case .getBuyList(let userID):
-      return "/\(userID)"
+      case .getPopularTravelList:
+        return "/popular"
+      case .getBuyList(let userID):
+        return "/\(userID)"
+      case .deleteUserWithdraw:
+        return "/withdraw"
+      case .getPlanPreviewHeaderData(let idx):
+        return "/\(idx)/preview/tag"
+      case .getPlanPreviewData(let idx):
+        return "/\(idx)/preview"
     case .getTravelSpotDetailList(let areaID):
       return "/\(areaID)"
       
@@ -113,6 +138,10 @@ extension BaseAPI: TargetType {
       return "/new"
     case .getSuggestTravelList:
       return "/suggest"
+    case .getBuyList(let userID):
+      return "/\(userID)"
+      case .getPlanDetailData(let idx):
+        return "/\(idx)"
     default :
       return ""
     }
@@ -124,12 +153,13 @@ extension BaseAPI: TargetType {
   
   var method: Moya.Method {
     switch self{
-    case .sampleAPI:
-      return .post
-      
-    default :
-      return .get
-      
+      case .sampleAPI:
+        return .post
+      case .deleteUserWithdraw:
+        return .delete
+      default :
+        return .get
+
     }
   }
   

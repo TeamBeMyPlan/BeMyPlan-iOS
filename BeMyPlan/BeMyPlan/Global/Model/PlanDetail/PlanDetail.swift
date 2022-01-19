@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct PlanDetailData{
+struct PlanDetail : Codable{
   
 }

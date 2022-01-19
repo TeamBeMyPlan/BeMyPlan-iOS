@@ -60,7 +60,6 @@ class MyPlanSettingVC: UIViewController {
             guard let loginVC = UIStoryboard.list(.login).instantiateViewController(withIdentifier: LoginNC.className) as? LoginNC else {return}
             loginVC
               .modalPresentationStyle = .fullScreen
-
             self.present(loginVC, animated: false, completion: nil)
           }
         }

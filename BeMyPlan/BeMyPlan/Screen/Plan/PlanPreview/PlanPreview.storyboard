@@ -247,47 +247,27 @@
                                             <outlet property="summaryContentTextView" destination="omE-0L-fuG" id="DxT-ag-nZ5"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlanPreviewRecommendTVC" rowHeight="266" id="R7P-Jx-t2Z" customClass="PlanPreviewRecommendTVC" customModule="BeMyPlan" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="1096.5" width="414" height="266"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlanPreviewRecommendTVC" rowHeight="594" id="R7P-Jx-t2Z" customClass="PlanPreviewRecommendTVC" customModule="BeMyPlan" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="1096.5" width="414" height="594"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="R7P-Jx-t2Z" id="e6j-nu-iuX">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="266"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="594"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wsU-06-3sL">
-                                                    <rect key="frame" x="24" y="40" width="366" height="16"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_preview_footer" translatesAutoresizingMaskIntoConstraints="NO" id="pyP-xq-pLq">
+                                                    <rect key="frame" x="24" y="40" width="366" height="404"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="16" id="rM4-Qr-QWb"/>
+                                                        <constraint firstAttribute="width" secondItem="pyP-xq-pLq" secondAttribute="height" multiplier="327:542" id="ZKD-iT-ziY"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                                    <color key="textColor" name="grey1"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ln-AG-XeX">
-                                                    <rect key="frame" x="24" y="55" width="366" height="0.0"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                    <string key="text">맛있는 제주 흑돼지를 먹을 수 있는 고깃집이에요!
-풀숲이 보이는 곳 바로 앞에 앉아서 먹을 수 있어요. 
-이 뷰에 맥주 한잔 곁들이면 ,, 행복 그자체❤️ </string>
-                                                    <color key="textColor" name="grey1"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                </textView>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="wsU-06-3sL" firstAttribute="leading" secondItem="e6j-nu-iuX" secondAttribute="leading" constant="24" id="3fO-y8-Iik"/>
-                                                <constraint firstItem="8ln-AG-XeX" firstAttribute="leading" secondItem="e6j-nu-iuX" secondAttribute="leading" constant="24" id="89V-il-Ce7"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="8ln-AG-XeX" secondAttribute="bottom" constant="200" id="Kah-OV-Vuf"/>
-                                                <constraint firstItem="8ln-AG-XeX" firstAttribute="top" secondItem="wsU-06-3sL" secondAttribute="bottom" constant="22" id="Nh3-uD-xT5"/>
-                                                <constraint firstAttribute="trailing" secondItem="8ln-AG-XeX" secondAttribute="trailing" constant="24" id="Ud3-c5-7Qh"/>
-                                                <constraint firstAttribute="trailing" secondItem="wsU-06-3sL" secondAttribute="trailing" constant="24" id="d2H-xZ-gNn"/>
-                                                <constraint firstItem="wsU-06-3sL" firstAttribute="top" secondItem="e6j-nu-iuX" secondAttribute="top" constant="40" id="sF3-B7-sx8"/>
+                                                <constraint firstAttribute="trailing" secondItem="pyP-xq-pLq" secondAttribute="trailing" constant="24" id="0LU-fw-IlT"/>
+                                                <constraint firstAttribute="bottom" secondItem="pyP-xq-pLq" secondAttribute="bottom" constant="150" id="nlK-gq-ACU"/>
+                                                <constraint firstItem="pyP-xq-pLq" firstAttribute="top" secondItem="e6j-nu-iuX" secondAttribute="top" constant="40" id="tFZ-UP-Chs"/>
+                                                <constraint firstItem="pyP-xq-pLq" firstAttribute="leading" secondItem="e6j-nu-iuX" secondAttribute="leading" constant="24" id="zgx-0M-l9D"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="contentTextView" destination="8ln-AG-XeX" id="0An-gS-h6E"/>
-                                            <outlet property="titleLabel" destination="wsU-06-3sL" id="JVg-2p-JFs"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -401,6 +381,7 @@
         <image name="icnArrowForward" width="12" height="12"/>
         <image name="icnNotScrap" width="24" height="24"/>
         <image name="img" width="327" height="327"/>
+        <image name="img_preview_footer" width="327" height="542"/>
         <namedColor name="beMyBlue">
             <color red="0.0" green="0.46666666666666667" blue="0.69019607843137254" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

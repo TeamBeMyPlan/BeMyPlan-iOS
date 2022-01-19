@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,15 +12,16 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PlanDetailSelectDayView" customModule="BeMyPlan" customModuleProvider="target">
             <connections>
                 <outlet property="dayContainerCV" destination="qzr-5j-ifn" id="GBz-Fe-t1X"/>
+                <outlet property="foldIconImage" destination="cTk-1B-XQA" id="2z2-ml-8tn"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" ambiguous="YES" id="iN0-l3-epB">
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="473" height="112"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="qzr-5j-ifn">
-                    <rect key="frame" x="0.0" y="10" width="473" height="37"/>
+                    <rect key="frame" x="0.0" y="41" width="473" height="37"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="37" id="nGv-3j-gJP"/>
@@ -31,19 +33,48 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DW0-Sw-dsK">
+                    <rect key="frame" x="0.0" y="10" width="473" height="1"/>
+                    <color key="backgroundColor" name="grey6"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="YMu-QE-K8L"/>
+                    </constraints>
+                </view>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_detail_fold" translatesAutoresizingMaskIntoConstraints="NO" id="cTk-1B-XQA">
+                    <rect key="frame" x="220" y="18" width="33" height="11"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sw7-6E-0ar">
+                    <rect key="frame" x="0.0" y="0.0" width="473" height="41"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <connections>
+                        <action selector="foldButtonClicked:" destination="-1" eventType="touchUpInside" id="dGn-gP-JDY"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="qzr-5j-ifn" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="3Du-ud-y2s"/>
-                <constraint firstAttribute="bottom" secondItem="qzr-5j-ifn" secondAttribute="bottom" constant="5" id="DbL-ZA-pe1"/>
+                <constraint firstItem="DW0-Sw-dsK" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="58g-gz-QYW"/>
+                <constraint firstItem="qzr-5j-ifn" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="41" id="6nV-DS-mty"/>
                 <constraint firstAttribute="trailing" secondItem="qzr-5j-ifn" secondAttribute="trailing" id="Ez7-Ac-Djo"/>
+                <constraint firstItem="DW0-Sw-dsK" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="IXn-zP-QBr"/>
+                <constraint firstAttribute="trailing" secondItem="DW0-Sw-dsK" secondAttribute="trailing" id="JuT-o7-7fz"/>
+                <constraint firstItem="qzr-5j-ifn" firstAttribute="top" secondItem="sw7-6E-0ar" secondAttribute="bottom" id="QAj-6s-jjj"/>
+                <constraint firstItem="sw7-6E-0ar" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Ua0-Fs-rEy"/>
+                <constraint firstItem="cTk-1B-XQA" firstAttribute="top" secondItem="DW0-Sw-dsK" secondAttribute="bottom" constant="7" id="XmX-MU-uT9"/>
+                <constraint firstItem="sw7-6E-0ar" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ZPD-Tz-Lgt"/>
                 <constraint firstItem="qzr-5j-ifn" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="low-R1-WtV"/>
+                <constraint firstAttribute="trailing" secondItem="sw7-6E-0ar" secondAttribute="trailing" id="pQ4-hE-OT3"/>
+                <constraint firstItem="cTk-1B-XQA" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="wP3-ef-xAA"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="174.63768115942031" y="-192.85714285714286"/>
         </view>
     </objects>
     <resources>
+        <image name="ic_detail_fold" width="33" height="11"/>
+        <namedColor name="grey6">
+            <color red="0.95686274509803926" green="0.96078431372549022" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

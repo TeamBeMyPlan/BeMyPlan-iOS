@@ -36,6 +36,9 @@ struct ImageLiterals{
 		static let moreIcon = UIImage(named: "icn_more")!
 		static let mapSelectIcon = UIImage(named: "icn_mainpin_select")!
 		static let mapUnselectIcon = UIImage(named: "icn_subpin_unselect")!
+		static let mapSelectIconClicked = UIImage(named: "icn_mainpin_clicked")!
+		static let foldDetailIcon = UIImage(named: "ic_detail_fold")!
+		static let unfoldDetailIocn = UIImage(named: "ic_detail_unfold")!
 	}
   struct Components{
 		static let applogo = UIImage(named: "applogo")!
@@ -44,5 +47,4 @@ struct ImageLiterals{
 		static let checkoffIcon = UIImage(named: "check_off_silver")
 		static let checkonIcon = UIImage(named: "check_on_blue")
 	}
-
 }

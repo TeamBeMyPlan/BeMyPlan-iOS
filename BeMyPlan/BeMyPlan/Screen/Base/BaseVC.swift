@@ -24,7 +24,7 @@ class BaseVC: UIViewController {
   
   @IBOutlet var containerViewList: [BaseContainerView]!
   @IBOutlet var tabIconList: [TabBarIconView]!
-  
+  @IBOutlet var tabbarStackContainerView: UIView!
   // MARK: - Life Cycle Part
   
   override func viewDidLoad() {
@@ -32,6 +32,13 @@ class BaseVC: UIViewController {
     setContainerView()
     setTabIcon()
     addObservers()
+  }
+  override func viewWillAppear(_ animated: Bool) {
+    showTabbar()
+  }
+  
+  override func viewWillDisappear(_ animated: Bool) {
+    hideTabbar()
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -78,6 +85,18 @@ class BaseVC: UIViewController {
       }
       item.setTab(tab: makeTabList(index: index),
                   isClicked: makeTabList(index: index) == clickedIndex)
+    }
+  }
+  
+  private func showTabbar(){
+    UIView.animate(withDuration: 0.7) {
+      self.tabbarStackContainerView.alpha = 1
+    }
+  }
+  
+  private func hideTabbar(){
+    UIView.animate(withDuration: 0.7) {
+      self.tabbarStackContainerView.alpha = 0
     }
   }
   
@@ -130,7 +149,6 @@ extension BaseVC : UIGestureRecognizerDelegate {
     _ gestureRecognizer: UIGestureRecognizer,
     shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer
   ) -> Bool {
-    print("gesture",otherGestureRecognizer is PanDirectionGestureRecognizer)
     return otherGestureRecognizer is PanDirectionGestureRecognizer
   }
 

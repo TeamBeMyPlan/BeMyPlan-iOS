@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension PlanDetailData{
+extension PlanDetail{
   struct Summary{
     var transportCase : TransportCase?
     var locationName : String

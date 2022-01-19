@@ -22,12 +22,12 @@ class PreviewIconContainerView: XibView {
   
   func setIconData(iconData : PlanPreview.IconData){
     themeLabel.text = iconData.theme
-    spotCountLabel.text = iconData.spotCount
-    restaurantCountLabel.text = iconData.restaurantCount
-    dayCountLabel.text = iconData.dayCount
+    spotCountLabel.text = iconData.spotCount + "곳"
+    restaurantCountLabel.text = iconData.restaurantCount + "곳"
+    dayCountLabel.text = iconData.dayCount + "일"
     peopleCaseLabel.text = iconData.peopleCase
-    moneyLabel.text = iconData.budget
+    moneyLabel.text = iconData.budget + "만원"
     transportLabel.text = iconData.transport
-    monthLabel.text = iconData.month
+    monthLabel.text = iconData.month + "월"
   }
 }
