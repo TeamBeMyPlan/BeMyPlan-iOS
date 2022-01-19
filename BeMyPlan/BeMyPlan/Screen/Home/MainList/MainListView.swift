@@ -16,7 +16,7 @@ enum MainListViewType{
 class MainListView: UIView {
   
   // MARK: - Vars & Lets Part
-  var mainListDataList: [HomeListDataGettable] = [] {
+  var mainListDataList: [HomeListDataGettable.Item] = [] {
     didSet {
       mainListCV.reloadData()
     }

@@ -8,19 +8,22 @@
 import Foundation
 
 struct HomeListDataGettable: Codable {
-  let items: [Item]
+  let items: [HomeListDataGettable.Item]
   let totalPage: Int?
-}
-
-struct Item : Codable{
-  let id: Int
-  let thumbnailURL: String
-  let title : String
-  let nickname: String?
   
-  enum CodingKeys: String, CodingKey {
-    case id, title, nickname
-    case thumbnailURL = "thumbnail_url"
+  
+  struct Item : Codable{
+    let id: Int
+    let thumbnailURL: String
+    let title : String
+    let nickname: String?
+    
+    enum CodingKeys: String, CodingKey {
+      case id, title, nickname
+      case thumbnailURL = "thumbnail_url"
+    }
   }
+
+
 }
 
