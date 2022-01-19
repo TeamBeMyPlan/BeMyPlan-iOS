@@ -13,7 +13,7 @@ class PlanDetailVC: UIViewController {
 
   // MARK: - Vars & Lets Part
   var postIdx : Int = 3
-  
+  var headerContentHeight : CGFloat = 0
   var headerData : DetailHeaderData?
   var locationList : [[PlanDetailMapData]] = [[]]
   var totalDay : Int = 1
@@ -27,8 +27,16 @@ class PlanDetailVC: UIViewController {
   // MARK: - UI Components Part
   
   @IBOutlet var headerTitleLabel: UILabel!
+  
+  @IBOutlet var writerContainerView: PlanDetailWriterContainerView!
+  @IBOutlet var mapContainerView: PlanDetailMapContainerView!
   @IBOutlet var mainContainerTV: UITableView!{
     didSet{
+      mainContainerTV.contentInset = .zero
+      if #available(iOS 15.0, *) {
+        mainContainerTV.sectionHeaderTopPadding = 0
+      }
+//      mainContainerTV.contentInsetAdjustmentBehavior = .never
       mainContainerTV.delegate = self
       mainContainerTV.dataSource = self
       mainContainerTV.allowsSelection = false
@@ -37,6 +45,13 @@ class PlanDetailVC: UIViewController {
       mainContainerTV.tableFooterView = UIView()
     }
   }
+  
+  
+  // MARK: - Constarints Components Part
+  @IBOutlet var writerBlockHeightConstraint: NSLayoutConstraint!
+  @IBOutlet var mapContainerHeightConstraint: NSLayoutConstraint!
+  @IBOutlet var mainTVTopConstraint: NSLayoutConstraint!
+  
   // MARK: - Life Cycle Parts
     override func viewDidLoad() {
       super.viewDidLoad()
@@ -49,8 +64,6 @@ class PlanDetailVC: UIViewController {
   // MARK: - Custom Methods Parts
   
   private func registerCells(){
-    PlanDetailWriterTVC.register(target: mainContainerTV)
-    PlanDetailMapContainerTVC.register(target: mainContainerTV)
     PlanDetailSummaryTVC.register(target: mainContainerTV)
     PlanDetailInformationTVC.register(target: mainContainerTV)
   }
@@ -60,13 +73,28 @@ class PlanDetailVC: UIViewController {
     let writerFrame = mainContainerTV.rectForRow(at: IndexPath(row: 0, section: 0))
     writerBlockHeight = writerFrame.height
   }
+  
+  func setWriterView(){
+    if let headerData = headerData{
+      writerContainerView.setTitleData(title: headerData.writer,
+                              writer: headerData.title)
+    }
+  }
+  
+  func setMapContainerView(){
+    mapContainerView.mapPointList = self.locationList
+    mapContainerView.currentDay = self.currentDay - 1
+  }
 
 }
 
 extension PlanDetailVC : UITableViewDelegate{
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+  
     return UITableView.automaticDimension
   }
+  
+   
   
   func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
     let animation = AnimationFactory.makeFadeAnimation(duration: 0.6, delayFactor: 0.08)
@@ -78,18 +106,12 @@ extension PlanDetailVC : UITableViewDelegate{
 extension PlanDetailVC : UITableViewDataSource{
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    switch(section){
-      case 0: return (headerData != nil) ? 1 : 0
-      case 1: return (!locationList.isEmpty) ? 1 : 0
-      default : return !infoList.isEmpty ? infoList.count + 1 : 0
-    }
+    return !infoList.isEmpty ? infoList.count + 1 : 0
   }
-  func numberOfSections(in tableView: UITableView) -> Int {
-    return 3
-  }
+
   
   func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-    return section == 2 ? 57 : 0
+    return 76
   }
   
   func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
@@ -101,34 +123,15 @@ extension PlanDetailVC : UITableViewDataSource{
   }
   
   func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-    if section == 2{
       let selectView = PlanDetailSelectDayView()
       selectView.totalDay = totalDay
       selectView.currentDay = currentDay
       selectView.delegate = self
       return selectView
-    }else{
-      return UIView()
-    }
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
-    if indexPath.section == 0{
-      guard let writerCell = tableView.dequeueReusableCell(withIdentifier: PlanDetailWriterTVC.className, for: indexPath) as? PlanDetailWriterTVC else {return UITableViewCell() }
-      if let headerData = headerData{
-        writerCell.setTitleData(title: headerData.writer,
-                                writer: headerData.title)
-        return writerCell
-      }else{
-        return UITableViewCell()
-      }
-    }else if indexPath.section == 1{
-      guard let mapCell = tableView.dequeueReusableCell(withIdentifier: PlanDetailMapContainerTVC.className, for: indexPath) as? PlanDetailMapContainerTVC else {return UITableViewCell() }
-      mapCell.mapPointList = self.locationList
-      mapCell.currentDay = self.currentDay - 1
-      return mapCell
-    }else{
       switch(indexPath.row){
         case 0:
           guard let summaryCell = tableView.dequeueReusableCell(withIdentifier: PlanDetailSummaryTVC.className, for: indexPath) as? PlanDetailSummaryTVC else {return UITableViewCell() }
@@ -153,7 +156,6 @@ extension PlanDetailVC : UITableViewDataSource{
                           infoList[currentDay-1][indexPath.row].nextLocationData : nil)
          return infoCell
       }
-    }
   }
 }
 
@@ -164,6 +166,12 @@ extension PlanDetailVC : UIScrollViewDelegate{
       headerTitleLabel.isHidden = false
     }else{
       headerTitleLabel.isHidden = true
+    }
+    
+    if scrollView.contentOffset.y <= headerContentHeight + 10{
+      mainTVTopConstraint.constant = headerContentHeight - scrollView.contentOffset.y
+    }else{
+      mainTVTopConstraint.constant = -10
     }
   }
 }

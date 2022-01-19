@@ -51,25 +51,50 @@
                                     <constraint firstAttribute="height" constant="94" id="ump-86-u81"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="oXT-Lw-aF3">
-                                <rect key="frame" x="0.0" y="94" width="414" height="802"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5u8-4D-ftu" customClass="PlanDetailWriterContainerView" customModule="BeMyPlan" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="94" width="414" height="130"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="130" id="ppJ-l4-NN7"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rOd-Cs-IhR" customClass="PlanDetailMapContainerView" customModule="BeMyPlan" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="224" width="414" height="321.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="rOd-Cs-IhR" secondAttribute="height" multiplier="375:291" id="DWY-qZ-xSd"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oXT-Lw-aF3">
+                                <rect key="frame" x="0.0" y="444" width="414" height="452"/>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="rOd-Cs-IhR" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="1lO-qw-ArP"/>
                             <constraint firstItem="oXT-Lw-aF3" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="3IS-as-cl8"/>
+                            <constraint firstItem="5u8-4D-ftu" firstAttribute="top" secondItem="8Qg-2G-i4E" secondAttribute="bottom" id="5JQ-eO-VtN"/>
                             <constraint firstItem="8Qg-2G-i4E" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="-44" id="5Ko-en-oQg"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="oXT-Lw-aF3" secondAttribute="trailing" id="9qN-7h-pf3"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="5u8-4D-ftu" secondAttribute="trailing" id="Bmh-zX-Y4T"/>
                             <constraint firstItem="8Qg-2G-i4E" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="S0N-DP-pC2"/>
-                            <constraint firstItem="oXT-Lw-aF3" firstAttribute="top" secondItem="8Qg-2G-i4E" secondAttribute="bottom" id="jA0-NA-WbN"/>
+                            <constraint firstItem="rOd-Cs-IhR" firstAttribute="top" secondItem="5u8-4D-ftu" secondAttribute="bottom" id="VP9-d6-XuO"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="rOd-Cs-IhR" secondAttribute="trailing" id="i7c-bP-tXP"/>
+                            <constraint firstItem="oXT-Lw-aF3" firstAttribute="top" secondItem="8Qg-2G-i4E" secondAttribute="bottom" constant="350" id="jA0-NA-WbN"/>
                             <constraint firstAttribute="bottom" secondItem="oXT-Lw-aF3" secondAttribute="bottom" id="jAf-Ch-Zsc"/>
+                            <constraint firstItem="5u8-4D-ftu" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="tUf-bd-i4f"/>
                             <constraint firstAttribute="trailing" secondItem="8Qg-2G-i4E" secondAttribute="trailing" id="xzO-jv-Xne"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="headerTitleLabel" destination="Isu-J1-i5l" id="6eN-Cu-Kdd"/>
                         <outlet property="mainContainerTV" destination="oXT-Lw-aF3" id="yjC-xw-1Tj"/>
+                        <outlet property="mainTVTopConstraint" destination="jA0-NA-WbN" id="Vmw-H9-RNR"/>
+                        <outlet property="mapContainerHeightConstraint" destination="DWY-qZ-xSd" id="K2M-ai-gaM"/>
+                        <outlet property="mapContainerView" destination="rOd-Cs-IhR" id="6aS-jB-YbL"/>
+                        <outlet property="writerBlockHeightConstraint" destination="ppJ-l4-NN7" id="Uo1-cv-AEq"/>
+                        <outlet property="writerContainerView" destination="5u8-4D-ftu" id="lLK-Qv-Usk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

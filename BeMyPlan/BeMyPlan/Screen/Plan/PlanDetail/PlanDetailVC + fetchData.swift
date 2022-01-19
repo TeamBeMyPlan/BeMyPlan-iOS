@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SnapKit
 
 extension PlanDetailVC{
   func fetchPlanDetailData(){
@@ -19,6 +20,7 @@ extension PlanDetailVC{
           self?.headerData = DetailHeaderData(title: detailData.title,
                                               writer : detailData.author)
           self?.headerTitleLabel.text = detailData.title
+          self?.makeTopBlockHeight(content: detailData.title)
           // 총 일차 가져오기
           self?.totalDay = detailData.totalDays
           // 각각 리스트 더해주기
@@ -61,6 +63,8 @@ extension PlanDetailVC{
           dump(self?.infoList)
 
           self?.mainContainerTV.reloadData()
+          self?.setWriterView()
+          self?.setMapContainerView()
         }
       }
     }
@@ -72,6 +76,22 @@ extension PlanDetailVC{
       case "지하철","버스","지하철타고가요" : return .bus
       default : return .car
     }
+  }
+  
+  private func makeTopBlockHeight(content : String){
+    var writerTop : CGFloat
+    let textViewForsizing = UITextView()
+    textViewForsizing.font = .boldSystemFont(ofSize: 20)
+    textViewForsizing.textContainer.lineFragmentPadding = .zero
+    textViewForsizing.textContainerInset = .zero
+    textViewForsizing.text = content
+    textViewForsizing.sizeToFit()
+    textViewForsizing.frame.width <= screenWidth - 48 ? (writerTop = 90) : (writerTop = 115)
+    writerBlockHeightConstraint.constant = writerTop
+    let mapContainerHeight = screenWidth * (291/375)
+    mainTVTopConstraint.constant = writerTop + mapContainerHeight
+    headerContentHeight = writerTop + mapContainerHeight
+    self.view.layoutIfNeeded()
   }
 }
 

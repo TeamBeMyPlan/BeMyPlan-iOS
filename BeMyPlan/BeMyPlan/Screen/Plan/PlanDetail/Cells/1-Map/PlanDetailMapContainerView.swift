@@ -1,40 +1,43 @@
 //
-//  PlanDetailMapContainerTVC.swift
+//  PlanDetailMapContainerView.swift
 //  BeMyPlan
 //
-//  Created by 송지훈 on 2022/01/11.
+//  Created by 송지훈 on 2022/01/19.
 //
 
 import UIKit
 
-class PlanDetailMapContainerTVC: UITableViewCell,UITableViewRegisterable, MTMapViewDelegate {
-  
+class PlanDetailMapContainerView: XibView,MTMapViewDelegate{
+
   // MARK: - var let Parts
-  static var isFromNib: Bool = true
-  
+
   var centerPointList : [MTMapPointGeo] = []
   var mapPointList : [[PlanDetailMapData]] = [[]]
   var totalMapPointList : [PlanDetailMapData] = []
   var currentDay : Int = 0 { didSet {changedCurrentDay()}}
+  
   
   // MARK: - UI Components Parts
   
   var mapView: MTMapView?
   @IBOutlet var mapContainerView: UIView!
   
-  override func awakeFromNib() {
-    super.awakeFromNib()
+  override init(frame: CGRect) {
+    super.init(frame: frame)
     setUI()
     setMapPointCenterPoint()
     setKakaoMap()
     setMapPoint()
     showMapCenter(pointList: totalMapPointList)
-    print("?????")
-
   }
   
-  override func setSelected(_ selected: Bool, animated: Bool) {
-    super.setSelected(selected, animated: animated)
+  required init?(coder aDecoder: NSCoder) {
+    super.init(coder: aDecoder)
+    setUI()
+    setMapPointCenterPoint()
+    setKakaoMap()
+    setMapPoint()
+    showMapCenter(pointList: totalMapPointList)
   }
   
   private func setUI(){

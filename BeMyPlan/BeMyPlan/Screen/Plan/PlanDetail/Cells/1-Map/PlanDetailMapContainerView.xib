@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19529"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PlanDetailMapContainerView" customModule="BeMyPlan" customModuleProvider="target">
+            <connections>
+                <outlet property="mapContainerView" destination="Mui-2g-Vw9" id="fqq-dQ-1Fb"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="RfQ-uF-VUJ">
+            <rect key="frame" x="0.0" y="0.0" width="536" height="325"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mui-2g-Vw9">
+                    <rect key="frame" x="24" y="0.0" width="488" height="325"/>
+                    <color key="backgroundColor" name="beMyBlue"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="Mui-2g-Vw9" firstAttribute="leading" secondItem="RfQ-uF-VUJ" secondAttribute="leading" constant="24" id="6PI-R2-UNg"/>
+                <constraint firstItem="Mui-2g-Vw9" firstAttribute="top" secondItem="RfQ-uF-VUJ" secondAttribute="top" id="Dqt-cJ-6Uv"/>
+                <constraint firstAttribute="trailing" secondItem="Mui-2g-Vw9" secondAttribute="trailing" constant="24" id="jpt-wz-Rsh"/>
+                <constraint firstAttribute="bottom" secondItem="Mui-2g-Vw9" secondAttribute="bottom" id="txd-Bp-aEq"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="227.536231884058" y="-276.89732142857139"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="beMyBlue">
+            <color red="0.0" green="0.46666666666666667" blue="0.69019607843137254" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

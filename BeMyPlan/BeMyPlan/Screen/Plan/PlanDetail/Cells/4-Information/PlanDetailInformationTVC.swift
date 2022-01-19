@@ -13,10 +13,11 @@ class PlanDetailInformationTVC: UITableViewCell,UITableViewRegisterable {
   static var isFromNib: Bool = true
   private var imgUrlList : [String] = []{
     didSet {
-      if imgUrlList.count >= 1{
+      if imgUrlList.count > 1{
+        progressBar.isHidden = false
         progressBar.setPercentage(ratio: CGFloat((currentIndex + 1)) / CGFloat(imgUrlList.count))
       }else{
-        progressBar.setPercentage(ratio: 0)
+        progressBar.isHidden = true
       }
     }
   }
