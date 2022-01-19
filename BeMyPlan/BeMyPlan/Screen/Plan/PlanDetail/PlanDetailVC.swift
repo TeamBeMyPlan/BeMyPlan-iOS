@@ -11,12 +11,15 @@ class PlanDetailVC: UIViewController {
 
   // MARK: - Vars & Lets Part
   var isFullPage = false { didSet{ foldContentTableView() }}
-  var postIdx : Int = 3
+  var postIdx : Int = 5
   var headerContentHeight : CGFloat = 0
   var headerData : DetailHeaderData?
   var locationList : [[PlanDetailMapData]] = [[]]
   var totalDay : Int = 1
-  var currentDay : Int = 1 { didSet{mainContainerTV.reloadData()} }
+  var initailScrollCompleted = false
+  var currentDay : Int = 1 { didSet{
+    mapContainerView.currentDay = currentDay
+    mainContainerTV.reloadData()} }
   var summaryList : [[PlanDetail.Summary]] = [[]]
   var infoList : [[PlanDetail.SpotData]] = [[]]
 
@@ -188,6 +191,10 @@ extension PlanDetailVC : UITableViewDataSource{
 
 extension PlanDetailVC : UIScrollViewDelegate{
   func scrollViewDidScroll(_ scrollView: UIScrollView){
+    if initailScrollCompleted == false{
+      mapContainerView.currentDay = currentDay
+      initailScrollCompleted = true
+    }
     if writerBlockHeight <= scrollView.contentOffset.y{
       headerTitleLabel.isHidden = false
     }else{
@@ -204,9 +211,9 @@ extension PlanDetailVC : UIScrollViewDelegate{
 extension PlanDetailVC : PlanDetailDayDelegate{
   func dayClicked(day: Int) {
     if self.currentDay != day{
-      var cells : [UITableViewCell] = []
       self.mainContainerTV.scrollToRow(at: IndexPath(row: 0, section: 0 ), at: .top, animated: true)
+      self.currentDay = day
     }
-    self.currentDay = day
+
   }
 }

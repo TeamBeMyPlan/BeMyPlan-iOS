@@ -12,9 +12,15 @@ class PlanDetailMapContainerView: XibView,MTMapViewDelegate{
   // MARK: - var let Parts
 
   var centerPointList : [MTMapPointGeo] = []
-  var mapPointList : [[PlanDetailMapData]] = [[]]
+  var mapPointList : [[PlanDetailMapData]] = [[]]{
+    didSet{
+      setMapPointCenterPoint()
+      setMapPoint()
+      showMapCenter(pointList: totalMapPointList)
+    }
+  }
   var totalMapPointList : [PlanDetailMapData] = []
-  var currentDay : Int = 0 { didSet {changedCurrentDay()}}
+  var currentDay : Int = 1 { didSet {changedCurrentDay()}}
   
   
   // MARK: - UI Components Parts
@@ -47,6 +53,7 @@ class PlanDetailMapContainerView: XibView,MTMapViewDelegate{
   }
   
   private func setMapPointCenterPoint(){
+  
     for (_,pointList) in mapPointList.enumerated(){
       for (_,point) in pointList.enumerated(){
         totalMapPointList.append(point)
@@ -56,6 +63,7 @@ class PlanDetailMapContainerView: XibView,MTMapViewDelegate{
   
   private func showMapCenter(pointList: [PlanDetailMapData]){
     if let mapView = mapView {
+      print("FIT Area Points",pointList)
       mapView.fitArea(toShowMapPoints: makeMapPointGeoList(pointDataList: pointList))
     }
   }
@@ -65,7 +73,9 @@ class PlanDetailMapContainerView: XibView,MTMapViewDelegate{
     for (_,item) in pointDataList.enumerated(){
       pointList.append(MTMapPoint(geoCoord: MTMapPointGeo(latitude:  item.latitude,
                                                           longitude: item.longtitude)))
+      print("Result Point List",item.latitude,item.longtitude)
     }
+
     return pointList
   }
   
@@ -73,11 +83,15 @@ class PlanDetailMapContainerView: XibView,MTMapViewDelegate{
   private func makeMapItem(mapData : PlanDetailMapData,isEnabled : Bool) -> MTMapPOIItem{
     let mapItem = MTMapPOIItem()
     if isEnabled{
-      mapItem.customImage = ImageLiterals.PlanDetail.mapUnselectIcon
+      let view = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+      view.backgroundColor = .blue
+      
+      mapItem.customImage = ImageLiterals.PlanDetail.mapSelectIcon
       mapItem.markerType = .customImage
-      mapItem.customSelectedImage = ImageLiterals.PlanDetail.mapSelectIcon
+      mapItem.customSelectedImage = ImageLiterals.PlanDetail.mapSelectIconClicked
       mapItem.markerSelectedType = .customImage
       mapItem.itemName = mapData.title
+      mapItem.customCalloutBalloonView = view
     }else{
       mapItem.customImage = ImageLiterals.PlanDetail.mapUnselectIcon
       mapItem.markerType = .customImage
@@ -87,75 +101,43 @@ class PlanDetailMapContainerView: XibView,MTMapViewDelegate{
     mapItem.mapPoint = MTMapPoint(geoCoord: MTMapPointGeo(latitude:  mapData.latitude,
                                                           longitude: mapData.longtitude))
     
+    print("만들어지는 아이템",mapData.title,mapData.latitude,mapData.longtitude,isEnabled)
     return mapItem
   }
   
   private func setMapPoint(){
+    mapView?.removeAllPOIItems()
     if let mapView = mapView {
-      for (_,mapDataList) in mapPointList.enumerated(){
-        for (index,mapData) in mapDataList.enumerated(){
-          mapView.add(makeMapItem(mapData: mapData, isEnabled: index == currentDay))
+      for (index,mapDataList) in mapPointList.enumerated(){
+        for (_,mapData) in mapDataList.enumerated(){
+          mapView.add(makeMapItem(mapData: mapData, isEnabled: index == currentDay - 1))
         }
       }
       self.mapContainerView.addSubview(mapView)
     }
   }
   
-  
   private func changedCurrentDay(){
-    if mapPointList.count >= currentDay + 1{
-      showMapCenter(pointList: mapPointList[currentDay])
-      setMapPoint()
+    
+    print("MAPPOINTLIST Count",mapPointList.count)
+    print("currentDay",currentDay)
+    
+    if mapPointList.count >= currentDay && currentDay > 0 {
+      showMapCenter(pointList: mapPointList[currentDay - 1])
     }
+    print("setMAPoint")
+    setMapPoint()
   }
   
   private func setKakaoMap(){
     if let mapView = mapView {
       mapView.delegate = self
       mapView.baseMapType = .standard
-      
-//      // 지도 중심점, 레벨
-//      mapView.setMapCenter(MTMapPoint(geoCoord: defaultPosition), zoomLevel: 4, animated: true)
-//
-//
-//      // 마커 추가
-//      poiItem1?.showAnimationType = .dropFromHeaven
-//      self.mapPoint1 = MTMapPoint(geoCoord: MTMapPointGeo(latitude:  37.55768857834471, longitude: 126.9244990846229))
-//      poiItem1 = MTMapPOIItem()
-//      poiItem1?.customImage = ImageLiterals.PlanDetail.mapUnselectIcon
-//
-//      poiItem1?.markerType = MTMapPOIItemMarkerType.customImage
-//
-//      poiItem1?.customSelectedImage = ImageLiterals.PlanDetail.mapSelectIcon
-//
-//      poiItem1?.markerSelectedType = .customImage
-//      poiItem1?.mapPoint = mapPoint1
-//      poiItem1?.itemName = "장소이름이 여기에 나올거에요~~~~~~"
-//
-//      poiItem2?.showAnimationType = .springFromGround
-//      self.mapPoint2 = MTMapPoint(geoCoord: MTMapPointGeo(latitude:  37.55768857834471, longitude: 126.9544990846229))
-//
-//      poiItem2 = MTMapPOIItem()
-//      poiItem2?.customImage = ImageLiterals.PlanDetail.mapUnselectIcon
-//
-//      poiItem2?.markerType = MTMapPOIItemMarkerType.customImage
-//
-//      poiItem2?.customSelectedImage = ImageLiterals.PlanDetail.mapSelectIcon
-//
-//      poiItem2?.markerSelectedType = .customImage
-//
-//      poiItem2?.mapPoint = mapPoint2
-//      poiItem2?.itemName = "장소이름이 여기에 나올거에요222~~~~~~"
-//
-//
-//      mapView.add(poiItem1)
-//      mapView.add(poiItem2)
-//      self.mapContainerView.addSubview(mapView)
-//      let pos2 = MTMapPointGeo(latitude: 37.55768857834471, longitude: 126.9544990846229)
-//      mapView.setMapCenter(MTMapPoint(geoCoord: pos2), zoomLevel: 4, animated: true)
-//
-      
     }
+  }
+  
+  func mapView(_ mapView: MTMapView!, touchedCalloutBalloonOf poiItem: MTMapPOIItem!) {
+    print("터치?",poiItem.itemName)
   }
 }
 

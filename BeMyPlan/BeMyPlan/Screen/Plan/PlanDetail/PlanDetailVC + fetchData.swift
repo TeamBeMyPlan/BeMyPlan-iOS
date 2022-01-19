@@ -88,7 +88,7 @@ extension PlanDetailVC{
     textViewForsizing.sizeToFit()
     textViewForsizing.frame.width <= screenWidth - 48 ? (writerTop = 90) : (writerTop = 115)
     writerBlockHeightConstraint.constant = writerTop
-    let mapContainerHeight : CGFloat = 212
+    let mapContainerHeight : CGFloat = 196
     mainTVTopConstraint.constant = writerTop + mapContainerHeight
     headerContentHeight = writerTop + mapContainerHeight
     self.view.layoutIfNeeded()
