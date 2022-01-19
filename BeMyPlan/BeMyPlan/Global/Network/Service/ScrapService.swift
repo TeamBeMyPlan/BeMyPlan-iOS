@@ -13,7 +13,6 @@ protocol ScrapService {
 
 extension BaseService: ScrapService {
   func getScrapList(userId: Int, page: Int, pageSize: Int, sort: String, completion: @escaping (Result<[ScrapDataGettable]?, Error>) -> Void) {
-    print("아하아하아하아하")
     requestObject(.getScrapList(userId: userId, page: page, pageSize: pageSize, sort: sort), completion: completion)
   }
 }

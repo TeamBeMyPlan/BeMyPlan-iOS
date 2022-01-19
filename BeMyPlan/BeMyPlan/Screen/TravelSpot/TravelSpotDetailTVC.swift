@@ -51,7 +51,6 @@ class TravelSpotDetailTVC: UITableViewCell {
   }
   
   func setFont () {
-//    setFontTextView(text: titleTextView.text, lineSpacing: 20, fontName: "SpoqaHanSansNeo-Bold", fontSize: 20, textColor: UIColor.grey01, textType: titleTextView)
   }
   
   

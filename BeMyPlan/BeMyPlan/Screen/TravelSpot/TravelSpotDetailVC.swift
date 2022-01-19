@@ -29,15 +29,16 @@ class TravelSpotDetailVC: UIViewController {
     regiterXib()
     setTableViewDelegate()
     fetchTravelSpotDetailItemList()
+    setUIs()
+    initRefresh()
   }
-   
+  
   // MARK: - Set Function Part
   
   private func getAreaData() {
     guard let vc = storyboard?.instantiateViewController(identifier: TravelSpotVC.className) as? TravelSpotVC else { return }
     vc.completionHandler = { area in
       self.areaNum = area
-      print("---> 넘넘넘넘 \(self.areaNum)")
       return area
     }
   }
@@ -64,17 +65,17 @@ class TravelSpotDetailVC: UIViewController {
   
   // MARK: - Custom Method Part
   private func setUIs() {
-  
+    contentTableView.separatorStyle = .none
   }
   
   private func fetchTravelSpotDetailItemList() {
     BaseService.default.getTravelSpotDetailList(area: areaNum, page: 0, sort: "created_at") { result in
       print("---> area \(self.areaNum)")
       dump("---> 리절트 \(result)")
-
+      
       result.success { data in
         self.travelSpotDetailDataList = []
-
+        
         if let testedData = data {
           self.travelSpotDetailDataList = testedData.items
           dump("---> testedData \(String(describing: testedData))")
@@ -82,14 +83,36 @@ class TravelSpotDetailVC: UIViewController {
         self.contentTableView.reloadData()
       }.catch { error in
         if let err = error as? MoyaError {
-          
           dump("----> TravelSpotDetail \(err)")
         }
       }
     }
   }
   
+  private func initRefresh() {
+    let refresh = UIRefreshControl()
+    refresh.addTarget(self, action: #selector(updateUI(refresh:)), for: .valueChanged)
+    refresh.attributedTitle = NSAttributedString(string: "")
+    
+    if #available(iOS 10.0, *) {
+      contentTableView.refreshControl = refresh
+    } else {
+      contentTableView.addSubview(refresh)
+    }
+  }
+  
+  
+  
+  
   // MARK: - @objc Function Part
+  @objc func updateUI(refresh: UIRefreshControl) {
+    DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+      self.fetchTravelSpotDetailItemList()
+      self.contentTableView.reloadData()
+      refresh.endRefreshing() // 리프레쉬 종료
+    }
+  }
+
 }
 
 // MARK: - Extension Part
