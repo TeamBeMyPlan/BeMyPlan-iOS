@@ -51,6 +51,30 @@ class BaseService{
           switch error {
             case .underlying(let error, _):
               if error.asAFError?.isSessionTaskError ?? false {
+              
+              }
+            default: break
+          }
+          completion(.failure(error))
+      }
+    }
+  }
+  
+  func requestArray<T: Decodable>(_ target: BaseAPI, completion: @escaping (Result<[T], Error>) -> Void) {
+    provider.request(target) { response in
+      switch response {
+        case .success(let value):
+          do {
+            let decoder = JSONDecoder()
+            let body = try decoder.decode(ResponseObject<[T]>.self, from: value.data)
+            completion(.success(body.data ?? []))
+          } catch let error {
+            completion(.failure(error))
+          }
+        case .failure(let error):
+          switch error {
+            case .underlying(let error, _):
+              if error.asAFError?.isSessionTaskError ?? false {
                 
               }
             default: break

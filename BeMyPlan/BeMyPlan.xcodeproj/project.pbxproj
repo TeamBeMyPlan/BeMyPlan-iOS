@@ -37,8 +37,7 @@
 		F2C5F1942786EB3C00BE4036 /* MainListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2C5F1932786EB3C00BE4036 /* MainListView.xib */; };
 		FD008829278FE94C00C194B5 /* PlanDetailInfoPhotoCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD008827278FE94C00C194B5 /* PlanDetailInfoPhotoCVC.swift */; };
 		FD00882A278FE94C00C194B5 /* PlanDetailInfoPhotoCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD008828278FE94C00C194B5 /* PlanDetailInfoPhotoCVC.xib */; };
-		FD00882E278FF1EF00C194B5 /* PlanDetailWriterTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD00882C278FF1EF00C194B5 /* PlanDetailWriterTVC.swift */; };
-		FD00882F278FF1EF00C194B5 /* PlanDetailWriterTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD00882D278FF1EF00C194B5 /* PlanDetailWriterTVC.xib */; };
+		FD00882F278FF1EF00C194B5 /* PlanDetailWriterContainerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD00882D278FF1EF00C194B5 /* PlanDetailWriterContainerView.xib */; };
 		FD09DD5127855E33006DA050 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FD09DD5027855E32006DA050 /* GoogleService-Info.plist */; };
 		FD09DD9827856387006DA050 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD09DD9727856387006DA050 /* SystemConfiguration.framework */; };
 		FD09DD9A27856394006DA050 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD09DD9927856394006DA050 /* CoreLocation.framework */; };
@@ -96,6 +95,11 @@
 		FD09DE2727857DE3006DA050 /* GenericResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD09DE2627857DE3006DA050 /* GenericResponse.swift */; };
 		FD09DE2927857E25006DA050 /* StoryboardLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD09DE2827857E25006DA050 /* StoryboardLiterals.swift */; };
 		FD09DE2D27858B41006DA050 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD09DE2C27858B41006DA050 /* Metal.framework */; };
+		FD1A78232795C69000FB10AB /* MyPlanSerivice.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1A78222795C69000FB10AB /* MyPlanSerivice.swift */; };
+		FD1A78262795DA7100FB10AB /* showNetworkErr + UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1A78252795DA7100FB10AB /* showNetworkErr + UIViewController.swift */; };
+		FD1A78292795E45600FB10AB /* PlanPreviewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1A78282795E45600FB10AB /* PlanPreviewService.swift */; };
+		FD1A782B2795E63600FB10AB /* PreviewTagDataGettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1A782A2795E63600FB10AB /* PreviewTagDataGettable.swift */; };
+		FD1A782D2795EBEF00FB10AB /* PreviewDetailDataGettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1A782C2795EBEF00FB10AB /* PreviewDetailDataGettable.swift */; };
 		FD1C568C2792DA7300EEDFCE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD3211B127841949007D63D5 /* Assets.xcassets */; };
 		FD1C568F2795893700EEDFCE /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1C568E2795893700EEDFCE /* HomeService.swift */; };
 		FD1C569127958A9B00EEDFCE /* ResponseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1C569027958A9B00EEDFCE /* ResponseObject.swift */; };
@@ -112,8 +116,7 @@
 		FD20C623278EF11000AC6E34 /* MyPlanWithdrawVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD20C622278EF11000AC6E34 /* MyPlanWithdrawVC.swift */; };
 		FD20C626278EF6AE00AC6E34 /* BarSelectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD20C625278EF6AE00AC6E34 /* BarSelectButton.swift */; };
 		FD20C628278EF6CA00AC6E34 /* BarFullButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD20C627278EF6CA00AC6E34 /* BarFullButton.swift */; };
-		FD2D4DA9278D3C55002084B9 /* PlanDetailMapContainerTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2D4DA7278D3C55002084B9 /* PlanDetailMapContainerTVC.swift */; };
-		FD2D4DAA278D3C55002084B9 /* PlanDetailMapContainerTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD2D4DA8278D3C55002084B9 /* PlanDetailMapContainerTVC.xib */; };
+		FD2D4DAA278D3C55002084B9 /* PlanDetailMapContainerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD2D4DA8278D3C55002084B9 /* PlanDetailMapContainerView.xib */; };
 		FD2D4DB6278D3DB6002084B9 /* PlanDetailSummaryTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD2D4DB4278D3DB6002084B9 /* PlanDetailSummaryTVC.xib */; };
 		FD2D4DB9278D3DCE002084B9 /* PlanDetailInformationTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2D4DB7278D3DCE002084B9 /* PlanDetailInformationTVC.swift */; };
 		FD2D4DBA278D3DCE002084B9 /* PlanDetailInformationTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD2D4DB8278D3DCE002084B9 /* PlanDetailInformationTVC.xib */; };
@@ -125,11 +128,19 @@
 		FD2D4DCA278D8190002084B9 /* PlanDetailSummaryRouteTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD2D4DC8278D8190002084B9 /* PlanDetailSummaryRouteTVC.xib */; };
 		FD2D4DCC278D8636002084B9 /* drawDashedLine + UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2D4DCB278D8636002084B9 /* drawDashedLine + UIView.swift */; };
 		FD2D4DCF278D90D0002084B9 /* PlanDetailSummaryDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2D4DCE278D90D0002084B9 /* PlanDetailSummaryDataModel.swift */; };
-		FD2D4DD1278D90DB002084B9 /* PlanDetailData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2D4DD0278D90DB002084B9 /* PlanDetailData.swift */; };
+		FD2D4DD1278D90DB002084B9 /* PlanDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2D4DD0278D90DB002084B9 /* PlanDetail.swift */; };
 		FD2D4DD8278DB054002084B9 /* PlanDetailSummaryFoldTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2D4DD6278DB054002084B9 /* PlanDetailSummaryFoldTVC.swift */; };
 		FD2D4DDA278DB179002084B9 /* PlanDetailSummaryFoldTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD2D4DD7278DB054002084B9 /* PlanDetailSummaryFoldTVC.xib */; };
 		FD2D4DDC278DC22C002084B9 /* PlanDetailSummaryTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2D4DB3278D3DB6002084B9 /* PlanDetailSummaryTVC.swift */; };
 		FD2D4DDE278DDB93002084B9 /* Spoqa_Han_Sans_Neo_Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = FD2D4DDD278DDB93002084B9 /* Spoqa_Han_Sans_Neo_Medium.otf */; };
+		FD2D9C542796ABDD00688A42 /* PlanDetailDataGettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2D9C532796ABDD00688A42 /* PlanDetailDataGettable.swift */; };
+		FD2D9C562796ADC800688A42 /* PlanDetailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2D9C552796ADC800688A42 /* PlanDetailService.swift */; };
+		FD2D9C582796B02000688A42 /* PlanDetailVC + fetchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2D9C572796B02000688A42 /* PlanDetailVC + fetchData.swift */; };
+		FD2D9C5A2796FDA400688A42 /* UITableViewCell + Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2D9C592796FDA400688A42 /* UITableViewCell + Animator.swift */; };
+		FD2D9C5C2797DC4B00688A42 /* PlanDetailMapContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2D9C5B2797DC4B00688A42 /* PlanDetailMapContainerView.swift */; };
+		FD2D9C602797DF8C00688A42 /* PlanDetailWriterContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2D9C5F2797DF8C00688A42 /* PlanDetailWriterContainerView.swift */; };
+		FD2D9C63279835D600688A42 /* MapBallonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD2D9C62279835D600688A42 /* MapBallonView.xib */; };
+		FD2D9C6727983A4E00688A42 /* MapBallonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2D9C6627983A4E00688A42 /* MapBallonView.swift */; };
 		FD3151A3278D0C7B0076D92E /* PlanDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD3151A2278D0C7B0076D92E /* PlanDetail.storyboard */; };
 		FD3151A5278D0C880076D92E /* PlanDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3151A4278D0C880076D92E /* PlanDetailVC.swift */; };
 		FD3211A927841948007D63D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3211A827841948007D63D5 /* AppDelegate.swift */; };
@@ -248,8 +259,7 @@
 		F2C5F1932786EB3C00BE4036 /* MainListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainListView.xib; sourceTree = "<group>"; };
 		FD008827278FE94C00C194B5 /* PlanDetailInfoPhotoCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDetailInfoPhotoCVC.swift; sourceTree = "<group>"; };
 		FD008828278FE94C00C194B5 /* PlanDetailInfoPhotoCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanDetailInfoPhotoCVC.xib; sourceTree = "<group>"; };
-		FD00882C278FF1EF00C194B5 /* PlanDetailWriterTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDetailWriterTVC.swift; sourceTree = "<group>"; };
-		FD00882D278FF1EF00C194B5 /* PlanDetailWriterTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanDetailWriterTVC.xib; sourceTree = "<group>"; };
+		FD00882D278FF1EF00C194B5 /* PlanDetailWriterContainerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanDetailWriterContainerView.xib; sourceTree = "<group>"; };
 		FD09DD5027855E32006DA050 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FD09DD9527856377006DA050 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		FD09DD9727856387006DA050 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -320,6 +330,11 @@
 		FD09DE2627857DE3006DA050 /* GenericResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericResponse.swift; sourceTree = "<group>"; };
 		FD09DE2827857E25006DA050 /* StoryboardLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardLiterals.swift; sourceTree = "<group>"; };
 		FD09DE2C27858B41006DA050 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
+		FD1A78222795C69000FB10AB /* MyPlanSerivice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlanSerivice.swift; sourceTree = "<group>"; };
+		FD1A78252795DA7100FB10AB /* showNetworkErr + UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "showNetworkErr + UIViewController.swift"; sourceTree = "<group>"; };
+		FD1A78282795E45600FB10AB /* PlanPreviewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanPreviewService.swift; sourceTree = "<group>"; };
+		FD1A782A2795E63600FB10AB /* PreviewTagDataGettable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewTagDataGettable.swift; sourceTree = "<group>"; };
+		FD1A782C2795EBEF00FB10AB /* PreviewDetailDataGettable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewDetailDataGettable.swift; sourceTree = "<group>"; };
 		FD1C568E2795893700EEDFCE /* HomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeService.swift; sourceTree = "<group>"; };
 		FD1C569027958A9B00EEDFCE /* ResponseObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseObject.swift; sourceTree = "<group>"; };
 		FD20C608278EB94100AC6E34 /* MyPlanCVUserResuableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlanCVUserResuableView.swift; sourceTree = "<group>"; };
@@ -335,8 +350,7 @@
 		FD20C622278EF11000AC6E34 /* MyPlanWithdrawVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlanWithdrawVC.swift; sourceTree = "<group>"; };
 		FD20C625278EF6AE00AC6E34 /* BarSelectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarSelectButton.swift; sourceTree = "<group>"; };
 		FD20C627278EF6CA00AC6E34 /* BarFullButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarFullButton.swift; sourceTree = "<group>"; };
-		FD2D4DA7278D3C55002084B9 /* PlanDetailMapContainerTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDetailMapContainerTVC.swift; sourceTree = "<group>"; };
-		FD2D4DA8278D3C55002084B9 /* PlanDetailMapContainerTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanDetailMapContainerTVC.xib; sourceTree = "<group>"; };
+		FD2D4DA8278D3C55002084B9 /* PlanDetailMapContainerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanDetailMapContainerView.xib; sourceTree = "<group>"; };
 		FD2D4DB3278D3DB6002084B9 /* PlanDetailSummaryTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDetailSummaryTVC.swift; sourceTree = "<group>"; };
 		FD2D4DB4278D3DB6002084B9 /* PlanDetailSummaryTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanDetailSummaryTVC.xib; sourceTree = "<group>"; };
 		FD2D4DB7278D3DCE002084B9 /* PlanDetailInformationTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDetailInformationTVC.swift; sourceTree = "<group>"; };
@@ -349,10 +363,18 @@
 		FD2D4DC8278D8190002084B9 /* PlanDetailSummaryRouteTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanDetailSummaryRouteTVC.xib; sourceTree = "<group>"; };
 		FD2D4DCB278D8636002084B9 /* drawDashedLine + UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "drawDashedLine + UIView.swift"; sourceTree = "<group>"; };
 		FD2D4DCE278D90D0002084B9 /* PlanDetailSummaryDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDetailSummaryDataModel.swift; sourceTree = "<group>"; };
-		FD2D4DD0278D90DB002084B9 /* PlanDetailData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDetailData.swift; sourceTree = "<group>"; };
+		FD2D4DD0278D90DB002084B9 /* PlanDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDetail.swift; sourceTree = "<group>"; };
 		FD2D4DD6278DB054002084B9 /* PlanDetailSummaryFoldTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDetailSummaryFoldTVC.swift; sourceTree = "<group>"; };
 		FD2D4DD7278DB054002084B9 /* PlanDetailSummaryFoldTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanDetailSummaryFoldTVC.xib; sourceTree = "<group>"; };
 		FD2D4DDD278DDB93002084B9 /* Spoqa_Han_Sans_Neo_Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Spoqa_Han_Sans_Neo_Medium.otf; sourceTree = "<group>"; };
+		FD2D9C532796ABDD00688A42 /* PlanDetailDataGettable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDetailDataGettable.swift; sourceTree = "<group>"; };
+		FD2D9C552796ADC800688A42 /* PlanDetailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDetailService.swift; sourceTree = "<group>"; };
+		FD2D9C572796B02000688A42 /* PlanDetailVC + fetchData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanDetailVC + fetchData.swift"; sourceTree = "<group>"; };
+		FD2D9C592796FDA400688A42 /* UITableViewCell + Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell + Animator.swift"; sourceTree = "<group>"; };
+		FD2D9C5B2797DC4B00688A42 /* PlanDetailMapContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDetailMapContainerView.swift; sourceTree = "<group>"; };
+		FD2D9C5F2797DF8C00688A42 /* PlanDetailWriterContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDetailWriterContainerView.swift; sourceTree = "<group>"; };
+		FD2D9C62279835D600688A42 /* MapBallonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapBallonView.xib; sourceTree = "<group>"; };
+		FD2D9C6627983A4E00688A42 /* MapBallonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapBallonView.swift; sourceTree = "<group>"; };
 		FD3151A2278D0C7B0076D92E /* PlanDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PlanDetail.storyboard; sourceTree = "<group>"; };
 		FD3151A4278D0C880076D92E /* PlanDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDetailVC.swift; sourceTree = "<group>"; };
 		FD3211A527841948007D63D5 /* BeMyPlan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeMyPlan.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -587,7 +609,6 @@
 		FD008824278FE92100C194B5 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				FD008827278FE94C00C194B5 /* PlanDetailInfoPhotoCVC.swift */,
 				FD008828278FE94C00C194B5 /* PlanDetailInfoPhotoCVC.xib */,
 			);
 			path = Cells;
@@ -596,8 +617,8 @@
 		FD00882B278FF1D200C194B5 /* 0-Writer */ = {
 			isa = PBXGroup;
 			children = (
-				FD00882C278FF1EF00C194B5 /* PlanDetailWriterTVC.swift */,
-				FD00882D278FF1EF00C194B5 /* PlanDetailWriterTVC.xib */,
+				FD00882D278FF1EF00C194B5 /* PlanDetailWriterContainerView.xib */,
+				FD2D9C5F2797DF8C00688A42 /* PlanDetailWriterContainerView.swift */,
 			);
 			path = "0-Writer";
 			sourceTree = "<group>";
@@ -677,6 +698,9 @@
 			children = (
 				FD09DDF0278577CF006DA050 /* BaseService.swift */,
 				FD1C568E2795893700EEDFCE /* HomeService.swift */,
+				FD1A78222795C69000FB10AB /* MyPlanSerivice.swift */,
+				FD1A78282795E45600FB10AB /* PlanPreviewService.swift */,
+				FD2D9C552796ADC800688A42 /* PlanDetailService.swift */,
 				523C70A42795D32E0073371D /* TravelSpotService.swift */,
 				523C70A92795EC770073371D /* TravelSpotDetailService.swift */,
 				523C70B027969FF80073371D /* ScrapService.swift */,
@@ -848,8 +872,9 @@
 		FD2D4DAB278D3C5A002084B9 /* 1-Map */ = {
 			isa = PBXGroup;
 			children = (
-				FD2D4DA7278D3C55002084B9 /* PlanDetailMapContainerTVC.swift */,
-				FD2D4DA8278D3C55002084B9 /* PlanDetailMapContainerTVC.xib */,
+				FD2D9C612798341400688A42 /* BallonView */,
+				FD2D4DA8278D3C55002084B9 /* PlanDetailMapContainerView.xib */,
+				FD2D9C5B2797DC4B00688A42 /* PlanDetailMapContainerView.swift */,
 			);
 			path = "1-Map";
 			sourceTree = "<group>";
@@ -869,6 +894,7 @@
 			children = (
 				FD2D4DC4278D8006002084B9 /* Cells */,
 				FD2D4DB3278D3DB6002084B9 /* PlanDetailSummaryTVC.swift */,
+				FD008827278FE94C00C194B5 /* PlanDetailInfoPhotoCVC.swift */,
 				FD2D4DB4278D3DB6002084B9 /* PlanDetailSummaryTVC.xib */,
 			);
 			path = "3-Summary";
@@ -890,6 +916,7 @@
 				FD20C624278EF6A200AC6E34 /* Button */,
 				FD2D4DC0278D57A5002084B9 /* ProgressBar.xib */,
 				FD2D4DC2278D57B7002084B9 /* ProgressBar.swift */,
+				FD2D9C592796FDA400688A42 /* UITableViewCell + Animator.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -910,7 +937,8 @@
 			children = (
 				FDCDCB30278F4C2B002CEA15 /* PlanDetailSpotDataModel.swift */,
 				FD2D4DCE278D90D0002084B9 /* PlanDetailSummaryDataModel.swift */,
-				FD2D4DD0278D90DB002084B9 /* PlanDetailData.swift */,
+				FD2D4DD0278D90DB002084B9 /* PlanDetail.swift */,
+				FD2D9C532796ABDD00688A42 /* PlanDetailDataGettable.swift */,
 			);
 			path = PlanDetail;
 			sourceTree = "<group>";
@@ -922,6 +950,15 @@
 				FD2D4DBC278D3FA5002084B9 /* PlanDetailDayCVC.xib */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		FD2D9C612798341400688A42 /* BallonView */ = {
+			isa = PBXGroup;
+			children = (
+				FD2D9C62279835D600688A42 /* MapBallonView.xib */,
+				FD2D9C6627983A4E00688A42 /* MapBallonView.swift */,
+			);
+			path = BallonView;
 			sourceTree = "<group>";
 		};
 		FD3151A0278D0C5D0076D92E /* Plan */ = {
@@ -938,6 +975,7 @@
 			children = (
 				FD2D4DA2278D3B98002084B9 /* Cells */,
 				FD3151A4278D0C880076D92E /* PlanDetailVC.swift */,
+				FD2D9C572796B02000688A42 /* PlanDetailVC + fetchData.swift */,
 				FD3151A2278D0C7B0076D92E /* PlanDetail.storyboard */,
 			);
 			path = PlanDetail;
@@ -1032,6 +1070,7 @@
 				FD2D4DCB278D8636002084B9 /* drawDashedLine + UIView.swift */,
 				FD20C611278EC29600AC6E34 /* setTextLineHeight + UILabel.swift */,
 				FD61AFDB2791DC6E00D39F47 /* UINavigation + Extension.swift */,
+				FD1A78252795DA7100FB10AB /* showNetworkErr + UIViewController.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1133,6 +1172,8 @@
 				FDC47DEE2789521C00A152E8 /* PreviewPhotoData.swift */,
 				FDC47DF02789524000A152E8 /* PreviewSummaryData.swift */,
 				FDC47DF22789524A00A152E8 /* PreviewRecommendData.swift */,
+				FD1A782A2795E63600FB10AB /* PreviewTagDataGettable.swift */,
+				FD1A782C2795EBEF00FB10AB /* PreviewDetailDataGettable.swift */,
 			);
 			path = Preview;
 			sourceTree = "<group>";
@@ -1333,6 +1374,7 @@
 				FD4C86B8278C7A7200D37A2D /* Payment.storyboard in Resources */,
 				FD35664E2792AF2C0082B4CE /* ScrapContainerView.xib in Resources */,
 				FD2D4DC1278D57A5002084B9 /* ProgressBar.xib in Resources */,
+				FD2D9C63279835D600688A42 /* MapBallonView.xib in Resources */,
 				FD4C86B3278BD81900D37A2D /* PreviewIconContainerView.xib in Resources */,
 				FDC47E0C2789742800A152E8 /* TravelSpotCVC.xib in Resources */,
 				FD61AFA327902C7A00D39F47 /* PlanDetailSelectDayView.xib in Resources */,
@@ -1346,9 +1388,9 @@
 				FD09DDD227856A31006DA050 /* map_pinup_custom@3x.png in Resources */,
 				FDF980F4278825EF0009A14E /* TabBarIconView.xib in Resources */,
 				F266412D2788262800CCC751 /* MainListCVC.xib in Resources */,
-				FD2D4DAA278D3C55002084B9 /* PlanDetailMapContainerTVC.xib in Resources */,
+				FD2D4DAA278D3C55002084B9 /* PlanDetailMapContainerView.xib in Resources */,
 				FD09DDE327856A31006DA050 /* map_pinup_custom.png in Resources */,
-				FD00882F278FF1EF00C194B5 /* PlanDetailWriterTVC.xib in Resources */,
+				FD00882F278FF1EF00C194B5 /* PlanDetailWriterContainerView.xib in Resources */,
 				FD3211B027841948007D63D5 /* Main.storyboard in Resources */,
 				FD09DDDD27856A31006DA050 /* daum_copyright.png in Resources */,
 				FDF980BC2786CE660009A14E /* paybooc_OTF_Bold.otf in Resources */,
@@ -1442,18 +1484,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				FDF980E82786F1910009A14E /* MyPlanVC.swift in Sources */,
+				FD1A782D2795EBEF00FB10AB /* PreviewDetailDataGettable.swift in Sources */,
 				FDF980F6278826140009A14E /* TabBarIconView.swift in Sources */,
 				FD09DE0F27857A2E006DA050 /* makeAlert.swift in Sources */,
 				FDF980DB2786E2F60009A14E /* BaseVC.swift in Sources */,
 				FDC47DF527895DDB00A152E8 /* PreviewData.swift in Sources */,
 				523C70B8279858040073371D /* HomeData.swift in Sources */,
 				FD09DE052785795D006DA050 /* applyShadow.swift in Sources */,
+				FD2D9C6727983A4E00688A42 /* MapBallonView.swift in Sources */,
 				FDF980DE2786E6090009A14E /* addSubViewFromNib.swift in Sources */,
-				FD2D4DD1278D90DB002084B9 /* PlanDetailData.swift in Sources */,
+				FD2D4DD1278D90DB002084B9 /* PlanDetail.swift in Sources */,
 				FD4C86BA278C7A8400D37A2D /* PaymentSelectVC.swift in Sources */,
 				FD3151A5278D0C880076D92E /* PlanDetailVC.swift in Sources */,
 				FD09DE2027857CF2006DA050 /* LoginVC.swift in Sources */,
 				FD2D4DD8278DB054002084B9 /* PlanDetailSummaryFoldTVC.swift in Sources */,
+				FD2D9C562796ADC800688A42 /* PlanDetailService.swift in Sources */,
+				FD1A782B2795E63600FB10AB /* PreviewTagDataGettable.swift in Sources */,
 				F266412E2788262800CCC751 /* MainListData.swift in Sources */,
 				FD20C610278EBF2800AC6E34 /* MyPlanBuyData.swift in Sources */,
 				FD09DDF1278577CF006DA050 /* BaseService.swift in Sources */,
@@ -1470,11 +1516,11 @@
 				FD4C86B0278BD17F00D37A2D /* setImage.swift in Sources */,
 				FD20C612278EC29600AC6E34 /* setTextLineHeight + UILabel.swift in Sources */,
 				FDF980D42786D2F60009A14E /* PlanListVC.swift in Sources */,
+				FD2D9C5A2796FDA400688A42 /* UITableViewCell + Animator.swift in Sources */,
 				FDF980E52786E8370009A14E /* XibPresentable.swift in Sources */,
 				FDC47E132789875800A152E8 /* makeCellInstance.swift in Sources */,
 				FD61AFDA2791DB9100D39F47 /* PanDirectionGesture.swift in Sources */,
 				FD2D4DC3278D57B7002084B9 /* ProgressBar.swift in Sources */,
-				FD00882E278FF1EF00C194B5 /* PlanDetailWriterTVC.swift in Sources */,
 				FDC47DEF2789521C00A152E8 /* PreviewPhotoData.swift in Sources */,
 				FDC47DEB278951FF00A152E8 /* PreviewHeaderData.swift in Sources */,
 				523C70AF27969F340073371D /* ScrapDataModel.swift in Sources */,
@@ -1483,10 +1529,12 @@
 				523C70B52796F11C0073371D /* ScrapBtnService.swift in Sources */,
 				FD20C609278EB94100AC6E34 /* MyPlanCVUserResuableView.swift in Sources */,
 				FD3211AD27841948007D63D5 /* ViewController.swift in Sources */,
+				FD2D9C602797DF8C00688A42 /* PlanDetailWriterContainerView.swift in Sources */,
 				F2C5F18E2786EACB00BE4036 /* MainCardView.swift in Sources */,
 				FD09DE2227857D00006DA050 /* SplashVC.swift in Sources */,
 				FD09DDFC278578B1006DA050 /* ColorLiterals.swift in Sources */,
 				FDF9810A2788D4DD0009A14E /* PlanPreviewRecommendTVC.swift in Sources */,
+				FD1A78292795E45600FB10AB /* PlanPreviewService.swift in Sources */,
 				FD2D4DCF278D90D0002084B9 /* PlanDetailSummaryDataModel.swift in Sources */,
 				FD20C60E278EBF1800AC6E34 /* MyPlanData.swift in Sources */,
 				FD20C61A278EDCF900AC6E34 /* BaseVC + Notification.swift in Sources */,
@@ -1511,9 +1559,9 @@
 				FD20C615278ECBE800AC6E34 /* MyPlanEmptyBuyListView.swift in Sources */,
 				523C70B32796EC890073371D /* ScrapBtnDataModel.swift in Sources */,
 				FD20C61C278EEFAB00AC6E34 /* addObserverAction.swift in Sources */,
+				FD2D9C582796B02000688A42 /* PlanDetailVC + fetchData.swift in Sources */,
 				FD3211AB27841948007D63D5 /* SceneDelegate.swift in Sources */,
 				FDC47DED2789521000A152E8 /* PreviewDescriptionData.swift in Sources */,
-				FD2D4DA9278D3C55002084B9 /* PlanDetailMapContainerTVC.swift in Sources */,
 				FD09DE1127857A5C006DA050 /* pressAction.swift in Sources */,
 				FDC47E0D2789742800A152E8 /* TravelSpotDetailTVC.swift in Sources */,
 				FD09DE0B27857995006DA050 /* calculatePastTime.swift in Sources */,
@@ -1522,12 +1570,14 @@
 				FDF981082788D4CF0009A14E /* PlanPreviewSummaryTVC.swift in Sources */,
 				FDF980D62786D5320009A14E /* makePayBoocFont.swift in Sources */,
 				FD3566532792AF2C0082B4CE /* ScrapEmptyContainerView.swift in Sources */,
+				FD1A78232795C69000FB10AB /* MyPlanSerivice.swift in Sources */,
 				FD2D4DBD278D3FA5002084B9 /* PlanDetailDayCVC.swift in Sources */,
 				FD3566552792AFCD0082B4CE /* PlanDetailSelectDayView.swift in Sources */,
 				FD35664B2792AF2C0082B4CE /* ScrapVC.swift in Sources */,
 				FD09DDF3278577F4006DA050 /* BaseAPI.swift in Sources */,
 				FD35664F2792AF2C0082B4CE /* ScrapContainerCVC.swift in Sources */,
 				FDF981062788D4C00009A14E /* PlanPreviewPhotoTVC.swift in Sources */,
+				FD1A78262795DA7100FB10AB /* showNetworkErr + UIViewController.swift in Sources */,
 				FD09DE1E27857CDC006DA050 /* HomeVC.swift in Sources */,
 				FD61AFDC2791DC6E00D39F47 /* UINavigation + Extension.swift in Sources */,
 				FD20C623278EF11000AC6E34 /* MyPlanWithdrawVC.swift in Sources */,
@@ -1543,6 +1593,7 @@
 				52E26A8D278C17A800D84F0C /* TravelSpotFilterVC.swift in Sources */,
 				FD2D4DCC278D8636002084B9 /* drawDashedLine + UIView.swift in Sources */,
 				F273216F278BEB7700A9B0CC /* MainCardCarouselLayout.swift in Sources */,
+				FD2D9C5C2797DC4B00688A42 /* PlanDetailMapContainerView.swift in Sources */,
 				FD09DE092785797B006DA050 /* addToolBar.swift in Sources */,
 				FD09DDF527857809006DA050 /* Config.swift in Sources */,
 				523C70AA2795EC770073371D /* TravelSpotDetailService.swift in Sources */,
@@ -1552,6 +1603,7 @@
 				F261EC7C27873D3C00AF094F /* MainCardData.swift in Sources */,
 				F294EC28278EBC2C001069F8 /* LoginVC + KakaoLogin.swift in Sources */,
 				FD09DE0D278579CC006DA050 /* showNetworkAlert.swift in Sources */,
+				FD2D9C542796ABDD00688A42 /* PlanDetailDataGettable.swift in Sources */,
 				FD09DDF927857858006DA050 /* UICollectionViewRegisterable.swift in Sources */,
 				FD35664D2792AF2C0082B4CE /* ScrapContainerView.swift in Sources */,
 				FD09DE032785794B006DA050 /* makeVibrate.swift in Sources */,
@@ -1706,7 +1758,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = BeMyPlan/BeMyPlan.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = L9D5M5DM3Y;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1745,7 +1797,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = BeMyPlan/BeMyPlan.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = L9D5M5DM3Y;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

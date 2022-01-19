@@ -8,9 +8,20 @@
 import Foundation
 
 extension MyPlanData{
-  struct BuyList{
-    var imageURL : String
-    var title : String
-    var id : Int
+
+  // MARK: - Datum
+  struct BuyListDataGettable: Codable {
+      let id: Int
+      let thumbnailURL: String
+      let title, nickname: String
+    
+      enum CodingKeys: String, CodingKey {
+          case id
+          case thumbnailURL = "thumbnail_url"
+          case title, nickname
+      }
   }
+
 }
+
+

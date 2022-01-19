@@ -81,6 +81,12 @@ extension ScrapContainerView: UICollectionViewDataSource {
   }
 }
 
+extension ScrapContainerView: UICollectionViewDelegate{
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .movePlanPreview), object: scrapDataList[indexPath.row].id)
+  }
+}
+
 extension ScrapContainerView: UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     let cellHeight = screenWidth * (206/375)

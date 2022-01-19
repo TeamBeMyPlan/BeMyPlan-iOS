@@ -99,6 +99,7 @@
                     <navigationItem key="navigationItem" id="3x0-w8-YN8"/>
                     <connections>
                         <outlet property="tabContainerLeading" destination="TIf-xI-7gB" id="Amm-cO-iD6"/>
+                        <outlet property="tabbarStackContainerView" destination="Fqv-1C-8hh" id="GsP-60-5fj"/>
                         <outletCollection property="containerViewList" destination="FJj-JO-twN" collectionClass="NSMutableArray" id="MZv-XT-ybt"/>
                         <outletCollection property="containerViewList" destination="SM3-Io-J2x" collectionClass="NSMutableArray" id="hgo-qe-huT"/>
                         <outletCollection property="containerViewList" destination="k1x-E4-kVN" collectionClass="NSMutableArray" id="NSe-EM-Ihy"/>

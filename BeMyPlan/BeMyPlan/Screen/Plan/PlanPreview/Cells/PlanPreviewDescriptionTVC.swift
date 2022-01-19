@@ -32,7 +32,6 @@ class PlanPreviewDescriptionTVC: UITableViewCell {
   // MARK: - Custom Method Part
   
   private func setUI(){
-    
     descriptionTextView.backgroundColor = .grey06
     descriptionTextView.layer.cornerRadius = 5
     descriptionTextView.textContainerInset = UIEdgeInsets(top: 18, left: 16, bottom: 18, right: 16)

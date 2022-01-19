@@ -24,6 +24,10 @@ enum BaseAPI{
   
   // MARK: - 지훈
   case getBuyList(userID: Int)
+  case deleteUserWithdraw
+  case getPlanPreviewHeaderData(idx : Int)
+  case getPlanPreviewData(idx : Int)
+  case getPlanDetailData(idx : Int)
 }
 
 extension BaseAPI: TargetType {
@@ -44,18 +48,32 @@ extension BaseAPI: TargetType {
   public var baseURL: URL {
     var base = Config.Network.baseURL
     switch self{
-    case .sampleAPI:
-      base += ""
-      
-
+      case .sampleAPI:
+        base += ""
+        
     case .getPopularTravelList, .getNewTravelList, .getSuggestTravelList:
       base += "/post"
       
-    case .getTravelSpotList:
-      base += "/area"
+        
+      case .getTravelSpotList:
+        base += "/area"
+
+      case .getBuyList:
+        base += "/order"
+        
+      case .deleteUserWithdraw:
+        base += "/auth"
+        
+      case .getPlanPreviewHeaderData,
+          .getPlanPreviewData
+        , .getPlanDetailData:
+        base += "/post"
+        
+        
+
       
-    case .getBuyList:
-      base += "/order"
+
+
       
     case .getTravelSpotDetailList:
       base += "/area"
@@ -95,6 +113,12 @@ extension BaseAPI: TargetType {
         return "/popular"
       case .getBuyList(let userID):
         return "/\(userID)"
+      case .deleteUserWithdraw:
+        return "/withdraw"
+      case .getPlanPreviewHeaderData(let idx):
+        return "/\(idx)/preview/tag"
+      case .getPlanPreviewData(let idx):
+        return "/\(idx)/preview"
       case .getTravelSpotDetailList(let area,_,_):
         return "/\(area)"
       
@@ -108,6 +132,10 @@ extension BaseAPI: TargetType {
       return "/new"
     case .getSuggestTravelList:
       return "/suggest"
+    case .getBuyList(let userID):
+      return "/\(userID)"
+      case .getPlanDetailData(let idx):
+        return "/\(idx)"
     default :
       return ""
     }
@@ -121,10 +149,11 @@ extension BaseAPI: TargetType {
     switch self{
       case .sampleAPI:
         return .post
-
+      case .deleteUserWithdraw:
+        return .delete
       default :
         return .get
-      
+
     }
   }
   

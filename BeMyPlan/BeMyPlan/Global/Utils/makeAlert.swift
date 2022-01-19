@@ -24,7 +24,7 @@ import UIKit
 
 extension UIViewController
 {
-  func makeAlert(alertCase : CustomAlertCase,
+  func makeAlert(alertCase : CustomAlertCase = .simpleAlert,
       title : String? = nil,
                    content : String,
                    okAction : (() -> Void)? = nil)

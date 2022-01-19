@@ -6,17 +6,13 @@
 //
 
 import UIKit
+import AVFoundation
 
 class MyPlanVC: UIViewController {
   
   // MARK: - Vars & Lets Part
   
-  var buyContentList : [MyPlanData.BuyList] = [
-    //    MyPlanData.BuyList.init(imageURL: "", title: "워케이션을 위한 카페투어asdfasdfsadfasfasdfsdafsadfsad", id: 0),
-    //    MyPlanData.BuyList.init(imageURL: "", title: "27년 제주 토박이의 히든 플레이스 투어 ", id: 0),
-    //    MyPlanData.BuyList.init(imageURL: "", title: "안녕안녕안녕 워케이션을 위한 카페투어 ", id: 0),
-    //    MyPlanData.BuyList.init(imageURL: "", title: "푸드파이터들을 위한 찐먹킷리스트 투어", id: 0)
-  ]{
+  var buyContentList : [MyPlanData.BuyListDataGettable] = []{
     didSet{
       mainContentCV.reloadData()
       setEmptyView()
@@ -43,6 +39,7 @@ class MyPlanVC: UIViewController {
   
   override func viewDidLayoutSubviews() {
     setEmptyView()
+    fetchBuyList()
   }
   
   // MARK: - Custom Method Part
@@ -50,6 +47,18 @@ class MyPlanVC: UIViewController {
   private func setButtonAction(){
     settingButton.press {
       NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .moveSettingView), object: nil)
+    }
+  }
+  
+  private func fetchBuyList(){
+    BaseService.default.getOrderList(userID: 1) { result in
+      result.success { [weak self] data in
+        if let buyList = data{
+          self?.buyContentList = buyList
+        }
+      }.catch { error in
+        dump(error)
+      }
     }
   }
   
@@ -85,7 +94,7 @@ extension MyPlanVC : UICollectionViewDataSource{
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let contentCell = collectionView.dequeueReusableCell(withReuseIdentifier: MyPlanBuyContentCVC.className
                                                                , for: indexPath) as? MyPlanBuyContentCVC else {return UICollectionViewCell() }
-    contentCell.setContentata(title: buyContentList[indexPath.row].title, imageURL: buyContentList[indexPath.row].imageURL)
+    contentCell.setContentata(title: buyContentList[indexPath.row].title, imageURL: buyContentList[indexPath.row].thumbnailURL)
     return contentCell
   }
   

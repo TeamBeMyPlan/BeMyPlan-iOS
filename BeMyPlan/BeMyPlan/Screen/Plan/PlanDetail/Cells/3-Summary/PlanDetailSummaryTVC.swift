@@ -9,6 +9,9 @@ import UIKit
 
 class PlanDetailSummaryTVC: UITableViewCell,UITableViewRegisterable{
   
+  var summaryList : [PlanDetail.Summary] = []
+  var currentDay : Int = 1
+  
   static var isFromNib: Bool = true
   private var isFold : Bool = true{
     didSet{
@@ -21,8 +24,9 @@ class PlanDetailSummaryTVC: UITableViewCell,UITableViewRegisterable{
       last : CGFloat = 0,
       additional : CGFloat = 0
   
-  var locationList : [PlanDetailData.Summary] = []{
+  var locationList : [PlanDetail.Summary] = []{
     didSet{
+      print("LOCATIONLISTADD",locationList)
       calculateSummaryHeight()
       listTV.reloadData()
     }
@@ -47,36 +51,12 @@ class PlanDetailSummaryTVC: UITableViewCell,UITableViewRegisterable{
   override func awakeFromNib() {
     super.awakeFromNib()
     registerCells()
-    addDummyData()
   }
   
   override func setSelected(_ selected: Bool, animated: Bool) {
     super.setSelected(selected, animated: animated)
   }
   
-  private func addDummyData(){
-    locationList = [
-      PlanDetailData.Summary(transportCase: .walk,
-                             locationName: "1번 장소",
-                             time: "20"),
-      
-      PlanDetailData.Summary(transportCase: .car,
-                             locationName: "2번 장소",
-                             time: "50"),
-      
-      PlanDetailData.Summary(transportCase: .bus,
-                             locationName: "3번 장소",
-                             time: "100"),
-      
-      PlanDetailData.Summary(transportCase: .walk,
-                             locationName: "4번 장소",
-                             time: "80"),
-      
-      PlanDetailData.Summary(transportCase: nil,
-                             locationName: "5번 장소",
-                             time: nil),
-    ]
-  }
   
   private func calculateSummaryHeight(){
     var totalHeight : CGFloat = 0
@@ -158,7 +138,9 @@ extension PlanDetailSummaryTVC : UITableViewDataSource{
     
     guard let routeCell = tableView.dequeueReusableCell(withIdentifier: PlanDetailSummaryRouteTVC.className, for: indexPath) as? PlanDetailSummaryRouteTVC else {return UITableViewCell() }
   
-    if indexPath.row == 0{
+    if indexPath.row == 0 && locationList.count == 1{
+      order = .onlyOne
+    }else if indexPath.row == 0{
       order = .first
     }else if indexPath.row == locationList.count - 1{
       order = .final
@@ -168,8 +150,9 @@ extension PlanDetailSummaryTVC : UITableViewDataSource{
     
     routeCell.setLocationData(order: order,
                               locationName: locationList[indexPath.row].locationName,
-                              transportCase: locationList[indexPath.row].transportCase,
-                              time: locationList[indexPath.row].time)
+                              transportCase:  (locationList.count == indexPath.row + 1) ? nil : locationList[indexPath.row].transportCase,
+                              time: (locationList.count == indexPath.row + 1) ? "" : locationList[indexPath.row].time)
+                              
     if locationList.count <= 5{
       return routeCell
     }else{
