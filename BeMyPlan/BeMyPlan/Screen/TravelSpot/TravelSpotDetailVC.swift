@@ -13,11 +13,11 @@ import AVFoundation
 class TravelSpotDetailVC: UIViewController {
   
   // MARK: - Vars & Lets Part
-  var travelSpotDetailDataList: [TravelSpotDetailData] = []
-  var areaNum: Int = 2
-  
-  
-  
+  private var travelSpotDetailDataList: [TravelSpotDetailData] = []
+  private var areaNum: Int = 2
+  private var pageNum: Int = 0
+  private var totalPage: Int = 0
+
   
   // MARK: - UI Component Part
   @IBOutlet var contentTableView: UITableView!
@@ -28,13 +28,13 @@ class TravelSpotDetailVC: UIViewController {
     getAreaData()
     regiterXib()
     setTableViewDelegate()
-    fetchTravelSpotDetailItemList()
+    fetchTravelSpotDetailItemList(refresh: false)
     setUIs()
     initRefresh()
   }
   
-  // MARK: - Set Function Part
   
+  // MARK: - Set Function Part
   private func getAreaData() {
     guard let vc = storyboard?.instantiateViewController(identifier: TravelSpotVC.className) as? TravelSpotVC else { return }
     vc.completionHandler = { area in
@@ -68,17 +68,16 @@ class TravelSpotDetailVC: UIViewController {
     contentTableView.separatorStyle = .none
   }
   
-  private func fetchTravelSpotDetailItemList() {
-    BaseService.default.getTravelSpotDetailList(area: areaNum, page: 0, sort: "created_at") { result in
-      print("---> area \(self.areaNum)")
-      dump("---> 리절트 \(result)")
-      
+  private func fetchTravelSpotDetailItemList(refresh: Bool) {
+    BaseService.default.getTravelSpotDetailList(area: areaNum, page: pageNum, sort: "created_at") { result in
       result.success { data in
-        self.travelSpotDetailDataList = []
-        
         if let testedData = data {
-          self.travelSpotDetailDataList = testedData.items
-          dump("---> testedData \(String(describing: testedData))")
+          if refresh == false {
+            self.totalPage = testedData.totalPage - 1
+            self.travelSpotDetailDataList.append(testedData.items[0])
+          } else {
+            self.travelSpotDetailDataList = testedData.items
+          }
         }
         self.contentTableView.reloadData()
       }.catch { error in
@@ -102,17 +101,15 @@ class TravelSpotDetailVC: UIViewController {
   }
   
   
-  
-  
   // MARK: - @objc Function Part
   @objc func updateUI(refresh: UIRefreshControl) {
     DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
-      self.fetchTravelSpotDetailItemList()
+      self.fetchTravelSpotDetailItemList(refresh: true)
       self.contentTableView.reloadData()
       refresh.endRefreshing() // 리프레쉬 종료
     }
   }
-
+  
 }
 
 // MARK: - Extension Part
@@ -126,7 +123,6 @@ extension TravelSpotDetailVC: UITableViewDataSource {
       return UITableViewCell()
     }
     cell.selectionStyle = .none
-    
     cell.nickNameLabel.text = "\(travelSpotDetailDataList[indexPath.row].id)"
     cell.titleTextView.text = "\(travelSpotDetailDataList[indexPath.row].title)"
     cell.contentImage.setImage(with: "\(travelSpotDetailDataList[indexPath.row].thumbnailURL)")
@@ -156,5 +152,21 @@ extension TravelSpotDetailVC: UICollectionViewDelegateFlowLayout {
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
     return 38
+  }
+}
+
+
+extension TravelSpotDetailVC {
+  
+  func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    let height = scrollView.frame.size.height
+    let contentYoffset = scrollView.contentOffset.y
+    let distanceFromBottom = scrollView.contentSize.height - contentYoffset
+    if distanceFromBottom < height {
+      if pageNum < totalPage {
+        pageNum += 1
+        fetchTravelSpotDetailItemList(refresh: false)
+      }
+    }
   }
 }
