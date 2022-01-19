@@ -27,11 +27,13 @@ class TravelSpotDetailVC: UIViewController {
   var currentPageIndex = 1
   var areaId = 1
   var userId = 2
-  var type : TravelSpotDetailType = .new
+  var type : TravelSpotDetailType = .nickname
   
   
   // MARK: - UI Component Part
   @IBOutlet var contentTableView: UITableView!
+  
+  @IBOutlet var headerLabel: UILabel!
   
   // MARK: - Life Cycle Part
   override func viewDidLoad() {
