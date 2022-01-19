@@ -9,10 +9,6 @@ import UIKit
 
 class HomeVC: UIViewController, UIGestureRecognizerDelegate {
   
-  // MARK: - Vars & Lets Part
-  var newList: [HomeListDataGettable] = []
-  var suggestList: [HomeListDataGettable] = []
-  
   // MARK: - UI Component Part
   //  let a = MainCardView()
   @IBOutlet var naviView: UIView!

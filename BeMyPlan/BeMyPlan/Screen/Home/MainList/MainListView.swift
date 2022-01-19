@@ -24,7 +24,8 @@ class MainListView: UIView {
   
   var type : MainListViewType = .recently {
     didSet {
-      setTitle()
+//      setTitle()
+      type == .recently ? getRecentlyListData() : getSuggestListData()
     }
   }
   private var currentIndex : CGFloat = 0
@@ -110,45 +111,32 @@ class MainListView: UIView {
   
   
   //mainListDataList 에 넣기
-  private func getListData(){
+  private func getRecentlyListData(){
     BaseService.default.getNewTravelList(page: Int) { result in
-      result.success { list in
-        self.newList = []
-        
-        if let new = list {
-          
-          self.newList = new
+        result.success { [weak self] list in
+          self?.mainListDataList.removeAll()
+          if let list = list {
+            self?.mainListDataList = list
+          }
+        }.catch{ error in
+          dump(error)
         }
-        
-        self.mainListView.mainListDataList = self.newList
-        
-        print("New List", self.newList)
-        self.mainListView.mainListCV.reloadData()
-        
-      }.catch{ error in
-        dump(error)
       }
     }
+
     
-    BaseService.default.getSuggestTravelList(page: Int) { result  in
-      result.success { list in
-        self.suggestList = []
-        
-        if let suggest = list {
-          
-          self.suggestList = suggest
+  private func getSuggestListData(){
+      BaseService.default.getSuggestTravelList(page: Int) { result in
+        result.success { [weak self] list in
+          self?.mainListDataList.removeAll()
+          if let list = list {
+            self?.mainListDataList = list
+          }
+        }.catch{ error in
+          dump(error)
         }
-        
-        self.mainEditorListView.mainListDataList = self.suggestList
-        
-        print("Suggest List", self.suggestList)
-        self.mainEditorListView.mainListCV.reloadData()
-        
-      }.catch{ error in
-        dump(error)
       }
     }
-  }
   
 }
 
