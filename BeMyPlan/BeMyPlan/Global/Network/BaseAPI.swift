@@ -122,10 +122,10 @@ extension BaseAPI: TargetType {
         return "/\(idx)/preview/tag"
       case .getPlanPreviewData(let idx):
         return "/\(idx)/preview"
-    case .getTravelSpotDetailList(let areaID):
+    case .getTravelSpotDetailList(let areaID,_,_,_):
       return "/\(areaID)"
       
-    case .getNicknameDetailList(let userID):
+    case .getNicknameDetailList(let userID,_,_,_):
       return "/\(userID)/post"
       
       //      case .getRecentTripList(let page, _):
@@ -182,8 +182,10 @@ extension BaseAPI: TargetType {
       params["email"] = email
       params["password"] = "여기에 필요한 Value값 넣기"
       
-    case .getTravelSpotDetailList(let area, let page,_, let sort):
-      params["area_id"] = area
+    case .getTravelSpotDetailList(_, let page,_, let sort):
+      print("------TravelSpotBase------")
+      print(page, sort)
+      print("------------")
       params["page"] = page
       params["pageSize"] = 5
       params["sort"] = sort

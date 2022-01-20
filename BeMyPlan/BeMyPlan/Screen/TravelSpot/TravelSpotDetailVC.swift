@@ -118,6 +118,7 @@ class TravelSpotDetailVC: UIViewController {
         self?.contentTableView.reloadData()
         
       }.catch{ error in
+        print("travelspot err")
         dump(error)
       }
     }

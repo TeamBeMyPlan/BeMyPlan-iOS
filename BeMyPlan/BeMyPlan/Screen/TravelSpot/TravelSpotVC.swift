@@ -105,7 +105,7 @@ extension TravelSpotVC: UICollectionViewDelegate {
     _ = completionHandler?(indexPath.row)
 //    self.navigationController?.popViewController(animated: true)
     
-    NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .movePlanList), object: nil)
+    NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .movePlanList), object: travelSpotDataList[indexPath.row].id)
   }
 }
 

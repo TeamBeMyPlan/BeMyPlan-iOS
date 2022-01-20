@@ -169,7 +169,8 @@ extension MainCardView: SkeletonCollectionViewDataSource {
     
     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainCardCVC.className, for: indexPath) as? MainCardCVC else {return UICollectionViewCell()}
     cell.layer.cornerRadius = 5
-    cell.layer.masksToBounds = true
+    cell.layer.masksToBounds = false
+    cell.clipsToBounds = false
     cell.setData(appData: popularList[indexPath.row])
     return cell
   }

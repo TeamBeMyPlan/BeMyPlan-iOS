@@ -46,6 +46,7 @@ class TravelSpotDetailTVC: UITableViewCell {
     titleTextView.textContainerInset = .zero
     titleTextView.textContainer.lineFragmentPadding = .zero
     titleTextView.textContainer.lineBreakMode = .byTruncatingTail
+    contentImage.layer.cornerRadius = 5
     
     contentImage.contentMode = .scaleAspectFill
   }
