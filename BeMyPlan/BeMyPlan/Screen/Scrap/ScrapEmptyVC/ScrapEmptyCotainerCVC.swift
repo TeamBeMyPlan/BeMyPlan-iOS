@@ -8,6 +8,7 @@
 import UIKit
 
 class ScrapEmptyCotainerCVC: UICollectionViewCell,UICollectionViewRegisterable {
+  @IBOutlet var contentImage: UIImageView!
   static var isFromNib: Bool = true
   @IBOutlet var titleLabel: UILabel! {
     didSet {
@@ -18,10 +19,12 @@ class ScrapEmptyCotainerCVC: UICollectionViewCell,UICollectionViewRegisterable {
   
   override func awakeFromNib() {
     super.awakeFromNib()
-    setUIs()
   }
   
-  private func setUIs() {
+  public func setData(data: ScrapDataGettable) {
+    contentImage.setImage(with: data.thumbnailURL)
+    titleLabel.text = data.title
   }
+
   
 }
