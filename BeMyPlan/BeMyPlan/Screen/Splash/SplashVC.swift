@@ -11,7 +11,7 @@ class SplashVC: UIViewController {
   
   // MARK: - Vars & Lets Part
   
-  var isLoginComplete = false
+  var isLoginComplete = true
   
   // MARK: - UI Component Part
   @IBOutlet var splashIconNoTitle: UIImageView!

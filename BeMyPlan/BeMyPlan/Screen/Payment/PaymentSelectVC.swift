@@ -13,7 +13,6 @@ class PaymentSelectVC: UIViewController {
   
   private var selectedIndex : Int = -1{
     didSet{
-      
       if selectedIndex == -1{
         paymentButton.tintColor = .grey04
       }else{
