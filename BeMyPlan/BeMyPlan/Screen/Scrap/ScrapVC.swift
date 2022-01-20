@@ -14,7 +14,7 @@ class ScrapVC: UIViewController {
   @IBOutlet var scrapEmptyView: ScrapEmptyContainerView!
   
   // MARK: - Vars & Lets Part
-  let contentData: Bool = true
+  let contentData: Bool = false
 
   // MARK: - UI Component Part
   

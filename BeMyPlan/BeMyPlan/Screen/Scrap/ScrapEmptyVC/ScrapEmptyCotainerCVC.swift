@@ -21,10 +21,9 @@ class ScrapEmptyCotainerCVC: UICollectionViewCell,UICollectionViewRegisterable {
     super.awakeFromNib()
   }
   
-  public func setData(data: ScrapDataGettable) {
+  public func setData(data: ScrapEmptyDataGettable) {
     contentImage.setImage(with: data.thumbnailURL)
     titleLabel.text = data.title
   }
-
   
 }
