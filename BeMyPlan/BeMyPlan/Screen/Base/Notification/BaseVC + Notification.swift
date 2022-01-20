@@ -86,8 +86,11 @@ extension BaseVC{
       self.navigationController?.pushViewController(previewVC, animated: true)
     }
     
-    addObserverAction(keyName: BaseNotiList.makeNotiName(list: .movePlanList)) { _ in
+    addObserverAction(keyName: BaseNotiList.makeNotiName(list: .movePlanList)) { noti in
       guard let spotlistVC = UIStoryboard.list(.travelSpot).instantiateViewController(withIdentifier: TravelSpotDetailVC.className) as? TravelSpotDetailVC else {return}
+      if let notiIndex = noti.object as? Int {
+        spotlistVC.areaId = notiIndex
+      }
       self.navigationController?.pushViewController(spotlistVC, animated: true)
     }
     

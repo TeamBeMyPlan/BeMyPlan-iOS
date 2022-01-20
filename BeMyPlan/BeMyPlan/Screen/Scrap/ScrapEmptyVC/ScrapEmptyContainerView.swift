@@ -9,6 +9,8 @@ import UIKit
 
 class ScrapEmptyContainerView: XibView {
   
+//  private var contentDataList:[struct type] = []
+  
   @IBOutlet var emptyImage: UIImageView!
   @IBOutlet var emptyLabel: UILabel!
   @IBOutlet var contentCV: UICollectionView!
@@ -69,6 +71,9 @@ extension ScrapEmptyContainerView: UICollectionViewDataSource {
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ScrapEmptyCotainerCVC.className, for: indexPath) as? ScrapEmptyCotainerCVC else {return UICollectionViewCell()}
+    
+    // cell.setData(data: <#T##ScrapDataGettable#>)
+    
     return cell
   }  
 }

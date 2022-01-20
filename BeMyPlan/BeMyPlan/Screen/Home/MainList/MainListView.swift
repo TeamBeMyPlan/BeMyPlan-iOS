@@ -31,7 +31,7 @@ class MainListView: UIView {
   }
   
   private var currentIndex : CGFloat = 0
-  private var listIndex = 1
+  private var listIndex = 0
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -100,7 +100,7 @@ class MainListView: UIView {
     layout.minimumInteritemSpacing = 12
     
     layout.scrollDirection = .horizontal
-    mainListCV.contentInset = UIEdgeInsets(top: 0, left: insetX, bottom: 0, right: insetX)
+    mainListCV.contentInset = UIEdgeInsets(top: 0, left: insetX, bottom: 0, right: insetX + CGFloat(cellWidth))
     mainListCV.decelerationRate = .fast
     
   }
@@ -119,13 +119,19 @@ class MainListView: UIView {
     BaseService.default.getNewTravelList(page: listIndex) { result in
       result.success { [weak self] list in
         self?.mainListDataList.removeAll()
+        
+
         if let list = list {
-          self?.mainListDataList = list
+          print("recently 출력 확인해보자############################2")
+          print(list.items)
+          self?.mainListDataList = list.items
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
           self?.mainListCV.reloadData()
           self?.mainListCV.hideSkeleton( transition: .crossDissolve(1))
         }
+        print("--------------Recently------------------")
+        print(self?.mainListDataList)
       }.catch{ error in
         NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .showNetworkError), object: nil)
       }
@@ -145,12 +151,17 @@ class MainListView: UIView {
       result.success { [weak self] list in
         self?.mainListDataList.removeAll()
         if let list = list {
-          self?.mainListDataList = list
+          print("Suggest 출력 확인해보자############################2")
+          print(list.items)
+          self?.mainListDataList = list.items
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
           self?.mainListCV.reloadData()
           self?.mainListCV.hideSkeleton( transition: .crossDissolve(1))
         }
+        print("--------------Suggest------------------")
+        print(self?.mainListDataList)
+
       }.catch{ error in
         NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .showNetworkError), object: nil)
       
