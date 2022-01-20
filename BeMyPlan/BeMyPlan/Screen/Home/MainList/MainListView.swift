@@ -126,7 +126,7 @@ class MainListView: UIView {
           print(list.items)
           self?.mainListDataList = list.items
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
           self?.mainListCV.reloadData()
           self?.mainListCV.hideSkeleton( transition: .crossDissolve(1))
         }
@@ -155,7 +155,7 @@ class MainListView: UIView {
           print(list.items)
           self?.mainListDataList = list.items
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
           self?.mainListCV.reloadData()
           self?.mainListCV.hideSkeleton( transition: .crossDissolve(1))
         }
@@ -175,7 +175,7 @@ class MainListView: UIView {
 
 extension MainListView : SkeletonCollectionViewDelegate{
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .movePlanPreview), object: nil)
+    NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .movePlanPreview), object: mainListDataList[indexPath.row].id)
   }
 }
 

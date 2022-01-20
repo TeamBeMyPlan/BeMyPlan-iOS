@@ -37,6 +37,15 @@ class PlanDetailSummaryRouteTVC: UITableViewCell,UITableViewRegisterable {
                        locationName : String,
                        transportCase : TransportCase?,
                        time : String?){
+    removeDashedLine()
+    
+    if order == .final || order == .onlyOne{
+      transportTimeLabel.isHidden = true
+      transportIconView.isHidden = true
+    }else{
+      transportTimeLabel.isHidden = false
+      transportIconView.isHidden = false
+    }
     switch(transportCase){
       case .walk:
         transportIconView.image = ImageLiterals.PlanDetail.walkIcon
@@ -95,7 +104,6 @@ class PlanDetailSummaryRouteTVC: UITableViewCell,UITableViewRegisterable {
         endPoint = CGPoint.zero
         
     }
-    print("dotPoint",startPoint,endPoint)
     
     makeDashedLine(from: startPoint,
                                  to: endPoint,

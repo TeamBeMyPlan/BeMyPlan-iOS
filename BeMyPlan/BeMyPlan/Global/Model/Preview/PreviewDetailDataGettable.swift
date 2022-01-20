@@ -9,11 +9,13 @@ import Foundation
 
 extension PlanPreview{
   struct DetailDataGettable: Codable {
-      let photoURL, description: String
-    
+      let datumDescription: String
+      let photoUrls: [String]
+
       enum CodingKeys: String, CodingKey {
-          case photoURL = "photo_url"
-          case description = "description"
+          case datumDescription = "description"
+          case photoUrls = "photo_urls"
       }
   }
+
 }

@@ -23,7 +23,7 @@
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="난드르바당" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iun-j9-fNS">
                     <rect key="frame" x="7" y="7" width="52" height="12"/>
                     <constraints>
-                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="92" id="FFO-bD-irs"/>
+                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="120" id="FFO-bD-irs"/>
                         <constraint firstAttribute="height" constant="12" id="jqJ-Or-gCU"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>

@@ -241,7 +241,7 @@ extension BaseAPI: TargetType {
       return .requestParameters(parameters: bodyParameters ?? [:], encoding: parameterEncoding)
     default:
       return .requestPlain
-      
+ 
     }
   }
   
