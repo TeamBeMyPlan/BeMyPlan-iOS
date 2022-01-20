@@ -11,6 +11,7 @@ class PaymentSelectVC: UIViewController {
   
   // MARK: - Vars & Lets Part
   
+  var postIdx = 0
   private var selectedIndex : Int = -1{
     didSet{
       if selectedIndex == -1{
@@ -103,6 +104,7 @@ extension PaymentSelectVC : PaymentCompleteDelegate{
   func completeButtonClicked() {
     guard let planDetailVC =
             UIStoryboard.list(.planDetail).instantiateViewController(withIdentifier: PlanDetailVC.className) as? PlanDetailVC else {return}
+    planDetailVC.postIdx = postIdx
     self.navigationController?.pushViewController(planDetailVC, animated: true)
   }
 }

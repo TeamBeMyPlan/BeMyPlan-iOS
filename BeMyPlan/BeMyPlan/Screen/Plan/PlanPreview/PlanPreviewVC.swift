@@ -79,6 +79,7 @@ class PlanPreviewVC: UIViewController {
     }
     buyButton.press {
       guard let paymentVC = UIStoryboard.list(.payment).instantiateViewController(withIdentifier: PaymentSelectVC.className) as? PaymentSelectVC else {return}
+      paymentVC.postIdx = self.idx
       if let price = self.priceLabel.text{
         paymentVC.price = price
       }

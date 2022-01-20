@@ -60,6 +60,7 @@ class PlanDetailSelectDayView: XibView{
   }
   
   private func addObserver(){
+
     addObserverAction(keyName: NSNotification.Name.init(rawValue: "detailFoldComplete")) { noti in
       if let result = noti.object as? Bool{
         self.setFoldImage(isFolded: result)

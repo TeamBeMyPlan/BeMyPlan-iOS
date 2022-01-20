@@ -155,9 +155,12 @@ extension PlanDetailVC : UITableViewDelegate{
 extension PlanDetailVC : UITableViewDataSource{
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return !infoList.isEmpty ? infoList.count + 1 : 0
+    if infoList.count == 0{
+      return 0
+    }else{
+      return infoList[currentDay - 1].count + 1
+    }
   }
-
   
   func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
     return 98
