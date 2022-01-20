@@ -186,6 +186,9 @@
 		FDC47E132789875800A152E8 /* makeCellInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC47E122789875800A152E8 /* makeCellInstance.swift */; };
 		FDCDCB31278F4C2B002CEA15 /* PlanDetailSpotDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCDCB30278F4C2B002CEA15 /* PlanDetailSpotDataModel.swift */; };
 		FDCE382427993E740042DC54 /* PlanDetailVC + setPreviewDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCE382327993E740042DC54 /* PlanDetailVC + setPreviewDummy.swift */; };
+		FDCE38282799BACB0042DC54 /* Indicator.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDCE38272799BACB0042DC54 /* Indicator.storyboard */; };
+		FDCE382A2799BAD80042DC54 /* IndicatorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCE38292799BAD80042DC54 /* IndicatorVC.swift */; };
+		FDCE382C2799BBC90042DC54 /* showIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCE382B2799BBC90042DC54 /* showIndicator.swift */; };
 		FDF980BC2786CE660009A14E /* paybooc_OTF_Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = FDF980BA2786CE660009A14E /* paybooc_OTF_Bold.otf */; };
 		FDF980BD2786CE660009A14E /* Spoqa_Han_Sans_Neo_Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = FDF980BB2786CE660009A14E /* Spoqa_Han_Sans_Neo_Bold.otf */; };
 		FDF980BF2786CE700009A14E /* Spoqa_Han_Sans_Neo_Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = FDF980BE2786CE700009A14E /* Spoqa_Han_Sans_Neo_Regular.otf */; };
@@ -425,6 +428,9 @@
 		FDC47E122789875800A152E8 /* makeCellInstance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = makeCellInstance.swift; sourceTree = "<group>"; };
 		FDCDCB30278F4C2B002CEA15 /* PlanDetailSpotDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDetailSpotDataModel.swift; sourceTree = "<group>"; };
 		FDCE382327993E740042DC54 /* PlanDetailVC + setPreviewDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanDetailVC + setPreviewDummy.swift"; sourceTree = "<group>"; };
+		FDCE38272799BACB0042DC54 /* Indicator.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Indicator.storyboard; sourceTree = "<group>"; };
+		FDCE38292799BAD80042DC54 /* IndicatorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorVC.swift; sourceTree = "<group>"; };
+		FDCE382B2799BBC90042DC54 /* showIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = showIndicator.swift; sourceTree = "<group>"; };
 		FDF980BA2786CE660009A14E /* paybooc_OTF_Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = paybooc_OTF_Bold.otf; sourceTree = "<group>"; };
 		FDF980BB2786CE660009A14E /* Spoqa_Han_Sans_Neo_Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Spoqa_Han_Sans_Neo_Bold.otf; sourceTree = "<group>"; };
 		FDF980BE2786CE700009A14E /* Spoqa_Han_Sans_Neo_Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Spoqa_Han_Sans_Neo_Regular.otf; sourceTree = "<group>"; };
@@ -917,6 +923,7 @@
 		FD2D4DBF278D579A002084B9 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				FDCE38262799BABF0042DC54 /* Indicator */,
 				FD20C624278EF6A200AC6E34 /* Button */,
 				FD2D4DC0278D57A5002084B9 /* ProgressBar.xib */,
 				FD2D4DC2278D57B7002084B9 /* ProgressBar.swift */,
@@ -1191,6 +1198,16 @@
 			path = Preview;
 			sourceTree = "<group>";
 		};
+		FDCE38262799BABF0042DC54 /* Indicator */ = {
+			isa = PBXGroup;
+			children = (
+				FDCE38272799BACB0042DC54 /* Indicator.storyboard */,
+				FDCE38292799BAD80042DC54 /* IndicatorVC.swift */,
+				FDCE382B2799BBC90042DC54 /* showIndicator.swift */,
+			);
+			path = Indicator;
+			sourceTree = "<group>";
+		};
 		FDF980B92786CE1A0009A14E /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -1385,6 +1402,7 @@
 				FD09DDE427856A31006DA050 /* info_box_tail.png in Resources */,
 				FD1C568C2792DA7300EEDFCE /* Assets.xcassets in Resources */,
 				FD2D4DBA278D3DCE002084B9 /* PlanDetailInformationTVC.xib in Resources */,
+				FDCE38282799BACB0042DC54 /* Indicator.storyboard in Resources */,
 				FD4C86B8278C7A7200D37A2D /* Payment.storyboard in Resources */,
 				FD35664E2792AF2C0082B4CE /* ScrapContainerView.xib in Resources */,
 				FD2D4DC1278D57A5002084B9 /* ProgressBar.xib in Resources */,
@@ -1508,6 +1526,7 @@
 				FD2D9C6727983A4E00688A42 /* MapBallonView.swift in Sources */,
 				FDF980DE2786E6090009A14E /* addSubViewFromNib.swift in Sources */,
 				FD2D4DD1278D90DB002084B9 /* PlanDetail.swift in Sources */,
+				FDCE382A2799BAD80042DC54 /* IndicatorVC.swift in Sources */,
 				FD4C86BA278C7A8400D37A2D /* PaymentSelectVC.swift in Sources */,
 				FD3151A5278D0C880076D92E /* PlanDetailVC.swift in Sources */,
 				FD09DE2027857CF2006DA050 /* LoginVC.swift in Sources */,
@@ -1620,6 +1639,7 @@
 				F294EC28278EBC2C001069F8 /* LoginVC + KakaoLogin.swift in Sources */,
 				FD09DE0D278579CC006DA050 /* showNetworkAlert.swift in Sources */,
 				FD2D9C542796ABDD00688A42 /* PlanDetailDataGettable.swift in Sources */,
+				FDCE382C2799BBC90042DC54 /* showIndicator.swift in Sources */,
 				FD09DDF927857858006DA050 /* UICollectionViewRegisterable.swift in Sources */,
 				FD35664D2792AF2C0082B4CE /* ScrapContainerView.swift in Sources */,
 				FD09DE032785794B006DA050 /* makeVibrate.swift in Sources */,

@@ -21,6 +21,8 @@ enum BaseNotiList{
   case movePlanDetail // 구매후 뷰
   
   case showNetworkError
+  case showIndicator
+  case hideIndicator
   
   static func makeNotiName(list : BaseNotiList) -> NSNotification.Name{
     return Notification.Name(String(describing: list))
@@ -30,6 +32,18 @@ enum BaseNotiList{
 
 extension BaseVC{
   func addObservers(){
+    
+    addObserverAction(keyName: BaseNotiList.makeNotiName(list: .showIndicator)) { _ in
+      
+      guard let indicatorVC = UIStoryboard.list(.indicator).instantiateViewController(withIdentifier: IndicatorVC.className) as? IndicatorVC else {return}
+      indicatorVC.modalTransitionStyle = .crossDissolve
+      indicatorVC.modalPresentationStyle = .overCurrentContext
+      self.present(indicatorVC, animated: true, completion: nil)
+    }
+    
+    addObserverAction(keyName: BaseNotiList.makeNotiName(list: .hideIndicator)) { _ in
+      NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: "indicatorComplete"), object: nil)
+    }
     
     addObserverAction(keyName: BaseNotiList.makeNotiName(list: .showNetworkError)) { _ in
       self.makeAlert(alertCase: .simpleAlert, title: I18N.Alert.error, content: I18N.Alert.networkError)
