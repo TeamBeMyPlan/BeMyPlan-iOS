@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8uG-eS-VYR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8uG-eS-VYR">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -134,13 +134,12 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XC7-Ww-na8">
-                                        <rect key="frame" x="191.5" y="14" width="31.5" height="22"/>
+                                        <rect key="frame" x="190.5" y="16" width="33.5" height="22"/>
                                         <attributedString key="attributedText">
                                             <fragment content="제주">
                                                 <attributes>
-                                                    <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                    <font key="NSFont" metaFont="system" size="18"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    <color key="NSColor" name="grey1"/>
+                                                    <font key="NSFont" size="18" name="SpoqaHanSansNeo-Bold"/>
                                                 </attributes>
                                             </fragment>
                                         </attributedString>
@@ -148,10 +147,10 @@
                                     </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="adB-M0-sBz" firstAttribute="centerY" secondItem="DJB-u1-z67" secondAttribute="centerY" id="8Uj-qf-haI"/>
-                                    <constraint firstItem="XC7-Ww-na8" firstAttribute="centerY" secondItem="DJB-u1-z67" secondAttribute="centerY" id="FCb-qb-See"/>
-                                    <constraint firstItem="XC7-Ww-na8" firstAttribute="centerX" secondItem="DJB-u1-z67" secondAttribute="centerX" id="OTu-6c-dr0"/>
+                                    <constraint firstItem="XC7-Ww-na8" firstAttribute="centerY" secondItem="DJB-u1-z67" secondAttribute="centerY" constant="2" id="0g3-Ii-yLE"/>
+                                    <constraint firstItem="XC7-Ww-na8" firstAttribute="centerX" secondItem="DJB-u1-z67" secondAttribute="centerX" id="9CN-XK-YHr"/>
                                     <constraint firstItem="adB-M0-sBz" firstAttribute="leading" secondItem="DJB-u1-z67" secondAttribute="leading" constant="24" id="Zyt-40-J3o"/>
+                                    <constraint firstItem="adB-M0-sBz" firstAttribute="centerY" secondItem="DJB-u1-z67" secondAttribute="centerY" id="uKe-es-lYh"/>
                                     <constraint firstAttribute="height" constant="50" id="ypA-rg-p3D"/>
                                 </constraints>
                             </view>

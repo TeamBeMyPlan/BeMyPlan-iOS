@@ -49,51 +49,39 @@ extension BaseAPI: TargetType {
   ///      case b -> path 는 /new" 입니다.
   ///
   public var baseURL: URL {
-    var base = Config.Network.baseURL
-    switch self{
-    case .sampleAPI:
-      base += ""
+      var base = Config.Network.baseURL
+      switch self{
+      case .sampleAPI:
+        base += ""
+        
+      case .getPopularTravelList, .getNewTravelList, .getSuggestTravelList, .getRecentTripList, .getPlanPreviewHeaderData,
+          .getPlanPreviewData, .getPlanDetailData:
+        base += "/post"
+        
+      case .getTravelSpotList:
+        base += "/area"
+        
+      case .getBuyList:
+        base += "/order"
+        
+      case .deleteUserWithdraw: //, .postSocialLogin:
+        base += "/auth"
+        
+        
+      case .getTravelSpotDetailList:
+        base += "/area"
       
-    case .getPopularTravelList, .getNewTravelList, .getSuggestTravelList:
-      base += "/post"
+      case .getNicknameDetailList, .postScrapBtn, .getScrapList:
+        base += "/scrap"
+        
+      }
       
-      
-    case .getTravelSpotList:
-      base += "/area"
-      
-    case .getBuyList:
-      base += "/order"
-      
-    case .deleteUserWithdraw:
-      base += "/auth"
-      
-    case .getPlanPreviewHeaderData,
-        .getPlanPreviewData
-      , .getPlanDetailData:
-      base += "/post"
-      
-    case .getTravelSpotDetailList:
-      base += "/area"
-      
-    case .getRecentTripList:
-      base += "/post/new"
-      
-    case .getScrapList:
-      base += "/scrap"
-      
-    case .getNicknameDetailList:
-      base += "/scrap"
-      
-    case .postScrapBtn:
-      base += "/scrap"
+      guard let url = URL(string: base) else {
+        fatalError("baseURL could not be configured")
+      }
+      return url
     }
-    
-    
-    guard let url = URL(string: base) else {
-      fatalError("baseURL could not be configured")
-    }
-    return url
-  }
+  
   
   // MARK: - Path
   /// - note :
@@ -116,7 +104,7 @@ extension BaseAPI: TargetType {
       return "/\(idx)/preview"
     case .getTravelSpotDetailList(let areaID,_,_,_):
       return "/\(areaID)"
-    case .postScrapBtn(let postId):
+    case .postScrapBtn(let postId, _):
       return "/\(postId)"
       
     case .getNicknameDetailList(let userID,_,_,_):
@@ -138,6 +126,8 @@ extension BaseAPI: TargetType {
       return ""
     }
   }
+  
+  
   
   // MARK: - Method
   /// - note :

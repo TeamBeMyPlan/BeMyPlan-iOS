@@ -21,7 +21,6 @@ func setFontTextView(text: String, lineSpacing: CGFloat, fontName: String, fontS
 
 class TravelSpotDetailTVC: UITableViewCell {
   
-  static let identifier = "TravelSpotDetailTVC"
   private var postId:Int = 1
   private var userId:Int = 1
   private var scrapBtnData: [ScrapBtnDataGettable] = []
@@ -50,7 +49,6 @@ class TravelSpotDetailTVC: UITableViewCell {
     titleTextView.textContainer.lineFragmentPadding = .zero
     titleTextView.textContainer.lineBreakMode = .byTruncatingTail
     contentImage.layer.cornerRadius = 5
-    
     contentImage.contentMode = .scaleAspectFill
   }
   
@@ -76,34 +74,19 @@ class TravelSpotDetailTVC: UITableViewCell {
     }
   }
     
-    
-    
   
   
-  
-    
-    @IBAction func scrapBtnTapped(_ sender: Any) {
-      
-      scrapBtnAPI()
-     
-      print("--->카카카카 \(self.scrapBtnData.count)")
-      
-//      self.scrapBtnData.count == 0 {
-//        print("개빡")
-//      }
-      
-      
-      /*
-       scrapBtnData == false {
-         self.scrapBtn.isSelected
-       } else {
-         
-       }
-       */
-      
-      
-      
-      //    scrapBtn.isSelected.toggle()
-    
+  @IBAction func scrapBtnTapped(_ sender: Any) {
+    scrapBtnAPI()
+    if scrapBtnData.count != 0 {
+      scrapBtn.isSelected.toggle()
+      scrapBtnData = []
+      //        if scrapBtnData[0].scrapped == true {
+      //          scrapBtn.isSelected.toggle()
+      //          scrapBtnData = []
+      //        } else {
+      //          scrapBtn.isSelected.toggle()
+      //        }
     }
+  }
 }
