@@ -51,32 +51,26 @@ extension BaseAPI: TargetType {
   public var baseURL: URL {
     var base = Config.Network.baseURL
     switch self{
-      case .sampleAPI:
-        base += ""
-        
+    case .sampleAPI:
+      base += ""
+      
     case .getPopularTravelList, .getNewTravelList, .getSuggestTravelList:
       base += "/post"
       
-        
-      case .getTravelSpotList:
-        base += "/area"
-
-      case .getBuyList:
-        base += "/order"
-        
-      case .deleteUserWithdraw:
-        base += "/auth"
-        
-      case .getPlanPreviewHeaderData,
-          .getPlanPreviewData
-        , .getPlanDetailData:
-        base += "/post"
-        
-        
-
       
-
-
+    case .getTravelSpotList:
+      base += "/area"
+      
+    case .getBuyList:
+      base += "/order"
+      
+    case .deleteUserWithdraw:
+      base += "/auth"
+      
+    case .getPlanPreviewHeaderData,
+        .getPlanPreviewData
+      , .getPlanDetailData:
+      base += "/post"
       
     case .getTravelSpotDetailList:
       base += "/area"
@@ -110,20 +104,20 @@ extension BaseAPI: TargetType {
   ///
   var path: String {
     switch self{
-      case .getPopularTravelList:
-        return "/popular"
-      case .getBuyList(let userID):
-        return "/\(userID)"
-      case .deleteUserWithdraw:
-        return "/withdraw"
-      case .getPlanPreviewHeaderData(let idx):
-        return "/\(idx)/preview/tag"
-      case .getPlanPreviewData(let idx):
-        return "/\(idx)/preview"
+    case .getPopularTravelList:
+      return "/popular"
+    case .getBuyList(let userID):
+      return "/\(userID)"
+    case .deleteUserWithdraw:
+      return "/withdraw"
+    case .getPlanPreviewHeaderData(let idx):
+      return "/\(idx)/preview/tag"
+    case .getPlanPreviewData(let idx):
+      return "/\(idx)/preview"
     case .getTravelSpotDetailList(let areaID,_,_,_):
       return "/\(areaID)"
-      case .postScrapBtn(let postId):
-        return "/\(postId)"
+    case .postScrapBtn(let postId):
+      return "/\(postId)"
       
     case .getNicknameDetailList(let userID,_,_,_):
       return "/\(userID)/post"
@@ -138,10 +132,8 @@ extension BaseAPI: TargetType {
       return "/new"
     case .getSuggestTravelList:
       return "/suggest"
-    case .getBuyList(let userID):
-      return "/\(userID)"
-      case .getPlanDetailData(let idx):
-        return "/\(idx)"
+    case .getPlanDetailData(let idx):
+      return "/\(idx)"
     default :
       return ""
     }
@@ -153,13 +145,13 @@ extension BaseAPI: TargetType {
   
   var method: Moya.Method {
     switch self{
-      case .sampleAPI, .postScrapBtn:
-        return .post
-      case .deleteUserWithdraw:
-        return .delete
-      default :
-        return .get
-
+    case .sampleAPI, .postScrapBtn:
+      return .post
+    case .deleteUserWithdraw:
+      return .delete
+    default :
+      return .get
+      
     }
   }
   
@@ -200,7 +192,7 @@ extension BaseAPI: TargetType {
       //        params["page"] = page
       //        params["pageSize"] = 5
       
-    case .getScrapList(_, let page, let pageSize, let sort):
+    case .getScrapList(_, let page, _, let sort):
       params["page"] = page
       params["pageSize"] = 5
       params["sort"] = sort
@@ -210,7 +202,7 @@ extension BaseAPI: TargetType {
     case .getSuggestTravelList(let page, let sort):
       params["page"] = page
       params["sort"] = sort
-    
+      
     case .postScrapBtn(_, let userId):
       params["userId"] = userId
       

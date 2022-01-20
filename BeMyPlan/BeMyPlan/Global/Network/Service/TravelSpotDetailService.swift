@@ -8,8 +8,6 @@
 import Foundation
 
 protocol TravelSpotDetailService {
-  func getTravelSpotDetailList(area: Int, page: Int, pageSize : Int, sort : String, completion: @escaping (Result<[HomeListDataGettable.Item]?, Error>) -> Void)
-  func getNicknameDetailList(userId: Int, page: Int, pageSize: Int, sort: String, completion: @escaping (Result<[HomeListDataGettable.Item]?, Error>) -> Void)
+  func getTravelSpotDetailList(area: Int, page: Int, pageSize : Int, sort : String, completion: @escaping (Result<HomeListDataGettable?, Error>) -> Void)
+  func getNicknameDetailList(userId: Int, page: Int, pageSize: Int, sort: String, completion: @escaping (Result<HomeListDataGettable?, Error>) -> Void)
 }
-
-
