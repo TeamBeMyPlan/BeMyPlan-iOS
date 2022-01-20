@@ -122,7 +122,6 @@ class MainListView: UIView {
         
 
         if let list = list {
-          print("recently 출력 확인해보자############################2")
           print(list.items)
           self?.mainListDataList = list.items
         }
@@ -130,8 +129,6 @@ class MainListView: UIView {
           self?.mainListCV.reloadData()
           self?.mainListCV.hideSkeleton( transition: .crossDissolve(1))
         }
-        print("--------------Recently------------------")
-        print(self?.mainListDataList)
       }.catch{ error in
         NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .showNetworkError), object: nil)
       }
@@ -151,16 +148,12 @@ class MainListView: UIView {
       result.success { [weak self] list in
         self?.mainListDataList.removeAll()
         if let list = list {
-          print("Suggest 출력 확인해보자############################2")
-          print(list.items)
           self?.mainListDataList = list.items
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
           self?.mainListCV.reloadData()
           self?.mainListCV.hideSkeleton( transition: .crossDissolve(1))
         }
-        print("--------------Suggest------------------")
-        print(self?.mainListDataList)
 
       }.catch{ error in
         NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .showNetworkError), object: nil)

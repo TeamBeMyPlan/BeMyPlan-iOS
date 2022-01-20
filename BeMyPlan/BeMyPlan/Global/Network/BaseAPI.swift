@@ -24,6 +24,7 @@ enum BaseAPI{
   case getRecentTripList(page: Int, pageSize: Int)
   case getScrapList(userId: Int, page: Int, pageSize: Int, sort: String)
   case postScrapBtn(postId: Int, userId: Int)
+  case getScrapEmptyList(userId: Int)
   
   // MARK: - 지훈
   case getBuyList(userID: Int)
@@ -49,38 +50,41 @@ extension BaseAPI: TargetType {
   ///      case b -> path 는 /new" 입니다.
   ///
   public var baseURL: URL {
-    var base = Config.Network.baseURL
-    switch self{
-    case .sampleAPI:
-      base += ""
+      var base = Config.Network.baseURL
+      switch self{
+      case .sampleAPI:
+        base += ""
+        
+      case .getPopularTravelList, .getNewTravelList, .getSuggestTravelList, .getRecentTripList, .getPlanPreviewHeaderData,
+          .getPlanPreviewData, .getPlanDetailData, .getScrapList:
+        base += "/post"
+        
+      case .getTravelSpotList:
+        base += "/area"
+        
+      case .getBuyList:
+        base += "/order"
+        
+      case .deleteUserWithdraw, .postSocialLogin:
+        base += "/auth"
+        
+        
+      case .getTravelSpotDetailList:
+        base += "/area"
       
-    case .getPopularTravelList, .getNewTravelList, .getSuggestTravelList, .getRecentTripList, .getPlanPreviewHeaderData,
-        .getPlanPreviewData, .getPlanDetailData:
-      base += "/post"
+      case .getNicknameDetailList, .postScrapBtn, .getScrapList:
+        base += "/scrap"
       
-    case .getTravelSpotList:
-      base += "/area"
+      case .getScrapEmptyList:
+        base += "/post/random"
+        
+      }
       
-    case .getBuyList:
-      base += "/order"
-      
-    case .deleteUserWithdraw, .postSocialLogin:
-      base += "/auth"
-      
-      
-    case .getTravelSpotDetailList:
-      base += "/area"
-    
-    case .getNicknameDetailList, .postScrapBtn, .getScrapList:
-      base += "/scrap"
-      
+      guard let url = URL(string: base) else {
+        fatalError("baseURL could not be configured")
+      }
+      return url
     }
-    
-    guard let url = URL(string: base) else {
-      fatalError("baseURL could not be configured")
-    }
-    return url
-  }
   
   // MARK: - Path
   /// - note :
@@ -103,10 +107,14 @@ extension BaseAPI: TargetType {
       return "/\(idx)/preview"
     case .getTravelSpotDetailList(let areaID,_,_,_):
       return "/\(areaID)"
-    case .postScrapBtn(let postId,_):
+    case .postScrapBtn(let postId, _):
       return "/\(postId)"
     case .getNicknameDetailList(let userID,_,_,_):
       return "/\(userID)/post"
+    case .getScrapEmptyList(let userId):
+      return "/\(userId)"
+    
+ 
     case .getScrapList(let userId, _, _, _):
       return "/\(userId)"
     case .getNewTravelList, .getRecentTripList:
@@ -122,6 +130,8 @@ extension BaseAPI: TargetType {
       return ""
     }
   }
+  
+  
   
   // MARK: - Method
   /// - note :

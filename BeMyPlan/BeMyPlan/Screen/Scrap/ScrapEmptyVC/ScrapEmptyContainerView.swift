@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import Moya
 
 class ScrapEmptyContainerView: XibView {
   
-//  private var contentDataList:[struct type] = []
+  private var contentDataList:[ScrapEmptyDataGettable] = []
+  private var userId: Int = 3
   
   @IBOutlet var emptyImage: UIImageView!
   @IBOutlet var emptyLabel: UILabel!
@@ -21,6 +23,7 @@ class ScrapEmptyContainerView: XibView {
   @IBOutlet var collectionViewBottom: NSLayoutConstraint!
   @IBOutlet var titleLabelLeft: NSLayoutConstraint!
   @IBOutlet var emptyImageY: NSLayoutConstraint!
+  
   override init(frame: CGRect) {
     super.init(frame: frame)
     setUIs()
@@ -33,6 +36,7 @@ class ScrapEmptyContainerView: XibView {
     setUIs()
     registerCells()
     setDelegate()
+    fetchScrapRandomList()
   }
   
   
@@ -62,17 +66,37 @@ class ScrapEmptyContainerView: XibView {
     contentCV.dataSource = self
     contentCV.delegate = self
   }
+  
+  private func fetchScrapRandomList() {
+    
+    BaseService.default.getScrapEmptyList(userId: userId) { result in
+      result.success { data in
+        self.contentDataList = []
+        if let testedData = data {
+          self.contentDataList = testedData
+          dump("@@@@ \(self.contentDataList)")
+        }
+        self.contentCV.reloadData()
+      }.catch { error in
+        print("sss")
+        dump(error)
+        if let err = error as? MoyaError {
+          dump("#### \(err)")
+        }
+      }
+    }
+  }
+  
 }
 
 extension ScrapEmptyContainerView: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 1
+    return contentDataList.count
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ScrapEmptyCotainerCVC.className, for: indexPath) as? ScrapEmptyCotainerCVC else {return UICollectionViewCell()}
-    
-    // cell.setData(data: <#T##ScrapDataGettable#>)
+    cell.setData(data: contentDataList[indexPath.row])
     
     return cell
   }  

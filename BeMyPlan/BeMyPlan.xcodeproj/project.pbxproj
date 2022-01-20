@@ -16,6 +16,8 @@
 		523C70B32796EC890073371D /* ScrapBtnDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523C70B22796EC890073371D /* ScrapBtnDataModel.swift */; };
 		523C70B52796F11C0073371D /* ScrapBtnService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523C70B42796F11C0073371D /* ScrapBtnService.swift */; };
 		523C70B8279858040073371D /* HomeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523C70B7279858040073371D /* HomeData.swift */; };
+		523C70FD2799DAA30073371D /* ScrapEmptyDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523C70FC2799DAA30073371D /* ScrapEmptyDataModel.swift */; };
+		523C70FF2799DCC10073371D /* ScrapEmptyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523C70FE2799DCC10073371D /* ScrapEmptyService.swift */; };
 		52E26A8D278C17A800D84F0C /* TravelSpotFilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E26A8C278C17A800D84F0C /* TravelSpotFilterVC.swift */; };
 		900D7EBCAEC7F2489EB6DEB6 /* Pods_BeMyPlan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C02CD8F36111E7ACDE32CE6 /* Pods_BeMyPlan.framework */; };
 		F21AFAA027919A8000A84633 /* CustomAlert.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F21AFA9F27919A8000A84633 /* CustomAlert.storyboard */; };
@@ -234,6 +236,8 @@
 		523C70B22796EC890073371D /* ScrapBtnDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapBtnDataModel.swift; sourceTree = "<group>"; };
 		523C70B42796F11C0073371D /* ScrapBtnService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapBtnService.swift; sourceTree = "<group>"; };
 		523C70B7279858040073371D /* HomeData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeData.swift; sourceTree = "<group>"; };
+		523C70FC2799DAA30073371D /* ScrapEmptyDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapEmptyDataModel.swift; sourceTree = "<group>"; };
+		523C70FE2799DCC10073371D /* ScrapEmptyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapEmptyService.swift; sourceTree = "<group>"; };
 		52B0A592278F309C00242D35 /* ScrapContainerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScrapContainerView.xib; sourceTree = "<group>"; };
 		52B0A594278F30B500242D35 /* ScrapEmptyContainerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScrapEmptyContainerView.xib; sourceTree = "<group>"; };
 		52B0A598278F32AB00242D35 /* ScrapContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapContainerView.swift; sourceTree = "<group>"; };
@@ -523,6 +527,7 @@
 			children = (
 				523C70AE27969F340073371D /* ScrapDataModel.swift */,
 				523C70B22796EC890073371D /* ScrapBtnDataModel.swift */,
+				523C70FC2799DAA30073371D /* ScrapEmptyDataModel.swift */,
 			);
 			path = Scrap;
 			sourceTree = "<group>";
@@ -727,6 +732,7 @@
 				523C70A92795EC770073371D /* TravelSpotDetailService.swift */,
 				523C70B027969FF80073371D /* ScrapService.swift */,
 				523C70B42796F11C0073371D /* ScrapBtnService.swift */,
+				523C70FE2799DCC10073371D /* ScrapEmptyService.swift */,
 				F25044092799CFEB00791AB7 /* AuthService.swift */,
 			);
 			path = Service;
@@ -1170,10 +1176,10 @@
 		FD3566462792AF2C0082B4CE /* ScrapEmptyVC */ = {
 			isa = PBXGroup;
 			children = (
-				FD3566472792AF2C0082B4CE /* ScrapEmptyCotainerCVC.swift */,
-				FD3566482792AF2C0082B4CE /* ScrapEmptyCotainerCVC.xib */,
-				FD3566492792AF2C0082B4CE /* ScrapEmptyContainerView.swift */,
 				FD35664A2792AF2C0082B4CE /* ScrapEmptyContainerView.xib */,
+				FD3566492792AF2C0082B4CE /* ScrapEmptyContainerView.swift */,
+				FD3566482792AF2C0082B4CE /* ScrapEmptyCotainerCVC.xib */,
+				FD3566472792AF2C0082B4CE /* ScrapEmptyCotainerCVC.swift */,
 			);
 			path = ScrapEmptyVC;
 			sourceTree = "<group>";
@@ -1593,6 +1599,7 @@
 				FD1C568F2795893700EEDFCE /* HomeService.swift in Sources */,
 				FD09DE1727857B5D006DA050 /* controllerFromStoryboard + UIViewController.swift in Sources */,
 				F2C5F1922786EB3300BE4036 /* MainListView.swift in Sources */,
+				523C70FD2799DAA30073371D /* ScrapEmptyDataModel.swift in Sources */,
 				523C70A52795D32E0073371D /* TravelSpotService.swift in Sources */,
 				FD4C86BE278C9AF900D37A2D /* PaymentCompleteVC.swift in Sources */,
 				FDCDCB31278F4C2B002CEA15 /* PlanDetailSpotDataModel.swift in Sources */,
@@ -1604,6 +1611,7 @@
 				FD2D4DB9278D3DCE002084B9 /* PlanDetailInformationTVC.swift in Sources */,
 				FD20C60B278EBBB500AC6E34 /* MyPlanBuyContentCVC.swift in Sources */,
 				FDF981022788D49C0009A14E /* PlanPreviewWriterTVC.swift in Sources */,
+				523C70FF2799DCC10073371D /* ScrapEmptyService.swift in Sources */,
 				FDF981042788D4AB0009A14E /* PlanPreviewDescriptionTVC.swift in Sources */,
 				FD20C615278ECBE800AC6E34 /* MyPlanEmptyBuyListView.swift in Sources */,
 				FDCE382427993E740042DC54 /* PlanDetailVC + setPreviewDummy.swift in Sources */,
