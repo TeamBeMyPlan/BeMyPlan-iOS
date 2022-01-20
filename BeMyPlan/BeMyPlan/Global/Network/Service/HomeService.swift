@@ -18,7 +18,7 @@ protocol HomeServiceType{
   func getPlanAllinOneList(area:Int?, userId: Int?,
                            page : Int, pageSize : Int,
                            sort : String,
-                           viewCase : TravelSpotDetailType,completion: @escaping (Result<[HomeListDataGettable.Item]?, Error>) -> Void)
+                           viewCase : TravelSpotDetailType,completion: @escaping (Result<HomeListDataGettable?, Error>) -> Void)
   func getPopularTravelList(completion: @escaping (Result<[HomeListDataGettable.Item]?, Error>) -> Void)
   func getNewTravelList(page: Int, completion: @escaping (Result<HomeListDataGettable?, Error>) -> Void)
   func getSuggestTravelList(page: Int, sort: String, completion: @escaping (Result<HomeListDataGettable?, Error>) -> Void)
@@ -26,14 +26,11 @@ protocol HomeServiceType{
 
 extension BaseService : HomeServiceType ,TravelSpotDetailService{
 
-  
-  
-  
   // area , userId,
   func getPlanAllinOneList(area:Int?, userId: Int?,
                            page : Int, pageSize : Int = 5,
                            sort : String,
-                           viewCase : TravelSpotDetailType,completion: @escaping (Result<[HomeListDataGettable.Item]?, Error>) -> Void) {
+                           viewCase : TravelSpotDetailType,completion: @escaping (Result<HomeListDataGettable?, Error>) -> Void) {
   
     switch(viewCase){
     case .travelspot:

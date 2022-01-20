@@ -110,8 +110,10 @@ class TravelSpotDetailVC: UIViewController {
                                             viewCase: type) { result in
       result.success { [weak self] list in
         self?.planDataList.removeAll()
+        print("TravelSpot 여기여기여기여기여기여기여기여기여기여기여기여기")
+        print(list?.items)
         if let list = list {
-          self?.planDataList = list
+          self?.planDataList = list.items
         }
         self?.contentTableView.reloadData()
         

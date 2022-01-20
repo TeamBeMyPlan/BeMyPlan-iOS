@@ -100,7 +100,7 @@ class MainListView: UIView {
     layout.minimumInteritemSpacing = 12
     
     layout.scrollDirection = .horizontal
-    mainListCV.contentInset = UIEdgeInsets(top: 0, left: insetX, bottom: 0, right: insetX)
+    mainListCV.contentInset = UIEdgeInsets(top: 0, left: insetX, bottom: 0, right: insetX + CGFloat(cellWidth))
     mainListCV.decelerationRate = .fast
     
   }
