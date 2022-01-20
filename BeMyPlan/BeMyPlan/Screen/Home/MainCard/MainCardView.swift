@@ -25,7 +25,6 @@ class MainCardView: UIView {
     setSkeletonAnimation()
     setMainCardCV()
     getCardData()
-    setDuumy()
   }
   
   required init?(coder aDecoder: NSCoder) {
@@ -36,7 +35,6 @@ class MainCardView: UIView {
     setSkeletonAnimation()
     setMainCardCV()
     getCardData()
-    setDuumy()
   }
   
   // MARK: - UI Component Part
@@ -107,9 +105,9 @@ class MainCardView: UIView {
           self.popularList = popular
         }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
           self.mainCardCV.reloadData()
-          self.mainCardCV.hideSkeleton(reloadDataAfter: .random(), transition: .crossDissolve(2))
+          self.mainCardCV.hideSkeleton(reloadDataAfter: .random(), transition: .crossDissolve(1))
         }
  
       }.catch{ error in
