@@ -24,7 +24,7 @@ extension LoginVC {
                 if let accessToken = oauthToken?.accessToken {
                     //토큰 가져오려면 다음과 같이 accessToken 사용
                     print("!!!!!!!!!!! SOCIAL TOKEN", accessToken)
-                    
+                  self.postSocialLoginData(socialToken: accessToken, socialType: "KAKAO")
                     // 유저 데이터 가져오려면 다음과 같이 UserAPI에서
                     // user 값 가져오기
                     UserApi.shared.me { (user,error) in
@@ -52,30 +52,36 @@ extension LoginVC {
             }
         }
     }
-    
   }
+  
+  private func postSocialLoginData(socialToken: String, socialType: String) {
+    BaseService.default.postSocialLogin(socialToken: socialToken, socialType: socialType) { result in
+      result.success { [weak self] data in
+        if let data = data{
+          if data.created { //가입 된거
+            UserDefaults.standard.setValue(data.accessToken, forKey: "userToken")
+            self?.moveBaseVC()
+          } else {
+            self?.pushSignUPVC(socialToken: socialToken, socialType: socialType)
+            
+          }
+          
+          print("--------------SocialLogin------------------")
+        }
+      }.catch {error in
+        NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .showNetworkError), object: nil)
+      }
+    }
+  }
+  
+
+  
+  private func pushSignUPVC(socialToken : String, socialType : String) {
+    guard let signupVC = UIStoryboard.list(.signup).instantiateViewController(withIdentifier: SignUpVC.className) as? SignUpVC else {return}
+    signupVC.modalPresentationStyle = .overFullScreen
+    signupVC.delegate = self
+    self.present(signupVC, animated: true, completion: nil)
+  }
+  
 }
 
-
-//private func getSuggestListData(){
-//  BaseService.default.getSuggestTravelList(page: listIndex, sort: "created_at") { result in
-//    result.success { [weak self] list in
-//      self?.mainListDataList.removeAll()
-//      if let list = list {
-//        print("Suggest 출력 확인해보자############################2")
-//        print(list.items)
-//        self?.mainListDataList = list.items
-//      }
-//      DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-//        self?.mainListCV.reloadData()
-//        self?.mainListCV.hideSkeleton( transition: .crossDissolve(1))
-//      }
-//      print("--------------Suggest------------------")
-//      print(self?.mainListDataList)
-//
-//    }.catch{ error in
-//      NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .showNetworkError), object: nil)
-//    
-//    }
-//  }
-//}
