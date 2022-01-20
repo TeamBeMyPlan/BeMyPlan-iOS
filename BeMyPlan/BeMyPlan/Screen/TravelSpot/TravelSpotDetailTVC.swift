@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Moya
 
 func setFontTextView(text: String, lineSpacing: CGFloat, fontName: String, fontSize: CGFloat, textColor: UIColor, textType: UITextView) {
   let attributedString = NSMutableAttributedString(string: text)
@@ -21,6 +22,9 @@ func setFontTextView(text: String, lineSpacing: CGFloat, fontName: String, fontS
 class TravelSpotDetailTVC: UITableViewCell {
   
   static let identifier = "TravelSpotDetailTVC"
+  private var postId:Int = 1
+  private var userId:Int = 1
+  private var scrapBtnData: [ScrapBtnDataGettable] = []
   
   @IBOutlet var contentImage: UIImageView!
   @IBOutlet var nickNameLabel: UILabel!
@@ -30,7 +34,6 @@ class TravelSpotDetailTVC: UITableViewCell {
   override func awakeFromNib() {
     super.awakeFromNib()
     setUIs()
-    setFont ()
   }
   
   override func setSelected(_ selected: Bool, animated: Bool) {
@@ -51,11 +54,56 @@ class TravelSpotDetailTVC: UITableViewCell {
     contentImage.contentMode = .scaleAspectFill
   }
   
-  func setFont () {
+  public func setData(data: HomeListDataGettable.Item){
+    contentImage.setImage(with: data.thumbnailURL)
+    titleTextView.text = data.title
+    nickNameLabel.text = data.nickname
+    postId = data.id
   }
   
-  
-  @IBAction func scrapBtnTapped(_ sender: Any) {
-    scrapBtn.isSelected.toggle()
+  public func scrapBtnAPI() {
+    BaseService.default.postScrapBtnTapped(postId: postId, userId: userId) { result in
+      result.success { data in
+        self.scrapBtnData = []
+        if let testedData = data {
+          self.scrapBtnData = testedData
+        }
+      }.catch { error in
+        if let err = error as? MoyaError {
+          dump(err)
+        }
+      }
+    }
   }
+    
+    
+    
+  
+  
+  
+    
+    @IBAction func scrapBtnTapped(_ sender: Any) {
+      
+      scrapBtnAPI()
+     
+      print("--->카카카카 \(self.scrapBtnData.count)")
+      
+//      self.scrapBtnData.count == 0 {
+//        print("개빡")
+//      }
+      
+      
+      /*
+       scrapBtnData == false {
+         self.scrapBtn.isSelected
+       } else {
+         
+       }
+       */
+      
+      
+      
+      //    scrapBtn.isSelected.toggle()
+    
+    }
 }

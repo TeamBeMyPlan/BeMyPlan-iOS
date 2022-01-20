@@ -26,5 +26,11 @@ class TravelSpotCVC: UICollectionViewCell {
     locationImageView.contentMode = .scaleAspectFill
   }
   
+  public func setData(data: TravelSpotDataGettable){
+    locationImageView.setImage(with: data.photoURL)
+    locationLabel.text = data.name
+    print("---> setDataaaa")
+  }
+  
 }
 

@@ -50,17 +50,15 @@ class ScrapContainerView: XibView {
         self.scrapDataList = []
         if let testedData = data {
           self.scrapDataList = testedData
-          dump("---> DDDD \(self.scrapDataList)")
         }
         self.contentCV.reloadData()
       }.catch { error in
         if let err = error as? MoyaError {
-          dump("---> ScrapContainer \(err)")
+          dump("---> Err ScrapContainer \(err)")
         }
       }
     }
   }
-  
   
 }
 
@@ -73,10 +71,7 @@ extension ScrapContainerView: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ScrapContainerCVC.className, for: indexPath) as? ScrapContainerCVC else {return UICollectionViewCell()
     }
-
-    cell.titleLabel.text = scrapDataList[indexPath.row].title
-    cell.contentImage.setImage(with: scrapDataList[indexPath.row].thumbnailURL)
-    
+    cell.setData(data: scrapDataList[indexPath.row])
     return cell
   }
 }

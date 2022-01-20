@@ -37,6 +37,7 @@ extension BaseService : HomeServiceType ,TravelSpotDetailService{
       if let area = area {
         requestObject(.getTravelSpotDetailList(area: area, page: page, pageSize: pageSize, sort : sort), completion: completion)
       }
+      
     case .nickname:
       if let userId = userId {
         requestObject(.getNicknameDetailList(userId: userId, page: page, pageSize: pageSize, sort: sort), completion: completion)

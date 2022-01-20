@@ -21,11 +21,11 @@ class TravelSpotDetailVC: UIViewController {
   
   // MARK: - Vars & Lets Part
   //  var travelSpotDetailDataList: [TravelSpotDetailData] = []
-  var planDataList: [HomeListDataGettable.Item] = []
+  var planDataList: [HomeListDataGettable.Item] = [] 
   var areaNum: Int?
   
   var currentPageIndex = 1
-  var areaId: Int?
+  var areaId: Int? = 2
   var userId: Int?
   var type : TravelSpotDetailType = .travelspot
   var sortcase : SortCase = .recently
@@ -43,6 +43,8 @@ class TravelSpotDetailVC: UIViewController {
   // MARK: - Life Cycle Part
   override func viewDidLoad() {
     super.viewDidLoad()
+    fetchTravelSpotDetailItemList(isRefresh: false)
+
     getAreaData()
     regiterXib()
     setTableViewDelegate()
@@ -51,7 +53,7 @@ class TravelSpotDetailVC: UIViewController {
   }
   
   override func viewWillAppear(_ animated: Bool) {
-    fetchTravelSpotDetailItemList()
+    fetchTravelSpotDetailItemList(isRefresh: false)
   }
   
   // MARK: - Set Function Part
@@ -82,14 +84,14 @@ class TravelSpotDetailVC: UIViewController {
     let vc = UIStoryboard(name: "TravelSpot", bundle: nil).instantiateViewController(withIdentifier: TravelSpotFilterVC.className) as! TravelSpotFilterVC
     presentPanModal(vc)
   }
-  
+
   // MARK: - Custom Method Part
   private func setUIs() {
     contentTableView.separatorStyle = .none
   }
   
   private func setHeaderLabel() {
-    switch (type){
+    switch (type) {
     case .new:
       self.headerLabel.text = "최신여행일정"
     case .suggest:
@@ -102,7 +104,7 @@ class TravelSpotDetailVC: UIViewController {
     }
   }
   
-  private func fetchTravelSpotDetailItemList() {
+  private func fetchTravelSpotDetailItemList(isRefresh: Bool) {
     BaseService.default.getPlanAllinOneList(area: areaId,
                                             userId: userId,
                                             page: currentPageIndex,
@@ -115,8 +117,6 @@ class TravelSpotDetailVC: UIViewController {
         if let list = list {
           self?.planDataList = list.items
         }
-        self?.contentTableView.reloadData()
-        
       }.catch{ error in
         print("travelspot err")
         dump(error)
@@ -129,16 +129,15 @@ class TravelSpotDetailVC: UIViewController {
     refresh.addTarget(self, action: #selector(updateUI(refresh:)), for: .valueChanged)
     refresh.attributedTitle = NSAttributedString(string: "")
     contentTableView.refreshControl = refresh
-
   }
   
   
   // MARK: - @objc Function Part
   @objc func updateUI(refresh: UIRefreshControl) {
     DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
-//      self.fetchTravelSpotDetailItemList(refresh: true)
+      self.fetchTravelSpotDetailItemList(isRefresh: true)
       self.contentTableView.reloadData()
-      refresh.endRefreshing() // 리프레쉬 종료
+      refresh.endRefreshing()
     }
   }
   
@@ -155,10 +154,7 @@ extension TravelSpotDetailVC: UITableViewDataSource {
       return UITableViewCell()
     }
     cell.selectionStyle = .none
-    
-    cell.nickNameLabel.text = "\(planDataList[indexPath.row].id)"
-    cell.titleTextView.text = "\(planDataList[indexPath.row].title)"
-    cell.contentImage.setImage(with: "\(planDataList[indexPath.row].thumbnailURL)")
+    cell.setData(data: planDataList[indexPath.row])
     
     return cell
   }
@@ -194,17 +190,13 @@ enum SortCase : String{
 }
 
 
-//extension TravelSpotDetailVC {
-//
-//  func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-//    let height = scrollView.frame.size.height
-//    let contentYoffset = scrollView.contentOffset.y
-//    let distanceFromBottom = scrollView.contentSize.height - contentYoffset
-//    if distanceFromBottom < height {
-//      if pageNum < totalPage {
-//        pageNum += 1
-//        fetchTravelSpotDetailItemList(refresh: false)
-//      }
-//    }
-//  }
-//}
+extension TravelSpotDetailVC {
+  func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    let height = scrollView.frame.size.height
+    let contentYoffset = scrollView.contentOffset.y
+    let distanceFromBottom = scrollView.contentSize.height - contentYoffset
+    if distanceFromBottom < height {
+      fetchTravelSpotDetailItemList(isRefresh: false)
+    }
+  }
+}
