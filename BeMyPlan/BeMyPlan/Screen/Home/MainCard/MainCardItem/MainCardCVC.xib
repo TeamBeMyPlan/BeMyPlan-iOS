@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="MainCardCVC" customModule="BeMyPlan" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MainCardCVC" id="gTV-IL-0wX" customClass="MainCardCVC" customModule="BeMyPlan" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="435"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -23,22 +23,46 @@
                             <constraint firstAttribute="height" constant="435" id="BL7-we-V79"/>
                             <constraint firstAttribute="width" constant="375" id="dfN-77-1U4"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                            <userDefinedRuntimeAttribute type="number" keyPath="skeletonCornerRadius">
+                                <real key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </imageView>
                     <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="0k1-OF-xMI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="435"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.19655422185430463" colorSpace="calibratedRGB"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                            <userDefinedRuntimeAttribute type="number" keyPath="skeletonCornerRadius">
+                                <real key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="인기 여행 일정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7sc-eY-h3N">
-                        <rect key="frame" x="24" y="353.5" width="91" height="19.5"/>
+                        <rect key="frame" x="24" y="377.5" width="91" height="19.5"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                            <userDefinedRuntimeAttribute type="number" keyPath="skeletonCornerRadius">
+                                <real key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hOH-qX-7Xg">
-                        <rect key="frame" x="24" y="381" width="51.5" height="24"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hOH-qX-7Xg">
+                        <rect key="frame" x="24" y="405" width="327" height="0.0"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                            <userDefinedRuntimeAttribute type="number" keyPath="skeletonCornerRadius">
+                                <real key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </label>
                 </subviews>
             </view>
@@ -49,6 +73,7 @@
                 <constraint firstAttribute="bottom" secondItem="0k1-OF-xMI" secondAttribute="bottom" id="8kS-9f-kWB"/>
                 <constraint firstItem="hOH-qX-7Xg" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="24" id="C54-Q7-hyK"/>
                 <constraint firstAttribute="trailing" secondItem="WIY-aK-dJd" secondAttribute="trailing" id="Szu-Cp-74F"/>
+                <constraint firstAttribute="trailing" secondItem="hOH-qX-7Xg" secondAttribute="trailing" constant="24" id="T1h-5C-H5e"/>
                 <constraint firstAttribute="trailing" secondItem="0k1-OF-xMI" secondAttribute="trailing" id="WjQ-V7-3xe"/>
                 <constraint firstItem="0k1-OF-xMI" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Wwn-lG-cKi"/>
                 <constraint firstAttribute="bottom" secondItem="WIY-aK-dJd" secondAttribute="bottom" id="ZMt-Kp-Glr"/>
@@ -58,6 +83,12 @@
                 <constraint firstItem="hOH-qX-7Xg" firstAttribute="top" secondItem="7sc-eY-h3N" secondAttribute="bottom" constant="8" id="pGs-TD-TyS"/>
             </constraints>
             <size key="customSize" width="202" height="327"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                <userDefinedRuntimeAttribute type="number" keyPath="skeletonCornerRadius">
+                    <real key="value" value="5"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="mainCardCategory" destination="7sc-eY-h3N" id="yrI-NV-Yby"/>
                 <outlet property="mainCardImageLayer" destination="0k1-OF-xMI" id="1gl-Hk-SMr"/>

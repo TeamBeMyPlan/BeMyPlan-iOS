@@ -20,8 +20,9 @@ target 'BeMyPlan' do
   pod 'Moya'
   pod 'SwiftyJSON', '~> 4.0'
   pod 'Mute'
-  pod 'SRScratchView'
   pod 'Firebase/Analytics'
   pod 'Firebase/Crashlytics'
   pod 'PanModal'
+  pod 'ListPlaceholder'
+  pod 'SkeletonView'
 end

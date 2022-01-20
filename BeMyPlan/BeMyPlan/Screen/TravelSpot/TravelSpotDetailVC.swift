@@ -28,7 +28,7 @@ class TravelSpotDetailVC: UIViewController {
   var areaId: Int? = 2
   var userId: Int?
   var type : TravelSpotDetailType = .travelspot
-  var sortcase : sortCase = .recently
+  var sortcase : SortCase = .recently
   
   
   // MARK: - UI Component Part
@@ -111,18 +111,11 @@ class TravelSpotDetailVC: UIViewController {
                                             sort: "created_at",
                                             viewCase: type) { result in
       result.success { [weak self] list in
-        // self?.planDataList.removeAll()
-        print("---> RRRR")
+        self?.planDataList.removeAll()
+        print("TravelSpot 여기여기여기여기여기여기여기여기여기여기여기여기")
+        print(list?.items)
         if let list = list {
-          print("---> LLLL \(list)")
-          if isRefresh == false {
-            if list.count != 0 {
-              self?.planDataList.append(list[0])
-            }
-          } else {
-            self?.planDataList = list
-          }
-          self?.contentTableView.reloadData()
+          self?.planDataList = list.items
         }
       }.catch{ error in
         print("---> EEEE")
@@ -192,7 +185,7 @@ extension TravelSpotDetailVC: UICollectionViewDelegateFlowLayout {
 }
 
 
-enum sortCase : String {
+enum SortCase : String{
   case recently = "created_at"
 }
 

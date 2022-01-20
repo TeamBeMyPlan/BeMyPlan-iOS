@@ -21,6 +21,11 @@ class MyPlanSettingVC: UIViewController {
   @IBOutlet var logoutButton: UIButton!
   @IBOutlet var withdrawButton: UIButton!
   
+  @IBOutlet var headerTopConstraint: NSLayoutConstraint!{
+    didSet{
+      headerTopConstraint.constant = calculateTopInset()
+    }
+  }
   // MARK: - Life Cycle Part
   
   override func viewDidLoad() {
@@ -35,9 +40,8 @@ class MyPlanSettingVC: UIViewController {
   
   private func addButtonActions(){
     uploadButton.press {
-      guard let url = URL(string: "https://forms.gle/2v7NwcMb7F3Yuo4f8"), UIApplication.shared.canOpenURL(url) else { return }
-
-      UIApplication.shared.open(url, options: [:], completionHandler: nil)
+      guard let uploadVC = self.storyboard?.instantiateViewController(withIdentifier: MyPlanApplicationVC.className) as? MyPlanApplicationVC else {return}
+      self.navigationController?.pushViewController(uploadVC, animated: true)
     }
     
     askButton.press {

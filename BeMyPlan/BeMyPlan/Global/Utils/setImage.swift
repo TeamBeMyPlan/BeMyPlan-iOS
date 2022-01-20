@@ -38,7 +38,7 @@ extension UIImageView {
       with: resource,
       placeholder: placeholder,
       options: [
-        .transition(.fade(0.25)),
+        .transition(.fade(0.5)),
         .cacheMemoryOnly
       ],
       completionHandler:  { result in

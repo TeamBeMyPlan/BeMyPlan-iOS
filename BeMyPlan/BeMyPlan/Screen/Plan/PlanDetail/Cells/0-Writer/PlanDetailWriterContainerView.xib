@@ -32,8 +32,8 @@
                     <color key="textColor" name="grey2"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <textView autoresizesSubviews="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor " textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bdH-gX-qH4">
-                    <rect key="frame" x="24" y="47" width="464" height="58"/>
+                <textView autoresizesSubviews="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bdH-gX-qH4">
+                    <rect key="frame" x="24" y="47" width="464" height="40"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" relation="lessThanOrEqual" constant="58" id="9Uk-Lv-Rmw"/>

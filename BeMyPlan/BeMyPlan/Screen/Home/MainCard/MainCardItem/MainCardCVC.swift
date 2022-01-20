@@ -10,7 +10,11 @@ import Kingfisher
 
 class MainCardCVC: UICollectionViewCell {
  
-  @IBOutlet var mainCardImageLayer: UIView!
+  @IBOutlet var mainCardImageLayer: UIView!{
+    didSet{
+      mainCardImageLayer.alpha = 0
+    }
+  }
   @IBOutlet var mainCardImageView: UIImageView!
   @IBOutlet var mainCardCategory: UILabel!
   @IBOutlet var mainCardTitle: UILabel!
@@ -35,6 +39,9 @@ class MainCardCVC: UICollectionViewCell {
   func setData(appData: HomeListDataGettable.Item){
 //    mainCardImageView.image = appData.makeItemImage()
     mainCardImageView.setImage(with: appData.thumbnailURL)
+    UIView.animate(withDuration: 0.5) {
+      self.mainCardImageLayer.alpha = 1
+    }
 //    mainCardCategory.text = appData.category
     mainCardTitle.text = appData.title
   }

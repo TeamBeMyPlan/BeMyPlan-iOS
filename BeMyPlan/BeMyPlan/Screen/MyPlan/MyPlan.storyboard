@@ -489,6 +489,7 @@
                     </view>
                     <connections>
                         <outlet property="askButton" destination="G45-lR-VGa" id="bah-pJ-dCK"/>
+                        <outlet property="headerTopConstraint" destination="nTZ-Ed-v9L" id="TJI-5S-1Od"/>
                         <outlet property="logoutButton" destination="MtY-vc-6v5" id="vMZ-Pe-s6b"/>
                         <outlet property="serviceTermButton" destination="xfJ-ma-H3z" id="YQW-el-F5E"/>
                         <outlet property="uploadButton" destination="NJ2-fQ-ilf" id="lkr-qt-SyC"/>
@@ -598,6 +599,94 @@
             </objects>
             <point key="canvasLocation" x="3245" y="72"/>
         </scene>
+        <!--My Plan ApplicationVC-->
+        <scene sceneID="nrJ-pV-nza">
+            <objects>
+                <viewController storyboardIdentifier="MyPlanApplicationVC" id="2J0-1h-5vT" customClass="MyPlanApplicationVC" customModule="BeMyPlan" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="H64-MX-Nwt">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="thk-qt-N5g">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="94"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="여행 일정 크리에이터 신청" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QKd-Qk-Zti">
+                                        <rect key="frame" x="115" y="60" width="184" height="22"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="22" id="mCe-gj-kHf"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icnArrow" translatesAutoresizingMaskIntoConstraints="NO" id="Ra6-U2-dSS">
+                                        <rect key="frame" x="20" y="57" width="24" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="24" id="5h3-pK-2vN"/>
+                                            <constraint firstAttribute="height" constant="24" id="Q3f-Ma-rBL"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V1U-os-8nf">
+                                        <rect key="frame" x="10" y="45" width="50" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="TyW-wV-sAG"/>
+                                            <constraint firstAttribute="height" constant="44" id="w64-ZK-xZC"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="QKd-Qk-Zti" firstAttribute="centerX" secondItem="thk-qt-N5g" secondAttribute="centerX" id="96C-kd-teE"/>
+                                    <constraint firstAttribute="bottom" secondItem="V1U-os-8nf" secondAttribute="bottom" constant="5" id="VNW-NF-S6l"/>
+                                    <constraint firstItem="V1U-os-8nf" firstAttribute="leading" secondItem="thk-qt-N5g" secondAttribute="leading" constant="10" id="YXg-xH-3VQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="QKd-Qk-Zti" secondAttribute="bottom" constant="12" id="ZJm-vD-7oc"/>
+                                    <constraint firstItem="Ra6-U2-dSS" firstAttribute="leading" secondItem="thk-qt-N5g" secondAttribute="leading" constant="20" id="abD-MW-EYV"/>
+                                    <constraint firstAttribute="height" constant="94" id="auY-yE-qSx"/>
+                                    <constraint firstAttribute="bottom" secondItem="Ra6-U2-dSS" secondAttribute="bottom" constant="13" id="daR-do-xzW"/>
+                                </constraints>
+                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_creator_guide" translatesAutoresizingMaskIntoConstraints="NO" id="prv-Sh-gVA">
+                                <rect key="frame" x="24" y="134" width="366" height="491.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="prv-Sh-gVA" secondAttribute="height" multiplier="327:439" id="fdn-VH-3LJ"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iD4-y6-vpw">
+                                <rect key="frame" x="24" y="784.5" width="366" height="53.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="iD4-y6-vpw" secondAttribute="height" multiplier="327:48" id="dpW-Fd-j8f"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" backgroundImage="btn_creator_upload"/>
+                                <connections>
+                                    <action selector="uploadButtonClicked:" destination="2J0-1h-5vT" eventType="touchUpInside" id="kBG-bI-uRf"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="uZI-yJ-S93"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="thk-qt-N5g" firstAttribute="leading" secondItem="H64-MX-Nwt" secondAttribute="leading" id="9Lx-gM-PTe"/>
+                            <constraint firstItem="iD4-y6-vpw" firstAttribute="leading" secondItem="uZI-yJ-S93" secondAttribute="leading" constant="24" id="Mno-4y-cN6"/>
+                            <constraint firstItem="uZI-yJ-S93" firstAttribute="trailing" secondItem="prv-Sh-gVA" secondAttribute="trailing" constant="24" id="OmB-tj-3Lv"/>
+                            <constraint firstItem="prv-Sh-gVA" firstAttribute="top" secondItem="thk-qt-N5g" secondAttribute="bottom" constant="40" id="PE0-K1-qQv"/>
+                            <constraint firstItem="uZI-yJ-S93" firstAttribute="bottom" secondItem="iD4-y6-vpw" secondAttribute="bottom" constant="24" id="Rma-oE-vaC"/>
+                            <constraint firstItem="uZI-yJ-S93" firstAttribute="trailing" secondItem="iD4-y6-vpw" secondAttribute="trailing" constant="24" id="jMp-n6-x7e"/>
+                            <constraint firstItem="uZI-yJ-S93" firstAttribute="trailing" secondItem="thk-qt-N5g" secondAttribute="trailing" id="rpX-aj-rIV"/>
+                            <constraint firstItem="thk-qt-N5g" firstAttribute="top" secondItem="uZI-yJ-S93" secondAttribute="top" constant="-44" id="ugd-DN-HkS"/>
+                            <constraint firstItem="prv-Sh-gVA" firstAttribute="leading" secondItem="uZI-yJ-S93" secondAttribute="leading" constant="24" id="w4d-Ma-cK9"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="applicationButton" destination="iD4-y6-vpw" id="N1S-G1-4oC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KCn-E4-cO9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4316" y="65.217391304347828"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="Kqp-Q7-Cjw">
             <objects>
@@ -618,12 +707,14 @@
         </scene>
     </scenes>
     <resources>
+        <image name="btn_creator_upload" width="327" height="48"/>
         <image name="icnArrow" width="24" height="24"/>
         <image name="icnInfo" width="24" height="24"/>
         <image name="icnQna" width="24" height="24"/>
         <image name="icnSettings" width="24" height="24"/>
         <image name="icnUpload" width="24" height="24"/>
         <image name="imgProfile" width="50" height="50"/>
+        <image name="img_creator_guide" width="328" height="439"/>
         <image name="rectangle5694" width="154" height="154"/>
         <namedColor name="beMyBlue">
             <color red="0.0" green="0.46666666666666667" blue="0.69019607843137254" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
