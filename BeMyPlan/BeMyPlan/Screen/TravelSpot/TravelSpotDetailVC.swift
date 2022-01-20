@@ -24,7 +24,7 @@ class TravelSpotDetailVC: UIViewController {
   var planDataList: [HomeListDataGettable.Item] = [] 
   var areaNum: Int?
   
-  var currentPageIndex = 1
+  var currentPageIndex = 0
   var areaId: Int? = 2
   var userId: Int?
   var type : TravelSpotDetailType = .travelspot
@@ -43,17 +43,16 @@ class TravelSpotDetailVC: UIViewController {
   // MARK: - Life Cycle Part
   override func viewDidLoad() {
     super.viewDidLoad()
-    fetchTravelSpotDetailItemList(isRefresh: false)
-
     getAreaData()
     regiterXib()
     setTableViewDelegate()
     setUIs()
+    fetchTravelSpotDetailItemList(isRefresh: false)
     initRefresh()
   }
   
   override func viewWillAppear(_ animated: Bool) {
-    fetchTravelSpotDetailItemList(isRefresh: false)
+//    fetchTravelSpotDetailItemList(isRefresh: false)
   }
   
   // MARK: - Set Function Part
@@ -71,7 +70,7 @@ class TravelSpotDetailVC: UIViewController {
   }
   
   private func regiterXib() {
-    let xibName = UINib(nibName: TravelSpotDetailTVC.identifier, bundle: nil)
+    let xibName = UINib(nibName: TravelSpotDetailTVC.className, bundle: nil)
     contentTableView.register(xibName, forCellReuseIdentifier: TravelSpotDetailTVC.className)
   }
   
@@ -111,11 +110,27 @@ class TravelSpotDetailVC: UIViewController {
                                             sort: "created_at",
                                             viewCase: type) { result in
       result.success { [weak self] list in
-        self?.planDataList.removeAll()
-        print("TravelSpot 여기여기여기여기여기여기여기여기여기여기여기여기")
-        print(list?.items)
+        //        self?.planDataList.removeAll()
+        
         if let list = list {
-          self?.planDataList = list.items
+        
+          if list.items.count != 0 {
+            if isRefresh == false {
+              list.items.forEach { item in
+                self?.planDataList.append(item)
+              }
+              self?.currentPageIndex += 1
+            } else {
+              self?.planDataList.removeAll()
+//              self?.planDataList = list.items
+//              self?.currentPageIndex = 0
+            }
+            self?.contentTableView.reloadData()
+          }
+          
+          
+          
+        } else {
         }
       }.catch{ error in
         print("travelspot err")
@@ -150,12 +165,12 @@ extension TravelSpotDetailVC: UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: TravelSpotDetailTVC.identifier) as? TravelSpotDetailTVC else {
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: TravelSpotDetailTVC.className) as? TravelSpotDetailTVC else {
       return UITableViewCell()
     }
     cell.selectionStyle = .none
     cell.setData(data: planDataList[indexPath.row])
-    
+
     return cell
   }
 }

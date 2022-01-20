@@ -17,14 +17,19 @@ struct HomeListDataGettable: Codable {
     let thumbnailURL: String
     let title : String
     let price : Int?
-    let nickname: String?
+    let nickname : String?
+    let isPurchased : Bool?
+    let isScraped : Bool?
     
     enum CodingKeys: String, CodingKey {
-      case id, title, nickname, price
+      case id, title, price
       case thumbnailURL = "thumbnail_url"
+      case nickname = "author"
+      case isPurchased = "is_purchased"
+      case isScraped = "is_scraped"
+      
     }
   }
 
 
 }
-
