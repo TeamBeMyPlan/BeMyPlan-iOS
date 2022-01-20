@@ -70,13 +70,19 @@ extension BaseVC{
     
     // Home
     
-    addObserverAction(keyName: BaseNotiList.makeNotiName(list: .movePlanPreview)) { _ in
+    addObserverAction(keyName: BaseNotiList.makeNotiName(list: .movePlanPreview)) { noti in
       guard let previewVC = UIStoryboard.list(.planPreview).instantiateViewController(withIdentifier: PlanPreviewVC.className) as? PlanPreviewVC else {return}
+      if let index = noti.object as? Int{
+        previewVC.idx = index
+      }
       self.navigationController?.pushViewController(previewVC, animated: true)
     }
     
-    addObserverAction(keyName: BaseNotiList.makeNotiName(list: .movePlanDetail)) { _ in
+    addObserverAction(keyName: BaseNotiList.makeNotiName(list: .movePlanDetail)) { noti in
       guard let previewVC = UIStoryboard.list(.planDetail).instantiateViewController(withIdentifier: PlanDetailVC.className) as? PlanDetailVC else {return}
+      if let index = noti.object as? Int{
+        previewVC.postIdx = index
+      }
       self.navigationController?.pushViewController(previewVC, animated: true)
     }
     

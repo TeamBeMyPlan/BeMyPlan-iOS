@@ -83,7 +83,6 @@ class PlanDetailVC: UIViewController {
   // MARK: - Custom Methods Parts
   
   @IBAction func backButtonClicked(_ sender: Any) {
-    print("BACKBUTOTNCLICKED")
     self.navigationController?.popViewController(animated: true)
   }
   private func addObserver(){

@@ -164,7 +164,7 @@ class MainListView: UIView {
 
 extension MainListView : SkeletonCollectionViewDelegate{
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .movePlanPreview), object: nil)
+    NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .movePlanPreview), object: mainListDataList[indexPath.row].id)
   }
 }
 
