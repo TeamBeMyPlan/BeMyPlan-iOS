@@ -21,7 +21,11 @@ class TravelSpotDetailVC: UIViewController {
   
   // MARK: - Vars & Lets Part
   //  var travelSpotDetailDataList: [TravelSpotDetailData] = []
-  var planDataList: [HomeListDataGettable.Item] = [] 
+  var planDataList: [HomeListDataGettable.Item] = [] {
+    didSet{
+      print("PLANDATALIST",planDataList.count)
+    }
+  }
   var areaNum: Int?
   
   var currentPageIndex = 0
@@ -52,7 +56,6 @@ class TravelSpotDetailVC: UIViewController {
   }
   
   override func viewWillAppear(_ animated: Bool) {
-//    fetchTravelSpotDetailItemList(isRefresh: false)
   }
   
   // MARK: - Set Function Part
@@ -110,10 +113,7 @@ class TravelSpotDetailVC: UIViewController {
                                             sort: "created_at",
                                             viewCase: type) { result in
       result.success { [weak self] list in
-        //        self?.planDataList.removeAll()
-        
         if let list = list {
-        
           if list.items.count != 0 {
             if isRefresh == false {
               list.items.forEach { item in
@@ -122,19 +122,14 @@ class TravelSpotDetailVC: UIViewController {
               self?.currentPageIndex += 1
             } else {
               self?.planDataList.removeAll()
-//              self?.planDataList = list.items
-//              self?.currentPageIndex = 0
+              self?.planDataList = list.items
+              self?.currentPageIndex = 0
             }
             self?.contentTableView.reloadData()
           }
-          
-          
-          
-        } else {
         }
       }.catch{ error in
         print("travelspot err")
-        dump(error)
       }
     }
   }
@@ -150,9 +145,11 @@ class TravelSpotDetailVC: UIViewController {
   // MARK: - @objc Function Part
   @objc func updateUI(refresh: UIRefreshControl) {
     DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+      self.currentPageIndex = 0
       self.fetchTravelSpotDetailItemList(isRefresh: true)
-      self.contentTableView.reloadData()
+//      self.contentTableView.reloadData()
       refresh.endRefreshing()
+      
     }
   }
   

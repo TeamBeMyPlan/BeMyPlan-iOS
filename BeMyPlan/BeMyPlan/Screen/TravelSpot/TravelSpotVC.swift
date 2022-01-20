@@ -81,7 +81,6 @@ extension TravelSpotVC: UICollectionViewDataSource {
 
 extension TravelSpotVC: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    print("---> CCCCCCC \(travelSpotDataList.count)")
     return travelSpotDataList.count
   }
   
@@ -99,9 +98,10 @@ extension TravelSpotVC: UICollectionViewDelegate {
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     _ = completionHandler?(indexPath.row)
-//    self.navigationController?.popViewController(animated: true)
-    
-    NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .movePlanList), object: travelSpotDataList[indexPath.row].id)
+    //    self.navigationController?.popViewController(animated: true)
+    if travelSpotDataList[indexPath.row].isActivated {
+      NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .movePlanList), object: travelSpotDataList[indexPath.row].id)
+    }
   }
 }
 
