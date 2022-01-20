@@ -21,7 +21,6 @@ class TravelSpotVC: UIViewController {
     }
   }
   @IBOutlet var locationCollectionView: UICollectionView!
-  
   @IBOutlet var headerTopConstraint: NSLayoutConstraint!{
     didSet{ headerTopConstraint.constant = calculateTopInset()}
   }
@@ -52,12 +51,10 @@ class TravelSpotVC: UIViewController {
 
         if let testedData = data {
           self.travelSpotDataList = testedData
-//          dump("---> testedData \(String(describing: testedData))")
         }
         self.locationCollectionView.reloadData()
       }.catch { error in
         if let err = error as? MoyaError {
-          dump(err)
         }
       }
     }
@@ -84,13 +81,14 @@ extension TravelSpotVC: UICollectionViewDataSource {
 
 extension TravelSpotVC: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    print("---> CCCCCCC \(travelSpotDataList.count)")
     return travelSpotDataList.count
   }
   
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TravelSpotCVC.identifier, for: indexPath) as? TravelSpotCVC else {return UICollectionViewCell()}
-//    cell.layer.cornerRadius = 5
+    
     cell.setData(data: travelSpotDataList[indexPath.row])
     if travelSpotDataList[indexPath.row].isActivated == true {
       cell.lockImageView.isHidden = true

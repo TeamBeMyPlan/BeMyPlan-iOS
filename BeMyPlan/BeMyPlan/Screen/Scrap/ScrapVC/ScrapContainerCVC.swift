@@ -32,6 +32,5 @@ class ScrapContainerCVC: UICollectionViewCell, UICollectionViewRegisterable {
     contentImage.setImage(with: data.thumbnailURL)
     titleLabel.text = data.title
   }
-
   
 }

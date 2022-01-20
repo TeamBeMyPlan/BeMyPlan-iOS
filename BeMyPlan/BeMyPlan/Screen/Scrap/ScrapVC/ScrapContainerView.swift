@@ -60,7 +60,6 @@ class ScrapContainerView: XibView {
     }
   }
   
-  
 }
 
 

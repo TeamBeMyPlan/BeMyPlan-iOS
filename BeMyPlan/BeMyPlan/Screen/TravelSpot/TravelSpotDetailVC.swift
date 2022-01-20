@@ -21,11 +21,11 @@ class TravelSpotDetailVC: UIViewController {
   
   // MARK: - Vars & Lets Part
   //  var travelSpotDetailDataList: [TravelSpotDetailData] = []
-  var planDataList: [HomeListDataGettable.Item] = []
+  var planDataList: [HomeListDataGettable.Item] = [] 
   var areaNum: Int?
   
   var currentPageIndex = 1
-  var areaId: Int?
+  var areaId: Int? = 2
   var userId: Int?
   var type : TravelSpotDetailType = .travelspot
   var sortcase : sortCase = .recently
@@ -43,6 +43,8 @@ class TravelSpotDetailVC: UIViewController {
   // MARK: - Life Cycle Part
   override func viewDidLoad() {
     super.viewDidLoad()
+    fetchTravelSpotDetailItemList(isRefresh: false)
+
     getAreaData()
     regiterXib()
     setTableViewDelegate()
@@ -51,7 +53,7 @@ class TravelSpotDetailVC: UIViewController {
   }
   
   override func viewWillAppear(_ animated: Bool) {
-    fetchTravelSpotDetailItemList()
+    fetchTravelSpotDetailItemList(isRefresh: false)
   }
   
   // MARK: - Set Function Part
@@ -82,14 +84,14 @@ class TravelSpotDetailVC: UIViewController {
     let vc = UIStoryboard(name: "TravelSpot", bundle: nil).instantiateViewController(withIdentifier: TravelSpotFilterVC.className) as! TravelSpotFilterVC
     presentPanModal(vc)
   }
-  
+
   // MARK: - Custom Method Part
   private func setUIs() {
     contentTableView.separatorStyle = .none
   }
   
   private func setHeaderLabel() {
-    switch (type){
+    switch (type) {
     case .new:
       self.headerLabel.text = "최신여행일정"
     case .suggest:
@@ -102,7 +104,7 @@ class TravelSpotDetailVC: UIViewController {
     }
   }
   
-  private func fetchTravelSpotDetailItemList() {
+  private func fetchTravelSpotDetailItemList(isRefresh: Bool) {
     BaseService.default.getPlanAllinOneList(area: areaId,
                                             userId: userId,
                                             page: currentPageIndex,
@@ -112,11 +114,16 @@ class TravelSpotDetailVC: UIViewController {
         // self?.planDataList.removeAll()
         print("---> RRRR")
         if let list = list {
-          self?.planDataList = list
           print("---> LLLL \(list)")
+          if isRefresh == false {
+            if list.count != 0 {
+              self?.planDataList.append(list[0])
+            }
+          } else {
+            self?.planDataList = list
+          }
+          self?.contentTableView.reloadData()
         }
-        self?.contentTableView.reloadData()
-        
       }.catch{ error in
         print("---> EEEE")
         dump(error)
@@ -135,7 +142,7 @@ class TravelSpotDetailVC: UIViewController {
   // MARK: - @objc Function Part
   @objc func updateUI(refresh: UIRefreshControl) {
     DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
-//      self.fetchTravelSpotDetailItemList(refresh: true)
+      self.fetchTravelSpotDetailItemList(isRefresh: true)
       self.contentTableView.reloadData()
       refresh.endRefreshing()
     }
@@ -185,7 +192,7 @@ extension TravelSpotDetailVC: UICollectionViewDelegateFlowLayout {
 }
 
 
-enum sortCase : String{
+enum sortCase : String {
   case recently = "created_at"
 }
 
@@ -196,15 +203,7 @@ extension TravelSpotDetailVC {
     let contentYoffset = scrollView.contentOffset.y
     let distanceFromBottom = scrollView.contentSize.height - contentYoffset
     if distanceFromBottom < height {
-      
-      fetchTravelSpotDetailItemList()
-      
-//      if pageNum < totalPage {
-//        pageNum += 1
-//        fetchTravelSpotDetailItemList(refresh: false)
-//      }
-      
-      
+      fetchTravelSpotDetailItemList(isRefresh: false)
     }
   }
 }
