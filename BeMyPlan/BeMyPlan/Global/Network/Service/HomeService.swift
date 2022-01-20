@@ -25,7 +25,6 @@ protocol HomeServiceType{
 }
 
 extension BaseService : HomeServiceType ,TravelSpotDetailService{
-
   // area , userId,
   func getPlanAllinOneList(area:Int?, userId: Int?,
                            page : Int, pageSize : Int = 5,
@@ -62,11 +61,11 @@ extension BaseService : HomeServiceType ,TravelSpotDetailService{
     requestObject(.getSuggestTravelList(page: page, sort: sort), completion: completion)
   }
   
-  func getTravelSpotDetailList(area: Int, page: Int, pageSize : Int, sort : String, completion: @escaping (Result<[HomeListDataGettable.Item]?, Error>) -> Void) {
+  func getTravelSpotDetailList(area: Int, page: Int, pageSize : Int, sort : String, completion: @escaping (Result<HomeListDataGettable?, Error>) -> Void) {
     requestObject(.getTravelSpotDetailList(area: area, page: page, pageSize: pageSize, sort : sort), completion: completion)
   }
   
-  func getNicknameDetailList(userId: Int, page: Int, pageSize: Int, sort: String, completion: @escaping (Result<[HomeListDataGettable.Item]?, Error>) -> Void) {
+  func getNicknameDetailList(userId: Int, page: Int, pageSize: Int, sort: String, completion: @escaping (Result<HomeListDataGettable?, Error>) -> Void) {
     requestObject(.getNicknameDetailList(userId: userId, page: page, pageSize: pageSize, sort: sort), completion: completion)
   }
 

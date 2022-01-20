@@ -118,7 +118,7 @@ class TravelSpotDetailVC: UIViewController {
           self?.planDataList = list.items
         }
       }.catch{ error in
-        print("---> EEEE")
+        print("travelspot err")
         dump(error)
       }
     }
