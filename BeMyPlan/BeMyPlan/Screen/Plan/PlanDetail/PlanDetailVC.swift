@@ -19,7 +19,8 @@ class PlanDetailVC: UIViewController {
   var initailScrollCompleted = false
   var currentDay : Int = 1 { didSet{
     mapContainerView.currentDay = currentDay
-    mainContainerTV.reloadData()} }
+    mainContainerTV.reloadData()}
+  }
   var summaryList : [[PlanDetail.Summary]] = [[]]
   var infoList : [[PlanDetail.SpotData]] = [[]]
 
@@ -69,6 +70,9 @@ class PlanDetailVC: UIViewController {
   
   // MARK: - Custom Methods Parts
   
+  @IBAction func backButtonClicked(_ sender: Any) {
+    self.navigationController?.dismiss(animated: true, completion: nil)
+  }
   private func addObserver(){
     addObserverAction(keyName: NSNotification.Name.init(rawValue: "planDetailButtonClicked")) { _ in
       self.isFullPage = !self.isFullPage

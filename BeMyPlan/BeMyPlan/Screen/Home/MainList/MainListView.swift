@@ -7,6 +7,7 @@
 
 import UIKit
 import Moya
+import SkeletonView
 
 enum MainListViewType{
   case editorRecommend
@@ -39,6 +40,7 @@ class MainListView: UIView {
     setTitle()
     setMainListCV()
     //    getListData()
+    setSkeletonAnimation()
   }
   
   required init?(coder aDecoder: NSCoder) {
@@ -48,6 +50,7 @@ class MainListView: UIView {
     setTitle()
     setMainListCV()
     //    getListData()
+    setSkeletonAnimation()
   }
   
   // MARK: - UI Component Part
@@ -105,11 +108,11 @@ class MainListView: UIView {
   func registerCVC() {
     mainListCV.dataSource = self
     mainListCV.delegate = self
+    mainListCV.isSkeletonable = true
     
     let mainListCVC = UINib(nibName: MainListCVC.className, bundle: nil)
     mainListCV.register(mainListCVC, forCellWithReuseIdentifier: MainListCVC.className)
   }
-  
   
   //mainListDataList 에 넣기
   private func getRecentlyListData(){
@@ -119,12 +122,23 @@ class MainListView: UIView {
         if let list = list {
           self?.mainListDataList = list
         }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+          self?.mainListCV.reloadData()
+          self?.mainListCV.hideSkeleton( transition: .crossDissolve(1))
+        }
       }.catch{ error in
-        dump(error)
+        NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .showNetworkError), object: nil)
       }
     }
   }
   
+  private func setSkeletonAnimation(){
+    let animation = SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .leftRight)
+
+    self.mainListCV.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .grey04,secondaryColor: .grey05), animation: animation, transition: .crossDissolve(1))
+    mainListCV.showSkeleton()
+  }
+
   
   private func getSuggestListData(){
     BaseService.default.getSuggestTravelList(page: listIndex, sort: "created_at") { result in
@@ -133,8 +147,13 @@ class MainListView: UIView {
         if let list = list {
           self?.mainListDataList = list
         }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+          self?.mainListCV.reloadData()
+          self?.mainListCV.hideSkeleton( transition: .crossDissolve(1))
+        }
       }.catch{ error in
-        dump(error)
+        NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .showNetworkError), object: nil)
+      
       }
     }
   }
@@ -143,13 +162,21 @@ class MainListView: UIView {
 
 // MARK: - Extension Part
 
-extension MainListView : UICollectionViewDelegate{
+extension MainListView : SkeletonCollectionViewDelegate{
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .movePlanPreview), object: nil)
   }
 }
 
-extension MainListView: UICollectionViewDataSource {
+extension MainListView: SkeletonCollectionViewDataSource {
+  func collectionSkeletonView(_ skeletonView: UICollectionView, cellIdentifierForItemAt indexPath: IndexPath) -> ReusableCellIdentifier {
+    return MainListCVC.className
+  }
+  
+  func collectionSkeletonView(_ skeletonView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return 5
+  }
+  
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return mainListDataList.count
   }

@@ -20,6 +20,7 @@ struct I18N {
     static let error = "오류"
     static let notInstallKakaomap = "네이버맵이 설치되지 않았습니다."
     static let networkError = "네트워크 상태를 확인해주세요"
+    static let copyComplete = "복사가 완료되었습니다."
   }
   
   struct Components {
