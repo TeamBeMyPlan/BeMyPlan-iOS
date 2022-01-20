@@ -104,19 +104,17 @@ extension BaseAPI: TargetType {
   ///
   var path: String {
     switch self{
-      case .getPopularTravelList:
-        return "/popular"
-      case .getBuyList(let userID):
-        return "/\(userID)"
-      case .deleteUserWithdraw:
-        return "/withdraw"
-      case .getPlanPreviewHeaderData(let idx):
-        
-        print("TAG URL",idx)
-        return "/\(idx)/preview/tag"
-      case .getPlanPreviewData(let idx):
-        return "/\(idx)/preview"
-    case .getTravelSpotDetailList(let areaID):
+    case .getPopularTravelList:
+      return "/popular"
+    case .getBuyList(let userID):
+      return "/\(userID)"
+    case .deleteUserWithdraw:
+      return "/withdraw"
+    case .getPlanPreviewHeaderData(let idx):
+      return "/\(idx)/preview/tag"
+    case .getPlanPreviewData(let idx):
+      return "/\(idx)/preview"
+    case .getTravelSpotDetailList(let areaID,_,_,_):
       return "/\(areaID)"
     case .postScrapBtn(let postId):
       return "/\(postId)"
