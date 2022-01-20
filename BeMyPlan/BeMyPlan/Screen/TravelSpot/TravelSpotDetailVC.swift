@@ -28,7 +28,7 @@ class TravelSpotDetailVC: UIViewController {
   var areaId: Int?
   var userId: Int?
   var type : TravelSpotDetailType = .travelspot
-  var sortcase : sortCase = .recently
+  var sortcase : SortCase = .recently
   
   
   // MARK: - UI Component Part
@@ -186,7 +186,7 @@ extension TravelSpotDetailVC: UICollectionViewDelegateFlowLayout {
 }
 
 
-enum sortCase : String{
+enum SortCase : String{
   case recently = "created_at"
 }
 

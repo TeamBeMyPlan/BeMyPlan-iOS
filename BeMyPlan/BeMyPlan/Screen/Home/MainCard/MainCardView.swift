@@ -7,6 +7,8 @@
 
 import UIKit
 import Moya
+import ListPlaceholder
+import SkeletonView
 
 class MainCardView: UIView {
   
@@ -20,8 +22,10 @@ class MainCardView: UIView {
     addSubviewFromNib(view: self)
 //    initMainCardDataList()
     registerCVC()
+    setSkeletonAnimation()
     setMainCardCV()
     getCardData()
+    setDuumy()
   }
   
   required init?(coder aDecoder: NSCoder) {
@@ -29,13 +33,16 @@ class MainCardView: UIView {
     addSubviewFromNib(view: self)
 //    initMainCardDataList()
     registerCVC()
+    setSkeletonAnimation()
     setMainCardCV()
     getCardData()
+    setDuumy()
   }
   
   // MARK: - UI Component Part
   @IBOutlet var userMainLabel: UILabel!
-  @IBOutlet var mainCardCV: UICollectionView!
+  @IBOutlet var mainCardCV: UICollectionView! { didSet{
+  }}
   
   @IBOutlet var mainCardCVCHeightConstraint: NSLayoutConstraint!{
     didSet {
@@ -68,58 +75,77 @@ class MainCardView: UIView {
     layout.itemSize = CGSize(width: cellWidth, height: cellHeight)
     layout.minimumInteritemSpacing = 0
     
-
     mainCardCV.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     mainCardCV.decelerationRate = .fast
     mainCardCV.collectionViewLayout = layout
     
   }
-  
+
   func registerCVC() {
     mainCardCV.dataSource = self
     mainCardCV.delegate = self
-    
+    mainCardCV.isSkeletonable = true
+
     let mainCardCVC = UINib(nibName: MainCardCVC.className, bundle: nil)
     mainCardCV.register(mainCardCVC, forCellWithReuseIdentifier: MainCardCVC.className)
-    
+
   }
   
-//  func initMainCardDataList(){
-//    mainCardDataList.append(contentsOf: [
-//      MainCardData(image: "maincard1", category: "인기여행일정", title: "제주도 & 우도 인생샷 투어"),
-//      MainCardData(image: "maincard2", category: "인기여행일정", title: "바다와 함께하는 산책 투어"),
-//      MainCardData(image: "maincard1", category: "인기여행일정", title: "제주도 & 우도 인생샷 투어"),
-//      MainCardData(image: "maincard2", category: "인기여행일정", title: "바다와 함께하는 산책 투어"),
-//      MainCardData(image: "maincard1", category: "인기여행일정", title: "제주도 & 우도 인생샷 투어"),
-//      MainCardData(image: "maincard2", category: "인기여행일정", title: "바다와 함께하는 산책 투어")
-//    ])
-//  }
-  
+  private func setSkeletonAnimation(){
+    let animation = SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .leftRight)
+
+    self.mainCardCV.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .grey04,secondaryColor: .grey05), animation: animation, transition: .crossDissolve(0.5))
+    mainCardCV.showSkeleton()
+  }
+
   private func getCardData(){
+    
     BaseService.default.getPopularTravelList { result in
       result.success { list in
         self.popularList = []
-        
         if let popular = list {
-      
           self.popularList = popular
         }
         
-        print("Popular List", self.popularList)
-        self.mainCardCV.reloadData()
-        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
+          self.mainCardCV.reloadData()
+          self.mainCardCV.hideSkeleton(reloadDataAfter: .random(), transition: .crossDissolve(2))
+        }
+ 
       }.catch{ error in
-        print("CARDERR")
-        NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .showNetworkError), object: nil)
+          NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .showNetworkError), object: nil)
       }
     }
+  }
+  
+  private func setDuumy(){
+    popularList.append(contentsOf: [
+      HomeListDataGettable.Item.init(id: 0,
+                                     thumbnailURL: "",
+                                     title: "",
+                                     nickname: ""),
+      
+      HomeListDataGettable.Item.init(id: 0,
+                                     thumbnailURL: "",
+                                     title: "",
+                                     nickname: ""),
+      
+      HomeListDataGettable.Item.init(id: 0,
+                                     thumbnailURL: "",
+                                     title: "",
+                                     nickname: ""),
+      
+      HomeListDataGettable.Item.init(id: 0,
+                                     thumbnailURL: "",
+                                     title: "",
+                                     nickname: "")
+    ])
   }
   
 //  var id : Int
 //  var title : String
 //  var photo : String
 
-  
 //  private func fetchEventItemList(){
 //    BaseService.default.getEventBannerList { result in
 //      result.success{ list in
@@ -140,25 +166,33 @@ class MainCardView: UIView {
 //    }
 //  }
   
-  
-  
 }
 
 // MARK: - Extension Part
 
-extension MainCardView : UICollectionViewDelegate{
+extension MainCardView : SkeletonCollectionViewDelegate{
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .movePlanPreview), object: nil)
   }
 }
 
-extension MainCardView: UICollectionViewDataSource {
+extension MainCardView: SkeletonCollectionViewDataSource {
+  func collectionSkeletonView(_ skeletonView: UICollectionView, cellIdentifierForItemAt indexPath: IndexPath) -> ReusableCellIdentifier {
+    return MainCardCVC.className
+  }
+  func collectionSkeletonView(_ skeletonView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return 5
+  }
+  
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return popularList.count
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    guard popularList.count >= indexPath.row + 1 else {return UICollectionViewCell()}
+    
     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainCardCVC.className, for: indexPath) as? MainCardCVC else {return UICollectionViewCell()}
+
     
     cell.setData(appData: popularList[indexPath.row])
     return cell
@@ -195,7 +229,6 @@ extension MainCardView : UIScrollViewDelegate {
 //    let page = Int(targetContentOffset.pointee.x / self.frame.width)
     let layout = mainCardCV.collectionViewLayout as! UICollectionViewFlowLayout
     let cellWidthIncludingSpacing = layout.itemSize.width + layout.minimumLineSpacing
-    
     
     var offSet = targetContentOffset.pointee
     let index = (offSet.x + scrollView.contentInset.left) / cellWidthIncludingSpacing

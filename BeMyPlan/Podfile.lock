@@ -107,6 +107,7 @@ PODS:
   - Kingfisher (5.15.8):
     - Kingfisher/Core (= 5.15.8)
   - Kingfisher/Core (5.15.8)
+  - ListPlaceholder (1.5)
   - lottie-ios (3.3.0)
   - Moya (15.0.0):
     - Moya/Core (= 15.0.0)
@@ -121,8 +122,8 @@ PODS:
   - nanopb/encode (2.30908.0)
   - PanModal (1.2.7)
   - PromisesObjC (2.0.0)
+  - SkeletonView (1.26.0)
   - SnapKit (5.0.1)
-  - SRScratchView (1.0.0)
   - SwiftLint (0.45.1)
   - SwiftyJSON (4.3.0)
   - Then (2.7.0)
@@ -135,13 +136,14 @@ DEPENDENCIES:
   - KakaoSDKCommon
   - KakaoSDKUser
   - Kingfisher (~> 5.0)
+  - ListPlaceholder
   - lottie-ios
   - Moya
   - MSCircularSlider
   - Mute
   - PanModal
+  - SkeletonView
   - SnapKit (~> 5.0.0)
-  - SRScratchView
   - SwiftLint
   - SwiftyJSON (~> 4.0)
   - Then
@@ -163,6 +165,7 @@ SPEC REPOS:
     - KakaoSDKCommon
     - KakaoSDKUser
     - Kingfisher
+    - ListPlaceholder
     - lottie-ios
     - Moya
     - MSCircularSlider
@@ -170,8 +173,8 @@ SPEC REPOS:
     - nanopb
     - PanModal
     - PromisesObjC
+    - SkeletonView
     - SnapKit
-    - SRScratchView
     - SwiftLint
     - SwiftyJSON
     - Then
@@ -192,6 +195,7 @@ SPEC CHECKSUMS:
   KakaoSDKCommon: 33c9902ee9ce13e9d1cac3549896406229836ff5
   KakaoSDKUser: d878977e0ba6b365cfeac3b6319cdf4231713bea
   Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
+  ListPlaceholder: 2d7950014852ee5613d636cf14fd1bb93419e330
   lottie-ios: 6ac74dcc09904798f59b18cb3075c089d76be9ae
   Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
   MSCircularSlider: 07fe922e6a7e05fb67e876d449e365327fdad3d1
@@ -199,12 +203,12 @@ SPEC CHECKSUMS:
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PanModal: 3e16ead1a907fb06f4df3f13492fd00149fa4974
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
+  SkeletonView: 6b62a8ddbc64abb113ea3243e4a9979e5750f147
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
-  SRScratchView: 75cac075964f569bb3dc411cd14636a42e0cc48c
   SwiftLint: 06ac37e4d38c7068e0935bb30cda95f093bec761
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
   Then: acfe0be7e98221c6204e12f8161459606d5d822d
 
-PODFILE CHECKSUM: 96d645f2a277f854144b2e3679722ca17022a9be
+PODFILE CHECKSUM: 835e8da86e3ae36bdb78b352390b6191c4e84492
 
 COCOAPODS: 1.11.2

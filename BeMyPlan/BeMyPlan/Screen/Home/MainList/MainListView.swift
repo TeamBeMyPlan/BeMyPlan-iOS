@@ -120,7 +120,7 @@ class MainListView: UIView {
           self?.mainListDataList = list
         }
       }.catch{ error in
-        dump(error)
+        NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .showNetworkError), object: nil)
       }
     }
   }
@@ -134,7 +134,8 @@ class MainListView: UIView {
           self?.mainListDataList = list
         }
       }.catch{ error in
-        dump(error)
+        NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .showNetworkError), object: nil)
+      
       }
     }
   }

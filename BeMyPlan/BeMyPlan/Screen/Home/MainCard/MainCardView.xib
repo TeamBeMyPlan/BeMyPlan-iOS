@@ -16,8 +16,8 @@
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" ambiguous="YES" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="572"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="646"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xfh-Hr-YeP">
@@ -60,7 +60,7 @@
                 <constraint firstItem="xfh-Hr-YeP" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="24" id="vUm-cb-lyC"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="40" y="-82"/>
+            <point key="canvasLocation" x="39.855072463768117" y="-57.589285714285708"/>
         </view>
     </objects>
     <resources>
