@@ -72,17 +72,16 @@ class PlanPreviewVC: UIViewController {
   }
   
   // MARK: - Custom Method Part
-  
-
-  
-
-  
+ 
   private func addButtonActions(){
     scrabButton.press {
       self.isScrabed = !self.isScrabed
     }
     buyButton.press {
       guard let paymentVC = UIStoryboard.list(.payment).instantiateViewController(withIdentifier: PaymentSelectVC.className) as? PaymentSelectVC else {return}
+      if let price = self.priceLabel.text{
+        paymentVC.price = price
+      }
       self.navigationController?.pushViewController(paymentVC, animated: true)
     }
   }
@@ -150,7 +149,7 @@ class PlanPreviewVC: UIViewController {
         }
         self?.closeIndicator{
           UIView.animate(withDuration: 1.0) {
-            self?.previewContentTV.alpha = 1                                                                          
+            self?.previewContentTV.alpha = 1
           }
         }
         

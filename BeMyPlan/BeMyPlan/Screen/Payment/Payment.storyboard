@@ -56,19 +56,20 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VeP-PM-WLY">
                                 <rect key="frame" x="0.0" y="808" width="414" height="88"/>
                                 <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3MY-4b-Pxc">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="88"/>
+                                        <color key="backgroundColor" name="grey4"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <connections>
+                                            <action selector="paymentButtonClicked:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Dge-aa-ssY"/>
+                                        </connections>
+                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="결제하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o5S-kk-PJ1">
                                         <rect key="frame" x="176" y="31" width="62.5" height="21"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3MY-4b-Pxc">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="88"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <connections>
-                                            <action selector="paymentButtonClicked:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Dge-aa-ssY"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" name="beMyBlue"/>
                                 <constraints>
@@ -245,6 +246,7 @@
                     <connections>
                         <outlet property="infoContentView" destination="b96-RL-bbk" id="RNE-20-jPQ"/>
                         <outlet property="moneyLabel" destination="Cyj-kq-g0E" id="Xzn-Ed-ufo"/>
+                        <outlet property="paymentButton" destination="3MY-4b-Pxc" id="m5u-cY-ocS"/>
                         <outlet property="titleLabel" destination="yAR-F7-j81" id="7u3-E7-55o"/>
                         <outlet property="writerLabel" destination="Kn2-OM-lqS" id="c9i-Xm-DxV"/>
                         <outletCollection property="paymentButtonList" destination="T3o-kr-tP8" collectionClass="NSMutableArray" id="2tE-0u-W7V"/>
@@ -283,6 +285,9 @@
                                             <constraint firstAttribute="width" constant="50" id="62G-qa-fND"/>
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <connections>
+                                            <action selector="closeButtonClicked:" destination="gYK-pO-SXL" eventType="touchUpInside" id="JGn-vs-ZJu"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>

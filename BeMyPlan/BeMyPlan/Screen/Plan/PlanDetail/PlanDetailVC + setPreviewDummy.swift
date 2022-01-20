@@ -19,6 +19,10 @@ extension PlanDetailVC {
     mainContainerTV.reloadData()
     setWriterView()
     setMapContainerView()
+    
+    closeIndicator {
+      self.mainContainerTV.alpha = 1
+    }
 
     
   }

@@ -45,6 +45,7 @@ class PlanDetailVC: UIViewController {
         mainContainerTV.sectionHeaderTopPadding = 0
       }
 //      mainContainerTV.contentInsetAdjustmentBehavior = .never
+      mainContainerTV.alpha = 0
       mainContainerTV.delegate = self
       mainContainerTV.dataSource = self
       mainContainerTV.allowsSelection = false
@@ -68,6 +69,7 @@ class PlanDetailVC: UIViewController {
       getWriterBlockHeight()
       isPreviewPage ? setPreviewDummy() : fetchPlanDetailData()
       addObserver()
+      showIndicator()
     }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -81,7 +83,8 @@ class PlanDetailVC: UIViewController {
   // MARK: - Custom Methods Parts
   
   @IBAction func backButtonClicked(_ sender: Any) {
-    self.navigationController?.dismiss(animated: true, completion: nil)
+    print("BACKBUTOTNCLICKED")
+    self.navigationController?.popViewController(animated: true)
   }
   private func addObserver(){
     addObserverAction(keyName: NSNotification.Name.init(rawValue: "planDetailButtonClicked")) { _ in
