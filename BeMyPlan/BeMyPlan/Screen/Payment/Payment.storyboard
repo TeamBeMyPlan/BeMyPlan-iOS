@@ -406,7 +406,7 @@
                                         <color key="backgroundColor" name="beMyBlue"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="컨텐츠 보러 가기"/>
+                                        <state key="normal" title="콘텐츠 보러 가기"/>
                                         <connections>
                                             <action selector="showContentButtonClicked:" destination="gYK-pO-SXL" eventType="touchUpInside" id="HHT-30-rwb"/>
                                         </connections>
