@@ -13,7 +13,7 @@ class PlanDetailSummaryTVC: UITableViewCell,UITableViewRegisterable{
   var currentDay : Int = 1
   
   static var isFromNib: Bool = true
-  private var isFold : Bool = true{
+  var isFold : Bool = true{
     didSet{
       calculateSummaryHeight()
       listTV.reloadData()
@@ -81,28 +81,40 @@ class PlanDetailSummaryTVC: UITableViewCell,UITableViewRegisterable{
     PlanDetailSummaryRouteTVC.register(target: listTV)
     PlanDetailSummaryFoldTVC.register(target: listTV)
   }
+  
+
 }
 
 extension PlanDetailSummaryTVC : UITableViewDelegate{
-  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    if indexPath.row > 5 && indexPath.row == locationList.count{
-      makeVibrate()
-      isFold = !isFold
-    }
-  }
+
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     if locationList.count > 5{
-      switch(indexPath.row){
-        case 0:
-          return first
-        case locationList.count - 2:
-          return last
-        case locationList.count - 1:
-          return additional
-        default:
-          return middle
+      
+      if isFold == true{
+        switch(indexPath.row){
+          case 0:
+            return first
+          case 4:
+            return last
+          case 5:
+            return additional
+          default:
+            return middle
+        }
+      }else{
+        switch(indexPath.row){
+          case 0:
+            return first
+          case locationList.count - 1:
+            return last
+          case locationList.count:
+            return additional
+          default:
+            return middle
+        }
       }
+
     }else if locationList.count > 1{
       switch(indexPath.row){
         case 0:
@@ -125,7 +137,7 @@ extension PlanDetailSummaryTVC : UITableViewDataSource{
     if locationList.count <= 5{
       return locationList.count
     }else{
-      if isFold == true{
+      if isFold == true {
         return 6
       }else{
         return locationList.count + 1
@@ -136,36 +148,74 @@ extension PlanDetailSummaryTVC : UITableViewDataSource{
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     var order : OrderCase
     
-    guard let routeCell = tableView.dequeueReusableCell(withIdentifier: PlanDetailSummaryRouteTVC.className, for: indexPath) as? PlanDetailSummaryRouteTVC else {return UITableViewCell() }
-  
-    if indexPath.row == 0 && locationList.count == 1{
-      order = .onlyOne
-    }else if indexPath.row == 0{
-      order = .first
-    }else if indexPath.row == locationList.count - 1{
-      order = .final
+    if locationList.count <= 5{
+      if indexPath.row == 0 && locationList.count == 1{
+        order = .onlyOne
+      }else if indexPath.row == 0{
+        order = .first
+      }else if indexPath.row == locationList.count - 1{
+        order = .final
+      }else{
+        order = .middle
+      }
     }else{
-      order = .middle
+      if isFold == true && indexPath.row == 4{
+        order = .final
+      }else if (isFold == false) && (indexPath.row == locationList.count - 1){
+        order = .final
+      }else if indexPath.row == 0{
+        order = .first
+      }else{
+        order = .middle
+      }
+    }
+
+    
+    
+    var routeCell = PlanDetailSummaryRouteTVC()
+    var moreCell = PlanDetailSummaryFoldTVC()
+    
+    
+    if locationList.count <= 5{
+      guard let infoCell = tableView.dequeueReusableCell(withIdentifier: PlanDetailSummaryRouteTVC.className, for: indexPath) as? PlanDetailSummaryRouteTVC else {return UITableViewCell() }
+      routeCell = infoCell
+      
+      routeCell.setLocationData(order: order,
+                                locationName: locationList[indexPath.row].locationName,
+                                transportCase:  (locationList.count == indexPath.row + 1) ? nil : locationList[indexPath.row].transportCase,
+                                time: (locationList.count == indexPath.row + 1) ? "" : locationList[indexPath.row].time)
+    }else{
+      if (isFold == true && indexPath.row == 5) || (isFold == false && indexPath.row == locationList.count){
+          guard let moreButtonCell = tableView.dequeueReusableCell(withIdentifier: PlanDetailSummaryFoldTVC.className, for: indexPath) as? PlanDetailSummaryFoldTVC else {return UITableViewCell() }
+          moreCell = moreButtonCell
+        moreCell.delegate = self
+        moreCell.setFoldState(isFolded: isFold)
+      }else{
+        guard let infoCell = tableView.dequeueReusableCell(withIdentifier: PlanDetailSummaryRouteTVC.className, for: indexPath) as? PlanDetailSummaryRouteTVC else {return UITableViewCell() }
+        routeCell = infoCell
+        
+        routeCell.setLocationData(order: order,
+                                  locationName: locationList[indexPath.row].locationName,
+                                  transportCase:  (locationList.count == indexPath.row + 1) ? nil : locationList[indexPath.row].transportCase,
+                                  time: (locationList.count == indexPath.row + 1) ? "" : locationList[indexPath.row].time)
+      }
     }
     
-    routeCell.setLocationData(order: order,
-                              locationName: locationList[indexPath.row].locationName,
-                              transportCase:  (locationList.count == indexPath.row + 1) ? nil : locationList[indexPath.row].transportCase,
-                              time: (locationList.count == indexPath.row + 1) ? "" : locationList[indexPath.row].time)
-                              
     if locationList.count <= 5{
       return routeCell
     }else{
-      guard let moreCell = tableView.dequeueReusableCell(withIdentifier: PlanDetailSummaryFoldTVC.className, for: indexPath) as? PlanDetailSummaryFoldTVC else {return UITableViewCell() }
-      moreCell.setFoldState(isFolded: isFold)
-      
-      if isFold == true{
-        if indexPath.row == 5 { return moreCell }
-        else{ return routeCell }
+      if (isFold == true && indexPath.row == 5) || (isFold == false && indexPath.row == locationList.count){
+        return moreCell
       }else{
-        if indexPath.row == locationList.count {return moreCell}
-        else { return routeCell }
+        return routeCell
       }
     }
+  }
+}
+
+extension PlanDetailSummaryTVC : SummaryFoldDelegate{
+  func foldButtonClicked() {
+    isFold = !isFold
+    NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: "foldStateChanged"), object: isFold)
   }
 }

@@ -23,14 +23,25 @@
                             <constraint firstAttribute="height" constant="22" id="acJ-Ho-L9X"/>
                         </constraints>
                     </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VIf-J8-pBO">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="93"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <connections>
+                            <action selector="foldButtonClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="k0Z-RU-Bpx"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="VIf-J8-pBO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="1aa-tb-Cij"/>
+                    <constraint firstItem="VIf-J8-pBO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="QY9-QM-5Ss"/>
+                    <constraint firstAttribute="trailing" secondItem="VIf-J8-pBO" secondAttribute="trailing" id="TSA-Tg-ln6"/>
                     <constraint firstItem="G9s-Y1-Pp0" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="f6R-FW-YUJ"/>
                     <constraint firstItem="G9s-Y1-Pp0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="hIJ-vW-yPM"/>
+                    <constraint firstAttribute="bottom" secondItem="VIf-J8-pBO" secondAttribute="bottom" id="tJB-31-kWB"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="iconimageView" destination="G9s-Y1-Pp0" id="G6U-WG-6et"/>
+                <outlet property="iconimageView" destination="G9s-Y1-Pp0" id="71r-VZ-ZE7"/>
             </connections>
             <point key="canvasLocation" x="184.78260869565219" y="98.102678571428569"/>
         </tableViewCell>

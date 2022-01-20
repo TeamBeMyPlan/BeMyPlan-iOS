@@ -13,10 +13,17 @@ class PaymentSelectVC: UIViewController {
   
   private var selectedIndex : Int = -1{
     didSet{
+      
+      if selectedIndex == -1{
+        paymentButton.tintColor = .grey04
+      }else{
+        paymentButton.backgroundColor = .bemyBlue
+      }
       print("SELECTINDEX",selectedIndex)
       setButtonState()
     }
   }
+  var price : String = "" 
   private var paymentList :[PaymentList] = [.kakaoPay,
                                     .toss,.naverPay]
   
@@ -28,6 +35,7 @@ class PaymentSelectVC: UIViewController {
   @IBOutlet var moneyLabel: UILabel!
   @IBOutlet var paymentButtonList: [BarSelectButton]!
   
+  @IBOutlet var paymentButton: UIButton!
   // MARK: - Life Cycle Part
   
   override func viewDidLoad() {
@@ -35,6 +43,7 @@ class PaymentSelectVC: UIViewController {
     setButtonUI()
     setContainerUI()
     setButtonState()
+    setPriceLabel()
   }
   
   // MARK: - Custom Method Part
@@ -48,6 +57,8 @@ class PaymentSelectVC: UIViewController {
     paymentCompleteVC.modalTransitionStyle = .coverVertical
     paymentCompleteVC.modalPresentationStyle = .fullScreen
     paymentCompleteVC.delegate = self
+    paymentCompleteVC.price = price
+    paymentCompleteVC.paymentType = paymentList[selectedIndex]
     present(paymentCompleteVC,animated: true)
   }
   
@@ -55,6 +66,10 @@ class PaymentSelectVC: UIViewController {
     infoContentView.layer.cornerRadius = 5
     infoContentView.layer.borderWidth = 1
     infoContentView.layer.borderColor = UIColor.grey04.cgColor
+  }
+  
+  private func setPriceLabel(){
+    moneyLabel.text = price
   }
   
   private func setButtonUI(){
@@ -79,10 +94,10 @@ class PaymentSelectVC: UIViewController {
     paymentButtonList = nil;
   }
 }
-enum PaymentList{
-  case kakaoPay
-  case toss
-  case naverPay
+enum PaymentList : String{
+  case kakaoPay = "카카오페이"
+  case toss = "토스"
+  case naverPay = "네이버페이"
 }
 
 extension PaymentSelectVC : PaymentCompleteDelegate{

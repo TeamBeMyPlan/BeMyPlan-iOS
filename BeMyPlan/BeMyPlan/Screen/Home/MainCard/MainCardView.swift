@@ -106,7 +106,7 @@ class MainCardView: UIView {
           self.mainCardCV.reloadData()
         }
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
 
           self.mainCardCV.hideSkeleton(transition: .crossDissolve(2))
         }
@@ -148,7 +148,7 @@ class MainCardView: UIView {
 
 extension MainCardView : SkeletonCollectionViewDelegate{
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .movePlanPreview), object: nil)
+    NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .movePlanPreview), object: popularList[indexPath.row].id)
   }
 }
 
