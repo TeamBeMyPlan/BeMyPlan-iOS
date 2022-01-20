@@ -6,3 +6,5 @@
 ![Frame 10](https://user-images.githubusercontent.com/60260284/149067768-c737db6c-61a1-4249-b412-4cea179d15a9.png)
 
 [비마이플랜 아요 노션바로가기(과제확인용!)](https://boggy-snowstorm-fdb.notion.site/e00cf430594b4319a8a6b7c04b22acc0)
+![Frame 40](https://user-images.githubusercontent.com/60260284/150420251-382317d7-f03f-42e5-9d2a-5dab532c6f5f.png)
+3주동안 고생해준 현주양원 고마웟습니다 🙇🏼 
