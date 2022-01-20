@@ -18,7 +18,7 @@ enum BaseAPI{
   case getNicknameDetailList(userId: Int, page: Int, pageSize: Int?, sort: String)
 
   case postSocialLogin(socialToken: String, socialType: String)
-  case postSocialSignUp(socialToken: String, socialType: String, nickname: String)
+  case postSocialSignUp(socialToken: String, socialType: String, nickName: String)
 
   
   
