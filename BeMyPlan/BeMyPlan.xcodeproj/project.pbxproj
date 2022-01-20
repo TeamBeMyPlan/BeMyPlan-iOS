@@ -185,6 +185,7 @@
 		FDC47E112789742800A152E8 /* TravelSpotDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC47E0B2789742800A152E8 /* TravelSpotDetailVC.swift */; };
 		FDC47E132789875800A152E8 /* makeCellInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC47E122789875800A152E8 /* makeCellInstance.swift */; };
 		FDCDCB31278F4C2B002CEA15 /* PlanDetailSpotDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCDCB30278F4C2B002CEA15 /* PlanDetailSpotDataModel.swift */; };
+		FDCE382427993E740042DC54 /* PlanDetailVC + setPreviewDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCE382327993E740042DC54 /* PlanDetailVC + setPreviewDummy.swift */; };
 		FDF980BC2786CE660009A14E /* paybooc_OTF_Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = FDF980BA2786CE660009A14E /* paybooc_OTF_Bold.otf */; };
 		FDF980BD2786CE660009A14E /* Spoqa_Han_Sans_Neo_Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = FDF980BB2786CE660009A14E /* Spoqa_Han_Sans_Neo_Bold.otf */; };
 		FDF980BF2786CE700009A14E /* Spoqa_Han_Sans_Neo_Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = FDF980BE2786CE700009A14E /* Spoqa_Han_Sans_Neo_Regular.otf */; };
@@ -423,6 +424,7 @@
 		FDC47E0B2789742800A152E8 /* TravelSpotDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TravelSpotDetailVC.swift; sourceTree = "<group>"; };
 		FDC47E122789875800A152E8 /* makeCellInstance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = makeCellInstance.swift; sourceTree = "<group>"; };
 		FDCDCB30278F4C2B002CEA15 /* PlanDetailSpotDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDetailSpotDataModel.swift; sourceTree = "<group>"; };
+		FDCE382327993E740042DC54 /* PlanDetailVC + setPreviewDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanDetailVC + setPreviewDummy.swift"; sourceTree = "<group>"; };
 		FDF980BA2786CE660009A14E /* paybooc_OTF_Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = paybooc_OTF_Bold.otf; sourceTree = "<group>"; };
 		FDF980BB2786CE660009A14E /* Spoqa_Han_Sans_Neo_Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Spoqa_Han_Sans_Neo_Bold.otf; sourceTree = "<group>"; };
 		FDF980BE2786CE700009A14E /* Spoqa_Han_Sans_Neo_Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Spoqa_Han_Sans_Neo_Regular.otf; sourceTree = "<group>"; };
@@ -987,6 +989,7 @@
 				FD3151A4278D0C880076D92E /* PlanDetailVC.swift */,
 				FD2D9C572796B02000688A42 /* PlanDetailVC + fetchData.swift */,
 				FD3151A2278D0C7B0076D92E /* PlanDetail.storyboard */,
+				FDCE382327993E740042DC54 /* PlanDetailVC + setPreviewDummy.swift */,
 			);
 			path = PlanDetail;
 			sourceTree = "<group>";
@@ -1569,6 +1572,7 @@
 				FDF981022788D49C0009A14E /* PlanPreviewWriterTVC.swift in Sources */,
 				FDF981042788D4AB0009A14E /* PlanPreviewDescriptionTVC.swift in Sources */,
 				FD20C615278ECBE800AC6E34 /* MyPlanEmptyBuyListView.swift in Sources */,
+				FDCE382427993E740042DC54 /* PlanDetailVC + setPreviewDummy.swift in Sources */,
 				523C70B32796EC890073371D /* ScrapBtnDataModel.swift in Sources */,
 				FD20C61C278EEFAB00AC6E34 /* addObserverAction.swift in Sources */,
 				FD2D9C582796B02000688A42 /* PlanDetailVC + fetchData.swift in Sources */,

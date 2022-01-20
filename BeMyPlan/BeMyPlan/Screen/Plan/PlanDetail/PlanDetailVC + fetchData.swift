@@ -37,7 +37,7 @@ extension PlanDetailVC{
                                                            latitude: dayData.latitude,
                                                            longtitude: dayData.longitude))
                 
-                let summary = PlanDetail.Summary.init(transportCase: self?.makeTransportCase(mobilityName: dayData.title),
+                let summary = PlanDetail.Summary.init(transportCase: self?.makeTransportCase(mobilityName: dayData.nextSpotMobility),
                                                            locationName: dayData.title,
                                                            time: dayData.nextSpotRequiredTime)
                 summaryList.append(summary)
