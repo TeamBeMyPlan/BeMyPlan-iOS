@@ -195,6 +195,27 @@ class SignUpVC: UIViewController {
     }
   }
   
+//  private func postSocialSignUpData()
+  
+//  private func postSocialLoginData(socialToken: String, socialType: String) {
+//    BaseService.default.postSocialLogin(socialToken: socialToken, socialType: socialType) { result in
+//      result.success { [weak self] data in
+//        if let data = data{
+//          if data.created { //가입 된거
+//            UserDefaults.standard.setValue(data.accessToken, forKey: "userToken")
+//            self?.moveBaseVC()
+//          } else {
+//            self?.pushSignUPVC(socialToken: socialToken, socialType: socialType)
+//          }
+//
+//          print("--------------SocialLogin------------------")
+//        }
+//      }.catch {error in
+//        NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .showNetworkError), object: nil)
+//      }
+//    }
+//  }
+  
   // MARK: - @objc Function Part
   @objc func textFieldDidChange() {
     checkMaxLabelCount()
