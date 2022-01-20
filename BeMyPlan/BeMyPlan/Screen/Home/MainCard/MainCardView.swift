@@ -106,7 +106,7 @@ class MainCardView: UIView {
           self.mainCardCV.reloadData()
         }
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
 
           self.mainCardCV.hideSkeleton(transition: .crossDissolve(2))
         }

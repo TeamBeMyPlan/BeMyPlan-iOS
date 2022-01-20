@@ -11,7 +11,7 @@ class PlanPreviewVC: UIViewController {
   
   // MARK: - Vars & Lets Part
   
-  var idx : Int = 2
+  var idx : Int = 29
   private var isAnimationProceed: Bool = false
   private var lastContentOffset : CGFloat = 0
   private var isScrabed : Bool = false{
@@ -33,6 +33,7 @@ class PlanPreviewVC: UIViewController {
   
   // MARK: - UI Component Part
   
+  @IBOutlet var priceLabel: UILabel!
   @IBOutlet var scrabButton: UIButton!
   @IBOutlet var buyButton: UIButton!
   @IBOutlet var scrabIconImageView: UIImageView!
@@ -59,6 +60,14 @@ class PlanPreviewVC: UIViewController {
   @IBAction func backButtonClicked(_ sender: Any) {
     self.navigationController?.popViewController(animated: true)
   }
+  
+  @IBAction func previewButtonClicked(_ sender: Any) {
+    guard let previewVC = UIStoryboard.list(.planDetail).instantiateViewController(withIdentifier: PlanDetailVC.className) as? PlanDetailVC else {return}
+    
+    previewVC.isPreviewPage = true
+    self.navigationController?.pushViewController(previewVC, animated: true)
+  }
+  
   // MARK: - Custom Method Part
   
   private func addButtonActions(){
@@ -94,10 +103,13 @@ class PlanPreviewVC: UIViewController {
   }
   
   private func fetchTagData(){
+
     BaseService.default.getPlanPreviewHeaderData(idx: idx) { result in
       result.success { [weak self] data in
         if let data = data{
-          self?.headerData = PlanPreview.HeaderData.init(writer: data.userNickname,
+          
+          self?.priceLabel.text = String(data.price) + "원"
+          self?.headerData = PlanPreview.HeaderData.init(writer: data.author,
                                                          title: data.title)
           self?.descriptionData = PlanPreview.DescriptionData.init(descriptionContent: data.dataDescription,
                                                                    summary: PlanPreview.IconData.init(theme: data.tagTheme,
@@ -109,6 +121,8 @@ class PlanPreviewVC: UIViewController {
                                                                                                       transport: data.tagMobility,
                                                                                                       month: String(data.tagMonth)))
         }
+      }.catch { err in
+        dump(err)
       }
     }
   }
@@ -117,14 +131,18 @@ class PlanPreviewVC: UIViewController {
     BaseService.default.getPlanPreviewDetailData(idx: idx) { result in
       result.success { [weak self] data in
         if let data = data{
+          
+          print("GET SUCCESS")
+          dump(data)
           var photoList : [PlanPreview.PhotoData] = []
           for (_,item) in data.enumerated(){
-            photoList.append(PlanPreview.PhotoData.init(photo: item.photoURL,
-                                                        content: item.description))
+            photoList.append(PlanPreview.PhotoData.init(photo: item.photoUrls.first ?? "",
+                                                        content: item.datumDescription))
           }
           self?.photoData = photoList
         }
       }.catch { err in
+
         NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .showNetworkError), object: nil)
       }
     }

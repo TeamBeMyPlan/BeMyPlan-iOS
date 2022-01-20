@@ -10,6 +10,7 @@ import UIKit
 class PlanPreviewPhotoTVC: UITableViewCell {
   
   // MARK: - Vars & Lets Part
+  
   @IBOutlet var contentImageView: UIImageView!
   @IBOutlet var contentTextView: UITextView!{
     didSet{
@@ -56,7 +57,19 @@ class PlanPreviewPhotoTVC: UITableViewCell {
     }else{
       contentImageView.image = UIImage()
     }
-    contentTextView.text = (content != nil) ? content : ""
+    if let content = content {
+      makeShortContent(content: content)
+    }else{
+      contentTextView.text = ""
+    }
+  }
+  
+  private func makeShortContent(content: String){
+    if content.count < 100{
+      contentTextView.text = content
+    }else{
+      contentTextView.text = content.prefix(99) + "..."
+    }
   }
   
   

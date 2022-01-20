@@ -10,6 +10,7 @@ import UIKit
 class PlanDetailSummaryFoldTVC: UITableViewCell,UITableViewRegisterable{
 
   static var isFromNib: Bool = true
+  var delegate : SummaryFoldDelegate?
   @IBOutlet var iconimageView: UIImageView!
   override func awakeFromNib() {
         super.awakeFromNib()
@@ -18,6 +19,16 @@ class PlanDetailSummaryFoldTVC: UITableViewCell,UITableViewRegisterable{
         super.setSelected(selected, animated: animated)
     }
   func setFoldState(isFolded : Bool){
-    iconimageView.image = isFolded ? ImageLiterals.PlanDetail.foldIcon : ImageLiterals.PlanDetail.moreIcon
+      iconimageView
+        .image = isFolded ? ImageLiterals.PlanDetail.foldIcon : ImageLiterals.PlanDetail.moreIcon
   }
+  @IBAction func foldButtonClicked(_ sender: Any) {
+    makeVibrate()
+    delegate?.foldButtonClicked()
+    
+  }
+}
+
+protocol SummaryFoldDelegate{
+  func foldButtonClicked()
 }

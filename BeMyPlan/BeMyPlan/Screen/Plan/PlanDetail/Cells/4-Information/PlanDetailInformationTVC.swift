@@ -47,7 +47,21 @@ class PlanDetailInformationTVC: UITableViewCell,UITableViewRegisterable {
       
     }
   }
-  @IBOutlet var contentTextView: UITextView!
+  @IBOutlet var contentTextView: UITextView!{
+    didSet{
+      let style = NSMutableParagraphStyle()
+      style.lineHeightMultiple = 1.3
+      let attributes = [NSAttributedString.Key.paragraphStyle: style]  as [NSAttributedString.Key: Any]
+      
+      contentTextView.attributedText = NSAttributedString(
+        string: contentTextView.text,
+        attributes: attributes)
+      
+      contentTextView.font = UIFont.systemFont(ofSize: 14)
+      contentTextView.textColor = .grey01
+      contentTextView.textContainer.lineFragmentPadding = .zero
+    }
+  }
   @IBOutlet var nextTripTimeView: UIView!
   @IBOutlet var nextTripLocationNameLabel: UILabel!
   @IBOutlet var nextTripTimeLabel: UILabel!

@@ -26,7 +26,7 @@ class PreviewIconContainerView: XibView {
     restaurantCountLabel.text = iconData.restaurantCount + "곳"
     dayCountLabel.text = iconData.dayCount + "일"
     peopleCaseLabel.text = iconData.peopleCase
-    moneyLabel.text = iconData.budget + "만원"
+    moneyLabel.text = iconData.budget + ""
     transportLabel.text = iconData.transport
     monthLabel.text = iconData.month + "월"
   }

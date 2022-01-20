@@ -10,13 +10,15 @@ import UIKit
 class PlanDetailVC: UIViewController {
 
   // MARK: - Vars & Lets Part
+  var isPreviewPage : Bool = false
   var isFullPage = false { didSet{ foldContentTableView() }}
-  var postIdx : Int = 5
+  var postIdx : Int = 29
   var headerContentHeight : CGFloat = 0
   var headerData : DetailHeaderData?
   var locationList : [[PlanDetailMapData]] = [[]]
   var totalDay : Int = 1
   var initailScrollCompleted = false
+  var isFold = true
   var currentDay : Int = 1 { didSet{
     mapContainerView.currentDay = currentDay
     mainContainerTV.reloadData()}
@@ -64,9 +66,17 @@ class PlanDetailVC: UIViewController {
       registerCells()
       mainContainerTV.reloadData()
       getWriterBlockHeight()
-      fetchPlanDetailData()
+      isPreviewPage ? setPreviewDummy() : fetchPlanDetailData()
       addObserver()
     }
+  
+  override func viewWillAppear(_ animated: Bool) {
+
+    print("GESTURTEURTEUT")
+    dump(self.view.gestureRecognizers)
+    navigationController?.interactivePopGestureRecognizer?.delegate = nil
+    navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+  }
   
   // MARK: - Custom Methods Parts
   
@@ -77,7 +87,15 @@ class PlanDetailVC: UIViewController {
     addObserverAction(keyName: NSNotification.Name.init(rawValue: "planDetailButtonClicked")) { _ in
       self.isFullPage = !self.isFullPage
     }
+    addObserverAction(keyName: NSNotification.Name.init(rawValue: "foldStateChanged")) { noti in
+      if let state = noti.object as? Bool{
+        self.isFold = state
+        self.mainContainerTV.reloadData()
+      }
+    }
   }
+  
+
   
   private func registerCells(){
     PlanDetailSummaryTVC.register(target: mainContainerTV)
@@ -168,6 +186,7 @@ extension PlanDetailVC : UITableViewDataSource{
           guard summaryList.count >= currentDay-1 else {return UITableViewCell()}
           summaryCell.locationList = self.summaryList[currentDay - 1]
           summaryCell.currentDay = currentDay
+          summaryCell.isFold = isFold
           return summaryCell
           
         default:
@@ -201,11 +220,13 @@ extension PlanDetailVC : UIScrollViewDelegate{
     }else{
       headerTitleLabel.isHidden = true
     }
-//    if scrollView.contentOffset.y <= headerContentHeight + 10{
-//      mainTVTopConstraint.constant = headerContentHeight - scrollView.contentOffset.y
-//    }else{
-//      mainTVTopConstraint.constant = -10
-//    }
+    if let cell = mainContainerTV.visibleCells.first,
+       let indexPath = mainContainerTV.indexPath(for: cell){
+      mapContainerView.currentIndex = indexPath.row
+    }
+    
+    
+    
   }
 }
 
@@ -216,5 +237,12 @@ extension PlanDetailVC : PlanDetailDayDelegate{
       self.currentDay = day
     }
 
+  }
+}
+
+
+extension PlanDetailVC : UIGestureRecognizerDelegate{
+  func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {
+      return false
   }
 }

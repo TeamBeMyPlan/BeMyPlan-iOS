@@ -20,7 +20,8 @@ class PlanDetailMapContainerView: XibView,MTMapViewDelegate{
     }
   }
   var totalMapPointList : [PlanDetailMapData] = []
-  var currentDay : Int = 1 { didSet {changedCurrentDay()}}
+  var currentDay : Int = 1 { didSet {changedCurrentDay() }}
+  var currentIndex : Int = 0 { didSet{ showEachPlaceCenter() }}
   
   // MARK: - UI Components Parts
   
@@ -52,12 +53,23 @@ class PlanDetailMapContainerView: XibView,MTMapViewDelegate{
   }
   
   private func setMapPointCenterPoint(){
-  
     for (_,pointList) in mapPointList.enumerated(){
       for (_,point) in pointList.enumerated(){
         totalMapPointList.append(point)
       }
     }
+  }
+  
+  private func showEachPlaceCenter(){
+    if currentIndex > 0 && currentDay > 0 && mapPointList.count > 0{
+      let data = mapPointList[currentDay - 1][currentIndex - 1]
+      showMapCenter(pointList: [data])
+    }else{
+      if mapPointList.count >= currentDay && currentDay > 0 {
+        showMapCenter(pointList: mapPointList[currentDay - 1])
+      }
+    }
+
   }
   
   private func showMapCenter(pointList: [PlanDetailMapData]){
@@ -91,6 +103,8 @@ class PlanDetailMapContainerView: XibView,MTMapViewDelegate{
       mapItem.markerSelectedType = .customImage
       mapItem.itemName = mapData.title
       mapItem.customCalloutBalloonView = makeBallonView(title: mapData.title)
+      
+      mapItem.customImageAnchorPointOffset = MTMapImageOffset.init(offsetX: 42, offsetY: 0)
     }else{
       mapItem.customImage = ImageLiterals.PlanDetail.mapUnselectIcon
       mapItem.markerType = .customImage
@@ -99,13 +113,13 @@ class PlanDetailMapContainerView: XibView,MTMapViewDelegate{
     }
     mapItem.mapPoint = MTMapPoint(geoCoord: MTMapPointGeo(latitude:  mapData.latitude,
                                                           longitude: mapData.longtitude))
-    
+    print("CURRENTITEM",mapData.title,currentDay)
     print("만들어지는 아이템",mapData.title,mapData.latitude,mapData.longtitude,isEnabled)
     return mapItem
   }
   
   private func makeBallonView(title : String) -> MapBallonView {
-    let ballonView = MapBallonView.init(frame: CGRect(x: -10, y:10, width: makeBallonWidth(name: title), height: 26 ))
+    let ballonView = MapBallonView.init(frame: CGRect(x: 20, y:10, width: makeBallonWidth(name: title), height: 26 ))
     ballonView.setLabel(title: title)
     return ballonView
   }
@@ -116,10 +130,10 @@ class PlanDetailMapContainerView: XibView,MTMapViewDelegate{
     sizingLabel.text = name
     sizingLabel.sizeToFit()
     print("SIZINGLABAEL",sizingLabel.frame.width, name)
-    if sizingLabel.frame.width <= 102{
+    if sizingLabel.frame.width <= 120{
       return sizingLabel.frame.width + 30
     }else{
-      return 102 + 30
+      return 120 + 30
     }
   }
   
@@ -128,7 +142,16 @@ class PlanDetailMapContainerView: XibView,MTMapViewDelegate{
     if let mapView = mapView {
       for (index,mapDataList) in mapPointList.enumerated(){
         for (_,mapData) in mapDataList.enumerated(){
-          mapView.add(makeMapItem(mapData: mapData, isEnabled: index == currentDay - 1))
+          let state : Bool
+          if currentDay == 0{
+            state = (index == 0)
+          }else{
+            state = (index == currentDay - 1)
+          }
+          mapView.add(makeMapItem(mapData: mapData, isEnabled:
+                                    
+                                    
+                                    state))
         }
       }
       self.mapContainerView.addSubview(mapView)

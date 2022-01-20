@@ -122,7 +122,7 @@ class MainListView: UIView {
         if let list = list {
           self?.mainListDataList = list
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
           self?.mainListCV.reloadData()
           self?.mainListCV.hideSkeleton( transition: .crossDissolve(1))
         }
@@ -147,7 +147,7 @@ class MainListView: UIView {
         if let list = list {
           self?.mainListDataList = list
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
           self?.mainListCV.reloadData()
           self?.mainListCV.hideSkeleton( transition: .crossDissolve(1))
         }

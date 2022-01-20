@@ -119,6 +119,8 @@ extension BaseAPI: TargetType {
       case .deleteUserWithdraw:
         return "/withdraw"
       case .getPlanPreviewHeaderData(let idx):
+        
+        print("TAG URL",idx)
         return "/\(idx)/preview/tag"
       case .getPlanPreviewData(let idx):
         return "/\(idx)/preview"
@@ -257,9 +259,7 @@ extension BaseAPI: TargetType {
       return .requestParameters(parameters: bodyParameters ?? [:], encoding: parameterEncoding)
     default:
       return .requestPlain
-      
-      
-      
+ 
     }
   }
   
