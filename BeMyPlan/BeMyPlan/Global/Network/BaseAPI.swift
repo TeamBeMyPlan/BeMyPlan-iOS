@@ -24,6 +24,7 @@ enum BaseAPI{
   case getRecentTripList(page: Int, pageSize: Int)
   case getScrapList(userId: Int, page: Int, pageSize: Int, sort: String)
   case postScrapBtn(postId: Int, userId: Int)
+  case getScrapEmptyList(userId: Int)
   
   // MARK: - 지훈
   case getBuyList(userID: Int)
@@ -55,7 +56,7 @@ extension BaseAPI: TargetType {
         base += ""
         
       case .getPopularTravelList, .getNewTravelList, .getSuggestTravelList, .getRecentTripList, .getPlanPreviewHeaderData,
-          .getPlanPreviewData, .getPlanDetailData:
+          .getPlanPreviewData, .getPlanDetailData, .getScrapList:
         base += "/post"
         
       case .getTravelSpotList:
@@ -73,6 +74,9 @@ extension BaseAPI: TargetType {
       
       case .getNicknameDetailList, .postScrapBtn, .getScrapList:
         base += "/scrap"
+      
+      case .getScrapEmptyList:
+        base += "/post/random"
         
       }
       
@@ -109,6 +113,9 @@ extension BaseAPI: TargetType {
       
     case .getNicknameDetailList(let userID,_,_,_):
       return "/\(userID)/post"
+    case .getScrapEmptyList(let userId):
+      return "/\(userId)"
+    
       
       //      case .getRecentTripList(let page, _):
       //      return ""
