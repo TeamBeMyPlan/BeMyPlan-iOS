@@ -74,14 +74,11 @@ class ScrapEmptyContainerView: XibView {
         self.contentDataList = []
         if let testedData = data {
           self.contentDataList = testedData
-          dump("@@@@ \(self.contentDataList)")
         }
         self.contentCV.reloadData()
       }.catch { error in
-        print("sss")
-        dump(error)
         if let err = error as? MoyaError {
-          dump("#### \(err)")
+          dump(err)
         }
       }
     }
@@ -120,9 +117,11 @@ extension ScrapEmptyContainerView: UICollectionViewDelegateFlowLayout {
     let inset = screenWidth * (24/375)
     return UIEdgeInsets(top: 0, left: inset, bottom: 0, right: inset)
   }
+  
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
     return 12
   }
+  
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
     return 12
   }
