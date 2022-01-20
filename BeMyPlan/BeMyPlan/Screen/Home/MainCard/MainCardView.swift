@@ -117,29 +117,6 @@ class MainCardView: UIView {
     }
   }
   
-  private func setDuumy(){
-    popularList.append(contentsOf: [
-      HomeListDataGettable.Item.init(id: 0,
-                                     thumbnailURL: "",
-                                     title: "",
-                                     nickname: ""),
-      
-      HomeListDataGettable.Item.init(id: 0,
-                                     thumbnailURL: "",
-                                     title: "",
-                                     nickname: ""),
-      
-      HomeListDataGettable.Item.init(id: 0,
-                                     thumbnailURL: "",
-                                     title: "",
-                                     nickname: ""),
-      
-      HomeListDataGettable.Item.init(id: 0,
-                                     thumbnailURL: "",
-                                     title: "",
-                                     nickname: "")
-    ])
-  }
   
 //  var id : Int
 //  var title : String
