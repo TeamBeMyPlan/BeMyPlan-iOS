@@ -5,3 +5,4 @@
 ![Frame 9](https://user-images.githubusercontent.com/60260284/149067550-719a760b-a098-49a1-8764-00eee212d617.png)
 ![Frame 10](https://user-images.githubusercontent.com/60260284/149067768-c737db6c-61a1-4249-b412-4cea179d15a9.png)
 
+[비마이플랜 아요 노션바로가기(과제확인용!)](https://boggy-snowstorm-fdb.notion.site/e00cf430594b4319a8a6b7c04b22acc0)
