@@ -92,7 +92,7 @@ class MainCardView: UIView {
   private func setSkeletonAnimation(){
     let animation = SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .leftRight)
 
-    self.mainCardCV.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .grey04,secondaryColor: .grey05), animation: animation, transition: .crossDissolve(0.5))
+    self.mainCardCV.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .grey04,secondaryColor: .grey06), animation: animation, transition: .crossDissolve(0.5))
     mainCardCV.showSkeleton()
   }
 
@@ -103,11 +103,12 @@ class MainCardView: UIView {
         self.popularList = []
         if let popular = list {
           self.popularList = popular
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
           self.mainCardCV.reloadData()
-          self.mainCardCV.hideSkeleton(reloadDataAfter: .random(), transition: .crossDissolve(1))
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
+
+          self.mainCardCV.hideSkeleton(transition: .crossDissolve(2))
         }
  
       }.catch{ error in
@@ -190,8 +191,8 @@ extension MainCardView: SkeletonCollectionViewDataSource {
     guard popularList.count >= indexPath.row + 1 else {return UICollectionViewCell()}
     
     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainCardCVC.className, for: indexPath) as? MainCardCVC else {return UICollectionViewCell()}
-
-    
+    cell.layer.cornerRadius = 5
+    cell.layer.masksToBounds = true
     cell.setData(appData: popularList[indexPath.row])
     return cell
   }
