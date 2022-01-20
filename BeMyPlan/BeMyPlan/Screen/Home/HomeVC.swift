@@ -35,7 +35,7 @@ class HomeVC: UIViewController, UIGestureRecognizerDelegate {
       let screenWidth = UIScreen.main.bounds.width
       let cellWidth = screenWidth * (327/375)
       let cellHeight = cellWidth * (435/327)
-      mainCardViewHeightConstraint.constant = cellHeight + 137
+      mainCardViewHeightConstraint.constant = cellHeight + 150
     }
   }
   

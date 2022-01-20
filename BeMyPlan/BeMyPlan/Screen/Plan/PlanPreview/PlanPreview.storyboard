@@ -87,6 +87,9 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" name="grey2"/>
                                                     <nil key="highlightedColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="ㅇㅇㅇㅇㅇㄹㅁㅇㄹㅁㅇㄴㄹㅁㄴ여행ㄹㅁㄴㅇㄹㅁㅇ여행지 이름 두줄됨ㅇㅁ" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2rl-U0-JsS">
                                                     <rect key="frame" x="22" y="47" width="368" height="116"/>
@@ -97,6 +100,9 @@
                                                     <color key="textColor" name="grey1"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
                                                 </textView>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icnArrowForward" translatesAutoresizingMaskIntoConstraints="NO" id="r0v-DN-cRn">
                                                     <rect key="frame" x="110.5" y="22.5" width="12" height="12"/>
@@ -112,7 +118,13 @@
                                                 <constraint firstItem="2rl-U0-JsS" firstAttribute="top" secondItem="A4K-5i-ZgB" secondAttribute="bottom" constant="10" id="uaP-nd-Vik"/>
                                                 <constraint firstAttribute="bottom" secondItem="2rl-U0-JsS" secondAttribute="bottom" constant="20" id="xc5-81-uYz"/>
                                             </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
                                         </tableViewCellContentView>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="authorLabel" destination="A4K-5i-ZgB" id="JDn-Mu-PBq"/>
                                             <outlet property="titleLabel" destination="2rl-U0-JsS" id="s18-KY-YNP"/>
@@ -135,6 +147,9 @@
                                                     <color key="textColor" name="grey1"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
                                                 </textView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="80D-HS-uoE" customClass="PreviewIconContainerView" customModule="BeMyPlan" customModuleProvider="target">
                                                     <rect key="frame" x="24" y="254" width="366" height="86"/>
@@ -142,6 +157,9 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="86" id="smF-Lu-fLF"/>
                                                     </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
                                             <constraints>
@@ -153,7 +171,13 @@
                                                 <constraint firstItem="80D-HS-uoE" firstAttribute="leading" secondItem="Z9K-U9-Jvc" secondAttribute="leading" constant="24" id="c7i-3s-MGY"/>
                                                 <constraint firstAttribute="trailing" secondItem="80D-HS-uoE" secondAttribute="trailing" constant="24" id="fxv-oZ-hw4"/>
                                             </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
                                         </tableViewCellContentView>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="descriptionIconView" destination="80D-HS-uoE" id="0bU-77-Ae8"/>
                                             <outlet property="descriptionTextView" destination="KaT-jH-0GG" id="Emi-5Z-QUa"/>
@@ -175,12 +199,18 @@
                                                     <color key="textColor" name="grey1"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
                                                 </textView>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img" translatesAutoresizingMaskIntoConstraints="NO" id="ZGA-tA-uBS">
                                                     <rect key="frame" x="24" y="11" width="366" height="238.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="238.5" id="78B-e2-y5P"/>
                                                     </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -192,7 +222,13 @@
                                                 <constraint firstAttribute="trailing" secondItem="a8w-Cj-HDv" secondAttribute="trailing" constant="24" id="mij-zi-eFw"/>
                                                 <constraint firstAttribute="bottom" secondItem="a8w-Cj-HDv" secondAttribute="bottom" constant="36" id="tLC-Ju-jJ8"/>
                                             </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
                                         </tableViewCellContentView>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="contentImageView" destination="ZGA-tA-uBS" id="2Kz-Xc-Njy"/>
                                             <outlet property="contentTextView" destination="a8w-Cj-HDv" id="maJ-TJ-L54"/>
@@ -214,6 +250,9 @@
                                                     <color key="textColor" name="grey1"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
                                                 </textView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PNc-6m-FOH">
                                                     <rect key="frame" x="24" y="0.0" width="366" height="1"/>
@@ -242,7 +281,13 @@
                                                 <constraint firstItem="omE-0L-fuG" firstAttribute="leading" secondItem="NiC-ZV-uQ3" secondAttribute="leading" constant="24" id="bgf-wH-RtE"/>
                                                 <constraint firstItem="Igs-yx-5VK" firstAttribute="top" secondItem="omE-0L-fuG" secondAttribute="bottom" constant="20" id="mAR-YJ-4Rg"/>
                                             </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
                                         </tableViewCellContentView>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="summaryContentTextView" destination="omE-0L-fuG" id="DxT-ag-nZ5"/>
                                         </connections>
@@ -260,9 +305,22 @@
                                                         <constraint firstAttribute="width" secondItem="pyP-xq-pLq" secondAttribute="height" multiplier="327:542" id="ZKD-iT-ziY"/>
                                                     </constraints>
                                                 </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k0v-vu-neX">
+                                                    <rect key="frame" x="74" y="400" width="266" height="44"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="44" id="4lW-ja-8Ag"/>
+                                                    </constraints>
+                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                    <connections>
+                                                        <action selector="previewButtonClicked:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="6lN-fb-7Sx"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="pyP-xq-pLq" secondAttribute="trailing" constant="24" id="0LU-fw-IlT"/>
+                                                <constraint firstItem="k0v-vu-neX" firstAttribute="trailing" secondItem="pyP-xq-pLq" secondAttribute="trailing" constant="-50" id="Pp8-pU-K5c"/>
+                                                <constraint firstItem="k0v-vu-neX" firstAttribute="bottom" secondItem="pyP-xq-pLq" secondAttribute="bottom" id="l1d-Fj-Zwf"/>
+                                                <constraint firstItem="k0v-vu-neX" firstAttribute="leading" secondItem="pyP-xq-pLq" secondAttribute="leading" constant="50" id="m6z-P3-cma"/>
                                                 <constraint firstAttribute="bottom" secondItem="pyP-xq-pLq" secondAttribute="bottom" constant="150" id="nlK-gq-ACU"/>
                                                 <constraint firstItem="pyP-xq-pLq" firstAttribute="top" secondItem="e6j-nu-iuX" secondAttribute="top" constant="40" id="tFZ-UP-Chs"/>
                                                 <constraint firstItem="pyP-xq-pLq" firstAttribute="leading" secondItem="e6j-nu-iuX" secondAttribute="leading" constant="24" id="zgx-0M-l9D"/>
@@ -270,6 +328,9 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Do4-ZC-mS3">
                                 <rect key="frame" x="0.0" y="1957" width="414" height="88"/>
@@ -349,6 +410,7 @@
                         <outlet property="buyContainerBottomConstraint" destination="MEi-mH-NXl" id="SSd-ej-WVX"/>
                         <outlet property="headerTitleLabel" destination="oIb-p3-I94" id="fLe-rJ-D4s"/>
                         <outlet property="previewContentTV" destination="3c3-vB-ne6" id="Bm1-As-AbT"/>
+                        <outlet property="priceLabel" destination="tjV-rf-jVc" id="dzk-hI-UZ6"/>
                         <outlet property="scrabButton" destination="GzN-VZ-KNb" id="6NM-eS-fHw"/>
                         <outlet property="scrabIconImageView" destination="MlQ-Ru-r5d" id="PdA-Yp-aX6"/>
                     </connections>

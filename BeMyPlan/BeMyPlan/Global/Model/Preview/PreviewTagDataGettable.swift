@@ -10,18 +10,19 @@ import Foundation
 
 extension PlanPreview{
   struct HeaderGettable: Codable {
-      let title: String
-      let authorID: Int
-      let dataDescription, tagTheme: String
+      let title, dataDescription: String
+      let price: Int
+      let tagTheme: String
       let tagCountSpot, tagCountDay, tagCountRestaurant: Int
       let tagPartner, tagMoney, tagMobility: String
       let tagMonth: Int
-      let userNickname: String
+      let author: String
+      let authorID: Int
 
       enum CodingKeys: String, CodingKey {
           case title
-          case authorID = "author_id"
           case dataDescription = "description"
+          case price
           case tagTheme = "tag_theme"
           case tagCountSpot = "tag_count_spot"
           case tagCountDay = "tag_count_day"
@@ -30,8 +31,10 @@ extension PlanPreview{
           case tagMoney = "tag_money"
           case tagMobility = "tag_mobility"
           case tagMonth = "tag_month"
-          case userNickname = "user.nickname"
+          case author
+          case authorID = "author_id"
       }
   }
+
 
 }

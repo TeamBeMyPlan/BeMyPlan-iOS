@@ -10,7 +10,8 @@ class PaymentCompleteVC: UIViewController {
   
   // MARK: - Var,Let Parts
   var delegate : PaymentCompleteDelegate?
-  
+  var price : String = ""
+  var paymentType : PaymentList = .kakaoPay
   // MARK: - UI Component Part
   
   @IBOutlet var writerLabel: UILabel!
@@ -22,10 +23,19 @@ class PaymentCompleteVC: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    setPriceLabel()
   }
 
   // MARK: - Custom Method Part
+  
+  private func setPriceLabel(){
+    moneyLabel.text = price
+    paymentLabel.text = paymentType.rawValue
+  }
 
+  @IBAction func closeButtonClicked(_ sender: Any) {
+    self.dismiss(animated: true, completion: nil)
+  }
   
   @IBAction func showContentButtonClicked(_ sender: Any) {
     dismiss(animated: true) {

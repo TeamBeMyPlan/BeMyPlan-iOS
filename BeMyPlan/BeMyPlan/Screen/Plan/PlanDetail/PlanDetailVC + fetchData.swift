@@ -19,7 +19,7 @@ extension PlanDetailVC{
           // 작성자 정보 가져오기
           self?.headerData = DetailHeaderData(title: detailData.title,
                                               writer : detailData.author)
-//          self?.headerTitleLabel.text = detailData.title
+          //          self?.headerTitleLabel.text = detailData.title
           self?.makeTopBlockHeight(content: detailData.title)
           // 총 일차 가져오기
           self?.totalDay = detailData.totalDays
@@ -29,17 +29,17 @@ extension PlanDetailVC{
             var summaryList : [PlanDetail.Summary] = []
             var infoList : [PlanDetail.SpotData] = []
             print("DAYSPOTLIST",daySpotDataList.count)
-
+            
             for (_,eachDayData) in daySpotDataList.enumerated(){
-
+              
               if let dayData = eachDayData{
                 mapPointList.append(PlanDetailMapData.init(title: dayData.title,
                                                            latitude: dayData.latitude,
                                                            longtitude: dayData.longitude))
                 
-                let summary = PlanDetail.Summary.init(transportCase: self?.makeTransportCase(mobilityName: dayData.title),
-                                                           locationName: dayData.title,
-                                                           time: dayData.nextSpotRequiredTime)
+                let summary = PlanDetail.Summary.init(transportCase: self?.makeTransportCase(mobilityName: dayData.nextSpotMobility),
+                                                      locationName: dayData.title,
+                                                      time: dayData.nextSpotRequiredTime)
                 summaryList.append(summary)
                 infoList.append(PlanDetail.SpotData(locationTitle: dayData.title,
                                                     address: dayData.address,
@@ -61,13 +61,22 @@ extension PlanDetailVC{
           
           print(self?.infoList.count)
           dump(self?.infoList)
-
+          
           self?.mainContainerTV.reloadData()
           self?.setWriterView()
           self?.setMapContainerView()
         }
+        self?.closeIndicator {
+          UIView.animate(withDuration: 1){
+            self?.mainContainerTV.alpha = 1
+          }
+        }
+        
+        
       }.catch { err in
-        NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .showNetworkError), object: nil)
+        self.closeIndicator {
+          NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .showNetworkError), object: nil)
+        }
       }
     }
   }
@@ -80,7 +89,7 @@ extension PlanDetailVC{
     }
   }
   
-  private func makeTopBlockHeight(content : String){
+  func makeTopBlockHeight(content : String){
     var writerTop : CGFloat
     let textViewForsizing = UITextView()
     textViewForsizing.font = .boldSystemFont(ofSize: 20)

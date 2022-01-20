@@ -12,9 +12,9 @@ protocol PlanPreviewServiceType{
   func getPlanPreviewDetailData(idx : Int,completion: @escaping (Result<[PlanPreview.DetailDataGettable]?, Error>) -> Void)
 }
 
-
 extension BaseService : PlanPreviewServiceType{
   func getPlanPreviewHeaderData(idx: Int, completion: @escaping (Result<PlanPreview.HeaderGettable?, Error>) -> Void) {
+    print("getPlanPreviewHeaderData")
     requestObject(.getPlanPreviewHeaderData(idx: idx), completion: completion)
   }
   
