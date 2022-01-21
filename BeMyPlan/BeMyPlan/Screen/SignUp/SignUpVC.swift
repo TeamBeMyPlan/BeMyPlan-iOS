@@ -220,6 +220,21 @@ class SignUpVC: UIViewController {
     self.navigationController?.pushViewController(baseVC, animated: true)
   }
   
+  private func postNickNameData(nickName: String) {
+    BaseService.default.postNickNameCheck(nickName: nickName) { result in
+      result.success { [weak self] data in
+        
+//        if let data = data{
+//            UserDefaults.standard.setValue(data.accessToken, forKey: "userToken")
+//            self?.moveBaseVC()
+//          }
+      }.catch {error in
+//        self.pushSignUPVC(socialToken: socialToken, socialType: socialType)
+
+      }
+    }
+  }
+  
   // MARK: - @objc Function Part
   @objc func textFieldDidChange() {
     checkMaxLabelCount()

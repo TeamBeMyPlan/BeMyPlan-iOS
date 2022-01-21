@@ -10,9 +10,11 @@ import Foundation
 struct AuthDataGettable : Codable{
   let nickname : String
   let accessToken : String?
+  let possible: Bool?
   
   enum CodingKeys: String, CodingKey {
-    case nickname
+    case nickname, possible
     case accessToken = "access_token"
+    
   }
 }
