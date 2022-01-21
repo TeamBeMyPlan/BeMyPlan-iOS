@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import MessageUI
 
-class MyPlanSettingVC: UIViewController {
+class MyPlanSettingVC: UIViewController, MFMailComposeViewControllerDelegate {
   
   // MARK: - Vars & Lets Part
   
@@ -38,6 +39,9 @@ class MyPlanSettingVC: UIViewController {
   
   // MARK: - Custom Method Part
   
+  @IBAction func backButtonClicked(_ sender: Any) {
+    self.navigationController?.popViewController(animated: true)
+  }
   private func addButtonActions(){
     uploadButton.press {
       guard let uploadVC = self.storyboard?.instantiateViewController(withIdentifier: MyPlanApplicationVC.className) as? MyPlanApplicationVC else {return}
@@ -45,13 +49,27 @@ class MyPlanSettingVC: UIViewController {
     }
     
     askButton.press {
-      guard let url = URL(string: "https://flaxen-warlock-70e.notion.site/8dd759bd71d94caf82f52f177428060d"), UIApplication.shared.canOpenURL(url) else { return }
+      
+      if MFMailComposeViewController.canSendMail() {
+        
+        let compseVC = MFMailComposeViewController()
+        compseVC.mailComposeDelegate = self
+        
+        compseVC.setToRecipients(["bemyplan@gmail.com"])
+        compseVC.setSubject("비마이플랜에게 문의하기")
+        compseVC.setMessageBody("", isHTML: false)
+        
+        self.present(compseVC, animated: true, completion: nil)
+      }else{
+        guard let url = URL(string: "https://www.notion.so/a69b7abcdb9f42399825f4ff25343bfd"), UIApplication.shared.canOpenURL(url) else { return }
 
-      UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+      }
+
     }
     
     serviceTermButton.press {
-      guard let url = URL(string: "https://flaxen-warlock-70e.notion.site/c66b80b220814a94a699d83def211904"), UIApplication.shared.canOpenURL(url) else { return }
+      guard let url = URL(string: "https://www.notion.so/a69b7abcdb9f42399825f4ff25343bfd"), UIApplication.shared.canOpenURL(url) else { return }
 
       UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
@@ -76,6 +94,9 @@ class MyPlanSettingVC: UIViewController {
 
   }
   
+  func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+    controller.dismiss(animated: true, completion: nil)
+  }
   
   // MARK: - @objc Function Part
   

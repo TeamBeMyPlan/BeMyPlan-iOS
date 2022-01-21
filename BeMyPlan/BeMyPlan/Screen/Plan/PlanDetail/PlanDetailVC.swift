@@ -73,16 +73,20 @@ class PlanDetailVC: UIViewController {
     }
   
   override func viewWillAppear(_ animated: Bool) {
-
-    print("GESTURTEURTEUT")
-    dump(self.view.gestureRecognizers)
     navigationController?.interactivePopGestureRecognizer?.delegate = nil
     navigationController?.interactivePopGestureRecognizer?.isEnabled = false
   }
+  override func viewDidAppear(_ animated: Bool) {
+    self.navigationController?.removeViewController(PaymentSelectVC.self)
+    self.navigationController?.removeViewController(PlanPreviewVC.self)
+    self.navigationController?.removePopGesture()
+  }
+
   
   // MARK: - Custom Methods Parts
   
   @IBAction func backButtonClicked(_ sender: Any) {
+    self.navigationController?.fixInteractivePopGestureRecognizer(delegate: self)
     self.navigationController?.popViewController(animated: true)
   }
   private func addObserver(){
@@ -249,5 +253,30 @@ extension PlanDetailVC : PlanDetailDayDelegate{
 extension PlanDetailVC : UIGestureRecognizerDelegate{
   func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {
       return false
+  }
+  public func gestureRecognizer(
+    _ gestureRecognizer: UIGestureRecognizer,
+    shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer
+  ) -> Bool {
+    return otherGestureRecognizer is PanDirectionGestureRecognizer
+  }
+
+}
+
+
+extension UINavigationController {
+  func popBack(_ nb: Int) {
+      if let viewControllers: [UIViewController] = self.navigationController?.viewControllers {
+          guard viewControllers.count < nb else {
+              self.navigationController?.popToViewController(viewControllers[viewControllers.count - nb], animated: true)
+              return
+          }
+      }
+  }
+  
+  func removeViewController(_ controller: UIViewController.Type) {
+      if let viewController = viewControllers.first(where: { $0.isKind(of: controller.self) }) {
+          viewController.removeFromParent()
+      }
   }
 }
