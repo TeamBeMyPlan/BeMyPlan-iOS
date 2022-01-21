@@ -8,17 +8,21 @@
 import Foundation
 
 extension MyPlanData{
+  struct BuyListDataGettable: Codable{
+    let items: [MyPlanData.BuyListData]
+    let totalCount, totalPage: Int
+  }
 
   // MARK: - Datum
-  struct BuyListDataGettable: Codable {
+  struct BuyListData: Codable {
       let id: Int
       let thumbnailURL: String
-      let title, nickname: String
+      let title, author: String
     
       enum CodingKeys: String, CodingKey {
           case id
           case thumbnailURL = "thumbnail_url"
-          case title, nickname
+          case title, author
       }
   }
 

@@ -9,6 +9,8 @@ import UIKit
 
 class PlanDetailWriterContainerView: XibView {
 
+  var nickName : String = ""
+  var authID = 0
   
   @IBOutlet var locationTitleView: UITextView!{
     didSet{
@@ -27,7 +29,9 @@ class PlanDetailWriterContainerView: XibView {
   }
   @IBOutlet var writerLabel: UILabel!
   
+  @IBOutlet var arrowIconImageView: UIImageView!
   
+  @IBOutlet var nicknameClicked: UIButton!
   override init(frame: CGRect) {
     super.init(frame: frame)
     setTextView()
@@ -44,10 +48,19 @@ class PlanDetailWriterContainerView: XibView {
     locationTitleView.textContainerInset = .zero
   }
   
-  func setTitleData(title : String, writer: String){
+  @IBAction func nicknameButtonClicked(_ sender: Any) {
+    let data = PlanWriterDataModel.init(authorName: nickName,
+                                        authorID: authID)
+    NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .moveNicknamePlanList), object:data )
+  }
+  func setTitleData(title : String, writer: String,isPreviewPage : Bool,authorID : Int){
     writerLabel.text = title
     locationTitleView.text = writer
     locationTitleView.sizeToFit()
+    arrowIconImageView.isHidden = isPreviewPage
+    
+    authID = authorID
+    nickName = writer
   }
 }
 

@@ -20,6 +20,9 @@ enum BaseNotiList{
   case movePlanList // 여행지 목록
   case movePlanDetail // 구매후 뷰
   
+  case moveHomeToPlanList
+  case moveNicknamePlanList
+  
   case showNetworkError
   case showIndicator
   case hideIndicator
@@ -86,6 +89,24 @@ extension BaseVC{
       self.navigationController?.pushViewController(previewVC, animated: true)
     }
     
+    addObserverAction(keyName: BaseNotiList.makeNotiName(list: .moveHomeToPlanList)) { noti in
+      if let viewCase = noti.object as? TravelSpotDetailType{
+        guard let spotlistVC = UIStoryboard.list(.travelSpot).instantiateViewController(withIdentifier: TravelSpotDetailVC.className) as? TravelSpotDetailVC else {return}
+        spotlistVC.type = viewCase
+        self.navigationController?.pushViewController(spotlistVC, animated: true)
+      }
+    }
+    
+    
+    addObserverAction(keyName: BaseNotiList.makeNotiName(list: .moveNicknamePlanList)) { noti in
+      if let authData = noti.object as? PlanWriterDataModel{
+        guard let spotlistVC = UIStoryboard.list(.travelSpot).instantiateViewController(withIdentifier: TravelSpotDetailVC.className) as? TravelSpotDetailVC else {return}
+        spotlistVC.nickname = authData.authorName
+        spotlistVC.userId = authData.authorID
+        spotlistVC.type = .nickname
+        self.navigationController?.pushViewController(spotlistVC, animated: true)
+      }
+    }
     addObserverAction(keyName: BaseNotiList.makeNotiName(list: .movePlanList)) { noti in
       guard let spotlistVC = UIStoryboard.list(.travelSpot).instantiateViewController(withIdentifier: TravelSpotDetailVC.className) as? TravelSpotDetailVC else {return}
       if let notiIndex = noti.object as? Int {

@@ -31,7 +31,7 @@ enum BaseAPI{
   case getScrapEmptyList(userId: Int)
   
   // MARK: - 지훈
-  case getBuyList(userID: Int)
+  case getBuyList
   case deleteUserWithdraw
   case getPlanPreviewHeaderData(idx : Int)
   case getPlanPreviewData(idx : Int)
@@ -82,9 +82,7 @@ extension BaseAPI: TargetType {
       
     case .getTravelSpotList:
       base += "/area"
-      
-    case .getBuyList:
-      base += "/order"
+    
       
     case .deleteUserWithdraw, .postSocialLogin, .postSocialSignUp:
       base += "/auth"
@@ -118,8 +116,7 @@ extension BaseAPI: TargetType {
     switch self{
     case .getPopularTravelList:
       return "/popular"
-    case .getBuyList(let userID):
-      return "/\(userID)"
+
     case .deleteUserWithdraw:
       return "/withdraw"
     case .getPlanPreviewHeaderData(let idx):

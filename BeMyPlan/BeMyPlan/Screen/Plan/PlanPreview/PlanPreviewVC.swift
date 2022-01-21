@@ -13,6 +13,7 @@ class PlanPreviewVC: UIViewController {
   // MARK: - Vars & Lets Part
   
   var idx : Int = 29
+  var authID : Int = 0
   private var isAnimationProceed: Bool = false
   private var lastContentOffset : CGFloat = 0
   private var isScrabed : Bool = false{
@@ -66,6 +67,7 @@ class PlanPreviewVC: UIViewController {
   
   @IBAction func previewButtonClicked(_ sender: Any) {
     guard let previewVC = UIStoryboard.list(.planDetail).instantiateViewController(withIdentifier: PlanDetailVC.className) as? PlanDetailVC else {return}
+    
     
     previewVC.isPreviewPage = true
     self.navigationController?.pushViewController(previewVC, animated: true)
@@ -122,7 +124,7 @@ class PlanPreviewVC: UIViewController {
     BaseService.default.getPlanPreviewHeaderData(idx: idx) { result in
       result.success { [weak self] data in
         if let data = data{
-          
+          self?.authID = data.authorID
           self?.priceLabel.text = String(data.price) + "원"
           self?.headerData = PlanPreview.HeaderData.init(writer: data.author,
                                                          title: data.title)
@@ -196,7 +198,7 @@ extension PlanPreviewVC : UITableViewDataSource{
     switch(viewCase){
       case .header:
         guard let headerCell = tableView.dequeueReusableCell(withIdentifier: PlanPreviewWriterTVC.className, for: indexPath) as? PlanPreviewWriterTVC else {return UITableViewCell() }
-        headerCell.setHeaderData(author: headerData?.writer, title: headerData?.title)
+        headerCell.setHeaderData(author: headerData?.writer, title: headerData?.title, authIDs: authID)
         return headerCell
         
       case .description:

@@ -13,6 +13,8 @@ class PlanPreviewWriterTVC: UITableViewCell,UITableViewRegisterable{
   static var isFromNib: Bool = true
   // MARK: - UI Component Part
   
+  var nickname : String = ""
+  var authID : Int = 0
   @IBOutlet var authorLabel: UILabel!
   @IBOutlet var titleLabel: UITextView!{
     didSet{
@@ -34,6 +36,13 @@ class PlanPreviewWriterTVC: UITableViewCell,UITableViewRegisterable{
   
   // MARK: - IBAction Part
   
+  
+  @IBAction func nicknameButtonClicked(_ sender: Any) {
+    let data = PlanWriterDataModel.init(authorName: nickname,
+                                        authorID: authID)
+    NotificationCenter.default.post(name:  BaseNotiList.makeNotiName(list: .moveNicknamePlanList), object: data)
+  }
+  
   // MARK: - Custom Method Part
   private func setUI(){
     titleLabel.textContainerInset = .zero
@@ -52,11 +61,20 @@ class PlanPreviewWriterTVC: UITableViewCell,UITableViewRegisterable{
     
   }
   
-  func setHeaderData(author: String?, title : String?){
+  func setHeaderData(author: String?, title : String?,authIDs: Int){
+    if let author = author {
+      nickname = author
+    }
+    authID = authIDs
     authorLabel.text = (author != nil) ? author : ""
     titleLabel.text = (title != nil) ? title : ""
     titleLabel.sizeToFit()
   }
   
   
+}
+
+struct PlanWriterDataModel{
+  var authorName : String
+  var authorID : Int
 }

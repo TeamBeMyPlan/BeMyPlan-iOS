@@ -12,7 +12,7 @@ class MyPlanVC: UIViewController {
   
   // MARK: - Vars & Lets Part
   
-  var buyContentList : [MyPlanData.BuyListDataGettable] = []{
+  var buyContentList : [MyPlanData.BuyListData] = []{
     didSet{
       mainContentCV.reloadData()
       setEmptyView()
@@ -51,12 +51,15 @@ class MyPlanVC: UIViewController {
   }
   
   private func fetchBuyList(){
-    BaseService.default.getOrderList(userID: 1) { result in
+    BaseService.default.getOrderList{ result in
       result.success { [weak self] data in
         if let buyList = data{
-          self?.buyContentList = buyList
+          print("fetchBuyList",buyList.items)
+
+          self?.buyContentList = buyList.items
         }
       }.catch { error in
+        print("fetchBuYLISTERR")
         dump(error)
       }
     }

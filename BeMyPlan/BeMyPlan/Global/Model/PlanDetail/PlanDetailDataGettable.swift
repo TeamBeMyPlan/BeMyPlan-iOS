@@ -11,8 +11,10 @@ struct PlanDetailDataGettable: Codable {
   let author, title: String
   let spots: [[PlanDetailDataGettable.SpotData?]]
   let totalDays: Int
+  let authorID : Int
   
   enum CodingKeys: String, CodingKey {
+    case authorID = "author_id"
     case author, title, spots
     case totalDays = "total_days"
   }
