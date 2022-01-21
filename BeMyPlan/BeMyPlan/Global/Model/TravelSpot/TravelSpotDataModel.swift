@@ -14,7 +14,8 @@ import Foundation
       let isActivated: Bool
 
       enum CodingKeys: String, CodingKey {
-          case id, name
+          case name
+          case id = "area_id"
           case photoURL = "photo_url"
           case isActivated = "is_activated"
       }
