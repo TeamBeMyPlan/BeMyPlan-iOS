@@ -248,6 +248,12 @@
                                 <color key="textColor" name="grey3"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="중복된 닉네임입니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="swt-Xb-502">
+                                <rect key="frame" x="24" y="236" width="100.5" height="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" name="alertRed"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -259,6 +265,7 @@
                             <constraint firstItem="M0P-MK-AlA" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="24" id="L9H-cf-29e"/>
                             <constraint firstAttribute="bottom" secondItem="ije-MF-ydR" secondAttribute="bottom" id="MSk-oQ-PEG"/>
                             <constraint firstItem="4D1-oW-2sI" firstAttribute="leading" secondItem="sSf-Ao-gO3" secondAttribute="leading" id="MtV-Ou-owd"/>
+                            <constraint firstItem="swt-Xb-502" firstAttribute="leading" secondItem="M0P-MK-AlA" secondAttribute="leading" id="OKc-ln-eV0"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="M0P-MK-AlA" secondAttribute="trailing" constant="24" id="PfT-xF-UK1"/>
                             <constraint firstItem="H3g-ei-6b6" firstAttribute="top" secondItem="M0P-MK-AlA" secondAttribute="bottom" constant="48" id="Pxs-1F-aUP"/>
                             <constraint firstItem="sSf-Ao-gO3" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="24" id="YQR-Rj-Dwd"/>
@@ -268,12 +275,14 @@
                             <constraint firstItem="ije-MF-ydR" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="gKS-oD-3xb"/>
                             <constraint firstItem="kaj-LT-t0c" firstAttribute="trailing" secondItem="M0P-MK-AlA" secondAttribute="trailing" id="hAR-Sn-k5A"/>
                             <constraint firstItem="Whc-qG-lYu" firstAttribute="top" secondItem="4D1-oW-2sI" secondAttribute="bottom" constant="4" id="ifY-hm-tLS"/>
+                            <constraint firstItem="swt-Xb-502" firstAttribute="top" secondItem="M0P-MK-AlA" secondAttribute="bottom" constant="10" id="l1q-Np-tMX"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="ije-MF-ydR" secondAttribute="trailing" id="xQs-GU-gaj"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="boxView" destination="H3g-ei-6b6" id="Cbz-IG-elB"/>
                         <outlet property="infoAgreeImageView" destination="yOu-Tf-OKn" id="hQW-Hw-fLa"/>
+                        <outlet property="nickNameCheckLabel" destination="swt-Xb-502" id="W5H-3D-ayA"/>
                         <outlet property="nicknameCountLabel" destination="kaj-LT-t0c" id="E0a-QU-UW9"/>
                         <outlet property="nicknameInputTextField" destination="M0P-MK-AlA" id="4y7-9a-lIB"/>
                         <outlet property="startBtn" destination="ije-MF-ydR" id="yOq-Md-7Me"/>
@@ -290,6 +299,9 @@
         <image name="check_off_silver" width="12" height="12"/>
         <image name="icn_clear" width="24" height="24"/>
         <image name="vector" width="30" height="30"/>
+        <namedColor name="alertRed">
+            <color red="0.78431372549019607" green="0.035294117647058823" blue="0.30588235294117649" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="beMyBlue">
             <color red="0.0" green="0.46666666666666667" blue="0.69019607843137254" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

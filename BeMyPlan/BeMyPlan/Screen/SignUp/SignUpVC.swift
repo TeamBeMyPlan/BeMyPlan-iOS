@@ -31,13 +31,18 @@ class SignUpVC: UIViewController {
   
   @IBOutlet var nicknameCountLabel: UILabel!
   
+  @IBOutlet var nickNameCheckLabel: UILabel! {
+    didSet {
+      nickNameCheckLabel.isHidden = true
+    }
+  }
+  
   @IBOutlet var nicknameInputTextField: UITextField! {
     didSet {
       let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 13, height: nicknameInputTextField.frame.height))
       nicknameInputTextField.leftView = paddingView
       nicknameInputTextField.leftViewMode = UITextField.ViewMode.always
       nicknameInputTextField.delegate = self
-      
     }
   }
   @IBOutlet var boxView: UIView!
@@ -45,6 +50,8 @@ class SignUpVC: UIViewController {
   @IBOutlet var useAgreeImageView: UIImageView!
   @IBOutlet var infoAgreeImageView: UIImageView!
   @IBOutlet var startBtn: UIButton!
+  
+
   
   // MARK: - Life Cycle Part
   
@@ -136,6 +143,9 @@ class SignUpVC: UIViewController {
       if text.count > 20 || text.count < 2{
         // 🪓 주어진 인덱스에서 특정 거리만큼 떨어진 인덱스 반환
         // 🪓 문자열 자르기
+        self.startBtn.isEnabled = false
+//        self.nickNameCheckLabel.isHidden = true
+        
         nicknameCountLabel.textColor = .alertRed
         nicknameInputTextField.layer.borderWidth = 1
         nicknameInputTextField.layer.cornerRadius = 5
@@ -150,6 +160,7 @@ class SignUpVC: UIViewController {
         //경고문구..!까지 띄우기
         
       }else{
+        self.startBtn.isEnabled = true
         
         if isValidNickname(nickname: nicknameInputTextField.text){
           isNicknameValid = true
@@ -157,6 +168,8 @@ class SignUpVC: UIViewController {
           nicknameInputTextField.layer.borderWidth = 1
           nicknameInputTextField.layer.cornerRadius = 5
           nicknameInputTextField.layer.borderColor = UIColor.grey04.cgColor
+          
+          self.nickNameCheckLabel.isHidden = true
         }else{
           nicknameCountLabel.textColor = .alertRed
           nicknameInputTextField.layer.borderWidth = 1
@@ -181,7 +194,9 @@ class SignUpVC: UIViewController {
   private func addBtnActions() {
     //실제로는 이방법이 아니라 dismiss 되었을때 completion에 새로운 escaping closure를 선언해서 파라미터로 받아와서 해야한다....!
     startBtn.press{
-      self.showSignupAlert()
+      if let nicknameInputTextField = self.nicknameInputTextField.text {
+        self.postNickNameData(nickName: nicknameInputTextField)
+      }
     }
   }
   
@@ -202,14 +217,22 @@ class SignUpVC: UIViewController {
           if let data = data {
             UserDefaults.standard.setValue(data.accessToken, forKey: "userToken")
             //BaseVC로 이동
-            self?.pushBaseVC()
+            
+            self?.makeAlert(alertCase: .simpleAlert, title: "알림", content: "회원가입이 완료되었습니다."){
+              self?.dismiss(animated: true) {
+                self?.delegate?.loginComplete()
+                self?.pushBaseVC()
+
+              }
+            }
+            
           }
           //성공 하면 회원가입 성공 창으로 가기
           //서버에 데이터 넘겨주기
           
-          
         }.catch { error in
-          NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .showNetworkError), object: nil)
+          self.makeAlert(alertCase: .simpleAlert, title: "알림", content: "회원가입이 실패되었습니다.")
+          
         }
       }
     }
@@ -223,11 +246,30 @@ class SignUpVC: UIViewController {
   private func postNickNameData(nickName: String) {
     BaseService.default.postNickNameCheck(nickName: nickName) { result in
       result.success { [weak self] data in
-        
-//        if let data = data{
-//            UserDefaults.standard.setValue(data.accessToken, forKey: "userToken")
-//            self?.moveBaseVC()
-//          }
+        if let data = data {
+          
+          if !data.duplicated { // w
+            
+            //alert두번 (닉네임 수정 불가 -> 확인 누르면 회원가입 된다
+//            self?.showSignupAlert()  // 회원가입 처리를 어떻게 함..?
+            // 확인을 눌렀을 때  회원가입 합니다.
+            
+            self?.makeAlert(alertCase: .requestAlert, content: "닉네임을 수정할 수 없습니다.\n이대로 가입을 진행할까요?") {
+  
+              self?.postSocialSignUpData()
+      
+            }
+            
+          } else {
+            // 빨간 테투리 뜨는 걸로
+            self?.nickNameCheckLabel.isHidden = false
+            //회원가입 버튼 비활
+            self?.setBtnStatus()
+            self?.nicknameInputTextField.layer.borderColor = UIColor.alertRed.cgColor
+          }
+          
+          
+        }
       }.catch {error in
 //        self.pushSignUPVC(socialToken: socialToken, socialType: socialType)
 
@@ -235,8 +277,13 @@ class SignUpVC: UIViewController {
     }
   }
   
+  private func redAlertGuide() {
+    
+  }
+  
   // MARK: - @objc Function Part
   @objc func textFieldDidChange() {
+    
     checkMaxLabelCount()
     setCountLabel()
   }
