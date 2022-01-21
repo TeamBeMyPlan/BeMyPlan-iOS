@@ -58,13 +58,16 @@ class PaymentSelectVC: UIViewController {
   }
   
   @IBAction func paymentButtonClicked(_ sender: Any) {
-    guard let paymentCompleteVC = self.storyboard?.instantiateViewController(withIdentifier: PaymentCompleteVC.className) as? PaymentCompleteVC else {return}
-    paymentCompleteVC.modalTransitionStyle = .coverVertical
-    paymentCompleteVC.modalPresentationStyle = .fullScreen
-    paymentCompleteVC.delegate = self
-    paymentCompleteVC.price = price
-    paymentCompleteVC.paymentType = paymentList[selectedIndex]
-    present(paymentCompleteVC,animated: true)
+    if selectedIndex != -1{
+      guard let paymentCompleteVC = self.storyboard?.instantiateViewController(withIdentifier: PaymentCompleteVC.className) as? PaymentCompleteVC else {return}
+      paymentCompleteVC.modalTransitionStyle = .coverVertical
+      paymentCompleteVC.modalPresentationStyle = .fullScreen
+      paymentCompleteVC.delegate = self
+      paymentCompleteVC.price = price
+      paymentCompleteVC.paymentType = paymentList[selectedIndex]
+      present(paymentCompleteVC,animated: true)
+    }
+ 
   }
   
   private func setContainerUI(){
