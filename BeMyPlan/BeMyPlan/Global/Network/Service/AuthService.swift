@@ -11,6 +11,7 @@ import Foundation
 protocol AuthServiceType{
   func postSocialLogin(socialToken: String, socialType: String, completion: @escaping (Result<AuthDataGettable?, Error>) -> Void)
   func postSocialSignUp(socialToken: String, socialType: String, nickName: String, completion: @escaping (Result<AuthDataGettable?, Error>) -> Void)
+  func postNickNameCheck(nickName: String, completion: @escaping (Result<AuthNickNameDataGettable?, Error>) -> Void)
 }
 
 extension BaseService : AuthServiceType {
@@ -21,5 +22,9 @@ extension BaseService : AuthServiceType {
   func postSocialSignUp(socialToken: String, socialType: String, nickName: String, completion: @escaping (Result<AuthDataGettable?, Error>) -> Void) {
       requestObject(.postSocialSignUp(socialToken: socialToken, socialType: socialType, nickName: nickName), completion: completion)
     }
+  
+  func postNickNameCheck(nickName: String, completion: @escaping (Result<AuthNickNameDataGettable?, Error>) -> Void) {
+    requestObject(.postNickNameCheck(nickName: nickName), completion: completion)
+  }
 
 }

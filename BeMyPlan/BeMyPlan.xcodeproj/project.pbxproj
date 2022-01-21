@@ -30,6 +30,7 @@
 		F266412D2788262800CCC751 /* MainListCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F266412A2788262800CCC751 /* MainListCVC.xib */; };
 		F266412E2788262800CCC751 /* MainListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F266412B2788262800CCC751 /* MainListData.swift */; };
 		F266412F2788262800CCC751 /* MainListCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F266412C2788262800CCC751 /* MainListCVC.swift */; };
+		F26A584E279AE217001986F2 /* AuthNickNameDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26A584D279AE217001986F2 /* AuthNickNameDataModel.swift */; };
 		F273216F278BEB7700A9B0CC /* MainCardCarouselLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F273216E278BEB7700A9B0CC /* MainCardCarouselLayout.swift */; };
 		F294EC28278EBC2C001069F8 /* LoginVC + KakaoLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F294EC27278EBC2C001069F8 /* LoginVC + KakaoLogin.swift */; };
 		F294EC2B278EBC66001069F8 /* LoginVC + AppleLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F294EC2A278EBC66001069F8 /* LoginVC + AppleLogin.swift */; };
@@ -260,6 +261,7 @@
 		F266412A2788262800CCC751 /* MainListCVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainListCVC.xib; sourceTree = "<group>"; };
 		F266412B2788262800CCC751 /* MainListData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainListData.swift; sourceTree = "<group>"; };
 		F266412C2788262800CCC751 /* MainListCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainListCVC.swift; sourceTree = "<group>"; };
+		F26A584D279AE217001986F2 /* AuthNickNameDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthNickNameDataModel.swift; sourceTree = "<group>"; };
 		F273216E278BEB7700A9B0CC /* MainCardCarouselLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCardCarouselLayout.swift; sourceTree = "<group>"; };
 		F294EC27278EBC2C001069F8 /* LoginVC + KakaoLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginVC + KakaoLogin.swift"; sourceTree = "<group>"; };
 		F294EC2A278EBC66001069F8 /* LoginVC + AppleLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginVC + AppleLogin.swift"; sourceTree = "<group>"; };
@@ -570,6 +572,7 @@
 			isa = PBXGroup;
 			children = (
 				F250440C2799D02900791AB7 /* AuthDataModel.swift */,
+				F26A584D279AE217001986F2 /* AuthNickNameDataModel.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -1581,6 +1584,7 @@
 				523C70AF27969F340073371D /* ScrapDataModel.swift in Sources */,
 				FD2D4DC9278D8190002084B9 /* PlanDetailSummaryRouteTVC.swift in Sources */,
 				FD3566572792B2530082B4CE /* BaseNC.swift in Sources */,
+				F26A584E279AE217001986F2 /* AuthNickNameDataModel.swift in Sources */,
 				523C70B52796F11C0073371D /* ScrapBtnService.swift in Sources */,
 				FD20C609278EB94100AC6E34 /* MyPlanCVUserResuableView.swift in Sources */,
 				FD3211AD27841948007D63D5 /* ViewController.swift in Sources */,

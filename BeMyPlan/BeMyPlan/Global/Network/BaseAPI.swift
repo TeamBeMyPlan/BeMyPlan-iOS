@@ -19,6 +19,7 @@ enum BaseAPI{
   
   case postSocialLogin(socialToken: String, socialType: String)
   case postSocialSignUp(socialToken: String, socialType: String, nickName: String)
+  case postNickNameCheck(nickName: String)
   
   
   // MARK: - 양원
@@ -82,7 +83,7 @@ extension BaseAPI: TargetType {
       base += "/area"
     
       
-    case .deleteUserWithdraw, .postSocialLogin, .postSocialSignUp:
+    case .deleteUserWithdraw, .postSocialLogin, .postSocialSignUp, .postNickNameCheck:
       base += "/auth"
       
       
@@ -148,7 +149,8 @@ extension BaseAPI: TargetType {
       return "/login"
     case .postSocialSignUp:
       return "/signup"
-      
+    case .postNickNameCheck:
+      return "/check/nickname"
     default :
       return ""
     }
@@ -162,7 +164,7 @@ extension BaseAPI: TargetType {
   
   var method: Moya.Method {
     switch self{
-    case .sampleAPI, .postScrapBtn, .postSocialLogin, .postSocialSignUp:
+    case .sampleAPI, .postScrapBtn, .postSocialLogin, .postSocialSignUp, .postNickNameCheck:
       return .post
     case .deleteUserWithdraw:
       return .delete
@@ -231,6 +233,9 @@ extension BaseAPI: TargetType {
       params["social_type"] = socialType
       params["nickname"] = nickName
       
+    case .postNickNameCheck(let nickName):
+      params["nickname"] = nickName
+    
     default:
       break
       
@@ -264,7 +269,7 @@ extension BaseAPI: TargetType {
     switch self {
     case .sampleAPI, .getTravelSpotDetailList, .getNicknameDetailList, .getScrapList, .getNewTravelList, .getSuggestTravelList, .postScrapBtn:
       return URLEncoding.init(destination: .queryString, arrayEncoding: .noBrackets, boolEncoding: .literal)
-    case .postSocialLogin, .postSocialSignUp :
+    case .postSocialLogin, .postSocialSignUp, .postNickNameCheck :
       return JSONEncoding.default
     default :
       return JSONEncoding.default
@@ -278,7 +283,7 @@ extension BaseAPI: TargetType {
   ///
   var task: Task {
     switch self{
-    case .sampleAPI,.getTravelSpotDetailList, .getNicknameDetailList, .getScrapList,.getNewTravelList, .getSuggestTravelList, .postScrapBtn, .postSocialLogin, .postSocialSignUp:
+    case .sampleAPI,.getTravelSpotDetailList, .getNicknameDetailList, .getScrapList,.getNewTravelList, .getSuggestTravelList, .postScrapBtn, .postSocialLogin, .postSocialSignUp, .postNickNameCheck:
       return .requestParameters(parameters: bodyParameters ?? [:], encoding: parameterEncoding)
     default:
       return .requestPlain
