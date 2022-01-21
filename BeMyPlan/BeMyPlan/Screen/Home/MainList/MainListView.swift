@@ -25,7 +25,7 @@ class MainListView: UIView {
   
   var type : MainListViewType = .recently {
     didSet {
-      //      setTitle()
+      setTitle()
       type == .recently ? getRecentlyListData() : getSuggestListData()
     }
   }
@@ -120,7 +120,7 @@ class MainListView: UIView {
       result.success { [weak self] list in
         self?.mainListDataList.removeAll()
         
-
+        
         if let list = list {
           print(list.items)
           self?.mainListDataList = list.items
@@ -137,11 +137,11 @@ class MainListView: UIView {
   
   private func setSkeletonAnimation(){
     let animation = SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .leftRight)
-
+    
     self.mainListCV.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .grey04,secondaryColor: .grey05), animation: animation, transition: .crossDissolve(1))
     mainListCV.showSkeleton()
   }
-
+  
   
   private func getSuggestListData(){
     BaseService.default.getSuggestTravelList(page: listIndex, sort: "created_at") { result in
@@ -154,10 +154,10 @@ class MainListView: UIView {
           self?.mainListCV.reloadData()
           self?.mainListCV.hideSkeleton( transition: .crossDissolve(1))
         }
-
+        
       }.catch{ error in
         NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .showNetworkError), object: nil)
-      
+        
       }
     }
   }
