@@ -16,7 +16,7 @@ class ScrapVC: UIViewController {
   
   // MARK: - Vars & Lets Part
   var scrapDataList:[ScrapDataGettable] = []
-
+  var sortCase : SortCase = .recently
   // MARK: - UI Component Part
   
   // MARK: - Life Cycle Part
@@ -63,6 +63,10 @@ class ScrapVC: UIViewController {
   // MARK: - @objc Function Part
   @objc func bottomSheetAction(_ notification: Notification) {
     let vc = UIStoryboard(name: "TravelSpot", bundle: nil).instantiateViewController(withIdentifier: "TravelSpotFilterVC") as! TravelSpotFilterVC
+    vc.filterStatus = self.sortCase
+    vc.filterClicked = { filter in
+      self.sortCase = filter
+    }
     presentPanModal(vc)
   }
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8uG-eS-VYR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8uG-eS-VYR">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -54,7 +54,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="어디로 떠나세요?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Unw-zl-PZQ">
-                                            <rect key="frame" x="24" y="12.5" width="250" height="25"/>
+                                            <rect key="frame" x="24" y="13.5" width="250" height="23.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="250" id="RoI-ls-hic"/>
                                             </constraints>
@@ -134,7 +134,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XC7-Ww-na8">
-                                        <rect key="frame" x="190.5" y="16" width="33.5" height="22"/>
+                                        <rect key="frame" x="191.5" y="16.5" width="31.5" height="21"/>
                                         <attributedString key="attributedText">
                                             <fragment content="제주">
                                                 <attributes>
@@ -213,7 +213,7 @@
                                 <rect key="frame" x="0.0" y="618" width="414" height="278"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="정렬" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cLt-mt-ODd">
-                                        <rect key="frame" x="194" y="26" width="26" height="17"/>
+                                        <rect key="frame" x="195" y="26" width="24.5" height="17"/>
                                         <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="14"/>
                                         <color key="textColor" name="grey2"/>
                                         <nil key="highlightedColor"/>
@@ -258,7 +258,7 @@
                                         <rect key="frame" x="0.0" y="60" width="414" height="49"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zeX-yW-KX0">
-                                                <rect key="frame" x="24" y="10" width="39" height="29"/>
+                                                <rect key="frame" x="24" y="10" width="37" height="29"/>
                                                 <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="14"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="최신순">
@@ -280,13 +280,25 @@
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" image="icnCheck"/>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oyK-Y5-GWi">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Button"/>
+                                                <connections>
+                                                    <action selector="recentButtonClicked:" destination="poI-w5-kQ4" eventType="touchUpInside" id="JOo-br-U7d"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstItem="oyK-Y5-GWi" firstAttribute="leading" secondItem="pfx-tM-m9E" secondAttribute="leading" id="DgJ-sM-3Xn"/>
                                             <constraint firstItem="zeX-yW-KX0" firstAttribute="leading" secondItem="pfx-tM-m9E" secondAttribute="leading" constant="24" id="LiJ-8H-dT0"/>
+                                            <constraint firstAttribute="trailing" secondItem="oyK-Y5-GWi" secondAttribute="trailing" id="Mfo-nx-ka6"/>
                                             <constraint firstAttribute="height" constant="49" id="NTX-Wl-3zj"/>
+                                            <constraint firstItem="oyK-Y5-GWi" firstAttribute="top" secondItem="pfx-tM-m9E" secondAttribute="top" id="QcK-Kz-I8J"/>
                                             <constraint firstItem="aR5-CB-ahC" firstAttribute="centerY" secondItem="pfx-tM-m9E" secondAttribute="centerY" id="eDL-Sh-YON"/>
                                             <constraint firstAttribute="trailing" secondItem="aR5-CB-ahC" secondAttribute="trailing" constant="24" id="i3R-r4-FiE"/>
+                                            <constraint firstAttribute="bottom" secondItem="oyK-Y5-GWi" secondAttribute="bottom" id="jUV-Tk-L4F"/>
                                             <constraint firstItem="zeX-yW-KX0" firstAttribute="centerY" secondItem="pfx-tM-m9E" secondAttribute="centerY" id="q0s-Vo-VZE"/>
                                         </constraints>
                                     </view>
@@ -294,7 +306,7 @@
                                         <rect key="frame" x="0.0" y="110" width="414" height="49"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tGy-0B-u2F">
-                                                <rect key="frame" x="24" y="10" width="71" height="29"/>
+                                                <rect key="frame" x="24" y="10" width="69" height="29"/>
                                                 <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="14"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -317,13 +329,25 @@
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" image="icnCheck"/>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2uQ-HW-H8a">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Button"/>
+                                                <connections>
+                                                    <action selector="orderButtonCLicked:" destination="poI-w5-kQ4" eventType="touchUpInside" id="Nmp-Sd-5Ff"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="tGy-0B-u2F" firstAttribute="centerY" secondItem="gGh-d3-zq9" secondAttribute="centerY" id="1oI-0C-um2"/>
+                                            <constraint firstAttribute="bottom" secondItem="2uQ-HW-H8a" secondAttribute="bottom" id="9ec-Q5-PuQ"/>
                                             <constraint firstItem="tGy-0B-u2F" firstAttribute="leading" secondItem="gGh-d3-zq9" secondAttribute="leading" constant="24" id="BVs-pm-IXt"/>
                                             <constraint firstAttribute="height" constant="49" id="Cuw-7M-ByY"/>
+                                            <constraint firstItem="2uQ-HW-H8a" firstAttribute="top" secondItem="gGh-d3-zq9" secondAttribute="top" id="M9O-ve-8Yu"/>
+                                            <constraint firstAttribute="trailing" secondItem="2uQ-HW-H8a" secondAttribute="trailing" id="Nf4-qu-JK6"/>
                                             <constraint firstAttribute="trailing" secondItem="pn1-7M-pX1" secondAttribute="trailing" constant="24" id="XBt-4P-GMQ"/>
+                                            <constraint firstItem="2uQ-HW-H8a" firstAttribute="leading" secondItem="gGh-d3-zq9" secondAttribute="leading" id="dRy-Jp-vk1"/>
                                             <constraint firstItem="pn1-7M-pX1" firstAttribute="centerY" secondItem="gGh-d3-zq9" secondAttribute="centerY" id="tUO-QK-hAY"/>
                                         </constraints>
                                     </view>
@@ -331,7 +355,7 @@
                                         <rect key="frame" x="0.0" y="160" width="414" height="49"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tnM-L2-1tz">
-                                                <rect key="frame" x="24" y="10" width="84" height="29"/>
+                                                <rect key="frame" x="24" y="10" width="81" height="29"/>
                                                 <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="14"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="스크랩 많은 순">
@@ -353,14 +377,26 @@
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" image="icnCheck"/>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="egA-cn-dzH">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Button"/>
+                                                <connections>
+                                                    <action selector="scrapButtonClicked:" destination="poI-w5-kQ4" eventType="touchUpInside" id="ae8-ci-JIX"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="tnM-L2-1tz" firstAttribute="leading" secondItem="BBn-Os-u1z" secondAttribute="leading" constant="24" id="0IH-rT-gs1"/>
                                             <constraint firstAttribute="height" constant="49" id="2PI-mZ-gja"/>
                                             <constraint firstItem="tnM-L2-1tz" firstAttribute="centerY" secondItem="BBn-Os-u1z" secondAttribute="centerY" id="8xi-3E-apl"/>
+                                            <constraint firstAttribute="bottom" secondItem="egA-cn-dzH" secondAttribute="bottom" id="Ega-Xe-dUr"/>
+                                            <constraint firstItem="egA-cn-dzH" firstAttribute="top" secondItem="BBn-Os-u1z" secondAttribute="top" id="HBF-5v-8tM"/>
+                                            <constraint firstAttribute="trailing" secondItem="egA-cn-dzH" secondAttribute="trailing" id="Ncf-eI-hTc"/>
                                             <constraint firstAttribute="trailing" secondItem="aEc-er-aCH" secondAttribute="trailing" constant="24" id="V9g-yC-QMF"/>
                                             <constraint firstItem="aEc-er-aCH" firstAttribute="centerY" secondItem="BBn-Os-u1z" secondAttribute="centerY" id="iP6-MN-Gt9"/>
+                                            <constraint firstItem="egA-cn-dzH" firstAttribute="leading" secondItem="BBn-Os-u1z" secondAttribute="leading" id="mnb-90-oMP"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -415,7 +451,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C9C-r4-sOZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2300" y="60"/>
+            <point key="canvasLocation" x="2298.5507246376815" y="59.598214285714285"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="mUr-SJ-gBK">
