@@ -61,17 +61,12 @@ extension LoginVC {
     BaseService.default.postSocialLogin(socialToken: socialToken, socialType: socialType) { result in
       result.success { [weak self] data in
         if let data = data{
-          if data.created { //가입 된거
             UserDefaults.standard.setValue(data.accessToken, forKey: "userToken")
             self?.moveBaseVC()
-          } else {
-            self?.pushSignUPVC(socialToken: socialToken, socialType: socialType)
           }
-          
-          print("--------------SocialLogin------------------")
-        }
       }.catch {error in
-        NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .showNetworkError), object: nil)
+        self.pushSignUPVC(socialToken: socialToken, socialType: socialType)
+
       }
     }
   }
