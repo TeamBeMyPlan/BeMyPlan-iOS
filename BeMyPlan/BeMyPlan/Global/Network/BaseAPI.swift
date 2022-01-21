@@ -18,12 +18,16 @@ enum BaseAPI{
   case getNicknameDetailList(userId: Int, page: Int, pageSize: Int?, sort: String)
   
   case postSocialLogin(socialToken: String, socialType: String)
+  case postSocialSignUp(socialToken: String, socialType: String, nickName: String)
+  
   
   // MARK: - 양원
   case getTravelSpotList
   case getRecentTripList(page: Int, pageSize: Int)
-  case getScrapList(userId: Int, page: Int, pageSize: Int, sort: String)
-  case postScrapBtn(postId: Int, userId: Int)
+//  case getScrapList(userId: Int, page: Int, pageSize: Int, sort: String)
+  case getScrapList(page: Int, pageSize: Int, sort: String)
+  case postScrapBtn(postId: Int)
+//  case postScrapBtn(postId: Int, userId: Int)
   case getScrapEmptyList(userId: Int)
   
   // MARK: - 지훈
@@ -56,7 +60,7 @@ extension BaseAPI: TargetType {
         base += ""
         
       case .getPopularTravelList, .getNewTravelList, .getSuggestTravelList, .getRecentTripList, .getPlanPreviewHeaderData,
-          .getPlanPreviewData, .getPlanDetailData, .getScrapList:
+          .getPlanPreviewData, .getPlanDetailData:
         base += "/post"
         
       case .getTravelSpotList:
@@ -72,19 +76,36 @@ extension BaseAPI: TargetType {
       case .getTravelSpotDetailList:
         base += "/area"
       
-      case .getNicknameDetailList, .postScrapBtn, .getScrapList:
-        base += "/scrap"
+    case .getPopularTravelList, .getNewTravelList, .getSuggestTravelList, .getRecentTripList, .getPlanPreviewHeaderData,
+        .getPlanPreviewData, .getPlanDetailData, .getScrapList:
+      base += "/post"
       
-      case .getScrapEmptyList:
-        base += "/post/random"
-        
-      }
+    case .getTravelSpotList:
+      base += "/area"
       
-      guard let url = URL(string: base) else {
-        fatalError("baseURL could not be configured")
-      }
-      return url
+    case .getBuyList:
+      base += "/order"
+      
+    case .deleteUserWithdraw, .postSocialLogin, .postSocialSignUp:
+      base += "/auth"
+      
+      
+    case .getTravelSpotDetailList:
+      base += "/area"
+      
+    case .getNicknameDetailList, .postScrapBtn, .getScrapList:
+      base += "/scrap"
+      
+    case .getScrapEmptyList:
+      base += "/post/random"
+      
     }
+    
+    guard let url = URL(string: base) else {
+      fatalError("baseURL could not be configured")
+    }
+    return url
+  }
   
   // MARK: - Path
   /// - note :
@@ -107,7 +128,8 @@ extension BaseAPI: TargetType {
       return "/\(idx)/preview"
     case .getTravelSpotDetailList(let areaID,_,_,_):
       return "/\(areaID)"
-    case .postScrapBtn(let postId, _):
+//    case .postScrapBtn(let postId, _):
+    case .postScrapBtn(let postId):
       return "/\(postId)"
     case .getNicknameDetailList(let userID,_,_,_):
       return "/\(userID)/post"
@@ -115,8 +137,10 @@ extension BaseAPI: TargetType {
       return "/\(userId)"
     
  
-    case .getScrapList(let userId, _, _, _):
-      return "/\(userId)"
+//    case .getScrapList(let userId, _, _, _):
+//      return "/\(userId)"
+    case .getScrapList(_, _, _):
+      return "/"
     case .getNewTravelList, .getRecentTripList:
       return "/new"
     case .getSuggestTravelList:
@@ -125,6 +149,8 @@ extension BaseAPI: TargetType {
       return "/\(idx)"
     case .postSocialLogin:
       return "/login"
+    case .postSocialSignUp:
+      return "/signup"
       
     default :
       return ""
@@ -139,7 +165,7 @@ extension BaseAPI: TargetType {
   
   var method: Moya.Method {
     switch self{
-    case .sampleAPI, .postScrapBtn, .postSocialLogin:
+    case .sampleAPI, .postScrapBtn, .postSocialLogin, .postSocialSignUp:
       return .post
     case .deleteUserWithdraw:
       return .delete
@@ -182,23 +208,32 @@ extension BaseAPI: TargetType {
       params["pageSize"] = 5
       params["sort"] = sort
       
-    case .getScrapList(_, let page, _, let sort):
+//    case .getScrapList(_, let page, _, let sort):
+//      params["page"] = page
+//      params["pageSize"] = 5
+//      params["sort"] = sort
+    case .getScrapList(let page, _, let sort):
       params["page"] = page
       params["pageSize"] = 5
       params["sort"] = sort
-      
+
     case .getNewTravelList(let page):
       params["page"] = page
     case .getSuggestTravelList(let page, let sort):
       params["page"] = page
       params["sort"] = sort
       
-    case .postScrapBtn(_, let userId):
-      params["userId"] = userId
+//    case .postScrapBtn(_, let userId):
+//      params["userId"] = userId
       
     case .postSocialLogin(let socialToken, _):
       params["social_token"] = socialToken
       params["social_type"] = "KAKAO"
+      
+    case .postSocialSignUp(let socialToken, let socialType, let nickName):
+      params["social_token"] = socialToken
+      params["social_type"] = socialType
+      params["nickname"] = nickName
       
     default:
       break
@@ -233,7 +268,7 @@ extension BaseAPI: TargetType {
     switch self {
     case .sampleAPI, .getTravelSpotDetailList, .getNicknameDetailList, .getScrapList, .getNewTravelList, .getSuggestTravelList, .postScrapBtn:
       return URLEncoding.init(destination: .queryString, arrayEncoding: .noBrackets, boolEncoding: .literal)
-    case .postSocialLogin :
+    case .postSocialLogin, .postSocialSignUp :
       return JSONEncoding.default
     default :
       return JSONEncoding.default
@@ -247,11 +282,11 @@ extension BaseAPI: TargetType {
   ///
   var task: Task {
     switch self{
-    case .sampleAPI,.getTravelSpotDetailList, .getNicknameDetailList, .getScrapList,.getNewTravelList, .getSuggestTravelList, .postScrapBtn, .postSocialLogin:
+    case .sampleAPI,.getTravelSpotDetailList, .getNicknameDetailList, .getScrapList,.getNewTravelList, .getSuggestTravelList, .postScrapBtn, .postSocialLogin, .postSocialSignUp:
       return .requestParameters(parameters: bodyParameters ?? [:], encoding: parameterEncoding)
     default:
       return .requestPlain
- 
+      
     }
   }
   

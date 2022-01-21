@@ -22,7 +22,8 @@ struct HomeListDataGettable: Codable {
     let isScraped : Bool?
     
     enum CodingKeys: String, CodingKey {
-      case id, title, price
+      case title, price
+      case id = "post_id"
       case thumbnailURL = "thumbnail_url"
       case nickname = "author"
       case isPurchased = "is_purchased"
