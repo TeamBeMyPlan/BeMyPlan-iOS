@@ -28,6 +28,9 @@ class MyPlanApplicationVC: UIViewController, MFMailComposeViewControllerDelegate
   
   // MARK: - IBAction Part
   
+  @IBAction func backButtonCLicked(_ sender: Any) {
+    self.navigationController?.popViewController(animated: true)
+  }
   @IBAction func uploadButtonClicked(_ sender: Any) {
   }
   

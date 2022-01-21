@@ -55,16 +55,30 @@ class TravelSpotFilterVC: UIViewController {
 
   
   // MARK: - IBAction Part
-  @IBAction func recentBtn(_ sender: Any) {
+  
+  
+  @IBAction func recentButtonClicked(_ sender: Any) {
+    makeVibrate()
     recentlyStandard()
+  }
+
+  @IBAction func orderButtonCLicked(_ sender: Any) {
+    makeVibrate()
+    orderCountStandard()
+
+  }
+  @IBAction func scrapButtonClicked(_ sender: Any) {
+    makeVibrate()
+    priceStandard()
+  }
+
+  @IBAction func recentBtn(_ sender: Any) {
   }
   
   @IBAction func orderBtn(_ sender: Any) {
-    orderCountStandard()
   }
   
   @IBAction func priceBtn(_ sender: Any) {
-    priceStandard()
   }
   
   // MARK: - Custom Method Part

@@ -99,10 +99,8 @@ extension BaseAPI: TargetType {
       
     case .getScrapEmptyList:
       base += "/post/random"
-      
 
       }
-    
     guard let url = URL(string: base) else {
       fatalError("baseURL could not be configured")
     }
