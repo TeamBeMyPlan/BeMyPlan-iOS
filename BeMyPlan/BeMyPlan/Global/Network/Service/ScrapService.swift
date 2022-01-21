@@ -9,14 +9,14 @@ import Foundation
 
 protocol ScrapService {
 //  func getScrapList(userId: Int, page: Int, pageSize: Int, sort: String, completion: @escaping (Result<[ScrapDataGettable]?, Error>) -> Void)
-  func getScrapList(page: Int, pageSize: Int, sort: String, completion: @escaping (Result<[ScrapDataGettable]?, Error>) -> Void)
+  func getScrapList(page: Int, pageSize: Int, sort: String, completion: @escaping (Result<ScrapDataGettable?, Error>) -> Void)
 }
 
 extension BaseService: ScrapService {
 //  func getScrapList(userId: Int, page: Int, pageSize: Int, sort: String, completion: @escaping (Result<[ScrapDataGettable]?, Error>) -> Void) {
 //    requestObject(.getScrapList(userId: userId, page: page, pageSize: pageSize, sort: sort), completion: completion)
 //  }
-  func getScrapList(page: Int, pageSize: Int, sort: String, completion: @escaping (Result<[ScrapDataGettable]?, Error>) -> Void) {
+  func getScrapList(page: Int, pageSize: Int, sort: String, completion: @escaping (Result<ScrapDataGettable?, Error>) -> Void) {
     requestObject(.getScrapList(page: page, pageSize: pageSize, sort: sort), completion: completion)
   }
 }

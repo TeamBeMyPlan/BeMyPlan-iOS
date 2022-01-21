@@ -59,25 +59,25 @@ extension BaseAPI: TargetType {
       case .sampleAPI:
         base += ""
         
-      case .getPopularTravelList, .getNewTravelList, .getSuggestTravelList, .getRecentTripList, .getPlanPreviewHeaderData,
-          .getPlanPreviewData, .getPlanDetailData:
-        base += "/post"
-        
-      case .getTravelSpotList:
-        base += "/area"
-        
-      case .getBuyList:
-        base += "/order"
-        
-      case .deleteUserWithdraw, .postSocialLogin:
-        base += "/auth"
-        
-        
-      case .getTravelSpotDetailList:
-        base += "/area"
+//      case .getPopularTravelList, .getNewTravelList, .getSuggestTravelList, .getRecentTripList, .getPlanPreviewHeaderData,
+//          .getPlanPreviewData, .getPlanDetailData:
+//        base += "/post"
+//        
+//      case .getTravelSpotList:
+//        base += "/area"
+//        
+//      case .getBuyList:
+//        base += "/order"
+//        
+//      case .deleteUserWithdraw, .postSocialLogin:
+//        base += "/auth"
+//        
+//        
+//      case .getTravelSpotDetailList:
+//        base += "/area"
       
     case .getPopularTravelList, .getNewTravelList, .getSuggestTravelList, .getRecentTripList, .getPlanPreviewHeaderData,
-        .getPlanPreviewData, .getPlanDetailData, .getScrapList:
+        .getPlanPreviewData, .getPlanDetailData:
       base += "/post"
       
     case .getTravelSpotList:

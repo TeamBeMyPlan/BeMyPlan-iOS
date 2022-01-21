@@ -45,7 +45,7 @@ class ScrapVC: UIViewController {
     BaseService.default.getScrapList(page: 0, pageSize: 5, sort: "created_at") { result in
       result.success { data in
         if let testedData = data {
-          if testedData.count == 0 {
+          if testedData.items.count == 0 {
             print("---> 엠티뷰스크랩리스트데이터 \(testedData)")
             self.scrapView.isHidden = true
           } else {
