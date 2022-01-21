@@ -242,6 +242,9 @@
                                             <constraint firstAttribute="width" constant="50" id="e1Y-xe-VPm"/>
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <connections>
+                                            <action selector="backButtonClicked:" destination="RD9-A3-wpr" eventType="touchUpInside" id="OhA-7W-Qfv"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>

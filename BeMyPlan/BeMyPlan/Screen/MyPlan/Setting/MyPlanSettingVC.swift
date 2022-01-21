@@ -39,6 +39,9 @@ class MyPlanSettingVC: UIViewController, MFMailComposeViewControllerDelegate {
   
   // MARK: - Custom Method Part
   
+  @IBAction func backButtonClicked(_ sender: Any) {
+    self.navigationController?.popViewController(animated: true)
+  }
   private func addButtonActions(){
     uploadButton.press {
       guard let uploadVC = self.storyboard?.instantiateViewController(withIdentifier: MyPlanApplicationVC.className) as? MyPlanApplicationVC else {return}

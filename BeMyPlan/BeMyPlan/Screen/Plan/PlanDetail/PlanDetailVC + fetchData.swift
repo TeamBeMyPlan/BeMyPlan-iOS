@@ -76,6 +76,8 @@ extension PlanDetailVC{
         
       }.catch { err in
         self.closeIndicator {
+          print("🍎DETAIL ERRR")
+          dump(err)
           NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .showNetworkError), object: nil)
         }
       }

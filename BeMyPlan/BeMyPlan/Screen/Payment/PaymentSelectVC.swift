@@ -11,6 +11,9 @@ class PaymentSelectVC: UIViewController {
   
   // MARK: - Vars & Lets Part
   
+  var writer : String = ""
+  var planTitle : String = ""
+  var imgURL : String = ""
   var postIdx = 0
   private var selectedIndex : Int = -1{
     didSet{
@@ -29,6 +32,7 @@ class PaymentSelectVC: UIViewController {
   
   // MARK: - UI Component Part
   
+  @IBOutlet var planImageView: UIImageView!
   @IBOutlet var infoContentView: UIView!
   @IBOutlet var writerLabel: UILabel!
   @IBOutlet var titleLabel: UILabel!
@@ -44,6 +48,7 @@ class PaymentSelectVC: UIViewController {
     setContainerUI()
     setButtonState()
     setPriceLabel()
+    setContainerInfo()
   }
   
   // MARK: - Custom Method Part
@@ -66,6 +71,14 @@ class PaymentSelectVC: UIViewController {
     infoContentView.layer.cornerRadius = 5
     infoContentView.layer.borderWidth = 1
     infoContentView.layer.borderColor = UIColor.grey04.cgColor
+  }
+  
+  private func setContainerInfo(){
+    titleLabel.text = planTitle
+    writerLabel.text = writer
+    planImageView.layer.cornerRadius = 5
+    planImageView.setImage(with: imgURL)
+    
   }
   
   private func setPriceLabel(){
