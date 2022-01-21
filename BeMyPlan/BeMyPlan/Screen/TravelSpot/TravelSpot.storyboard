@@ -194,6 +194,7 @@
                     </view>
                     <connections>
                         <outlet property="contentTableView" destination="nxe-Pf-SRD" id="bUB-4V-szA"/>
+                        <outlet property="headerLabel" destination="XC7-Ww-na8" id="OSv-d0-QDz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c5E-qc-y7w" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -267,7 +268,7 @@
                                                     <color key="titleColor" name="grey2"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="recentBtn:" destination="poI-w5-kQ4" eventType="touchUpInside" id="HAm-nP-b9i"/>
+                                                    <action selector="recentBtn:" destination="poI-w5-kQ4" eventType="touchUpInside" id="QvR-ms-ij8"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aR5-CB-ahC">
@@ -304,7 +305,7 @@
                                                     <color key="titleColor" name="beMyBlue"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="manyBuyBtn:" destination="poI-w5-kQ4" eventType="touchUpInside" id="BxB-bh-Dt9"/>
+                                                    <action selector="orderBtn:" destination="poI-w5-kQ4" eventType="touchUpInside" id="h9j-KV-WR1"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pn1-7M-pX1">
@@ -340,7 +341,7 @@
                                                     <color key="titleColor" name="beMyBlue"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="manyScrapBtn:" destination="poI-w5-kQ4" eventType="touchUpInside" id="AH6-3y-B09"/>
+                                                    <action selector="priceBtn:" destination="poI-w5-kQ4" eventType="touchUpInside" id="4u5-l6-h9K"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aEc-er-aCH">
@@ -404,11 +405,11 @@
                     <connections>
                         <outlet property="filterHandleView" destination="f2m-BN-v0v" id="wD1-pu-y9v"/>
                         <outlet property="filterView" destination="GFj-Xt-x2a" id="CLc-wd-5Re"/>
-                        <outlet property="manyBuyCheckImg" destination="pn1-7M-pX1" id="HsZ-3U-Rul"/>
-                        <outlet property="manyScrapImg" destination="aEc-er-aCH" id="UsN-1C-RJo"/>
-                        <outlet property="mayBuyBtn" destination="tGy-0B-u2F" id="POJ-h4-zdx"/>
-                        <outlet property="mayScrapBtn" destination="tnM-L2-1tz" id="Spm-cx-UAU"/>
-                        <outlet property="recentBtn" destination="zeX-yW-KX0" id="tdH-bv-sfK"/>
+                        <outlet property="orderBtn" destination="tGy-0B-u2F" id="GOL-uq-YKT"/>
+                        <outlet property="orderCheckImg" destination="pn1-7M-pX1" id="DkX-il-uKW"/>
+                        <outlet property="priceBtn" destination="tnM-L2-1tz" id="HgM-fy-Zv1"/>
+                        <outlet property="priceScrapImg" destination="aEc-er-aCH" id="Tw3-Ol-I4u"/>
+                        <outlet property="recentBtn" destination="zeX-yW-KX0" id="mxC-sC-lSW"/>
                         <outlet property="recentCheckImg" destination="aR5-CB-ahC" id="sth-1a-qmj"/>
                     </connections>
                 </viewController>
