@@ -5,26 +5,38 @@
 //  Created by 조양원 on 2022/01/10.
 //
 
+/// dismiss 자동으로 처리
+///
+
 import UIKit
 import PanModal
 
 class TravelSpotFilterVC: UIViewController {
+  
   // MARK: - Vars & Lets Part
+  public var filterClicked: ((SortCase) -> ())?
+  public var filterStatus: SortCase = .recently {
+    didSet {
+      print("&&&& \(filterStatus)")
+    }
+  }
+
   
   // MARK: - UI Component Part
   @IBOutlet var filterView: UIView!
   @IBOutlet var filterHandleView: UIView!
   @IBOutlet var recentCheckImg: UIButton!
   @IBOutlet var recentBtn: UIButton!
-  @IBOutlet var manyBuyCheckImg: UIButton!
-  @IBOutlet var mayBuyBtn: UIButton!
-  @IBOutlet var manyScrapImg: UIButton!
-  @IBOutlet var mayScrapBtn: UIButton!
+  @IBOutlet var orderCheckImg: UIButton!
+  @IBOutlet var orderBtn: UIButton!
+  @IBOutlet var priceScrapImg: UIButton!
+  @IBOutlet var priceBtn: UIButton!
   
   // MARK: - Life Cycle Part
   override func viewDidLoad() {
     super.viewDidLoad()
     setUIs()
+    setButtonStatus()
   }
   
   // MARK: - Set Function Part
@@ -33,44 +45,87 @@ class TravelSpotFilterVC: UIViewController {
     filterHandleView.layer.cornerRadius = 2
     filterView.layer.cornerRadius = 5
 
-    manyBuyCheckImg.isHidden = true
-    manyScrapImg.isHidden = true
+    orderCheckImg.isHidden = true
+    priceScrapImg.isHidden = true
     
     recentBtn.setTitleColor(.bemyBlue, for: .normal)
-    mayBuyBtn.setTitleColor(.grey02, for: .normal)
-    mayScrapBtn.setTitleColor(.grey02, for: .normal)
+    orderBtn.setTitleColor(.grey02, for: .normal)
+    priceBtn.setTitleColor(.grey02, for: .normal)
   }
 
   
   // MARK: - IBAction Part
   @IBAction func recentBtn(_ sender: Any) {
-    recentCheckImg.isHidden = false
-    recentBtn.setTitleColor(.bemyBlue, for: .normal)
-    manyBuyCheckImg.isHidden = true
-    mayBuyBtn.setTitleColor(.grey02, for: .normal)
-    manyScrapImg.isHidden = true
-    mayScrapBtn.setTitleColor(.grey02, for: .normal)
+    recentlyStandard()
   }
   
-  @IBAction func manyBuyBtn(_ sender: Any) {
-    recentCheckImg.isHidden = true
-    recentBtn.setTitleColor(.grey02, for: .normal)
-    manyBuyCheckImg.isHidden = false
-    mayBuyBtn.setTitleColor(.bemyBlue, for: .normal)
-    manyScrapImg.isHidden = true
-    mayScrapBtn.setTitleColor(.grey02, for: .normal)
+  @IBAction func orderBtn(_ sender: Any) {
+    orderCountStandard()
   }
   
-  @IBAction func manyScrapBtn(_ sender: Any) {
-    recentCheckImg.isHidden = true
-    recentBtn.setTitleColor(.grey02, for: .normal)
-    manyBuyCheckImg.isHidden = true
-    mayBuyBtn.setTitleColor(.grey02, for: .normal)
-    manyScrapImg.isHidden = false
-    mayScrapBtn.setTitleColor(.bemyBlue, for: .normal)
+  @IBAction func priceBtn(_ sender: Any) {
+    priceStandard()
   }
   
   // MARK: - Custom Method Part
+  private func recentlyStandard() {
+    recentCheckImg.isHidden = false
+    recentBtn.setTitleColor(.bemyBlue, for: .normal)
+    orderCheckImg.isHidden = true
+    orderBtn.setTitleColor(.grey02, for: .normal)
+    priceScrapImg.isHidden = true
+    priceBtn.setTitleColor(.grey02, for: .normal)
+    
+    print("@@@@ \(filterClicked!(.recently))")
+
+    filterClicked!(.recently)
+    dismiss(animated: true, completion: nil)
+  }
+  
+  private func orderCountStandard() {
+    recentCheckImg.isHidden = true
+    recentBtn.setTitleColor(.grey02, for: .normal)
+    orderCheckImg.isHidden = false
+    orderBtn.setTitleColor(.bemyBlue, for: .normal)
+    priceScrapImg.isHidden = true
+    priceBtn.setTitleColor(.grey02, for: .normal)
+
+    print("#### \(filterClicked!(.orderCount))")
+
+    filterClicked!(.orderCount)
+    dismiss(animated: true, completion: nil)
+  }
+  
+  private func priceStandard() {
+    recentCheckImg.isHidden = true
+    recentBtn.setTitleColor(.grey02, for: .normal)
+    orderCheckImg.isHidden = true
+    orderBtn.setTitleColor(.grey02, for: .normal)
+    priceScrapImg.isHidden = false
+    priceBtn.setTitleColor(.bemyBlue, for: .normal)
+
+    print("$$$$ \(filterClicked!(.price))")
+
+    filterClicked!(.price)
+    dismiss(animated: true, completion: nil)
+  }
+  
+  private func setButtonStatus() {
+    guard filterStatus.rawValue == SortCase.recently.rawValue else {
+      recentlyStandard()
+      return
+    }
+    
+    guard filterStatus.rawValue == SortCase.orderCount.rawValue else {
+      orderCountStandard()
+      return
+    }
+    
+    guard filterStatus.rawValue == SortCase.price.rawValue else {
+      priceStandard()
+      return
+    }
+  }
   
   // MARK: - @objc Function Part
   
@@ -95,10 +150,8 @@ extension TravelSpotFilterVC: PanModalPresentable {
   var dragIndicatorBackgroundColor: UIColor {
     return .clear
   }
+
 }
-
-
-
 
 
 
