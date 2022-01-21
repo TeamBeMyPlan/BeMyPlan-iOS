@@ -36,6 +36,8 @@ class ScrapContainerCVC: UICollectionViewCell, UICollectionViewRegisterable {
   public func setData(data: ScrapItem) {
     contentImage.setImage(with: data.thumbnailURL)
     titleLabel.text = data.title
+    
+    scrapBtn.setImage(UIImage(named: "icnScrapWhite"), for: .normal)
   }
   
 }

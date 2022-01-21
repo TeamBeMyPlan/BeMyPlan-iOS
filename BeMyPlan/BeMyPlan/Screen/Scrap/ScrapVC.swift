@@ -15,7 +15,6 @@ class ScrapVC: UIViewController {
   @IBOutlet var scrapEmptyView: ScrapEmptyContainerView!
   
   // MARK: - Vars & Lets Part
-//  let contentData: Bool = false
   var scrapDataList:[ScrapDataGettable] = []
 
   // MARK: - UI Component Part
@@ -23,7 +22,6 @@ class ScrapVC: UIViewController {
   // MARK: - Life Cycle Part
   override func viewDidLoad() {
     super.viewDidLoad()
-//    hiddenContainerView()
     fetchScrapListData()
     bottomSheetNotification()
   }
@@ -31,13 +29,6 @@ class ScrapVC: UIViewController {
   // MARK: - IBAction Part
   
   // MARK: - Custom Method Part
-//  private func hiddenContainerView() {
-//    if contentData == true {
-//      scrapEmptyView.isHidden = true
-//    } else {
-//      scrapView.isHidden = true
-//    }
-//  }
   
   private func fetchScrapListData() {
       
