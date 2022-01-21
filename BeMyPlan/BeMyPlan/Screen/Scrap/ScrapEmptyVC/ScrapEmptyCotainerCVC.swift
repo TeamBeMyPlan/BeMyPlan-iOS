@@ -19,6 +19,12 @@ class ScrapEmptyCotainerCVC: UICollectionViewCell,UICollectionViewRegisterable {
   
   override func awakeFromNib() {
     super.awakeFromNib()
+    setUIs()
+  }
+  
+  private func setUIs() {
+    contentImage.contentMode = .scaleAspectFill
+    contentImage.layer.cornerRadius = 5
   }
   
   public func setData(data: ScrapEmptyDataGettable) {

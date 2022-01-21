@@ -21,23 +21,24 @@ class TravelSpotDetailVC: UIViewController {
   
   // MARK: - Vars & Lets Part
   //  var travelSpotDetailDataList: [TravelSpotDetailData] = []
-  var planDataList: [HomeListDataGettable.Item] = [] {
-    didSet{
-      print("PLANDATALIST",planDataList.count)
-    }
-  }
+  var planDataList: [HomeListDataGettable.Item] = []
   var areaNum: Int?
   
   var currentPageIndex = 0
   var areaId: Int? = 2
   var userId: Int?
   var type : TravelSpotDetailType = .travelspot
-  var sortcase : SortCase = .recently
+  var sortCase : SortCase = .recently {
+    didSet {
+      /// API 호출 함수
+      print("#### \(sortCase)")
+//      fetchTravelSpotDetailItemList(isRefresh: true)
+    }
+  }
   
   
   // MARK: - UI Component Part
   @IBOutlet var contentTableView: UITableView!
-  
   @IBOutlet var headerLabel: UILabel!{
     didSet {
       setHeaderLabel()
@@ -51,11 +52,12 @@ class TravelSpotDetailVC: UIViewController {
     regiterXib()
     setTableViewDelegate()
     setUIs()
-    fetchTravelSpotDetailItemList(isRefresh: false)
+    fetchTravelSpotDetailItemList(isRefresh: true)
     initRefresh()
   }
   
   override func viewWillAppear(_ animated: Bool) {
+    fetchTravelSpotDetailItemList(isRefresh: true)
   }
   
   // MARK: - Set Function Part
@@ -83,8 +85,16 @@ class TravelSpotDetailVC: UIViewController {
   }
   
   @IBAction func filterBtn(_ sender: Any) {
-    let vc = UIStoryboard(name: "TravelSpot", bundle: nil).instantiateViewController(withIdentifier: TravelSpotFilterVC.className) as! TravelSpotFilterVC
-    presentPanModal(vc)
+    let filterVC = UIStoryboard(name: "TravelSpot", bundle: nil).instantiateViewController(withIdentifier: TravelSpotFilterVC.className) as! TravelSpotFilterVC
+    
+    filterVC.filterClicked = { [weak self] filter in
+      self?.sortCase = filter
+      filterVC.filterStatus = self!.sortCase
+      print("@@@@ \(self?.sortCase)")
+    }
+//    filterVC.filterStatus = sortCase
+//    print("@@@@ \(self.sortCase)")
+    presentPanModal(filterVC)
   }
 
   // MARK: - Custom Method Part
@@ -106,11 +116,12 @@ class TravelSpotDetailVC: UIViewController {
     }
   }
   
+  
   private func fetchTravelSpotDetailItemList(isRefresh: Bool) {
     BaseService.default.getPlanAllinOneList(area: areaId,
                                             userId: userId,
                                             page: currentPageIndex,
-                                            sort: "created_at",
+                                            sort: sortCase.rawValue,
                                             viewCase: type) { result in
       result.success { [weak self] list in
         if let list = list {
@@ -147,9 +158,7 @@ class TravelSpotDetailVC: UIViewController {
     DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
       self.currentPageIndex = 0
       self.fetchTravelSpotDetailItemList(isRefresh: true)
-//      self.contentTableView.reloadData()
       refresh.endRefreshing()
-      
     }
   }
   
@@ -197,12 +206,6 @@ extension TravelSpotDetailVC: UICollectionViewDelegateFlowLayout {
   }
 }
 
-
-enum SortCase : String{
-  case recently = "created_at"
-}
-
-
 extension TravelSpotDetailVC {
   func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
     let height = scrollView.frame.size.height
@@ -212,4 +215,10 @@ extension TravelSpotDetailVC {
       fetchTravelSpotDetailItemList(isRefresh: false)
     }
   }
+}
+
+enum SortCase: String {
+  case recently = "created_at"
+  case orderCount = "order_count"
+  case price = "price"
 }

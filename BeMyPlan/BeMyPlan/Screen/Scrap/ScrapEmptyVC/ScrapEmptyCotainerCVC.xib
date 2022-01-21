@@ -18,10 +18,13 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mainlist1" translatesAutoresizingMaskIntoConstraints="NO" id="ncT-qe-use">
-                        <rect key="frame" x="0.0" y="0.0" width="552" height="254.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="552" height="552"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="ncT-qe-use" secondAttribute="height" multiplier="1:1" id="KVF-h5-2Zx"/>
+                        </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hxw-Hd-M1d">
-                        <rect key="frame" x="0.0" y="266.5" width="552" height="17"/>
+                        <rect key="frame" x="0.0" y="564" width="552" height="17"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="lessThanOrEqual" constant="40" id="X7H-BM-7e5"/>
                         </constraints>
@@ -43,7 +46,6 @@
                 <constraint firstItem="ncT-qe-use" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="3xT-LU-DfP"/>
                 <constraint firstItem="hxw-Hd-M1d" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="59q-9X-ehZ"/>
                 <constraint firstAttribute="trailing" secondItem="hxw-Hd-M1d" secondAttribute="trailing" id="JHA-cA-S34"/>
-                <constraint firstItem="ncT-qe-use" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="160/212" id="L9N-q5-nG7"/>
                 <constraint firstItem="ncT-qe-use" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="WRP-8M-sBa"/>
                 <constraint firstItem="hxw-Hd-M1d" firstAttribute="top" secondItem="ncT-qe-use" secondAttribute="bottom" constant="12" id="b4d-7T-y5g"/>
                 <constraint firstItem="hxw-Hd-M1d" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="bOY-M7-bWz"/>
