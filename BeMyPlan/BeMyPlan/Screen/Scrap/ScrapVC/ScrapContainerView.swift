@@ -13,7 +13,7 @@ class ScrapContainerView: XibView {
   
   @IBOutlet var contentCV: UICollectionView!
 
-  private var scrapDataList: [ScrapDataGettable] = []
+  private var scrapDataList: [ScrapItem] = []
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -50,12 +50,11 @@ class ScrapContainerView: XibView {
       result.success { data in
         self.scrapDataList = []
         if let testedData = data {
-          self.scrapDataList = testedData
+          self.scrapDataList = testedData.items
         }
         self.contentCV.reloadData()
       }.catch { error in
         if let err = error as? MoyaError {
-          dump("---> Err ScrapContainer \(err)")
         }
       }
     }

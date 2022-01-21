@@ -22,8 +22,11 @@ class TravelSpotDetailVC: UIViewController {
   // MARK: - Vars & Lets Part
   //  var travelSpotDetailDataList: [TravelSpotDetailData] = []
   var planDataList: [HomeListDataGettable.Item] = []
+//  var scrapBtnData: ScrapBtnData =
+  var scrapBtnData: Bool = true
   var areaNum: Int?
   var nickname : String?
+  var postId: Int = 0
   
   var currentPageIndex = 0
   var areaId: Int? = 2
@@ -150,6 +153,24 @@ class TravelSpotDetailVC: UIViewController {
     }
   }
   
+  public func scrapBtnAPI() {
+//    BaseService.default.postScrapBtnTapped(postId: postId, userId: userId) { result in
+    BaseService.default.postScrapBtnTapped(postId: postId) { result in
+      result.success { data in
+        dump("#### \(data)")
+        if let testedData = data {
+          print("---> 버튼클릭값 \(testedData)")
+          self.scrapBtnData = testedData.scrapped
+        }
+      }.catch { error in
+        dump("!!!! \(error)")
+        if let err = error as? MoyaError {
+          dump(err)
+        }
+      }
+    }
+  }
+  
   private func initRefresh() {
     let refresh = UIRefreshControl()
     refresh.addTarget(self, action: #selector(updateUI(refresh:)), for: .valueChanged)
@@ -182,6 +203,22 @@ extension TravelSpotDetailVC: UITableViewDataSource {
     cell.selectionStyle = .none
     cell.setData(data: planDataList[indexPath.row])
 
+    cell.scrapBtnClicked = { [weak self] post in
+      self?.postId = post
+      print("@@@@\(self?.postId)")
+      self?.scrapBtnAPI()
+      print("$$$$$$")
+
+    }
+
+//    if planDataList[indexPath.row].isScraped == true {
+//      cell.scrapBtn.setImage(UIImage(named: "icon_scrab"), for: .normal)
+//    } else {
+//      cell.scrapBtn.setImage(UIImage(named: "icnNotScrapWhite"), for: .normal)
+//
+//    }
+
+    
     return cell
   }
 }

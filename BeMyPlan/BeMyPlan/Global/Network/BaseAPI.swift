@@ -59,25 +59,25 @@ extension BaseAPI: TargetType {
       case .sampleAPI:
         base += ""
         
-      case .getPopularTravelList, .getNewTravelList, .getSuggestTravelList, .getRecentTripList, .getPlanPreviewHeaderData,
-          .getPlanPreviewData, .getPlanDetailData:
-        base += "/post"
-        
-      case .getTravelSpotList:
-        base += "/area"
-        
+//      case .getPopularTravelList, .getNewTravelList, .getSuggestTravelList, .getRecentTripList, .getPlanPreviewHeaderData,
+//          .getPlanPreviewData, .getPlanDetailData:
+//        base += "/post"
+//        
+//      case .getTravelSpotList:
+//        base += "/area"
+//        
       case .getBuyList:
         base += "/order"
-        
-      case .deleteUserWithdraw, .postSocialLogin:
-        base += "/auth"
-        
-        
-      case .getTravelSpotDetailList:
-        base += "/area"
+//        
+//      case .deleteUserWithdraw, .postSocialLogin:
+//        base += "/auth"
+//        
+//        
+//      case .getTravelSpotDetailList:
+//        base += "/area"
       
     case .getPopularTravelList, .getNewTravelList, .getSuggestTravelList, .getRecentTripList, .getPlanPreviewHeaderData,
-        .getPlanPreviewData, .getPlanDetailData, .getScrapList:
+        .getPlanPreviewData, .getPlanDetailData:
       base += "/post"
       
     case .getTravelSpotList:
@@ -91,13 +91,17 @@ extension BaseAPI: TargetType {
     case .getTravelSpotDetailList:
       base += "/area"
       
-    case .getNicknameDetailList, .postScrapBtn, .getScrapList:
+    case .getNicknameDetailList:
+        base += "/user"
+          
+    case  .postScrapBtn, .getScrapList:
       base += "/scrap"
       
     case .getScrapEmptyList:
       base += "/post/random"
       
-    }
+
+      }
     
     guard let url = URL(string: base) else {
       fatalError("baseURL could not be configured")
@@ -129,7 +133,7 @@ extension BaseAPI: TargetType {
     case .postScrapBtn(let postId):
       return "/\(postId)"
     case .getNicknameDetailList(let userID,_,_,_):
-      return "/\(userID)/post"
+      return "/\(userID)/posts"
     case .getScrapEmptyList(let userId):
       return "/\(userId)"
     
@@ -200,7 +204,6 @@ extension BaseAPI: TargetType {
       params["sort"] = sort
       
     case .getNicknameDetailList(let userId, let page, _, let sort):
-      params["userId"] = userId
       params["page"] = page
       params["pageSize"] = 5
       params["sort"] = sort

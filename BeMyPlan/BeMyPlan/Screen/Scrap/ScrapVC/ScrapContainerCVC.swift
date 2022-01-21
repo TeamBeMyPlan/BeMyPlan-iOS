@@ -28,9 +28,16 @@ class ScrapContainerCVC: UICollectionViewCell, UICollectionViewRegisterable {
     scrapBtn.isSelected.toggle()
   }
   
-  public func setData(data: ScrapDataGettable) {
+  private func setUIs() {
+    contentImage.layer.cornerRadius = 5
+    contentImage.contentMode = .scaleAspectFill
+  }
+  
+  public func setData(data: ScrapItem) {
     contentImage.setImage(with: data.thumbnailURL)
     titleLabel.text = data.title
+    
+    scrapBtn.setImage(UIImage(named: "icnScrapWhite"), for: .normal)
   }
   
 }
