@@ -16,8 +16,11 @@ enum BaseAPI{
   
   case getTravelSpotDetailList(area: Int, page: Int, pageSize: Int?, sort: String)
   case getNicknameDetailList(userId: Int, page: Int, pageSize: Int?, sort: String)
-  
+
   case postSocialLogin(socialToken: String, socialType: String)
+  case postSocialSignUp(socialToken: String, socialType: String, nickName: String)
+
+  
   
   // MARK: - 양원
   case getTravelSpotList
@@ -65,7 +68,7 @@ extension BaseAPI: TargetType {
       case .getBuyList:
         base += "/order"
         
-      case .deleteUserWithdraw, .postSocialLogin:
+      case .deleteUserWithdraw, .postSocialLogin, .postSocialSignUp:
         base += "/auth"
         
         
@@ -125,6 +128,10 @@ extension BaseAPI: TargetType {
       return "/\(idx)"
     case .postSocialLogin:
       return "/login"
+    
+      //회원가입 API 나오면 아래 수정하기
+    case .postSocialSignUp:
+      return "/signup"
       
     default :
       return ""
@@ -139,7 +146,7 @@ extension BaseAPI: TargetType {
   
   var method: Moya.Method {
     switch self{
-    case .sampleAPI, .postScrapBtn, .postSocialLogin:
+    case .sampleAPI, .postScrapBtn, .postSocialLogin, .postSocialSignUp:
       return .post
     case .deleteUserWithdraw:
       return .delete
@@ -196,9 +203,15 @@ extension BaseAPI: TargetType {
     case .postScrapBtn(_, let userId):
       params["userId"] = userId
       
-    case .postSocialLogin(let socialToken, _):
+    case .postSocialLogin(let socialToken, let socialType):
       params["social_token"] = socialToken
-      params["social_type"] = "KAKAO"
+      params["social_type"] = socialType
+      
+    //SocialSignUP Response Body 나오면 수정하기
+    case .postSocialSignUp(let socialToken, let socialType, let nickName):
+      params["social_token"] = socialToken
+      params["social_type"] = socialType
+      params["nickname"] = nickName
       
     default:
       break
@@ -233,7 +246,7 @@ extension BaseAPI: TargetType {
     switch self {
     case .sampleAPI, .getTravelSpotDetailList, .getNicknameDetailList, .getScrapList, .getNewTravelList, .getSuggestTravelList, .postScrapBtn:
       return URLEncoding.init(destination: .queryString, arrayEncoding: .noBrackets, boolEncoding: .literal)
-    case .postSocialLogin :
+    case .postSocialLogin, .postSocialSignUp :
       return JSONEncoding.default
     default :
       return JSONEncoding.default
@@ -247,7 +260,7 @@ extension BaseAPI: TargetType {
   ///
   var task: Task {
     switch self{
-    case .sampleAPI,.getTravelSpotDetailList, .getNicknameDetailList, .getScrapList,.getNewTravelList, .getSuggestTravelList, .postScrapBtn, .postSocialLogin:
+    case .sampleAPI,.getTravelSpotDetailList, .getNicknameDetailList, .getScrapList,.getNewTravelList, .getSuggestTravelList, .postScrapBtn, .postSocialLogin,.postSocialSignUp:
       return .requestParameters(parameters: bodyParameters ?? [:], encoding: parameterEncoding)
     default:
       return .requestPlain

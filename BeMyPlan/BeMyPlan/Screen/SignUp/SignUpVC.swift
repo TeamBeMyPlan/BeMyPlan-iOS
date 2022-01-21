@@ -11,8 +11,8 @@ class SignUpVC: UIViewController {
   
   // MARK: - Vars & Lets Part
   var delegate : SignupDelegate?
-  var userToken : String?
-  var socialType : String?
+  var userToken : String
+  var socialType : String
   
   private var isNicknameValid : Bool = false {
     didSet {
@@ -194,6 +194,34 @@ class SignUpVC: UIViewController {
       }
     }
   }
+  
+  private func postSocialSignUpData() {
+    if let nickName = nicknameInputTextField.text {
+      BaseService.default.postSocialSignUp(socialToken: userToken , socialType: socialType, nickName: nickName) { result in
+        result.success{ [weak self] data in
+          if let data = data {
+            UserDefaults.standard.setValue(data.accessToken, forKey: "userToken")
+            //BaseVC로 이동
+            self?.pushBaseVC()
+          }
+          //성공 하면 회원가입 성공 창으로 가기
+          //서버에 데이터 넘겨주기
+          
+          
+        }.catch { error in
+          NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .showNetworkError), object: nil)
+        }
+      }
+    }
+    
+  }
+  
+  private func pushBaseVC(){
+    guard let baseVC = UIStoryboard.list(.base).instantiateViewController(withIdentifier: BaseVC.className) as? BaseVC else {return}
+    self.navigationController?.pushViewController(baseVC, animated: true)
+  }
+  
+  
   
   // MARK: - @objc Function Part
   @objc func textFieldDidChange() {
