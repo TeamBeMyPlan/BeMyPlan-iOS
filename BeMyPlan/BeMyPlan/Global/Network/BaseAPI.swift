@@ -18,6 +18,8 @@ enum BaseAPI{
   case getNicknameDetailList(userId: Int, page: Int, pageSize: Int?, sort: String)
   
   case postSocialLogin(socialToken: String, socialType: String)
+  case postSocialSignUp(socialToken: String, socialType: String, nickName: String)
+  
   
   // MARK: - 양원
   case getTravelSpotList
@@ -50,41 +52,41 @@ extension BaseAPI: TargetType {
   ///      case b -> path 는 /new" 입니다.
   ///
   public var baseURL: URL {
-      var base = Config.Network.baseURL
-      switch self{
-      case .sampleAPI:
-        base += ""
-        
-      case .getPopularTravelList, .getNewTravelList, .getSuggestTravelList, .getRecentTripList, .getPlanPreviewHeaderData,
-          .getPlanPreviewData, .getPlanDetailData, .getScrapList:
-        base += "/post"
-        
-      case .getTravelSpotList:
-        base += "/area"
-        
-      case .getBuyList:
-        base += "/order"
-        
-      case .deleteUserWithdraw, .postSocialLogin:
-        base += "/auth"
-        
-        
-      case .getTravelSpotDetailList:
-        base += "/area"
+    var base = Config.Network.baseURL
+    switch self{
+    case .sampleAPI:
+      base += ""
       
-      case .getNicknameDetailList, .postScrapBtn, .getScrapList:
-        base += "/scrap"
+    case .getPopularTravelList, .getNewTravelList, .getSuggestTravelList, .getRecentTripList, .getPlanPreviewHeaderData,
+        .getPlanPreviewData, .getPlanDetailData, .getScrapList:
+      base += "/post"
       
-      case .getScrapEmptyList:
-        base += "/post/random"
-        
-      }
+    case .getTravelSpotList:
+      base += "/area"
       
-      guard let url = URL(string: base) else {
-        fatalError("baseURL could not be configured")
-      }
-      return url
+    case .getBuyList:
+      base += "/order"
+      
+    case .deleteUserWithdraw, .postSocialLogin, .postSocialSignUp:
+      base += "/auth"
+      
+      
+    case .getTravelSpotDetailList:
+      base += "/area"
+      
+    case .getNicknameDetailList, .postScrapBtn, .getScrapList:
+      base += "/scrap"
+      
+    case .getScrapEmptyList:
+      base += "/post/random"
+      
     }
+    
+    guard let url = URL(string: base) else {
+      fatalError("baseURL could not be configured")
+    }
+    return url
+  }
   
   // MARK: - Path
   /// - note :
@@ -113,8 +115,8 @@ extension BaseAPI: TargetType {
       return "/\(userID)/post"
     case .getScrapEmptyList(let userId):
       return "/\(userId)"
-    
- 
+      
+      
     case .getScrapList(let userId, _, _, _):
       return "/\(userId)"
     case .getNewTravelList, .getRecentTripList:
@@ -125,6 +127,8 @@ extension BaseAPI: TargetType {
       return "/\(idx)"
     case .postSocialLogin:
       return "/login"
+    case .postSocialSignUp:
+      return "/signup"
       
     default :
       return ""
@@ -139,7 +143,7 @@ extension BaseAPI: TargetType {
   
   var method: Moya.Method {
     switch self{
-    case .sampleAPI, .postScrapBtn, .postSocialLogin:
+    case .sampleAPI, .postScrapBtn, .postSocialLogin, .postSocialSignUp:
       return .post
     case .deleteUserWithdraw:
       return .delete
@@ -200,6 +204,11 @@ extension BaseAPI: TargetType {
       params["social_token"] = socialToken
       params["social_type"] = "KAKAO"
       
+    case .postSocialSignUp(let socialToken, let socialType, let nickName):
+      params["social_token"] = socialToken
+      params["social_type"] = socialType
+      params["nickname"] = nickName
+      
     default:
       break
       
@@ -233,7 +242,7 @@ extension BaseAPI: TargetType {
     switch self {
     case .sampleAPI, .getTravelSpotDetailList, .getNicknameDetailList, .getScrapList, .getNewTravelList, .getSuggestTravelList, .postScrapBtn:
       return URLEncoding.init(destination: .queryString, arrayEncoding: .noBrackets, boolEncoding: .literal)
-    case .postSocialLogin :
+    case .postSocialLogin, .postSocialSignUp :
       return JSONEncoding.default
     default :
       return JSONEncoding.default
@@ -247,11 +256,11 @@ extension BaseAPI: TargetType {
   ///
   var task: Task {
     switch self{
-    case .sampleAPI,.getTravelSpotDetailList, .getNicknameDetailList, .getScrapList,.getNewTravelList, .getSuggestTravelList, .postScrapBtn, .postSocialLogin:
+    case .sampleAPI,.getTravelSpotDetailList, .getNicknameDetailList, .getScrapList,.getNewTravelList, .getSuggestTravelList, .postScrapBtn, .postSocialLogin, .postSocialSignUp:
       return .requestParameters(parameters: bodyParameters ?? [:], encoding: parameterEncoding)
     default:
       return .requestPlain
- 
+      
     }
   }
   
