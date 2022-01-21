@@ -31,7 +31,7 @@ enum BaseAPI{
   case getScrapEmptyList(userId: Int)
   
   // MARK: - 지훈
-  case getBuyList(userID: Int)
+  case getBuyList
   case deleteUserWithdraw
   case getPlanPreviewHeaderData(idx : Int)
   case getPlanPreviewData(idx : Int)
@@ -66,8 +66,8 @@ extension BaseAPI: TargetType {
 //      case .getTravelSpotList:
 //        base += "/area"
 //        
-//      case .getBuyList:
-//        base += "/order"
+      case .getBuyList:
+        base += "/order"
 //        
 //      case .deleteUserWithdraw, .postSocialLogin:
 //        base += "/auth"
@@ -82,9 +82,7 @@ extension BaseAPI: TargetType {
       
     case .getTravelSpotList:
       base += "/area"
-      
-    case .getBuyList:
-      base += "/order"
+    
       
     case .deleteUserWithdraw, .postSocialLogin, .postSocialSignUp:
       base += "/auth"
@@ -93,13 +91,17 @@ extension BaseAPI: TargetType {
     case .getTravelSpotDetailList:
       base += "/area"
       
-    case .getNicknameDetailList, .postScrapBtn, .getScrapList:
+    case .getNicknameDetailList:
+        base += "/user"
+          
+    case  .postScrapBtn, .getScrapList:
       base += "/scrap"
       
     case .getScrapEmptyList:
       base += "/post/random"
       
-    }
+
+      }
     
     guard let url = URL(string: base) else {
       fatalError("baseURL could not be configured")
@@ -118,8 +120,7 @@ extension BaseAPI: TargetType {
     switch self{
     case .getPopularTravelList:
       return "/popular"
-    case .getBuyList(let userID):
-      return "/\(userID)"
+
     case .deleteUserWithdraw:
       return "/withdraw"
     case .getPlanPreviewHeaderData(let idx):
@@ -132,7 +133,7 @@ extension BaseAPI: TargetType {
     case .postScrapBtn(let postId):
       return "/\(postId)"
     case .getNicknameDetailList(let userID,_,_,_):
-      return "/\(userID)/post"
+      return "/\(userID)/posts"
     case .getScrapEmptyList(let userId):
       return "/\(userId)"
     
@@ -203,7 +204,6 @@ extension BaseAPI: TargetType {
       params["sort"] = sort
       
     case .getNicknameDetailList(let userId, let page, _, let sort):
-      params["userId"] = userId
       params["page"] = page
       params["pageSize"] = 5
       params["sort"] = sort

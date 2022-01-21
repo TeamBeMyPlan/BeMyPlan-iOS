@@ -25,6 +25,7 @@ class TravelSpotDetailVC: UIViewController {
 //  var scrapBtnData: ScrapBtnData =
   var scrapBtnData: Bool = true
   var areaNum: Int?
+  var nickname : String?
   var postId: Int = 0
   
   var currentPageIndex = 0
@@ -57,6 +58,7 @@ class TravelSpotDetailVC: UIViewController {
     setUIs()
     fetchTravelSpotDetailItemList(isRefresh: true)
     initRefresh()
+    setHeaderLabel()
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -108,11 +110,13 @@ class TravelSpotDetailVC: UIViewController {
   private func setHeaderLabel() {
     switch (type) {
     case .new:
-      self.headerLabel.text = "최신여행일정"
+      self.headerLabel.text = "최신 여행 일정"
     case .suggest:
-      self.headerLabel.text = "에디터추천일정"
+      self.headerLabel.text = "에디터 추천 일정"
     case .nickname:
-      self.headerLabel.text = "닉네임"
+        if let nickname = nickname {
+          self.headerLabel.text = nickname
+        }
     case .travelspot:
       self.headerLabel.text = "제주"
       
@@ -144,6 +148,7 @@ class TravelSpotDetailVC: UIViewController {
         }
       }.catch{ error in
         print("travelspot err")
+        dump(error)
       }
     }
   }

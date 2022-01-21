@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PlanDetailWriterContainerView" customModule="BeMyPlan" customModuleProvider="target">
             <connections>
+                <outlet property="arrowIconImageView" destination="tID-md-ME6" id="Yyh-CV-Mdt"/>
                 <outlet property="locationTitleView" destination="bdH-gX-qH4" id="ImB-Xp-jq4"/>
                 <outlet property="writerLabel" destination="DAn-QB-b15" id="MV7-aG-8b7"/>
             </connections>
@@ -42,15 +43,28 @@
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W5F-vd-694">
+                    <rect key="frame" x="24" y="22" width="105" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="sAd-na-syR"/>
+                    </constraints>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <connections>
+                        <action selector="nicknameButtonClicked:" destination="-1" eventType="touchUpInside" id="1IP-Sv-6vf"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="DAn-QB-b15" firstAttribute="leading" secondItem="6B6-rz-ctN" secondAttribute="leading" constant="24" id="3AR-mg-ovx"/>
                 <constraint firstItem="tID-md-ME6" firstAttribute="leading" secondItem="DAn-QB-b15" secondAttribute="trailing" constant="2" id="48M-Im-ec7"/>
+                <constraint firstItem="W5F-vd-694" firstAttribute="top" secondItem="6B6-rz-ctN" secondAttribute="top" constant="22" id="IXl-Ln-TZI"/>
                 <constraint firstItem="DAn-QB-b15" firstAttribute="top" secondItem="6B6-rz-ctN" secondAttribute="top" constant="19" id="JCq-xl-GNn"/>
                 <constraint firstItem="bdH-gX-qH4" firstAttribute="leading" secondItem="6B6-rz-ctN" secondAttribute="leading" constant="24" id="V5U-kn-Qwo"/>
+                <constraint firstItem="W5F-vd-694" firstAttribute="trailing" secondItem="tID-md-ME6" secondAttribute="trailing" id="cxP-jV-ZGB"/>
                 <constraint firstItem="bdH-gX-qH4" firstAttribute="top" secondItem="DAn-QB-b15" secondAttribute="bottom" constant="10" id="fpd-JE-dbd"/>
                 <constraint firstItem="tID-md-ME6" firstAttribute="centerY" secondItem="DAn-QB-b15" secondAttribute="centerY" id="mMC-sb-dga"/>
+                <constraint firstItem="W5F-vd-694" firstAttribute="leading" secondItem="6B6-rz-ctN" secondAttribute="leading" constant="24" id="pN1-0x-dKn"/>
                 <constraint firstAttribute="trailing" secondItem="bdH-gX-qH4" secondAttribute="trailing" constant="24" id="utb-oM-fqd"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

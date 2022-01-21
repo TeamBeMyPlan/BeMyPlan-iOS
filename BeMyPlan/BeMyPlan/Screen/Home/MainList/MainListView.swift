@@ -72,7 +72,10 @@ class MainListView: UIView {
   }
   
   @IBAction func touchUpToPlanList(_ sender: Any) {
-    NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .movePlanList), object: nil)
+    var detailCase : TravelSpotDetailType = .new
+    type == .recently ? (detailCase = .new) : (detailCase = .suggest)
+    NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .moveHomeToPlanList), object: detailCase)
+    
   }
   
   
@@ -198,7 +201,6 @@ extension MainListView: UICollectionViewDelegateFlowLayout {
 
 extension MainListView : UIScrollViewDelegate {
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
-    print("CURRENt SCROLl pOINT",scrollView.contentOffset.x)
   }
   func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
     //    let page = Int(targetContentOffset.pointee.x / self.frame.width)

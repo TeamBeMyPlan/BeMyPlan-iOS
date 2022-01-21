@@ -76,9 +76,9 @@ class TravelSpotFilterVC: UIViewController {
     priceScrapImg.isHidden = true
     priceBtn.setTitleColor(.grey02, for: .normal)
     
-    print("@@@@ \(filterClicked!(.recently))")
-
-    filterClicked!(.recently)
+    if let filterClicked = filterClicked {
+      filterClicked(.recently)
+    }
     dismiss(animated: true, completion: nil)
   }
   
@@ -90,9 +90,9 @@ class TravelSpotFilterVC: UIViewController {
     priceScrapImg.isHidden = true
     priceBtn.setTitleColor(.grey02, for: .normal)
 
-    print("#### \(filterClicked!(.orderCount))")
-
-    filterClicked!(.orderCount)
+    if let filterClicked = filterClicked {
+      filterClicked(.orderCount)
+    }
     dismiss(animated: true, completion: nil)
   }
   
@@ -104,9 +104,10 @@ class TravelSpotFilterVC: UIViewController {
     priceScrapImg.isHidden = false
     priceBtn.setTitleColor(.bemyBlue, for: .normal)
 
-    print("$$$$ \(filterClicked!(.price))")
+    if let filterClicked = filterClicked {
+      filterClicked(.price)
+    }
 
-    filterClicked!(.price)
     dismiss(animated: true, completion: nil)
   }
   

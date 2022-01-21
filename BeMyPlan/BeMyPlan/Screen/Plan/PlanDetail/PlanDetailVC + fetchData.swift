@@ -13,11 +13,14 @@ extension PlanDetailVC{
     print("FETCHCHCHC",postIdx)
     BaseService.default.getPlanDetailData(idx: postIdx) { result in
       result.success { [weak self] data in
+        
         self?.locationList.removeAll()
         self?.summaryList.removeAll()
         self?.infoList.removeAll()
         if let detailData = data{
           // 작성자 정보 가져오기
+          
+          self?.authID = data?.authorID ?? 0
           self?.headerData = DetailHeaderData(title: detailData.title,
                                               writer : detailData.author)
           //          self?.headerTitleLabel.text = detailData.title

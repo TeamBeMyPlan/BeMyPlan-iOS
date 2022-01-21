@@ -10,6 +10,7 @@ import UIKit
 class PlanDetailVC: UIViewController {
 
   // MARK: - Vars & Lets Part
+  var authID = 0
   var isPreviewPage : Bool = false
   var isFullPage = false { didSet{ foldContentTableView() }}
   var postIdx : Int = 29
@@ -117,7 +118,9 @@ class PlanDetailVC: UIViewController {
   func setWriterView(){
     if let headerData = headerData{
       writerContainerView.setTitleData(title: headerData.writer,
-                              writer: headerData.title)
+                                       writer: headerData.title,
+                                       isPreviewPage: isPreviewPage,
+                                       authorID: authID)
     }
   }
   

@@ -11,7 +11,6 @@ struct HomeListDataGettable: Codable {
   let items: [HomeListDataGettable.Item]
   let totalPage: Int?
   
-  
   struct Item : Codable{
     let id: Int
     let thumbnailURL: String
