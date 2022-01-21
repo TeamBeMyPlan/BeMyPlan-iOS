@@ -22,8 +22,10 @@ enum BaseAPI{
   // MARK: - 양원
   case getTravelSpotList
   case getRecentTripList(page: Int, pageSize: Int)
-  case getScrapList(userId: Int, page: Int, pageSize: Int, sort: String)
-  case postScrapBtn(postId: Int, userId: Int)
+//  case getScrapList(userId: Int, page: Int, pageSize: Int, sort: String)
+  case getScrapList(page: Int, pageSize: Int, sort: String)
+  case postScrapBtn(postId: Int)
+//  case postScrapBtn(postId: Int, userId: Int)
   case getScrapEmptyList(userId: Int)
   
   // MARK: - 지훈
@@ -56,7 +58,7 @@ extension BaseAPI: TargetType {
         base += ""
         
       case .getPopularTravelList, .getNewTravelList, .getSuggestTravelList, .getRecentTripList, .getPlanPreviewHeaderData,
-          .getPlanPreviewData, .getPlanDetailData, .getScrapList:
+          .getPlanPreviewData, .getPlanDetailData:
         base += "/post"
         
       case .getTravelSpotList:
@@ -107,7 +109,8 @@ extension BaseAPI: TargetType {
       return "/\(idx)/preview"
     case .getTravelSpotDetailList(let areaID,_,_,_):
       return "/\(areaID)"
-    case .postScrapBtn(let postId, _):
+//    case .postScrapBtn(let postId, _):
+    case .postScrapBtn(let postId):
       return "/\(postId)"
     case .getNicknameDetailList(let userID,_,_,_):
       return "/\(userID)/post"
@@ -115,8 +118,10 @@ extension BaseAPI: TargetType {
       return "/\(userId)"
     
  
-    case .getScrapList(let userId, _, _, _):
-      return "/\(userId)"
+//    case .getScrapList(let userId, _, _, _):
+//      return "/\(userId)"
+    case .getScrapList(_, _, _):
+      return "/"
     case .getNewTravelList, .getRecentTripList:
       return "/new"
     case .getSuggestTravelList:
@@ -182,19 +187,23 @@ extension BaseAPI: TargetType {
       params["pageSize"] = 5
       params["sort"] = sort
       
-    case .getScrapList(_, let page, _, let sort):
+//    case .getScrapList(_, let page, _, let sort):
+//      params["page"] = page
+//      params["pageSize"] = 5
+//      params["sort"] = sort
+    case .getScrapList(let page, _, let sort):
       params["page"] = page
       params["pageSize"] = 5
       params["sort"] = sort
-      
+
     case .getNewTravelList(let page):
       params["page"] = page
     case .getSuggestTravelList(let page, let sort):
       params["page"] = page
       params["sort"] = sort
       
-    case .postScrapBtn(_, let userId):
-      params["userId"] = userId
+//    case .postScrapBtn(_, let userId):
+//      params["userId"] = userId
       
     case .postSocialLogin(let socialToken, _):
       params["social_token"] = socialToken
