@@ -7,6 +7,7 @@
 
 import UIKit
 import PanModal
+import Moya
 
 class ScrapVC: UIViewController {
     
@@ -14,25 +15,48 @@ class ScrapVC: UIViewController {
   @IBOutlet var scrapEmptyView: ScrapEmptyContainerView!
   
   // MARK: - Vars & Lets Part
-  let contentData: Bool = false
+//  let contentData: Bool = false
+  var scrapDataList:[ScrapDataGettable] = []
 
   // MARK: - UI Component Part
   
   // MARK: - Life Cycle Part
   override func viewDidLoad() {
     super.viewDidLoad()
-    hiddenContainerView()
+//    hiddenContainerView()
+    fetchScrapListData()
     bottomSheetNotification()
   }
   
   // MARK: - IBAction Part
   
   // MARK: - Custom Method Part
-  private func hiddenContainerView() {
-    if contentData == true {
-      scrapEmptyView.isHidden = true
-    } else {
-      scrapView.isHidden = true
+//  private func hiddenContainerView() {
+//    if contentData == true {
+//      scrapEmptyView.isHidden = true
+//    } else {
+//      scrapView.isHidden = true
+//    }
+//  }
+  
+  private func fetchScrapListData() {
+      
+//    BaseService.default.getScrapList(userId: 3, page: 0, pageSize: 5, sort: "created_at") { result in
+    BaseService.default.getScrapList(page: 0, pageSize: 5, sort: "created_at") { result in
+      result.success { data in
+        if let testedData = data {
+          if testedData.count == 0 {
+            print("---> 엠티뷰스크랩리스트데이터 \(testedData)")
+            self.scrapView.isHidden = true
+          } else {
+            print("---> 스크랩리스트데이터 \(testedData)")
+            self.scrapEmptyView.isHidden = true
+          }
+        }
+      }.catch { error in
+        if let err = error as? MoyaError {
+        }
+      }
     }
   }
   

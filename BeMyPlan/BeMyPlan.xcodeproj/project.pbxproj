@@ -1154,9 +1154,9 @@
 		FD35663E2792AF2C0082B4CE /* Scrap */ = {
 			isa = PBXGroup;
 			children = (
+				FD3566452792AF2C0082B4CE /* Scrap.storyboard */,
 				FD35663F2792AF2C0082B4CE /* ScrapVC.swift */,
 				FD3566402792AF2C0082B4CE /* ScrapVC */,
-				FD3566452792AF2C0082B4CE /* Scrap.storyboard */,
 				FD3566462792AF2C0082B4CE /* ScrapEmptyVC */,
 			);
 			path = Scrap;

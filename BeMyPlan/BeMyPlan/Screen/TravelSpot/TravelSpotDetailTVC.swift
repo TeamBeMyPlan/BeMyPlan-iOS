@@ -60,10 +60,12 @@ class TravelSpotDetailTVC: UITableViewCell {
   }
   
   public func scrapBtnAPI() {
-    BaseService.default.postScrapBtnTapped(postId: postId, userId: userId) { result in
+//    BaseService.default.postScrapBtnTapped(postId: postId, userId: userId) { result in
+    BaseService.default.postScrapBtnTapped(postId: postId) { result in
       result.success { data in
         self.scrapBtnData = []
         if let testedData = data {
+          print("---> 버튼클릭값 \(testedData)")
           self.scrapBtnData = testedData
         }
       }.catch { error in

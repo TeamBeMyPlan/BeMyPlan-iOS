@@ -13,7 +13,7 @@ class ScrapContainerView: XibView {
   
   @IBOutlet var contentCV: UICollectionView!
 
-  var scrapDataList: [ScrapDataGettable] = []
+  private var scrapDataList: [ScrapDataGettable] = []
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -45,7 +45,8 @@ class ScrapContainerView: XibView {
   }
   
   private func fetchScrapItemList() {
-    BaseService.default.getScrapList(userId: 1, page: 0, pageSize: 5, sort: "created_at") { result in
+//    BaseService.default.getScrapList(userId: 1, page: 0, pageSize: 5, sort: "created_at") { result in
+    BaseService.default.getScrapList(page: 0, pageSize: 5, sort: "created_at") { result in
       result.success { data in
         self.scrapDataList = []
         if let testedData = data {
@@ -78,7 +79,7 @@ extension ScrapContainerView: UICollectionViewDataSource {
 
 extension ScrapContainerView: UICollectionViewDelegate{
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .movePlanPreview), object: scrapDataList[indexPath.row].id)
+    NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .movePlanPreview), object: scrapDataList[indexPath.row].postID)
   }
 }
 
