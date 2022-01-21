@@ -20,9 +20,7 @@ enum TravelSpotDetailType{
 class TravelSpotDetailVC: UIViewController {
   
   // MARK: - Vars & Lets Part
-  //  var travelSpotDetailDataList: [TravelSpotDetailData] = []
   var planDataList: [HomeListDataGettable.Item] = []
-//  var scrapBtnData: ScrapBtnData =
   var scrapBtnData: Bool = true
   var areaNum: Int?
   var nickname : String?
@@ -32,13 +30,7 @@ class TravelSpotDetailVC: UIViewController {
   var areaId: Int? = 2
   var userId: Int?
   var type : TravelSpotDetailType = .travelspot
-  var sortCase : SortCase = .recently {
-    didSet {
-      /// API 호출 함수
-      print("#### \(sortCase)")
-//      fetchTravelSpotDetailItemList(isRefresh: true)
-    }
-  }
+  var sortCase : SortCase = .recently
   
   
   // MARK: - UI Component Part
@@ -96,10 +88,7 @@ class TravelSpotDetailVC: UIViewController {
     filterVC.filterClicked = { [weak self] filter in
       self?.sortCase = filter
       filterVC.filterStatus = self!.sortCase
-      print("@@@@ \(self?.sortCase)")
     }
-//    filterVC.filterStatus = sortCase
-//    print("@@@@ \(self.sortCase)")
     presentPanModal(filterVC)
   }
 
@@ -148,23 +137,18 @@ class TravelSpotDetailVC: UIViewController {
           }
         }
       }.catch{ error in
-        print("travelspot err")
         dump(error)
       }
     }
   }
   
-  public func scrapBtnAPI() {
-//    BaseService.default.postScrapBtnTapped(postId: postId, userId: userId) { result in
+  private func scrapBtnAPI() {
     BaseService.default.postScrapBtnTapped(postId: postId) { result in
       result.success { data in
-        dump("#### \(data)")
         if let testedData = data {
-          print("---> 버튼클릭값 \(testedData)")
           self.scrapBtnData = testedData.scrapped
         }
       }.catch { error in
-        dump("!!!! \(error)")
         if let err = error as? MoyaError {
           dump(err)
         }
@@ -206,20 +190,8 @@ extension TravelSpotDetailVC: UITableViewDataSource {
 
     cell.scrapBtnClicked = { [weak self] post in
       self?.postId = post
-      print("@@@@\(self?.postId)")
       self?.scrapBtnAPI()
-      print("$$$$$$")
-
     }
-
-//    if planDataList[indexPath.row].isScraped == true {
-//      cell.scrapBtn.setImage(UIImage(named: "icon_scrab"), for: .normal)
-//    } else {
-//      cell.scrapBtn.setImage(UIImage(named: "icnNotScrapWhite"), for: .normal)
-//
-//    }
-
-    
     return cell
   }
 }

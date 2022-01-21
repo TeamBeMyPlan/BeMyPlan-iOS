@@ -9,22 +9,22 @@ import UIKit
 
 class ScrapContainerCVC: UICollectionViewCell, UICollectionViewRegisterable {
   static var isFromNib: Bool = true
+  public var scrapBtnClicked: ((Int) -> ())?
+  private var postId:Int = 1
 
   @IBOutlet var contentImage: UIImageView!
   @IBOutlet var scrapBtn: UIButton!
-  @IBOutlet var titleLabel: UILabel! {
-    didSet {
-      self.titleLabel.text = "어디로 여행을 어디로 여행을 어디로 여행을 어디로 여행을 어디로 여행을 어디로 여행을 어디로 여행을 어디로 여행을 어디로 여행을 "
-    }
+  @IBOutlet var titleLabel: UILabel!
+  
+  override func awakeFromNib() {
+    super.awakeFromNib()
+    setUIs()
   }
   
-    override func awakeFromNib() {
-        super.awakeFromNib()
-// setFont()
-        // Initialization code
-    }
-
   @IBAction func scrapBtnTapped(_ sender: Any) {
+    if let scrapBtnClicked = scrapBtnClicked {
+      scrapBtnClicked(postId)
+    }
     scrapBtn.isSelected.toggle()
   }
   
@@ -36,8 +36,7 @@ class ScrapContainerCVC: UICollectionViewCell, UICollectionViewRegisterable {
   public func setData(data: ScrapItem) {
     contentImage.setImage(with: data.thumbnailURL)
     titleLabel.text = data.title
-    
-    scrapBtn.setImage(UIImage(named: "icnScrapWhite"), for: .normal)
+    postId = data.postID
   }
   
 }

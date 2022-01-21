@@ -10,11 +10,7 @@ import UIKit
 class ScrapEmptyCotainerCVC: UICollectionViewCell,UICollectionViewRegisterable {
   @IBOutlet var contentImage: UIImageView!
   static var isFromNib: Bool = true
-  @IBOutlet var titleLabel: UILabel! {
-    didSet {
-      self.titleLabel.text = "여행의 즐거움을 느끼고 싶다면."
-    }
-  }
+  @IBOutlet var titleLabel: UILabel!
   
   
   override func awakeFromNib() {

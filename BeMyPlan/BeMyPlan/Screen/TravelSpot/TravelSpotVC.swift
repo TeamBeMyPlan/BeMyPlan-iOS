@@ -39,11 +39,8 @@ class TravelSpotVC: UIViewController {
     locationCollectionView.dataSource = self
     locationCollectionView.delegate = self
   }
-  
-  // MARK: - IBAction Part
-  
+    
   // MARK: - Custom Method Part
-  
   private func fetchTravelSpotItemList() {
     BaseService.default.getTravelSpotList { result in
       result.success { data in
@@ -60,9 +57,6 @@ class TravelSpotVC: UIViewController {
     }
   }
 }
-
-// MARK: - @objc Function Part
-
 
 // MARK: - Extension Part
 extension TravelSpotVC: UICollectionViewDataSource {

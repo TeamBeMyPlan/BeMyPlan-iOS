@@ -8,11 +8,15 @@
 import Foundation
 
 protocol ScrapEmptyService {
-  func getScrapEmptyList(userId: Int, completion: @escaping (Result<[ScrapEmptyDataGettable]?, Error>) -> Void)
+  // func getScrapEmptyList(userId: Int, completion: @escaping (Result<[ScrapEmptyDataGettable]?, Error>) -> Void)
+  func getScrapEmptyList(completion: @escaping (Result<[ScrapEmptyDataGettable]?, Error>) -> Void)
 }
 
 extension BaseService: ScrapEmptyService {
-  func getScrapEmptyList(userId: Int, completion: @escaping (Result<[ScrapEmptyDataGettable]?, Error>) -> Void) {
-    requestObject(.getScrapEmptyList(userId: userId), completion: completion)
+//  func getScrapEmptyList(userId: Int, completion: @escaping (Result<[ScrapEmptyDataGettable]?, Error>) -> Void) {
+//    requestObject(.getScrapEmptyList(userId: userId), completion: completion)
+//  }
+  func getScrapEmptyList(completion: @escaping (Result<[ScrapEmptyDataGettable]?, Error>) -> Void) {
+    requestObject(.getScrapEmptyList, completion: completion)
   }
 }

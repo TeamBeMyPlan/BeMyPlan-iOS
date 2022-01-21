@@ -11,10 +11,12 @@ import Moya
 
 class ScrapContainerView: XibView {
   
+  private var scrapDataList: [ScrapItem] = []
+  var postId: Int = 0
+  var scrapBtnData: Bool = true
+
   @IBOutlet var contentCV: UICollectionView!
 
-  private var scrapDataList: [ScrapItem] = []
-  
   override init(frame: CGRect) {
     super.init(frame: frame)
     setAll()
@@ -45,7 +47,6 @@ class ScrapContainerView: XibView {
   }
   
   private func fetchScrapItemList() {
-//    BaseService.default.getScrapList(userId: 1, page: 0, pageSize: 5, sort: "created_at") { result in
     BaseService.default.getScrapList(page: 0, pageSize: 5, sort: "created_at") { result in
       result.success { data in
         self.scrapDataList = []
@@ -55,6 +56,23 @@ class ScrapContainerView: XibView {
         self.contentCV.reloadData()
       }.catch { error in
         if let err = error as? MoyaError {
+        }
+      }
+    }
+  }
+  
+  private func scrapBtnAPI() {
+    BaseService.default.postScrapBtnTapped(postId: postId) { result in
+      result.success { data in
+        dump("#### \(data)")
+        if let testedData = data {
+          print("---> 버튼클릭값 \(testedData)")
+          self.scrapBtnData = testedData.scrapped
+        }
+      }.catch { error in
+        dump("&&&& \(error)")
+        if let err = error as? MoyaError {
+          dump(err)
         }
       }
     }
@@ -72,6 +90,10 @@ extension ScrapContainerView: UICollectionViewDataSource {
     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ScrapContainerCVC.className, for: indexPath) as? ScrapContainerCVC else {return UICollectionViewCell()
     }
     cell.setData(data: scrapDataList[indexPath.row])
+    cell.scrapBtnClicked = { [weak self] post in
+      self?.postId = post
+      self?.scrapBtnAPI()
+    }
     return cell
   }
 }

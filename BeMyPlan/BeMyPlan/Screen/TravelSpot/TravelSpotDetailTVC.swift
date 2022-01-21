@@ -23,7 +23,6 @@ class TravelSpotDetailTVC: UITableViewCell {
   
   private var postId:Int = 1
   private var userId:Int = 1
-//  private var scrapBtnData: [ScrapBtnDataGettable] = []
   public var scrapBtnClicked: ((Int) -> ())?
   
   @IBOutlet var contentImage: UIImageView!
@@ -61,33 +60,16 @@ class TravelSpotDetailTVC: UITableViewCell {
 
     if data.isScraped == true {
       scrapBtn.setImage(UIImage(named: "icnScrapWhite"), for: .normal)
+      scrapBtn.setImage(UIImage(named: "icnNotScrapWhite"), for: .selected)
     } else {
       scrapBtn.setImage(UIImage(named: "icnNotScrapWhite"), for: .normal)
     }
   }
-  
-
-    
-  
   
   @IBAction func scrapBtnTapped(_ sender: Any) {
     if let scrapBtnClicked = scrapBtnClicked {
       scrapBtnClicked(postId)
     }
     scrapBtn.isSelected.toggle()
-
-
-//
-//
-//    scrapBtnAPI()
-//    if scrapBtnData.count != 0 {
-//      scrapBtn.isSelected.toggle()
-//      scrapBtnData = []
-      //        if scrapBtnData[0].scrapped == true {
-      //          scrapBtn.isSelected.toggle()
-      //          scrapBtnData = []
-      //        } else {
-      //          scrapBtn.isSelected.toggle()
-      //        }
   }
 }

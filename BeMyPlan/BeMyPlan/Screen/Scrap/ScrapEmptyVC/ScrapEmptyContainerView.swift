@@ -69,7 +69,7 @@ class ScrapEmptyContainerView: XibView {
   
   private func fetchScrapRandomList() {
     
-    BaseService.default.getScrapEmptyList(userId: userId) { result in
+    BaseService.default.getScrapEmptyList { result in
       result.success { data in
         self.contentDataList = []
         if let testedData = data {

@@ -24,12 +24,10 @@ enum BaseAPI{
   // MARK: - 양원
   case getTravelSpotList
   case getRecentTripList(page: Int, pageSize: Int)
-//  case getScrapList(userId: Int, page: Int, pageSize: Int, sort: String)
   case getScrapList(page: Int, pageSize: Int, sort: String)
   case postScrapBtn(postId: Int)
-//  case postScrapBtn(postId: Int, userId: Int)
-  case getScrapEmptyList(userId: Int)
-  
+  case getScrapEmptyList
+
   // MARK: - 지훈
   case getBuyList
   case deleteUserWithdraw
@@ -132,8 +130,8 @@ extension BaseAPI: TargetType {
       return "/\(postId)"
     case .getNicknameDetailList(let userID,_,_,_):
       return "/\(userID)/posts"
-    case .getScrapEmptyList(let userId):
-      return "/\(userId)"
+    case .getScrapEmptyList:
+      return "/"
     
  
 //    case .getScrapList(let userId, _, _, _):

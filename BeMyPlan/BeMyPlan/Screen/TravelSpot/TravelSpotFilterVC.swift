@@ -15,12 +15,7 @@ class TravelSpotFilterVC: UIViewController {
   
   // MARK: - Vars & Lets Part
   public var filterClicked: ((SortCase) -> ())?
-  public var filterStatus: SortCase = .recently {
-    didSet {
-      print("&&&& \(filterStatus)")
-    }
-  }
-
+  public var filterStatus: SortCase = .recently
   
   // MARK: - UI Component Part
   @IBOutlet var filterView: UIView!
