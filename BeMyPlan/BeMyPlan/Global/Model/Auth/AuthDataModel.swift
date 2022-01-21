@@ -9,7 +9,7 @@ import Foundation
 
 struct AuthDataGettable : Codable{
   let nickname : String
-  let accessToken : String
+  let accessToken : String?
   
   enum CodingKeys: String, CodingKey {
     case nickname
