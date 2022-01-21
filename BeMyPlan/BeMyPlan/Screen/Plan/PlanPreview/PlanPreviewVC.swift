@@ -108,7 +108,7 @@ class PlanPreviewVC: UIViewController {
         contentList.append(.photo)
       }
     }
-    if let _ = summaryData{
+    if summaryData?.content != ""{
       contentList.append(.summary)
     }
     if let _ = recommendData{
