@@ -22,6 +22,8 @@
 		900D7EBCAEC7F2489EB6DEB6 /* Pods_BeMyPlan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C02CD8F36111E7ACDE32CE6 /* Pods_BeMyPlan.framework */; };
 		F21AFAA027919A8000A84633 /* CustomAlert.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F21AFA9F27919A8000A84633 /* CustomAlert.storyboard */; };
 		F21AFAA827919BA200A84633 /* CustomAlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21AFAA727919BA200A84633 /* CustomAlertVC.swift */; };
+		F250440A2799CFEB00791AB7 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25044092799CFEB00791AB7 /* AuthService.swift */; };
+		F250440D2799D02900791AB7 /* AuthDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F250440C2799D02900791AB7 /* AuthDataModel.swift */; };
 		F261EC7927873A7D00AF094F /* MainCardCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F261EC7727873A7D00AF094F /* MainCardCVC.swift */; };
 		F261EC7A27873A7D00AF094F /* MainCardCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F261EC7827873A7D00AF094F /* MainCardCVC.xib */; };
 		F261EC7C27873D3C00AF094F /* MainCardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F261EC7B27873D3C00AF094F /* MainCardData.swift */; };
@@ -250,6 +252,8 @@
 		F2191EF52795DF600058EF9A /* HomeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeData.swift; sourceTree = "<group>"; };
 		F21AFA9F27919A8000A84633 /* CustomAlert.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CustomAlert.storyboard; sourceTree = "<group>"; };
 		F21AFAA727919BA200A84633 /* CustomAlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertVC.swift; sourceTree = "<group>"; };
+		F25044092799CFEB00791AB7 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		F250440C2799D02900791AB7 /* AuthDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDataModel.swift; sourceTree = "<group>"; };
 		F261EC7727873A7D00AF094F /* MainCardCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCardCVC.swift; sourceTree = "<group>"; };
 		F261EC7827873A7D00AF094F /* MainCardCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainCardCVC.xib; sourceTree = "<group>"; };
 		F261EC7B27873D3C00AF094F /* MainCardData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCardData.swift; sourceTree = "<group>"; };
@@ -562,6 +566,14 @@
 			path = NoTitle;
 			sourceTree = "<group>";
 		};
+		F250440B2799D00E00791AB7 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				F250440C2799D02900791AB7 /* AuthDataModel.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 		F261EC7627873A3F00AF094F /* MainCardItem */ = {
 			isa = PBXGroup;
 			children = (
@@ -721,6 +733,7 @@
 				523C70B027969FF80073371D /* ScrapService.swift */,
 				523C70B42796F11C0073371D /* ScrapBtnService.swift */,
 				523C70FE2799DCC10073371D /* ScrapEmptyService.swift */,
+				F25044092799CFEB00791AB7 /* AuthService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -792,6 +805,7 @@
 		FD09DE2527857DD6006DA050 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F250440B2799D00E00791AB7 /* Auth */,
 				523C70B62798574D0073371D /* Home */,
 				523C70A12795C1220073371D /* TravelSpot */,
 				523C70AD27969F1A0073371D /* Scrap */,
@@ -1555,6 +1569,7 @@
 				FDF980E32786E7E90009A14E /* BaseContainerView.swift in Sources */,
 				FD4C86B0278BD17F00D37A2D /* setImage.swift in Sources */,
 				FD20C612278EC29600AC6E34 /* setTextLineHeight + UILabel.swift in Sources */,
+				F250440D2799D02900791AB7 /* AuthDataModel.swift in Sources */,
 				FDF980D42786D2F60009A14E /* PlanListVC.swift in Sources */,
 				FD2D9C5A2796FDA400688A42 /* UITableViewCell + Animator.swift in Sources */,
 				FDF980E52786E8370009A14E /* XibPresentable.swift in Sources */,
@@ -1604,6 +1619,7 @@
 				FD20C61C278EEFAB00AC6E34 /* addObserverAction.swift in Sources */,
 				FD2D9C582796B02000688A42 /* PlanDetailVC + fetchData.swift in Sources */,
 				FD3211AB27841948007D63D5 /* SceneDelegate.swift in Sources */,
+				F250440A2799CFEB00791AB7 /* AuthService.swift in Sources */,
 				FDC47DED2789521000A152E8 /* PreviewDescriptionData.swift in Sources */,
 				FD09DE1127857A5C006DA050 /* pressAction.swift in Sources */,
 				FDC47E0D2789742800A152E8 /* TravelSpotDetailTVC.swift in Sources */,
@@ -1802,7 +1818,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = BeMyPlan/BeMyPlan.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_TEAM = L9D5M5DM3Y;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1841,7 +1857,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = BeMyPlan/BeMyPlan.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_TEAM = L9D5M5DM3Y;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

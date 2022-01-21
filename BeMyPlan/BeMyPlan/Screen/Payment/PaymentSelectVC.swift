@@ -11,9 +11,12 @@ class PaymentSelectVC: UIViewController {
   
   // MARK: - Vars & Lets Part
   
+  var writer : String = ""
+  var planTitle : String = ""
+  var imgURL : String = ""
+  var postIdx = 0
   private var selectedIndex : Int = -1{
     didSet{
-      
       if selectedIndex == -1{
         paymentButton.tintColor = .grey04
       }else{
@@ -29,6 +32,7 @@ class PaymentSelectVC: UIViewController {
   
   // MARK: - UI Component Part
   
+  @IBOutlet var planImageView: UIImageView!
   @IBOutlet var infoContentView: UIView!
   @IBOutlet var writerLabel: UILabel!
   @IBOutlet var titleLabel: UILabel!
@@ -44,6 +48,7 @@ class PaymentSelectVC: UIViewController {
     setContainerUI()
     setButtonState()
     setPriceLabel()
+    setContainerInfo()
   }
   
   // MARK: - Custom Method Part
@@ -66,6 +71,14 @@ class PaymentSelectVC: UIViewController {
     infoContentView.layer.cornerRadius = 5
     infoContentView.layer.borderWidth = 1
     infoContentView.layer.borderColor = UIColor.grey04.cgColor
+  }
+  
+  private func setContainerInfo(){
+    titleLabel.text = planTitle
+    writerLabel.text = writer
+    planImageView.layer.cornerRadius = 5
+    planImageView.setImage(with: imgURL)
+    
   }
   
   private func setPriceLabel(){
@@ -104,6 +117,7 @@ extension PaymentSelectVC : PaymentCompleteDelegate{
   func completeButtonClicked() {
     guard let planDetailVC =
             UIStoryboard.list(.planDetail).instantiateViewController(withIdentifier: PlanDetailVC.className) as? PlanDetailVC else {return}
+    planDetailVC.postIdx = postIdx
     self.navigationController?.pushViewController(planDetailVC, animated: true)
   }
 }

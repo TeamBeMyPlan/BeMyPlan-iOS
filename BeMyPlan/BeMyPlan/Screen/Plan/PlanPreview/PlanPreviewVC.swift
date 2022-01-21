@@ -79,6 +79,15 @@ class PlanPreviewVC: UIViewController {
     }
     buyButton.press {
       guard let paymentVC = UIStoryboard.list(.payment).instantiateViewController(withIdentifier: PaymentSelectVC.className) as? PaymentSelectVC else {return}
+      paymentVC.postIdx = self.idx
+      if let headerData = self.headerData {
+        paymentVC.writer = headerData.writer
+        paymentVC.planTitle = headerData.title
+      }
+      if let photoData = self.photoData,
+         let photo = photoData.first?.photo{
+        paymentVC.imgURL = photo
+      }
       if let price = self.priceLabel.text{
         paymentVC.price = price
       }

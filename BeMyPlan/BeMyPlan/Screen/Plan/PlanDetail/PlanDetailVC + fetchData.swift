@@ -10,6 +10,7 @@ import SnapKit
 
 extension PlanDetailVC{
   func fetchPlanDetailData(){
+    print("FETCHCHCHC",postIdx)
     BaseService.default.getPlanDetailData(idx: postIdx) { result in
       result.success { [weak self] data in
         self?.locationList.removeAll()
@@ -75,6 +76,8 @@ extension PlanDetailVC{
         
       }.catch { err in
         self.closeIndicator {
+          print("🍎DETAIL ERRR")
+          dump(err)
           NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .showNetworkError), object: nil)
         }
       }
@@ -99,7 +102,7 @@ extension PlanDetailVC{
     textViewForsizing.sizeToFit()
     textViewForsizing.frame.width <= screenWidth - 48 ? (writerTop = 90) : (writerTop = 115)
     writerBlockHeightConstraint.constant = writerTop
-    let mapContainerHeight : CGFloat = 196
+    let mapContainerHeight : CGFloat = 160
     mainTVTopConstraint.constant = writerTop + mapContainerHeight
     headerContentHeight = writerTop + mapContainerHeight
     self.view.layoutIfNeeded()

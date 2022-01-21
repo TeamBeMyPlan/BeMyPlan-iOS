@@ -50,4 +50,8 @@ public extension UINavigationController {
       }
     }
   }
+  
+  func removePopGesture(){
+    view.gestureRecognizers?.removeAll()
+  }
 }

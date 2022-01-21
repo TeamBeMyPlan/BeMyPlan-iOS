@@ -11,6 +11,9 @@ class SignUpVC: UIViewController {
   
   // MARK: - Vars & Lets Part
   var delegate : SignupDelegate?
+  var userToken : String?
+  var socialType : String?
+  
   private var isNicknameValid : Bool = false {
     didSet {
       setStartBtnStatus()
