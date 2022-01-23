@@ -112,9 +112,11 @@ extension ScrapContainerView: UICollectionViewDelegateFlowLayout {
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-    let inset = screenWidth * (24/375)
-    return UIEdgeInsets(top: 0, left: inset, bottom: inset, right: inset)
+//    let inset = screenWidth * (24/375)
+    return UIEdgeInsets(top: 0, left: 24, bottom: 24, right: 24)
+     
   }
+  
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
     return 20

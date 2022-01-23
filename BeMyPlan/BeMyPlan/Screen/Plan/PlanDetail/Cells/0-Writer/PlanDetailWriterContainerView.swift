@@ -60,7 +60,7 @@ class PlanDetailWriterContainerView: XibView {
     arrowIconImageView.isHidden = isPreviewPage
     
     authID = authorID
-    nickName = writer
+    nickName = title
   }
 }
 

@@ -9,6 +9,9 @@ import UIKit
 class PaymentCompleteVC: UIViewController {
   
   // MARK: - Var,Let Parts
+  
+  var writer : String = ""
+  var planTitle : String = ""
   var delegate : PaymentCompleteDelegate?
   var price : String = ""
   var paymentType : PaymentList = .kakaoPay
@@ -23,11 +26,16 @@ class PaymentCompleteVC: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    setInfoLabel()
     setPriceLabel()
   }
 
   // MARK: - Custom Method Part
   
+  private func setInfoLabel(){
+    writerLabel.text = writer
+    titleLabel.text = planTitle
+  }
   private func setPriceLabel(){
     moneyLabel.text = price
     paymentLabel.text = paymentType.rawValue

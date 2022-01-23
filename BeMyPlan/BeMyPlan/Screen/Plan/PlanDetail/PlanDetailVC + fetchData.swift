@@ -23,7 +23,7 @@ extension PlanDetailVC{
           self?.authID = data?.authorID ?? 0
           self?.headerData = DetailHeaderData(title: detailData.title,
                                               writer : detailData.author)
-          //          self?.headerTitleLabel.text = detailData.title
+          self?.headerTitleLabel.text = detailData.title
           self?.makeTopBlockHeight(content: detailData.title)
           // 총 일차 가져오기
           self?.totalDay = detailData.totalDays
