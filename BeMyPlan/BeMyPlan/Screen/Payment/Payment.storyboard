@@ -105,7 +105,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="감성을 느낄 수 있는 힐링여행" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yAR-F7-j81">
-                                                        <rect key="frame" x="95" y="55.5" width="160" height="17"/>
+                                                        <rect key="frame" x="95" y="55.5" width="251" height="17"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                         <color key="textColor" name="black"/>
                                                         <nil key="highlightedColor"/>
@@ -138,6 +138,7 @@
                                                     <constraint firstItem="Cyj-kq-g0E" firstAttribute="centerY" secondItem="865-fJ-DWs" secondAttribute="centerY" id="Dft-VP-18U"/>
                                                     <constraint firstItem="Kn2-OM-lqS" firstAttribute="top" secondItem="b96-RL-bbk" secondAttribute="top" constant="32" id="IU3-IV-zys"/>
                                                     <constraint firstItem="Pvq-Wj-hCD" firstAttribute="leading" secondItem="b96-RL-bbk" secondAttribute="leading" constant="20" id="MC2-jm-BKh"/>
+                                                    <constraint firstAttribute="trailing" secondItem="yAR-F7-j81" secondAttribute="trailing" constant="20" id="N6l-VD-wfm"/>
                                                     <constraint firstItem="yAR-F7-j81" firstAttribute="top" secondItem="Kn2-OM-lqS" secondAttribute="bottom" constant="9" id="O43-W3-XpI"/>
                                                     <constraint firstAttribute="trailing" secondItem="Kn2-OM-lqS" secondAttribute="trailing" constant="30" id="QOh-cz-QOP"/>
                                                     <constraint firstItem="Kn2-OM-lqS" firstAttribute="leading" secondItem="xUR-Nz-M1l" secondAttribute="trailing" constant="15" id="XEq-Yf-sMa"/>

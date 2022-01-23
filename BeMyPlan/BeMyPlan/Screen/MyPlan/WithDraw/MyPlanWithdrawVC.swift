@@ -41,6 +41,9 @@ class MyPlanWithdrawVC: UIViewController {
   
   // MARK: - IBAction Part
   
+  @IBAction func backButtonClciked(_ sender: Any) {
+    self.navigationController?.popViewController(animated: true)
+  }
   
   // MARK: - Custom Method Part
   

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,15 +18,13 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mainlist1" translatesAutoresizingMaskIntoConstraints="NO" id="BCf-2v-e99">
-                        <rect key="frame" x="0.0" y="0.0" width="156" height="156"/>
+                        <rect key="frame" x="0.0" y="0.0" width="203" height="203"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="156" id="4e1-R6-kX6"/>
-                            <constraint firstAttribute="width" constant="156" id="BF0-dT-egE"/>
                             <constraint firstAttribute="width" secondItem="BCf-2v-e99" secondAttribute="height" multiplier="1:1" id="uZo-He-gVn"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BWM-ET-Ubg">
-                        <rect key="frame" x="0.0" y="166" width="156" height="40"/>
+                        <rect key="frame" x="0.0" y="213" width="203" height="39"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="lessThanOrEqual" constant="40" id="SYX-Yh-6Pn"/>
                         </constraints>
@@ -42,7 +40,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qvk-aj-Chp">
-                        <rect key="frame" x="122" y="10" width="24" height="24"/>
+                        <rect key="frame" x="169" y="10" width="24" height="24"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="24" id="Ebz-GO-XwP"/>
                             <constraint firstAttribute="width" constant="24" id="yDc-HO-AaW"/>
@@ -73,6 +71,7 @@
                 <constraint firstItem="qvk-aj-Chp" firstAttribute="trailing" secondItem="BCf-2v-e99" secondAttribute="trailing" constant="-10" id="fUX-Ou-mfE"/>
                 <constraint firstItem="BCf-2v-e99" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="gJb-W7-TKN"/>
                 <constraint firstItem="qvk-aj-Chp" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="pH0-gy-hCk"/>
+                <constraint firstItem="BCf-2v-e99" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="156/206" id="pxy-PW-f5t"/>
                 <constraint firstItem="41h-LC-8AU" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="13" id="wkq-kW-qRy"/>
             </constraints>
             <size key="customSize" width="156" height="256"/>

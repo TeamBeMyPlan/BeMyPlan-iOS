@@ -65,6 +65,8 @@ class PaymentSelectVC: UIViewController {
       paymentCompleteVC.delegate = self
       paymentCompleteVC.price = price
       paymentCompleteVC.paymentType = paymentList[selectedIndex]
+      paymentCompleteVC.planTitle = planTitle
+      paymentCompleteVC.writer = writer
       present(paymentCompleteVC,animated: true)
     }
  
