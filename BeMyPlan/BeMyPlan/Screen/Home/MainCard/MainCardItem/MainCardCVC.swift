@@ -38,6 +38,7 @@ class MainCardCVC: UICollectionViewCell {
   func setData(appData: HomeListDataGettable.Item){
 //    mainCardImageView.image = appData.makeItemImage()
     mainCardImageView.setImage(with: appData.thumbnailURL)
+
     UIView.animate(withDuration: 0.5) {
       self.mainCardImageLayer.alpha = 1
     }

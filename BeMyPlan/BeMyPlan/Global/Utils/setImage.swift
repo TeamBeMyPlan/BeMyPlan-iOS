@@ -34,15 +34,16 @@ extension UIImageView {
     guard let url = URL(string: urlString) else { return }
     let resource = ImageResource(downloadURL: url, cacheKey: urlString)
     let placeholderImage = UIImage(named: "img_placeholder")
-
-//    let placeholder = placeholder == nil ? UIImage() : UIImage(named: placeholder ?? "")
     let placeholder = placeholderImage
+    
+
     self.kf.setImage(
       with: resource,
       placeholder: placeholder,
       options: [
+        .scaleFactor(UIScreen.main.scale/2),
         .transition(.fade(0.5)),
-        .cacheMemoryOnly
+        .cacheMemoryOnly,
       ],
       completionHandler:  { result in
         result.success { imageResult in
@@ -51,6 +52,7 @@ extension UIImageView {
       }
     )
   }
+
   
 }
 
