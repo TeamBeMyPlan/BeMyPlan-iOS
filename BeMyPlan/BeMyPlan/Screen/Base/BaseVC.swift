@@ -15,9 +15,7 @@ class BaseVC: UIViewController {
   
   // MARK: - Vars & Lets Part
   var clickedIndex : TabList = .home{
-    didSet{
-      runTabClickAction()
-    }
+    didSet{ runTabClickAction() }
   }
   var currentTabList : [TabList] = []
   
@@ -63,7 +61,6 @@ class BaseVC: UIViewController {
   
   // MARK: - Custom Method Part
   
-  
   private func setContainerView(){
     if !currentTabList.contains(clickedIndex){
       let vc = containerView.getTabVC(clickedIndex)
@@ -75,20 +72,16 @@ class BaseVC: UIViewController {
       }
       vc.didMove(toParent: self)
       currentTabList.append(clickedIndex)
-    }
-
-  }
-  
-  private func removeContainerSubview(){
-    let views = containerView.subviews
-    print("VIEWCOUNT",views.count)
-    if views.count > 0{
-      for (_,item) in views.enumerated(){
-        print("SSs",item.className)
-        item.removeFromSuperview()
+    }else{
+      if let index = currentTabList.firstIndex(of: clickedIndex){
+        let containerVC = containerView.subviews[index+1]
+        containerView.bringSubviewToFront(containerVC)
+        currentTabList.remove(at: index)
+        currentTabList.append(clickedIndex)
       }
     }
   }
+
   
   private func showContainerView(){
     UIView.animate(withDuration: 0.3) { [unowned self] in
@@ -120,7 +113,6 @@ class BaseVC: UIViewController {
 
   private func runTabClickAction(){
     setTabIcon(isFirstRun: false)
-//    removeContainerSubview()
     showContainerView()
     setContainerView()
   }
@@ -133,10 +125,8 @@ class BaseVC: UIViewController {
       default : return .myPlan
     }
   }
-  
-  // MARK: - @objc Function Part
-  
 }
+
 // MARK: - Extension Part
 extension BaseVC : TabBarDelegate{
   func tabClicked(index: TabList) {
