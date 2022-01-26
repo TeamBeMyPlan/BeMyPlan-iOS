@@ -19,6 +19,7 @@ class BaseVC: UIViewController {
       runTabClickAction()
     }
   }
+  var currentTabList : [TabList] = []
   
   // MARK: - UI Component Part
   
@@ -64,14 +65,18 @@ class BaseVC: UIViewController {
   
   
   private func setContainerView(){
-    let vc = containerView.getTabVC(clickedIndex)
-    vc.view.translatesAutoresizingMaskIntoConstraints = false
-    self.addChild(vc)
-    containerView.addSubview(vc.view)
-    vc.view.snp.makeConstraints {
-      $0.top.leading.bottom.trailing.equalToSuperview()
+    if !currentTabList.contains(clickedIndex){
+      let vc = containerView.getTabVC(clickedIndex)
+      vc.view.translatesAutoresizingMaskIntoConstraints = false
+      self.addChild(vc)
+      containerView.addSubview(vc.view)
+      vc.view.snp.makeConstraints {
+        $0.top.leading.bottom.trailing.equalToSuperview()
+      }
+      vc.didMove(toParent: self)
+      currentTabList.append(clickedIndex)
     }
-    vc.didMove(toParent: self)
+
   }
   
   private func removeContainerSubview(){
@@ -87,7 +92,7 @@ class BaseVC: UIViewController {
   
   private func showContainerView(){
     UIView.animate(withDuration: 0.3) { [unowned self] in
-//      self.containerViewList[self.clickedIndex.rawValue].alpha = 1
+      self.containerView.alpha = 1
     }
   }
   
@@ -115,7 +120,7 @@ class BaseVC: UIViewController {
 
   private func runTabClickAction(){
     setTabIcon(isFirstRun: false)
-    removeContainerSubview()
+//    removeContainerSubview()
     showContainerView()
     setContainerView()
   }
@@ -137,7 +142,7 @@ extension BaseVC : TabBarDelegate{
   func tabClicked(index: TabList) {
     if index != self.clickedIndex{
       UIView.animate(withDuration: 0.25) {
-//        self.containerViewList[self.clickedIndex.rawValue].alpha = 0
+        self.containerView.alpha = 0
       }completion: { _ in
         self.clickedIndex = index
       }
