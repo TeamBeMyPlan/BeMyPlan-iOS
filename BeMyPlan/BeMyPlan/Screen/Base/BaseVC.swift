@@ -22,7 +22,8 @@ class BaseVC: UIViewController {
   
   // MARK: - UI Component Part
   
-  @IBOutlet var containerViewList: [BaseContainerView]!
+  @IBOutlet var containerView: BaseContainerView!
+//  @IBOutlet var containerViewList: [BaseContainerView]!
   @IBOutlet var tabIconList: [TabBarIconView]!
   @IBOutlet var tabbarStackContainerView: UIView!
   // MARK: - Life Cycle Part
@@ -51,35 +52,42 @@ class BaseVC: UIViewController {
 
   }
   
-
-  
   open override func didMove(toParent parent: UIViewController?) {
     navigationController?.fixInteractivePopGestureRecognizer(delegate: self)
   }
-  
   
   // MARK: - Constraint Part
   
   @IBOutlet var tabContainerLeading: NSLayoutConstraint!
   
   // MARK: - Custom Method Part
+  
+  
   private func setContainerView(){
-    for (index,item) in containerViewList.enumerated(){
-      item.alpha = 0
-      let vc = item.getTabVC(makeTabList(index: index))
-      vc.view.translatesAutoresizingMaskIntoConstraints = false
-      self.addChild(vc)
-      item.addSubview(vc.view)
-      vc.view.snp.makeConstraints {
-        $0.top.leading.bottom.trailing.equalToSuperview()
+    let vc = containerView.getTabVC(clickedIndex)
+    vc.view.translatesAutoresizingMaskIntoConstraints = false
+    self.addChild(vc)
+    containerView.addSubview(vc.view)
+    vc.view.snp.makeConstraints {
+      $0.top.leading.bottom.trailing.equalToSuperview()
+    }
+    vc.didMove(toParent: self)
+  }
+  
+  private func removeContainerSubview(){
+    let views = containerView.subviews
+    print("VIEWCOUNT",views.count)
+    if views.count > 0{
+      for (_,item) in views.enumerated(){
+        print("SSs",item.className)
+        item.removeFromSuperview()
       }
-      vc.didMove(toParent: self)
     }
   }
   
   private func showContainerView(){
     UIView.animate(withDuration: 0.3) { [unowned self] in
-      self.containerViewList[self.clickedIndex.rawValue].alpha = 1
+//      self.containerViewList[self.clickedIndex.rawValue].alpha = 1
     }
   }
   
@@ -104,23 +112,12 @@ class BaseVC: UIViewController {
       self.tabbarStackContainerView.alpha = 0
     }
   }
-  
-  private func setContainerLeading(){
-    let leading : CGFloat
-    switch(clickedIndex){
-      case .home : leading = 0
-      case .travelSpot : leading = screenWidth
-      case .scrap : leading = screenWidth * 2
-      case .myPlan : leading = screenWidth * 3
-    }
-    tabContainerLeading.constant = leading * (-1)
-    self.view.layoutIfNeeded()
-  }
-  
+
   private func runTabClickAction(){
     setTabIcon(isFirstRun: false)
+    removeContainerSubview()
     showContainerView()
-    setContainerLeading()
+    setContainerView()
   }
   
   private func makeTabList(index : Int) -> TabList{
@@ -140,7 +137,7 @@ extension BaseVC : TabBarDelegate{
   func tabClicked(index: TabList) {
     if index != self.clickedIndex{
       UIView.animate(withDuration: 0.25) {
-        self.containerViewList[self.clickedIndex.rawValue].alpha = 0
+//        self.containerViewList[self.clickedIndex.rawValue].alpha = 0
       }completion: { _ in
         self.clickedIndex = index
       }
