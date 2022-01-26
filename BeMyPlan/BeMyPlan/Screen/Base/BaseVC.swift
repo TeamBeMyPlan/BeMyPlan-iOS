@@ -84,7 +84,7 @@ class BaseVC: UIViewController {
 
   
   private func showContainerView(){
-    UIView.animate(withDuration: 0.3) { [unowned self] in
+    UIView.animate(withDuration: 0.25) { [unowned self] in
       self.containerView.alpha = 1
     }
   }
@@ -100,13 +100,13 @@ class BaseVC: UIViewController {
   }
   
   private func showTabbar(){
-    UIView.animate(withDuration: 0.7) {
+    UIView.animate(withDuration: 0.8) {
       self.tabbarStackContainerView.alpha = 1
     }
   }
   
   private func hideTabbar(){
-    UIView.animate(withDuration: 0.7) {
+    UIView.animate(withDuration: 0.8) {
       self.tabbarStackContainerView.alpha = 0
     }
   }
@@ -139,7 +139,6 @@ extension BaseVC : TabBarDelegate{
     }
   }
 }
-
 
 extension BaseVC : UIGestureRecognizerDelegate {
   public func gestureRecognizer(
