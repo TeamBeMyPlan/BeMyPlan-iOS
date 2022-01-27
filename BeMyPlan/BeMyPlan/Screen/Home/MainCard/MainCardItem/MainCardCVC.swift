@@ -7,6 +7,7 @@
 
 import UIKit
 import Kingfisher
+import SkeletonView
 
 class MainCardCVC: UICollectionViewCell {
  
@@ -23,6 +24,10 @@ class MainCardCVC: UICollectionViewCell {
   override func awakeFromNib() {
     super.awakeFromNib()
     setUI()
+    let animation = SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .leftRight)
+    mainCardImageView.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .grey04,secondaryColor: .grey06), animation: animation, transition: .crossDissolve(1))
+    mainCardTitle.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .grey05,secondaryColor: .grey07), animation: animation, transition: .crossDissolve(1))
+    mainCardCategory.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .grey05,secondaryColor: .grey07), animation: animation, transition: .crossDissolve(1))
   }
   
   // MARK: - Custom Method
@@ -36,11 +41,13 @@ class MainCardCVC: UICollectionViewCell {
   }
   
   func setData(appData: HomeListDataGettable.Item){
-//    mainCardImageView.image = appData.makeItemImage()
-    mainCardImageView.setImage(with: appData.thumbnailURL)
-
-    UIView.animate(withDuration: 0.5) {
-      self.mainCardImageLayer.alpha = 1
+    mainCardImageView.setImage(with: appData.thumbnailURL, placeholder: "") { _ in
+      UIView.animate(withDuration: 0.5) {
+        self.mainCardImageLayer.alpha = 1
+      }
+      self.mainCardImageView.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(1))
+      self.mainCardTitle.hideSkeleton()
+      self.mainCardCategory.hideSkeleton()
     }
 //    mainCardCategory.text = appData.category
     mainCardTitle.text = appData.title
