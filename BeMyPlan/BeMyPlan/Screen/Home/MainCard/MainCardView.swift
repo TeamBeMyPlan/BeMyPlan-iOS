@@ -22,7 +22,6 @@ class MainCardView: UIView {
     addSubviewFromNib(view: self)
 //    initMainCardDataList()
     registerCVC()
-    setSkeletonAnimation()
     setMainCardCV()
     getCardData()
   }
@@ -32,7 +31,6 @@ class MainCardView: UIView {
     addSubviewFromNib(view: self)
 //    initMainCardDataList()
     registerCVC()
-    setSkeletonAnimation()
     setMainCardCV()
     getCardData()
   }
@@ -88,13 +86,6 @@ class MainCardView: UIView {
     mainCardCV.register(mainCardCVC, forCellWithReuseIdentifier: MainCardCVC.className)
 
   }
-  
-  private func setSkeletonAnimation(){
-    let animation = SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .leftRight)
-
-    self.mainCardCV.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .grey04,secondaryColor: .grey06), animation: animation, transition: .crossDissolve(0.5))
-    mainCardCV.showSkeleton()
-  }
 
   private func getCardData(){
     
@@ -106,10 +97,10 @@ class MainCardView: UIView {
           self.mainCardCV.reloadData()
         }
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-
-          self.mainCardCV.hideSkeleton(transition: .crossDissolve(2))
-        }
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+//
+//          self.mainCardCV.hideSkeleton(transition: .crossDissolve(2))
+//        }
  
       }.catch{ error in
           NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .showNetworkError), object: nil)

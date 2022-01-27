@@ -75,7 +75,6 @@ class HomeVC: UIViewController, UIGestureRecognizerDelegate {
     naviView.layer.applyShadow(color: UIColor(displayP3Red: 0.796, green: 0.796, blue: 0.796, alpha: 0.25), alpha: 1, x: 1, y: 4, blur: 8, spread: 1)
   }
   
-  
   // MARK: - Custom Method Part
 
   //  func setDummyData(){
