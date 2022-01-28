@@ -7,6 +7,7 @@
 
 import Foundation
 
+
 struct PlanPreviewEntity :Codable{
   struct Body :Codable{
     let datumDescription: String

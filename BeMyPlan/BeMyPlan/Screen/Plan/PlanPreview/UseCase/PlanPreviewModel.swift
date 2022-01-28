@@ -7,42 +7,50 @@
 
 import Foundation
 
-struct PlanPreviewData :Codable{
-  struct Body :Codable{
-    let datumDescription: String
-    let photoUrls: [String]
-    
-    enum CodingKeys: String, CodingKey {
-      case datumDescription = "description"
-      case photoUrls = "photo_urls"
-    }
+struct PlanPreviewModel{ }
+
+
+// MARK: - Header
+
+extension PlanPreviewModel{
+  struct Header{
+    var writer : String
+    var title : String
+  }
+}
+// MARK: - Description
+
+extension PlanPreviewModel{
+  struct Description{
+    var descriptionContent : String
+    var summary : IconData
   }
   
-  struct Header: Codable {
-      let title, dataDescription: String
-      let price: Int
-      let tagTheme: String
-      let tagCountSpot, tagCountDay, tagCountRestaurant: Int
-      let tagPartner, tagMoney, tagMobility: String
-      let tagMonth: Int
-      let author: String
-      let authorID: Int
-
-      enum CodingKeys: String, CodingKey {
-          case title
-          case dataDescription = "description"
-          case price
-          case tagTheme = "tag_theme"
-          case tagCountSpot = "tag_count_spot"
-          case tagCountDay = "tag_count_day"
-          case tagCountRestaurant = "tag_count_restaurant"
-          case tagPartner = "tag_partner"
-          case tagMoney = "tag_money"
-          case tagMobility = "tag_mobility"
-          case tagMonth = "tag_month"
-          case author
-          case authorID = "author_id"
-      }
+  struct IconData{
+    var theme : String
+    var spotCount : String
+    var restaurantCount : String
+    var dayCount : String
+    var peopleCase : String
+    var budget : String
+    var transport : String
+    var month : String
   }
+}
 
+// MARK: - Photo
+
+extension PlanPreviewModel{
+  struct Photo{
+    var photo : String
+    var content : String
+  }
+}
+
+// MARK: - Summary
+
+extension PlanPreviewModel{
+  struct Summary{
+    var content : String
+  }
 }
