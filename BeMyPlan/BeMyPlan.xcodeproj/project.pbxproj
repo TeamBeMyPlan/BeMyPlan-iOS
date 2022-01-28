@@ -177,6 +177,7 @@
 		FD61AFA327902C7A00D39F47 /* PlanDetailSelectDayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD61AFA227902C7A00D39F47 /* PlanDetailSelectDayView.xib */; };
 		FD61AFDA2791DB9100D39F47 /* PanDirectionGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD61AFD92791DB9100D39F47 /* PanDirectionGesture.swift */; };
 		FD61AFDC2791DC6E00D39F47 /* UINavigation + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD61AFDB2791DC6E00D39F47 /* UINavigation + Extension.swift */; };
+		FD93028827A3F9B800341C2A /* downloadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD93028727A3F9B800341C2A /* downloadImage.swift */; };
 		FDC47DEB278951FF00A152E8 /* PreviewHeaderData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC47DEA278951FF00A152E8 /* PreviewHeaderData.swift */; };
 		FDC47DED2789521000A152E8 /* PreviewDescriptionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC47DEC2789521000A152E8 /* PreviewDescriptionData.swift */; };
 		FDC47DEF2789521C00A152E8 /* PreviewPhotoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC47DEE2789521C00A152E8 /* PreviewPhotoData.swift */; };
@@ -424,6 +425,7 @@
 		FD61AFA427902C9400D39F47 /* PlanDetailSelectDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDetailSelectDayView.swift; sourceTree = "<group>"; };
 		FD61AFD92791DB9100D39F47 /* PanDirectionGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanDirectionGesture.swift; sourceTree = "<group>"; };
 		FD61AFDB2791DC6E00D39F47 /* UINavigation + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigation + Extension.swift"; sourceTree = "<group>"; };
+		FD93028727A3F9B800341C2A /* downloadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = downloadImage.swift; sourceTree = "<group>"; };
 		FDC47DEA278951FF00A152E8 /* PreviewHeaderData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewHeaderData.swift; sourceTree = "<group>"; };
 		FDC47DEC2789521000A152E8 /* PreviewDescriptionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewDescriptionData.swift; sourceTree = "<group>"; };
 		FDC47DEE2789521C00A152E8 /* PreviewPhotoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewPhotoData.swift; sourceTree = "<group>"; };
@@ -770,6 +772,7 @@
 				FD4C86AF278BD17F00D37A2D /* setImage.swift */,
 				FD20C61B278EEFAB00AC6E34 /* addObserverAction.swift */,
 				FD61AFD92791DB9100D39F47 /* PanDirectionGesture.swift */,
+				FD93028727A3F9B800341C2A /* downloadImage.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1603,6 +1606,7 @@
 				FD1C568F2795893700EEDFCE /* HomeService.swift in Sources */,
 				FD09DE1727857B5D006DA050 /* controllerFromStoryboard + UIViewController.swift in Sources */,
 				F2C5F1922786EB3300BE4036 /* MainListView.swift in Sources */,
+				FD93028827A3F9B800341C2A /* downloadImage.swift in Sources */,
 				523C70FD2799DAA30073371D /* ScrapEmptyDataModel.swift in Sources */,
 				523C70A52795D32E0073371D /* TravelSpotService.swift in Sources */,
 				FD4C86BE278C9AF900D37A2D /* PaymentCompleteVC.swift in Sources */,

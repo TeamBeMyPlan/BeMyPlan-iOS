@@ -25,9 +25,9 @@ class MainCardCVC: UICollectionViewCell {
     super.awakeFromNib()
     setUI()
     let animation = SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .leftRight)
-    mainCardImageView.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .grey04,secondaryColor: .grey06), animation: animation, transition: .crossDissolve(1))
-    mainCardTitle.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .grey05,secondaryColor: .grey07), animation: animation, transition: .crossDissolve(1))
-    mainCardCategory.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .grey05,secondaryColor: .grey07), animation: animation, transition: .crossDissolve(1))
+    mainCardImageView.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .grey04,secondaryColor: .grey06), animation: animation)
+    mainCardTitle.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .grey05,secondaryColor: .grey07), animation: animation)
+    mainCardCategory.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .grey05,secondaryColor: .grey07), animation: animation)
   }
   
   // MARK: - Custom Method
@@ -40,16 +40,11 @@ class MainCardCVC: UICollectionViewCell {
     
   }
   
-  func setData(appData: HomeListDataGettable.Item){
-    mainCardImageView.setImage(with: appData.thumbnailURL, placeholder: "") { _ in
-      UIView.animate(withDuration: 0.5) {
-        self.mainCardImageLayer.alpha = 1
-      }
-      self.mainCardImageView.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(1))
-      self.mainCardTitle.hideSkeleton()
-      self.mainCardCategory.hideSkeleton()
-    }
-//    mainCardCategory.text = appData.category
+  func setData(appData: HomeListDataGettable.Item,image : UIImage){
+    mainCardImageView.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(1))
+    mainCardTitle.hideSkeleton()
+    mainCardCategory.hideSkeleton()
     mainCardTitle.text = appData.title
+    mainCardImageView.image = image
   }
 }
