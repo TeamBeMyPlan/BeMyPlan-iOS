@@ -148,9 +148,6 @@ class PlanPreviewVC: UIViewController {
     BaseService.default.getPlanPreviewDetailData(idx: idx) { result in
       result.success { [weak self] data in
         if let data = data{
-          
-          print("GET SUCCESS")
-          dump(data)
           var photoList : [PlanPreview.PhotoData] = []
           for (_,item) in data.enumerated(){
             photoList.append(PlanPreview.PhotoData.init(photo: item.photoUrls.first ?? "",

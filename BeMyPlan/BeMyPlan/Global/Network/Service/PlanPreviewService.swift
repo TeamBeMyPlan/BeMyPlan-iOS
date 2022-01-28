@@ -8,17 +8,16 @@
 import Foundation
 
 protocol PlanPreviewServiceType{
-  func getPlanPreviewHeaderData(idx : Int,completion: @escaping (Result<PlanPreview.HeaderGettable?, Error>) -> Void)
-  func getPlanPreviewDetailData(idx : Int,completion: @escaping (Result<[PlanPreview.DetailDataGettable]?, Error>) -> Void)
+  func getPlanPreviewHeaderData(idx : Int,completion: @escaping (Result<PlanPreviewData.Header?, Error>) -> Void)
+  func getPlanPreviewDetailData(idx : Int,completion: @escaping (Result<[PlanPreviewData.Body]?, Error>) -> Void)
 }
 
 extension BaseService : PlanPreviewServiceType{
-  func getPlanPreviewHeaderData(idx: Int, completion: @escaping (Result<PlanPreview.HeaderGettable?, Error>) -> Void) {
-    print("getPlanPreviewHeaderData")
+  func getPlanPreviewHeaderData(idx: Int, completion: @escaping (Result<PlanPreviewData.Header?, Error>) -> Void) {
     requestObject(.getPlanPreviewHeaderData(idx: idx), completion: completion)
   }
   
-  func getPlanPreviewDetailData(idx: Int, completion: @escaping (Result<[PlanPreview.DetailDataGettable]?, Error>) -> Void) {
+  func getPlanPreviewDetailData(idx: Int, completion: @escaping (Result<[PlanPreviewData.Body]?, Error>) -> Void) {
     requestObject(.getPlanPreviewData(idx: idx), completion: completion)
   }
 }
