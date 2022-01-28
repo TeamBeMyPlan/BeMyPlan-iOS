@@ -14,6 +14,7 @@ class MainCardView: UIView {
   
   // MARK: - Vars & Lets Part
   private var mainCardDataList: [MainCardData] = []
+  private var imageList : [UIImage] = []
   var popularList: [HomeListDataGettable.Item] = []
   
   // MARK: - Life Cycle Part
@@ -23,6 +24,7 @@ class MainCardView: UIView {
 //    initMainCardDataList()
     registerCVC()
     setMainCardCV()
+    setSkeletonUI()
     getCardData()
   }
   
@@ -32,6 +34,7 @@ class MainCardView: UIView {
 //    initMainCardDataList()
     registerCVC()
     setMainCardCV()
+    setSkeletonUI()
     getCardData()
   }
   
@@ -94,17 +97,47 @@ class MainCardView: UIView {
         self.popularList = []
         if let popular = list {
           self.popularList = popular
-          self.mainCardCV.reloadData()
+          self.downloadImages {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.7) {
+              UIView.animate(withDuration: 0.5) {
+                self.mainCardCV.alpha = 0
+              }
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+              self.mainCardCV.hideSkeleton(transition: .crossDissolve(2))
+              UIView.animate(withDuration: 0.5) {
+                self.mainCardCV.alpha = 1
+              }
+            }
+          }
         }
-
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-//
-//          self.mainCardCV.hideSkeleton(transition: .crossDissolve(2))
-//        }
- 
       }.catch{ error in
           NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .showNetworkError), object: nil)
       }
+    }
+  }
+  
+  private func setSkeletonUI(){
+    let animation = SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .leftRight)
+    mainCardCV.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .grey04,secondaryColor: .grey06), animation: animation, transition: .crossDissolve(2))
+  }
+  
+  private func downloadImages(onCompleted: @escaping () -> (Void)){
+    for (index,item) in popularList.enumerated(){
+      imageList.append(UIImage())
+      downloadImage(with: item.thumbnailURL) { [weak self] image in
+        if let img = image{
+          self?.imageList[index] = img
+        }
+        self?.checkDownloadCompelte { onCompleted() }
+      }
+    }
+  }
+  
+  private func checkDownloadCompelte(onCompleted : @escaping () -> (Void)){
+    if popularList.count > 0 &&
+        imageList.count == popularList.count{
+      onCompleted()
     }
   }
   
@@ -162,7 +195,8 @@ extension MainCardView: SkeletonCollectionViewDataSource {
     cell.layer.cornerRadius = 5
     cell.layer.masksToBounds = false
     cell.clipsToBounds = false
-    cell.setData(appData: popularList[indexPath.row])
+    cell.setData(appData: popularList[indexPath.row],
+                 image: imageList[indexPath.row])
     return cell
   }
 }
