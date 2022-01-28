@@ -174,6 +174,8 @@
 		FD4C86B8278C7A7200D37A2D /* Payment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD4C86B7278C7A7200D37A2D /* Payment.storyboard */; };
 		FD4C86BA278C7A8400D37A2D /* PaymentSelectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4C86B9278C7A8400D37A2D /* PaymentSelectVC.swift */; };
 		FD4C86BE278C9AF900D37A2D /* PaymentCompleteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4C86BD278C9AF900D37A2D /* PaymentCompleteVC.swift */; };
+		FD5D730F27A46BAB002DE484 /* PlanPreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5D730E27A46BAB002DE484 /* PlanPreviewViewModel.swift */; };
+		FD5D731127A48491002DE484 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5D731027A48491002DE484 /* ViewModelType.swift */; };
 		FD61AFA327902C7A00D39F47 /* PlanDetailSelectDayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD61AFA227902C7A00D39F47 /* PlanDetailSelectDayView.xib */; };
 		FD61AFDA2791DB9100D39F47 /* PanDirectionGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD61AFD92791DB9100D39F47 /* PanDirectionGesture.swift */; };
 		FD61AFDC2791DC6E00D39F47 /* UINavigation + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD61AFDB2791DC6E00D39F47 /* UINavigation + Extension.swift */; };
@@ -424,6 +426,8 @@
 		FD4C86B7278C7A7200D37A2D /* Payment.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Payment.storyboard; sourceTree = "<group>"; };
 		FD4C86B9278C7A8400D37A2D /* PaymentSelectVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentSelectVC.swift; sourceTree = "<group>"; };
 		FD4C86BD278C9AF900D37A2D /* PaymentCompleteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentCompleteVC.swift; sourceTree = "<group>"; };
+		FD5D730E27A46BAB002DE484 /* PlanPreviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanPreviewViewModel.swift; sourceTree = "<group>"; };
+		FD5D731027A48491002DE484 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		FD61AFA227902C7A00D39F47 /* PlanDetailSelectDayView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanDetailSelectDayView.xib; sourceTree = "<group>"; };
 		FD61AFA427902C9400D39F47 /* PlanDetailSelectDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDetailSelectDayView.swift; sourceTree = "<group>"; };
 		FD61AFD92791DB9100D39F47 /* PanDirectionGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanDirectionGesture.swift; sourceTree = "<group>"; };
@@ -1142,6 +1146,7 @@
 				FD09DDF627857841006DA050 /* UITableViewRegisterable.swift */,
 				FD09DDF827857858006DA050 /* UICollectionViewRegisterable.swift */,
 				FDF980E42786E8370009A14E /* XibPresentable.swift */,
+				FD5D731027A48491002DE484 /* ViewModelType.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -1235,6 +1240,7 @@
 		FD93027D27A3EC4500341C2A /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				FD5D730E27A46BAB002DE484 /* PlanPreviewViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1689,6 +1695,7 @@
 				FDF981062788D4C00009A14E /* PlanPreviewPhotoTVC.swift in Sources */,
 				FD1A78262795DA7100FB10AB /* showNetworkErr + UIViewController.swift in Sources */,
 				FD09DE1E27857CDC006DA050 /* HomeVC.swift in Sources */,
+				FD5D731127A48491002DE484 /* ViewModelType.swift in Sources */,
 				FD61AFDC2791DC6E00D39F47 /* UINavigation + Extension.swift in Sources */,
 				FD20C623278EF11000AC6E34 /* MyPlanWithdrawVC.swift in Sources */,
 				FD09DDFE278578BA006DA050 /* StringLiterals.swift in Sources */,
@@ -1696,6 +1703,7 @@
 				F294EC2B278EBC66001069F8 /* LoginVC + AppleLogin.swift in Sources */,
 				FD09DE2727857DE3006DA050 /* GenericResponse.swift in Sources */,
 				FD09DE1527857B36006DA050 /* getClassName.swift in Sources */,
+				FD5D730F27A46BAB002DE484 /* PlanPreviewViewModel.swift in Sources */,
 				FD20C626278EF6AE00AC6E34 /* BarSelectButton.swift in Sources */,
 				F266412F2788262800CCC751 /* MainListCVC.swift in Sources */,
 				F294EC2F278EBD7E001069F8 /* SignUpVC.swift in Sources */,

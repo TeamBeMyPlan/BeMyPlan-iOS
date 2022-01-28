@@ -126,7 +126,8 @@ class PlanPreviewVC: UIViewController {
         if let data = data{
           self?.authID = data.authorID
           self?.priceLabel.text = String(data.price) + "원"
-          self?.headerData = PlanPreview.HeaderData.init(writer: data.author,
+          self?.headerData = PlanPreview.HeaderData.init(authorID: data.authorID,
+                                                         writer: data.author,
                                                          title: data.title)
           self?.descriptionData = PlanPreview.DescriptionData.init(descriptionContent: data.dataDescription,
                                                                    summary: PlanPreview.IconData.init(theme: data.tagTheme,
@@ -228,7 +229,7 @@ extension PlanPreviewVC : UITableViewDataSource{
 // 임시로 데이터 넣는 부분이라 이후에 지울 예정
 extension PlanPreviewVC{
   func fetchDummyData(){
-    headerData = PlanPreview.HeaderData(writer: "", title: "")
+    headerData = PlanPreview.HeaderData(authorID: -1, writer: "", title: "")
     descriptionData = PlanPreview.DescriptionData(descriptionContent: """
 """,
                                                   summary: PlanPreview.IconData(theme: "주제",

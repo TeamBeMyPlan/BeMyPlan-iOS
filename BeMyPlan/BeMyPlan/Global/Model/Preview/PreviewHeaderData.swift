@@ -9,8 +9,9 @@ import Foundation
 
 extension PlanPreview{
   struct HeaderData{
-    var writer : String
-    var title : String
+    var authorID: Int
+    var writer: String
+    var title: String
     
 
   }
