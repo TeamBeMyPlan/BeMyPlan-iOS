@@ -14,6 +14,7 @@ let screenHeight = UIScreen.main.bounds.height
 class BaseVC: UIViewController {
   
   // MARK: - Vars & Lets Part
+  var isFirstload = true
   var clickedIndex : TabList = .home{
     didSet{ runTabClickAction() }
   }
@@ -25,6 +26,7 @@ class BaseVC: UIViewController {
 //  @IBOutlet var containerViewList: [BaseContainerView]!
   @IBOutlet var tabIconList: [TabBarIconView]!
   @IBOutlet var tabbarStackContainerView: UIView!
+  @IBOutlet var tabbarBottomConstraint: NSLayoutConstraint! // -34
   // MARK: - Life Cycle Part
   
   override func viewDidLoad() {
@@ -34,7 +36,11 @@ class BaseVC: UIViewController {
     addObservers()
   }
   override func viewWillAppear(_ animated: Bool) {
-    showTabbar()
+    if isFirstload{
+      isFirstload = false
+    }else{
+      showTabbar()
+    }
   }
   
   override func viewWillDisappear(_ animated: Bool) {
@@ -45,9 +51,9 @@ class BaseVC: UIViewController {
     showContainerView()
 //    self.navigationController?.viewControllers.removeAll()
 
-//    navigationController?.interactivePopGestureRecognizer?.delegate = nil
-//    navigationController?.interactivePopGestureRecognizer?.isEnabled = false
-    navigationController?.fixInteractivePopGestureRecognizer(delegate: self)
+    navigationController?.interactivePopGestureRecognizer?.delegate = nil
+    navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+//    navigationController?.fixInteractivePopGestureRecognizer(delegate: self)
 
   }
   
@@ -84,7 +90,7 @@ class BaseVC: UIViewController {
 
   
   private func showContainerView(){
-    UIView.animate(withDuration: 0.25) { [unowned self] in
+    UIView.animate(withDuration: 0.5) { [unowned self] in
       self.containerView.alpha = 1
     }
   }
@@ -100,14 +106,16 @@ class BaseVC: UIViewController {
   }
   
   private func showTabbar(){
+    self.tabbarBottomConstraint.constant = -34
     UIView.animate(withDuration: 0.8) {
-      self.tabbarStackContainerView.alpha = 1
+      self.view.layoutIfNeeded()
     }
   }
   
   private func hideTabbar(){
+    self.tabbarBottomConstraint.constant = -123
     UIView.animate(withDuration: 0.8) {
-      self.tabbarStackContainerView.alpha = 0
+      self.view.layoutIfNeeded()
     }
   }
 

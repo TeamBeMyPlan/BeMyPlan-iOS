@@ -55,14 +55,14 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5u8-4D-ftu" customClass="PlanDetailWriterContainerView" customModule="BeMyPlan" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="94" width="414" height="130"/>
+                                <rect key="frame" x="0.0" y="94" width="414" height="110"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="130" id="ppJ-l4-NN7"/>
+                                    <constraint firstAttribute="height" constant="110" id="ppJ-l4-NN7"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rOd-Cs-IhR" customClass="PlanDetailMapContainerView" customModule="BeMyPlan" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="224" width="414" height="160"/>
+                                <rect key="frame" x="0.0" y="204" width="414" height="160"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="160" id="HcM-4q-EzZ"/>

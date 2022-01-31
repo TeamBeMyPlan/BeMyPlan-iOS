@@ -203,6 +203,7 @@
 		FDF7FECC27A7E1DD00E3AB62 /* LaunchInstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF7FECB27A7E1DD00E3AB62 /* LaunchInstructor.swift */; };
 		FDF7FECF27A7E21600E3AB62 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF7FECE27A7E21600E3AB62 /* Router.swift */; };
 		FDF7FED227A7E2B900E3AB62 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF7FED127A7E2B900E3AB62 /* BaseCoordinator.swift */; };
+		FDF7FED427A7E84000E3AB62 /* CoordinatorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF7FED327A7E84000E3AB62 /* CoordinatorFactory.swift */; };
 		FDF980BC2786CE660009A14E /* paybooc_OTF_Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = FDF980BA2786CE660009A14E /* paybooc_OTF_Bold.otf */; };
 		FDF980BD2786CE660009A14E /* Spoqa_Han_Sans_Neo_Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = FDF980BB2786CE660009A14E /* Spoqa_Han_Sans_Neo_Bold.otf */; };
 		FDF980BF2786CE700009A14E /* Spoqa_Han_Sans_Neo_Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = FDF980BE2786CE700009A14E /* Spoqa_Han_Sans_Neo_Regular.otf */; };
@@ -459,6 +460,7 @@
 		FDF7FECB27A7E1DD00E3AB62 /* LaunchInstructor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchInstructor.swift; sourceTree = "<group>"; };
 		FDF7FECE27A7E21600E3AB62 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		FDF7FED127A7E2B900E3AB62 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
+		FDF7FED327A7E84000E3AB62 /* CoordinatorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorFactory.swift; sourceTree = "<group>"; };
 		FDF980BA2786CE660009A14E /* paybooc_OTF_Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = paybooc_OTF_Bold.otf; sourceTree = "<group>"; };
 		FDF980BB2786CE660009A14E /* Spoqa_Han_Sans_Neo_Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Spoqa_Han_Sans_Neo_Bold.otf; sourceTree = "<group>"; };
 		FDF980BE2786CE700009A14E /* Spoqa_Han_Sans_Neo_Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Spoqa_Han_Sans_Neo_Regular.otf; sourceTree = "<group>"; };
@@ -1242,6 +1244,7 @@
 			isa = PBXGroup;
 			children = (
 				FDB34C3C27A6D7CE0074B6CE /* ModuleFactory.swift */,
+				FDF7FED327A7E84000E3AB62 /* CoordinatorFactory.swift */,
 			);
 			path = Factory;
 			sourceTree = "<group>";
@@ -1632,6 +1635,7 @@
 				FD09DE2027857CF2006DA050 /* LoginVC.swift in Sources */,
 				FD2D4DD8278DB054002084B9 /* PlanDetailSummaryFoldTVC.swift in Sources */,
 				FDF7FEC727A7E15B00E3AB62 /* BaseControllable.swift in Sources */,
+				FDF7FED427A7E84000E3AB62 /* CoordinatorFactory.swift in Sources */,
 				FD2D9C562796ADC800688A42 /* PlanDetailService.swift in Sources */,
 				FD1A782B2795E63600FB10AB /* PreviewTagDataGettable.swift in Sources */,
 				F266412E2788262800CCC751 /* MainListData.swift in Sources */,
