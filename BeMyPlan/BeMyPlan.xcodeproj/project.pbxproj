@@ -196,6 +196,13 @@
 		FDCE38282799BACB0042DC54 /* Indicator.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDCE38272799BACB0042DC54 /* Indicator.storyboard */; };
 		FDCE382A2799BAD80042DC54 /* IndicatorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCE38292799BAD80042DC54 /* IndicatorVC.swift */; };
 		FDCE382C2799BBC90042DC54 /* showIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCE382B2799BBC90042DC54 /* showIndicator.swift */; };
+		FDF7FEC327A7E14600E3AB62 /* Presentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF7FEC227A7E14600E3AB62 /* Presentable.swift */; };
+		FDF7FEC527A7E14F00E3AB62 /* CoordinatorFinishOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF7FEC427A7E14F00E3AB62 /* CoordinatorFinishOutput.swift */; };
+		FDF7FEC727A7E15B00E3AB62 /* BaseControllable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF7FEC627A7E15B00E3AB62 /* BaseControllable.swift */; };
+		FDF7FEC927A7E16100E3AB62 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF7FEC827A7E16100E3AB62 /* Coordinator.swift */; };
+		FDF7FECC27A7E1DD00E3AB62 /* LaunchInstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF7FECB27A7E1DD00E3AB62 /* LaunchInstructor.swift */; };
+		FDF7FECF27A7E21600E3AB62 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF7FECE27A7E21600E3AB62 /* Router.swift */; };
+		FDF7FED227A7E2B900E3AB62 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF7FED127A7E2B900E3AB62 /* BaseCoordinator.swift */; };
 		FDF980BC2786CE660009A14E /* paybooc_OTF_Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = FDF980BA2786CE660009A14E /* paybooc_OTF_Bold.otf */; };
 		FDF980BD2786CE660009A14E /* Spoqa_Han_Sans_Neo_Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = FDF980BB2786CE660009A14E /* Spoqa_Han_Sans_Neo_Bold.otf */; };
 		FDF980BF2786CE700009A14E /* Spoqa_Han_Sans_Neo_Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = FDF980BE2786CE700009A14E /* Spoqa_Han_Sans_Neo_Regular.otf */; };
@@ -445,6 +452,13 @@
 		FDCE38272799BACB0042DC54 /* Indicator.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Indicator.storyboard; sourceTree = "<group>"; };
 		FDCE38292799BAD80042DC54 /* IndicatorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorVC.swift; sourceTree = "<group>"; };
 		FDCE382B2799BBC90042DC54 /* showIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = showIndicator.swift; sourceTree = "<group>"; };
+		FDF7FEC227A7E14600E3AB62 /* Presentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presentable.swift; sourceTree = "<group>"; };
+		FDF7FEC427A7E14F00E3AB62 /* CoordinatorFinishOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorFinishOutput.swift; sourceTree = "<group>"; };
+		FDF7FEC627A7E15B00E3AB62 /* BaseControllable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseControllable.swift; sourceTree = "<group>"; };
+		FDF7FEC827A7E16100E3AB62 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		FDF7FECB27A7E1DD00E3AB62 /* LaunchInstructor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchInstructor.swift; sourceTree = "<group>"; };
+		FDF7FECE27A7E21600E3AB62 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		FDF7FED127A7E2B900E3AB62 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
 		FDF980BA2786CE660009A14E /* paybooc_OTF_Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = paybooc_OTF_Bold.otf; sourceTree = "<group>"; };
 		FDF980BB2786CE660009A14E /* Spoqa_Han_Sans_Neo_Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Spoqa_Han_Sans_Neo_Bold.otf; sourceTree = "<group>"; };
 		FDF980BE2786CE700009A14E /* Spoqa_Han_Sans_Neo_Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Spoqa_Han_Sans_Neo_Regular.otf; sourceTree = "<group>"; };
@@ -1196,6 +1210,10 @@
 		FD47D76627A50C1300272352 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
+				FDF7FED027A7E2A500E3AB62 /* Coordinators */,
+				FDF7FEC127A7E13900E3AB62 /* Protocols */,
+				FDF7FECA27A7E1D100E3AB62 /* Enums */,
+				FDF7FECD27A7E1E700E3AB62 /* Router */,
 				FDB34C3B27A6D4AD0074B6CE /* Factory */,
 			);
 			path = Coordinator;
@@ -1251,6 +1269,41 @@
 				FDCE382B2799BBC90042DC54 /* showIndicator.swift */,
 			);
 			path = Indicator;
+			sourceTree = "<group>";
+		};
+		FDF7FEC127A7E13900E3AB62 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				FDF7FEC227A7E14600E3AB62 /* Presentable.swift */,
+				FDF7FEC427A7E14F00E3AB62 /* CoordinatorFinishOutput.swift */,
+				FDF7FEC627A7E15B00E3AB62 /* BaseControllable.swift */,
+				FDF7FEC827A7E16100E3AB62 /* Coordinator.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		FDF7FECA27A7E1D100E3AB62 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				FDF7FECB27A7E1DD00E3AB62 /* LaunchInstructor.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		FDF7FECD27A7E1E700E3AB62 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				FDF7FECE27A7E21600E3AB62 /* Router.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		FDF7FED027A7E2A500E3AB62 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				FDF7FED127A7E2B900E3AB62 /* BaseCoordinator.swift */,
+			);
+			path = Coordinators;
 			sourceTree = "<group>";
 		};
 		FDF980B92786CE1A0009A14E /* Fonts */ = {
@@ -1562,6 +1615,7 @@
 			files = (
 				FDF980E82786F1910009A14E /* MyPlanVC.swift in Sources */,
 				FDB34C3D27A6D7CE0074B6CE /* ModuleFactory.swift in Sources */,
+				FDF7FEC927A7E16100E3AB62 /* Coordinator.swift in Sources */,
 				FD1A782D2795EBEF00FB10AB /* PreviewDetailDataGettable.swift in Sources */,
 				FDF980F6278826140009A14E /* TabBarIconView.swift in Sources */,
 				FD09DE0F27857A2E006DA050 /* makeAlert.swift in Sources */,
@@ -1577,6 +1631,7 @@
 				FD3151A5278D0C880076D92E /* PlanDetailVC.swift in Sources */,
 				FD09DE2027857CF2006DA050 /* LoginVC.swift in Sources */,
 				FD2D4DD8278DB054002084B9 /* PlanDetailSummaryFoldTVC.swift in Sources */,
+				FDF7FEC727A7E15B00E3AB62 /* BaseControllable.swift in Sources */,
 				FD2D9C562796ADC800688A42 /* PlanDetailService.swift in Sources */,
 				FD1A782B2795E63600FB10AB /* PreviewTagDataGettable.swift in Sources */,
 				F266412E2788262800CCC751 /* MainListData.swift in Sources */,
@@ -1613,6 +1668,7 @@
 				FD3211AD27841948007D63D5 /* ViewController.swift in Sources */,
 				FD2D9C602797DF8C00688A42 /* PlanDetailWriterContainerView.swift in Sources */,
 				F2C5F18E2786EACB00BE4036 /* MainCardView.swift in Sources */,
+				FDF7FEC327A7E14600E3AB62 /* Presentable.swift in Sources */,
 				FD09DE2227857D00006DA050 /* SplashVC.swift in Sources */,
 				FD09DDFC278578B1006DA050 /* ColorLiterals.swift in Sources */,
 				FDF9810A2788D4DD0009A14E /* PlanPreviewRecommendTVC.swift in Sources */,
@@ -1634,6 +1690,7 @@
 				523C70A32795C3EF0073371D /* TravelSpotDataModel.swift in Sources */,
 				FDF980FF2788C9220009A14E /* PlanPreviewVC.swift in Sources */,
 				FDC47DF12789524000A152E8 /* PreviewSummaryData.swift in Sources */,
+				FDF7FECF27A7E21600E3AB62 /* Router.swift in Sources */,
 				FD20C620278EF0C900AC6E34 /* MyPlanSettingVC.swift in Sources */,
 				FD20C628278EF6CA00AC6E34 /* BarFullButton.swift in Sources */,
 				FD2D4DB9278D3DCE002084B9 /* PlanDetailInformationTVC.swift in Sources */,
@@ -1644,6 +1701,7 @@
 				FD20C615278ECBE800AC6E34 /* MyPlanEmptyBuyListView.swift in Sources */,
 				FDCE382427993E740042DC54 /* PlanDetailVC + setPreviewDummy.swift in Sources */,
 				523C70B32796EC890073371D /* ScrapBtnDataModel.swift in Sources */,
+				FDF7FECC27A7E1DD00E3AB62 /* LaunchInstructor.swift in Sources */,
 				FD20C61C278EEFAB00AC6E34 /* addObserverAction.swift in Sources */,
 				FD2D9C582796B02000688A42 /* PlanDetailVC + fetchData.swift in Sources */,
 				FD3211AB27841948007D63D5 /* SceneDelegate.swift in Sources */,
@@ -1671,6 +1729,7 @@
 				FD09DDFE278578BA006DA050 /* StringLiterals.swift in Sources */,
 				FD1C569127958A9B00EEDFCE /* ResponseObject.swift in Sources */,
 				F294EC2B278EBC66001069F8 /* LoginVC + AppleLogin.swift in Sources */,
+				FDF7FEC527A7E14F00E3AB62 /* CoordinatorFinishOutput.swift in Sources */,
 				FD09DE2727857DE3006DA050 /* GenericResponse.swift in Sources */,
 				FD09DE1527857B36006DA050 /* getClassName.swift in Sources */,
 				FD20C626278EF6AE00AC6E34 /* BarSelectButton.swift in Sources */,
@@ -1681,6 +1740,7 @@
 				FD2D4DCC278D8636002084B9 /* drawDashedLine + UIView.swift in Sources */,
 				F273216F278BEB7700A9B0CC /* MainCardCarouselLayout.swift in Sources */,
 				FD2D9C5C2797DC4B00688A42 /* PlanDetailMapContainerView.swift in Sources */,
+				FDF7FED227A7E2B900E3AB62 /* BaseCoordinator.swift in Sources */,
 				FD09DE092785797B006DA050 /* addToolBar.swift in Sources */,
 				FD09DDF527857809006DA050 /* Config.swift in Sources */,
 				523C70AA2795EC770073371D /* TravelSpotDetailService.swift in Sources */,
