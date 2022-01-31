@@ -42,6 +42,8 @@ class LoginVC: UIViewController {
   }
   // MARK: - IBAction Part
   @IBAction func touchUpToGoBaseView(_ sender: Any) {
+    makeVibrate()
+    self.moveBaseVC()
   }
   
   // MARK: - Custom Method Part
@@ -57,7 +59,9 @@ class LoginVC: UIViewController {
   func setBtnActions() {
     //IBAction 대용으로 만든 함수
     self.kakaoLoginBtn.press(animated: true) {
-      self.kakaoLogin()
+      // FIXME: - 테플전용으로 함수 체인지 한거라 다시 kakaoLogin으로 교체해야함!
+      self.moveBaseVC()
+//      self.kakaoLogin()
     }
 
     self.appleLoginBtn.press(animated: true) {
@@ -73,8 +77,9 @@ class LoginVC: UIViewController {
   }
   
    func moveBaseVC(){
-    guard let baseVC = UIStoryboard.list(.base).instantiateViewController(withIdentifier: BaseVC.className) as? BaseVC else {return}
-    self.navigationController?.pushViewController(baseVC, animated: true)
+     guard let baseVC = UIStoryboard.list(.base).instantiateViewController(withIdentifier: BaseNC.className) as? BaseNC else {return}
+     baseVC.modalPresentationStyle = .fullScreen
+     self.present(baseVC, animated: false, completion: nil)
   }
   
   // MARK: - @objc Function Part

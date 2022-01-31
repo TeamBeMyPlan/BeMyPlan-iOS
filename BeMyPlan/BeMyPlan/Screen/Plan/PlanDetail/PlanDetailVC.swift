@@ -74,20 +74,21 @@ class PlanDetailVC: UIViewController {
     }
   
   override func viewWillAppear(_ animated: Bool) {
-    navigationController?.interactivePopGestureRecognizer?.delegate = nil
-    navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+    navigationController?.fixInteractivePopGestureRecognizer(delegate: self)
+
+//    navigationController?.interactivePopGestureRecognizer?.delegate = nil
+//    navigationController?.interactivePopGestureRecognizer?.isEnabled = false
   }
   override func viewDidAppear(_ animated: Bool) {
     self.navigationController?.removeViewController(PaymentSelectVC.self)
     self.navigationController?.removeViewController(PlanPreviewVC.self)
-    self.navigationController?.removePopGesture()
+//    self.navigationController?.removePopGesture()
   }
 
   
   // MARK: - Custom Methods Parts
   
   @IBAction func backButtonClicked(_ sender: Any) {
-    self.navigationController?.fixInteractivePopGestureRecognizer(delegate: self)
     self.navigationController?.popViewController(animated: true)
   }
   private func addObserver(){
@@ -131,8 +132,10 @@ class PlanDetailVC: UIViewController {
   
   private func foldContentTableView(){
     if isFullPage {
+      headerTitleLabel.isHidden = false
       mainTVTopConstraint.constant = -10
     }else{
+      headerTitleLabel.isHidden = true
       mainTVTopConstraint.constant = headerContentHeight
     }
     UIView.animate(withDuration: 0.5, delay: 0,
@@ -147,12 +150,17 @@ class PlanDetailVC: UIViewController {
 }
 
 extension PlanDetailVC : UITableViewDelegate{
+
+  
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
   
     return UITableView.automaticDimension
   }
   
+  func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+  }
   func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+
     let animation = AnimationFactory.makeFadeAnimation(duration: 0.6, delayFactor: 0.08)
     let animator = Animator(animation: animation)
     animator.animate(cell: cell, at: indexPath, in: tableView)
@@ -220,25 +228,19 @@ extension PlanDetailVC : UITableViewDataSource{
   }
 }
 
-
 extension PlanDetailVC : UIScrollViewDelegate{
   func scrollViewDidScroll(_ scrollView: UIScrollView){
     if initailScrollCompleted == false{
       mapContainerView.currentDay = currentDay
       initailScrollCompleted = true
     }
-    if writerBlockHeight <= scrollView.contentOffset.y{
-      headerTitleLabel.isHidden = false
-    }else{
-      headerTitleLabel.isHidden = true
+
+    let visiblePoints = CGPoint(x: 0, y: scrollView.contentOffset.y + 210)
+    let visibleIndex = mainContainerTV.indexPathForRow(at: visiblePoints)
+    if let visibleIndex = visibleIndex {
+      mapContainerView.currentIndex = visibleIndex.row
+      print("ddddddd",visibleIndex.row)
     }
-    if let cell = mainContainerTV.visibleCells.first,
-       let indexPath = mainContainerTV.indexPath(for: cell){
-      mapContainerView.currentIndex = indexPath.row
-    }
-    
-    
-    
   }
 }
 
@@ -251,21 +253,6 @@ extension PlanDetailVC : PlanDetailDayDelegate{
 
   }
 }
-
-
-extension PlanDetailVC : UIGestureRecognizerDelegate{
-  func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {
-      return false
-  }
-  public func gestureRecognizer(
-    _ gestureRecognizer: UIGestureRecognizer,
-    shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer
-  ) -> Bool {
-    return otherGestureRecognizer is PanDirectionGestureRecognizer
-  }
-
-}
-
 
 extension UINavigationController {
   func popBack(_ nb: Int) {
@@ -282,4 +269,22 @@ extension UINavigationController {
           viewController.removeFromParent()
       }
   }
+}
+
+extension PlanDetailVC : UIGestureRecognizerDelegate {
+  
+  func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+    return false
+  }
+  func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+    return false
+  }
+  
+  public func gestureRecognizer(
+    _ gestureRecognizer: UIGestureRecognizer,
+    shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer
+  ) -> Bool {
+    return false
+  }
+
 }

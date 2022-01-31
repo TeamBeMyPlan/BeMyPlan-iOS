@@ -24,6 +24,8 @@ extension PlanDetailVC{
           self?.headerData = DetailHeaderData(title: detailData.title,
                                               writer : detailData.author)
           self?.headerTitleLabel.text = detailData.title
+          self?.headerTitleLabel.isHidden = true
+
           self?.makeTopBlockHeight(content: detailData.title)
           // 총 일차 가져오기
           self?.totalDay = detailData.totalDays
@@ -57,15 +59,6 @@ extension PlanDetailVC{
             self?.summaryList.append(summaryList)
             self?.infoList.append(infoList)
           }
-          print(self?.locationList.count)
-          dump(self?.locationList)
-          
-          print(self?.summaryList.count)
-          dump(self?.locationList)
-          
-          print(self?.infoList.count)
-          dump(self?.infoList)
-          
           self?.mainContainerTV.reloadData()
           self?.setWriterView()
           self?.setMapContainerView()
@@ -103,7 +96,7 @@ extension PlanDetailVC{
     textViewForsizing.textContainerInset = .zero
     textViewForsizing.text = content
     textViewForsizing.sizeToFit()
-    textViewForsizing.frame.width <= screenWidth - 48 ? (writerTop = 90) : (writerTop = 115)
+    textViewForsizing.frame.width <= screenWidth - 48 ? (writerTop = 70) : (writerTop = 95)
     writerBlockHeightConstraint.constant = writerTop
     let mapContainerHeight : CGFloat = 160
     mainTVTopConstraint.constant = writerTop + mapContainerHeight

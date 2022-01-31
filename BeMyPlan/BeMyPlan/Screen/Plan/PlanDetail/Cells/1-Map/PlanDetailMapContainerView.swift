@@ -74,7 +74,6 @@ class PlanDetailMapContainerView: XibView,MTMapViewDelegate{
   
   private func showMapCenter(pointList: [PlanDetailMapData]){
     if let mapView = mapView {
-      print("FIT Area Points",pointList)
       mapView.fitArea(toShowMapPoints: makeMapPointGeoList(pointDataList: pointList))
     }
   }
@@ -84,7 +83,6 @@ class PlanDetailMapContainerView: XibView,MTMapViewDelegate{
     for (_,item) in pointDataList.enumerated(){
       pointList.append(MTMapPoint(geoCoord: MTMapPointGeo(latitude:  item.latitude,
                                                           longitude: item.longtitude)))
-      print("Result Point List",item.latitude,item.longtitude)
     }
 
     return pointList
