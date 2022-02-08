@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol ModuleFactroyProtocol {
+protocol ModuleFactoryProtocol {
   
   // MARK: - Splash
   func instantiateSplashVC() -> SplashVC
@@ -17,6 +17,7 @@ protocol ModuleFactroyProtocol {
   func instantiateSignupVC() -> SignUpVC
   
   // MARK: - BaseTab
+  func instantiateBaseNC() -> BaseNC
   func instantiateBaseVC() -> BaseVC
   
   // MARK: - Home
@@ -43,7 +44,7 @@ protocol ModuleFactroyProtocol {
   func instantiatePlanListVC() -> TravelSpotDetailVC
 }
 
-class ModuleFactory: ModuleFactroyProtocol{
+class ModuleFactory: ModuleFactoryProtocol{
 
   static func resolve() -> ModuleFactory {
     return ModuleFactory()
@@ -64,6 +65,10 @@ class ModuleFactory: ModuleFactroyProtocol{
   }
   
   // MARK: - Base Tap
+  
+  func instantiateBaseNC() -> BaseNC {
+    return BaseNC.controllerFromStoryboard(.base)
+  }
 
   func instantiateBaseVC() -> BaseVC {
     return BaseVC.controllerFromStoryboard(.base)
