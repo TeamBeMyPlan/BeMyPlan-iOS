@@ -7,7 +7,7 @@
 
 import UIKit
 
-enum BaseNotiList{
+enum BaseNotiList : String{
   case copyComplete
   case showNotInstallKakaomap
   case moveHomeTab
@@ -26,6 +26,8 @@ enum BaseNotiList{
   case showNetworkError
   case showIndicator
   case hideIndicator
+  
+  case indicatorComplete
   
   static func makeNotiName(list : BaseNotiList) -> NSNotification.Name{
     return Notification.Name(String(describing: list))
