@@ -40,7 +40,7 @@ class PlanPreviewWriterTVC: UITableViewCell,UITableViewRegisterable{
   @IBAction func nicknameButtonClicked(_ sender: Any) {
     let data = PlanWriterDataModel.init(authorName: nickname,
                                         authorID: authID)
-    NotificationCenter.default.post(name:  BaseNotiList.makeNotiName(list: .moveNicknamePlanList), object: data)
+    postObserverAction(.moveNicknamePlanList,object: data)
   }
   
   // MARK: - Custom Method Part

@@ -28,7 +28,7 @@ class ScrapContainerView: XibView {
   }
   
   @IBAction func filterBtn(_ sender: Any) {
-    NotificationCenter.default.post(name: NSNotification.Name("filterBottomSheet"), object: nil)
+    postObserverAction(.filterBottomSheet)
   }
   
   private func setAll() {
@@ -97,7 +97,7 @@ extension ScrapContainerView: UICollectionViewDataSource {
 
 extension ScrapContainerView: UICollectionViewDelegate{
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .movePlanPreview), object: scrapDataList[indexPath.row].postID)
+    postObserverAction(.movePlanPreview,object: scrapDataList[indexPath.row].postID)
   }
 }
 
@@ -113,8 +113,6 @@ extension ScrapContainerView: UICollectionViewDelegateFlowLayout {
     return UIEdgeInsets(top: 0, left: 24, bottom: 24, right: 24)
      
   }
-  
-  
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
     return 20
   }

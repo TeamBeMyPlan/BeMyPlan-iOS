@@ -182,7 +182,7 @@ class PlanDetailMapContainerView: XibView,MTMapViewDelegate{
           if(UIApplication.shared.canOpenURL(appUrl)){
             UIApplication.shared.open(appUrl, options: [:], completionHandler: nil)
           }else{
-            NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .showNotInstallKakaomap), object: nil)
+            postObserverAction(.showNotInstallKakaomap)
           }
         }
       }

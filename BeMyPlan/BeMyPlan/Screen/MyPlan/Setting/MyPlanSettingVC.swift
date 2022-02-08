@@ -89,7 +89,7 @@ class MyPlanSettingVC: UIViewController, MFMailComposeViewControllerDelegate {
     }
     
     withdrawButton.press {
-        NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .moveSettingWithdrawView), object: nil)
+      self.postObserverAction(.moveSettingWithdrawView)
     }
 
   }

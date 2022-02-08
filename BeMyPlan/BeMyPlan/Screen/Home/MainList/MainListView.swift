@@ -74,8 +74,7 @@ class MainListView: UIView {
   @IBAction func touchUpToPlanList(_ sender: Any) {
     var detailCase : TravelSpotDetailType = .new
     type == .recently ? (detailCase = .new) : (detailCase = .suggest)
-    NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .moveHomeToPlanList), object: detailCase)
-    
+    postObserverAction(.moveHomeToPlanList,object: detailCase)
   }
   
   
@@ -132,7 +131,7 @@ class MainListView: UIView {
           self?.mainListCV.hideSkeleton( transition: .crossDissolve(1))
         }
       }.catch{ error in
-        NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .showNetworkError), object: nil)
+        self.postObserverAction(.showNetworkError, object: nil)
       }
     }
   }
@@ -158,8 +157,7 @@ class MainListView: UIView {
         }
         
       }.catch{ error in
-        NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .showNetworkError), object: nil)
-        
+        self.postObserverAction(.showNetworkError)
       }
     }
   }
@@ -170,7 +168,7 @@ class MainListView: UIView {
 
 extension MainListView : SkeletonCollectionViewDelegate{
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .movePlanPreview), object: mainListDataList[indexPath.row].id)
+    postObserverAction(.movePlanPreview,object: mainListDataList[indexPath.row].id)
   }
 }
 

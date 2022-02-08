@@ -9,6 +9,6 @@ import UIKit
 
 class MyPlanEmptyBuyListView: XibView {
   @IBAction func clickedLookAroundButton(_ sender: Any) {
-    NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .moveHomeTab), object: nil)
+    postObserverAction(.moveHomeTab)
   }
 }

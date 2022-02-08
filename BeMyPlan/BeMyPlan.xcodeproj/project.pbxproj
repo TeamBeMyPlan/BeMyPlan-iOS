@@ -151,7 +151,6 @@
 		FD3151A5278D0C880076D92E /* PlanDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3151A4278D0C880076D92E /* PlanDetailVC.swift */; };
 		FD3211A927841948007D63D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3211A827841948007D63D5 /* AppDelegate.swift */; };
 		FD3211AB27841948007D63D5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3211AA27841948007D63D5 /* SceneDelegate.swift */; };
-		FD3211AD27841948007D63D5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3211AC27841948007D63D5 /* ViewController.swift */; };
 		FD3211B027841948007D63D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD3211AE27841948007D63D5 /* Main.storyboard */; };
 		FD3211B527841949007D63D5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD3211B327841949007D63D5 /* LaunchScreen.storyboard */; };
 		FD3211C3278433CF007D63D5 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = FD3211C2278433CF007D63D5 /* .swiftlint.yml */; };
@@ -406,7 +405,6 @@
 		FD3211A527841948007D63D5 /* BeMyPlan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeMyPlan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD3211A827841948007D63D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FD3211AA27841948007D63D5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FD3211AC27841948007D63D5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FD3211AF27841948007D63D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FD3211B127841949007D63D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FD3211B427841949007D63D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -1110,7 +1108,6 @@
 				FD09DE1927857CAA006DA050 /* Splash */,
 				F294EC2D278EBD58001069F8 /* SignUp */,
 				FD09DE1A27857CB0006DA050 /* Login */,
-				FD3211AC27841948007D63D5 /* ViewController.swift */,
 				FD3211AE27841948007D63D5 /* Main.storyboard */,
 			);
 			path = Screen;
@@ -1669,7 +1666,6 @@
 				F26A584E279AE217001986F2 /* AuthNickNameDataModel.swift in Sources */,
 				523C70B52796F11C0073371D /* ScrapBtnService.swift in Sources */,
 				FD20C609278EB94100AC6E34 /* MyPlanCVUserResuableView.swift in Sources */,
-				FD3211AD27841948007D63D5 /* ViewController.swift in Sources */,
 				FD2D9C602797DF8C00688A42 /* PlanDetailWriterContainerView.swift in Sources */,
 				F2C5F18E2786EACB00BE4036 /* MainCardView.swift in Sources */,
 				FDF7FEC327A7E14600E3AB62 /* Presentable.swift in Sources */,

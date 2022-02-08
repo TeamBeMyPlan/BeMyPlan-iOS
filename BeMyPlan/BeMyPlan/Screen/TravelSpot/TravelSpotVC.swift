@@ -44,7 +44,6 @@ class TravelSpotVC: UIViewController {
     BaseService.default.getTravelSpotList { result in
       result.success { data in
         self.travelSpotDataList = []
-
         if let testedData = data {
           self.travelSpotDataList = testedData
         }
@@ -93,7 +92,7 @@ extension TravelSpotVC: UICollectionViewDelegate {
     _ = completionHandler?(indexPath.row)
     //    self.navigationController?.popViewController(animated: true)
     if travelSpotDataList[indexPath.row].isActivated {
-      NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .movePlanList), object: travelSpotDataList[indexPath.row].id)
+      postObserverAction(.movePlanList,object: travelSpotDataList[indexPath.row].id)
     }
   }
 }

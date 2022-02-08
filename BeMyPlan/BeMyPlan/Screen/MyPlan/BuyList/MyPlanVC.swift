@@ -46,7 +46,7 @@ class MyPlanVC: UIViewController {
   
   private func setButtonAction(){
     settingButton.press {
-      NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .moveSettingView), object: nil)
+      self.postObserverAction(.moveSettingView)
     }
   }
   
@@ -71,7 +71,7 @@ class MyPlanVC: UIViewController {
 extension MyPlanVC :UICollectionViewDelegate{
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .movePlanDetail), object: buyContentList[indexPath.row].id)
+    postObserverAction(.movePlanDetail,object: buyContentList[indexPath.row].id)
   }
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
     return CGSize(width: screenWidth, height: 224)

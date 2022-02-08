@@ -112,7 +112,7 @@ class MainCardView: UIView {
           }
         }
       }.catch{ error in
-          NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .showNetworkError), object: nil)
+        self.postObserverAction(.showNetworkError)
       }
     }
   }
@@ -172,7 +172,7 @@ class MainCardView: UIView {
 
 extension MainCardView : SkeletonCollectionViewDelegate{
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .movePlanPreview), object: popularList[indexPath.row].id)
+    postObserverAction(.movePlanPreview)
   }
 }
 

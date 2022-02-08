@@ -51,7 +51,7 @@ class PlanDetailWriterContainerView: XibView {
   @IBAction func nicknameButtonClicked(_ sender: Any) {
     let data = PlanWriterDataModel.init(authorName: nickName,
                                         authorID: authID)
-    NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .moveNicknamePlanList), object:data )
+    postObserverAction(.moveNicknamePlanList, object: data)
   }
   func setTitleData(title : String, writer: String,isPreviewPage : Bool,authorID : Int){
     writerLabel.text = title
@@ -63,7 +63,6 @@ class PlanDetailWriterContainerView: XibView {
     nickName = title
   }
 }
-
 
 struct DetailHeaderData{
   var title : String

@@ -96,7 +96,7 @@ class PlanDetailInformationTVC: UITableViewCell,UITableViewRegisterable {
   //MARK: - IBActions Part
   @IBAction func addressCopyButtonClicked(_ sender: Any) {
     UIPasteboard.general.string = addressData
-    NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .copyComplete), object: nil)
+    postObserverAction(.copyComplete)
   }
   
   // MARK: - Custom Methods Parts

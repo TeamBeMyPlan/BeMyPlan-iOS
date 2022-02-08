@@ -164,7 +164,7 @@ class PlanPreviewVC: UIViewController {
       }.catch { err in
         
         self.closeIndicator{
-          NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .showNetworkError), object: nil)
+          self.postObserverAction(.showNetworkError)
         }
 
       }

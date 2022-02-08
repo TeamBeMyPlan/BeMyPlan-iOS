@@ -127,8 +127,6 @@ class MainCardCarouselLayout: UICollectionViewFlowLayout {
     return attributes
   }
   
-  
-  
   // MARK: 페이징 가능하게 해주는 코드
   //3D에서 새로 생긴 기능
   override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {

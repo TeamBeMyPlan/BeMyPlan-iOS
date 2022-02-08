@@ -202,7 +202,7 @@ extension TravelSpotDetailVC: UITableViewDelegate {
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .movePlanPreview), object: planDataList[indexPath.row].id)
+    postObserverAction(.movePlanPreview,object: planDataList[indexPath.row].id)
   }
 }
 

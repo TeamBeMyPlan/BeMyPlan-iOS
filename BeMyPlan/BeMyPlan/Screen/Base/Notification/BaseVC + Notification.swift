@@ -29,6 +29,9 @@ enum BaseNotiList : String{
   
   case indicatorComplete
   
+  //filter
+  case filterBottomSheet
+  
   //PlanDetail
   case detailFoldComplete
   case planDetailButtonClicked
@@ -102,7 +105,6 @@ extension BaseVC{
         self.navigationController?.pushViewController(spotlistVC, animated: true)
       }
     }
-    
     
     addObserverAction(.moveNicknamePlanList) { noti in
       if let authData = noti.object as? PlanWriterDataModel{
