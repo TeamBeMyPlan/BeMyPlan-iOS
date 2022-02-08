@@ -194,9 +194,6 @@ extension BaseAPI: TargetType {
       params["password"] = "여기에 필요한 Value값 넣기"
       
     case .getTravelSpotDetailList(_, let page,_, let sort):
-      print("------TravelSpotBase------")
-      print(page, sort)
-      print("------------")
       params["page"] = page
       params["pageSize"] = 5
       params["sort"] = sort

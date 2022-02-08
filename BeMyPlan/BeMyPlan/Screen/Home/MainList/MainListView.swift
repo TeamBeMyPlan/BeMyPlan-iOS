@@ -125,7 +125,6 @@ class MainListView: UIView {
         
         
         if let list = list {
-          print(list.items)
           self?.mainListDataList = list.items
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {

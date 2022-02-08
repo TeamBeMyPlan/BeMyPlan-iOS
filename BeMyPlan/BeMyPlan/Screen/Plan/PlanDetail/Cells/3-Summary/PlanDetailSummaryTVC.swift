@@ -26,7 +26,6 @@ class PlanDetailSummaryTVC: UITableViewCell,UITableViewRegisterable{
   
   var locationList : [PlanDetail.Summary] = []{
     didSet{
-      print("LOCATIONLISTADD",locationList)
       calculateSummaryHeight()
       listTV.reloadData()
     }

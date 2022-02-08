@@ -22,7 +22,6 @@ class PaymentSelectVC: UIViewController {
       }else{
         paymentButton.backgroundColor = .bemyBlue
       }
-      print("SELECTINDEX",selectedIndex)
       setButtonState()
     }
   }

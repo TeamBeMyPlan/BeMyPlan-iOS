@@ -11,7 +11,6 @@ class TravelSpotVC: UIViewController {
   
   // MARK: - Vars & Lets Part
   var travelSpotDataList: [TravelSpotDataGettable] = []
-  let screenWidth = UIScreen.main.bounds.width
   var completionHandler: ((Int) -> (Int))?
 
   // MARK: - UI Component Part

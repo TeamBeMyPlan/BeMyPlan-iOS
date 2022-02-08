@@ -190,17 +190,6 @@ extension PlanDetailInformationTVC: UICollectionViewDelegateFlowLayout{
 }
 
 extension PlanDetailInformationTVC : UIScrollViewDelegate{
-  
-//  func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-//    let collectionViewWidth = screenWidth - 48
-//
-//    let index = scrollView.contentOffset.x / collectionViewWidth
-//    print("INDEX",index)
-//    print("COLLECTIONVIEWWIDTH",collectionViewWidth)
-//    print("saa",scrollView.contentOffset.x)
-//    progressBar.setPercentage(ratio: (index + 1) / CGFloat(imgUrlList.count))
-//  }
-  
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
     let collectionViewWidth = screenWidth - 48
     let point = scrollView.contentOffset.x / collectionViewWidth
@@ -210,10 +199,6 @@ extension PlanDetailInformationTVC : UIScrollViewDelegate{
     }else{
       currentIndex = Int(floor(point))
     }
-
-    
     lastPointee = scrollView.contentOffset.x
   }
-
 }
-

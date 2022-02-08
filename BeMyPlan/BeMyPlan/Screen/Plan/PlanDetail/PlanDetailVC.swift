@@ -236,7 +236,6 @@ extension PlanDetailVC : UIScrollViewDelegate{
     let visibleIndex = mainContainerTV.indexPathForRow(at: visiblePoints)
     if let visibleIndex = visibleIndex {
       mapContainerView.currentIndex = visibleIndex.row
-      print("ddddddd",visibleIndex.row)
     }
   }
 }

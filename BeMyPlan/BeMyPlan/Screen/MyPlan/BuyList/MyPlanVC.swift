@@ -54,12 +54,9 @@ class MyPlanVC: UIViewController {
     BaseService.default.getOrderList{ result in
       result.success { [weak self] data in
         if let buyList = data{
-          print("fetchBuyList",buyList.items)
-
           self?.buyContentList = buyList.items
         }
       }.catch { error in
-        print("fetchBuYLISTERR")
         dump(error)
       }
     }

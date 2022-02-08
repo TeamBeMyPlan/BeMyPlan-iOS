@@ -187,7 +187,6 @@ class SignUpVC: UIViewController {
     let nickRegEx = "[가-힣A-Za-z0-9]{2,20}"
     
     let pred = NSPredicate(format:"SELF MATCHES %@", nickRegEx)
-    print("NICKNAME",nickname,pred.evaluate(with: nickname))
     return pred.evaluate(with: nickname)
   }
   

@@ -9,7 +9,6 @@ import UIKit
 
 class BarSelectButton : UIButton{
   func setButtonState(isSelected : Bool){
-    print("SETBUTTONSTATE",isSelected)
     layer.cornerRadius = 5
     layer.borderWidth = 1
     layer.borderColor = isSelected ? UIColor.bemyBlue.cgColor :

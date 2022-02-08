@@ -111,8 +111,6 @@ class PlanDetailMapContainerView: XibView,MTMapViewDelegate{
     }
     mapItem.mapPoint = MTMapPoint(geoCoord: MTMapPointGeo(latitude:  mapData.latitude,
                                                           longitude: mapData.longtitude))
-    print("CURRENTITEM",mapData.title,currentDay)
-    print("만들어지는 아이템",mapData.title,mapData.latitude,mapData.longtitude,isEnabled)
     return mapItem
   }
   
@@ -127,7 +125,6 @@ class PlanDetailMapContainerView: XibView,MTMapViewDelegate{
     sizingLabel.font = .systemFont(ofSize: 12)
     sizingLabel.text = name
     sizingLabel.sizeToFit()
-    print("SIZINGLABAEL",sizingLabel.frame.width, name)
     if sizingLabel.frame.width <= 120{
       return sizingLabel.frame.width + 30
     }else{

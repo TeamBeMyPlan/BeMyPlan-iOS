@@ -64,13 +64,10 @@ class ScrapContainerView: XibView {
   private func scrapBtnAPI() {
     BaseService.default.postScrapBtnTapped(postId: postId) { result in
       result.success { data in
-        dump("#### \(data)")
         if let testedData = data {
-          print("---> 버튼클릭값 \(testedData)")
           self.scrapBtnData = testedData.scrapped
         }
       }.catch { error in
-        dump("&&&& \(error)")
         if let err = error as? MoyaError {
           dump(err)
         }
