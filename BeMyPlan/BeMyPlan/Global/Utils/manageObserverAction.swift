@@ -8,7 +8,7 @@
 import Foundation
 
 extension NSObject{
-  func postNotication(_ keyName :BaseNotiList, object : Any? = nil){
+  func postObserverAction(_ keyName :BaseNotiList, object : Any? = nil){
     NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: keyName), object: object)
   }
   
@@ -22,6 +22,4 @@ extension NSObject{
   func removeObserverAction(_ keyName : BaseNotiList){
     NotificationCenter.default.removeObserver(self, name: BaseNotiList.makeNotiName(list: keyName), object: nil)
   }
-
-  
 }

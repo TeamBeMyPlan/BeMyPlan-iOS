@@ -45,7 +45,7 @@ class PlanDetailSelectDayView: XibView{
   }
   
   @IBAction func foldButtonClicked(_ sender: Any) {
-    NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: "planDetailButtonClicked"), object: nil)
+    postObserverAction(.planDetailButtonClicked)
   }
   
   func setFoldImage(isFolded: Bool){
@@ -60,8 +60,7 @@ class PlanDetailSelectDayView: XibView{
   }
   
   private func addObserver(){
-
-    addObserverAction(keyName: NSNotification.Name.init(rawValue: "detailFoldComplete")) { noti in
+    addObserverAction(.detailFoldComplete) { noti in
       if let result = noti.object as? Bool{
         self.setFoldImage(isFolded: result)
       }

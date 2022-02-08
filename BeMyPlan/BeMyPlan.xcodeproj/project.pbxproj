@@ -116,7 +116,6 @@
 		FD20C615278ECBE800AC6E34 /* MyPlanEmptyBuyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD20C614278ECBE800AC6E34 /* MyPlanEmptyBuyListView.swift */; };
 		FD20C617278ECBF000AC6E34 /* MyPlanEmptyBuyListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD20C616278ECBF000AC6E34 /* MyPlanEmptyBuyListView.xib */; };
 		FD20C61A278EDCF900AC6E34 /* BaseVC + Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD20C619278EDCF900AC6E34 /* BaseVC + Notification.swift */; };
-		FD20C61C278EEFAB00AC6E34 /* addObserverAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD20C61B278EEFAB00AC6E34 /* addObserverAction.swift */; };
 		FD20C620278EF0C900AC6E34 /* MyPlanSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD20C61F278EF0C900AC6E34 /* MyPlanSettingVC.swift */; };
 		FD20C623278EF11000AC6E34 /* MyPlanWithdrawVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD20C622278EF11000AC6E34 /* MyPlanWithdrawVC.swift */; };
 		FD20C626278EF6AE00AC6E34 /* BarSelectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD20C625278EF6AE00AC6E34 /* BarSelectButton.swift */; };
@@ -371,7 +370,6 @@
 		FD20C614278ECBE800AC6E34 /* MyPlanEmptyBuyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlanEmptyBuyListView.swift; sourceTree = "<group>"; };
 		FD20C616278ECBF000AC6E34 /* MyPlanEmptyBuyListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyPlanEmptyBuyListView.xib; sourceTree = "<group>"; };
 		FD20C619278EDCF900AC6E34 /* BaseVC + Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BaseVC + Notification.swift"; sourceTree = "<group>"; };
-		FD20C61B278EEFAB00AC6E34 /* addObserverAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addObserverAction.swift; sourceTree = "<group>"; };
 		FD20C61F278EF0C900AC6E34 /* MyPlanSettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlanSettingVC.swift; sourceTree = "<group>"; };
 		FD20C622278EF11000AC6E34 /* MyPlanWithdrawVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlanWithdrawVC.swift; sourceTree = "<group>"; };
 		FD20C625278EF6AE00AC6E34 /* BarSelectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarSelectButton.swift; sourceTree = "<group>"; };
@@ -790,7 +788,6 @@
 				FDF980D52786D5320009A14E /* makePayBoocFont.swift */,
 				FDC47E122789875800A152E8 /* makeCellInstance.swift */,
 				FD4C86AF278BD17F00D37A2D /* setImage.swift */,
-				FD20C61B278EEFAB00AC6E34 /* addObserverAction.swift */,
 				FD61AFD92791DB9100D39F47 /* PanDirectionGesture.swift */,
 				FD93028727A3F9B800341C2A /* downloadImage.swift */,
 				FD2C9E1227B241AF00422E6B /* manageObserverAction.swift */,
@@ -1709,7 +1706,6 @@
 				FDCE382427993E740042DC54 /* PlanDetailVC + setPreviewDummy.swift in Sources */,
 				523C70B32796EC890073371D /* ScrapBtnDataModel.swift in Sources */,
 				FDF7FECC27A7E1DD00E3AB62 /* LaunchInstructor.swift in Sources */,
-				FD20C61C278EEFAB00AC6E34 /* addObserverAction.swift in Sources */,
 				FD2D9C582796B02000688A42 /* PlanDetailVC + fetchData.swift in Sources */,
 				FD3211AB27841948007D63D5 /* SceneDelegate.swift in Sources */,
 				F250440A2799CFEB00791AB7 /* AuthService.swift in Sources */,
