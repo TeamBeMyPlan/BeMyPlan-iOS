@@ -10,7 +10,6 @@ import UIKit
 class SplashVC: UIViewController {
   
   // MARK: - Vars & Lets Part
-  
   var isLoginComplete = false
   private let factory: ModuleFactoryProtocol = ModuleFactory.resolve()
   
