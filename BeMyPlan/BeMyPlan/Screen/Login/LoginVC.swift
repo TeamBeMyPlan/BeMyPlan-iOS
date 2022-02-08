@@ -14,8 +14,9 @@ class LoginVC: UIViewController {
   
   // MARK: - Vars & Lets Part
   
+  private let factory: ModuleFactoryProtocol = ModuleFactory.resolve()
+
   // MARK: - UI Component Part
-  
   
   @IBOutlet var mainIcon: UIImageView!{
     didSet{ mainIcon.alpha = 0}
@@ -40,7 +41,9 @@ class LoginVC: UIViewController {
   override func viewWillAppear(_ animated: Bool) {
     showAnimation()
   }
+  
   // MARK: - IBAction Part
+  
   @IBAction func touchUpToGoBaseView(_ sender: Any) {
     makeVibrate()
     self.moveBaseVC()
@@ -56,12 +59,12 @@ class LoginVC: UIViewController {
       self.searchLabel.alpha = 1
     }
   }
+  
   func setBtnActions() {
     //IBAction 대용으로 만든 함수
     self.kakaoLoginBtn.press(animated: true) {
       // FIXME: - 테플전용으로 함수 체인지 한거라 다시 kakaoLogin으로 교체해야함!
-      self.moveBaseVC()
-//      self.kakaoLogin()
+      self.kakaoLogin()
     }
 
     self.appleLoginBtn.press(animated: true) {
@@ -70,24 +73,21 @@ class LoginVC: UIViewController {
   }
   
   func moveSignup(){
-    guard let signupVC = UIStoryboard.list(.signup).instantiateViewController(withIdentifier: SignUpVC.className) as? SignUpVC else {return}
+    let signupVC = factory.instantiateSignupVC()
     signupVC.modalPresentationStyle = .overFullScreen
     signupVC.delegate = self
     self.present(signupVC, animated: true, completion: nil)
   }
   
    func moveBaseVC(){
-     guard let baseVC = UIStoryboard.list(.base).instantiateViewController(withIdentifier: BaseNC.className) as? BaseNC else {return}
+     let baseVC = factory.instantiateBaseVC()
      baseVC.modalPresentationStyle = .fullScreen
      self.present(baseVC, animated: false, completion: nil)
   }
-  
-  // MARK: - @objc Function Part
-  
 }
+
 extension LoginVC : SignupDelegate{
   func loginComplete() {
     moveBaseVC()
   }
-  
 }
