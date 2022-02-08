@@ -1,17 +1,9 @@
 
-
-force_cast: # From https://realm.github.io/SwiftLint/force_cast.html
-    warning
-    
-    
 function_body_length:
     error:  200
 
 trailing_whitespace:
     ignores_empty_lines: true
-    
-line_length:
-    error:   100
     
 type_name:
   min_length: 1 # only warning
@@ -20,16 +12,16 @@ type_name:
     error: 40
     
 
-force_cast: warning
 force_try: warning
 
 disabled_rules: # Default Rules에서 비활성화할 규칙
     
     # 라인 뒤에 공백이 없어야 합니다. https://realm.github.io/SwiftLint/trailing_whitespace.html
-    - trailing_whitespace
+    - line_length
     - shorthand_operator
     - identifier_name
     # 강제 언래핑은 피해야합니다. https://realm.github.io/SwiftLint/force_unwrapping.html
+    - force_cast
     - opening_brace
     - unused_optional_binding
     - statement_position
@@ -40,15 +32,17 @@ disabled_rules: # Default Rules에서 비활성화할 규칙
     - unused_closure_parameter
     - private_over_fileprivate
     - empty_enum_arguments
-    - line_length
     - comma
     - void_return
     - vertical_parameter_alignment
     - unused_enumerated
     - control_statement
-    - force_cast
     - comment_spacing
     - for_where
+    - function_parameter_count
+    - class_delegate_protocol
+    - weak_delegate
+    - cyclomatic_complexity
 
 ### 배열을 사용해 warning과 error의 수준을 모두 설정할 수 있습니다.
 type_body_length:

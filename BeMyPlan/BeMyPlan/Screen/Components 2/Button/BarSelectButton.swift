@@ -16,4 +16,3 @@ class BarSelectButton : UIButton{
     titleLabel?.textColor = isSelected ? .bemyBlue : .grey04
   }
 }
-

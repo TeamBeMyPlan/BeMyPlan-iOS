@@ -35,5 +35,3 @@ extension PlanPreview{
     case month
   }
 }
-
-

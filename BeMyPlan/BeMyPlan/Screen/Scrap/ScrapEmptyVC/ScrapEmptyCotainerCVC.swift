@@ -12,7 +12,6 @@ class ScrapEmptyCotainerCVC: UICollectionViewCell,UICollectionViewRegisterable {
   static var isFromNib: Bool = true
   @IBOutlet var titleLabel: UILabel!
   
-  
   override func awakeFromNib() {
     super.awakeFromNib()
     setUIs()

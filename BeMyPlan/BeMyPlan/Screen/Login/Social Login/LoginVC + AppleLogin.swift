@@ -39,8 +39,7 @@ extension LoginVC : ASAuthorizationControllerDelegate {
       let tokenString = String(data: identityToken!, encoding: .utf8)
       
       //성공할 때 성공VC로 이동
-      print("SOCIAL TOKEN", tokenString)
-        self.moveBaseVC()
+      self.moveBaseVC()
 
     default:
       //실패할 때 실패VC로 이동

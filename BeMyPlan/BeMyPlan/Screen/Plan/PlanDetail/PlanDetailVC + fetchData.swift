@@ -10,7 +10,6 @@ import SnapKit
 
 extension PlanDetailVC{
   func fetchPlanDetailData(){
-    print("FETCHCHCHC",postIdx)
     BaseService.default.getPlanDetailData(idx: postIdx) { result in
       result.success { [weak self] data in
         
@@ -33,9 +32,7 @@ extension PlanDetailVC{
           for (_,daySpotDataList) in detailData.spots.enumerated(){
             var mapPointList : [PlanDetailMapData] = []
             var summaryList : [PlanDetail.Summary] = []
-            var infoList : [PlanDetail.SpotData] = []
-            print("DAYSPOTLIST",daySpotDataList.count)
-            
+            var infoList : [PlanDetail.SpotData] = []            
             for (_,eachDayData) in daySpotDataList.enumerated(){
               
               if let dayData = eachDayData{
@@ -69,12 +66,11 @@ extension PlanDetailVC{
           }
         }
         
-        
       }.catch { err in
         self.closeIndicator {
           print("🍎DETAIL ERRR")
           dump(err)
-          NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .showNetworkError), object: nil)
+          self.postObserverAction(.showNetworkError)
         }
       }
     }

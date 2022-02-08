@@ -48,8 +48,6 @@ class HomeVC: UIViewController, UIGestureRecognizerDelegate {
       mainListViewHeightConstraint.constant = cellHeight + 75
     }
   }
-  
-  
   @IBOutlet var mainEditorViewHeightConstraint: NSLayoutConstraint! {
     didSet {
       let screenWidth = UIScreen.main.bounds.width
@@ -91,8 +89,4 @@ class HomeVC: UIViewController, UIGestureRecognizerDelegate {
   //    mainListView.mainListDataList = a
   //    mainEditorListView.mainListDataList = b
   //  }
-  
-  
-  
-  
 }

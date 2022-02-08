@@ -25,10 +25,6 @@ class PlanPreviewDescriptionTVC: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-    
-  // MARK: - IBAction Part
-
-  
   // MARK: - Custom Method Part
   
   private func setUI(){
@@ -61,17 +57,4 @@ class PlanPreviewDescriptionTVC: UITableViewCell {
       descriptionTextView.text = ""
     }
   }
-
-  
-  // MARK: - @objc Function Part
-
 }
-
-// MARK: - Extension Part
-
-
-
-
-
-
-

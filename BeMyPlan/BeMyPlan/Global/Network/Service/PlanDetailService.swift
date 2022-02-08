@@ -15,6 +15,4 @@ extension BaseService : PlanDetailServiceType{
   func getPlanDetailData(idx: Int, completion: @escaping (Result<PlanDetailDataGettable?, Error>) -> Void) {
     requestObject(.getPlanDetailData(idx: idx), completion: completion)
   }
-  
-  
 }

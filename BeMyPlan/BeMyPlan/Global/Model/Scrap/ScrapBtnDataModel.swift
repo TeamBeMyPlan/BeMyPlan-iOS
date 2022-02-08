@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 //struct ScrapBtnDataGettable: Codable {
 //    let scrapped: Bool
 //}

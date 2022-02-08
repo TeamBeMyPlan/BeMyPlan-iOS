@@ -199,8 +199,6 @@ extension PlanPreviewVC : UIScrollViewDelegate{
     }
   }
 }
-
-
 enum ViewState{
   case hide
   case show

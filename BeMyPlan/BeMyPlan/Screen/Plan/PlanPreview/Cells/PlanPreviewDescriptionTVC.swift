@@ -8,27 +8,23 @@
 import UIKit
 
 class PlanPreviewDescriptionTVC: UITableViewCell {
-
+  
   // MARK: - Vars & Lets Part
-
+  
   // MARK: - UI Component Part
   @IBOutlet var descriptionTextView: UITextView!
   @IBOutlet var descriptionIconView: PreviewIconContainerView!
   
   // MARK: - Life Cycle Part
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-      setUI()
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
-    
-  // MARK: - IBAction Part
-
   
+  override func awakeFromNib() {
+    super.awakeFromNib()
+    setUI()
+  }
+  
+  override func setSelected(_ selected: Bool, animated: Bool) {
+    super.setSelected(selected, animated: animated)
+  }
   // MARK: - Custom Method Part
   
   private func setUI(){
@@ -41,9 +37,9 @@ class PlanPreviewDescriptionTVC: UITableViewCell {
     let attributes = [NSAttributedString.Key.paragraphStyle: style]  as [NSAttributedString.Key: Any]
     
     descriptionTextView.attributedText = NSAttributedString(
-        string: descriptionTextView.text,
-        attributes: attributes)
-
+      string: descriptionTextView.text,
+      attributes: attributes)
+    
     descriptionTextView.font = UIFont.systemFont(ofSize: 14)
     descriptionTextView.textColor = .grey01
     
@@ -60,9 +56,4 @@ class PlanPreviewDescriptionTVC: UITableViewCell {
       descriptionTextView.text = ""
     }
   }
-
-  // MARK: - @objc Function Part
-
 }
-
-

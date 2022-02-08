@@ -55,8 +55,6 @@ class PlanDetailVC: UIViewController {
       mainContainerTV.tableFooterView = UIView()
     }
   }
-  
-  
   // MARK: - Constarints Components Part
   @IBOutlet var writerBlockHeightConstraint: NSLayoutConstraint!
   @IBOutlet var mapContainerHeightConstraint: NSLayoutConstraint!
@@ -85,25 +83,23 @@ class PlanDetailVC: UIViewController {
 //    self.navigationController?.removePopGesture()
   }
 
-  
   // MARK: - Custom Methods Parts
   
   @IBAction func backButtonClicked(_ sender: Any) {
     self.navigationController?.popViewController(animated: true)
   }
   private func addObserver(){
-    addObserverAction(keyName: NSNotification.Name.init(rawValue: "planDetailButtonClicked")) { _ in
+    addObserverAction(.planDetailButtonClicked) { _ in
       self.isFullPage = !self.isFullPage
     }
-    addObserverAction(keyName: NSNotification.Name.init(rawValue: "foldStateChanged")) { noti in
+    
+    addObserverAction(.foldStateChanged) { noti in
       if let state = noti.object as? Bool{
         self.isFold = state
         self.mainContainerTV.reloadData()
       }
     }
   }
-  
-
   
   private func registerCells(){
     PlanDetailSummaryTVC.register(target: mainContainerTV)
@@ -142,7 +138,7 @@ class PlanDetailVC: UIViewController {
                    options: .curveEaseOut) {
       self.view.layoutIfNeeded()
     } completion: { _ in
-      NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: "detailFoldComplete"), object: self.isFullPage)
+      self.postObserverAction(.detailFoldComplete, object: self.isFullPage)
     }
 
   }
@@ -150,10 +146,8 @@ class PlanDetailVC: UIViewController {
 }
 
 extension PlanDetailVC : UITableViewDelegate{
-
-  
+ 
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-  
     return UITableView.automaticDimension
   }
   
@@ -239,7 +233,6 @@ extension PlanDetailVC : UIScrollViewDelegate{
     let visibleIndex = mainContainerTV.indexPathForRow(at: visiblePoints)
     if let visibleIndex = visibleIndex {
       mapContainerView.currentIndex = visibleIndex.row
-      print("ddddddd",visibleIndex.row)
     }
   }
 }
@@ -286,5 +279,4 @@ extension PlanDetailVC : UIGestureRecognizerDelegate {
   ) -> Bool {
     return false
   }
-
 }

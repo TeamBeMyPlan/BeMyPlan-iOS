@@ -65,7 +65,7 @@ class PaymentSelectVC: UIViewController {
   // MARK: - @objc Function Part
   
   deinit {
-    paymentButtonList = nil;
+    paymentButtonList = nil
   }
 }
 enum PaymentList{
@@ -73,4 +73,3 @@ enum PaymentList{
   case toss
   case naverPay
 }
-

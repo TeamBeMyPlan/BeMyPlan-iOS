@@ -19,6 +19,7 @@ class BaseVC: UIViewController {
     didSet{ runTabClickAction() }
   }
   var currentTabList : [TabList] = []
+  let factory: ModuleFactoryProtocol = ModuleFactory.resolve()
   
   // MARK: - UI Component Part
   
@@ -87,8 +88,6 @@ class BaseVC: UIViewController {
       }
     }
   }
-
-  
   private func showContainerView(){
     UIView.animate(withDuration: 0.5) { [unowned self] in
       self.containerView.alpha = 1

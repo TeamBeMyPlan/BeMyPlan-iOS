@@ -8,10 +8,6 @@
 import UIKit
 
 class MyPlanWithdrawVC: UIViewController {
-  
-  // MARK: - Vars & Lets Part
-  
-  
   // MARK: - UI Component Part
   
   @IBOutlet var contentTextView: UITextView!{
@@ -38,10 +34,6 @@ class MyPlanWithdrawVC: UIViewController {
   override func viewWillDisappear(_ animated: Bool) {
     unregisterForKeyboardNotifications()
   }
-  
-  // MARK: - IBAction Part
-  
-  
   // MARK: - Custom Method Part
   
   private func registerForKeyboardNotifications() {

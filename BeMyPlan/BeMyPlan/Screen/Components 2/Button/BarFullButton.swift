@@ -16,4 +16,3 @@ class BarFullButton : UIButton{
     titleLabel?.text = title
   }
 }
-

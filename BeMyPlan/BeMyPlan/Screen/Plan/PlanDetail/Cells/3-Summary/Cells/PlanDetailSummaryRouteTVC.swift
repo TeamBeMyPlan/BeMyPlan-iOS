@@ -114,8 +114,6 @@ class PlanDetailSummaryRouteTVC: UITableViewCell,UITableViewRegisterable {
   }
   
   func makeDashedLine(from point1: CGPoint, to point2: CGPoint, color: UIColor, strokeLength: NSNumber, gapLength: NSNumber, width: CGFloat) {
-
-
       shapeLayer.strokeColor = color.cgColor
       shapeLayer.lineWidth = width
       shapeLayer.lineDashPattern = [strokeLength, gapLength]

@@ -30,6 +30,4 @@ struct HomeListDataGettable: Codable {
       
     }
   }
-
-
 }

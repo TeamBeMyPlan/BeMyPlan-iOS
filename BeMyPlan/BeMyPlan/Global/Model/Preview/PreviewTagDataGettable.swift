@@ -35,6 +35,4 @@ extension PlanPreview{
           case authorID = "author_id"
       }
   }
-
-
 }

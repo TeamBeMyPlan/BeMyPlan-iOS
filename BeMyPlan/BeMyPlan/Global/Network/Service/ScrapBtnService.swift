@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 protocol ScrapBtnService {
 //  func postScrapBtnTapped(postId: Int, userId: Int, completion: @escaping (Result<[ScrapBtnDataGettable]?, Error>) -> Void)
   func postScrapBtnTapped(postId: Int, completion: @escaping (Result<ScrapBtnDataGettable?, Error>) -> Void)

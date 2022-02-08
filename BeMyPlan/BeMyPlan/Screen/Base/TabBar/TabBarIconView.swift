@@ -6,8 +6,6 @@
 //
 
 import UIKit
-
-
 class TabBarIconView : XibView{
   
   var delegate: TabBarDelegate?

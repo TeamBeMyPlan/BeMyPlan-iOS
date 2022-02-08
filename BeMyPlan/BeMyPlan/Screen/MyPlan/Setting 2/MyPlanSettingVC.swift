@@ -8,10 +8,6 @@
 import UIKit
 
 class MyPlanSettingVC: UIViewController {
-  
-  // MARK: - Vars & Lets Part
-  
-  
   // MARK: - UI Component Part
   
   @IBOutlet var uploadButton: UIButton!
@@ -27,21 +23,16 @@ class MyPlanSettingVC: UIViewController {
     super.viewDidLoad()
     addButtonActions()
   }
-  
-  // MARK: - IBAction Part
-  
-  
+
   // MARK: - Custom Method Part
   
   private func addButtonActions(){
     uploadButton.press {
-      
     }
     
     askButton.press {
-      
     }
-    
+  
     serviceTermButton.press {
       
     }
@@ -53,11 +44,5 @@ class MyPlanSettingVC: UIViewController {
     withdrawButton.press {
         NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .moveSettingWithdrawView), object: nil)
     }
-
   }
-  
-  
-  // MARK: - @objc Function Part
-  
 }
-// MARK: - Extension Part

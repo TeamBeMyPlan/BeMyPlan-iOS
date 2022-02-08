@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol ModuleFactroyProtocol {
+protocol ModuleFactoryProtocol {
   
   // MARK: - Splash
   func instantiateSplashVC() -> SplashVC
@@ -17,6 +17,7 @@ protocol ModuleFactroyProtocol {
   func instantiateSignupVC() -> SignUpVC
   
   // MARK: - BaseTab
+  func instantiateBaseNC() -> BaseNC
   func instantiateBaseVC() -> BaseVC
   
   // MARK: - Home
@@ -30,6 +31,8 @@ protocol ModuleFactroyProtocol {
   
   // MARK: - MyPlan
   func instantiateMyPlanVC() -> MyPlanVC
+  func instantiateMyPlanSettingVC() -> MyPlanSettingVC
+  func instantiateMyPlanWithdrawVC() -> MyPlanWithdrawVC
   
   // MARK: - Payment
   func instantiatePaymentSelectVC() -> PaymentSelectVC
@@ -41,9 +44,12 @@ protocol ModuleFactroyProtocol {
   
   // MARK: - PlanList
   func instantiatePlanListVC() -> TravelSpotDetailVC
+  
+  // MARK: - Indiciator
+  func instantiateIndicatorVC() -> IndicatorVC
 }
 
-class ModuleFactory: ModuleFactroyProtocol{
+class ModuleFactory: ModuleFactoryProtocol{
 
   static func resolve() -> ModuleFactory {
     return ModuleFactory()
@@ -64,6 +70,10 @@ class ModuleFactory: ModuleFactroyProtocol{
   }
   
   // MARK: - Base Tap
+  
+  func instantiateBaseNC() -> BaseNC {
+    return BaseNC.controllerFromStoryboard(.base)
+  }
 
   func instantiateBaseVC() -> BaseVC {
     return BaseVC.controllerFromStoryboard(.base)
@@ -92,6 +102,14 @@ class ModuleFactory: ModuleFactroyProtocol{
     return MyPlanVC.controllerFromStoryboard(.myPlan)
   }
   
+  func instantiateMyPlanSettingVC() -> MyPlanSettingVC {
+    return MyPlanSettingVC.controllerFromStoryboard(.myPlan)
+  }
+  
+  func instantiateMyPlanWithdrawVC() -> MyPlanWithdrawVC {
+    return MyPlanWithdrawVC.controllerFromStoryboard(.myPlan)
+  }
+  
   // MARK: - Payment
 
   func instantiatePaymentSelectVC() -> PaymentSelectVC {
@@ -114,6 +132,14 @@ class ModuleFactory: ModuleFactroyProtocol{
   
   func instantiatePlanListVC() -> TravelSpotDetailVC {
     return TravelSpotDetailVC.controllerFromStoryboard(.travelSpot)
+  }
+  
+  // MARK: - Indicator
+  func instantiateIndicatorVC() -> IndicatorVC{
+    let indicatorVC = IndicatorVC.controllerFromStoryboard(.indicator)
+    indicatorVC.modalTransitionStyle = .crossDissolve
+    indicatorVC.modalPresentationStyle = .overCurrentContext
+    return indicatorVC
   }
   
 }

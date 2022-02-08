@@ -29,8 +29,6 @@ final class Animator {
       }
     }
 }
-
-
 enum AnimationFactory {
   static func makeFadeAnimation(duration: TimeInterval, delayFactor: Double) -> Animation {
       return { cell, indexPath, _ in

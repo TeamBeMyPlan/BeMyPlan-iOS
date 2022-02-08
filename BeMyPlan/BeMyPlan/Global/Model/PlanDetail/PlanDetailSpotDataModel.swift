@@ -7,8 +7,6 @@
 
 import Foundation
 
-
-
 extension PlanDetail{
   struct SpotData{
     var locationTitle : String

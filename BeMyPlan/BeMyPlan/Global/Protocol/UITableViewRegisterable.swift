@@ -21,7 +21,5 @@ extension UITableViewRegisterable where Self: UITableViewCell {
         }
     }
 }
-
-
 //필요한 셀에 TVC.register(target:TV이름) 형태로 등록 해주기!!!! (원래는 TVC, TV위치가 반대)
 //isFromNib는 true일 경우에는 Xib로 TVC 만든거고, false일 경우에는 코드로 TVC 만든거!

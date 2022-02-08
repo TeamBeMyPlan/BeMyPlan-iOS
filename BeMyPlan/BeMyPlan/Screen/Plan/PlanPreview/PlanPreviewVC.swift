@@ -67,8 +67,6 @@ class PlanPreviewVC: UIViewController {
   
   @IBAction func previewButtonClicked(_ sender: Any) {
     guard let previewVC = UIStoryboard.list(.planDetail).instantiateViewController(withIdentifier: PlanDetailVC.className) as? PlanDetailVC else {return}
-    
-    
     previewVC.isPreviewPage = true
     self.navigationController?.pushViewController(previewVC, animated: true)
   }
@@ -148,9 +146,6 @@ class PlanPreviewVC: UIViewController {
     BaseService.default.getPlanPreviewDetailData(idx: idx) { result in
       result.success { [weak self] data in
         if let data = data{
-          
-          print("GET SUCCESS")
-          dump(data)
           var photoList : [PlanPreview.PhotoData] = []
           for (_,item) in data.enumerated(){
             photoList.append(PlanPreview.PhotoData.init(photo: item.photoUrls.first ?? "",
@@ -167,7 +162,7 @@ class PlanPreviewVC: UIViewController {
       }.catch { err in
         
         self.closeIndicator{
-          NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .showNetworkError), object: nil)
+          self.postObserverAction(.showNetworkError)
         }
 
       }
@@ -221,8 +216,6 @@ extension PlanPreviewVC : UITableViewDataSource{
         
       case .recommend:
         guard let recommendCell = tableView.dequeueReusableCell(withIdentifier: PlanPreviewRecommendTVC.className, for: indexPath) as? PlanPreviewRecommendTVC else {return UITableViewCell() }
-        
-        
         return recommendCell
     }
   }
@@ -277,7 +270,6 @@ extension PlanPreviewVC : UIScrollViewDelegate{
     }
   }
 }
-
 
 enum ViewState{
   case hide
