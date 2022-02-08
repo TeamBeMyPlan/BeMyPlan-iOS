@@ -87,8 +87,6 @@ class BaseVC: UIViewController {
       }
     }
   }
-
-  
   private func showContainerView(){
     UIView.animate(withDuration: 0.5) { [unowned self] in
       self.containerView.alpha = 1

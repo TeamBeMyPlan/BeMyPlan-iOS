@@ -35,8 +35,7 @@ class PlanPreviewWriterTVC: UITableViewCell,UITableViewRegisterable{
   }
   
   // MARK: - IBAction Part
-  
-  
+
   @IBAction func nicknameButtonClicked(_ sender: Any) {
     let data = PlanWriterDataModel.init(authorName: nickname,
                                         authorID: authID)
@@ -70,8 +69,6 @@ class PlanPreviewWriterTVC: UITableViewCell,UITableViewRegisterable{
     titleLabel.text = (title != nil) ? title : ""
     titleLabel.sizeToFit()
   }
-  
-  
 }
 
 struct PlanWriterDataModel{

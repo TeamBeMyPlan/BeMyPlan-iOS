@@ -10,9 +10,6 @@ import MessageUI
 
 class MyPlanSettingVC: UIViewController, MFMailComposeViewControllerDelegate {
   
-  // MARK: - Vars & Lets Part
-  
-  
   // MARK: - UI Component Part
   
   @IBOutlet var uploadButton: UIButton!
@@ -33,9 +30,6 @@ class MyPlanSettingVC: UIViewController, MFMailComposeViewControllerDelegate {
     super.viewDidLoad()
     addButtonActions()
   }
-  
-  // MARK: - IBAction Part
-  
   
   // MARK: - Custom Method Part
   

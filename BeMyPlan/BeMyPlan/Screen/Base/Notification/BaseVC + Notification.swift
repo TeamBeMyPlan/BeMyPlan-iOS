@@ -45,7 +45,6 @@ enum BaseNotiList : String{
 
 extension BaseVC{
   func addObservers(){
-    
     addObserverAction(.showIndicator) { _ in
       guard let indicatorVC = UIStoryboard.list(.indicator).instantiateViewController(withIdentifier: IndicatorVC.className) as? IndicatorVC else {return}
       indicatorVC.modalTransitionStyle = .crossDissolve
@@ -68,7 +67,6 @@ extension BaseVC{
     addObserverAction(.copyComplete) { noti in
       self.makeAlert(alertCase: .simpleAlert, title: I18N.Alert.alarm, content: I18N.Alert.copyComplete)
     }
-    
     
     addObserverAction(.moveSettingView) { _ in
       guard let settingVC = UIStoryboard.list(.myPlan).instantiateViewController(withIdentifier: MyPlanSettingVC.className) as? MyPlanSettingVC else {return}

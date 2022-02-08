@@ -20,11 +20,4 @@ class PaymentCompleteVC: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
   }
-
-  // MARK: - Custom Method Part
-
-  
-  // MARK: - @objc Function Part
-
 }
-// MARK: - Extension Part

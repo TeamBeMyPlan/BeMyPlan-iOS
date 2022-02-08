@@ -48,9 +48,7 @@ class TravelSpotFilterVC: UIViewController {
     priceBtn.setTitleColor(.grey02, for: .normal)
   }
 
-  
   // MARK: - IBAction Part
-  
   
   @IBAction func recentButtonClicked(_ sender: Any) {
     makeVibrate()
@@ -162,29 +160,3 @@ extension TravelSpotFilterVC: PanModalPresentable {
   }
 
 }
-
-
-
-
-
-/*
- class TravelSpotVC: UIViewController {
- 
- // MARK: - Vars & Lets Part
- 
- // MARK: - UI Component Part
- 
- // MARK: - Life Cycle Part
- override func viewDidLoad() {
- super.viewDidLoad()
- }
-  
- // MARK: - IBAction Part
- 
- // MARK: - Custom Method Part
- 
- // MARK: - @objc Function Part
- }
- 
- // MARK: - Extension Part
- */

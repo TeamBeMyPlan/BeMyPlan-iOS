@@ -32,7 +32,6 @@ class TravelSpotDetailVC: UIViewController {
   var type : TravelSpotDetailType = .travelspot
   var sortCase : SortCase = .recently
   
-  
   // MARK: - UI Component Part
   @IBOutlet var contentTableView: UITableView!
   @IBOutlet var headerLabel: UILabel!{
@@ -113,7 +112,6 @@ class TravelSpotDetailVC: UIViewController {
     }
   }
   
-  
   private func fetchTravelSpotDetailItemList(isRefresh: Bool) {
     BaseService.default.getPlanAllinOneList(area: areaId,
                                             userId: userId,
@@ -162,7 +160,6 @@ class TravelSpotDetailVC: UIViewController {
     refresh.attributedTitle = NSAttributedString(string: "")
     contentTableView.refreshControl = refresh
   }
-  
   
   // MARK: - @objc Function Part
   @objc func updateUI(refresh: UIRefreshControl) {

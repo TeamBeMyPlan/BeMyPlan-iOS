@@ -49,7 +49,7 @@ class TravelSpotVC: UIViewController {
         }
         self.locationCollectionView.reloadData()
       }.catch { error in
-        if let err = error as? MoyaError {
+        if let _ = error as? MoyaError {
         }
       }
     }
@@ -69,14 +69,10 @@ extension TravelSpotVC: UICollectionViewDataSource {
     return CGSize(width: width, height: height)
   }
 }
-
-
 extension TravelSpotVC: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return travelSpotDataList.count
   }
-  
-  
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TravelSpotCVC.identifier, for: indexPath) as? TravelSpotCVC else {return UICollectionViewCell()}
     

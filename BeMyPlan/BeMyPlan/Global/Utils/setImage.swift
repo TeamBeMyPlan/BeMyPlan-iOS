@@ -36,7 +36,6 @@ extension UIImageView {
     let placeholderImage = UIImage(named: "img_placeholder")
     let placeholder = placeholderImage
     
-
     self.kf.setImage(
       with: resource,
       placeholder: placeholder,
@@ -52,7 +51,4 @@ extension UIImageView {
       }
     )
   }
-
-  
 }
-

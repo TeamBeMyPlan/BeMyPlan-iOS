@@ -12,8 +12,3 @@ class ProgressBar: XibView {
   @IBOutlet var percentBarTrailingConstraint: NSLayoutConstraint!
   
 }
-
-
-
-
-

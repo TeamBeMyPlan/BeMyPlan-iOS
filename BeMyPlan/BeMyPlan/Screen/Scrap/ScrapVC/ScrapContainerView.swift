@@ -55,7 +55,7 @@ class ScrapContainerView: XibView {
         }
         self.contentCV.reloadData()
       }.catch { error in
-        if let err = error as? MoyaError {
+        if let _ = error as? MoyaError {
         }
       }
     }
@@ -74,9 +74,7 @@ class ScrapContainerView: XibView {
       }
     }
   }
-  
 }
-
 
 extension ScrapContainerView: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

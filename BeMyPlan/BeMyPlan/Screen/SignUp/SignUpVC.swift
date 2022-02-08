@@ -25,8 +25,6 @@ class SignUpVC: UIViewController {
       setStartBtnStatus()
     }
   }
-  
-  
   // MARK: - UI Component Part
   
   @IBOutlet var nicknameCountLabel: UILabel!
@@ -50,8 +48,6 @@ class SignUpVC: UIViewController {
   @IBOutlet var useAgreeImageView: UIImageView!
   @IBOutlet var infoAgreeImageView: UIImageView!
   @IBOutlet var startBtn: UIButton!
-  
-
   
   // MARK: - Life Cycle Part
   
@@ -102,7 +98,6 @@ class SignUpVC: UIViewController {
       startBtn.isEnabled = false
     }
   }
-  
   
   private func manageStatusList(){
     statusList[1] = statusList[0]
@@ -266,8 +261,6 @@ class SignUpVC: UIViewController {
             self?.setBtnStatus()
             self?.nicknameInputTextField.layer.borderColor = UIColor.alertRed.cgColor
           }
-          
-          
         }
       }.catch {error in
 //        self.pushSignUPVC(socialToken: socialToken, socialType: socialType)
@@ -290,7 +283,7 @@ class SignUpVC: UIViewController {
 }
 // MARK: - Extension Part
 extension SignUpVC : UITextFieldDelegate{
-  func textViewDidBeginEditing(_ textField: UITextField) {
+  private func textViewDidBeginEditing(_ textField: UITextField) {
     //텍스트가 있을 경우
     if textField.text == I18N.SignUp.NickName.placeHolder{
       nicknameInputTextField.text = ""
@@ -299,7 +292,7 @@ extension SignUpVC : UITextFieldDelegate{
     nicknameInputTextField.layer.borderColor = UIColor.alertRed.cgColor
   }
   
-  func textViewDidEndEditing(_ textField: UITextField) {
+  private func textViewDidEndEditing(_ textField: UITextField) {
     //비어있을 경우 --> 아무것도 뭐 없는디 ..
     if textField.text == nil {
       textField.text = I18N.MyPlan.Withdraw.placeHolder
@@ -307,8 +300,6 @@ extension SignUpVC : UITextFieldDelegate{
     }
     nicknameInputTextField.layer.borderColor = UIColor.grey04.cgColor
   }
-  
-  
   //  func textViewDidChange(_ textField: UITextField) {
   //    //      startBtn.setButtonState(isSelected: !nicknameInputTextField.text.isEmpty, title: I18N.Components.next)
   //    if let textField = textField as? UITextField {
@@ -326,8 +317,7 @@ extension SignUpVC : UITextFieldDelegate{
   //      }
   //    }
   //  }
-  
-  
+
 }
 protocol SignupDelegate{
   func loginComplete()

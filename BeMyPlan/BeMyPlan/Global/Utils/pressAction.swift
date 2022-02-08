@@ -27,7 +27,6 @@ extension UIButton {
       }, for: controlEvents)
   }
   
-  
   // 해당 함수를 통해서 Poppin 효과를 처리합니다. 줄어드는 정도를 조절하고싶다면 ,ScaleX,Y값을 조절합니다(최대값 1)
   func clickedAnimation() {
     makeVibrate(degree: .medium)

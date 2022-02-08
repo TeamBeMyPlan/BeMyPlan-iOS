@@ -67,8 +67,6 @@ class PlanPreviewVC: UIViewController {
   
   @IBAction func previewButtonClicked(_ sender: Any) {
     guard let previewVC = UIStoryboard.list(.planDetail).instantiateViewController(withIdentifier: PlanDetailVC.className) as? PlanDetailVC else {return}
-    
-    
     previewVC.isPreviewPage = true
     self.navigationController?.pushViewController(previewVC, animated: true)
   }
@@ -218,8 +216,6 @@ extension PlanPreviewVC : UITableViewDataSource{
         
       case .recommend:
         guard let recommendCell = tableView.dequeueReusableCell(withIdentifier: PlanPreviewRecommendTVC.className, for: indexPath) as? PlanPreviewRecommendTVC else {return UITableViewCell() }
-        
-        
         return recommendCell
     }
   }
@@ -274,7 +270,6 @@ extension PlanPreviewVC : UIScrollViewDelegate{
     }
   }
 }
-
 
 enum ViewState{
   case hide

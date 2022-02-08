@@ -63,7 +63,6 @@ class LoginVC: UIViewController {
   func setBtnActions() {
     //IBAction 대용으로 만든 함수
     self.kakaoLoginBtn.press(animated: true) {
-      // FIXME: - 테플전용으로 함수 체인지 한거라 다시 kakaoLogin으로 교체해야함!
       self.kakaoLogin()
     }
 

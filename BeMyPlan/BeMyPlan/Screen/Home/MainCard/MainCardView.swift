@@ -62,8 +62,7 @@ class MainCardView: UIView {
     
 //    let centerItemWidthScale: CGFloat = (327/375) * screenWidth
 //    let centerItemHeightScale: CGFloat = 1
-    let insetX : CGFloat = 24
-    
+//    let insetX : CGFloat = 24
 //    layout.itemSize = CGSize(width: mainCardCV.frame.size.width*centerItemWidthScale, height: mainCardCV.frame.size.height*centerItemHeightScale)
     
     //sideItemScale
@@ -140,8 +139,6 @@ class MainCardView: UIView {
       onCompleted()
     }
   }
-  
-  
 //  var id : Int
 //  var title : String
 //  var photo : String
@@ -223,10 +220,7 @@ extension MainCardView: UICollectionViewDelegateFlowLayout {
 //    0
 //  }
 }
-
-
 extension MainCardView : UIScrollViewDelegate {
-  
   func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
 //    let page = Int(targetContentOffset.pointee.x / self.frame.width)
     let layout = mainCardCV.collectionViewLayout as! UICollectionViewFlowLayout
@@ -235,12 +229,9 @@ extension MainCardView : UIScrollViewDelegate {
     var offSet = targetContentOffset.pointee
     let index = (offSet.x + scrollView.contentInset.left) / cellWidthIncludingSpacing
     let roundedIndex = round(index)
-    
-    
     offSet = CGPoint(x: roundedIndex * cellWidthIncludingSpacing - scrollView.contentInset.left,
                      y: -scrollView.contentInset.top)
     targetContentOffset.pointee = offSet
 //    self.pageControl.currentPage = Int(roundedIndex)
   }
-  
 }

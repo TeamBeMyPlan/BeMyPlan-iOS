@@ -39,7 +39,6 @@ class ScrapEmptyContainerView: XibView {
     fetchScrapRandomList()
   }
   
-  
   private func registerCells() {
     ScrapEmptyCotainerCVC.register(target: contentCV)
   }
@@ -96,7 +95,7 @@ extension ScrapEmptyContainerView: UICollectionViewDataSource {
     cell.setData(data: contentDataList[indexPath.row])
     
     return cell
-  }  
+  }
 }
 
 extension ScrapEmptyContainerView : UICollectionViewDelegate{

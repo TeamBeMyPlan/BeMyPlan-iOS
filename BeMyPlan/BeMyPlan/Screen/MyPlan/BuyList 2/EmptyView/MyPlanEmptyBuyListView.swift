@@ -8,8 +8,6 @@
 import UIKit
 
 class MyPlanEmptyBuyListView: XibView {
-
-
   @IBAction func clickedLookAroundButton(_ sender: Any) {
     print("둘러보기 눌림")
   }

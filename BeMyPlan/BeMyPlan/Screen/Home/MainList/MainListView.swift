@@ -77,13 +77,11 @@ class MainListView: UIView {
     postObserverAction(.moveHomeToPlanList,object: detailCase)
   }
   
-  
   // MARK: - Custom Method Part
   
   private func setTitle(){
     mainListCategotyLabel.text = (type == .recently ? "최신 여행 일정" : "에디터 추천 여행 일정")
   }
-  
   
   private func setMainListCV(){
     //    let cellWidth = (160/375) * screenWidth
@@ -122,7 +120,6 @@ class MainListView: UIView {
       result.success { [weak self] list in
         self?.mainListDataList.removeAll()
         
-        
         if let list = list {
           self?.mainListDataList = list.items
         }
@@ -142,8 +139,6 @@ class MainListView: UIView {
     self.mainListCV.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .grey04,secondaryColor: .grey05), animation: animation, transition: .crossDissolve(1))
     mainListCV.showSkeleton()
   }
-  
-  
   private func getSuggestListData(){
     BaseService.default.getSuggestTravelList(page: listIndex, sort: "created_at") { result in
       result.success { [weak self] list in
@@ -202,16 +197,11 @@ extension MainListView : UIScrollViewDelegate {
   func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
     //    let page = Int(targetContentOffset.pointee.x / self.frame.width)
     //
-    
-    
     let layout = self.mainListCV.collectionViewLayout as! UICollectionViewFlowLayout
     let cellWidthIncludingSpacing = layout.itemSize.width + layout.minimumLineSpacing
-    
-    
     var offset = targetContentOffset.pointee
     let index = (offset.x + scrollView.contentInset.left) / cellWidthIncludingSpacing
     var roundedIndex = round(index)
-    
     
     if scrollView.contentOffset.x > targetContentOffset.pointee.x {
       roundedIndex = floor(index)
@@ -234,5 +224,3 @@ extension MainListView : UIScrollViewDelegate {
   }
   
 }
-
-

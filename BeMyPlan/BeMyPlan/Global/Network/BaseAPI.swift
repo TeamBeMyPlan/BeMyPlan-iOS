@@ -20,8 +20,7 @@ enum BaseAPI{
   case postSocialLogin(socialToken: String, socialType: String)
   case postSocialSignUp(socialToken: String, socialType: String, nickName: String)
   case postNickNameCheck(nickName: String)
-  
-  
+
   // MARK: - 양원
   case getTravelSpotList
   case getRecentTripList(page: Int, pageSize: Int)
@@ -57,23 +56,9 @@ extension BaseAPI: TargetType {
       switch self{
       case .sampleAPI:
         base += ""
-        
-//      case .getPopularTravelList, .getNewTravelList, .getSuggestTravelList, .getRecentTripList, .getPlanPreviewHeaderData,
-//          .getPlanPreviewData, .getPlanDetailData:
-//        base += "/post"
-//        
-//      case .getTravelSpotList:
-//        base += "/area"
-//        
+
       case .getBuyList:
         base += "/order"
-//        
-//      case .deleteUserWithdraw, .postSocialLogin:
-//        base += "/auth"
-//        
-//        
-//      case .getTravelSpotDetailList:
-//        base += "/area"
       
     case .getPopularTravelList, .getNewTravelList, .getSuggestTravelList, .getRecentTripList, .getPlanPreviewHeaderData,
         .getPlanPreviewData, .getPlanDetailData:
@@ -82,10 +67,8 @@ extension BaseAPI: TargetType {
     case .getTravelSpotList:
       base += "/area"
     
-      
     case .deleteUserWithdraw, .postSocialLogin, .postSocialSignUp, .postNickNameCheck:
       base += "/auth"
-      
       
     case .getTravelSpotDetailList:
       base += "/area"
@@ -134,7 +117,6 @@ extension BaseAPI: TargetType {
     case .getScrapEmptyList:
       return "/"
     
- 
 //    case .getScrapList(let userId, _, _, _):
 //      return "/\(userId)"
     case .getScrapList(_, _, _):
@@ -156,12 +138,9 @@ extension BaseAPI: TargetType {
     }
   }
   
-  
-  
   // MARK: - Method
   /// - note :
   ///  각 case 별로 get,post,delete,put 인지 정의합니다.
-  
   var method: Moya.Method {
     switch self{
     case .sampleAPI, .postScrapBtn, .postSocialLogin, .postSocialSignUp, .postNickNameCheck:
@@ -198,7 +177,7 @@ extension BaseAPI: TargetType {
       params["pageSize"] = 5
       params["sort"] = sort
       
-    case .getNicknameDetailList(let userId, let page, _, let sort):
+    case .getNicknameDetailList(_, let page, _, let sort):
       params["page"] = page
       params["pageSize"] = 5
       params["sort"] = sort
@@ -287,8 +266,7 @@ extension BaseAPI: TargetType {
       
     }
   }
-  
-  
+
   public var headers: [String: String]? {
     if let userToken = UserDefaults.standard.string(forKey: "userToken") {
       return ["Authorization": userToken,

@@ -66,7 +66,6 @@ extension PlanDetailVC{
           }
         }
         
-        
       }.catch { err in
         self.closeIndicator {
           print("🍎DETAIL ERRR")

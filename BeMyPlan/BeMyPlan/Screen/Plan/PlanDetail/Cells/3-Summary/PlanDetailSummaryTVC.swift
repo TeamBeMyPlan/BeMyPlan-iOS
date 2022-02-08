@@ -56,7 +56,6 @@ class PlanDetailSummaryTVC: UITableViewCell,UITableViewRegisterable{
     super.setSelected(selected, animated: animated)
   }
   
-  
   private func calculateSummaryHeight(){
     var totalHeight : CGFloat = 0
 
@@ -80,13 +79,10 @@ class PlanDetailSummaryTVC: UITableViewCell,UITableViewRegisterable{
     PlanDetailSummaryRouteTVC.register(target: listTV)
     PlanDetailSummaryFoldTVC.register(target: listTV)
   }
-  
 
 }
 
 extension PlanDetailSummaryTVC : UITableViewDelegate{
-
-  
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     if locationList.count > 5{
       
@@ -169,16 +165,12 @@ extension PlanDetailSummaryTVC : UITableViewDataSource{
       }
     }
 
-    
-    
     var routeCell = PlanDetailSummaryRouteTVC()
     var moreCell = PlanDetailSummaryFoldTVC()
-    
     
     if locationList.count <= 5{
       guard let infoCell = tableView.dequeueReusableCell(withIdentifier: PlanDetailSummaryRouteTVC.className, for: indexPath) as? PlanDetailSummaryRouteTVC else {return UITableViewCell() }
       routeCell = infoCell
-      
       routeCell.setLocationData(order: order,
                                 locationName: locationList[indexPath.row].locationName,
                                 transportCase:  (locationList.count == indexPath.row + 1) ? nil : locationList[indexPath.row].transportCase,

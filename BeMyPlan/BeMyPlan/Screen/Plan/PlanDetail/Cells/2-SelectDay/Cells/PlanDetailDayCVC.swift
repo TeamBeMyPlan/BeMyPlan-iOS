@@ -8,7 +8,6 @@
 import UIKit
 
 class PlanDetailDayCVC: UICollectionViewCell,UICollectionViewRegisterable {
-  
 
   static var isFromNib: Bool = true
 
@@ -28,15 +27,4 @@ class PlanDetailDayCVC: UICollectionViewCell,UICollectionViewRegisterable {
     contentView.backgroundColor = isClicked ? .bemyBlue : .grey06
     
   }
-
-  // MARK: - @objc Function Part
-
-
 }
-  // MARK: - Extension Part
-
-
-
-
-
-

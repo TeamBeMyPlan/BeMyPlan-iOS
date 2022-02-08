@@ -32,12 +32,8 @@ class CustomAlertVC: UIViewController {
   @IBOutlet var cancelBtnArea: UIButton!
   @IBOutlet var confirmLabel: UILabel!
   @IBOutlet var confirmBtnArea: UIButton!
-  
   @IBOutlet var simpleConfirmBtnArea: UIButton!
-  
   @IBOutlet var simpleOkView: UIView!
-  
-  
   @IBOutlet var contentLabelCenterLayout: NSLayoutConstraint!
   
   // MARK: - Life Cycle Part
@@ -47,10 +43,6 @@ class CustomAlertVC: UIViewController {
     setUIs()
     setButtonActions()
   }
-  
-  // MARK: - IBAction Part
-  
-  
   // MARK: - Custom Method Part
   private func setLayer() {
     alertLayer.layer.cornerRadius = 5
@@ -92,10 +84,4 @@ class CustomAlertVC: UIViewController {
   private func emptyActions(){
     
   }
-  
-  
-  // MARK: - @objc Function Part
-  
 }
-// MARK: - Extension Part
-//-20 (타이틀 옶을때) -> 타이틀은 히든 처리, -6 (타이틀 있을때)

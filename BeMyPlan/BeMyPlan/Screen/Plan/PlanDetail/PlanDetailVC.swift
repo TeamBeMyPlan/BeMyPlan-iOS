@@ -55,8 +55,6 @@ class PlanDetailVC: UIViewController {
       mainContainerTV.tableFooterView = UIView()
     }
   }
-  
-  
   // MARK: - Constarints Components Part
   @IBOutlet var writerBlockHeightConstraint: NSLayoutConstraint!
   @IBOutlet var mapContainerHeightConstraint: NSLayoutConstraint!
@@ -85,7 +83,6 @@ class PlanDetailVC: UIViewController {
 //    self.navigationController?.removePopGesture()
   }
 
-  
   // MARK: - Custom Methods Parts
   
   @IBAction func backButtonClicked(_ sender: Any) {
@@ -282,5 +279,4 @@ extension PlanDetailVC : UIGestureRecognizerDelegate {
   ) -> Bool {
     return false
   }
-
 }

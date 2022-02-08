@@ -18,7 +18,6 @@ func setFontTextView(text: String, lineSpacing: CGFloat, fontName: String, fontS
   textType.textColor = textColor
 }
 
-
 class TravelSpotDetailTVC: UITableViewCell {
   
   private var postId:Int = 1

@@ -6,8 +6,6 @@
 //
 
 import UIKit
-
-
 extension UIViewController{
   
   func showIndicator(){

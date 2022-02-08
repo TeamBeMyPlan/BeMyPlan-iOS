@@ -18,4 +18,3 @@ class BarSelectButton : UIButton{
     setTitleColor(isSelected ? .bemyBlue : .grey01, for: .normal)
   }
 }
-

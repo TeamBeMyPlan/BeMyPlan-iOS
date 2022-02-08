@@ -9,11 +9,6 @@ import UIKit
 import MessageUI
 
 class MyPlanApplicationVC: UIViewController, MFMailComposeViewControllerDelegate {
-  
-  // MARK: - Vars & Lets Part
-  
-  
-  
   // MARK: - UI Component Part
   
   @IBOutlet var applicationButton: UIButton!
@@ -33,8 +28,6 @@ class MyPlanApplicationVC: UIViewController, MFMailComposeViewControllerDelegate
   }
   @IBAction func uploadButtonClicked(_ sender: Any) {
   }
-  
-  
   // MARK: - Custom Method Part
   
   private func addUploadButtonActions(){
@@ -57,10 +50,6 @@ class MyPlanApplicationVC: UIViewController, MFMailComposeViewControllerDelegate
   func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
     controller.dismiss(animated: true, completion: nil)
   }
-  
-  
-  // MARK: - @objc Function Part
-  
 }
 // MARK: - Extension Part
 let mailTemplate  = """

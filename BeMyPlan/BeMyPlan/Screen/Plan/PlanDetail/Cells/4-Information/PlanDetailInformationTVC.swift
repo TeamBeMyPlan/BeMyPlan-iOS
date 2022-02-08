@@ -92,8 +92,7 @@ class PlanDetailInformationTVC: UITableViewCell,UITableViewRegisterable {
     super.setSelected(selected, animated: animated)
   }
   
-  
-  //MARK: - IBActions Part
+  // MARK: - IBActions Part
   @IBAction func addressCopyButtonClicked(_ sender: Any) {
     UIPasteboard.general.string = addressData
     postObserverAction(.copyComplete)
@@ -156,11 +155,6 @@ class PlanDetailInformationTVC: UITableViewCell,UITableViewRegisterable {
   }
   
 }
-
-extension PlanDetailInformationTVC : UICollectionViewDelegate{
-  
-}
-
 extension PlanDetailInformationTVC : UICollectionViewDataSource{
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return imgUrlList.count

@@ -87,8 +87,6 @@ class PlanDetailMapContainerView: XibView,MTMapViewDelegate{
 
     return pointList
   }
-  
-  
   private func makeMapItem(mapData : PlanDetailMapData,isEnabled : Bool) -> MTMapPOIItem{
     let mapItem = MTMapPOIItem()
     if isEnabled{
@@ -143,10 +141,7 @@ class PlanDetailMapContainerView: XibView,MTMapViewDelegate{
           }else{
             state = (index == currentDay - 1)
           }
-          mapView.add(makeMapItem(mapData: mapData, isEnabled:
-                                    
-                                    
-                                    state))
+          mapView.add(makeMapItem(mapData: mapData, isEnabled: state))
         }
       }
       self.mapContainerView.addSubview(mapView)
@@ -203,8 +198,6 @@ struct PlanDetailMapData{
   var latitude : Double
   var longtitude : Double
 }
-
-
 enum MapPlatform{
   case kakao
   case naver

@@ -26,11 +26,7 @@ class PlanPreviewPhotoTVC: UITableViewCell {
       contentTextView.textContainer.lineFragmentPadding = .zero
     }
   }
-  
-  // MARK: - UI Component Part
-  
-  
-  
+
   // MARK: - Life Cycle Part
   
   override func awakeFromNib() {
@@ -58,17 +54,4 @@ class PlanPreviewPhotoTVC: UITableViewCell {
     }
     contentTextView.text = (content != nil) ? content : ""
   }
-  
-  
-  // MARK: - @objc Function Part
-  
 }
-
-// MARK: - Extension Part
-
-
-
-
-
-
-

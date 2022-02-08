@@ -41,8 +41,6 @@ class PlanDetailWriterContainerView: XibView {
     super.init(coder: aDecoder)
     setTextView()
   }
-  
-  
   private func setTextView(){
     locationTitleView.textContainer.lineFragmentPadding = .zero
     locationTitleView.textContainerInset = .zero
