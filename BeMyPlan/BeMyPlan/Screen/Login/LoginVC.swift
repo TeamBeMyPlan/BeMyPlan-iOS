@@ -79,7 +79,7 @@ class LoginVC: UIViewController {
   }
   
    func moveBaseVC(){
-     let baseVC = factory.instantiateBaseVC()
+     let baseVC = factory.instantiateBaseNC()
      baseVC.modalPresentationStyle = .fullScreen
      self.present(baseVC, animated: false, completion: nil)
   }
