@@ -46,9 +46,7 @@ enum BaseNotiList : String{
 extension BaseVC{
   func addObservers(){
     addObserverAction(.showIndicator) { _ in
-      guard let indicatorVC = UIStoryboard.list(.indicator).instantiateViewController(withIdentifier: IndicatorVC.className) as? IndicatorVC else {return}
-      indicatorVC.modalTransitionStyle = .crossDissolve
-      indicatorVC.modalPresentationStyle = .overCurrentContext
+      let indicatorVC = self.factory.instantiateIndicatorVC()
       self.present(indicatorVC, animated: true, completion: nil)
     }
     
@@ -69,12 +67,12 @@ extension BaseVC{
     }
     
     addObserverAction(.moveSettingView) { _ in
-      guard let settingVC = UIStoryboard.list(.myPlan).instantiateViewController(withIdentifier: MyPlanSettingVC.className) as? MyPlanSettingVC else {return}
+      let settingVC = self.factory.instantiateMyPlanSettingVC()
       self.navigationController?.pushViewController(settingVC, animated: true)
     }
     
     addObserverAction(.moveSettingWithdrawView) { _ in
-      guard let withdrawVC = UIStoryboard.list(.myPlan).instantiateViewController(withIdentifier: MyPlanWithdrawVC.className) as? MyPlanWithdrawVC else {return}
+      let withdrawVC = self.factory.instantiateMyPlanWithdrawVC()
       self.navigationController?.pushViewController(withdrawVC, animated: true)
     }
     

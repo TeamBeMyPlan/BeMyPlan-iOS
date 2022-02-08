@@ -31,6 +31,8 @@ protocol ModuleFactoryProtocol {
   
   // MARK: - MyPlan
   func instantiateMyPlanVC() -> MyPlanVC
+  func instantiateMyPlanSettingVC() -> MyPlanSettingVC
+  func instantiateMyPlanWithdrawVC() -> MyPlanWithdrawVC
   
   // MARK: - Payment
   func instantiatePaymentSelectVC() -> PaymentSelectVC
@@ -42,6 +44,9 @@ protocol ModuleFactoryProtocol {
   
   // MARK: - PlanList
   func instantiatePlanListVC() -> TravelSpotDetailVC
+  
+  // MARK: - Indiciator
+  func instantiateIndicatorVC() -> IndicatorVC
 }
 
 class ModuleFactory: ModuleFactoryProtocol{
@@ -97,6 +102,14 @@ class ModuleFactory: ModuleFactoryProtocol{
     return MyPlanVC.controllerFromStoryboard(.myPlan)
   }
   
+  func instantiateMyPlanSettingVC() -> MyPlanSettingVC {
+    return MyPlanSettingVC.controllerFromStoryboard(.myPlan)
+  }
+  
+  func instantiateMyPlanWithdrawVC() -> MyPlanWithdrawVC {
+    return MyPlanWithdrawVC.controllerFromStoryboard(.myPlan)
+  }
+  
   // MARK: - Payment
 
   func instantiatePaymentSelectVC() -> PaymentSelectVC {
@@ -119,6 +132,14 @@ class ModuleFactory: ModuleFactoryProtocol{
   
   func instantiatePlanListVC() -> TravelSpotDetailVC {
     return TravelSpotDetailVC.controllerFromStoryboard(.travelSpot)
+  }
+  
+  // MARK: - Indicator
+  func instantiateIndicatorVC() -> IndicatorVC{
+    let indicatorVC = IndicatorVC.controllerFromStoryboard(.indicator)
+    indicatorVC.modalTransitionStyle = .crossDissolve
+    indicatorVC.modalPresentationStyle = .overCurrentContext
+    return indicatorVC
   }
   
 }

@@ -19,6 +19,7 @@ class BaseVC: UIViewController {
     didSet{ runTabClickAction() }
   }
   var currentTabList : [TabList] = []
+  let factory: ModuleFactoryProtocol = ModuleFactory.resolve()
   
   // MARK: - UI Component Part
   
