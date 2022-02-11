@@ -89,9 +89,7 @@ class BaseVC: UIViewController {
     }
   }
   private func showContainerView(){
-    UIView.animate(withDuration: 0.5) { [unowned self] in
-      self.containerView.alpha = 1
-    }
+    self.containerView.alpha = 1
   }
   
   private func setTabIcon(isFirstRun : Bool = true){
@@ -139,7 +137,7 @@ extension BaseVC : TabBarDelegate{
   func tabClicked(index: TabList) {
     if index != self.clickedIndex{
       UIView.animate(withDuration: 0.25) {
-        self.containerView.alpha = 0
+        self.containerView.alpha = 1
       }completion: { _ in
         self.clickedIndex = index
       }

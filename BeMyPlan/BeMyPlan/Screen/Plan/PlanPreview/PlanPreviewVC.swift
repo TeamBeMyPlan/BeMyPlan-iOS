@@ -154,7 +154,7 @@ class PlanPreviewVC: UIViewController {
           self?.photoData = photoList
         }
         self?.closeIndicator{
-          UIView.animate(withDuration: 1.0) {
+          UIView.animate(withDuration: 0.4) {
             self?.previewContentTV.alpha = 1
           }
         }

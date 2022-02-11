@@ -14,6 +14,12 @@ class LoginVC: UIViewController {
   
   // MARK: - Vars & Lets Part
   
+  let dd : UIButton =  {
+    let button = UIButton()
+    button.addTarget(self, action: #selector(aa), for: .allEditingEvents)
+    return button
+    
+  }()
   private let factory: ModuleFactoryProtocol = ModuleFactory.resolve()
 
   // MARK: - UI Component Part
@@ -82,6 +88,9 @@ class LoginVC: UIViewController {
      let baseVC = factory.instantiateBaseNC()
      baseVC.modalPresentationStyle = .fullScreen
      self.present(baseVC, animated: false, completion: nil)
+  }
+  @objc func aa(){
+    
   }
 }
 
