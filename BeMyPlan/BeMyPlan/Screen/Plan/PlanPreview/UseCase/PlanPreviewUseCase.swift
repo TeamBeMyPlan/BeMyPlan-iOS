@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+// 사용 X , Repository -> ViewModel -> VC로 사용
 protocol PlanPreviewUseCaseType{
   var networkError: ((Error) -> Void)? { get set }
   func fetchHeaderData(idx: Int,onCompleted: @escaping (PlanPreview.HeaderData?,PlanPreview.DescriptionData?) -> Void)
