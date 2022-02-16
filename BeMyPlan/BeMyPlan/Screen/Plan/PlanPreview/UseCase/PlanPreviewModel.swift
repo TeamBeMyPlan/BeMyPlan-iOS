@@ -9,7 +9,6 @@ import Foundation
 
 struct PlanPreviewModel{ }
 
-
 // MARK: - Header
 
 extension PlanPreviewModel{

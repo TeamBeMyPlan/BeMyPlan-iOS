@@ -16,6 +16,8 @@ class PlanPreviewVC: UIViewController {
   var authID : Int = 0
   private var isAnimationProceed: Bool = false
   private var lastContentOffset : CGFloat = 0
+  var viewModel : PlanPreviewViewModel!
+
   private var isScrabed : Bool = false{
     didSet{
       setScrabImage()

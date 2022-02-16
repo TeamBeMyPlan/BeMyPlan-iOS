@@ -123,6 +123,13 @@ class ModuleFactory: ModuleFactoryProtocol{
   // MARK: - Plan
 
   func instantiatePlanPreviewVC() -> PlanPreviewVC {
+    let repository = PlanPreviewRepository(service: BaseService.default)
+    let viewModel = PlanPreviewViewModel(postId: 0, repository: repository)
+    // 추후 postID 넣어야 됨
+    
+    let vc = PlanPreviewVC.controllerFromStoryboard(.planPreview)
+    vc.viewModel = viewModel
+    
     return PlanPreviewVC.controllerFromStoryboard(.planPreview)
   }
   

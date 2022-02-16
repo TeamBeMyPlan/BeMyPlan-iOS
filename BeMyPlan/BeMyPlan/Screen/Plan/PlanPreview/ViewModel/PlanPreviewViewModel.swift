@@ -17,7 +17,6 @@ protocol PlanPreviewViewModelType : ViewModelType{
   func clickPreviewImage(index : Int)
   func showContentPage()
 
-  
   // Outputs
   var didUpdateContentListType: (([PlanPreview.ContentList]) -> Void)? { get set }
   var didUpdateHeaderData : ((PlanPreview.HeaderData,PlanPreview.DescriptionData) -> Void)? { get set }
@@ -26,7 +25,6 @@ protocol PlanPreviewViewModelType : ViewModelType{
   var unexpactedError: (() -> Void)? { get set }
   var loadingState: ((Bool) -> Void)? { get set }
   
-
 }
 
 class PlanPreviewViewModel : PlanPreviewViewModelType{
@@ -41,20 +39,20 @@ class PlanPreviewViewModel : PlanPreviewViewModelType{
   
   // MARK: - Models
   
-  // MARK: - Dependency
-  private let useCase = PlanPreviewUseCase()
+  // MARK: - Dependency 주입
+  private let repository: PlanPreviewRepositoryInterface
   private let postId: Int
   
-  init(postId: Int){
+  init(postId: Int,repository: PlanPreviewRepositoryInterface){
     self.postId = postId
+    self.repository = repository
   }
   
-
 }
 
 extension PlanPreviewViewModel{
   func viewDidLoad() {
-    useCase.fetchBodyData(idx: postId) { photoList, summary in
+    repository.fetchBodyData(idx: postId) { photoList, summary in
       
     }
   }

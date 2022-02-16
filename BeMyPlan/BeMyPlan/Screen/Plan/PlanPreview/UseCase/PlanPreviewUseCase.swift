@@ -7,7 +7,13 @@
 
 import Foundation
 
-final class PlanPreviewUseCase{
+protocol PlanPreviewUseCaseType{
+  var networkError: ((Error) -> Void)? { get set }
+  func fetchHeaderData(idx: Int,onCompleted: @escaping (PlanPreview.HeaderData?,PlanPreview.DescriptionData?) -> Void)
+  func fetchBodyData(idx: Int,onCompleted: @escaping ([PlanPreview.PhotoData]?,PlanPreview.SummaryData?) -> Void)
+}
+
+final class PlanPreviewUseCase: PlanPreviewUseCaseType{
 
   // MARK: - Outputs
   var networkError: ((Error) -> Void)?
