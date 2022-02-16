@@ -32,7 +32,6 @@ class TravelSpotDetailVC: UIViewController {
   var type : TravelSpotDetailType = .travelspot
   var sortCase : SortCase = .recently
   
-  
   // MARK: - UI Component Part
   @IBOutlet var contentTableView: UITableView!
   @IBOutlet var headerLabel: UILabel!{
@@ -113,7 +112,6 @@ class TravelSpotDetailVC: UIViewController {
     }
   }
   
-  
   private func fetchTravelSpotDetailItemList(isRefresh: Bool) {
     BaseService.default.getPlanAllinOneList(area: areaId,
                                             userId: userId,
@@ -163,7 +161,6 @@ class TravelSpotDetailVC: UIViewController {
     contentTableView.refreshControl = refresh
   }
   
-  
   // MARK: - @objc Function Part
   @objc func updateUI(refresh: UIRefreshControl) {
     DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
@@ -202,7 +199,7 @@ extension TravelSpotDetailVC: UITableViewDelegate {
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .movePlanPreview), object: planDataList[indexPath.row].id)
+    postObserverAction(.movePlanPreview,object: planDataList[indexPath.row].id)
   }
 }
 

@@ -8,10 +8,6 @@
 import UIKit
 
 class PlanPreviewSummaryTVC: UITableViewCell {
-
-  // MARK: - Vars & Lets Part
-
-  
   // MARK: - UI Component Part
 
   @IBOutlet var summaryContentTextView: UITextView!{
@@ -41,26 +37,9 @@ class PlanPreviewSummaryTVC: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
     }
-    
-  // MARK: - IBAction Part
-
-  
   // MARK: - Custom Method Part
   
   func setSummaryData(content : String?){
     summaryContentTextView.text = (content != nil) ? content : ""
   }
-
-  
-  // MARK: - @objc Function Part
-
 }
-
-// MARK: - Extension Part
-
-
-
-
-
-
-

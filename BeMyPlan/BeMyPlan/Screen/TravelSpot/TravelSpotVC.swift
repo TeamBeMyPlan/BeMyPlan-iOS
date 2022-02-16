@@ -11,7 +11,6 @@ class TravelSpotVC: UIViewController {
   
   // MARK: - Vars & Lets Part
   var travelSpotDataList: [TravelSpotDataGettable] = []
-  let screenWidth = UIScreen.main.bounds.width
   var completionHandler: ((Int) -> (Int))?
 
   // MARK: - UI Component Part
@@ -45,13 +44,12 @@ class TravelSpotVC: UIViewController {
     BaseService.default.getTravelSpotList { result in
       result.success { data in
         self.travelSpotDataList = []
-
         if let testedData = data {
           self.travelSpotDataList = testedData
         }
         self.locationCollectionView.reloadData()
       }.catch { error in
-        if let err = error as? MoyaError {
+        if let _ = error as? MoyaError {
         }
       }
     }
@@ -71,14 +69,10 @@ extension TravelSpotVC: UICollectionViewDataSource {
     return CGSize(width: width, height: height)
   }
 }
-
-
 extension TravelSpotVC: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return travelSpotDataList.count
   }
-  
-  
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TravelSpotCVC.identifier, for: indexPath) as? TravelSpotCVC else {return UICollectionViewCell()}
     
@@ -94,7 +88,7 @@ extension TravelSpotVC: UICollectionViewDelegate {
     _ = completionHandler?(indexPath.row)
     //    self.navigationController?.popViewController(animated: true)
     if travelSpotDataList[indexPath.row].isActivated {
-      NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .movePlanList), object: travelSpotDataList[indexPath.row].id)
+      postObserverAction(.movePlanList,object: travelSpotDataList[indexPath.row].id)
     }
   }
 }

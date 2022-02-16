@@ -35,12 +35,11 @@ class PlanPreviewWriterTVC: UITableViewCell,UITableViewRegisterable{
   }
   
   // MARK: - IBAction Part
-  
-  
+
   @IBAction func nicknameButtonClicked(_ sender: Any) {
     let data = PlanWriterDataModel.init(authorName: nickname,
                                         authorID: authID)
-    NotificationCenter.default.post(name:  BaseNotiList.makeNotiName(list: .moveNicknamePlanList), object: data)
+    postObserverAction(.moveNicknamePlanList,object: data)
   }
   
   // MARK: - Custom Method Part
@@ -70,8 +69,6 @@ class PlanPreviewWriterTVC: UITableViewCell,UITableViewRegisterable{
     titleLabel.text = (title != nil) ? title : ""
     titleLabel.sizeToFit()
   }
-  
-  
 }
 
 struct PlanWriterDataModel{

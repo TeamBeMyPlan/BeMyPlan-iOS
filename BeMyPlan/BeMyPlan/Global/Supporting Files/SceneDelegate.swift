@@ -15,8 +15,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     guard let _ = (scene as? UIWindowScene) else { return }
     window!.rootViewController = UIStoryboard(name: "Splash", bundle: nil).instantiateInitialViewController()!
   }
-
-  
   func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
     if let url = URLContexts.first?.url {
       if (AuthApi.isKakaoTalkLoginUrl(url)) {

@@ -22,10 +22,10 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icnArrowForward" translatesAutoresizingMaskIntoConstraints="NO" id="tID-md-ME6">
-                    <rect key="frame" x="117" y="22" width="12" height="12"/>
+                    <rect key="frame" x="71.5" y="3" width="12" height="12"/>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="thisissuzzwon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DAn-QB-b15">
-                    <rect key="frame" x="24" y="19" width="91" height="18"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="            " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DAn-QB-b15">
+                    <rect key="frame" x="24" y="0.0" width="45.5" height="18"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="18" id="Qqj-Ag-JQD"/>
                     </constraints>
@@ -34,7 +34,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <textView autoresizesSubviews="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bdH-gX-qH4">
-                    <rect key="frame" x="24" y="47" width="464" height="40"/>
+                    <rect key="frame" x="24" y="28" width="464" height="40"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" relation="lessThanOrEqual" constant="58" id="9Uk-Lv-Rmw"/>
@@ -44,7 +44,7 @@
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W5F-vd-694">
-                    <rect key="frame" x="24" y="22" width="105" height="20"/>
+                    <rect key="frame" x="24" y="2" width="59.5" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="sAd-na-syR"/>
                     </constraints>
@@ -58,8 +58,8 @@
             <constraints>
                 <constraint firstItem="DAn-QB-b15" firstAttribute="leading" secondItem="6B6-rz-ctN" secondAttribute="leading" constant="24" id="3AR-mg-ovx"/>
                 <constraint firstItem="tID-md-ME6" firstAttribute="leading" secondItem="DAn-QB-b15" secondAttribute="trailing" constant="2" id="48M-Im-ec7"/>
-                <constraint firstItem="W5F-vd-694" firstAttribute="top" secondItem="6B6-rz-ctN" secondAttribute="top" constant="22" id="IXl-Ln-TZI"/>
-                <constraint firstItem="DAn-QB-b15" firstAttribute="top" secondItem="6B6-rz-ctN" secondAttribute="top" constant="19" id="JCq-xl-GNn"/>
+                <constraint firstItem="W5F-vd-694" firstAttribute="top" secondItem="6B6-rz-ctN" secondAttribute="top" constant="2" id="IXl-Ln-TZI"/>
+                <constraint firstItem="DAn-QB-b15" firstAttribute="top" secondItem="6B6-rz-ctN" secondAttribute="top" id="JCq-xl-GNn"/>
                 <constraint firstItem="bdH-gX-qH4" firstAttribute="leading" secondItem="6B6-rz-ctN" secondAttribute="leading" constant="24" id="V5U-kn-Qwo"/>
                 <constraint firstItem="W5F-vd-694" firstAttribute="trailing" secondItem="tID-md-ME6" secondAttribute="trailing" id="cxP-jV-ZGB"/>
                 <constraint firstItem="bdH-gX-qH4" firstAttribute="top" secondItem="DAn-QB-b15" secondAttribute="bottom" constant="10" id="fpd-JE-dbd"/>

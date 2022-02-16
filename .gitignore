@@ -97,6 +97,10 @@ iOSInjectionProject/
 
 Pods/
 
+BeMyPlan/BeMyPlan/GoogleService-Info.plist
+BeMyPlan/BeMyPlan/Info.plist
+BeMyPlan/BeMyPlan/Global/Network/Config.swift
+
 ### Xcode Patch ###
 *.xcodeproj/*
 !*.xcodeproj/project.pbxproj

@@ -14,8 +14,15 @@ class LoginVC: UIViewController {
   
   // MARK: - Vars & Lets Part
   
+  let dd : UIButton =  {
+    let button = UIButton()
+    button.addTarget(self, action: #selector(aa), for: .allEditingEvents)
+    return button
+    
+  }()
+  private let factory: ModuleFactoryProtocol = ModuleFactory.resolve()
+
   // MARK: - UI Component Part
-  
   
   @IBOutlet var mainIcon: UIImageView!{
     didSet{ mainIcon.alpha = 0}
@@ -40,8 +47,12 @@ class LoginVC: UIViewController {
   override func viewWillAppear(_ animated: Bool) {
     showAnimation()
   }
+  
   // MARK: - IBAction Part
+  
   @IBAction func touchUpToGoBaseView(_ sender: Any) {
+    makeVibrate()
+    self.moveBaseVC()
   }
   
   // MARK: - Custom Method Part
@@ -54,6 +65,7 @@ class LoginVC: UIViewController {
       self.searchLabel.alpha = 1
     }
   }
+  
   func setBtnActions() {
     //IBAction 대용으로 만든 함수
     self.kakaoLoginBtn.press(animated: true) {
@@ -66,23 +78,24 @@ class LoginVC: UIViewController {
   }
   
   func moveSignup(){
-    guard let signupVC = UIStoryboard.list(.signup).instantiateViewController(withIdentifier: SignUpVC.className) as? SignUpVC else {return}
+    let signupVC = factory.instantiateSignupVC()
     signupVC.modalPresentationStyle = .overFullScreen
     signupVC.delegate = self
     self.present(signupVC, animated: true, completion: nil)
   }
   
    func moveBaseVC(){
-    guard let baseVC = UIStoryboard.list(.base).instantiateViewController(withIdentifier: BaseVC.className) as? BaseVC else {return}
-    self.navigationController?.pushViewController(baseVC, animated: true)
+     let baseVC = factory.instantiateBaseNC()
+     baseVC.modalPresentationStyle = .fullScreen
+     self.present(baseVC, animated: false, completion: nil)
   }
-  
-  // MARK: - @objc Function Part
-  
+  @objc func aa(){
+    
+  }
 }
+
 extension LoginVC : SignupDelegate{
   func loginComplete() {
     moveBaseVC()
   }
-  
 }

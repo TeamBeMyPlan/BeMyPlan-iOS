@@ -6,8 +6,6 @@
 //
 
 import Foundation
-
-
 struct AuthNickNameDataGettable: Codable {
   let duplicated: Bool
   

@@ -14,6 +14,7 @@ class MainCardView: UIView {
   
   // MARK: - Vars & Lets Part
   private var mainCardDataList: [MainCardData] = []
+  private var imageList : [UIImage] = []
   var popularList: [HomeListDataGettable.Item] = []
   
   // MARK: - Life Cycle Part
@@ -23,6 +24,7 @@ class MainCardView: UIView {
 //    initMainCardDataList()
     registerCVC()
     setMainCardCV()
+    setSkeletonUI()
     getCardData()
   }
   
@@ -32,6 +34,7 @@ class MainCardView: UIView {
 //    initMainCardDataList()
     registerCVC()
     setMainCardCV()
+    setSkeletonUI()
     getCardData()
   }
   
@@ -59,8 +62,7 @@ class MainCardView: UIView {
     
 //    let centerItemWidthScale: CGFloat = (327/375) * screenWidth
 //    let centerItemHeightScale: CGFloat = 1
-    let insetX : CGFloat = 24
-    
+//    let insetX : CGFloat = 24
 //    layout.itemSize = CGSize(width: mainCardCV.frame.size.width*centerItemWidthScale, height: mainCardCV.frame.size.height*centerItemHeightScale)
     
     //sideItemScale
@@ -94,21 +96,49 @@ class MainCardView: UIView {
         self.popularList = []
         if let popular = list {
           self.popularList = popular
-          self.mainCardCV.reloadData()
+          self.downloadImages {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.7) {
+              UIView.animate(withDuration: 0.5) {
+                self.mainCardCV.alpha = 0
+              }
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+              self.mainCardCV.hideSkeleton(transition: .crossDissolve(2))
+              UIView.animate(withDuration: 0.5) {
+                self.mainCardCV.alpha = 1
+              }
+            }
+          }
         }
-
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-//
-//          self.mainCardCV.hideSkeleton(transition: .crossDissolve(2))
-//        }
- 
       }.catch{ error in
-          NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .showNetworkError), object: nil)
+        self.postObserverAction(.showNetworkError)
       }
     }
   }
   
+  private func setSkeletonUI(){
+    let animation = SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .leftRight)
+    mainCardCV.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .grey04,secondaryColor: .grey06), animation: animation, transition: .crossDissolve(2))
+  }
   
+  private func downloadImages(onCompleted: @escaping () -> (Void)){
+    for (index,item) in popularList.enumerated(){
+      imageList.append(UIImage())
+      downloadImage(with: item.thumbnailURL) { [weak self] image in
+        if let img = image{
+          self?.imageList[index] = img
+        }
+        self?.checkDownloadCompelte { onCompleted() }
+      }
+    }
+  }
+  
+  private func checkDownloadCompelte(onCompleted : @escaping () -> (Void)){
+    if popularList.count > 0 &&
+        imageList.count == popularList.count{
+      onCompleted()
+    }
+  }
 //  var id : Int
 //  var title : String
 //  var photo : String
@@ -139,7 +169,7 @@ class MainCardView: UIView {
 
 extension MainCardView : SkeletonCollectionViewDelegate{
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .movePlanPreview), object: popularList[indexPath.row].id)
+    postObserverAction(.movePlanPreview)
   }
 }
 
@@ -162,7 +192,8 @@ extension MainCardView: SkeletonCollectionViewDataSource {
     cell.layer.cornerRadius = 5
     cell.layer.masksToBounds = false
     cell.clipsToBounds = false
-    cell.setData(appData: popularList[indexPath.row])
+    cell.setData(appData: popularList[indexPath.row],
+                 image: imageList[indexPath.row])
     return cell
   }
 }
@@ -189,10 +220,7 @@ extension MainCardView: UICollectionViewDelegateFlowLayout {
 //    0
 //  }
 }
-
-
 extension MainCardView : UIScrollViewDelegate {
-  
   func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
 //    let page = Int(targetContentOffset.pointee.x / self.frame.width)
     let layout = mainCardCV.collectionViewLayout as! UICollectionViewFlowLayout
@@ -201,12 +229,9 @@ extension MainCardView : UIScrollViewDelegate {
     var offSet = targetContentOffset.pointee
     let index = (offSet.x + scrollView.contentInset.left) / cellWidthIncludingSpacing
     let roundedIndex = round(index)
-    
-    
     offSet = CGPoint(x: roundedIndex * cellWidthIncludingSpacing - scrollView.contentInset.left,
                      y: -scrollView.contentInset.top)
     targetContentOffset.pointee = offSet
 //    self.pageControl.currentPage = Int(roundedIndex)
   }
-  
 }

@@ -10,7 +10,6 @@ import SnapKit
 
 extension PlanDetailVC{
   func fetchPlanDetailData(){
-    print("FETCHCHCHC",postIdx)
     BaseService.default.getPlanDetailData(idx: postIdx) { result in
       result.success { [weak self] data in
         
@@ -24,6 +23,8 @@ extension PlanDetailVC{
           self?.headerData = DetailHeaderData(title: detailData.title,
                                               writer : detailData.author)
           self?.headerTitleLabel.text = detailData.title
+          self?.headerTitleLabel.isHidden = true
+
           self?.makeTopBlockHeight(content: detailData.title)
           // 총 일차 가져오기
           self?.totalDay = detailData.totalDays
@@ -31,9 +32,7 @@ extension PlanDetailVC{
           for (_,daySpotDataList) in detailData.spots.enumerated(){
             var mapPointList : [PlanDetailMapData] = []
             var summaryList : [PlanDetail.Summary] = []
-            var infoList : [PlanDetail.SpotData] = []
-            print("DAYSPOTLIST",daySpotDataList.count)
-            
+            var infoList : [PlanDetail.SpotData] = []            
             for (_,eachDayData) in daySpotDataList.enumerated(){
               
               if let dayData = eachDayData{
@@ -57,15 +56,6 @@ extension PlanDetailVC{
             self?.summaryList.append(summaryList)
             self?.infoList.append(infoList)
           }
-          print(self?.locationList.count)
-          dump(self?.locationList)
-          
-          print(self?.summaryList.count)
-          dump(self?.locationList)
-          
-          print(self?.infoList.count)
-          dump(self?.infoList)
-          
           self?.mainContainerTV.reloadData()
           self?.setWriterView()
           self?.setMapContainerView()
@@ -76,12 +66,11 @@ extension PlanDetailVC{
           }
         }
         
-        
       }.catch { err in
         self.closeIndicator {
           print("🍎DETAIL ERRR")
           dump(err)
-          NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .showNetworkError), object: nil)
+          self.postObserverAction(.showNetworkError)
         }
       }
     }
@@ -103,7 +92,7 @@ extension PlanDetailVC{
     textViewForsizing.textContainerInset = .zero
     textViewForsizing.text = content
     textViewForsizing.sizeToFit()
-    textViewForsizing.frame.width <= screenWidth - 48 ? (writerTop = 90) : (writerTop = 115)
+    textViewForsizing.frame.width <= screenWidth - 48 ? (writerTop = 70) : (writerTop = 95)
     writerBlockHeightConstraint.constant = writerTop
     let mapContainerHeight : CGFloat = 160
     mainTVTopConstraint.constant = writerTop + mapContainerHeight

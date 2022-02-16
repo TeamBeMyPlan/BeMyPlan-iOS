@@ -20,11 +20,6 @@ public extension UINavigationController {
     /// 현재 Navigation Controller가 쥐고있는
     ///  gestureRecognizer와 popGestureRecognizer를 들고옵니다.
     
-    print("CURRENT Gestrue Recognize count",gestureRecognizers.count)
-    print("VC Count",viewControllers.count)
-
-    
-
     /// VC가 1개인 경우는 첫번째 VC를 의미하기 때문에, 기존에 popDirectionGesture를 쥐고있다면, nil로 해제하는 방식으로 처리
 
     if viewControllers.count == 1 {

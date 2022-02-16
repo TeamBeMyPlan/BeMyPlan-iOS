@@ -22,14 +22,14 @@ class PaymentSelectVC: UIViewController {
       }else{
         paymentButton.backgroundColor = .bemyBlue
       }
-      print("SELECTINDEX",selectedIndex)
       setButtonState()
     }
   }
+  
   var price : String = "" 
   private var paymentList :[PaymentList] = [.kakaoPay,
                                     .toss,.naverPay]
-  
+
   // MARK: - UI Component Part
   
   @IBOutlet var planImageView: UIImageView!
@@ -109,7 +109,7 @@ class PaymentSelectVC: UIViewController {
   // MARK: - @objc Function Part
   
   deinit {
-    paymentButtonList = nil;
+    paymentButtonList = nil
   }
 }
 enum PaymentList : String{

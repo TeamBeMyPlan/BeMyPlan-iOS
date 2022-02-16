@@ -8,12 +8,9 @@
 import UIKit
 
 class PlanPreviewSummaryTVC: UITableViewCell {
-
-  // MARK: - Vars & Lets Part
-
   
   // MARK: - UI Component Part
-
+  
   @IBOutlet var summaryContentTextView: UITextView!{
     didSet{
       let style = NSMutableParagraphStyle()
@@ -21,46 +18,30 @@ class PlanPreviewSummaryTVC: UITableViewCell {
       let attributes = [NSAttributedString.Key.paragraphStyle: style]  as [NSAttributedString.Key: Any]
       
       summaryContentTextView.attributedText = NSAttributedString(
-          string: summaryContentTextView.text,
-          attributes: attributes)
-
+        string: summaryContentTextView.text,
+        attributes: attributes)
+      
       summaryContentTextView.font = UIFont.systemFont(ofSize: 14)
       summaryContentTextView.textColor = .grey01
       summaryContentTextView.textContainer.lineFragmentPadding = .zero
       
     }
   }
-    
-  // MARK: - Life Cycle Part
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-    }
-    
-  // MARK: - IBAction Part
-
   
+  // MARK: - Life Cycle Part
+  
+  override func awakeFromNib() {
+    super.awakeFromNib()
+  }
+  
+  override func setSelected(_ selected: Bool, animated: Bool) {
+    super.setSelected(selected, animated: animated)
+    
+  }
   // MARK: - Custom Method Part
   
   func setSummaryData(content : String?){
     summaryContentTextView.text = (content != nil) ? content : ""
   }
-
   
-  // MARK: - @objc Function Part
-
 }
-
-// MARK: - Extension Part
-
-
-
-
-
-
-

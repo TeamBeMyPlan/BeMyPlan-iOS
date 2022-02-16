@@ -51,8 +51,6 @@ extension TravelSpotVC: UICollectionViewDataSource {
     return CGSize(width: width, height: height)
   }
 }
-
-
 extension TravelSpotVC: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return 20

@@ -58,6 +58,4 @@ class PlanPreviewWriterTVC: UITableViewCell {
     titleLabel.text = (title != nil) ? title : ""
     titleLabel.sizeToFit()
   }
-  
-  
 }

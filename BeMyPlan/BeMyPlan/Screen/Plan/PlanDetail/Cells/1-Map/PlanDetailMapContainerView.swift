@@ -74,7 +74,6 @@ class PlanDetailMapContainerView: XibView,MTMapViewDelegate{
   
   private func showMapCenter(pointList: [PlanDetailMapData]){
     if let mapView = mapView {
-      print("FIT Area Points",pointList)
       mapView.fitArea(toShowMapPoints: makeMapPointGeoList(pointDataList: pointList))
     }
   }
@@ -84,13 +83,10 @@ class PlanDetailMapContainerView: XibView,MTMapViewDelegate{
     for (_,item) in pointDataList.enumerated(){
       pointList.append(MTMapPoint(geoCoord: MTMapPointGeo(latitude:  item.latitude,
                                                           longitude: item.longtitude)))
-      print("Result Point List",item.latitude,item.longtitude)
     }
 
     return pointList
   }
-  
-  
   private func makeMapItem(mapData : PlanDetailMapData,isEnabled : Bool) -> MTMapPOIItem{
     let mapItem = MTMapPOIItem()
     if isEnabled{
@@ -113,8 +109,6 @@ class PlanDetailMapContainerView: XibView,MTMapViewDelegate{
     }
     mapItem.mapPoint = MTMapPoint(geoCoord: MTMapPointGeo(latitude:  mapData.latitude,
                                                           longitude: mapData.longtitude))
-    print("CURRENTITEM",mapData.title,currentDay)
-    print("만들어지는 아이템",mapData.title,mapData.latitude,mapData.longtitude,isEnabled)
     return mapItem
   }
   
@@ -129,7 +123,6 @@ class PlanDetailMapContainerView: XibView,MTMapViewDelegate{
     sizingLabel.font = .systemFont(ofSize: 12)
     sizingLabel.text = name
     sizingLabel.sizeToFit()
-    print("SIZINGLABAEL",sizingLabel.frame.width, name)
     if sizingLabel.frame.width <= 120{
       return sizingLabel.frame.width + 30
     }else{
@@ -148,10 +141,7 @@ class PlanDetailMapContainerView: XibView,MTMapViewDelegate{
           }else{
             state = (index == currentDay - 1)
           }
-          mapView.add(makeMapItem(mapData: mapData, isEnabled:
-                                    
-                                    
-                                    state))
+          mapView.add(makeMapItem(mapData: mapData, isEnabled: state))
         }
       }
       self.mapContainerView.addSubview(mapView)
@@ -187,7 +177,7 @@ class PlanDetailMapContainerView: XibView,MTMapViewDelegate{
           if(UIApplication.shared.canOpenURL(appUrl)){
             UIApplication.shared.open(appUrl, options: [:], completionHandler: nil)
           }else{
-            NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .showNotInstallKakaomap), object: nil)
+            postObserverAction(.showNotInstallKakaomap)
           }
         }
       }
@@ -208,8 +198,6 @@ struct PlanDetailMapData{
   var latitude : Double
   var longtitude : Double
 }
-
-
 enum MapPlatform{
   case kakao
   case naver

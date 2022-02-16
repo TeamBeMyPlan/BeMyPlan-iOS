@@ -17,7 +17,6 @@ class ScrapVC: UIViewController {
   // MARK: - Vars & Lets Part
   var scrapDataList:[ScrapDataGettable] = []
   var sortCase : SortCase = .recently
-  // MARK: - UI Component Part
   
   // MARK: - Life Cycle Part
   override func viewDidLoad() {
@@ -36,27 +35,16 @@ class ScrapVC: UIViewController {
             self.scrapEmptyView.isHidden = true
           }
         }
-      }.catch { error in
-        if let err = error as? MoyaError {
-        }
       }
     }
   }
   
   private func bottomSheetNotification() {
-    NotificationCenter.default.addObserver(self,
-                                           selector: #selector(bottomSheetAction),
-                                           name: NSNotification.Name("filterBottomSheet"),
-                                           object: nil)
-  }
-  
-  // MARK: - @objc Function Part
-  @objc func bottomSheetAction(_ notification: Notification) {
-    let vc = UIStoryboard(name: "TravelSpot", bundle: nil).instantiateViewController(withIdentifier: "TravelSpotFilterVC") as! TravelSpotFilterVC
-    vc.filterStatus = self.sortCase
-    vc.filterClicked = { filter in
-      self.sortCase = filter
+    addObserverAction(.filterBottomSheet) { _ in
+      let vc = UIStoryboard(name: "TravelSpot", bundle: nil).instantiateViewController(withIdentifier: "TravelSpotFilterVC") as! TravelSpotFilterVC
+      vc.filterStatus = self.sortCase
+      vc.filterClicked = { filter in self.sortCase = filter }
+      self.presentPanModal(vc)
     }
-    presentPanModal(vc)
   }
 }

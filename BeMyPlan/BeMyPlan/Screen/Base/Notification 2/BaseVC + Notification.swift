@@ -32,8 +32,5 @@ extension BaseVC{
       guard let withdrawVC = UIStoryboard.list(.myPlan).instantiateViewController(withIdentifier: MyPlanWithdrawVC.className) as? MyPlanWithdrawVC else {return}
       self.navigationController?.pushViewController(withdrawVC, animated: true)
     }
-    
-    
-
   }
 }

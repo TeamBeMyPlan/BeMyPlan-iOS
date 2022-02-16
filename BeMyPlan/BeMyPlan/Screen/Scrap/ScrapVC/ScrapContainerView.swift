@@ -28,7 +28,7 @@ class ScrapContainerView: XibView {
   }
   
   @IBAction func filterBtn(_ sender: Any) {
-    NotificationCenter.default.post(name: NSNotification.Name("filterBottomSheet"), object: nil)
+    postObserverAction(.filterBottomSheet)
   }
   
   private func setAll() {
@@ -55,7 +55,7 @@ class ScrapContainerView: XibView {
         }
         self.contentCV.reloadData()
       }.catch { error in
-        if let err = error as? MoyaError {
+        if let _ = error as? MoyaError {
         }
       }
     }
@@ -64,22 +64,17 @@ class ScrapContainerView: XibView {
   private func scrapBtnAPI() {
     BaseService.default.postScrapBtnTapped(postId: postId) { result in
       result.success { data in
-        dump("#### \(data)")
         if let testedData = data {
-          print("---> 버튼클릭값 \(testedData)")
           self.scrapBtnData = testedData.scrapped
         }
       }.catch { error in
-        dump("&&&& \(error)")
         if let err = error as? MoyaError {
           dump(err)
         }
       }
     }
   }
-  
 }
-
 
 extension ScrapContainerView: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -100,7 +95,7 @@ extension ScrapContainerView: UICollectionViewDataSource {
 
 extension ScrapContainerView: UICollectionViewDelegate{
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    NotificationCenter.default.post(name: BaseNotiList.makeNotiName(list: .movePlanPreview), object: scrapDataList[indexPath.row].postID)
+    postObserverAction(.movePlanPreview,object: scrapDataList[indexPath.row].postID)
   }
 }
 
@@ -116,8 +111,6 @@ extension ScrapContainerView: UICollectionViewDelegateFlowLayout {
     return UIEdgeInsets(top: 0, left: 24, bottom: 24, right: 24)
      
   }
-  
-  
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
     return 20
   }

@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fqv-1C-8hh" userLabel="TabBarContainerView">
-                                <rect key="frame" x="0.0" y="807" width="414" height="55"/>
+                                <rect key="frame" x="0.0" y="807" width="414" height="89"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="haa-tX-mgq" userLabel="line">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="1"/>
@@ -48,17 +48,19 @@
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </view>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="54" id="Zce-Mi-RP4"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="haa-tX-mgq" firstAttribute="leading" secondItem="Fqv-1C-8hh" secondAttribute="leading" id="1ty-Ws-3Mi"/>
                                     <constraint firstAttribute="trailing" secondItem="haa-tX-mgq" secondAttribute="trailing" id="B6n-fV-hvA"/>
-                                    <constraint firstAttribute="bottom" secondItem="sTV-Nr-F6P" secondAttribute="bottom" id="YuG-76-ouY"/>
                                     <constraint firstItem="sTV-Nr-F6P" firstAttribute="top" secondItem="Fqv-1C-8hh" secondAttribute="top" constant="1" id="ZtS-6q-mvp"/>
                                     <constraint firstItem="haa-tX-mgq" firstAttribute="top" secondItem="Fqv-1C-8hh" secondAttribute="top" id="bHK-Oo-mhV"/>
                                     <constraint firstItem="sTV-Nr-F6P" firstAttribute="leading" secondItem="Fqv-1C-8hh" secondAttribute="leading" id="kAG-Ey-hBd"/>
-                                    <constraint firstAttribute="height" constant="55" id="rOB-k0-MCJ"/>
+                                    <constraint firstAttribute="height" constant="89" id="rOB-k0-MCJ"/>
                                     <constraint firstAttribute="trailing" secondItem="sTV-Nr-F6P" secondAttribute="trailing" id="vIo-UX-geu"/>
                                 </constraints>
                             </view>
@@ -74,7 +76,7 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Fqv-1C-8hh" secondAttribute="trailing" id="O6i-OP-sRg"/>
                             <constraint firstItem="P5a-ZI-8wy" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="Rvb-HU-TPU"/>
                             <constraint firstItem="Fqv-1C-8hh" firstAttribute="top" secondItem="P5a-ZI-8wy" secondAttribute="bottom" id="Utk-2I-VuS"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Fqv-1C-8hh" secondAttribute="bottom" id="XDv-g1-g4i"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Fqv-1C-8hh" secondAttribute="bottom" constant="-34" id="XDv-g1-g4i"/>
                             <constraint firstItem="P5a-ZI-8wy" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="aO9-K7-IuB"/>
                             <constraint firstItem="Fqv-1C-8hh" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="r3P-r2-ubr"/>
                         </constraints>
@@ -82,6 +84,7 @@
                     <navigationItem key="navigationItem" id="3x0-w8-YN8"/>
                     <connections>
                         <outlet property="containerView" destination="P5a-ZI-8wy" id="I3d-yw-ISm"/>
+                        <outlet property="tabbarBottomConstraint" destination="XDv-g1-g4i" id="2UA-RM-afT"/>
                         <outlet property="tabbarStackContainerView" destination="Fqv-1C-8hh" id="GsP-60-5fj"/>
                         <outletCollection property="tabIconList" destination="81w-lB-Pyq" collectionClass="NSMutableArray" id="r3K-fO-09f"/>
                         <outletCollection property="tabIconList" destination="RSC-u6-QEo" collectionClass="NSMutableArray" id="1kB-2s-oZD"/>

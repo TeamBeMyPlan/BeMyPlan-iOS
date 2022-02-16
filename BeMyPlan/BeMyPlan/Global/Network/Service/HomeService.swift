@@ -50,7 +50,6 @@ extension BaseService : HomeServiceType ,TravelSpotDetailService{
     }
   }
   
-  
   func getPopularTravelList(completion: @escaping (Result<[HomeListDataGettable.Item]?, Error>) -> Void) {
     requestObject(.getPopularTravelList, completion: completion)
   }

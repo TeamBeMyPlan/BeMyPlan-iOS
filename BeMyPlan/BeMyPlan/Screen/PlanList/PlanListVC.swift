@@ -10,11 +10,9 @@ import UIKit
 class PlanListVC: UIViewController {
 
   // MARK: - Vars & Lets Part
-
-
+  
   // MARK: - UI Component Part
 
-  
   // MARK: - Life Cycle Part
   
     override func viewDidLoad() {
@@ -23,10 +21,8 @@ class PlanListVC: UIViewController {
     
   // MARK: - IBAction Part
 
-  
   // MARK: - Custom Method Part
 
-  
   // MARK: - @objc Function Part
 
 }

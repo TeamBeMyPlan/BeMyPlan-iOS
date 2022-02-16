@@ -50,7 +50,6 @@ class MainCardCarouselLayout: UICollectionViewFlowLayout {
     print(scaledItemOffset)
     self.minimumLineSpacing = spacing - scaledItemOffset
     
-    
     self.scrollDirection = .horizontal
   }
   
@@ -69,8 +68,6 @@ class MainCardCarouselLayout: UICollectionViewFlowLayout {
     /// 이를 attributes에 다시 매핑하여 UICollectionViewLayoutAttributes로 반환한다
     return attributes.map({ self.transformLayoutAttributes(attributes: $0) })
   }
-  
-  
   //3D 할 경우 수정 해야할 코드
   private func transformLayoutAttributes(attributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
     
@@ -96,7 +93,6 @@ class MainCardCarouselLayout: UICollectionViewFlowLayout {
     
     attributes.alpha = alpha
     
-    
     //3D 효과 넣을 때 생긴 코드
 //    if abs(collectionCenter - center) > maxDistance + 1 {
 //      attributes.alpha = 0
@@ -108,10 +104,7 @@ class MainCardCarouselLayout: UICollectionViewFlowLayout {
 //    // realscale은 중심에서 0, 멀어졌을 때 -1
 //    var realscale = (-1-fakescale)*0.5
 //    print(realscale)
-    
-    
-    
-    
+
     let visibleRect = CGRect(origin: collectionView.contentOffset, size: collectionView.bounds.size)
     let dist = attributes.frame.midX - visibleRect.midX
     var transform = CATransform3DScale(CATransform3DIdentity, scale, scale, 1)
@@ -126,8 +119,6 @@ class MainCardCarouselLayout: UICollectionViewFlowLayout {
     
     return attributes
   }
-  
-  
   
   // MARK: 페이징 가능하게 해주는 코드
   //3D에서 새로 생긴 기능
@@ -164,4 +155,3 @@ class MainCardCarouselLayout: UICollectionViewFlowLayout {
     return CGPoint(x: proposedContentOffset.x + offsetAdjustment, y: proposedContentOffset.y)
   }
 }
-
