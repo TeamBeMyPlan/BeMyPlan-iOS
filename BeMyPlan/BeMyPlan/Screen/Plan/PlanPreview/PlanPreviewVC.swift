@@ -74,6 +74,13 @@ class PlanPreviewVC: UIViewController {
   }
   
   // MARK: - Custom Method Part
+  
+  
+  private func bindViewModels(){
+    viewModel.networkError = {
+      
+    }
+  }
  
   private func addButtonActions(){
     scrabButton.press {

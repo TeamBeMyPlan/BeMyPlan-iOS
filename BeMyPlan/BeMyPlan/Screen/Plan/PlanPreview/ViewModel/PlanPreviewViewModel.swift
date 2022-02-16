@@ -25,7 +25,6 @@ protocol PlanPreviewViewModelType : ViewModelType{
   var successScrap: (() -> Void)? { get set }
   var networkError: (() -> Void)? { get set }
   var unexpectedError: (() -> Void)? { get set }
-  
 }
 
 class PlanPreviewViewModel : PlanPreviewViewModelType{
@@ -105,7 +104,6 @@ extension PlanPreviewViewModel {
       }
     }
   }
-  
   
   func fetchHeaderData() {
     repository.fetchHeaderData(idx: postId) { [weak self] header, description, price in
