@@ -9,7 +9,7 @@ import Foundation
 
 protocol PlanPreviewRepositoryInterface {
   var networkError: ((Error) -> Void)? { get set }
-  func fetchHeaderData(idx: Int,onCompleted: @escaping (PlanPreview.HeaderData?,PlanPreview.DescriptionData?) -> Void)
+  func fetchHeaderData(idx: Int,onCompleted: @escaping (PlanPreview.HeaderData?,PlanPreview.DescriptionData?,Int) -> Void)
   func fetchBodyData(idx: Int,onCompleted: @escaping ([PlanPreview.PhotoData]?,PlanPreview.SummaryData?) -> Void)
 }
 
@@ -25,7 +25,7 @@ final class PlanPreviewRepository: PlanPreviewRepositoryInterface {
     self.networkService = service
   }
   
-  func fetchHeaderData(idx: Int,onCompleted: @escaping (PlanPreview.HeaderData?,PlanPreview.DescriptionData?) -> Void){
+  func fetchHeaderData(idx: Int,onCompleted: @escaping (PlanPreview.HeaderData?,PlanPreview.DescriptionData?,Int) -> Void){
     networkService.getPlanPreviewHeaderData(idx: idx) { [weak self] result in
       guard let self = self else {return}
       result.success { entity in
@@ -43,7 +43,8 @@ final class PlanPreviewRepository: PlanPreviewRepositoryInterface {
                                                                                                   budget: entity.tagMoney,
                                                                                                   transport: entity.tagMobility,
                                                                                                   month: String(entity.tagMonth)))
-        onCompleted(headerData,descriptionData)
+        let price = entity.price
+        onCompleted(headerData,descriptionData,price)
       }.catch { error in
         self.networkError?(error)
       }
