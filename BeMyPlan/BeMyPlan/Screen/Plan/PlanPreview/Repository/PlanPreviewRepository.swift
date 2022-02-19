@@ -9,7 +9,7 @@ import Foundation
 
 protocol PlanPreviewRepositoryInterface {
   var networkError: ((Error) -> Void)? { get set }
-  func fetchHeaderData(idx: Int,onCompleted: @escaping (PlanPreview.HeaderData?,PlanPreview.DescriptionData?,Int) -> Void)
+  func fetchHeaderData(idx: Int,onCompleted: @escaping (PlanPreview.HeaderData?,PlanPreview.DescriptionData?,Int,Int) -> Void)
   func fetchBodyData(idx: Int,onCompleted: @escaping ([PlanPreview.PhotoData]?,PlanPreview.SummaryData?) -> Void)
 }
 
@@ -25,7 +25,7 @@ final class PlanPreviewRepository: PlanPreviewRepositoryInterface {
     self.networkService = service
   }
   
-  func fetchHeaderData(idx: Int,onCompleted: @escaping (PlanPreview.HeaderData?,PlanPreview.DescriptionData?,Int) -> Void){
+  func fetchHeaderData(idx: Int,onCompleted: @escaping (PlanPreview.HeaderData?,PlanPreview.DescriptionData?,Int,Int) -> Void){
     networkService.getPlanPreviewHeaderData(idx: idx) { [weak self] result in
       guard let self = self else {return}
       result.success { entity in
@@ -44,7 +44,8 @@ final class PlanPreviewRepository: PlanPreviewRepositoryInterface {
                                                                                                   transport: entity.tagMobility,
                                                                                                   month: String(entity.tagMonth)))
         let price = entity.price
-        onCompleted(headerData,descriptionData,price)
+        let authID = entity.authorID
+        onCompleted(headerData,descriptionData,price,authID)
       }.catch { error in
         self.networkError?(error)
       }
@@ -67,6 +68,4 @@ final class PlanPreviewRepository: PlanPreviewRepositoryInterface {
       }
     }
   }
-  
-  
 }

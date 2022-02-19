@@ -21,10 +21,12 @@ protocol PlanPreviewViewModelType : ViewModelType{
   // Outputs
   var didFetchDataStart: (() -> Void)? { get set }
   var didFetchDataFinished: (() -> Void)? { get set }
-  var didUpdatePriceData : ((Int) -> Void)? { get set }
+  var didUpdatePriceData : ((String) -> Void)? { get set }
   var successScrap: (() -> Void)? { get set }
   var networkError: (() -> Void)? { get set }
   var unexpectedError: (() -> Void)? { get set }
+  var movePaymentView: (() -> Void)? { get set }
+  var movePreviewDetailView: (( ) -> Void)? { get set }
 }
 
 class PlanPreviewViewModel : PlanPreviewViewModelType{
@@ -32,10 +34,12 @@ class PlanPreviewViewModel : PlanPreviewViewModelType{
   // MARK: - Outputs
   var didFetchDataStart: (() -> Void)?
   var didFetchDataFinished: (() -> Void)?
-  var didUpdatePriceData: ((Int) -> Void)?
+  var didUpdatePriceData: ((String) -> Void)?
   var successScrap: (() -> Void)?
   var networkError: (() -> Void)?
   var unexpectedError: (() -> Void)?
+  var movePaymentView: (() -> Void)?
+  var movePreviewDetailView: (( ) -> Void)?
   
   // MARK: - Models
   
@@ -45,10 +49,11 @@ class PlanPreviewViewModel : PlanPreviewViewModelType{
   var summaryData : PlanPreview.SummaryData?
   var recommendData : PlanPreview.RecommendData?
   var contentList : [PlanPreview.ContentList] = []
+  var authID : Int = 0
   
   // MARK: - Dependency 주입
   private var repository: PlanPreviewRepositoryInterface
-  private let postId: Int
+  let postId: Int
   
   init(postId: Int,repository: PlanPreviewRepositoryInterface){
     self.postId = postId
@@ -68,11 +73,11 @@ extension PlanPreviewViewModel{
   }
   
   func clickBuyButton() {
-     
+     movePaymentView?()
   }
   
   func clickPreviewButton() {
-     
+     movePreviewDetailView?()
   }
   
   func clickPreviewImage(index: Int) {
@@ -87,10 +92,17 @@ extension PlanPreviewViewModel{
 // MARK: - Logics
 extension PlanPreviewViewModel {
   func fetchData(){
-    fetchHeaderData()
-    fetchBodyData()
-    didFetchDataFinished?()
+    didFetchDataStart?()
+    let group = DispatchGroup()
+    group.enter()
+    fetchHeaderData() { group.leave() }
+    group.enter()
+    fetchBodyData() { group.leave() }
     
+    group.notify(queue: .main){
+      self.setContentList()
+      self.didFetchDataFinished?()
+    }
   }
   
   func bindRepository(){
@@ -105,19 +117,38 @@ extension PlanPreviewViewModel {
     }
   }
   
-  func fetchHeaderData() {
-    repository.fetchHeaderData(idx: postId) { [weak self] header, description, price in
+  private func fetchHeaderData(completion: @escaping () -> (Void)) {
+    repository.fetchHeaderData(idx: postId) { [weak self] header, description, price, authID in
       self?.headerData = header
       self?.descriptionData = description
-      self?.didUpdatePriceData?(price)
+      let priceString = String(price) + "원"
+      self?.didUpdatePriceData?(priceString)
+      self?.authID = authID
+      completion()
     }
   }
   
-  func fetchBodyData() {
-    repository.fetchBodyData(idx: postId) { [weak self] photoList, summary in
+  private func fetchBodyData(completion: @escaping () -> (Void)){
+    repository.fetchBodyData(idx: postId)
+    { [weak self] photoList, summary in
       self?.photoData = photoList
       self?.summaryData = summary
+      completion()
     }
+  }
+  
+  private func setContentList(){
+    contentList.removeAll()
+    if let _ = headerData { contentList.append(.header) }
+    if let _ = descriptionData{ contentList.append(.description) }
+    if let photo = photoData{
+      for (_,_) in photo.enumerated(){
+        contentList.append(.photo)
+      }
+    }
+    if summaryData?.content != "" { contentList.append(.summary) }
+    if let _ = recommendData { contentList.append(.recommend) }
+    print("contentLIST",contentList)
   }
   
 }

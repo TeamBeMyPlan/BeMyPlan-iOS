@@ -35,12 +35,16 @@ protocol ModuleFactoryProtocol {
   func instantiateMyPlanWithdrawVC() -> MyPlanWithdrawVC
   
   // MARK: - Payment
-  func instantiatePaymentSelectVC() -> PaymentSelectVC
+  func instantiatePaymentSelectVC(writer: String?,
+                                  planTitle: String?,
+                                  imgURL: String?,
+                                  price : String?,
+                                  postID: Int) -> PaymentSelectVC
   func instantiatePaymentCompleteVC() -> PaymentCompleteVC
   
   // MARK: - Plan
-  func instantiatePlanPreviewVC() -> PlanPreviewVC
-  func instantiatePlanDetailVC() -> PlanDetailVC
+  func instantiatePlanPreviewVC(postID: Int) -> PlanPreviewVC
+  func instantiatePlanDetailVC(isPreviewPage: Bool) -> PlanDetailVC
   
   // MARK: - PlanList
   func instantiatePlanListVC() -> TravelSpotDetailVC
@@ -112,7 +116,17 @@ class ModuleFactory: ModuleFactoryProtocol{
   
   // MARK: - Payment
 
-  func instantiatePaymentSelectVC() -> PaymentSelectVC {
+  func instantiatePaymentSelectVC(writer: String?,
+                                  planTitle: String?,
+                                  imgURL: String?,
+                                  price : String?,
+                                  postID: Int) -> PaymentSelectVC {
+    let vc = PaymentSelectVC.controllerFromStoryboard(.payment)
+    vc.writer = writer
+    vc.planTitle = planTitle
+    vc.imgURL = imgURL
+    vc.price = price
+    vc.postIdx = postID
     return PaymentSelectVC.controllerFromStoryboard(.payment)
   }
   
@@ -122,18 +136,21 @@ class ModuleFactory: ModuleFactoryProtocol{
   
   // MARK: - Plan
 
-  func instantiatePlanPreviewVC() -> PlanPreviewVC {
+  func instantiatePlanPreviewVC(postID: Int) -> PlanPreviewVC {
     let repository = PlanPreviewRepository(service: BaseService.default)
-    let viewModel = PlanPreviewViewModel(postId: 0, repository: repository)
+    let viewModel = PlanPreviewViewModel(postId: postID,
+                                         repository: repository)
     // 추후 postID 넣어야 됨
     let vc = PlanPreviewVC.controllerFromStoryboard(.planPreview)
     vc.viewModel = viewModel
-    
-    return PlanPreviewVC.controllerFromStoryboard(.planPreview)
+  
+    return vc
   }
   
-  func instantiatePlanDetailVC() -> PlanDetailVC {
-    return PlanDetailVC.controllerFromStoryboard(.planDetail)
+  func instantiatePlanDetailVC(isPreviewPage: Bool = false) -> PlanDetailVC {
+    let vc = PlanDetailVC.controllerFromStoryboard(.planDetail)
+    vc.isPreviewPage = isPreviewPage
+    return vc
   }
   
   func instantiatePlanListVC() -> TravelSpotDetailVC {
