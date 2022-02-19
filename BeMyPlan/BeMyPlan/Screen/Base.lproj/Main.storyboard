@@ -28,25 +28,16 @@
                                 <rect key="frame" x="171" y="632.5" width="72.5" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="이동하기"/>
-                                <connections>
-                                    <action selector="trackButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="e4b-3i-z8y"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ys-Fl-upW">
                                 <rect key="frame" x="164.5" y="713.5" width="85" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="이동하기 2"/>
-                                <connections>
-                                    <action selector="trackButton2Clicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dau-ii-9JU"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eYT-8y-GNk">
                                 <rect key="frame" x="173.5" y="774.5" width="67" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                                <connections>
-                                    <action selector="drawLIneButonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YPd-Ws-ONK"/>
-                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="안녕하세요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E5y-yJ-Cbc">
                                 <rect key="frame" x="148.5" y="434" width="117" height="33"/>
@@ -79,9 +70,6 @@
                             <constraint firstItem="E5y-yJ-Cbc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xHO-HM-Ioy"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="sampleview" destination="JcM-46-y85" id="gLE-Er-sCx"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

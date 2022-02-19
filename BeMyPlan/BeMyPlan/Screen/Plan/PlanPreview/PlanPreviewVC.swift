@@ -127,30 +127,36 @@ class PlanPreviewVC: UIViewController {
   }
   
   private func fetchTagData(){
-
-    BaseService.default.getPlanPreviewHeaderData(idx: idx) { result in
-      result.success { [weak self] data in
-        if let data = data{
-          self?.authID = data.authorID
-          self?.priceLabel.text = String(data.price) + "원"
-          self?.headerData = PlanPreview.HeaderData.init(authorID: data.authorID,
-                                                         writer: data.author,
-                                                         title: data.title)
-          self?.descriptionData = PlanPreview.DescriptionData.init(descriptionContent: data.dataDescription,
-                                                                   summary: PlanPreview.IconData.init(theme: data.tagTheme,
-                                                                                                      spotCount: String(data.tagCountSpot),
-                                                                                                      restaurantCount: String(data.tagCountRestaurant),
-                                                                                                      dayCount: String(data.tagCountDay),
-                                                                                                      peopleCase: data.tagPartner,
-                                                                                                      budget: data.tagMoney,
-                                                                                                      transport: data.tagMobility,
-                                                                                                      month: String(data.tagMonth)))
+        
+      BaseService.default.getPlanPreviewHeaderData(idx: self.idx) { result in
+        result.success { [weak self] data in
+          if let data = data{
+            self?.authID = data.authorID
+            self?.priceLabel.text = String(data.price) + "원"
+            self?.headerData = PlanPreview.HeaderData.init(authorID: data.authorID,
+                                                           writer: data.author,
+                                                           title: data.title)
+            self?.descriptionData = PlanPreview.DescriptionData.init(descriptionContent: data.dataDescription,
+                                                                     summary: PlanPreview.IconData.init(theme: data.tagTheme,
+                                                                                                        spotCount: String(data.tagCountSpot),
+                                                                                                        restaurantCount: String(data.tagCountRestaurant),
+                                                                                                        dayCount: String(data.tagCountDay),
+                                                                                                        peopleCase: data.tagPartner,
+                                                                                                        budget: data.tagMoney,
+                                                                                                        transport: data.tagMobility,
+                                                                                                        month: String(data.tagMonth)))
+            print("성공11")
+          }
+        }.catch { err in
+          dump(err)
         }
-      }.catch { err in
-        dump(err)
       }
+      
+    
+    
+
     }
-  }
+
   
   private func fetchDetailData(){
     BaseService.default.getPlanPreviewDetailData(idx: idx) { result in
