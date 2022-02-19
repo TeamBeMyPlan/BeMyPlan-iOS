@@ -127,7 +127,7 @@ class ModuleFactory: ModuleFactoryProtocol{
     vc.imgURL = imgURL
     vc.price = price
     vc.postIdx = postID
-    return PaymentSelectVC.controllerFromStoryboard(.payment)
+    return vc
   }
   
   func instantiatePaymentCompleteVC() -> PaymentCompleteVC {
