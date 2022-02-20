@@ -169,7 +169,7 @@ class MainCardView: UIView {
 
 extension MainCardView : SkeletonCollectionViewDelegate{
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    postObserverAction(.movePlanPreview)
+    postObserverAction(.movePlanPreview,object: popularList[indexPath.row].id)
   }
 }
 

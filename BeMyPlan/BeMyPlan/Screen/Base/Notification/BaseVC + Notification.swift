@@ -79,11 +79,10 @@ extension BaseVC{
     // Home
     
     addObserverAction(.movePlanPreview) { noti in
-      guard let previewVC = UIStoryboard.list(.planPreview).instantiateViewController(withIdentifier: PlanPreviewVC.className) as? PlanPreviewVC else {return}
       if let index = noti.object as? Int{
-        previewVC.idx = index
+        let vc = ModuleFactory.resolve().instantiatePlanPreviewVC(postID: index)
+        self.navigationController?.pushViewController(vc, animated: true)
       }
-      self.navigationController?.pushViewController(previewVC, animated: true)
     }
     
     addObserverAction(.movePlanDetail) { noti in

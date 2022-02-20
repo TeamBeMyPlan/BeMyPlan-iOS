@@ -11,9 +11,9 @@ class PaymentSelectVC: UIViewController {
   
   // MARK: - Vars & Lets Part
   
-  var writer : String = ""
-  var planTitle : String = ""
-  var imgURL : String = ""
+  var writer : String?
+  var planTitle : String?
+  var imgURL : String?
   var postIdx = 0
   private var selectedIndex : Int = -1{
     didSet{
@@ -26,7 +26,7 @@ class PaymentSelectVC: UIViewController {
     }
   }
   
-  var price : String = "" 
+  var price : String?
   private var paymentList :[PaymentList] = [.kakaoPay,
                                     .toss,.naverPay]
 
@@ -63,10 +63,10 @@ class PaymentSelectVC: UIViewController {
       paymentCompleteVC.modalTransitionStyle = .coverVertical
       paymentCompleteVC.modalPresentationStyle = .fullScreen
       paymentCompleteVC.delegate = self
-      paymentCompleteVC.price = price
+      paymentCompleteVC.price = price ?? ""
       paymentCompleteVC.paymentType = paymentList[selectedIndex]
-      paymentCompleteVC.planTitle = planTitle
-      paymentCompleteVC.writer = writer
+      paymentCompleteVC.planTitle = planTitle ?? ""
+      paymentCompleteVC.writer = writer ?? ""
       present(paymentCompleteVC,animated: true)
     }
  
@@ -82,7 +82,7 @@ class PaymentSelectVC: UIViewController {
     titleLabel.text = planTitle
     writerLabel.text = writer
     planImageView.layer.cornerRadius = 5
-    planImageView.setImage(with: imgURL)
+    planImageView.setImage(with: imgURL ?? "")
     
   }
   

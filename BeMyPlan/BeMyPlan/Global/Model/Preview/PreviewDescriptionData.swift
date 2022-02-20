@@ -22,6 +22,7 @@ extension PlanPreview{
     var budget : String
     var transport : String
     var month : String
+    
   }
   
   enum SummaryCase{
