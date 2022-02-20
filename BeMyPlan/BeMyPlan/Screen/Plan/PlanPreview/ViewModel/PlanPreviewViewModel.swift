@@ -148,8 +148,6 @@ extension PlanPreviewViewModel {
     }
     if let _ = summaryData  { contentList.append(.summary) }
     contentList.append(.recommend)
-//    if let _ = recommendData { contentList.append(.recommend) }
-    print("contentLIST",contentList)
   }
   
 }

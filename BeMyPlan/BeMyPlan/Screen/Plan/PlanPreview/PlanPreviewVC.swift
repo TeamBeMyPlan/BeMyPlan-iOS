@@ -74,9 +74,9 @@ class PlanPreviewVC: UIViewController {
       }
     }
     
-    viewModel.networkError = {
-      self.closeIndicator{
-        self.postObserverAction(.showNetworkError)
+    viewModel.networkError = { [weak self] in
+      self?.closeIndicator{
+        self?.postObserverAction(.showNetworkError)
       }
     }
     
@@ -160,7 +160,6 @@ extension PlanPreviewVC : UITableViewDataSource{
     }
   }
 }
-
 
 
 extension PlanPreviewVC : UIScrollViewDelegate{
