@@ -6,3 +6,17 @@
 //
 
 import Foundation
+
+protocol PlanDetailViewModelType: ViewModelType {
+  
+  // Inputs
+  
+  // Outputs
+  
+}
+
+class PlanDetailViewModel: PlanDetailViewModelType {
+
+  // MARK: - Outputs
+}
+
