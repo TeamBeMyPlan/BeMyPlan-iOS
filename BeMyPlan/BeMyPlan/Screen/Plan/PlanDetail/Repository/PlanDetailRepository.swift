@@ -18,7 +18,7 @@ protocol PlanDetailRepositoryInterface {
 }
 
 final class PlanDetailRepository: PlanDetailRepositoryInterface {
-
+  
   // MARK: - Outputs
   var networkError: ((Error) -> Void)?
   private let networkService: PlanDetailServiceType

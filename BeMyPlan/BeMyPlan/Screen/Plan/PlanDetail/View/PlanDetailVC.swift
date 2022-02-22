@@ -210,8 +210,13 @@ extension PlanDetailVC : UITableViewDataSource{
       switch(indexPath.row){
         case 0:
           guard let summaryCell = tableView.dequeueReusableCell(withIdentifier: PlanDetailSummaryTVC.className, for: indexPath) as? PlanDetailSummaryTVC else {return UITableViewCell() }
+          
           guard summaryList.count >= currentDay-1 else {return UITableViewCell()}
-          summaryCell.locationList = self.summaryList[currentDay - 1]
+//          let currentDay = viewModel.
+          let summaryViewModel = PlanDetailSummaryViewModel.init(summaryList: self.viewModel.,
+                                                                 currentDay: <#T##Int#>,
+                                                                 isFold: <#T##Bool#>)
+          summaryCell.locationList = self.viewModel.summaryList[currentDay - 1]
           summaryCell.currentDay = currentDay
           summaryCell.isFold = isSummaryFold
           return summaryCell

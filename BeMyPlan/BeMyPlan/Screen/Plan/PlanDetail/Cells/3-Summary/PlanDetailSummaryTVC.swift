@@ -7,8 +7,20 @@
 
 import UIKit
 
+struct PlanDetailSummaryViewModel{
+  var summaryList: [PlanDetail.Summary]
+  var currentDay: Int
+  var isFold: Bool
+}
+
 class PlanDetailSummaryTVC: UITableViewCell,UITableViewRegisterable{
   
+  var viewModel: PlanDetailSummaryViewModel!{
+    didSet{
+      calculateSummaryHeight()
+      listTV.reloadData()
+    }
+  }
   var summaryList : [PlanDetail.Summary] = []
   var currentDay : Int = 1
   
