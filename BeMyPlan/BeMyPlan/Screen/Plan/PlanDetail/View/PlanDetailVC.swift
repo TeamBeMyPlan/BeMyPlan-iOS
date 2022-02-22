@@ -188,9 +188,9 @@ extension PlanDetailVC : UITableViewDataSource{
   
   func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
       let selectView = PlanDetailSelectDayView()
-      selectView.totalDay = totalDay
-      selectView.currentDay = currentDay
-      selectView.setFoldImage(isFolded: isFullPage)
+    selectView.viewModel = PlanDetailSelectDayViewModel.init(totalDay: totalDay,
+                                                   currentDay: currentDay,
+                                                   isFold: isFullPage)
       selectView.delegate = self
       return selectView
   }

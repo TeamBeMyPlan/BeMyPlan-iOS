@@ -20,19 +20,12 @@ protocol PlanDetailDayDelegate{
 class PlanDetailSelectDayView: XibView{
 
   static var isFromNib: Bool = true
+  var delegate :PlanDetailDayDelegate?
   var viewModel: PlanDetailSelectDayViewModel{
     didSet { configure() }
   }
-  var delegate :PlanDetailDayDelegate?
-  
-  public var totalDay : Int = 4
-  var currentDay : Int = 1{
-    didSet{
-      dayContainerCV.reloadData()
-      delegate?.dayClicked(day: currentDay)
-    }
-  }
-  
+
+  // MARK: - UI Components
   @IBOutlet var foldIconImageView: UIImageView!
   @IBOutlet var dayContainerCV: UICollectionView!{
     didSet{
@@ -63,14 +56,7 @@ class PlanDetailSelectDayView: XibView{
     dayContainerCV.reloadData()
     delegate?.dayClicked(day: viewModel.currentDay)
   }
-  
-//  func setFoldImage(isFolded: Bool){
-//    if isFolded{
-//      foldIconImageView.image = ImageLiterals.PlanDetail.unfoldDetailIocn
-//    }else{
-//      foldIconImageView.image = ImageLiterals.PlanDetail.foldDetailIcon
-//    }
-//  }
+
   private func registerCells(){
     PlanDetailDayCVC.register(target: dayContainerCV)
   }
@@ -78,7 +64,7 @@ class PlanDetailSelectDayView: XibView{
   private func addObserver(){
     addObserverAction(.detailFoldComplete) { noti in
       if let result = noti.object as? Bool{
-        self.setFoldImage(isFolded: result)
+        self.viewModel.isFold = result
       }
     }
   }
