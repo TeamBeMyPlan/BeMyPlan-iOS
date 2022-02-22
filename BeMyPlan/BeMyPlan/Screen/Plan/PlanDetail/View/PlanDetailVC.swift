@@ -24,15 +24,13 @@ class PlanDetailVC: UIViewController {
   var locationList : [[PlanDetailMapData]] = [[]]
   var totalDay : Int = 1
   var initailScrollCompleted = false
-  var isFold = true
+  var isSummaryFold = true
   var currentDay : Int = 1 { didSet{
     mapContainerView.currentDay = currentDay
     mainContainerTV.reloadData()}
   }
   var summaryList : [[PlanDetail.Summary]] = [[]]
   var infoList : [[PlanDetail.SpotData]] = [[]]
-
-  private var writerBlockHeight :CGFloat = 0
   
   // MARK: - UI Components Part
   
@@ -68,7 +66,6 @@ class PlanDetailVC: UIViewController {
       super.viewDidLoad()
       registerCells()
       mainContainerTV.reloadData()
-      getWriterBlockHeight()
       isPreviewPage ? setPreviewDummy() : fetchPlanDetailData()
       addObserver()
       showIndicator()
@@ -91,14 +88,33 @@ class PlanDetailVC: UIViewController {
   @IBAction func backButtonClicked(_ sender: Any) {
     self.navigationController?.popViewController(animated: true)
   }
+  
+  private func bindViewModel(){
+    viewModel.currentDay = { [weak self] currentDay in
+      guard let self = self else {return}
+      self.mapContainerView.currentDay = currentDay
+      self.mainContainerTV.reloadData()
+    }
+    
+    viewModel.contentFoldState = { [weak self] isFold, headerHeight in
+      guard let self = self else {return}
+      self.headerTitleLabel.isHidden = !self.isFullPage
+      self.mainTVTopConstraint.constant = isFold ? -10 : headerHeight
+    }
+    
+  }
+  
+  
+  
+  
   private func addObserver(){
     addObserverAction(.planDetailButtonClicked) { _ in
       self.isFullPage = !self.isFullPage
     }
     
-    addObserverAction(.foldStateChanged) { noti in
+    addObserverAction(.summaryFoldStateChanged) { noti in
       if let state = noti.object as? Bool{
-        self.isFold = state
+        self.isSummaryFold = state
         self.mainContainerTV.reloadData()
       }
     }
@@ -107,12 +123,6 @@ class PlanDetailVC: UIViewController {
   private func registerCells(){
     PlanDetailSummaryTVC.register(target: mainContainerTV)
     PlanDetailInformationTVC.register(target: mainContainerTV)
-  }
-  
-  private func getWriterBlockHeight(){
-    headerTitleLabel.isHidden = true
-    let writerFrame = mainContainerTV.rectForRow(at: IndexPath(row: 0, section: 0))
-    writerBlockHeight = writerFrame.height
   }
   
   func setWriterView(){
@@ -203,7 +213,7 @@ extension PlanDetailVC : UITableViewDataSource{
           guard summaryList.count >= currentDay-1 else {return UITableViewCell()}
           summaryCell.locationList = self.summaryList[currentDay - 1]
           summaryCell.currentDay = currentDay
-          summaryCell.isFold = isFold
+          summaryCell.isFold = isSummaryFold
           return summaryCell
           
         default:

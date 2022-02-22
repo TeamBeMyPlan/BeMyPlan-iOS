@@ -21,7 +21,7 @@ class PlanDetailSelectDayView: XibView{
 
   static var isFromNib: Bool = true
   var delegate :PlanDetailDayDelegate?
-  var viewModel: PlanDetailSelectDayViewModel{
+  var viewModel: PlanDetailSelectDayViewModel!{
     didSet { configure() }
   }
 

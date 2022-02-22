@@ -207,6 +207,6 @@ extension PlanDetailSummaryTVC : UITableViewDataSource{
 extension PlanDetailSummaryTVC : SummaryFoldDelegate{
   func foldButtonClicked() {
     isFold = !isFold
-    postObserverAction(.foldStateChanged, object: isFold)
+    postObserverAction(.summaryFoldStateChanged, object: isFold)
   }
 }

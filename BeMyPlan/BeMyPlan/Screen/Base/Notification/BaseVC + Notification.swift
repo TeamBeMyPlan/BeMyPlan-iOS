@@ -35,7 +35,7 @@ enum BaseNotiList : String{
   //PlanDetail
   case detailFoldComplete
   case planDetailButtonClicked
-  case foldStateChanged
+  case summaryFoldStateChanged
   
   static func makeNotiName(list : BaseNotiList) -> NSNotification.Name{
     return Notification.Name(String(describing: list))

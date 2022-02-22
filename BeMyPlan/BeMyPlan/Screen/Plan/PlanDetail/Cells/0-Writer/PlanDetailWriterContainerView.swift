@@ -16,7 +16,7 @@ struct PlanDetailWriterViewModel{
 
 class PlanDetailWriterContainerView: XibView {
 
-  var viewModel: PlanDetailWriterViewModel{
+  var viewModel: PlanDetailWriterViewModel!{
     didSet{ configure() }
   }
   
