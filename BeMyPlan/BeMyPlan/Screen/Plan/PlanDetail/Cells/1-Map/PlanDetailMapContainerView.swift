@@ -7,7 +7,11 @@
 
 import UIKit
 
+
+
 class PlanDetailMapContainerView: XibView,MTMapViewDelegate{
+  
+  // MARK: - View Model
 
   // MARK: - var let Parts
 
@@ -45,6 +49,8 @@ class PlanDetailMapContainerView: XibView,MTMapViewDelegate{
     setMapPoint()
     showMapCenter(pointList: totalMapPointList)
   }
+  
+  
   
   private func setUI(){
     mapContainerView.layer.cornerRadius = 5

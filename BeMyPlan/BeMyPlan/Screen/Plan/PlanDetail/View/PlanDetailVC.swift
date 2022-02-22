@@ -11,8 +11,11 @@ class PlanDetailVC: UIViewController {
   
   // MARK: - ViewModels
   
-  var viewModel: PlanDetailViewModelType!
-  
+  var viewModel: PlanDetailViewModel!
+  var writerContainerViewModel: PlanDetailWriterViewModel! { didSet { setWriterView() }}
+  var selectViewModel: PlanDetailSelectDayViewModel!
+  var summaryCellViewModel: PlanDetailSummaryViewModel!
+  var informationCellViewModels: [PlanDetailInformationViewModel]!
 
   // MARK: - Vars & Lets Part
   var authID = 0
@@ -25,10 +28,7 @@ class PlanDetailVC: UIViewController {
   var totalDay : Int = 1
   var initailScrollCompleted = false
   var isSummaryFold = true
-  var currentDay : Int = 1 { didSet{
-    mapContainerView.currentDay = currentDay
-    mainContainerTV.reloadData()}
-  }
+  var currentDay : Int = 1
   var summaryList : [[PlanDetail.Summary]] = [[]]
   var infoList : [[PlanDetail.SpotData]] = [[]]
   
@@ -90,23 +90,49 @@ class PlanDetailVC: UIViewController {
   }
   
   private func bindViewModel(){
-    viewModel.currentDay = { [weak self] currentDay in
-      guard let self = self else {return}
-      self.mapContainerView.currentDay = currentDay
-      self.mainContainerTV.reloadData()
-    }
-    
     viewModel.contentFoldState = { [weak self] isFold, headerHeight in
       guard let self = self else {return}
       self.headerTitleLabel.isHidden = !self.isFullPage
       self.mainTVTopConstraint.constant = isFold ? -10 : headerHeight
     }
     
+    viewModel.didFetchDataStart = { [weak self] in
+      self?.showIndicator()
+    }
+    
+    viewModel.didFetchDataComplete = { [weak self] in
+      self?.setMapContainerView()
+      self?.mainContainerTV.reloadData()
+      self?.setMapContainerView()
+      self?.closeIndicator {
+        UIView.animate(withDuration: 1){
+          self?.mainContainerTV.alpha = 1
+        }
+      }
+    }
+    
+    viewModel.networkError = { [weak self] in
+      self?.postObserverAction(.showNetworkError)
+    }
+    
+    viewModel.didUpdateWriterViewModel = { [weak self] writerViewModel in
+      self?.writerContainerViewModel = writerViewModel
+    }
+    
+    viewModel.didUpdateSelectDayViewModel = { [weak self] selectDayViewModel in
+      self?.selectViewModel = selectDayViewModel
+    }
+    
+    viewModel.didUpdateSummaryCellViewModel = { [weak self] summaryViewModel in
+      self?.summaryCellViewModel = summaryViewModel
+    }
+    
+    viewModel.didUpdateinformationCellViewModel = { [weak self] informationViewModelList in
+      self?.informationCellViewModels = informationViewModelList
+    }
   }
   
-  
-  
-  
+
   private func addObserver(){
     addObserverAction(.planDetailButtonClicked) { _ in
       self.isFullPage = !self.isFullPage
@@ -126,17 +152,12 @@ class PlanDetailVC: UIViewController {
   }
   
   func setWriterView(){
-    if let headerData = headerData{
-      writerContainerView.setTitleData(title: headerData.writer,
-                                       writer: headerData.title,
-                                       isPreviewPage: isPreviewPage,
-                                       authorID: authID)
-    }
+      writerContainerView.viewModel = writerContainerViewModel
   }
   
   func setMapContainerView(){
-    mapContainerView.mapPointList = self.locationList
-    mapContainerView.currentDay = self.currentDay - 1
+    mapContainerView.mapPointList = self.viewModel.locationList
+    mapContainerView.currentDay = self.viewModel.currentDay - 1
   }
   
   private func foldContentTableView(){
@@ -164,11 +185,8 @@ extension PlanDetailVC : UITableViewDelegate{
     return UITableView.automaticDimension
   }
   
-  func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-  }
   func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-
-    let animation = AnimationFactory.makeFadeAnimation(duration: 0.6, delayFactor: 0.08)
+    let animation = AnimationFactory.makeFadeAnimation(duration: 0.4, delayFactor: 0.08)
     let animator = Animator(animation: animation)
     animator.animate(cell: cell, at: indexPath, in: tableView)
   }
@@ -177,10 +195,10 @@ extension PlanDetailVC : UITableViewDelegate{
 extension PlanDetailVC : UITableViewDataSource{
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    if infoList.count == 0{
+    if viewModel.infoList.count == 0{
       return 0
     }else{
-      return infoList[currentDay - 1].count + 1
+      return viewModel.infoList[viewModel.currentDay - 1].count + 1
     }
   }
   
@@ -198,9 +216,7 @@ extension PlanDetailVC : UITableViewDataSource{
   
   func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
       let selectView = PlanDetailSelectDayView()
-    selectView.viewModel = PlanDetailSelectDayViewModel.init(totalDay: totalDay,
-                                                   currentDay: currentDay,
-                                                   isFold: isFullPage)
+    selectView.viewModel = selectViewModel
       selectView.delegate = self
       return selectView
   }
@@ -210,31 +226,29 @@ extension PlanDetailVC : UITableViewDataSource{
       switch(indexPath.row){
         case 0:
           guard let summaryCell = tableView.dequeueReusableCell(withIdentifier: PlanDetailSummaryTVC.className, for: indexPath) as? PlanDetailSummaryTVC else {return UITableViewCell() }
-          
           guard summaryList.count >= currentDay-1 else {return UITableViewCell()}
-//          let currentDay = viewModel.
-          let summaryViewModel = PlanDetailSummaryViewModel.init(summaryList: self.viewModel.,
-                                                                 currentDay: <#T##Int#>,
-                                                                 isFold: <#T##Bool#>)
-          summaryCell.locationList = self.viewModel.summaryList[currentDay - 1]
-          summaryCell.currentDay = currentDay
-          summaryCell.isFold = isSummaryFold
+          summaryCell.viewModel = summaryCellViewModel
+
+//          summaryCell.locationList = self.viewModel.summaryList[currentDay - 1]
+//          summaryCell.currentDay = currentDay
+//          summaryCell.isFold = isSummaryFold
           return summaryCell
           
         default:
-          
-          guard infoList.count > currentDay-1 else {return UITableViewCell()}
-          guard infoList[currentDay-1].count > indexPath.row - 1 else {return UITableViewCell()}
-          let spotData = infoList[currentDay-1][indexPath.row - 1]
+          guard viewModel.infoList.count > viewModel.currentDay-1 else {return UITableViewCell()}
+          guard viewModel.infoList[viewModel.currentDay-1].count > indexPath.row - 1 else {return UITableViewCell()}
+          let spotData = viewModel.infoList[viewModel.currentDay-1][indexPath.row - 1]
          guard let infoCell = tableView.dequeueReusableCell(withIdentifier: PlanDetailInformationTVC.className, for: indexPath) as? PlanDetailInformationTVC else {return UITableViewCell() }
-         infoCell.setData(title: spotData.locationTitle,
-                          address: spotData.address,
-                          imgUrls: spotData.imagerUrls,
-                          content: spotData.textContent,
-                          transport: spotData.nextLocationData?.transportCase,
-                          transportTime: spotData.nextLocationData?.time,
-                          nextTravel: infoList[currentDay-1].count > indexPath.row ?
-                          infoList[currentDay-1][indexPath.row].nextLocationData : nil)
+          infoCell.viewModel = self.informationCellViewModels[indexPath.row - 1]
+//
+//         infoCell.setData(title: spotData.locationTitle,
+//                          address: spotData.address,
+//                          imgUrls: spotData.imagerUrls,
+//                          content: spotData.textContent,
+//                          transport: spotData.nextLocationData?.transportCase,
+//                          transportTime: spotData.nextLocationData?.time,
+//                          nextTravel: infoList[currentDay-1].count > indexPath.row ?
+//                          infoList[currentDay-1][indexPath.row].nextLocationData : nil)
          return infoCell
       }
   }
@@ -243,7 +257,7 @@ extension PlanDetailVC : UITableViewDataSource{
 extension PlanDetailVC : UIScrollViewDelegate{
   func scrollViewDidScroll(_ scrollView: UIScrollView){
     if initailScrollCompleted == false{
-      mapContainerView.currentDay = currentDay
+      mapContainerView.currentDay = viewModel.currentDay
       initailScrollCompleted = true
     }
 
@@ -257,9 +271,9 @@ extension PlanDetailVC : UIScrollViewDelegate{
 
 extension PlanDetailVC : PlanDetailDayDelegate{
   func dayClicked(day: Int) {
-    if self.currentDay != day{
+    if viewModel.currentDay != day{
       self.mainContainerTV.scrollToRow(at: IndexPath(row: 0, section: 0 ), at: .top, animated: true)
-      self.currentDay = day
+      viewModel.currentDay = day
     }
 
   }

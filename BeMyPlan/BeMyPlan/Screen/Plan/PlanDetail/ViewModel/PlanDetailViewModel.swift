@@ -16,11 +16,14 @@ protocol PlanDetailViewModelType: ViewModelType {
   
   // Outputs
   var contentFoldState: ((Bool,CGFloat) -> Void)? { get set }
-  var currentDay: ((Int) -> Void)? { get set }
   var didFetchDataStart: (() -> Void)? { get set }
   var didFetchDataComplete: (() -> Void)? { get set }
   var networkError: (() -> Void)? { get set }
   var unexpectedError: (() -> Void)? { get set }
+  var didUpdateWriterViewModel: ((PlanDetailWriterViewModel) -> Void)? { get set }
+  var didUpdateSelectDayViewModel: ((PlanDetailSelectDayViewModel) -> Void)? { get set }
+  var didUpdateSummaryCellViewModel: ((PlanDetailSummaryViewModel) -> Void)? { get set }
+  var didUpdateinformationCellViewModel: (([PlanDetailInformationViewModel]) -> Void)? { get set }
   
 }
 
@@ -28,11 +31,14 @@ class PlanDetailViewModel: PlanDetailViewModelType {
   // MARK: - Outputs
   
   var contentFoldState: ((Bool,CGFloat) -> Void)?
-  var currentDay: ((Int) -> Void)?
   var didFetchDataStart: (() -> Void)?
   var didFetchDataComplete: (() -> Void)?
   var networkError: (() -> Void)?
   var unexpectedError: (() -> Void)?
+  var didUpdateWriterViewModel: ((PlanDetailWriterViewModel) -> Void)?
+  var didUpdateSelectDayViewModel: ((PlanDetailSelectDayViewModel) -> Void)?
+  var didUpdateSummaryCellViewModel: ((PlanDetailSummaryViewModel) -> Void)?
+  var didUpdateinformationCellViewModel: (([PlanDetailInformationViewModel]) -> Void)?
 
   // MARK: - Models
   
@@ -47,6 +53,7 @@ class PlanDetailViewModel: PlanDetailViewModelType {
   var totalDay: Int = 1
   var initialScrollCompleted = false
   var isSummaryFold = true
+  var currentDay: Int = 1
   
   // MARK: - DI
   private var repository: PlanDetailRepositoryInterface
@@ -80,9 +87,7 @@ extension PlanDetailViewModel {
     }
   }
   
-
 }
-
 
 // MARK: - Logics
 extension PlanDetailViewModel {
@@ -144,6 +149,20 @@ extension PlanDetailViewModel {
     textViewForsizing.sizeToFit()
     textViewForsizing.frame.width <= screenWidth - 48 ? (writerTop = 70) : (writerTop = 95)
     writerBlockHeight = writerTop
+  }
+  
+  private func updateWriterViewModel(){
+    if let headerData = headerData{
+      let viewModel = PlanDetailWriterViewModel.init(nickname: headerData.writer,
+                                                     title: headerData.writer,
+                                                     isPreviewPage: isPreviewPage,
+                                                     authID: authorID)
+      didUpdateWriterViewModel?(viewModel)
+    }
+  }
+  
+  private func updateSelectDayModel(){
+    
   }
   
 }
