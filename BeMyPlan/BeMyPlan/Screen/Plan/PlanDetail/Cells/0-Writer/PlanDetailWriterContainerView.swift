@@ -7,10 +7,20 @@
 
 import UIKit
 
+struct PlanDetailWriterViewModel{
+  var nickname: String
+  var title: String
+  var isPreviewPage: Bool
+  var authID: Int
+}
+
 class PlanDetailWriterContainerView: XibView {
 
-  var nickName : String = ""
-  var authID = 0
+  var viewModel: PlanDetailWriterViewModel{
+    didSet{ configure() }
+  }
+//  var nickName : String = ""
+//  var authID = 0
   
   @IBOutlet var locationTitleView: UITextView!{
     didSet{
@@ -28,9 +38,7 @@ class PlanDetailWriterContainerView: XibView {
     }
   }
   @IBOutlet var writerLabel: UILabel!
-  
   @IBOutlet var arrowIconImageView: UIImageView!
-  
   @IBOutlet var nicknameClicked: UIButton!
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -47,18 +55,23 @@ class PlanDetailWriterContainerView: XibView {
   }
   
   @IBAction func nicknameButtonClicked(_ sender: Any) {
-    let data = PlanWriterDataModel.init(authorName: nickName,
-                                        authorID: authID)
+    let data = PlanWriterDataModel.init(authorName: viewModel.nickname,
+                                        authorID: viewModel.authID)
     postObserverAction(.moveNicknamePlanList, object: data)
   }
+  
+  private func configure(){
+    writerLabel.text = viewModel.title
+    locationTitleView.text = viewModel.nickname
+    arrowIconImageView.isHidden = viewModel.isPreviewPage
+    locationTitleView.sizeToFit()
+  }
+  
   func setTitleData(title : String, writer: String,isPreviewPage : Bool,authorID : Int){
     writerLabel.text = title
     locationTitleView.text = writer
     locationTitleView.sizeToFit()
     arrowIconImageView.isHidden = isPreviewPage
-    
-    authID = authorID
-    nickName = title
   }
 }
 

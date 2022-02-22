@@ -11,6 +11,9 @@ protocol PlanDetailViewModelType: ViewModelType {
   
   // Inputs
   
+  func viewDidLoad()
+  func 
+  
   // Outputs
   
 }
@@ -18,5 +21,20 @@ protocol PlanDetailViewModelType: ViewModelType {
 class PlanDetailViewModel: PlanDetailViewModelType {
 
   // MARK: - Outputs
+  
+  // MARK: - DI
+  private let repository: PlanDetailRepositoryInterface
+  let postID: Int
+  
+  init(postId: Int,repository: PlanDetailRepositoryInterface){
+    self.postID = postId
+    self.repository = repository
+  }
 }
 
+
+// MARK: - Logics
+extension PlanDetailViewModel {
+  
+  
+}

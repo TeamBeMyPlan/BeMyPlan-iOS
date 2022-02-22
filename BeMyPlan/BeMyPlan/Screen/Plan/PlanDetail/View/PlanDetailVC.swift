@@ -8,6 +8,11 @@
 import UIKit
 
 class PlanDetailVC: UIViewController {
+  
+  // MARK: - ViewModels
+  
+  var viewModel: PlanDetailViewModelType!
+  
 
   // MARK: - Vars & Lets Part
   var authID = 0
@@ -32,7 +37,6 @@ class PlanDetailVC: UIViewController {
   // MARK: - UI Components Part
   
   @IBOutlet var headerTitleLabel: UILabel!
-  
   @IBOutlet var writerContainerView: PlanDetailWriterContainerView!
   @IBOutlet var mapContainerView: PlanDetailMapContainerView!{
     didSet{
@@ -45,7 +49,6 @@ class PlanDetailVC: UIViewController {
       if #available(iOS 15.0, *) {
         mainContainerTV.sectionHeaderTopPadding = 0
       }
-//      mainContainerTV.contentInsetAdjustmentBehavior = .never
       mainContainerTV.alpha = 0
       mainContainerTV.delegate = self
       mainContainerTV.dataSource = self
