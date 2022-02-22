@@ -19,8 +19,6 @@ class PlanDetailWriterContainerView: XibView {
   var viewModel: PlanDetailWriterViewModel{
     didSet{ configure() }
   }
-//  var nickName : String = ""
-//  var authID = 0
   
   @IBOutlet var locationTitleView: UITextView!{
     didSet{
@@ -66,7 +64,7 @@ class PlanDetailWriterContainerView: XibView {
     arrowIconImageView.isHidden = viewModel.isPreviewPage
     locationTitleView.sizeToFit()
   }
-  
+  // FIXME: - 나중에 ViewModel 완성하면 지워야 함.
   func setTitleData(title : String, writer: String,isPreviewPage : Bool,authorID : Int){
     writerLabel.text = title
     locationTitleView.text = writer

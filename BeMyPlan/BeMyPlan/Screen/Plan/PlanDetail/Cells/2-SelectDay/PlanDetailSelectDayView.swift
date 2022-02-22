@@ -7,6 +7,12 @@
 
 import UIKit
 
+struct PlanDetailSelectDayViewModel{
+  var totalDay: Int
+  var currentDay: Int
+  var isFold: Bool
+}
+
 protocol PlanDetailDayDelegate{
   func dayClicked(day : Int)
 }
@@ -14,6 +20,9 @@ protocol PlanDetailDayDelegate{
 class PlanDetailSelectDayView: XibView{
 
   static var isFromNib: Bool = true
+  var viewModel: PlanDetailSelectDayViewModel{
+    didSet { configure() }
+  }
   var delegate :PlanDetailDayDelegate?
   
   public var totalDay : Int = 4
@@ -24,7 +33,7 @@ class PlanDetailSelectDayView: XibView{
     }
   }
   
-  @IBOutlet var foldIconImage: UIImageView!
+  @IBOutlet var foldIconImageView: UIImageView!
   @IBOutlet var dayContainerCV: UICollectionView!{
     didSet{
       dayContainerCV.delegate = self
@@ -48,13 +57,20 @@ class PlanDetailSelectDayView: XibView{
     postObserverAction(.planDetailButtonClicked)
   }
   
-  func setFoldImage(isFolded: Bool){
-    if isFolded{
-      foldIconImage.image = ImageLiterals.PlanDetail.unfoldDetailIocn
-    }else{
-      foldIconImage.image = ImageLiterals.PlanDetail.foldDetailIcon
-    }
+  private func configure(){
+    let foldIconImage = viewModel.isFold ? ImageLiterals.PlanDetail.unfoldDetailIocn : ImageLiterals.PlanDetail.foldDetailIcon
+    foldIconImageView.image = foldIconImage
+    dayContainerCV.reloadData()
+    delegate?.dayClicked(day: viewModel.currentDay)
   }
+  
+//  func setFoldImage(isFolded: Bool){
+//    if isFolded{
+//      foldIconImageView.image = ImageLiterals.PlanDetail.unfoldDetailIocn
+//    }else{
+//      foldIconImageView.image = ImageLiterals.PlanDetail.foldDetailIcon
+//    }
+//  }
   private func registerCells(){
     PlanDetailDayCVC.register(target: dayContainerCV)
   }
@@ -71,22 +87,20 @@ class PlanDetailSelectDayView: XibView{
 extension PlanDetailSelectDayView : UICollectionViewDelegate{
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     makeVibrate()
-    currentDay = indexPath.row + 1
+    viewModel.currentDay = indexPath.row + 1
   }
 }
 
 extension PlanDetailSelectDayView : UICollectionViewDataSource{
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return totalDay
+    return viewModel.totalDay
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let dayCell = collectionView.dequeueReusableCell(withReuseIdentifier: PlanDetailDayCVC.className, for: indexPath) as? PlanDetailDayCVC else { return UICollectionViewCell() }
-    dayCell.setDayState(isClicked:currentDay == (indexPath.row + 1),
+    dayCell.setDayState(isClicked:viewModel.currentDay == (indexPath.row + 1),
                         day: indexPath.row + 1)
-    
     dayCell.layer.cornerRadius = 5
-    
     return dayCell
   }
 }

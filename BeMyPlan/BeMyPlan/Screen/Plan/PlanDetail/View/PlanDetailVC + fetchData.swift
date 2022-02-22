@@ -24,7 +24,6 @@ extension PlanDetailVC{
                                               writer : detailData.author)
           self?.headerTitleLabel.text = detailData.title
           self?.headerTitleLabel.isHidden = true
-
           self?.makeTopBlockHeight(content: detailData.title)
           // 총 일차 가져오기
           self?.totalDay = detailData.totalDays
