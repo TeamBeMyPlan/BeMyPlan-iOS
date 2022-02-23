@@ -13,9 +13,11 @@ protocol PlanDetailViewModelType: ViewModelType {
   // Inputs
   
   func viewDidLoad()
+  func currentDayChanged(day: Int)
+  func bottomContainerFoldChanged()
+  func summaryFoldChanged(fold: Bool)
   
   // Outputs
-  var contentFoldState: ((Bool,CGFloat) -> Void)? { get set }
   var didFetchDataStart: (() -> Void)? { get set }
   var didFetchDataComplete: (() -> Void)? { get set }
   var networkError: (() -> Void)? { get set }
@@ -24,21 +26,24 @@ protocol PlanDetailViewModelType: ViewModelType {
   var didUpdateSelectDayViewModel: ((PlanDetailSelectDayViewModel) -> Void)? { get set }
   var didUpdateSummaryCellViewModel: ((PlanDetailSummaryViewModel) -> Void)? { get set }
   var didUpdateinformationCellViewModel: (([PlanDetailInformationViewModel]) -> Void)? { get set }
+  var didUpdateWriterBlockHeight: ((CGFloat) -> Void)? { get set }
+
   
 }
 
 class PlanDetailViewModel: PlanDetailViewModelType {
   // MARK: - Outputs
   
-  var contentFoldState: ((Bool,CGFloat) -> Void)?
   var didFetchDataStart: (() -> Void)?
   var didFetchDataComplete: (() -> Void)?
   var networkError: (() -> Void)?
   var unexpectedError: (() -> Void)?
+  var contentTableViewReload: (() -> Void)?
   var didUpdateWriterViewModel: ((PlanDetailWriterViewModel) -> Void)?
   var didUpdateSelectDayViewModel: ((PlanDetailSelectDayViewModel) -> Void)?
   var didUpdateSummaryCellViewModel: ((PlanDetailSummaryViewModel) -> Void)?
   var didUpdateinformationCellViewModel: (([PlanDetailInformationViewModel]) -> Void)?
+  var didUpdateWriterBlockHeight: ((CGFloat) -> Void)?
 
   // MARK: - Models
   
@@ -52,6 +57,7 @@ class PlanDetailViewModel: PlanDetailViewModelType {
   var mapContainerHeight: CGFloat = 160
   var totalDay: Int = 1
   var initialScrollCompleted = false
+  var isFullPage = false
   var isSummaryFold = true
   var currentDay: Int = 1
   
@@ -70,9 +76,45 @@ class PlanDetailViewModel: PlanDetailViewModelType {
 extension PlanDetailViewModel {
   func viewDidLoad() {
     didFetchDataStart?()
-    fetchData { [unowned self] in
-      self.didFetchDataComplete?()
+    if !isPreviewPage {
+      fetchDataFromRepository { [unowned self] in
+        self.updateWriterViewModel()
+        self.currentDayChanged(day: 1)
+        print("END")
+        self.didFetchDataComplete?()
+      }
+    }else{
+      setPreviewDummy {
+        self.updateWriterViewModel()
+        self.currentDayChanged(day: 1)
+        self.didFetchDataComplete?()
+      }
     }
+  }
+  
+  func currentDayChanged(day: Int){
+    currentDay = day
+    let dayViewModel = makeDaySelectViewModel(day: day)
+    let summaryViewModel = makeSummaryViewModel(day: day)
+    let infoViewModel = makeInformationViewModelList(day: day)
+    didUpdateSelectDayViewModel?(dayViewModel)
+    didUpdateSummaryCellViewModel?(summaryViewModel)
+    didUpdateinformationCellViewModel?(infoViewModel)
+    contentTableViewReload?()
+  }
+  
+  func bottomContainerFoldChanged() {
+    isFullPage = !isFullPage
+    let dayViewModel = makeDaySelectViewModel(day: currentDay)
+    didUpdateSelectDayViewModel?(dayViewModel)
+    contentTableViewReload?()
+  }
+  
+  func summaryFoldChanged(fold: Bool) {
+    isSummaryFold = fold
+    let summaryViewModel = makeSummaryViewModel(day: currentDay)
+    didUpdateSummaryCellViewModel?(summaryViewModel)
+    contentTableViewReload?()
   }
   
   func bindRepository(){
@@ -86,15 +128,18 @@ extension PlanDetailViewModel {
       }
     }
   }
-  
 }
 
 // MARK: - Logics
 extension PlanDetailViewModel {
-  private func fetchData(completion: @escaping () -> Void){
+  private func fetchDataFromRepository(completion: @escaping () -> Void){
     repository.fetchPlanDetailData(idx: postID) { [weak self]
       writer, authorID, title, totalDay, spots in
       guard let self = self else {return}
+      self.locationList.removeAll()
+      self.summaryList.removeAll()
+      self.infoList.removeAll()
+      
       self.headerData = DetailHeaderData(title: title, writer: writer)
       self.authorID = authorID
       self.totalDay = totalDay
@@ -127,6 +172,7 @@ extension PlanDetailViewModel {
         self.summaryList.append(summaryList)
         self.infoList.append(infoList)
       }
+      print("END333")
       completion()
     }
   }
@@ -149,11 +195,12 @@ extension PlanDetailViewModel {
     textViewForsizing.sizeToFit()
     textViewForsizing.frame.width <= screenWidth - 48 ? (writerTop = 70) : (writerTop = 95)
     writerBlockHeight = writerTop
+    didUpdateWriterBlockHeight?(writerBlockHeight)
   }
   
   private func updateWriterViewModel(){
     if let headerData = headerData{
-      let viewModel = PlanDetailWriterViewModel.init(nickname: headerData.writer,
+      let viewModel = PlanDetailWriterViewModel.init(nickname: headerData.title,
                                                      title: headerData.writer,
                                                      isPreviewPage: isPreviewPage,
                                                      authID: authorID)
@@ -165,4 +212,41 @@ extension PlanDetailViewModel {
     
   }
   
+}
+
+
+extension PlanDetailViewModel {
+
+  func makeDaySelectViewModel(day: Int) -> PlanDetailSelectDayViewModel {
+    let viewModel = PlanDetailSelectDayViewModel(totalDay: infoList.count,
+                                                 currentDay: day,
+                                                 isFold: isFullPage)
+    return viewModel
+  }
+  
+  func makeSummaryViewModel(day: Int) -> PlanDetailSummaryViewModel {
+    let summaryData = summaryList[day-1]
+    var locationList: [PlanDetail.Summary] = []
+    _ = summaryData.enumerated().map { index,data in
+      locationList.append(PlanDetail.Summary.init(transportCase: data.transportCase,
+                                                  locationName: data.locationName,
+                                                  time: data.time))
+    }
+    let viewModel = PlanDetailSummaryViewModel(locationList: locationList, isFold: isSummaryFold)
+    return viewModel
+  }
+  
+  func makeInformationViewModelList(day: Int) -> [PlanDetailInformationViewModel] {
+    let spotData = infoList[day-1]
+    let viewModel = spotData.enumerated().map { index,data in
+      PlanDetailInformationViewModel.init(title: data.locationTitle,
+                                          address: data.address,
+                                          imgUrls: data.imagerUrls,
+                                          content: data.textContent,
+                                          transport: data.nextLocationData?.transportCase,
+                                          transportTime: data.nextLocationData?.time,
+                                          nextTravel: index != spotData.count - 1 ? data.nextLocationData : nil)
+    }
+    return viewModel
+  }
 }

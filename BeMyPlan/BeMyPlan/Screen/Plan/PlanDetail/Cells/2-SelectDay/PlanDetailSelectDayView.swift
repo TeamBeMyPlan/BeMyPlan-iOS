@@ -62,11 +62,11 @@ class PlanDetailSelectDayView: XibView{
   }
   
   private func addObserver(){
-    addObserverAction(.detailFoldComplete) { noti in
-      if let result = noti.object as? Bool{
-        self.viewModel.isFold = result
-      }
-    }
+//    addObserverAction(.detailFoldComplete) { noti in
+//      if let result = noti.object as? Bool{
+//        self.viewModel.isFold = result
+//      }
+//    }
   }
 }
 

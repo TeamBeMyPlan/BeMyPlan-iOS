@@ -13,24 +13,14 @@ class PlanDetailVC: UIViewController {
   
   var viewModel: PlanDetailViewModel!
   var writerContainerViewModel: PlanDetailWriterViewModel! { didSet { setWriterView() }}
-  var selectViewModel: PlanDetailSelectDayViewModel!
-  var summaryCellViewModel: PlanDetailSummaryViewModel!
-  var informationCellViewModels: [PlanDetailInformationViewModel]!
+  var selectViewModel: PlanDetailSelectDayViewModel! // tableview header
+  var summaryCellViewModel: PlanDetailSummaryViewModel! // tableview cell
+  var informationCellViewModels: [PlanDetailInformationViewModel]! // tableview cells
 
   // MARK: - Vars & Lets Part
-  var authID = 0
-  var isPreviewPage : Bool = false
+  
   var isFullPage = false { didSet{ foldContentTableView() }}
-  var postIdx : Int = 29
-  var headerContentHeight : CGFloat = 0
-  var headerData : DetailHeaderData?
-  var locationList : [[PlanDetailMapData]] = [[]]
-  var totalDay : Int = 1
   var initailScrollCompleted = false
-  var isSummaryFold = true
-  var currentDay : Int = 1
-  var summaryList : [[PlanDetail.Summary]] = [[]]
-  var infoList : [[PlanDetail.SpotData]] = [[]]
   
   // MARK: - UI Components Part
   
@@ -65,22 +55,18 @@ class PlanDetailVC: UIViewController {
     override func viewDidLoad() {
       super.viewDidLoad()
       registerCells()
-      mainContainerTV.reloadData()
-      isPreviewPage ? setPreviewDummy() : fetchPlanDetailData()
+      bindViewModel()
       addObserver()
-      showIndicator()
+      viewModel.viewDidLoad()
     }
   
   override func viewWillAppear(_ animated: Bool) {
     navigationController?.fixInteractivePopGestureRecognizer(delegate: self)
-
-//    navigationController?.interactivePopGestureRecognizer?.delegate = nil
-//    navigationController?.interactivePopGestureRecognizer?.isEnabled = false
   }
+  
   override func viewDidAppear(_ animated: Bool) {
     self.navigationController?.removeViewController(PaymentSelectVC.self)
     self.navigationController?.removeViewController(PlanPreviewVC.self)
-//    self.navigationController?.removePopGesture()
   }
 
   // MARK: - Custom Methods Parts
@@ -90,12 +76,6 @@ class PlanDetailVC: UIViewController {
   }
   
   private func bindViewModel(){
-    viewModel.contentFoldState = { [weak self] isFold, headerHeight in
-      guard let self = self else {return}
-      self.headerTitleLabel.isHidden = !self.isFullPage
-      self.mainTVTopConstraint.constant = isFold ? -10 : headerHeight
-    }
-    
     viewModel.didFetchDataStart = { [weak self] in
       self?.showIndicator()
     }
@@ -103,7 +83,6 @@ class PlanDetailVC: UIViewController {
     viewModel.didFetchDataComplete = { [weak self] in
       self?.setMapContainerView()
       self?.mainContainerTV.reloadData()
-      self?.setMapContainerView()
       self?.closeIndicator {
         UIView.animate(withDuration: 1){
           self?.mainContainerTV.alpha = 1
@@ -120,7 +99,9 @@ class PlanDetailVC: UIViewController {
     }
     
     viewModel.didUpdateSelectDayViewModel = { [weak self] selectDayViewModel in
-      self?.selectViewModel = selectDayViewModel
+      guard let self = self else {return}
+      self.selectViewModel = selectDayViewModel
+      self.mapContainerView.currentDay = self.viewModel.currentDay
     }
     
     viewModel.didUpdateSummaryCellViewModel = { [weak self] summaryViewModel in
@@ -130,18 +111,26 @@ class PlanDetailVC: UIViewController {
     viewModel.didUpdateinformationCellViewModel = { [weak self] informationViewModelList in
       self?.informationCellViewModels = informationViewModelList
     }
+    
+    viewModel.contentTableViewReload = { [weak self] in
+      self?.foldContentTableView()
+      self?.mainContainerTV.reloadData()
+    }
+    
+    viewModel.didUpdateWriterBlockHeight = { [weak self] height in
+      self?.writerBlockHeightConstraint.constant = height
+      self?.view.layoutIfNeeded()
+    }
   }
   
-
   private func addObserver(){
     addObserverAction(.planDetailButtonClicked) { _ in
-      self.isFullPage = !self.isFullPage
+      self.viewModel.bottomContainerFoldChanged()
     }
     
     addObserverAction(.summaryFoldStateChanged) { noti in
       if let state = noti.object as? Bool{
-        self.isSummaryFold = state
-        self.mainContainerTV.reloadData()
+        self.viewModel.summaryFoldChanged(fold: state)
       }
     }
   }
@@ -157,68 +146,57 @@ class PlanDetailVC: UIViewController {
   
   func setMapContainerView(){
     mapContainerView.mapPointList = self.viewModel.locationList
-    mapContainerView.currentDay = self.viewModel.currentDay - 1
+    mapContainerView.currentDay = self.viewModel.currentDay
   }
   
   private func foldContentTableView(){
-    if isFullPage {
+    if viewModel.isFullPage {
       headerTitleLabel.isHidden = false
       mainTVTopConstraint.constant = -10
     }else{
       headerTitleLabel.isHidden = true
-      mainTVTopConstraint.constant = headerContentHeight
+      mainTVTopConstraint.constant = viewModel.writerBlockHeight + viewModel.mapContainerHeight
     }
-    UIView.animate(withDuration: 0.5, delay: 0,
+    UIView.animate(withDuration: 0.3, delay: 0,
                    options: .curveEaseOut) {
       self.view.layoutIfNeeded()
-    } completion: { _ in
-      self.postObserverAction(.detailFoldComplete, object: self.isFullPage)
     }
-
   }
-
 }
 
 extension PlanDetailVC : UITableViewDelegate{
- 
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return UITableView.automaticDimension
-  }
-  
-  func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-    let animation = AnimationFactory.makeFadeAnimation(duration: 0.4, delayFactor: 0.08)
-    let animator = Animator(animation: animation)
-    animator.animate(cell: cell, at: indexPath, in: tableView)
   }
 }
 
 extension PlanDetailVC : UITableViewDataSource{
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    if viewModel.infoList.count == 0{
+    if informationCellViewModels == nil{
       return 0
     }else{
-      return viewModel.infoList[viewModel.currentDay - 1].count + 1
+      return informationCellViewModels.count + 1
     }
   }
   
-  func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-    return 98
-  }
+  func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat { 98 }
   
-  func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-    return 0
-  }
+  func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat { 0 }
   
   func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
     return UIView()
   }
   
   func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    if selectViewModel != nil {
       let selectView = PlanDetailSelectDayView()
-    selectView.viewModel = selectViewModel
+      selectView.viewModel = selectViewModel
       selectView.delegate = self
       return selectView
+    }else{
+      return UIView()
+    }
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -226,29 +204,13 @@ extension PlanDetailVC : UITableViewDataSource{
       switch(indexPath.row){
         case 0:
           guard let summaryCell = tableView.dequeueReusableCell(withIdentifier: PlanDetailSummaryTVC.className, for: indexPath) as? PlanDetailSummaryTVC else {return UITableViewCell() }
-          guard summaryList.count >= currentDay-1 else {return UITableViewCell()}
           summaryCell.viewModel = summaryCellViewModel
-
-//          summaryCell.locationList = self.viewModel.summaryList[currentDay - 1]
-//          summaryCell.currentDay = currentDay
-//          summaryCell.isFold = isSummaryFold
           return summaryCell
           
         default:
-          guard viewModel.infoList.count > viewModel.currentDay-1 else {return UITableViewCell()}
-          guard viewModel.infoList[viewModel.currentDay-1].count > indexPath.row - 1 else {return UITableViewCell()}
-          let spotData = viewModel.infoList[viewModel.currentDay-1][indexPath.row - 1]
+          guard informationCellViewModels.count >= indexPath.row else {return UITableViewCell() }
          guard let infoCell = tableView.dequeueReusableCell(withIdentifier: PlanDetailInformationTVC.className, for: indexPath) as? PlanDetailInformationTVC else {return UITableViewCell() }
           infoCell.viewModel = self.informationCellViewModels[indexPath.row - 1]
-//
-//         infoCell.setData(title: spotData.locationTitle,
-//                          address: spotData.address,
-//                          imgUrls: spotData.imagerUrls,
-//                          content: spotData.textContent,
-//                          transport: spotData.nextLocationData?.transportCase,
-//                          transportTime: spotData.nextLocationData?.time,
-//                          nextTravel: infoList[currentDay-1].count > indexPath.row ?
-//                          infoList[currentDay-1][indexPath.row].nextLocationData : nil)
          return infoCell
       }
   }
@@ -272,8 +234,8 @@ extension PlanDetailVC : UIScrollViewDelegate{
 extension PlanDetailVC : PlanDetailDayDelegate{
   func dayClicked(day: Int) {
     if viewModel.currentDay != day{
-      self.mainContainerTV.scrollToRow(at: IndexPath(row: 0, section: 0 ), at: .top, animated: true)
-      viewModel.currentDay = day
+      self.mainContainerTV.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+      viewModel.currentDayChanged(day: day)
     }
 
   }

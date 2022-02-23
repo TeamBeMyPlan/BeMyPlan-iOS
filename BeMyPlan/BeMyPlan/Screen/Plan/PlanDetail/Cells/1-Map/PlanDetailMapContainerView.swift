@@ -26,6 +26,7 @@ class PlanDetailMapContainerView: XibView,MTMapViewDelegate{
   var totalMapPointList : [PlanDetailMapData] = []
   var currentDay : Int = 1 { didSet {changedCurrentDay() }}
   var currentIndex : Int = 0 { didSet{ showEachPlaceCenter() }}
+  private var mapPointItemList: [[MTMapPOIItem]] = []
   
   // MARK: - UI Components Parts
   
@@ -50,8 +51,6 @@ class PlanDetailMapContainerView: XibView,MTMapViewDelegate{
     showMapCenter(pointList: totalMapPointList)
   }
   
-  
-  
   private func setUI(){
     mapContainerView.layer.cornerRadius = 5
     mapView = MTMapView(frame: self.mapContainerView.bounds)
@@ -69,7 +68,10 @@ class PlanDetailMapContainerView: XibView,MTMapViewDelegate{
   private func showEachPlaceCenter(){
     if currentIndex > 0 && currentDay > 0 && mapPointList.count > 0{
       let data = mapPointList[currentDay - 1][currentIndex - 1]
+      let point = mapPointItemList[currentDay - 1][currentIndex - 1]
       showMapCenter(pointList: [data])
+      self.mapView?.select(point, animated: true)
+
     }else{
       if mapPointList.count >= currentDay && currentDay > 0 {
         showMapCenter(pointList: mapPointList[currentDay - 1])
@@ -96,9 +98,7 @@ class PlanDetailMapContainerView: XibView,MTMapViewDelegate{
   private func makeMapItem(mapData : PlanDetailMapData,isEnabled : Bool) -> MTMapPOIItem{
     let mapItem = MTMapPOIItem()
     if isEnabled{
-//      let view = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
-//      view.backgroundColor = .blue
-      
+
       mapItem.customImage = ImageLiterals.PlanDetail.mapSelectIcon
       mapItem.markerType = .customImage
       mapItem.customSelectedImage = ImageLiterals.PlanDetail.mapSelectIconClicked
@@ -106,7 +106,7 @@ class PlanDetailMapContainerView: XibView,MTMapViewDelegate{
       mapItem.itemName = mapData.title
       mapItem.customCalloutBalloonView = makeBallonView(title: mapData.title)
       
-      mapItem.customImageAnchorPointOffset = MTMapImageOffset.init(offsetX: 42, offsetY: 0)
+      mapItem.customImageAnchorPointOffset = MTMapImageOffset.init(offsetX: 30, offsetY: 0)
     }else{
       mapItem.customImage = ImageLiterals.PlanDetail.mapUnselectIcon
       mapItem.markerType = .customImage
@@ -138,8 +138,11 @@ class PlanDetailMapContainerView: XibView,MTMapViewDelegate{
   
   private func setMapPoint(){
     mapView?.removeAllPOIItems()
+    mapPointItemList.removeAll()
     if let mapView = mapView {
+      var pointList: [MTMapPOIItem] = []
       for (index,mapDataList) in mapPointList.enumerated(){
+        pointList.removeAll()
         for (_,mapData) in mapDataList.enumerated(){
           let state : Bool
           if currentDay == 0{
@@ -147,8 +150,11 @@ class PlanDetailMapContainerView: XibView,MTMapViewDelegate{
           }else{
             state = (index == currentDay - 1)
           }
-          mapView.add(makeMapItem(mapData: mapData, isEnabled: state))
+          let mapItem = makeMapItem(mapData: mapData, isEnabled: state)
+          pointList.append(mapItem)
+          mapView.add(mapItem)
         }
+        mapPointItemList.append(pointList)
       }
       self.mapContainerView.addSubview(mapView)
     }

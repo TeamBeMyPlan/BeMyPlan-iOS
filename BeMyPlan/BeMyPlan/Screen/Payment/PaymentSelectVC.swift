@@ -120,9 +120,7 @@ enum PaymentList : String{
 
 extension PaymentSelectVC : PaymentCompleteDelegate{
   func completeButtonClicked() {
-    guard let planDetailVC =
-            UIStoryboard.list(.planDetail).instantiateViewController(withIdentifier: PlanDetailVC.className) as? PlanDetailVC else {return}
-    planDetailVC.postIdx = postIdx
-    self.navigationController?.pushViewController(planDetailVC, animated: true)
+    let detailVC = ModuleFactory.resolve().instantiatePlanDetailVC(postID: postIdx)
+    self.navigationController?.pushViewController(detailVC, animated: true)
   }
 }

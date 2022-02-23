@@ -42,7 +42,6 @@ extension PlanDetailRepository {
         let title = entity.title
         let totalDays = entity.totalDays
         let spots = entity.spots
-
         onCompleted(writer,authorID,title,totalDays,spots)
       }.catch { error in
         self.networkError?(error)
