@@ -185,7 +185,7 @@ class PlanDetailMapContainerView: XibView,MTMapViewDelegate{
       if(UIApplication.shared.canOpenURL(appUrl)){
         UIApplication.shared.open(appUrl, options: [:], completionHandler: nil)
       }else{
-        let searchURL = makeMapsURL(place: place, platform: .kakao)
+        let searchURL = makeMapsURL(place: place, platform: .naver)
         if let appUrl = searchURL{
           if(UIApplication.shared.canOpenURL(appUrl)){
             UIApplication.shared.open(appUrl, options: [:], completionHandler: nil)
