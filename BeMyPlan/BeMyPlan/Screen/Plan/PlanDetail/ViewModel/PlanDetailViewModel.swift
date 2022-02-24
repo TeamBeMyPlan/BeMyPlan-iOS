@@ -28,7 +28,6 @@ protocol PlanDetailViewModelType: ViewModelType {
   var didUpdateinformationCellViewModel: (([PlanDetailInformationViewModel]) -> Void)? { get set }
   var didUpdateWriterBlockHeight: ((CGFloat) -> Void)? { get set }
 
-  
 }
 
 class PlanDetailViewModel: PlanDetailViewModelType {

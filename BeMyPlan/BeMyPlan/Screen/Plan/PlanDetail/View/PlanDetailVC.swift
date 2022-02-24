@@ -226,7 +226,9 @@ extension PlanDetailVC : UIScrollViewDelegate{
     let visiblePoints = CGPoint(x: 0, y: scrollView.contentOffset.y + 210)
     let visibleIndex = mainContainerTV.indexPathForRow(at: visiblePoints)
     if let visibleIndex = visibleIndex {
-      mapContainerView.currentIndex = visibleIndex.row
+      if mapContainerView.currentIndex != visibleIndex.row{
+        mapContainerView.currentIndex = visibleIndex.row
+      }
     }
   }
 }
