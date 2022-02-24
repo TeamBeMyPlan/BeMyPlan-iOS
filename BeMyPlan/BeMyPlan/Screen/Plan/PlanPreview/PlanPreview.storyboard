@@ -215,7 +215,7 @@
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </textView>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img" translatesAutoresizingMaskIntoConstraints="NO" id="ZGA-tA-uBS">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img" translatesAutoresizingMaskIntoConstraints="NO" id="ZGA-tA-uBS">
                                                     <rect key="frame" x="24" y="11" width="366" height="238.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="238.5" id="78B-e2-y5P"/>
@@ -244,6 +244,7 @@
                                         <connections>
                                             <outlet property="contentImageView" destination="ZGA-tA-uBS" id="2Kz-Xc-Njy"/>
                                             <outlet property="contentTextView" destination="a8w-Cj-HDv" id="maJ-TJ-L54"/>
+                                            <outlet property="imageHeightConstraint" destination="78B-e2-y5P" id="Iuv-2u-McU"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlanPreviewSummaryTVC" rowHeight="137" id="vrE-XS-L4D" customClass="PlanPreviewSummaryTVC" customModule="BeMyPlan" customModuleProvider="target">

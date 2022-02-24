@@ -145,8 +145,9 @@ extension PlanPreviewVC : UITableViewDataSource{
       case .photo:
         guard let photoCell = tableView.dequeueReusableCell(withIdentifier: PlanPreviewPhotoTVC.className, for: indexPath) as? PlanPreviewPhotoTVC else {return UITableViewCell() }
         
-        photoCell.setPhotoData(url: viewModel.photoData?[indexPath.row - 2].photo,
-                               content: viewModel.photoData?[indexPath.row - 2].content)
+        photoCell.setPhotoData(photo: viewModel.photoList[indexPath.row - 2],
+                               content: viewModel.photoData?[indexPath.row - 2].content,
+                               height: viewModel.heightList[indexPath.row - 2])
         return photoCell
         
       case .summary:
