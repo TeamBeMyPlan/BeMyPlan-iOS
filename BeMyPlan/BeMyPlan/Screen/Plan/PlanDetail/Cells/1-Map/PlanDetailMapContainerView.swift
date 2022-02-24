@@ -70,9 +70,7 @@ class PlanDetailMapContainerView: XibView,MTMapViewDelegate{
       let data = mapPointList[currentDay - 1][currentIndex - 1]
       let point = mapPointItemList[currentDay - 1][currentIndex - 1]
       showMapCenter(pointList: [data])
-      DispatchQueue.main.asyncAfter(deadline: .now() + 1.3) {
         self.mapView?.select(point, animated: true)
-      }
     }else{
       if mapPointList.count >= currentDay && currentDay > 0 {
         showMapCenter(pointList: mapPointList[currentDay - 1])

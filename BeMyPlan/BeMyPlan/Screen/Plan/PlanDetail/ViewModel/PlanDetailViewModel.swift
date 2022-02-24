@@ -184,7 +184,7 @@ extension PlanDetailViewModel {
     }
   }
   
-  private func makeTopBlockHeight(content : String){
+  func makeTopBlockHeight(content : String){
     var writerTop : CGFloat
     let textViewForsizing = UITextView()
     textViewForsizing.font = .boldSystemFont(ofSize: 20)

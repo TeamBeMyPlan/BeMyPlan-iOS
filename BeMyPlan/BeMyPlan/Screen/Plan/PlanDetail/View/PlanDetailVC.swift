@@ -119,6 +119,7 @@ class PlanDetailVC: UIViewController {
     
     viewModel.didUpdateWriterBlockHeight = { [weak self] height in
       self?.writerBlockHeightConstraint.constant = height
+//      self?.mapContainerHeightConstraint.constant
       self?.view.layoutIfNeeded()
     }
   }

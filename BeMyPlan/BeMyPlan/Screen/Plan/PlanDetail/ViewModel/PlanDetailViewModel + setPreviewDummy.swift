@@ -15,9 +15,6 @@ extension PlanDetailViewModel {
     setSummaryList()
     setInfoList()
     completion()
-    
-    
-
 
     
   }
@@ -25,6 +22,9 @@ extension PlanDetailViewModel {
   private func makeHeaderDummyData(){
     headerData = DetailHeaderData.init(title: "친구와 함께 퇴사 기념 힐링여행",
                                        writer: "베이비타이거")
+    
+    self.makeTopBlockHeight(content: "친구와 함께 퇴사 기념 힐링여행")
+
     
   }
   
@@ -248,11 +248,6 @@ extension PlanDetailViewModel {
                                                                                  locationName: "스타벅스 제주용담DT점",
                                                                                  time: "38분"))
       ]
-      
-
-    
     ])
-                    
-                    
   }
 }
