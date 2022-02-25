@@ -80,7 +80,7 @@ class MainListView: UIView {
   // MARK: - Custom Method Part
   
   private func setTitle(){
-    mainListCategotyLabel.text = (type == .recently ? "최신 여행 일정" : "에디터 추천 여행 일정")
+    mainListCategotyLabel.text = (type == .recently ? "최신 여행 일정" : "비마플 추천 여행 일정")
   }
   
   private func setMainListCV(){
