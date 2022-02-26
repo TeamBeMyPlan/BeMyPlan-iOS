@@ -7,22 +7,14 @@
 
 import UIKit
 
-extension PlanDetailVC {
-  func setPreviewDummy(){
+extension PlanDetailViewModel {
+  func setPreviewDummy(completion: @escaping () -> Void){
     makeHeaderDummyData()
     setDayState()
     setMapList()
     setSummaryList()
     setInfoList()
-    makeTopBlockHeight(content: "친구와 함께 퇴사 기념 힐링여행")
-    
-    mainContainerTV.reloadData()
-    setWriterView()
-    setMapContainerView()
-    
-    closeIndicator {
-      self.mainContainerTV.alpha = 1
-    }
+    completion()
 
     
   }
@@ -30,6 +22,9 @@ extension PlanDetailVC {
   private func makeHeaderDummyData(){
     headerData = DetailHeaderData.init(title: "친구와 함께 퇴사 기념 힐링여행",
                                        writer: "베이비타이거")
+    
+    self.makeTopBlockHeight(content: "친구와 함께 퇴사 기념 힐링여행")
+
     
   }
   
@@ -253,11 +248,6 @@ extension PlanDetailVC {
                                                                                  locationName: "스타벅스 제주용담DT점",
                                                                                  time: "38분"))
       ]
-      
-
-    
     ])
-                    
-                    
   }
 }

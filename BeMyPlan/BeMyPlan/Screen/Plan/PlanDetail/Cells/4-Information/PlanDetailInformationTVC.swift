@@ -7,31 +7,39 @@
 
 import UIKit
 
+
+struct PlanDetailInformationViewModel{
+  var title: String
+  var address: String
+  var imgUrls: [String]
+  var content: String
+  var transport: TransportCase?
+  var transportTime: String?
+  var nextTravel: PlanDetail.Summary?
+}
+
 class PlanDetailInformationTVC: UITableViewCell,UITableViewRegisterable {
   
-  private var addressData : String = ""
+  
+  // MARK: - Models
+  var viewModel: PlanDetailInformationViewModel! {
+    didSet { configure() }
+  }
   private var lastPointee : CGFloat = 0
   static var isFromNib: Bool = true
-  private var imgUrlList : [String] = []{
-    didSet {
-      if imgUrlList.count > 1{
-        progressBar.isHidden = false
-        progressBar.setPercentage(ratio: CGFloat((currentIndex + 1)) / CGFloat(imgUrlList.count))
-      }else{
-        progressBar.isHidden = true
-      }
-    }
-  }
-  
+
   var currentIndex :Int = 0{
     didSet{
-      if imgUrlList.count >= 1{
-        progressBar.setPercentage(ratio: CGFloat((currentIndex + 1)) / CGFloat(imgUrlList.count))
+      if viewModel.imgUrls.count >= 1{
+        progressBar.setPercentage(ratio: CGFloat((currentIndex + 1)) / CGFloat(viewModel.imgUrls.count))
       }else{
         progressBar.setPercentage(ratio: 0)
       }
     }
   }
+  
+  // MARK: - UI Components
+
   @IBOutlet var titleLabel: UILabel!
   @IBOutlet var addressLabel: UILabel!
   @IBOutlet var contentCV: UICollectionView!{
@@ -42,11 +50,7 @@ class PlanDetailInformationTVC: UITableViewCell,UITableViewRegisterable {
       contentCV.bounces = false
     }
   }
-  @IBOutlet var progressBar: ProgressBar!{
-    didSet{
-      
-    }
-  }
+  @IBOutlet var progressBar: ProgressBar!
   @IBOutlet var contentTextView: UITextView!{
     didSet{
       let style = NSMutableParagraphStyle()
@@ -66,10 +70,7 @@ class PlanDetailInformationTVC: UITableViewCell,UITableViewRegisterable {
   @IBOutlet var nextTripLocationNameLabel: UILabel!
   @IBOutlet var nextTripTimeLabel: UILabel!
   
-  @IBOutlet var nextLocationGuideLabelCenterLayout: NSLayoutConstraint!{
-    didSet{
-    }
-  }
+  @IBOutlet var nextLocationGuideLabelCenterLayout: NSLayoutConstraint!
   @IBOutlet var nextLocationGuideLabelWidth: NSLayoutConstraint!{
     didSet{
       nextLocationGuideLabelWidth.constant = screenWidth - 88
@@ -82,7 +83,6 @@ class PlanDetailInformationTVC: UITableViewCell,UITableViewRegisterable {
   }
   override func awakeFromNib() {
     super.awakeFromNib()
-    currentIndex = 0
     registerCells()
     setUI()
     // Initialization code
@@ -94,7 +94,7 @@ class PlanDetailInformationTVC: UITableViewCell,UITableViewRegisterable {
   
   // MARK: - IBActions Part
   @IBAction func addressCopyButtonClicked(_ sender: Any) {
-    UIPasteboard.general.string = addressData
+    UIPasteboard.general.string = viewModel.address
     postObserverAction(.copyComplete)
   }
   
@@ -102,14 +102,12 @@ class PlanDetailInformationTVC: UITableViewCell,UITableViewRegisterable {
   
   private func setUI(){
     contentCV.layer.cornerRadius = 5
-    
     contentTextView.textContainerInset = .zero
     contentTextView.textContainer.lineFragmentPadding = .zero
     
     nextTripTimeView.layer.cornerRadius = 5
     nextTripTimeView.layer.borderColor = UIColor.grey04.cgColor
     nextTripTimeView.layer.borderWidth = 1
-    
   }
   
   private func setNextLocationLabelCenter(){
@@ -118,35 +116,29 @@ class PlanDetailInformationTVC: UITableViewCell,UITableViewRegisterable {
     nextLocationGuideLabelCenterLayout.constant = -1 * farWidth
   }
   
-  func setData(title : String, address : String,
-               imgUrls: [String],content : String,
-               transport : TransportCase?,
-  transportTime : String?,
-               nextTravel : PlanDetail.Summary?){
-    addressData = address
-    if let nextTravel = nextTravel,
-       let transportCase = transport,
-       let nextTime = transportTime{
+  private func configure(){
+    if let nextTravel = viewModel.nextTravel,
+       let transportCase = viewModel.transport,
+       let nextTime = viewModel.transportTime{
       nextTripTimeView.isHidden = false
       nextTripTimeLabel.text = transportCase.rawValue + " " + nextTime
-      nextTripLocationNameLabel.text = title + " -> " + nextTravel.locationName
+      nextTripLocationNameLabel.text = viewModel.title + " -> " + nextTravel.locationName
     }else{
       nextTripTimeView.isHidden = true
     }
-    titleLabel.text = title
-    addressLabel.text = address
-    contentTextView.text = content
+    titleLabel.text = viewModel.title
+    addressLabel.text = viewModel.address
+    contentTextView.text = viewModel.content
     nextTripLocationNameLabel.sizeToFit()
     nextTripTimeLabel.sizeToFit()
-    if imgUrls.count > 0{
-      imgUrlList = imgUrls
-    }else{
-      imgUrlList.removeAll()
-      imgUrlList.append("https://be-my-plan.s3.ap-northeast-2.amazonaws.com/images/728fe6ed-1073-48cc-9800-dd8bf69de114-123.png")
-    }
-    currentIndex = 0
-    
     setNextLocationLabelCenter()
+    
+    if viewModel.imgUrls.count > 1{
+      progressBar.isHidden = false
+      progressBar.setPercentage(ratio: CGFloat((currentIndex + 1)) / CGFloat(viewModel.imgUrls.count))
+    }else{
+      progressBar.isHidden = true
+    }
     contentCV.reloadData()
   }
   
@@ -157,12 +149,12 @@ class PlanDetailInformationTVC: UITableViewCell,UITableViewRegisterable {
 }
 extension PlanDetailInformationTVC : UICollectionViewDataSource{
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return imgUrlList.count
+    return viewModel.imgUrls.count
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let photoCell = collectionView.dequeueReusableCell(withReuseIdentifier: PlanDetailInfoPhotoCVC.className, for: indexPath) as? PlanDetailInfoPhotoCVC else {return UICollectionViewCell() }
-    photoCell.setImage(url: imgUrlList[indexPath.row])
+    photoCell.setImage(url: viewModel.imgUrls[indexPath.row])
     return photoCell
   }
 }

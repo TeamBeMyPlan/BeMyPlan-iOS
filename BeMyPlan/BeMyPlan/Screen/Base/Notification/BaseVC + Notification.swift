@@ -35,7 +35,7 @@ enum BaseNotiList : String{
   //PlanDetail
   case detailFoldComplete
   case planDetailButtonClicked
-  case foldStateChanged
+  case summaryFoldStateChanged
   
   static func makeNotiName(list : BaseNotiList) -> NSNotification.Name{
     return Notification.Name(String(describing: list))
@@ -86,11 +86,10 @@ extension BaseVC{
     }
     
     addObserverAction(.movePlanDetail) { noti in
-      guard let previewVC = UIStoryboard.list(.planDetail).instantiateViewController(withIdentifier: PlanDetailVC.className) as? PlanDetailVC else {return}
       if let index = noti.object as? Int{
-        previewVC.postIdx = index
+        let detailVC = ModuleFactory.resolve().instantiatePlanDetailVC(postID: index)
+        self.navigationController?.pushViewController(detailVC, animated: true)
       }
-      self.navigationController?.pushViewController(previewVC, animated: true)
     }
     
     addObserverAction(.moveHomeToPlanList) { noti in

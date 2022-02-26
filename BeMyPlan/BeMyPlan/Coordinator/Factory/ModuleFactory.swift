@@ -44,7 +44,7 @@ protocol ModuleFactoryProtocol {
   
   // MARK: - Plan
   func instantiatePlanPreviewVC(postID: Int) -> PlanPreviewVC
-  func instantiatePlanDetailVC(isPreviewPage: Bool) -> PlanDetailVC
+  func instantiatePlanDetailVC(postID: Int,isPreviewPage: Bool) -> PlanDetailVC
   
   // MARK: - PlanList
   func instantiatePlanListVC() -> TravelSpotDetailVC
@@ -147,9 +147,14 @@ class ModuleFactory: ModuleFactoryProtocol{
     return vc
   }
   
-  func instantiatePlanDetailVC(isPreviewPage: Bool = false) -> PlanDetailVC {
+  func instantiatePlanDetailVC(postID: Int,isPreviewPage: Bool = false) -> PlanDetailVC {
+    
+    let repository = PlanDetailRepository(service: BaseService.default)
+    let viewModel = PlanDetailViewModel(postId: postID,
+                                        isPreviewPage: isPreviewPage,
+                                        repository: repository)
     let vc = PlanDetailVC.controllerFromStoryboard(.planDetail)
-    vc.isPreviewPage = isPreviewPage
+    vc.viewModel = viewModel
     return vc
   }
   

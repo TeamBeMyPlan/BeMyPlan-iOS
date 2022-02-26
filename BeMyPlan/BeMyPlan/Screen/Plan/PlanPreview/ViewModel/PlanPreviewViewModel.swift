@@ -49,6 +49,8 @@ class PlanPreviewViewModel : PlanPreviewViewModelType{
   var summaryData : PlanPreview.SummaryData?
   var recommendData : PlanPreview.RecommendData?
   var contentList : [PlanPreview.ContentList] = []
+  var photoList:[UIImage] = []
+  var heightList:[CGFloat] = []
   var authID : Int = 0
   
   // MARK: - Dependency 주입
@@ -93,12 +95,12 @@ extension PlanPreviewViewModel{
 extension PlanPreviewViewModel {
   func fetchData(){
     didFetchDataStart?()
+
     let group = DispatchGroup()
     group.enter()
     fetchHeaderData() { group.leave() }
     group.enter()
     fetchBodyData() { group.leave() }
-    
     group.notify(queue: .main){
       self.setContentList()
       self.didFetchDataFinished?()
@@ -131,9 +133,18 @@ extension PlanPreviewViewModel {
   private func fetchBodyData(completion: @escaping () -> (Void)){
     repository.fetchBodyData(idx: postId)
     { [weak self] photoList, summary in
-      self?.photoData = photoList
-      self?.summaryData = summary
-      completion()
+      guard let self = self else {return}
+      self.photoData = photoList
+      self.summaryData = summary
+      if let photoList = photoList {
+        self.generateImages(photoData: photoList) { imgList in
+          self.photoList = imgList
+          self.makeImageHeight(images: imgList) { heightList in
+            self.heightList = heightList
+            completion()
+          }
+        }
+      }
     }
   }
   
@@ -150,4 +161,32 @@ extension PlanPreviewViewModel {
     contentList.append(.recommend)
   }
   
+  private func generateImages(photoData:[PlanPreview.PhotoData],
+                              completion: @escaping ([UIImage]) -> Void){
+    var imgCount = 0 {didSet{
+      if imgCount == photoData.count {completion(imageContainer) }}
+    }
+    var imageContainer = Array(repeating: UIImage(), count: photoData.count)
+    _ = photoData.enumerated().map { (index,data) in
+      let imgView = UIImageView()
+      imgView.setImage(with: data.photo) { image in
+        imageContainer[index] = image ?? UIImage()
+        imgCount += 1
+      }
+    }
+  }
+  
+  private func makeImageHeight(images: [UIImage], completion: @escaping ([CGFloat]) -> Void){
+    let imageViewWidth = screenWidth - 48
+    var heightList:[CGFloat] = [] {didSet{
+      if heightList.count == images.count {
+        completion(heightList) }
+    }}
+    for (_,img) in images.enumerated(){
+      let ratio = img.size.width / img.size.height
+      let newHeight = imageViewWidth / ratio
+      heightList.append(newHeight)
+    }
+
+  }
 }
