@@ -623,6 +623,16 @@
 			path = MainListItem;
 			sourceTree = "<group>";
 		};
+		F27483E927C9E859004164F0 /* TravelSpotDetail */ = {
+			isa = PBXGroup;
+			children = (
+				FDC47E0B2789742800A152E8 /* TravelSpotDetailVC.swift */,
+				FDC47E092789742800A152E8 /* TravelSpotDetailTVC.xib */,
+				FDC47E072789742800A152E8 /* TravelSpotDetailTVC.swift */,
+			);
+			path = TravelSpotDetail;
+			sourceTree = "<group>";
+		};
 		F294EC29278EBC4D001069F8 /* Social Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -1346,13 +1356,11 @@
 		FDF980C32786D1670009A14E /* TravelSpot */ = {
 			isa = PBXGroup;
 			children = (
+				F27483E927C9E859004164F0 /* TravelSpotDetail */,
 				FDF980C92786D23D0009A14E /* TravelSpot.storyboard */,
 				FDF980D12786D2EB0009A14E /* TravelSpotVC.swift */,
 				FDC47E062789742800A152E8 /* TravelSpotCVC.xib */,
 				FDC47E082789742800A152E8 /* TravelSpotCVC.swift */,
-				FDC47E0B2789742800A152E8 /* TravelSpotDetailVC.swift */,
-				FDC47E092789742800A152E8 /* TravelSpotDetailTVC.xib */,
-				FDC47E072789742800A152E8 /* TravelSpotDetailTVC.swift */,
 				52E26A8C278C17A800D84F0C /* TravelSpotFilterVC.swift */,
 			);
 			path = TravelSpot;
