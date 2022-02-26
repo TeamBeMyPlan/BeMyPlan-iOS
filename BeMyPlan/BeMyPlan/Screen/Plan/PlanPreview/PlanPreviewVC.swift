@@ -16,7 +16,6 @@ class PlanPreviewVC: UIViewController {
   private var isAnimationProceed: Bool = false
   private var lastContentOffset : CGFloat = 0
   var viewModel : PlanPreviewViewModel!
-
   private var isScrabed : Bool = false{
     didSet{
       setScrabImage()
@@ -66,6 +65,7 @@ class PlanPreviewVC: UIViewController {
     }
     
     viewModel.didFetchDataFinished = { [weak self] in
+      self?.headerTitleLabel.text = self?.viewModel.headerData?.title
       self?.previewContentTV.reloadData()
       self?.closeIndicator{
         UIView.animate(withDuration: 0.4) {
@@ -166,6 +166,12 @@ extension PlanPreviewVC : UITableViewDataSource{
 
 extension PlanPreviewVC : UIScrollViewDelegate{
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
+
+    if scrollView.contentOffset.y > 127{
+      headerTitleLabel.alpha = 1
+    }else{
+      headerTitleLabel.alpha = 0
+    }
     
     if lastContentOffset > scrollView.contentOffset.y && lastContentOffset - 40 < scrollView.contentSize.height - scrollView.frame.height {
       moveBuyContainer(state: .show)

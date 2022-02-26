@@ -35,8 +35,8 @@
                                             <action selector="backButtonClicked:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="XrQ-C1-aro"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="제주 여행" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oIb-p3-I94">
-                                        <rect key="frame" x="174" y="58.5" width="66.5" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ㅁㄴㅇㄹㅁㄴㅇㄹㄴㅁㅇㄹ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oIb-p3-I94">
+                                        <rect key="frame" x="76" y="60.5" width="258" height="21"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -59,12 +59,13 @@
                                     <constraint firstAttribute="bottom" secondItem="lPg-JS-tNH" secondAttribute="bottom" constant="13" id="2pJ-4r-eaK"/>
                                     <constraint firstItem="lPg-JS-tNH" firstAttribute="leading" secondItem="xg5-nh-4sK" secondAttribute="leading" constant="24" id="35T-Fo-txA"/>
                                     <constraint firstAttribute="height" constant="94" id="5dX-wJ-NcG"/>
+                                    <constraint firstItem="oIb-p3-I94" firstAttribute="leading" secondItem="qO3-01-CAl" secondAttribute="trailing" constant="20" id="9Da-Az-btm"/>
                                     <constraint firstAttribute="bottom" secondItem="GzN-VZ-KNb" secondAttribute="bottom" constant="6" id="Ad3-tG-Hwn"/>
                                     <constraint firstAttribute="trailing" secondItem="MlQ-Ru-r5d" secondAttribute="trailing" constant="24" id="Idt-O7-1gI"/>
-                                    <constraint firstItem="oIb-p3-I94" firstAttribute="centerY" secondItem="lPg-JS-tNH" secondAttribute="centerY" id="JsY-aI-aqE"/>
+                                    <constraint firstItem="oIb-p3-I94" firstAttribute="centerY" secondItem="lPg-JS-tNH" secondAttribute="centerY" constant="2" id="JsY-aI-aqE"/>
+                                    <constraint firstItem="GzN-VZ-KNb" firstAttribute="leading" secondItem="oIb-p3-I94" secondAttribute="trailing" constant="20" id="Pyf-cu-8A9"/>
                                     <constraint firstAttribute="trailing" secondItem="GzN-VZ-KNb" secondAttribute="trailing" constant="16" id="R2V-UA-Zl7"/>
                                     <constraint firstAttribute="bottom" secondItem="MlQ-Ru-r5d" secondAttribute="bottom" constant="13" id="eBW-FF-SZF"/>
-                                    <constraint firstItem="oIb-p3-I94" firstAttribute="centerX" secondItem="xg5-nh-4sK" secondAttribute="centerX" id="fa4-oE-BB1"/>
                                     <constraint firstItem="qO3-01-CAl" firstAttribute="leading" secondItem="xg5-nh-4sK" secondAttribute="leading" constant="12" id="lv1-Sc-t41"/>
                                 </constraints>
                             </view>

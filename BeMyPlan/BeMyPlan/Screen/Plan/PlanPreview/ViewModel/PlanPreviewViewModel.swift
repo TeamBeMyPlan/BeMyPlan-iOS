@@ -164,7 +164,7 @@ extension PlanPreviewViewModel {
   private func generateImages(photoData:[PlanPreview.PhotoData],
                               completion: @escaping ([UIImage]) -> Void){
     var imgCount = 0 {didSet{
-      if imgCount == photoData.count {mcompletion(imageContainer) }}
+      if imgCount == photoData.count {completion(imageContainer) }}
     }
     var imageContainer = Array(repeating: UIImage(), count: photoData.count)
     _ = photoData.enumerated().map { (index,data) in
