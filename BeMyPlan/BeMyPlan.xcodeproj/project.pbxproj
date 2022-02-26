@@ -32,6 +32,9 @@
 		F266412F2788262800CCC751 /* MainListCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F266412C2788262800CCC751 /* MainListCVC.swift */; };
 		F26A584E279AE217001986F2 /* AuthNickNameDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26A584D279AE217001986F2 /* AuthNickNameDataModel.swift */; };
 		F273216F278BEB7700A9B0CC /* MainCardCarouselLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F273216E278BEB7700A9B0CC /* MainCardCarouselLayout.swift */; };
+		F27483EE27CA398D004164F0 /* SignUpTOSVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27483ED27CA398D004164F0 /* SignUpTOSVC.swift */; };
+		F27483F027CA39A3004164F0 /* SignUpEmailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27483EF27CA39A3004164F0 /* SignUpEmailVC.swift */; };
+		F27483F227CA39B4004164F0 /* SignUpNickNameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27483F127CA39B4004164F0 /* SignUpNickNameVC.swift */; };
 		F294EC28278EBC2C001069F8 /* LoginVC + KakaoLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F294EC27278EBC2C001069F8 /* LoginVC + KakaoLogin.swift */; };
 		F294EC2B278EBC66001069F8 /* LoginVC + AppleLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F294EC2A278EBC66001069F8 /* LoginVC + AppleLogin.swift */; };
 		F294EC2F278EBD7E001069F8 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F294EC2E278EBD7E001069F8 /* SignUpVC.swift */; };
@@ -276,6 +279,9 @@
 		F266412C2788262800CCC751 /* MainListCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainListCVC.swift; sourceTree = "<group>"; };
 		F26A584D279AE217001986F2 /* AuthNickNameDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthNickNameDataModel.swift; sourceTree = "<group>"; };
 		F273216E278BEB7700A9B0CC /* MainCardCarouselLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCardCarouselLayout.swift; sourceTree = "<group>"; };
+		F27483ED27CA398D004164F0 /* SignUpTOSVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpTOSVC.swift; sourceTree = "<group>"; };
+		F27483EF27CA39A3004164F0 /* SignUpEmailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpEmailVC.swift; sourceTree = "<group>"; };
+		F27483F127CA39B4004164F0 /* SignUpNickNameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpNickNameVC.swift; sourceTree = "<group>"; };
 		F294EC27278EBC2C001069F8 /* LoginVC + KakaoLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginVC + KakaoLogin.swift"; sourceTree = "<group>"; };
 		F294EC2A278EBC66001069F8 /* LoginVC + AppleLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginVC + AppleLogin.swift"; sourceTree = "<group>"; };
 		F294EC2E278EBD7E001069F8 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
@@ -623,6 +629,30 @@
 			path = MainListItem;
 			sourceTree = "<group>";
 		};
+		F27483EA27CA38FE004164F0 /* NickName */ = {
+			isa = PBXGroup;
+			children = (
+				F27483F127CA39B4004164F0 /* SignUpNickNameVC.swift */,
+			);
+			path = NickName;
+			sourceTree = "<group>";
+		};
+		F27483EB27CA390C004164F0 /* Email */ = {
+			isa = PBXGroup;
+			children = (
+				F27483EF27CA39A3004164F0 /* SignUpEmailVC.swift */,
+			);
+			path = Email;
+			sourceTree = "<group>";
+		};
+		F27483EC27CA3955004164F0 /* TermsOfService */ = {
+			isa = PBXGroup;
+			children = (
+				F27483ED27CA398D004164F0 /* SignUpTOSVC.swift */,
+			);
+			path = TermsOfService;
+			sourceTree = "<group>";
+		};
 		F294EC29278EBC4D001069F8 /* Social Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -635,6 +665,9 @@
 		F294EC2D278EBD58001069F8 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
+				F27483EC27CA3955004164F0 /* TermsOfService */,
+				F27483EB27CA390C004164F0 /* Email */,
+				F27483EA27CA38FE004164F0 /* NickName */,
 				F294EC2E278EBD7E001069F8 /* SignUpVC.swift */,
 				F294EC31278EFA0F001069F8 /* SignUp.storyboard */,
 			);
@@ -1658,6 +1691,7 @@
 				FD4C86BA278C7A8400D37A2D /* PaymentSelectVC.swift in Sources */,
 				FD3151A5278D0C880076D92E /* PlanDetailVC.swift in Sources */,
 				FD09DE2027857CF2006DA050 /* LoginVC.swift in Sources */,
+				F27483F027CA39A3004164F0 /* SignUpEmailVC.swift in Sources */,
 				FD2D4DD8278DB054002084B9 /* PlanDetailSummaryFoldTVC.swift in Sources */,
 				FDF7FEC727A7E15B00E3AB62 /* BaseControllable.swift in Sources */,
 				FDF7FED427A7E84000E3AB62 /* CoordinatorFactory.swift in Sources */,
@@ -1676,6 +1710,7 @@
 				FD2D9C6A279881D400688A42 /* MyPlanApplicationVC.swift in Sources */,
 				FDF980C12786D14B0009A14E /* setDefaultFonts.swift in Sources */,
 				FD09DE0727857971006DA050 /* calculateTopInset.swift in Sources */,
+				F27483EE27CA398D004164F0 /* SignUpTOSVC.swift in Sources */,
 				FDF980E32786E7E90009A14E /* BaseContainerView.swift in Sources */,
 				FD4C86B0278BD17F00D37A2D /* setImage.swift in Sources */,
 				FD20C612278EC29600AC6E34 /* setTextLineHeight + UILabel.swift in Sources */,
@@ -1722,6 +1757,7 @@
 				FDF7FECF27A7E21600E3AB62 /* Router.swift in Sources */,
 				FD20C620278EF0C900AC6E34 /* MyPlanSettingVC.swift in Sources */,
 				FD20C628278EF6CA00AC6E34 /* BarFullButton.swift in Sources */,
+				F27483F227CA39B4004164F0 /* SignUpNickNameVC.swift in Sources */,
 				FD2D4DB9278D3DCE002084B9 /* PlanDetailInformationTVC.swift in Sources */,
 				FD20C60B278EBBB500AC6E34 /* MyPlanBuyContentCVC.swift in Sources */,
 				FDF981022788D49C0009A14E /* PlanPreviewWriterTVC.swift in Sources */,

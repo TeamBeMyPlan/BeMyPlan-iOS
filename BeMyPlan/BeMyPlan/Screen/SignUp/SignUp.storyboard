@@ -10,6 +10,36 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--View Controller-->
+        <scene sceneID="EAf-Pl-9Ib">
+            <objects>
+                <viewController id="uUb-ME-v4F" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="u3B-Jd-Xu4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="E80-vZ-TCT"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Obm-vy-T4K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="872" y="94"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="b1M-39-fDt">
+            <objects>
+                <viewController id="GVb-q0-N38" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9lO-pe-ibE">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Do3-8S-Ecc"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="v8Q-sO-hzy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1630" y="94"/>
+        </scene>
         <!--Sign UpVC-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
