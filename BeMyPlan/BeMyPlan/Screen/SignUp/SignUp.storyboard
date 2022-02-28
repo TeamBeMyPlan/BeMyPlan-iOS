@@ -26,7 +26,7 @@
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" backgroundImage="icn_clear"/>
                             </button>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="D5o-4R-QSz">
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.34999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="D5o-4R-QSz">
                                 <rect key="frame" x="0.0" y="99" width="375" height="4"/>
                             </progressView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="닉네임을 알려주세요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8O2-k0-aPy">
@@ -108,8 +108,77 @@
                     <view key="view" contentMode="scaleToFill" id="9lO-pe-ibE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7sS-iZ-8S0">
+                                <rect key="frame" x="24" y="57" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="7sS-iZ-8S0" secondAttribute="height" multiplier="1:1" id="jql-Zm-GUV"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" backgroundImage="icn_clear"/>
+                            </button>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="X5m-0F-mos">
+                                <rect key="frame" x="0.0" y="99" width="375" height="4"/>
+                            </progressView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이메일을 알려주세요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y9q-Xg-NVj">
+                                <rect key="frame" x="24" y="127" width="151" height="22"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <color key="textColor" name="grey1"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="설정된 이메일은 수정이 불가합니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Pr-ae-iAd">
+                                <rect key="frame" x="24" y="153" width="170" height="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" name="grey1"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="이메일 입력" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="122-1s-07d">
+                                <rect key="frame" x="24" y="188" width="327" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="nPo-Tz-RJR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이메일 형식이 올바르지 않습니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Yh-Nk-wyZ">
+                                <rect key="frame" x="24" y="245" width="159.33333333333334" height="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" name="alertRed"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="elT-IA-1bP">
+                                <rect key="frame" x="0.0" y="724" width="375" height="88"/>
+                                <color key="backgroundColor" name="beMyBlue"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="88" id="pai-lR-TGt"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="다음"/>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Do3-8S-Ecc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="122-1s-07d" firstAttribute="leading" secondItem="Do3-8S-Ecc" secondAttribute="leading" constant="24" id="4gU-qy-RpR"/>
+                            <constraint firstItem="Do3-8S-Ecc" firstAttribute="trailing" secondItem="122-1s-07d" secondAttribute="trailing" constant="24" id="8iG-4A-eg0"/>
+                            <constraint firstItem="7Pr-ae-iAd" firstAttribute="leading" secondItem="y9q-Xg-NVj" secondAttribute="leading" id="CyO-Ow-SsF"/>
+                            <constraint firstItem="7Pr-ae-iAd" firstAttribute="top" secondItem="y9q-Xg-NVj" secondAttribute="bottom" constant="4" id="Daz-J3-jsc"/>
+                            <constraint firstAttribute="bottom" secondItem="elT-IA-1bP" secondAttribute="bottom" id="IEu-ZN-32p"/>
+                            <constraint firstItem="7sS-iZ-8S0" firstAttribute="width" secondItem="7sS-iZ-8S0" secondAttribute="height" multiplier="1:1" id="J3g-dW-TAr"/>
+                            <constraint firstItem="y9q-Xg-NVj" firstAttribute="leading" secondItem="7sS-iZ-8S0" secondAttribute="leading" id="KFl-mu-35a"/>
+                            <constraint firstItem="X5m-0F-mos" firstAttribute="trailing" secondItem="Do3-8S-Ecc" secondAttribute="trailing" id="MTc-pj-aqG"/>
+                            <constraint firstItem="2Yh-Nk-wyZ" firstAttribute="leading" secondItem="122-1s-07d" secondAttribute="leading" id="YR2-vA-tuq"/>
+                            <constraint firstItem="122-1s-07d" firstAttribute="top" secondItem="7Pr-ae-iAd" secondAttribute="bottom" constant="20" id="YcF-Qp-Bdj"/>
+                            <constraint firstItem="7sS-iZ-8S0" firstAttribute="leading" secondItem="Do3-8S-Ecc" secondAttribute="leading" constant="24" id="ehW-XN-U6K"/>
+                            <constraint firstItem="7sS-iZ-8S0" firstAttribute="top" secondItem="9lO-pe-ibE" secondAttribute="top" constant="57" id="ew9-Ex-Rlz"/>
+                            <constraint firstItem="elT-IA-1bP" firstAttribute="trailing" secondItem="Do3-8S-Ecc" secondAttribute="trailing" id="fii-Bu-q9L"/>
+                            <constraint firstItem="X5m-0F-mos" firstAttribute="top" secondItem="7sS-iZ-8S0" secondAttribute="bottom" constant="18" id="g2R-Vq-3Nt"/>
+                            <constraint firstItem="X5m-0F-mos" firstAttribute="top" secondItem="7sS-iZ-8S0" secondAttribute="bottom" constant="18" id="lcN-BD-45X"/>
+                            <constraint firstItem="y9q-Xg-NVj" firstAttribute="top" secondItem="X5m-0F-mos" secondAttribute="bottom" constant="24" id="pCD-Jk-l0r"/>
+                            <constraint firstItem="2Yh-Nk-wyZ" firstAttribute="top" secondItem="122-1s-07d" secondAttribute="bottom" constant="9" id="pra-lp-8uk"/>
+                            <constraint firstItem="elT-IA-1bP" firstAttribute="leading" secondItem="Do3-8S-Ecc" secondAttribute="leading" id="udn-iN-gdj"/>
+                            <constraint firstItem="X5m-0F-mos" firstAttribute="leading" secondItem="Do3-8S-Ecc" secondAttribute="leading" id="zDN-h3-yu5"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v8Q-sO-hzy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
