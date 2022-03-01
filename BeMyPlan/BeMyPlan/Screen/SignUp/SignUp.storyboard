@@ -96,6 +96,13 @@
                             <constraint firstItem="0Fl-yq-atX" firstAttribute="top" secondItem="Pc2-ww-Q8w" secondAttribute="bottom" constant="9" id="zcN-m6-cpE"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="nextBtn" destination="AlK-Qc-7Md" id="C3W-KI-RCo"/>
+                        <outlet property="nicknameCheckLabel" destination="0Fl-yq-atX" id="gf4-0P-dcb"/>
+                        <outlet property="nicknameCountLabel" destination="owp-Ok-bLX" id="djY-OO-386"/>
+                        <outlet property="nicknameInputTextField" destination="Pc2-ww-Q8w" id="Kfa-gJ-Vmc"/>
+                        <outlet property="signUpProgressView" destination="D5o-4R-QSz" id="ptp-t2-GTh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Obm-vy-T4K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -186,7 +193,6 @@
         <!--Sign UpTOSVC-->
         <scene sceneID="2EO-FF-Idz">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fbJ-Pf-wrS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="SignUpTOSVC" id="fNH-mz-qhR" customClass="SignUpTOSVC" customModule="BeMyPlan" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="J9i-1R-bHv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
@@ -426,6 +432,7 @@
                         </constraints>
                     </view>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fbJ-Pf-wrS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2381" y="94"/>
         </scene>

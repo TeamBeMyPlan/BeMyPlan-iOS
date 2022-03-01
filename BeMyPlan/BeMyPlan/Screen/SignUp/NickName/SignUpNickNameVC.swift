@@ -9,7 +9,15 @@ import UIKit
 
 class SignUpNickNameVC: UIViewController {
 
-    override func viewDidLoad() {
+  @IBOutlet var signUpProgressView: UIProgressView!
+  @IBOutlet var nicknameInputTextField: UITextField!
+  @IBOutlet var nicknameCheckLabel: UILabel!
+  @IBOutlet var nicknameCountLabel: UILabel!
+  @IBOutlet var nextBtn: UIButton!
+  
+  
+  
+  override func viewDidLoad() {
         super.viewDidLoad()
 
     }
