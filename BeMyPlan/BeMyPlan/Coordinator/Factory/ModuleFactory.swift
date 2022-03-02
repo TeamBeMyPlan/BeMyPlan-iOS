@@ -16,7 +16,7 @@ protocol ModuleFactoryProtocol {
   func instantiateLoginVC() -> LoginVC
   //삭제해야함
   func instantiateSignupVC() -> SignUpVC
-  func instantiateSignupNicknameVC() -> SignUpNickNameVC
+  func instantiateSignupNicknameVC() -> SignUpNicknameVC
   
   // MARK: - BaseTab
   func instantiateBaseNC() -> BaseNC
@@ -76,8 +76,8 @@ class ModuleFactory: ModuleFactoryProtocol{
     return SignUpVC.controllerFromStoryboard(.signup)
   }
   
-  func instantiateSignupNicknameVC() -> SignUpNickNameVC {
-    return SignUpNickNameVC.controllerFromStoryboard(.signup)
+  func instantiateSignupNicknameVC() -> SignUpNicknameVC {
+    return SignUpNicknameVC.controllerFromStoryboard(.signup)
   }
   
   // MARK: - Base Tap
