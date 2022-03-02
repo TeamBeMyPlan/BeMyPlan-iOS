@@ -9,6 +9,7 @@ import UIKit
 
 class SignUpNicknameVC: UIViewController {
   
+  // MARK: - Vars & Lets Part
   var delegate : SignupDelegate?
   var userToken : String = ""
   var socialType : String = ""
@@ -19,6 +20,8 @@ class SignUpNicknameVC: UIViewController {
     }
   }
   
+  
+  // MARK: - UI Component Part
   @IBOutlet var signUpProgressView: UIProgressView!
   @IBOutlet var nicknameInputTextField: UITextField!{
     didSet {
@@ -37,17 +40,19 @@ class SignUpNicknameVC: UIViewController {
   @IBOutlet var nextBtn: UIButton!
   
   
-  
+  // MARK: - Life Cycle Part
   override func viewDidLoad() {
     super.viewDidLoad()
-    setStartBtnStatus()
-    addTapGesture()
-    addToolbar(textfields: [nicknameInputTextField])
-    setBtnStatus()
-    setTextField()
-    addBtnActions()
+    setStartBtnStatus() //다음 버트 비활
+    addTapGesture() //다른곳 누르면 키보드 사라지는것
+    addToolbar(textfields: [nicknameInputTextField]) //키보드 툴바 세팅?
+//    setBtnStatus()
+    setTextField() // 변경되는거 감지 -> 글자수 값, 글자수 제한
+    addBtnActions() //다음 버튼을 눌렀을 때, postNickNameData 호출-> 닉네임 중복 체크해서 (1)중복 아니면 postSocialSignUpData 호출해서 Email로 이동? (2) 중복이면 "alert 보이게"
   }
   
+  
+  // MARK: - Custom Method Part
   private func setStartBtnStatus(){
     if isNicknameValid{
       nextBtn.backgroundColor = .bemyBlue
@@ -69,13 +74,13 @@ class SignUpNicknameVC: UIViewController {
   
   private func setCountLabel(){
     if let count = nicknameInputTextField.text?.count{
-      nicknameCountLabel.text = String(count) + "/20"
+      nicknameCountLabel.text = String(count) + "/15"
     }
   }
   
   private func checkMaxLabelCount(){
     if let text = nicknameInputTextField.text {
-      if text.count > 20 || text.count < 2{
+      if text.count > 15 || text.count < 2{
         // 🪓 주어진 인덱스에서 특정 거리만큼 떨어진 인덱스 반환
         // 🪓 문자열 자르기
         self.nextBtn.isEnabled = false
@@ -87,8 +92,8 @@ class SignUpNicknameVC: UIViewController {
         nicknameInputTextField.layer.borderColor = UIColor.alertRed.cgColor
         isNicknameValid = false
         
-        if text.count > 20{
-          let maxIndex = text.index(text.startIndex, offsetBy: 20)
+        if text.count > 15{
+          let maxIndex = text.index(text.startIndex, offsetBy: 15)
           let newString = String(text[text.startIndex..<maxIndex])
           nicknameInputTextField.text = newString
         }
@@ -119,7 +124,7 @@ class SignUpNicknameVC: UIViewController {
   private func isValidNickname(nickname: String?) -> Bool {
     guard nickname != nil else { return false }
     
-    let nickRegEx = "[가-힣A-Za-z0-9]{2,20}"
+    let nickRegEx = "[가-힣A-Za-z0-9]{2,15}"
     
     let pred = NSPredicate(format:"SELF MATCHES %@", nickRegEx)
     return pred.evaluate(with: nickname)
@@ -134,48 +139,15 @@ class SignUpNicknameVC: UIViewController {
     }
   }
   
-  private func showSignupAlert(){
-    self.makeAlert(alertCase: .requestAlert, content: "닉네임을 수정할 수 없습니다.\n이대로 가입을 진행할까요?") {
-      self.makeAlert(alertCase: .simpleAlert, title: "알림", content: "회원가입이 완료되었습니다."){
-        self.dismiss(animated: true) {
-          self.delegate?.loginComplete()
-        }
-      }
-    }
-  }
-  
-  private func postSocialSignUpData() {
-    if let nickName = nicknameInputTextField.text {
-      BaseService.default.postSocialSignUp(socialToken: userToken , socialType: socialType, nickName: nickName) { result in
-        result.success{ [weak self] data in
-          if let data = data {
-            UserDefaults.standard.setValue(data.accessToken, forKey: "userToken")
-            //BaseVC로 이동
-            
-            self?.makeAlert(alertCase: .simpleAlert, title: "알림", content: "회원가입이 완료되었습니다."){
-              self?.dismiss(animated: true) {
-                self?.delegate?.loginComplete()
-                self?.pushBaseVC()
-                
-              }
-            }
-            
-          }
-          //성공 하면 회원가입 성공 창으로 가기
-          //서버에 데이터 넘겨주기
-          
-        }.catch { error in
-          self.makeAlert(alertCase: .simpleAlert, title: "알림", content: "회원가입이 실패되었습니다.")
-          
-        }
-      }
-    }
-  }
-  
-  private func pushBaseVC() {
-    guard let baseVC = UIStoryboard.list(.base).instantiateViewController(withIdentifier: BaseVC.className) as? BaseVC else {return}
-    self.navigationController?.pushViewController(baseVC, animated: true)
-  }
+//  private func showSignupAlert(){
+//    self.makeAlert(alertCase: .requestAlert, content: "닉네임을 수정할 수 없습니다.\n이대로 가입을 진행할까요?") {
+//      self.makeAlert(alertCase: .simpleAlert, title: "알림", content: "회원가입이 완료되었습니다."){
+//        self.dismiss(animated: true) {
+//          self.delegate?.loginComplete()
+//        }
+//      }
+//    }
+//  }
   
   private func postNickNameData(nickName: String) {
     BaseService.default.postNickNameCheck(nickName: nickName) { result in
@@ -188,13 +160,14 @@ class SignUpNicknameVC: UIViewController {
             //            self?.showSignupAlert()  // 회원가입 처리를 어떻게 함..?
             // 확인을 눌렀을 때  회원가입 합니다.
             
-            self?.makeAlert(alertCase: .requestAlert, content: "닉네임을 수정할 수 없습니다.\n이대로 가입을 진행할까요?") {
-              
-              self?.postSocialSignUpData()
-              
-            }
+//            self?.makeAlert(alertCase: .requestAlert, content: "닉네임을 수정할 수 없습니다.\n이대로 가입을 진행할까요?") {
+//              self?.postSocialSignUpData()
+//            }
             
-          } else {
+//            self?.postSocialSignUpData()
+            self?.pushSignUpEmailVC()
+            
+          } else { //중복 돠면 중복된 멘트 뜨게 해야하는데
             // 빨간 테투리 뜨는 걸로
             self?.nicknameCheckLabel.isHidden = false
             //회원가입 버튼 비활
@@ -209,6 +182,48 @@ class SignUpNicknameVC: UIViewController {
     }
   }
   
+  //소셜 post 해주는거 마지막에 해줘야함
+//  private func postSocialSignUpData() {
+//    if let nickName = nicknameInputTextField.text {
+//      BaseService.default.postSocialSignUp(socialToken: userToken , socialType: socialType, nickName: nickName) { result in
+//        result.success{ [weak self] data in
+//          if let data = data {
+//            UserDefaults.standard.setValue(data.accessToken, forKey: "userToken")
+//            //BaseVC로 이동
+//
+//
+//            self?.makeAlert(alertCase: .simpleAlert, title: "알림", content: "회원가입이 완료되었습니다."){ //이거 알람뜨면 안되는거 같은데
+//              self?.dismiss(animated: true) {
+//                self?.delegate?.loginComplete()
+//                self?.pushSignUpEmailVC() //Base가 아니라 그... Email로 이동
+//
+//              }
+//            }
+//
+//          }
+//          //성공 하면 회원가입 성공 창으로 가기
+//          //서버에 데이터 넘겨주기
+//
+//        }.catch { error in
+//          self.makeAlert(alertCase: .simpleAlert, title: "알림", content: "회원가입이 실패되었습니다.")
+//
+//        }
+//      }
+//    }
+//  }
+  
+//  private func pushBaseVC() {
+//    guard let baseVC = UIStoryboard.list(.base).instantiateViewController(withIdentifier: BaseVC.className) as? BaseVC else {return}
+//    self.navigationController?.pushViewController(baseVC, animated: true)
+//  }
+  
+  private func pushSignUpEmailVC() {
+    guard let emailVC = UIStoryboard.list(.signup).instantiateViewController(withIdentifier: SignUpEmailVC.className) as? SignUpEmailVC else {return}
+    self.navigationController?.pushViewController(emailVC, animated: true)
+  }
+  
+  
+  
   // MARK: - @objc Function Part
   @objc func textFieldDidChange() {
     checkMaxLabelCount()
@@ -216,6 +231,7 @@ class SignUpNicknameVC: UIViewController {
   }
   
 }
+
 
 // MARK: - Extension Part
 extension SignUpNicknameVC : UITextFieldDelegate{
