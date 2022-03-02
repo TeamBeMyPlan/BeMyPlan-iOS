@@ -78,10 +78,10 @@ class LoginVC: UIViewController {
   }
   
   func moveSignup(){
-    let signupVC = factory.instantiateSignupVC()
-    signupVC.modalPresentationStyle = .overFullScreen
-    signupVC.delegate = self
-    self.present(signupVC, animated: true, completion: nil)
+    let signupNicknameVC = factory.instantiateSignupNicknameVC()
+    signupNicknameVC.modalPresentationStyle = .overFullScreen
+    signupNicknameVC.delegate = self
+    self.present(signupNicknameVC, animated: true, completion: nil)
   }
   
    func moveBaseVC(){

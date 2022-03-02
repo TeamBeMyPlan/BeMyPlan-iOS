@@ -62,21 +62,21 @@ extension LoginVC {
             self?.moveBaseVC()
           }
       }.catch {error in
-        self.pushSignUPVC(socialToken: socialToken, socialType: socialType)
+        self.pushSignUpNicknameVC(socialToken: socialToken, socialType: socialType)
 
       }
     }
   }
 
-  private func pushSignUPVC(socialToken : String, socialType : String) {
-    guard let signupVC = UIStoryboard.list(.signup).instantiateViewController(withIdentifier: SignUpVC.className) as? SignUpVC else {return}
+  private func pushSignUpNicknameVC(socialToken : String, socialType : String) {
+    guard let signupNicknameVC = UIStoryboard.list(.signup).instantiateViewController(withIdentifier: SignUpNicknameVC.className) as? SignUpNicknameVC else {return}
     
-    signupVC.socialType = socialType
-    signupVC.userToken = socialToken
+    signupNicknameVC.socialType = socialType
+    signupNicknameVC.userToken = socialToken
     
-    signupVC.modalPresentationStyle = .overFullScreen
-    signupVC.delegate = self
-    self.present(signupVC, animated: true, completion: nil)
+    signupNicknameVC.modalPresentationStyle = .overFullScreen
+    signupNicknameVC.delegate = self
+    self.present(signupNicknameVC, animated: true, completion: nil)
   }
   
 }
