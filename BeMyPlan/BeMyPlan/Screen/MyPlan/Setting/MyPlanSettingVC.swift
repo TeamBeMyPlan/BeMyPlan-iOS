@@ -15,10 +15,8 @@ class MyPlanSettingVC: UIViewController, MFMailComposeViewControllerDelegate {
   @IBOutlet var uploadButton: UIButton!
   @IBOutlet var askButton: UIButton!
   @IBOutlet var serviceTermButton: UIButton!
-  
   @IBOutlet var logoutButton: UIButton!
   @IBOutlet var withdrawButton: UIButton!
-  
   @IBOutlet var headerTopConstraint: NSLayoutConstraint!{
     didSet{
       headerTopConstraint.constant = calculateTopInset()
@@ -63,7 +61,7 @@ class MyPlanSettingVC: UIViewController, MFMailComposeViewControllerDelegate {
     }
     
     serviceTermButton.press {
-      guard let url = URL(string: "https://www.notion.so/a69b7abcdb9f42399825f4ff25343bfd"), UIApplication.shared.canOpenURL(url) else { return }
+      guard let url = URL(string: "https://boggy-snowstorm-fdb.notion.site/a69b7abcdb9f42399825f4ff25343bfd"), UIApplication.shared.canOpenURL(url) else { return }
 
       UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
