@@ -93,6 +93,7 @@ PODS:
   - GoogleUtilities/UserDefaults (7.6.0):
     - GoogleUtilities/Logger
   - HGCircularSlider (2.2.0)
+  - ImageSlideShowSwift (0.1.8)
   - KakaoSDKAuth (2.8.4):
     - KakaoSDKCommon (= 2.8.4)
   - KakaoSDKCommon (2.8.4):
@@ -132,6 +133,7 @@ DEPENDENCIES:
   - Firebase/Analytics
   - Firebase/Crashlytics
   - HGCircularSlider
+  - ImageSlideShowSwift (from `https://github.com/University-Link/ImageSlideShow.git`, branch `master`)
   - KakaoSDKAuth
   - KakaoSDKCommon
   - KakaoSDKUser
@@ -179,6 +181,16 @@ SPEC REPOS:
     - SwiftyJSON
     - Then
 
+EXTERNAL SOURCES:
+  ImageSlideShowSwift:
+    :branch: master
+    :git: https://github.com/University-Link/ImageSlideShow.git
+
+CHECKOUT OPTIONS:
+  ImageSlideShowSwift:
+    :commit: 91670097332d0d91bf2fa52a56ff09e61b8935ec
+    :git: https://github.com/University-Link/ImageSlideShow.git
+
 SPEC CHECKSUMS:
   Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
   Firebase: 44213362f1dcc52555b935dc925ed35ac55f1b20
@@ -191,6 +203,7 @@ SPEC CHECKSUMS:
   GoogleDataTransport: 629c20a4d363167143f30ea78320d5a7eb8bd940
   GoogleUtilities: 684ee790a24f73ebb2d1d966e9711c203f2a4237
   HGCircularSlider: afb1942743a2df156dcc7a3500216e523e14266b
+  ImageSlideShowSwift: 76c4e61e1f2876e0db8be8ed29e91ee06d7947fc
   KakaoSDKAuth: b9b693995f98b1821ccd22b39d383e1dede5ca45
   KakaoSDKCommon: 33c9902ee9ce13e9d1cac3549896406229836ff5
   KakaoSDKUser: d878977e0ba6b365cfeac3b6319cdf4231713bea
@@ -209,6 +222,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
   Then: acfe0be7e98221c6204e12f8161459606d5d822d
 
-PODFILE CHECKSUM: 835e8da86e3ae36bdb78b352390b6191c4e84492
+PODFILE CHECKSUM: 3619d96339b20023983c0ddd51a9d3846f705742
 
 COCOAPODS: 1.11.2

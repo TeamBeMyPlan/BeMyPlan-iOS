@@ -25,4 +25,5 @@ target 'BeMyPlan' do
   pod 'PanModal'
   pod 'ListPlaceholder'
   pod 'SkeletonView'
+   pod 'ImageSlideShowSwift', :git => 'https://github.com/University-Link/ImageSlideShow.git', :branch => 'master'
 end
