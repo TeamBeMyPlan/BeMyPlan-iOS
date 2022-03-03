@@ -20,6 +20,7 @@ class PaymentSelectVC: UIViewController {
       if selectedIndex == -1{
         paymentButton.tintColor = .grey04
       }else{
+        setPaymentLog()
         paymentButton.backgroundColor = .bemyBlue
       }
       setButtonState()
@@ -54,6 +55,7 @@ class PaymentSelectVC: UIViewController {
   // MARK: - Custom Method Part
 
   @IBAction func backButtonClicked(_ sender: Any) {
+    AppLog.log(at: FirebaseAnalyticsProvider.self, .closePaymentView)
     self.navigationController?.popViewController(animated: true)
   }
   
@@ -67,6 +69,8 @@ class PaymentSelectVC: UIViewController {
       paymentCompleteVC.paymentType = paymentList[selectedIndex]
       paymentCompleteVC.planTitle = planTitle ?? ""
       paymentCompleteVC.writer = writer ?? ""
+      paymentCompleteVC.postIdx = postIdx
+      AppLog.log(at: FirebaseAnalyticsProvider.self, .clickPaymentButton(postIdx: String(postIdx)))
       present(paymentCompleteVC,animated: true)
     }
  
@@ -86,6 +90,16 @@ class PaymentSelectVC: UIViewController {
     
   }
   
+  private func setPaymentLog(){
+    let paymentSource :LogEventType.PaymentSource
+    switch(selectedIndex) {
+      case 0: paymentSource = .kakaoPay
+      case 1: paymentSource = .toss
+      default: paymentSource = .naverPay
+    }
+    AppLog.log(at: FirebaseAnalyticsProvider.self, .clickPaymentMethod(source: paymentSource))
+  }
+  
   private func setPriceLabel(){
     moneyLabel.text = price
   }
@@ -94,6 +108,7 @@ class PaymentSelectVC: UIViewController {
     for (index,item) in paymentButtonList.enumerated(){
       item.setButtonState(isSelected: false)
       item.press(animated: true) {
+        
         self.selectedIndex = index
       }
     }

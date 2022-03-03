@@ -95,6 +95,7 @@ class PlanPreviewVC: UIViewController {
     }
     
     viewModel.movePreviewDetailView = { [weak self] in
+      AppLog.log(at: FirebaseAnalyticsProvider.self, .clickPlanDetailExample)
       guard let self = self else {return}
       let vc = ModuleFactory.resolve().instantiatePlanDetailVC(postID: self.viewModel.postId, isPreviewPage: true)
       self.navigationController?.pushViewController(vc, animated: true)

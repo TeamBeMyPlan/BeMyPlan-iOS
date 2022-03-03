@@ -170,6 +170,12 @@
 		FD4C86B8278C7A7200D37A2D /* Payment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD4C86B7278C7A7200D37A2D /* Payment.storyboard */; };
 		FD4C86BA278C7A8400D37A2D /* PaymentSelectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4C86B9278C7A8400D37A2D /* PaymentSelectVC.swift */; };
 		FD4C86BE278C9AF900D37A2D /* PaymentCompleteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4C86BD278C9AF900D37A2D /* PaymentCompleteVC.swift */; };
+		FD568E6F27CFE4ED0078D23C /* AnalyticsType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD568E6E27CFE4ED0078D23C /* AnalyticsType.swift */; };
+		FD568E7127CFE6CF0078D23C /* FirebaseServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD568E7027CFE6CF0078D23C /* FirebaseServiceProtocol.swift */; };
+		FD568E7327CFE6DF0078D23C /* AppLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD568E7227CFE6DF0078D23C /* AppLog.swift */; };
+		FD568E7627CFE7270078D23C /* LogEventType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD568E7527CFE7270078D23C /* LogEventType.swift */; };
+		FD568E7927CFE80E0078D23C /* RuntimeProviderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD568E7827CFE80E0078D23C /* RuntimeProviderType.swift */; };
+		FD568E7B27CFE8200078D23C /* FirebaseAnalyticsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD568E7A27CFE8200078D23C /* FirebaseAnalyticsProvider.swift */; };
 		FD5D730F27A46BAB002DE484 /* PlanPreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5D730E27A46BAB002DE484 /* PlanPreviewViewModel.swift */; };
 		FD5D731127A48491002DE484 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5D731027A48491002DE484 /* ViewModelType.swift */; };
 		FD61AFA327902C7A00D39F47 /* PlanDetailSelectDayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD61AFA227902C7A00D39F47 /* PlanDetailSelectDayView.xib */; };
@@ -432,6 +438,12 @@
 		FD4C86B7278C7A7200D37A2D /* Payment.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Payment.storyboard; sourceTree = "<group>"; };
 		FD4C86B9278C7A8400D37A2D /* PaymentSelectVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentSelectVC.swift; sourceTree = "<group>"; };
 		FD4C86BD278C9AF900D37A2D /* PaymentCompleteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentCompleteVC.swift; sourceTree = "<group>"; };
+		FD568E6E27CFE4ED0078D23C /* AnalyticsType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsType.swift; sourceTree = "<group>"; };
+		FD568E7027CFE6CF0078D23C /* FirebaseServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseServiceProtocol.swift; sourceTree = "<group>"; };
+		FD568E7227CFE6DF0078D23C /* AppLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLog.swift; sourceTree = "<group>"; };
+		FD568E7527CFE7270078D23C /* LogEventType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogEventType.swift; sourceTree = "<group>"; };
+		FD568E7827CFE80E0078D23C /* RuntimeProviderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuntimeProviderType.swift; sourceTree = "<group>"; };
+		FD568E7A27CFE8200078D23C /* FirebaseAnalyticsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAnalyticsProvider.swift; sourceTree = "<group>"; };
 		FD5D730E27A46BAB002DE484 /* PlanPreviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanPreviewViewModel.swift; sourceTree = "<group>"; };
 		FD5D731027A48491002DE484 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		FD61AFA227902C7A00D39F47 /* PlanDetailSelectDayView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanDetailSelectDayView.xib; sourceTree = "<group>"; };
@@ -1093,6 +1105,7 @@
 		FD3211C527843F5E007D63D5 /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				FD568E6C27CFE3FD0078D23C /* Manager */,
 				FD09DE2527857DD6006DA050 /* Model */,
 				FD09DDEE278577BA006DA050 /* Network */,
 				FD09DE0127857927006DA050 /* Utils */,
@@ -1249,6 +1262,43 @@
 				FD4C86BD278C9AF900D37A2D /* PaymentCompleteVC.swift */,
 			);
 			path = Payment;
+			sourceTree = "<group>";
+		};
+		FD568E6C27CFE3FD0078D23C /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				FD568E6D27CFE4100078D23C /* Analytics */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		FD568E6D27CFE4100078D23C /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				FD568E7727CFE7DD0078D23C /* Provider */,
+				FD568E7427CFE71B0078D23C /* EventType */,
+				FD568E6E27CFE4ED0078D23C /* AnalyticsType.swift */,
+				FD568E7227CFE6DF0078D23C /* AppLog.swift */,
+				FD568E7027CFE6CF0078D23C /* FirebaseServiceProtocol.swift */,
+			);
+			path = Analytics;
+			sourceTree = "<group>";
+		};
+		FD568E7427CFE71B0078D23C /* EventType */ = {
+			isa = PBXGroup;
+			children = (
+				FD568E7527CFE7270078D23C /* LogEventType.swift */,
+			);
+			path = EventType;
+			sourceTree = "<group>";
+		};
+		FD568E7727CFE7DD0078D23C /* Provider */ = {
+			isa = PBXGroup;
+			children = (
+				FD568E7827CFE80E0078D23C /* RuntimeProviderType.swift */,
+				FD568E7A27CFE8200078D23C /* FirebaseAnalyticsProvider.swift */,
+			);
+			path = Provider;
 			sourceTree = "<group>";
 		};
 		FD93027B27A3EC3700341C2A /* Repository */ = {
@@ -1699,6 +1749,7 @@
 				F266412E2788262800CCC751 /* MainListData.swift in Sources */,
 				FD20C610278EBF2800AC6E34 /* MyPlanBuyData.swift in Sources */,
 				FD09DDF1278577CF006DA050 /* BaseService.swift in Sources */,
+				FD568E7927CFE80E0078D23C /* RuntimeProviderType.swift in Sources */,
 				FDF980D22786D2EB0009A14E /* TravelSpotVC.swift in Sources */,
 				FD008829278FE94C00C194B5 /* PlanDetailInfoPhotoCVC.swift in Sources */,
 				FD3566512792AF2C0082B4CE /* ScrapEmptyCotainerCVC.swift in Sources */,
@@ -1711,7 +1762,9 @@
 				FD09DE0727857971006DA050 /* calculateTopInset.swift in Sources */,
 				FDF980E32786E7E90009A14E /* BaseContainerView.swift in Sources */,
 				FD4C86B0278BD17F00D37A2D /* setImage.swift in Sources */,
+				FD568E7B27CFE8200078D23C /* FirebaseAnalyticsProvider.swift in Sources */,
 				FD20C612278EC29600AC6E34 /* setTextLineHeight + UILabel.swift in Sources */,
+				FD568E7327CFE6DF0078D23C /* AppLog.swift in Sources */,
 				F250440D2799D02900791AB7 /* AuthDataModel.swift in Sources */,
 				FDF980D42786D2F60009A14E /* PlanListVC.swift in Sources */,
 				FD2D9C5A2796FDA400688A42 /* UITableViewCell + Animator.swift in Sources */,
@@ -1760,6 +1813,7 @@
 				FD2D4DB9278D3DCE002084B9 /* PlanDetailInformationTVC.swift in Sources */,
 				FD20C60B278EBBB500AC6E34 /* MyPlanBuyContentCVC.swift in Sources */,
 				FDF981022788D49C0009A14E /* PlanPreviewWriterTVC.swift in Sources */,
+				FD568E7127CFE6CF0078D23C /* FirebaseServiceProtocol.swift in Sources */,
 				523C70FF2799DCC10073371D /* ScrapEmptyService.swift in Sources */,
 				FDF981042788D4AB0009A14E /* PlanPreviewDescriptionTVC.swift in Sources */,
 				FDA2063427C40FF6001A371D /* PlanDetailViewModel.swift in Sources */,
@@ -1786,6 +1840,7 @@
 				FDF981062788D4C00009A14E /* PlanPreviewPhotoTVC.swift in Sources */,
 				FD1A78262795DA7100FB10AB /* showNetworkErr + UIViewController.swift in Sources */,
 				FD09DE1E27857CDC006DA050 /* HomeVC.swift in Sources */,
+				FD568E6F27CFE4ED0078D23C /* AnalyticsType.swift in Sources */,
 				FD5D731127A48491002DE484 /* ViewModelType.swift in Sources */,
 				FD61AFDC2791DC6E00D39F47 /* UINavigation + Extension.swift in Sources */,
 				FD20C623278EF11000AC6E34 /* MyPlanWithdrawVC.swift in Sources */,
@@ -1813,6 +1868,7 @@
 				FD09DE1327857AE1006DA050 /* successCatch + Result.swift in Sources */,
 				F261EC7927873A7D00AF094F /* MainCardCVC.swift in Sources */,
 				FD09DDF727857841006DA050 /* UITableViewRegisterable.swift in Sources */,
+				FD568E7627CFE7270078D23C /* LogEventType.swift in Sources */,
 				F261EC7C27873D3C00AF094F /* MainCardData.swift in Sources */,
 				F294EC28278EBC2C001069F8 /* LoginVC + KakaoLogin.swift in Sources */,
 				FD09DE0D278579CC006DA050 /* showNetworkAlert.swift in Sources */,

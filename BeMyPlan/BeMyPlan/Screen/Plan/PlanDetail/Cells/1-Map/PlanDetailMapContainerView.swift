@@ -181,13 +181,16 @@ class PlanDetailMapContainerView: XibView,MTMapViewDelegate{
     let searchURL = makeMapsURL(place: place, platform: .kakao)
     if let appUrl = searchURL{
       if(UIApplication.shared.canOpenURL(appUrl)){
+        AppLog.log(at: FirebaseAnalyticsProvider.self, .moveMapApplication(source: .kakaoMap))
         UIApplication.shared.open(appUrl, options: [:], completionHandler: nil)
       }else{
         let searchURL = makeMapsURL(place: place, platform: .naver)
         if let appUrl = searchURL{
           if(UIApplication.shared.canOpenURL(appUrl)){
+            AppLog.log(at: FirebaseAnalyticsProvider.self, .moveMapApplication(source: .naverMap))
             UIApplication.shared.open(appUrl, options: [:], completionHandler: nil)
           }else{
+            AppLog.log(at: FirebaseAnalyticsProvider.self, .alertNoMapApplication)
             postObserverAction(.showNotInstallKakaomap)
           }
         }
