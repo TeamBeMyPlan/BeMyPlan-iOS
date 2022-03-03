@@ -116,7 +116,7 @@ class SignUpTOSVC: UIViewController {
   private func addBtnActions() {
     //실제로는 이방법이 아니라 dismiss 되었을때 completion에 새로운 escaping closure를 선언해서 파라미터로 받아와서 해야한다....!
     startBtn.press{
-      //      self.postSocialSignUpData()
+      self.postSocialSignUpData()
     }
     
     backBtn.press {
