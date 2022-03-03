@@ -110,8 +110,12 @@ class SignUpNicknameVC: UIViewController {
           nicknameInputTextField.layer.borderColor = UIColor.grey04.cgColor
           
           self.nicknameCheckLabel.isHidden = true
-        }else{
-          nicknameCountLabel.textColor = .alertRed
+        }else{ //여기서 특수 문자 그거 그거 ..그거 해주기 -> 특수 문자 입력 받게 하고 아래 alert만 띄우기
+          
+          //alert띄우는 Label 안에 텍스트 넣고 거기에 Red
+          nicknameCheckLabel.textColor = .alertRed
+          nicknameCheckLabel.text = "특수문자를 사용할 수 없습니다."
+          
           nicknameInputTextField.layer.borderWidth = 1
           nicknameInputTextField.layer.cornerRadius = 5
           nicknameInputTextField.layer.borderColor = UIColor.alertRed.cgColor
