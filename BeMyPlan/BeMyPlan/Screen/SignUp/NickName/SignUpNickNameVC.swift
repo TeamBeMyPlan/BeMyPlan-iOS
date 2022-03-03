@@ -7,6 +7,27 @@
 
 import UIKit
 
+//enum LaunchInstructor {
+//  case signing
+//  case main
+//
+//  static func configure(_ isAuthorized: Bool = false) -> LaunchInstructor {
+//    switch isAuthorized {
+//      case false: return .signing
+//      case true: return .main
+//    }
+//  }
+//}
+
+
+
+enum nicknameStatus{
+  case strangeCharErr
+  case specialCharErr
+  case countLetterErr
+  case normal
+}
+
 class SignUpNicknameVC: UIViewController {
   
   // MARK: - Vars & Lets Part
@@ -87,11 +108,13 @@ class SignUpNicknameVC: UIViewController {
         self.nextBtn.isEnabled = false
         //        self.nickNameCheckLabel.isHidden = true
         
+        
         nicknameCountLabel.textColor = .alertRed
         nicknameInputTextField.layer.borderWidth = 1
         nicknameInputTextField.layer.cornerRadius = 5
         nicknameInputTextField.layer.borderColor = UIColor.alertRed.cgColor
         isNicknameValid = false
+        self.nicknameCheckLabel.isHidden = true
         
         if text.count > 15{
           let maxIndex = text.index(text.startIndex, offsetBy: 15)
@@ -103,6 +126,7 @@ class SignUpNicknameVC: UIViewController {
       }else{
         self.nextBtn.isEnabled = true
         
+        
         if isValidNickname(nickname: nicknameInputTextField.text){
           isNicknameValid = true
           nicknameCountLabel.textColor = .grey03
@@ -111,17 +135,20 @@ class SignUpNicknameVC: UIViewController {
           nicknameInputTextField.layer.borderColor = UIColor.grey04.cgColor
           
           self.nicknameCheckLabel.isHidden = true
-        }else{ //여기서 특수 문자 그거 그거 ..그거 해주기 -> 특수 문자 입력 받게 하고 아래 alert만 띄우기
-          
-          //alert띄우는 Label 안에 텍스트 넣고 거기에 Red
+        }else{
+          print("특수문자 여기여기여기")  //문제 ㅁ ,ㅇ ㄹ 외자는 특수문자 아닌데 아래의 alert가 뜸, 특수 문자 등등 정규식 아닌 부분
           nicknameCheckLabel.textColor = .alertRed
-          nicknameCheckLabel.text = "특수문자를 사용할 수 없습니다."
-          
+          nicknameCheckLabel.text = I18N.SignUp.SpecialChar.errorAlert
           nicknameInputTextField.layer.borderWidth = 1
           nicknameInputTextField.layer.cornerRadius = 5
           nicknameInputTextField.layer.borderColor = UIColor.alertRed.cgColor
           isNicknameValid = false
+          self.nicknameCheckLabel.isHidden = false
         }
+        
+        //여기에 if else로
+        
+        
       }
     }
   }
@@ -192,6 +219,7 @@ class SignUpNicknameVC: UIViewController {
             self?.nicknameCheckLabel.isHidden = false
             //회원가입 버튼 비활
             self?.setBtnStatus()
+            self?.nicknameCheckLabel.text = I18N.SignUp.NickName.errorAlert
             self?.nicknameInputTextField.layer.borderColor = UIColor.alertRed.cgColor
           }
         }

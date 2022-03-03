@@ -81,6 +81,7 @@ class SignUpEmailVC: UIViewController {
         
         self.emailCheckLabel.isHidden = true
       }else{
+        emailCheckLabel.text = I18N.SignUp.Email.errorAlert
         emailInputTextField.layer.borderWidth = 1
         emailInputTextField.layer.cornerRadius = 5
         emailInputTextField.layer.borderColor = UIColor.alertRed.cgColor
