@@ -16,6 +16,7 @@ protocol PlanDetailViewModelType: ViewModelType {
   func currentDayChanged(day: Int)
   func bottomContainerFoldChanged()
   func summaryFoldChanged(fold: Bool)
+  func clickPhotos(urls: [String])
   
   // Outputs
   var didFetchDataStart: (() -> Void)? { get set }
@@ -27,6 +28,7 @@ protocol PlanDetailViewModelType: ViewModelType {
   var didUpdateSummaryCellViewModel: ((PlanDetailSummaryViewModel) -> Void)? { get set }
   var didUpdateinformationCellViewModel: (([PlanDetailInformationViewModel]) -> Void)? { get set }
   var didUpdateWriterBlockHeight: ((CGFloat) -> Void)? { get set }
+  var showImageSlide: (([ImageForSlide]) -> Void)? { get set }
 
 }
 
@@ -43,6 +45,7 @@ class PlanDetailViewModel: PlanDetailViewModelType {
   var didUpdateSummaryCellViewModel: ((PlanDetailSummaryViewModel) -> Void)?
   var didUpdateinformationCellViewModel: (([PlanDetailInformationViewModel]) -> Void)?
   var didUpdateWriterBlockHeight: ((CGFloat) -> Void)?
+  var showImageSlide: (([ImageForSlide]) -> Void)?
 
   // MARK: - Models
   
@@ -114,6 +117,13 @@ extension PlanDetailViewModel {
     let summaryViewModel = makeSummaryViewModel(day: currentDay)
     didUpdateSummaryCellViewModel?(summaryViewModel)
     contentTableViewReload?()
+  }
+  
+  func clickPhotos(urls: [String]){
+    let images = urls.enumerated().map { index,url in
+      ImageForSlide(title: String(index+1), url: URL(string: url)!)
+    }
+    showImageSlide?(images)
   }
   
   func bindRepository(){
