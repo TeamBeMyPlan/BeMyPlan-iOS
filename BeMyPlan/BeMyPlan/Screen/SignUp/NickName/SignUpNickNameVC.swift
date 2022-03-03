@@ -31,12 +31,12 @@ class SignUpNicknameVC: UIViewController {
       nicknameInputTextField.delegate = self
     }
   }
-  @IBOutlet var nicknameCheckLabel: UILabel!
-  @IBOutlet var nicknameCountLabel: UILabel!{
+  @IBOutlet var nicknameCheckLabel: UILabel!{
     didSet {
       nicknameCheckLabel.isHidden = true
     }
   }
+  @IBOutlet var nicknameCountLabel: UILabel!
   @IBOutlet var nextBtn: UIButton!
   
   
