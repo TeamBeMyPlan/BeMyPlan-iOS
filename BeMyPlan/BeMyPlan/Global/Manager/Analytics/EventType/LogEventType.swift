@@ -67,7 +67,7 @@ enum LogEventType {
   // 15. 작성자 이름 클릭 O
   case clickEditorName(source: ViewSource)
   
-  // 16. 회원 유입 및 이탈
+  // 16. 회원 유입 및 이탈 O
   case enterForeGround
   case enterBackGround
   case logout
