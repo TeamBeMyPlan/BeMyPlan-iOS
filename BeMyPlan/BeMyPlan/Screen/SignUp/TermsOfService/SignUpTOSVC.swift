@@ -14,6 +14,8 @@ class SignUpTOSVC: UIViewController {
   var nickname : String = ""
   var userToken : String = ""
   var socialType : String = ""
+  var time: Float = 0.66
+  var timer: Timer?
   
   private var statusList : [Bool] = [false,false,false]{
     didSet{
@@ -24,7 +26,16 @@ class SignUpTOSVC: UIViewController {
   
   // MARK: - UI Component Part
   @IBOutlet var backBtn: UIButton!
-  @IBOutlet var signUpProgressView: UIProgressView!
+  @IBOutlet var signUpProgressView: UIProgressView!{
+    didSet{
+      signUpProgressView.progressViewStyle = .bar
+      signUpProgressView.progressTintColor = .black
+      signUpProgressView.trackTintColor = .grey05
+      DispatchQueue.main.asyncAfter(deadline: .now() + 0.3){
+        self.timer = Timer.scheduledTimer(timeInterval: 0.06, target: self, selector: #selector(self.setProgress), userInfo: nil, repeats: true)
+      }
+    }
+  }
   @IBOutlet var boxView: UIView!
   @IBOutlet var allAgreeImageView: UIImageView!
   @IBOutlet var firstAgreeImageView: UIImageView!
@@ -105,7 +116,7 @@ class SignUpTOSVC: UIViewController {
   private func addBtnActions() {
     //실제로는 이방법이 아니라 dismiss 되었을때 completion에 새로운 escaping closure를 선언해서 파라미터로 받아와서 해야한다....!
     startBtn.press{
-//      self.postSocialSignUpData()
+      //      self.postSocialSignUpData()
     }
     
     backBtn.press {
@@ -147,6 +158,13 @@ class SignUpTOSVC: UIViewController {
   
   
   // MARK: - @objc Function Part
+  @objc func setProgress() {
+    time += 0.045
+    signUpProgressView.setProgress(time, animated: true)
+    if time >= 1 {
+      timer?.invalidate()
+    }
+  }
   
 }
 

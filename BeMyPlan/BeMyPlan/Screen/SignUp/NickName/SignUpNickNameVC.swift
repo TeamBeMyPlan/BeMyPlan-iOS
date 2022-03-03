@@ -19,7 +19,10 @@ class SignUpNicknameVC: UIViewController {
   // MARK: - Vars & Lets Part
   var delegate : SignupDelegate?
   var userToken : String = ""
-  var socialType : String = "KAKAO"
+  var socialType : String = ""
+  var time: Float = 0.0
+  var timer: Timer?
+  
   
   private var isNicknameValid : Bool = false {
     didSet {
@@ -30,7 +33,16 @@ class SignUpNicknameVC: UIViewController {
   
   // MARK: - UI Component Part
   @IBOutlet var cancelBtn: UIButton!
-  @IBOutlet var signUpProgressView: UIProgressView!
+  @IBOutlet var signUpProgressView: UIProgressView!{
+    didSet{
+      signUpProgressView.progressViewStyle = .bar
+      signUpProgressView.progressTintColor = .black
+      signUpProgressView.trackTintColor = .grey05
+      DispatchQueue.main.asyncAfter(deadline: .now() + 0.3){
+        self.timer = Timer.scheduledTimer(timeInterval: 0.06, target: self, selector: #selector(self.setProgress), userInfo: nil, repeats: true)
+      }
+    }
+  }
   @IBOutlet var nicknameInputTextField: UITextField!{
     didSet {
       let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 13, height: nicknameInputTextField.frame.height))
@@ -210,7 +222,7 @@ class SignUpNicknameVC: UIViewController {
         isNicknameValid = false
         self.nicknameCheckLabel.isHidden = true
         break
-      
+        
       case .specialCharErr:
         print("특수문자")
         self.nextBtn.isEnabled = true
@@ -227,7 +239,7 @@ class SignUpNicknameVC: UIViewController {
         print("이상한문자 ex)ㅇㄹ")
         self.nextBtn.isEnabled = true
         nicknameCheckLabel.textColor = .alertRed
-//        nicknameCheckLabel.text = I18N.SignUp.StrangeChar.errorAlert
+        //        nicknameCheckLabel.text = I18N.SignUp.StrangeChar.errorAlert
         nicknameInputTextField.layer.borderWidth = 1
         nicknameInputTextField.layer.cornerRadius = 5
         nicknameInputTextField.layer.borderColor = UIColor.alertRed.cgColor
@@ -279,7 +291,7 @@ class SignUpNicknameVC: UIViewController {
         if let data = data {
           
           if !data.duplicated { // w
-          
+            
             self?.pushSignUpEmailVC()
             self?.nextBtn.isEnabled = true //되돌아왔을때 pop 했을때 버튼 비활되어 있어서 다시 true해주기
             
@@ -316,9 +328,15 @@ class SignUpNicknameVC: UIViewController {
     //case나눈것
     alertNicknameStatus()
     //    checkMaxLabelCount() //글자수 체크 , 한글이나 이것저것
-    
-    
     setCountLabel() //글자수 값 바뀌는거 실시간으로
+  }
+  
+  @objc func setProgress() {
+    time += 0.045
+    signUpProgressView.setProgress(time, animated: true)
+    if time >= 0.33 {
+      timer?.invalidate()
+    }
   }
   
 }

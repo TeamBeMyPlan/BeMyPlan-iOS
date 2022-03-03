@@ -8,12 +8,14 @@
 import UIKit
 
 class SignUpEmailVC: UIViewController {
-
+  
   // MARK: - Vars & Lets Part
   var delegate : SignupDelegate?
   var nickname : String = ""
   var userToken : String = ""
   var socialType : String = ""
+  var time: Float = 0.33
+  var timer: Timer?
   
   
   private var isEmailValid : Bool = false {
@@ -24,7 +26,16 @@ class SignUpEmailVC: UIViewController {
   
   // MARK: - UI Component Part
   @IBOutlet var backBtn: UIButton!
-  @IBOutlet var signUpProgressView: UIProgressView!
+  @IBOutlet var signUpProgressView: UIProgressView!{
+    didSet{
+      signUpProgressView.progressViewStyle = .bar
+      signUpProgressView.progressTintColor = .black
+      signUpProgressView.trackTintColor = .grey05
+      DispatchQueue.main.asyncAfter(deadline: .now() + 0.3){
+        self.timer = Timer.scheduledTimer(timeInterval: 0.06, target: self, selector: #selector(self.setProgress), userInfo: nil, repeats: true)
+      }
+    }
+  }
   @IBOutlet var emailInputTextField: UITextField!
   @IBOutlet var emailCheckLabel: UILabel!{
     didSet{
@@ -168,6 +179,14 @@ class SignUpEmailVC: UIViewController {
   // MARK: - @objc Function Part
   @objc func textFieldDidChange() {
     checkMaxLabelCount()
+  }
+  
+  @objc func setProgress() {
+    time += 0.045
+    signUpProgressView.setProgress(time, animated: true)
+    if time >= 0.66 {
+      timer?.invalidate()
+    }
   }
   
 }
