@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uUb-ME-v4F">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GVb-q0-N38">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -185,6 +185,12 @@
                             <constraint firstItem="X5m-0F-mos" firstAttribute="leading" secondItem="Do3-8S-Ecc" secondAttribute="leading" id="zDN-h3-yu5"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="emailCheckLabel" destination="2Yh-Nk-wyZ" id="Jtx-c8-mha"/>
+                        <outlet property="emailInputTextField" destination="122-1s-07d" id="ezu-ar-p0q"/>
+                        <outlet property="nextBtn" destination="elT-IA-1bP" id="UpN-TR-hHD"/>
+                        <outlet property="signUpProgressView" destination="X5m-0F-mos" id="cCR-PJ-EXl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v8Q-sO-hzy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
