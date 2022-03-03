@@ -166,34 +166,33 @@ extension LogEventType: EventType {
 
 extension LogEventType {
   enum LoginSource: String {
-    case kakao = "kakao"
-    case apple = "apple"
-    case guest = "guest"
-  }
+    case kakao
+    case apple
+    case guest  }
   
   enum TabSource: String {
-    case home = "home"
-    case travelSpot = "travelSpot"
-    case scrap = "scrap"
-    case myPlan = "myPlan"
+    case home
+    case travelSpot
+    case scrap
+    case myPlan
   }
   
   enum ViewSource: String {
-    case scrapView = "scrapView"
-    case travelListView = "travelListView"
-    case planPreview = "planPreview"
-    case PlanDetail = "planDetail"
-    case myPlanView = "myPlanView"
+    case scrapView
+    case travelListView
+    case planPreview
+    case PlanDetail
+    case myPlanView
   }
   
   enum PaymentSource: String{
-    case kakaoPay = "kakaoPay"
-    case naverPay = "naverPay"
-    case toss = "toss"
+    case kakaoPay
+    case naverPay
+    case toss
   }
   
   enum MapSource: String{
-    case kakaoMap = "kakaoMap"
-    case naverMap = "naverMap"
+    case kakaoMap
+    case naverMap
   }
 }

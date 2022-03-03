@@ -73,7 +73,13 @@ class MainListView: UIView {
   
   @IBAction func touchUpToPlanList(_ sender: Any) {
     var detailCase : TravelSpotDetailType = .new
-    type == .recently ? (detailCase = .new) : (detailCase = .suggest)
+    if type == .recently {
+      detailCase = .new
+      AppLog.log(at: FirebaseAnalyticsProvider.self, .clickHomeRecentPlanList)
+    }else {
+      detailCase = .suggest
+      AppLog.log(at: FirebaseAnalyticsProvider.self, .clickHomeRecommendPlanList)
+    }
     postObserverAction(.moveHomeToPlanList,object: detailCase)
   }
   
