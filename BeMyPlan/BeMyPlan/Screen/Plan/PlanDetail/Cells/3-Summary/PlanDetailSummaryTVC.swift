@@ -7,29 +7,24 @@
 
 import UIKit
 
+struct PlanDetailSummaryViewModel{
+  var locationList: [PlanDetail.Summary]
+  var isFold: Bool
+}
+
 class PlanDetailSummaryTVC: UITableViewCell,UITableViewRegisterable{
   
-  var summaryList : [PlanDetail.Summary] = []
-  var currentDay : Int = 1
-  
-  static var isFromNib: Bool = true
-  var isFold : Bool = true{
+  var viewModel: PlanDetailSummaryViewModel!{
     didSet{
       calculateSummaryHeight()
       listTV.reloadData()
     }
   }
+  static var isFromNib: Bool = true
   private var first : CGFloat = 0,
       middle : CGFloat = 0,
       last : CGFloat = 0,
       additional : CGFloat = 0
-  
-  var locationList : [PlanDetail.Summary] = []{
-    didSet{
-      calculateSummaryHeight()
-      listTV.reloadData()
-    }
-  }
   
   @IBOutlet var listTV: UITableView!{
     didSet{
@@ -58,7 +53,8 @@ class PlanDetailSummaryTVC: UITableViewCell,UITableViewRegisterable{
   
   private func calculateSummaryHeight(){
     var totalHeight : CGFloat = 0
-
+    let locationList = viewModel.locationList
+    let isFold = viewModel.isFold
     first = locationList.count == 1 ? 60 : 81
     middle = 58
     last = 39
@@ -84,6 +80,9 @@ class PlanDetailSummaryTVC: UITableViewCell,UITableViewRegisterable{
 
 extension PlanDetailSummaryTVC : UITableViewDelegate{
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    let locationList = viewModel.locationList
+    let isFold = viewModel.isFold
+    
     if locationList.count > 5{
       
       if isFold == true{
@@ -129,19 +128,21 @@ extension PlanDetailSummaryTVC : UITableViewDelegate{
 
 extension PlanDetailSummaryTVC : UITableViewDataSource{
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    if locationList.count <= 5{
-      return locationList.count
+    if viewModel.locationList.count <= 5{
+      return viewModel.locationList.count
     }else{
-      if isFold == true {
+      if viewModel.isFold == true {
         return 6
       }else{
-        return locationList.count + 1
+        return viewModel.locationList.count + 1
       }
     }
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     var order : OrderCase
+    let locationList = viewModel.locationList
+    let isFold = viewModel.isFold
     
     if locationList.count <= 5{
       if indexPath.row == 0 && locationList.count == 1{
@@ -206,7 +207,9 @@ extension PlanDetailSummaryTVC : UITableViewDataSource{
 
 extension PlanDetailSummaryTVC : SummaryFoldDelegate{
   func foldButtonClicked() {
-    isFold = !isFold
-    postObserverAction(.foldStateChanged, object: isFold)
+    viewModel.isFold = !viewModel.isFold
+    let isFold = viewModel.isFold
+
+    postObserverAction(.summaryFoldStateChanged, object: isFold)
   }
 }

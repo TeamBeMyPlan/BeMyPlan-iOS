@@ -89,6 +89,9 @@ extension TravelSpotVC: UICollectionViewDelegate {
     //    self.navigationController?.popViewController(animated: true)
     if travelSpotDataList[indexPath.row].isActivated {
       postObserverAction(.movePlanList,object: travelSpotDataList[indexPath.row].id)
+      AppLog.log(at: FirebaseAnalyticsProvider.self, .clickOpenedTravelSpot(spot: travelSpotDataList[indexPath.row].name))
+    }else{
+      AppLog.log(at: FirebaseAnalyticsProvider.self, .clickClosedTravelSpot(spot: travelSpotDataList[indexPath.row].name))
     }
   }
 }

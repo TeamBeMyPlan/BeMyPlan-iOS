@@ -27,7 +27,8 @@ class PlanPreviewPhotoTVC: UITableViewCell {
       contentTextView.textContainer.lineFragmentPadding = .zero
     }
   }
-
+  @IBOutlet var imageHeightConstraint: NSLayoutConstraint!
+  
   // MARK: - Life Cycle Part
   
   override func awakeFromNib() {
@@ -47,17 +48,15 @@ class PlanPreviewPhotoTVC: UITableViewCell {
     contentImageView.layer.cornerRadius = 5
     
   }
-  func setPhotoData(url : String?, content :String?){
-    if let photoURL = url{
-      contentImageView.setImage(with: photoURL)
-    }else{
-      contentImageView.image = UIImage()
-    }
+  func setPhotoData(photo : UIImage, content :String?,height: CGFloat){
+    contentImageView.image = photo
+    imageHeightConstraint.constant = height
     if let content = content {
       makeShortContent(content: content)
     }else{
       contentTextView.text = ""
     }
+    layoutIfNeeded()
   }
   
   private func makeShortContent(content: String){

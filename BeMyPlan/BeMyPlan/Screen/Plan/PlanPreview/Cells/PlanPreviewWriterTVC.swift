@@ -39,6 +39,7 @@ class PlanPreviewWriterTVC: UITableViewCell,UITableViewRegisterable{
   @IBAction func nicknameButtonClicked(_ sender: Any) {
     let data = PlanWriterDataModel.init(authorName: nickname,
                                         authorID: authID)
+    AppLog.log(at: FirebaseAnalyticsProvider.self, .clickEditorName(source: .planPreview))
     postObserverAction(.moveNicknamePlanList,object: data)
   }
   

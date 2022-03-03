@@ -73,7 +73,13 @@ class MainListView: UIView {
   
   @IBAction func touchUpToPlanList(_ sender: Any) {
     var detailCase : TravelSpotDetailType = .new
-    type == .recently ? (detailCase = .new) : (detailCase = .suggest)
+    if type == .recently {
+      detailCase = .new
+      AppLog.log(at: FirebaseAnalyticsProvider.self, .clickHomeRecentPlanList)
+    }else {
+      detailCase = .suggest
+      AppLog.log(at: FirebaseAnalyticsProvider.self, .clickHomeRecommendPlanList)
+    }
     postObserverAction(.moveHomeToPlanList,object: detailCase)
   }
   
@@ -163,6 +169,8 @@ class MainListView: UIView {
 
 extension MainListView : SkeletonCollectionViewDelegate{
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    AppLog.log(at: FirebaseAnalyticsProvider.self, .clickTravelPlan(source: .homeView,
+                                                                    postIdx:  String(mainListDataList[indexPath.row].id)))
     postObserverAction(.movePlanPreview,object: mainListDataList[indexPath.row].id)
   }
 }

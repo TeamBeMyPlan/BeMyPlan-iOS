@@ -22,6 +22,8 @@ class SplashVC: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    UserDefaults.standard.setValue(100, forKey: "userIdx")
+    AppLog.setFirebaseUserProperty()
     startSplash()
   }
   

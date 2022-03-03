@@ -16,7 +16,10 @@ class BaseVC: UIViewController {
   // MARK: - Vars & Lets Part
   var isFirstload = true
   var clickedIndex : TabList = .home{
-    didSet{ runTabClickAction() }
+    didSet{
+      runTabClickAction()
+      setTabLog()
+    }
   }
   var currentTabList : [TabList] = []
   let factory: ModuleFactoryProtocol = ModuleFactory.resolve()
@@ -87,6 +90,17 @@ class BaseVC: UIViewController {
         currentTabList.append(clickedIndex)
       }
     }
+  }
+  
+  private func setTabLog(){
+    let tabSource: LogEventType.TabSource
+    switch(clickedIndex){
+      case .home: tabSource = .home
+      case .travelSpot: tabSource = .travelSpot
+      case .scrap: tabSource = .scrap
+      case .myPlan: tabSource = .myPlan
+    }
+    AppLog.log(at: FirebaseAnalyticsProvider.self, .clickTab(source: tabSource))
   }
   private func showContainerView(){
     self.containerView.alpha = 1

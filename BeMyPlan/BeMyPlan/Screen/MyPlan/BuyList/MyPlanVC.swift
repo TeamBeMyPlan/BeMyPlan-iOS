@@ -71,6 +71,8 @@ class MyPlanVC: UIViewController {
 extension MyPlanVC :UICollectionViewDelegate{
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    AppLog.log(at: FirebaseAnalyticsProvider.self, .clickTravelPlan(source: .myPlanView,
+                                                                    postIdx:  String(buyContentList[indexPath.row].id)))
     postObserverAction(.movePlanDetail,object: buyContentList[indexPath.row].id)
   }
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {

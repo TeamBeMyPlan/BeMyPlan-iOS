@@ -16,7 +16,6 @@ class PlanPreviewVC: UIViewController {
   private var isAnimationProceed: Bool = false
   private var lastContentOffset : CGFloat = 0
   var viewModel : PlanPreviewViewModel!
-
   private var isScrabed : Bool = false{
     didSet{
       setScrabImage()
@@ -66,6 +65,7 @@ class PlanPreviewVC: UIViewController {
     }
     
     viewModel.didFetchDataFinished = { [weak self] in
+      self?.headerTitleLabel.text = self?.viewModel.headerData?.title
       self?.previewContentTV.reloadData()
       self?.closeIndicator{
         UIView.animate(withDuration: 0.4) {
@@ -95,8 +95,10 @@ class PlanPreviewVC: UIViewController {
     }
     
     viewModel.movePreviewDetailView = { [weak self] in
-      let vc = ModuleFactory.resolve().instantiatePlanDetailVC(isPreviewPage: true)
-      self?.navigationController?.pushViewController(vc, animated: true)
+      AppLog.log(at: FirebaseAnalyticsProvider.self, .clickPlanDetailExample)
+      guard let self = self else {return}
+      let vc = ModuleFactory.resolve().instantiatePlanDetailVC(postID: self.viewModel.postId, isPreviewPage: true)
+      self.navigationController?.pushViewController(vc, animated: true)
     }
   }
  
@@ -144,8 +146,9 @@ extension PlanPreviewVC : UITableViewDataSource{
       case .photo:
         guard let photoCell = tableView.dequeueReusableCell(withIdentifier: PlanPreviewPhotoTVC.className, for: indexPath) as? PlanPreviewPhotoTVC else {return UITableViewCell() }
         
-        photoCell.setPhotoData(url: viewModel.photoData?[indexPath.row - 2].photo,
-                               content: viewModel.photoData?[indexPath.row - 2].content)
+        photoCell.setPhotoData(photo: viewModel.photoList[indexPath.row - 2],
+                               content: viewModel.photoData?[indexPath.row - 2].content,
+                               height: viewModel.heightList[indexPath.row - 2])
         return photoCell
         
       case .summary:
@@ -164,6 +167,12 @@ extension PlanPreviewVC : UITableViewDataSource{
 
 extension PlanPreviewVC : UIScrollViewDelegate{
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
+
+    if scrollView.contentOffset.y > 127{
+      headerTitleLabel.alpha = 1
+    }else{
+      headerTitleLabel.alpha = 0
+    }
     
     if lastContentOffset > scrollView.contentOffset.y && lastContentOffset - 40 < scrollView.contentSize.height - scrollView.frame.height {
       moveBuyContainer(state: .show)
