@@ -95,6 +95,8 @@ extension ScrapContainerView: UICollectionViewDataSource {
 
 extension ScrapContainerView: UICollectionViewDelegate{
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    AppLog.log(at: FirebaseAnalyticsProvider.self, .clickTravelPlan(source: .scrapView,
+                                                                    postIdx:  String(scrapDataList[indexPath.row].postID)))
     postObserverAction(.movePlanPreview,object: scrapDataList[indexPath.row].postID)
   }
 }

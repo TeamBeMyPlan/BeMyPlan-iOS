@@ -169,6 +169,8 @@ class MainCardView: UIView {
 
 extension MainCardView : SkeletonCollectionViewDelegate{
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    AppLog.log(at: FirebaseAnalyticsProvider.self, .clickTravelPlan(source: .homeView,
+                                                                    postIdx:  String(popularList[indexPath.row].id)))
     postObserverAction(.movePlanPreview,object: popularList[indexPath.row].id)
   }
 }

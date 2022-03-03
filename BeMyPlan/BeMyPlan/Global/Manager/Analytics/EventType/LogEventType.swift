@@ -175,8 +175,11 @@ extension LogEventType {
   }
   
   enum ViewSource: String {
+    case homeView
     case scrapView
+    case scrapRecommendView
     case travelListView
+    case planListView
     case planPreview
     case planDetail
     case myPlanView
