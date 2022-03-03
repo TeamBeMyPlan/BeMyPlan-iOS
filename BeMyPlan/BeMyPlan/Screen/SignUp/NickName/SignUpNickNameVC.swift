@@ -12,7 +12,7 @@ class SignUpNicknameVC: UIViewController {
   // MARK: - Vars & Lets Part
   var delegate : SignupDelegate?
   var userToken : String = ""
-  var socialType : String = ""
+  var socialType : String = "KAKAO"
   
   private var isNicknameValid : Bool = false {
     didSet {
@@ -22,6 +22,7 @@ class SignUpNicknameVC: UIViewController {
   
   
   // MARK: - UI Component Part
+  @IBOutlet var cancelBtn: UIButton!
   @IBOutlet var signUpProgressView: UIProgressView!
   @IBOutlet var nicknameInputTextField: UITextField!{
     didSet {
@@ -46,7 +47,7 @@ class SignUpNicknameVC: UIViewController {
     setStartBtnStatus() //다음 버트 비활
     addTapGesture() //다른곳 누르면 키보드 사라지는것
     addToolbar(textfields: [nicknameInputTextField]) //키보드 툴바 세팅?
-//    setBtnStatus()
+    //    setBtnStatus()
     setTextField() // 변경되는거 감지 -> 글자수 값, 글자수 제한
     addBtnActions() //다음 버튼을 눌렀을 때, postNickNameData 호출-> 닉네임 중복 체크해서 (1)중복 아니면 postSocialSignUpData 호출해서 Email로 이동? (2) 중복이면 "alert 보이게"
   }
@@ -137,21 +138,33 @@ class SignUpNicknameVC: UIViewController {
   private func addBtnActions() {
     //실제로는 이방법이 아니라 dismiss 되었을때 completion에 새로운 escaping closure를 선언해서 파라미터로 받아와서 해야한다....!
     nextBtn.press{
+      self.nextBtn.isEnabled = false //버튼 여러번 눌리는거 해결
       if let nicknameInputTextField = self.nicknameInputTextField.text {
         self.postNickNameData(nickName: nicknameInputTextField)
       }
     }
+    
+    cancelBtn.press {
+      self.makeAlert(alertCase: .requestAlert, content: "회원가입을 그만두시겠습니까?"){
+        self.dismiss(animated: true) {
+          self.delegate?.loginComplete() //BaseVC로 이동
+          print("base로 이동") //제대로 출력됩니당
+        }
+      }
+    }
+    
+    
   }
   
-//  private func showSignupAlert(){
-//    self.makeAlert(alertCase: .requestAlert, content: "닉네임을 수정할 수 없습니다.\n이대로 가입을 진행할까요?") {
-//      self.makeAlert(alertCase: .simpleAlert, title: "알림", content: "회원가입이 완료되었습니다."){
-//        self.dismiss(animated: true) {
-//          self.delegate?.loginComplete()
-//        }
-//      }
-//    }
-//  }
+  //  private func showSignupAlert(){
+  //    self.makeAlert(alertCase: .requestAlert, content: "닉네임을 수정할 수 없습니다.\n이대로 가입을 진행할까요?") {
+  //      self.makeAlert(alertCase: .simpleAlert, title: "알림", content: "회원가입이 완료되었습니다."){
+  //        self.dismiss(animated: true) {
+  //          self.delegate?.loginComplete()
+  //        }
+  //      }
+  //    }
+  //  }
   
   private func postNickNameData(nickName: String) {
     BaseService.default.postNickNameCheck(nickName: nickName) { result in
@@ -164,12 +177,15 @@ class SignUpNicknameVC: UIViewController {
             //            self?.showSignupAlert()  // 회원가입 처리를 어떻게 함..?
             // 확인을 눌렀을 때  회원가입 합니다.
             
-//            self?.makeAlert(alertCase: .requestAlert, content: "닉네임을 수정할 수 없습니다.\n이대로 가입을 진행할까요?") {
-//              self?.postSocialSignUpData()
-//            }
+            //            self?.makeAlert(alertCase: .requestAlert, content: "닉네임을 수정할 수 없습니다.\n이대로 가입을 진행할까요?") {
+            //              self?.postSocialSignUpData()
+            //            }
             
-//            self?.postSocialSignUpData()
+            //            self?.postSocialSignUpData()
+            
+            
             self?.pushSignUpEmailVC()
+            self?.nextBtn.isEnabled = true //되돌아왔을때 pop 했을때 버튼 비활되어 있어서 다시 true해주기
             
           } else { //중복 돠면 중복된 멘트 뜨게 해야하는데
             // 빨간 테투리 뜨는 걸로
@@ -187,43 +203,46 @@ class SignUpNicknameVC: UIViewController {
   }
   
   //소셜 post 해주는거 마지막에 해줘야함
-//  private func postSocialSignUpData() {
-//    if let nickName = nicknameInputTextField.text {
-//      BaseService.default.postSocialSignUp(socialToken: userToken , socialType: socialType, nickName: nickName) { result in
-//        result.success{ [weak self] data in
-//          if let data = data {
-//            UserDefaults.standard.setValue(data.accessToken, forKey: "userToken")
-//            //BaseVC로 이동
-//
-//
-//            self?.makeAlert(alertCase: .simpleAlert, title: "알림", content: "회원가입이 완료되었습니다."){ //이거 알람뜨면 안되는거 같은데
-//              self?.dismiss(animated: true) {
-//                self?.delegate?.loginComplete()
-//                self?.pushSignUpEmailVC() //Base가 아니라 그... Email로 이동
-//
-//              }
-//            }
-//
-//          }
-//          //성공 하면 회원가입 성공 창으로 가기
-//          //서버에 데이터 넘겨주기
-//
-//        }.catch { error in
-//          self.makeAlert(alertCase: .simpleAlert, title: "알림", content: "회원가입이 실패되었습니다.")
-//
-//        }
-//      }
-//    }
-//  }
+  //  private func postSocialSignUpData() {
+  //    if let nickName = nicknameInputTextField.text {
+  //      BaseService.default.postSocialSignUp(socialToken: userToken , socialType: socialType, nickName: nickName) { result in
+  //        result.success{ [weak self] data in
+  //          if let data = data {
+  //            UserDefaults.standard.setValue(data.accessToken, forKey: "userToken")
+  //            //BaseVC로 이동
+  //
+  //
+  //            self?.makeAlert(alertCase: .simpleAlert, title: "알림", content: "회원가입이 완료되었습니다."){ //이거 알람뜨면 안되는거 같은데
+  //              self?.dismiss(animated: true) {
+  //                self?.delegate?.loginComplete()
+  //                self?.pushSignUpEmailVC() //Base가 아니라 그... Email로 이동
+  //
+  //              }
+  //            }
+  //
+  //          }
+  //          //성공 하면 회원가입 성공 창으로 가기
+  //          //서버에 데이터 넘겨주기
+  //
+  //        }.catch { error in
+  //          self.makeAlert(alertCase: .simpleAlert, title: "알림", content: "회원가입이 실패되었습니다.")
+  //
+  //        }
+  //      }
+  //    }
+  //  }
   
-//  private func pushBaseVC() {
-//    guard let baseVC = UIStoryboard.list(.base).instantiateViewController(withIdentifier: BaseVC.className) as? BaseVC else {return}
-//    self.navigationController?.pushViewController(baseVC, animated: true)
-//  }
+  //  private func pushBaseVC() {
+  //    guard let baseVC = UIStoryboard.list(.base).instantiateViewController(withIdentifier: BaseVC.className) as? BaseVC else {return}
+  //    self.navigationController?.pushViewController(baseVC, animated: true)
+  //  }
   
   private func pushSignUpEmailVC() {
     guard let emailVC = UIStoryboard.list(.signup).instantiateViewController(withIdentifier: SignUpEmailVC.className) as? SignUpEmailVC else {return}
     self.navigationController?.pushViewController(emailVC, animated: true)
+    emailVC.nickname = nicknameInputTextField.text!  //?? ""  //근데 ! 해도 될거 같은데 무조건 넘어오니까 맞죠..?
+    emailVC.socialType = socialType
+    emailVC.userToken = userToken
   }
   
   
@@ -256,7 +275,7 @@ extension SignUpNicknameVC : UITextFieldDelegate{
     }
     nicknameInputTextField.layer.borderColor = UIColor.grey04.cgColor
   }
-
+  
   
 }
 protocol SignupDelegate{

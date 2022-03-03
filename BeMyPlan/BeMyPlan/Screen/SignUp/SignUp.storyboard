@@ -98,6 +98,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="18n-d0-TA1"/>
                     <connections>
+                        <outlet property="cancelBtn" destination="oYt-LK-qDv" id="ONy-WS-XG8"/>
                         <outlet property="nextBtn" destination="AlK-Qc-7Md" id="C3W-KI-RCo"/>
                         <outlet property="nicknameCheckLabel" destination="0Fl-yq-atX" id="gf4-0P-dcb"/>
                         <outlet property="nicknameCountLabel" destination="owp-Ok-bLX" id="djY-OO-386"/>
@@ -187,6 +188,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backBtn" destination="7sS-iZ-8S0" id="OZh-HK-LLb"/>
                         <outlet property="emailCheckLabel" destination="2Yh-Nk-wyZ" id="Jtx-c8-mha"/>
                         <outlet property="emailInputTextField" destination="122-1s-07d" id="ezu-ar-p0q"/>
                         <outlet property="nextBtn" destination="elT-IA-1bP" id="UpN-TR-hHD"/>
@@ -443,6 +445,7 @@
                     </view>
                     <connections>
                         <outlet property="allAgreeImageView" destination="gBs-V1-09D" id="109-N7-YFv"/>
+                        <outlet property="backBtn" destination="Ktw-jK-QGi" id="tjt-EX-PYV"/>
                         <outlet property="boxView" destination="dBk-bL-f8g" id="5U0-Tu-nFV"/>
                         <outlet property="firstAgreeImageView" destination="vuK-Xk-k9R" id="sJg-gr-uxh"/>
                         <outlet property="secondAgreeImageView" destination="kZh-gO-XNf" id="ss2-Vd-tDS"/>
