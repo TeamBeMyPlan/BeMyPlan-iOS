@@ -23,14 +23,14 @@ enum LogEventType {
   case signupEmail(source: LoginSource)
   case signupComplete(source: LoginSource)
   
-  // 5. 탭바 클릭 액션
+  // 5. 탭바 클릭 액션 O
   case clickTab(source: TabSource)
   
-  // 6. 홈탭 내 액션
+  // 6. 홈탭 내 액션 O
   case clickHomeRecentPlanList
   case clickHomeRecommendPlanList
   
-  // 7. 여행지 뷰
+  // 7. 여행지 뷰 O
   case clickOpenedTravelSpot(spot: String)
   case clickClosedTravelSpot(spot: String)
   
@@ -47,7 +47,7 @@ enum LogEventType {
   case scrapCancelTravelPlan(source: ViewSource,
                              postIdx: String)
   
-  // 11.결제 뷰
+  // 11.결제 뷰 O
   case closePaymentView
   case clickPaymentMethod(source: PaymentSource)
   case clickPaymentButton(postIdx: String)
