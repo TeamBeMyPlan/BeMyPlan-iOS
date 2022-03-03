@@ -78,5 +78,9 @@ struct I18N {
     struct NickName{
       static let placeHolder = "20자 이내로 입력해주세요."
     }
+    struct Email{
+      static let placeHolder = "이메일 입력"
+    }
   }
+  
 }
