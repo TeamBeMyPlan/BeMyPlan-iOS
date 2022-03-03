@@ -82,6 +82,9 @@ struct I18N {
     struct SpecialChar{
       static let errorAlert = "특수문자를 사용할 수 없습니다."
     }
+    struct StrangeChar {
+      static let errorAlert = "닉네임 형식이 올바르지 않습니다."
+    }
     struct Email{
       static let errorAlert = "이메일 형식이 올바르지 않습니다."
       static let placeHolder = "이메일 입력"
