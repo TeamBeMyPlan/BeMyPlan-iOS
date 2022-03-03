@@ -52,20 +52,20 @@ enum LogEventType {
   case clickPaymentMethod(source: PaymentSource)
   case clickPaymentButton(postIdx: String)
   
-  // 12. 결제 완료 뷰
+  // 12. 결제 완료 뷰 O
   case closePaymentCompleteView
   case clickPlanDetailViewInPayment(postIdx: String)
   
-  // 13. 결제 전 여행일정
+  // 13. 결제 전 여행일정 예시 O
   case clickPlanDetailExample
   
-  // 14. 결제 후 여행일정
-  case clickAddressCopy(postIdx: String)
-  case moveMapApplication(source: MapSource,postIdx: String)
+  // 14. 결제 후 여행일정 O
+  case clickAddressCopy
+  case moveMapApplication(source: MapSource)
   case alertNoMapApplication
   
-  // 15. 작성자 이름 클릭
-  case clickEditorName(source: ViewSource,postIdx: String)
+  // 15. 작성자 이름 클릭 O
+  case clickEditorName(source: ViewSource)
   
   // 16. 회원 유입 및 이탈
   case enterForeGround
@@ -145,17 +145,14 @@ extension LogEventType: EventType {
         params["paymentSource"] = paymentSource.rawValue
       
       case .clickPaymentButton(let postIdx),
-          .clickPlanDetailViewInPayment(let postIdx),
-          .clickAddressCopy(let postIdx):
+          .clickPlanDetailViewInPayment(let postIdx):
         params["postIdx"] = postIdx
         
-      case .moveMapApplication(let mapSource, let postIdx):
+      case .moveMapApplication(let mapSource):
         params["mapSource"] = mapSource
-        params["postIdx"] = postIdx
 
-      case .clickEditorName(let viewSource, let postIdx):
+      case .clickEditorName(let viewSource):
         params["viewSource"] = viewSource
-        params["postIdx"] = postIdx
 
       default: break
     }
@@ -181,7 +178,7 @@ extension LogEventType {
     case scrapView
     case travelListView
     case planPreview
-    case PlanDetail
+    case planDetail
     case myPlanView
   }
   

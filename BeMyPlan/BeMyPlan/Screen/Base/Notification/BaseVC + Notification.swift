@@ -127,5 +127,10 @@ extension BaseVC{
       self.tabClicked(index: .home)
     }
     
+    NotificationCenter.default.addObserver(forName: UIApplication.willResignActiveNotification) { _ in
+      AppLog.log(at: FirebaseAnalyticsProvider.self, .enterBackGround)
+    }
+    
   }
+  
 }
