@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GVb-q0-N38">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xho-xP-A1J">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -96,6 +96,7 @@
                             <constraint firstItem="0Fl-yq-atX" firstAttribute="top" secondItem="Pc2-ww-Q8w" secondAttribute="bottom" constant="9" id="zcN-m6-cpE"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="18n-d0-TA1"/>
                     <connections>
                         <outlet property="nextBtn" destination="AlK-Qc-7Md" id="C3W-KI-RCo"/>
                         <outlet property="nicknameCheckLabel" destination="0Fl-yq-atX" id="gf4-0P-dcb"/>
@@ -106,7 +107,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Obm-vy-T4K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="872" y="94"/>
+            <point key="canvasLocation" x="1813.5999999999999" y="93.842364532019715"/>
         </scene>
         <!--Sign Up EmailVC-->
         <scene sceneID="b1M-39-fDt">
@@ -194,7 +195,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v8Q-sO-hzy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1630" y="94"/>
+            <point key="canvasLocation" x="2572" y="93.842364532019715"/>
         </scene>
         <!--Sign UpTOSVC-->
         <scene sceneID="2EO-FF-Idz">
@@ -361,6 +362,7 @@
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <connections>
+                                            <action selector="pressAllAgree:" destination="fNH-mz-qhR" eventType="touchUpInside" id="vzC-h9-ZIU"/>
                                             <action selector="pressTotalAgree:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="WGe-OY-bOJ"/>
                                         </connections>
                                     </button>
@@ -371,6 +373,7 @@
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <connections>
+                                            <action selector="pressFirstAgree:" destination="fNH-mz-qhR" eventType="touchUpInside" id="awg-gW-ofs"/>
                                             <action selector="pressUseAgree:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="53U-ed-9JJ"/>
                                         </connections>
                                     </button>
@@ -382,6 +385,7 @@
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <connections>
                                             <action selector="pressInfoAgree:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="VSv-TS-SeX"/>
+                                            <action selector="pressSecondAgree:" destination="fNH-mz-qhR" eventType="touchUpInside" id="vsr-Gb-YWA"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -437,10 +441,18 @@
                             <constraint firstAttribute="bottom" secondItem="YtI-dz-HVh" secondAttribute="bottom" id="wIR-M2-MTd"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="allAgreeImageView" destination="gBs-V1-09D" id="109-N7-YFv"/>
+                        <outlet property="boxView" destination="dBk-bL-f8g" id="5U0-Tu-nFV"/>
+                        <outlet property="firstAgreeImageView" destination="vuK-Xk-k9R" id="sJg-gr-uxh"/>
+                        <outlet property="secondAgreeImageView" destination="kZh-gO-XNf" id="ss2-Vd-tDS"/>
+                        <outlet property="signUpProgressView" destination="dKP-Yo-3PO" id="Y1W-eE-Kgf"/>
+                        <outlet property="startBtn" destination="YtI-dz-HVh" id="wWz-bL-eMV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fbJ-Pf-wrS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2381" y="94"/>
+            <point key="canvasLocation" x="3322.4000000000001" y="93.842364532019715"/>
         </scene>
         <!--Sign UpVC-->
         <scene sceneID="s0d-6b-0kx">
@@ -724,7 +736,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="78.260869565217391" y="93.75"/>
+            <point key="canvasLocation" x="-348" y="94"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="LWI-gl-SKA">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="xho-xP-A1J" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JIL-Gb-04N">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="uUb-ME-v4F" kind="relationship" relationship="rootViewController" id="Raw-IR-Ad1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0CT-FC-htb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="871.20000000000005" y="93.842364532019715"/>
         </scene>
     </scenes>
     <resources>

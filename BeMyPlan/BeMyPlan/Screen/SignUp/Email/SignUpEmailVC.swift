@@ -9,7 +9,6 @@ import UIKit
 
 class SignUpEmailVC: UIViewController {
   // MARK: - Vars & Lets Part
-  var delegate : SignupDelegate?
   var userToken : String = ""
   var socialType : String = ""
   private var isEmailValid : Bool = false {
