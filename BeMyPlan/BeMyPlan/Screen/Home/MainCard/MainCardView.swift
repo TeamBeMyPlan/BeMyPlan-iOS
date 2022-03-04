@@ -21,7 +21,7 @@ class MainCardView: UIView {
   override init(frame: CGRect) {
     super.init(frame: frame)
     addSubviewFromNib(view: self)
-//    initMainCardDataList()
+    //    initMainCardDataList()
     registerCVC()
     setMainCardCV()
     setSkeletonUI()
@@ -31,7 +31,7 @@ class MainCardView: UIView {
   required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
     addSubviewFromNib(view: self)
-//    initMainCardDataList()
+    //    initMainCardDataList()
     registerCVC()
     setMainCardCV()
     setSkeletonUI()
@@ -56,14 +56,14 @@ class MainCardView: UIView {
   private func setMainCardCV(){
     
     let layout = MainCardCarouselLayout()
-
+    
     let cellWidth = (327/375) * screenWidth
     let cellHeight = cellWidth * (435/327)
     
-//    let centerItemWidthScale: CGFloat = (327/375) * screenWidth
-//    let centerItemHeightScale: CGFloat = 1
-//    let insetX : CGFloat = 24
-//    layout.itemSize = CGSize(width: mainCardCV.frame.size.width*centerItemWidthScale, height: mainCardCV.frame.size.height*centerItemHeightScale)
+    //    let centerItemWidthScale: CGFloat = (327/375) * screenWidth
+    //    let centerItemHeightScale: CGFloat = 1
+    //    let insetX : CGFloat = 24
+    //    layout.itemSize = CGSize(width: mainCardCV.frame.size.width*centerItemWidthScale, height: mainCardCV.frame.size.height*centerItemHeightScale)
     
     //sideItemScale
     layout.sideItemScale = 310/327
@@ -78,17 +78,17 @@ class MainCardView: UIView {
     mainCardCV.collectionViewLayout = layout
     
   }
-
+  
   func registerCVC() {
     mainCardCV.dataSource = self
     mainCardCV.delegate = self
     mainCardCV.isSkeletonable = true
-
+    
     let mainCardCVC = UINib(nibName: MainCardCVC.className, bundle: nil)
     mainCardCV.register(mainCardCVC, forCellWithReuseIdentifier: MainCardCVC.className)
-
+    
   }
-
+  
   private func getCardData(){
     
     BaseService.default.getPopularTravelList { result in
@@ -139,29 +139,30 @@ class MainCardView: UIView {
       onCompleted()
     }
   }
-//  var id : Int
-//  var title : String
-//  var photo : String
-
-//  private func fetchEventItemList(){
-//    BaseService.default.getEventBannerList { result in
-//      result.success{ list in
-//        self.imageList = []
-//
-//        if let banner = list{
-//          self.imgList.append(contentsOf: [
-//            banner.eventImage1,
-//            banner.eventImage2,
-//            banner.eventImage3
-//          ])
-//          print("Banner List",self.imgList)
-//          self.eventCV.reloadData()
-//        }
-//      }.catch{ error in
-//        //                dump(error)
-//      }
-//    }
-//  }
+  //  var id : Int
+  //  var title : String
+  //  var photo : String
+  
+  //  private func fetchEventItemList(){
+  //    BaseService.default.getEventBannerList { result in
+  //      result.success{ list in
+  //        self.imageList = []
+  //
+  //        if let banner = list{
+  //          self.imgList.append(contentsOf: [
+  //            banner.eventImage1,
+  //            banner.eventImage2,
+  //            banner.eventImage3
+  //          ])
+  //          print("Banner List",self.imgList)
+  //          self.eventCV.reloadData()
+  //        }
+  //      }.catch{ error in
+  //        //                dump(error)
+  //      }
+  //    }
+  //  }
+  
   
 }
 
@@ -201,39 +202,20 @@ extension MainCardView: SkeletonCollectionViewDataSource {
 }
 
 extension MainCardView: UICollectionViewDelegateFlowLayout {
-//  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//    let screenWidth = UIScreen.main.bounds.width
-//    let cellWidth = screenWidth * (327/375)
-//    let cellHeight = cellWidth * (435/327)
-//    return CGSize(width: cellWidth, height: cellHeight)
-//
-//  }
-//
-//  //주석
-//  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-//    return UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 24)
-//  }
-//
-//  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//    12
-//  }
-//
-//  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-//    0
-//  }
+  
 }
-extension MainCardView : UIScrollViewDelegate {
-  func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-//    let page = Int(targetContentOffset.pointee.x / self.frame.width)
-    let layout = mainCardCV.collectionViewLayout as! UICollectionViewFlowLayout
-    let cellWidthIncludingSpacing = layout.itemSize.width + layout.minimumLineSpacing
-    
-    var offSet = targetContentOffset.pointee
-    let index = (offSet.x + scrollView.contentInset.left) / cellWidthIncludingSpacing
-    let roundedIndex = round(index)
-    offSet = CGPoint(x: roundedIndex * cellWidthIncludingSpacing - scrollView.contentInset.left,
-                     y: -scrollView.contentInset.top)
-    targetContentOffset.pointee = offSet
-//    self.pageControl.currentPage = Int(roundedIndex)
-  }
-}
+//extension MainCardView : UIScrollViewDelegate {
+//  func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+//    //    let page = Int(targetContentOffset.pointee.x / self.frame.width)
+//    let layout = mainCardCV.collectionViewLayout as! UICollectionViewFlowLayout
+//    let cellWidthIncludingSpacing = layout.itemSize.width + layout.minimumLineSpacing
+//
+//    var offSet = targetContentOffset.pointee
+//    let index = (offSet.x + scrollView.contentInset.left) / cellWidthIncludingSpacing
+//    let roundedIndex = round(index)
+//    offSet = CGPoint(x: roundedIndex * cellWidthIncludingSpacing - scrollView.contentInset.left,
+//                     y: -scrollView.contentInset.top)
+//    targetContentOffset.pointee = offSet
+//    //    self.pageControl.currentPage = Int(roundedIndex)
+//  }
+//}

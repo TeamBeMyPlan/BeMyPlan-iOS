@@ -76,7 +76,19 @@ struct I18N {
   
   struct SignUp{
     struct NickName{
-      static let placeHolder = "20자 이내로 입력해주세요."
+      static let errorAlert = "중복된 닉네임 입니다."
+      static let placeHolder = "특수문자는 사용할 수 없습니다."
+    }
+    struct SpecialChar{
+      static let errorAlert = "특수문자를 사용할 수 없습니다."
+    }
+    struct StrangeChar {
+      static let errorAlert = "닉네임 형식이 올바르지 않습니다."
+    }
+    struct Email{
+      static let errorAlert = "이메일 형식이 올바르지 않습니다."
+      static let placeHolder = "이메일 입력"
     }
   }
+  
 }
