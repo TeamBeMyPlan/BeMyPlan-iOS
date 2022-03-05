@@ -83,10 +83,8 @@ class TravelSpotDetailVC: UIViewController {
   @IBAction func filterBtn(_ sender: Any) {
     let filterVC = UIStoryboard(name: "TravelSpot", bundle: nil).instantiateViewController(withIdentifier: TravelSpotFilterVC.className) as! TravelSpotFilterVC
     filterVC.filterStatus = self.sortCase
-    
     filterVC.filterClicked = { [weak self] filter in
       self?.sortCase = filter
-      filterVC.filterStatus = self!.sortCase
     }
     presentPanModal(filterVC)
   }
