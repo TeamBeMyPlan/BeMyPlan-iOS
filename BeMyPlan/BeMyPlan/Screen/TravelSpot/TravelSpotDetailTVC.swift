@@ -28,6 +28,7 @@ class TravelSpotDetailTVC: UITableViewCell {
   @IBOutlet var nickNameLabel: UILabel!
   @IBOutlet var titleTextView: UITextView!
   @IBOutlet var scrapBtn: UIButton!
+  @IBOutlet var scrapImage: UIImageView!
   
   override func awakeFromNib() {
     super.awakeFromNib()
@@ -58,10 +59,13 @@ class TravelSpotDetailTVC: UITableViewCell {
     postId = data.id
 
     if data.isScraped == true {
-      scrapBtn.setImage(UIImage(named: "icnScrapWhite"), for: .normal)
-      scrapBtn.setImage(UIImage(named: "icnNotScrapWhite"), for: .selected)
+      scrapImage.image = UIImage(named: "icnScrapWhite")
+//      scrapBtn.setImage(UIImage(named: "icnScrapWhite"), for: .normal)
+//      scrapBtn.setImage(UIImage(named: "icnNotScrapWhite"), for: .selected)
     } else {
-      scrapBtn.setImage(UIImage(named: "icnNotScrapWhite"), for: .normal)
+      scrapImage.image = UIImage(named: "icnNotScrapWhite")
+      
+//      scrapBtn.setImage(UIImage(named: "icnNotScrapWhite"), for: .normal)
     }
   }
   
@@ -69,6 +73,14 @@ class TravelSpotDetailTVC: UITableViewCell {
     if let scrapBtnClicked = scrapBtnClicked {
       scrapBtnClicked(postId)
     }
-    scrapBtn.isSelected.toggle()
+//    scrapBtn.isSelected.toggle()
+    if scrapImage.image == UIImage(named: "icnScrapWhite"){
+      scrapImage.image = UIImage(named: "icnNotScrapWhite")
+    } else {
+      scrapImage.image = UIImage(named: "icnScrapWhite")
+    }
+    
+    
+    
   }
 }

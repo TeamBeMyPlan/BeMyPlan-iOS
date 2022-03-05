@@ -21,7 +21,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="최신 여행 일정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8z9-Xs-FTd">
-                    <rect key="frame" x="24" y="0.0" width="91" height="19"/>
+                    <rect key="frame" x="24" y="0.0" width="91" height="23"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                     <color key="textColor" red="0.36470588240000001" green="0.40784313729999999" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -40,7 +40,7 @@
                     </connections>
                 </button>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="jAs-06-MqO">
-                    <rect key="frame" x="0.0" y="29" width="375" height="208"/>
+                    <rect key="frame" x="0.0" y="33" width="375" height="208"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="208" id="8nc-bD-WkN"/>
@@ -69,7 +69,7 @@
                 <constraint firstAttribute="trailing" secondItem="Gsb-yk-AUH" secondAttribute="trailing" constant="24" id="1y6-Z7-Ace"/>
                 <constraint firstItem="8z9-Xs-FTd" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="24" id="9zP-Kv-Dic"/>
                 <constraint firstItem="jAs-06-MqO" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="DRK-ie-8eV"/>
-                <constraint firstAttribute="bottom" secondItem="jAs-06-MqO" secondAttribute="bottom" constant="45" id="Fdx-XE-WEq"/>
+                <constraint firstAttribute="bottom" secondItem="jAs-06-MqO" secondAttribute="bottom" constant="41" id="Fdx-XE-WEq"/>
                 <constraint firstAttribute="trailing" secondItem="Iok-2l-GmW" secondAttribute="trailing" id="GtJ-8L-vGw"/>
                 <constraint firstItem="Gsb-yk-AUH" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="S9p-yD-bf3"/>
                 <constraint firstItem="Iok-2l-GmW" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="eiM-OY-2fx"/>

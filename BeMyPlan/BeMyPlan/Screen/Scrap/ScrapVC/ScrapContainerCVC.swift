@@ -11,9 +11,10 @@ class ScrapContainerCVC: UICollectionViewCell, UICollectionViewRegisterable {
   static var isFromNib: Bool = true
   public var scrapBtnClicked: ((Int) -> ())?
   private var postId:Int = 1
-
+  
   @IBOutlet var contentImage: UIImageView!
   @IBOutlet var scrapBtn: UIButton!
+  @IBOutlet var scrapImage: UIImageView!
   @IBOutlet var titleLabel: UILabel!
   
   override func awakeFromNib() {
@@ -25,7 +26,12 @@ class ScrapContainerCVC: UICollectionViewCell, UICollectionViewRegisterable {
     if let scrapBtnClicked = scrapBtnClicked {
       scrapBtnClicked(postId)
     }
-    scrapBtn.isSelected.toggle()
+    //    scrapBtn.isSelected.toggle()
+    if scrapImage.image == UIImage(named: "icnScrapWhite"){
+      scrapImage.image = UIImage(named: "icnNotScrapWhite")
+    } else {
+      scrapImage.image = UIImage(named: "icnScrapWhite")
+    }
   }
   
   private func setUIs() {
@@ -33,7 +39,7 @@ class ScrapContainerCVC: UICollectionViewCell, UICollectionViewRegisterable {
     contentImage.contentMode = .scaleAspectFill
   }
   
-  public func setData(data: ScrapItem) {
+  func setData(data: ScrapItem) {
     contentImage.setImage(with: data.thumbnailURL)
     titleLabel.text = data.title
     postId = data.postID
