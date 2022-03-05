@@ -28,6 +28,7 @@ class PlanDetailInformationTVC: UITableViewCell,UITableViewRegisterable {
   private var lastPointee : CGFloat = 0
   static var isFromNib: Bool = true
 
+  var clickImageClosure: ((Int,[String]) -> Void)?
   var currentIndex :Int = 0{
     didSet{
       if viewModel.imgUrls.count >= 1{
@@ -150,6 +151,11 @@ class PlanDetailInformationTVC: UITableViewCell,UITableViewRegisterable {
   
 }
 extension PlanDetailInformationTVC : UICollectionViewDataSource{
+
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    clickImageClosure?(indexPath.row, viewModel.imgUrls)
+  }
+  
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return viewModel.imgUrls.count
   }
@@ -190,3 +196,5 @@ extension PlanDetailInformationTVC : UIScrollViewDelegate{
     lastPointee = scrollView.contentOffset.x
   }
 }
+
+

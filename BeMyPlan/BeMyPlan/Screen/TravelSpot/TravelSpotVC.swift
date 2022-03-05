@@ -14,11 +14,7 @@ class TravelSpotVC: UIViewController {
   var completionHandler: ((Int) -> (Int))?
 
   // MARK: - UI Component Part
-  @IBOutlet var logoView: UIView!{
-    didSet {
-      self.logoView.layer.applyShadow(color: UIColor(displayP3Red: 0.796, green: 0.796, blue: 0.796, alpha: 0.25), alpha: 1, x: 1, y: 4, blur: 8, spread: 1)
-    }
-  }
+  @IBOutlet var logoView: UIView!
   @IBOutlet var locationCollectionView: UICollectionView!
   @IBOutlet var headerTopConstraint: NSLayoutConstraint!{
     didSet{ headerTopConstraint.constant = calculateTopInset()}
@@ -29,6 +25,10 @@ class TravelSpotVC: UIViewController {
     super.viewDidLoad()
     configCollectionView()
     fetchTravelSpotItemList()
+  }
+  
+  override func viewDidLayoutSubviews() {
+    logoView.layer.applyShadow(color: UIColor(displayP3Red: 0.796, green: 0.796, blue: 0.796, alpha: 0.25), alpha: 1, x: 1, y: 4, blur: 8, spread: 1)
   }
   
   // MARK: - Set Function Part
@@ -91,6 +91,7 @@ extension TravelSpotVC: UICollectionViewDelegate {
       postObserverAction(.movePlanList,object: travelSpotDataList[indexPath.row].id)
       AppLog.log(at: FirebaseAnalyticsProvider.self, .clickOpenedTravelSpot(spot: travelSpotDataList[indexPath.row].name))
     }else{
+      showToast(message: I18N.Alert.notOpenTravelSpot)
       AppLog.log(at: FirebaseAnalyticsProvider.self, .clickClosedTravelSpot(spot: travelSpotDataList[indexPath.row].name))
     }
   }

@@ -62,10 +62,7 @@ extension BaseVC{
       self.makeAlert(alertCase: .simpleAlert, title: I18N.Alert.alarm, content: I18N.Alert.notInstallKakaomap)
     }
     
-    addObserverAction(.copyComplete) { noti in
-      self.makeAlert(alertCase: .simpleAlert, title: I18N.Alert.alarm, content: I18N.Alert.copyComplete)
-    }
-    
+
     addObserverAction(.moveSettingView) { _ in
       let settingVC = self.factory.instantiateMyPlanSettingVC()
       self.navigationController?.pushViewController(settingVC, animated: true)

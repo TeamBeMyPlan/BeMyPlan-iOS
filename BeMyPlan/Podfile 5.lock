@@ -188,7 +188,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   ImageSlideShowSwift:
-    :commit: cbe14b6c0dc7817b50eae42acbe42f6731f3feea
+    :commit: 451f29728f79be658a87109f355519a048d72c24
     :git: https://github.com/TeamBeMyPlan/ImageSlideShow.git
 
 SPEC CHECKSUMS:

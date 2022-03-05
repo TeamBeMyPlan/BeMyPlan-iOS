@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ImageSlideShowSwift
 
 class PlanDetailVC: UIViewController {
   
@@ -122,6 +123,16 @@ class PlanDetailVC: UIViewController {
 //      self?.mapContainerHeightConstraint.constant
       self?.view.layoutIfNeeded()
     }
+    
+    viewModel.showImageSlide = { index,images in
+      ImageSlideShowViewController.presentFrom(self) { controller in
+        controller.dismissOnPanGesture = true
+        controller.slides = images
+        controller.enableZoom = true
+        controller.initialIndex = index
+        controller.view.backgroundColor = .black
+      }
+    }
   }
   
   private func addObserver(){
@@ -134,6 +145,12 @@ class PlanDetailVC: UIViewController {
         self.viewModel.summaryFoldChanged(fold: state)
       }
     }
+    
+    addObserverAction(.copyComplete) { noti in
+      self.makeVibrate()
+      self.showToast(message: I18N.Alert.copyComplete)
+    }
+    
   }
   
   private func registerCells(){
@@ -212,6 +229,9 @@ extension PlanDetailVC : UITableViewDataSource{
           guard informationCellViewModels.count >= indexPath.row else {return UITableViewCell() }
          guard let infoCell = tableView.dequeueReusableCell(withIdentifier: PlanDetailInformationTVC.className, for: indexPath) as? PlanDetailInformationTVC else {return UITableViewCell() }
           infoCell.viewModel = self.informationCellViewModels[indexPath.row - 1]
+          infoCell.clickImageClosure = { [weak self] idx,urls in
+            self?.viewModel.clickPhotos(index: idx, urls: urls)
+          }
          return infoCell
       }
   }

@@ -9,69 +9,69 @@ import Foundation
 
 enum LogEventType {
   // 1. 앱 최초 실행
-  case appFirstOpen
+  case appFirstOpen // 앱 최초 실행
   
   // 2. 온보딩
-  case onboardingFirstOpen
-  case onboardingEnd
+  case onboardingFirstOpen // 온보딩 최초 실행
+  case onboardingEnd // 온보딩 완료
   
   // 3. 로그인
-  case signin(source: LoginSource)
+  case signin(source: LoginSource) // 애플로그인,카카오로그인,둘러보기
   
   // 4. 회원가입
-  case signupNickname(source: LoginSource)
-  case signupEmail(source: LoginSource)
-  case signupComplete(source: LoginSource)
+  case signupNickname(source: LoginSource) // 닉네임 작성 완료
+  case signupEmail(source: LoginSource) // 이메일 작성 완료
+  case signupComplete(source: LoginSource) // 회원가입 완료
   
   // 5. 탭바 클릭 액션 O
-  case clickTab(source: TabSource)
+  case clickTab(source: TabSource) // 각자 탭바 클릭
   
   // 6. 홈탭 내 액션 O
-  case clickHomeRecentPlanList
-  case clickHomeRecommendPlanList
+  case clickHomeRecentPlanList // 홈에서 최신목록 더보기 클릭
+  case clickHomeRecommendPlanList // 홈에서 추천목록 더보기 클릭
   
   // 7. 여행지 뷰 O
-  case clickOpenedTravelSpot(spot: String)
-  case clickClosedTravelSpot(spot: String)
+  case clickOpenedTravelSpot(spot: String) // 열린 여행지 클릭 + 지역 이름
+  case clickClosedTravelSpot(spot: String) // 닫힌 여행지 클릭 + 지역 이름
   
   // 8. 둘러보기 -> 로그인뷰 띄워지는 경우
-  case showLoginPage(source: ViewSource)
+  case showLoginPage(source: ViewSource) // 둘러보기 상태에서 로그인 버튼을 누르는 경로(스크랩,마이플랜,구매)
 
   // 9. 여행 일정 클릭
   case clickTravelPlan(source :ViewSource,
-                       postIdx: String)
+                       postIdx: String) // 여행 일정 뷰를 어디서 들어오는지 파악(홈,여행지 목록,스크랩,마이플랜)
   
   // 10. 스크랩 액션
   case scrapTravelPlan(source: ViewSource,
-                       postIdx: String)
+                       postIdx: String) // 스크랩 한 뷰 위치 + postIdx
   case scrapCancelTravelPlan(source: ViewSource,
-                             postIdx: String)
+                             postIdx: String) // 스크랩 취소한 뷰 위치 + postIdx
   
   // 11.결제 뷰 O
-  case closePaymentView
-  case clickPaymentMethod(source: PaymentSource)
-  case clickPaymentButton(postIdx: String)
+  case closePaymentView // 결제창 닫기
+  case clickPaymentMethod(source: PaymentSource) // 결제 수단 선택(카카오페이,토스,네이버페이)
+  case clickPaymentButton(postIdx: String) // 결제 버튼 누르기
   
   // 12. 결제 완료 뷰 O
-  case closePaymentCompleteView
-  case clickPlanDetailViewInPayment(postIdx: String)
+  case closePaymentCompleteView // 결제 완료창 닫기
+  case clickPlanDetailViewInPayment(postIdx: String) // 컨텐츠 바로보러가기 클릭 + postIdx
   
   // 13. 결제 전 여행일정 예시 O
-  case clickPlanDetailExample
+  case clickPlanDetailExample // 구매한 여행일정 예시 버튼 클릭
   
   // 14. 결제 후 여행일정 O
-  case clickAddressCopy
-  case moveMapApplication(source: MapSource)
-  case alertNoMapApplication
+  case clickAddressCopy // 주소 복사 클릭
+  case moveMapApplication(source: MapSource) // 외부 맵 어플 이동하는 경우 (네이버맵,카카오맵)
+  case alertNoMapApplication // 외부 맵 어플이 둘다 없는 경우
   
   // 15. 작성자 이름 클릭 O
-  case clickEditorName(source: ViewSource)
+  case clickEditorName(source: ViewSource) // 작성자 이름 클릭
   
   // 16. 회원 유입 및 이탈 O
-  case enterForeGround
-  case enterBackGround
-  case logout
-  case withdrawal
+  case enterForeGround // 홈버튼 눌러서 앱을 나가는 경우
+  case enterBackGround // 백그라운드에서 다시 앱으로 돌아오는 경우
+  case logout // 로그아웃
+  case withdrawal // 회원탈퇴
 }
 
 extension LogEventType: EventType {
@@ -159,7 +159,6 @@ extension LogEventType: EventType {
     return params
   }
 }
-
 
 extension LogEventType {
   enum LoginSource: String {

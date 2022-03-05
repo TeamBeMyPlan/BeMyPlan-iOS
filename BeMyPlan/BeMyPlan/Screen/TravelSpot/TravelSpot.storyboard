@@ -91,7 +91,7 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Vix-i0-12b" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="5ak-gt-CyY"/>
+                            <constraint firstItem="Vix-i0-12b" firstAttribute="trailing" secondItem="5EZ-qb-Rvc" secondAttribute="trailing" id="5ak-gt-CyY"/>
                             <constraint firstItem="Vix-i0-12b" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="-44" id="fdc-4b-Gut"/>
                             <constraint firstItem="Vix-i0-12b" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="gFP-6V-xZH"/>
                             <constraint firstItem="mPh-Z6-q6l" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="iFu-1C-jnn"/>

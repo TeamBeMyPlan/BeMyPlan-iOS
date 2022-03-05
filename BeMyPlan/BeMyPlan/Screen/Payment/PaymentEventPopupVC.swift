@@ -1,0 +1,42 @@
+//
+//  PaymentEventPopupVC.swift
+//  BeMyPlan
+//
+//  Created by 송지훈 on 2022/03/05.
+//
+
+import UIKit
+
+class PaymentEventPopupVC: UIViewController {
+
+  // MARK: - Vars & Lets Part
+  var postIdx: Int = 0
+  var delegate : PaymentCompleteDelegate?
+
+  // MARK: - UI Component Part
+
+  
+  // MARK: - Life Cycle Part
+  
+    override func viewDidLoad() {
+        super.viewDidLoad()
+         
+    }
+    
+  // MARK: - IBAction Part
+
+  @IBAction func okButtonClicked(_ sender: Any) {
+    AppLog.log(at: FirebaseAnalyticsProvider.self, .clickPlanDetailViewInPayment(postIdx: String(postIdx)))
+    dismiss(animated: true) {
+      self.delegate?.completeButtonClicked()
+    }
+  
+  }
+  
+  // MARK: - Custom Method Part
+
+  
+  // MARK: - @objc Function Part
+
+}
+// MARK: - Extension Part

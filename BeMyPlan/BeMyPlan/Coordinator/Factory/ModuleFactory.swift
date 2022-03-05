@@ -45,6 +45,7 @@ protocol ModuleFactoryProtocol {
                                   price : String?,
                                   postID: Int) -> PaymentSelectVC
   func instantiatePaymentCompleteVC() -> PaymentCompleteVC
+  func instantiatePaymentEventPopupVC() -> PaymentEventPopupVC
   
   // MARK: - Plan
   func instantiatePlanPreviewVC(postID: Int) -> PlanPreviewVC
@@ -149,6 +150,10 @@ class ModuleFactory: ModuleFactoryProtocol{
   
   func instantiatePaymentCompleteVC() -> PaymentCompleteVC {
     return PaymentCompleteVC.controllerFromStoryboard(.payment)
+  }
+  
+  func instantiatePaymentEventPopupVC() -> PaymentEventPopupVC {
+    return PaymentEventPopupVC.controllerFromStoryboard(.payment)
   }
   
   // MARK: - Plan
