@@ -61,17 +61,8 @@ class PaymentSelectVC: UIViewController {
   
   @IBAction func paymentButtonClicked(_ sender: Any) {
     if selectedIndex != -1{
-      guard let paymentCompleteVC = self.storyboard?.instantiateViewController(withIdentifier: PaymentCompleteVC.className) as? PaymentCompleteVC else {return}
-      paymentCompleteVC.modalTransitionStyle = .coverVertical
-      paymentCompleteVC.modalPresentationStyle = .fullScreen
-      paymentCompleteVC.delegate = self
-      paymentCompleteVC.price = price ?? ""
-      paymentCompleteVC.paymentType = paymentList[selectedIndex]
-      paymentCompleteVC.planTitle = planTitle ?? ""
-      paymentCompleteVC.writer = writer ?? ""
-      paymentCompleteVC.postIdx = postIdx
       AppLog.log(at: FirebaseAnalyticsProvider.self, .clickPaymentButton(postIdx: String(postIdx)))
-      present(paymentCompleteVC,animated: true)
+      showEventPopup()
     }
  
   }
@@ -88,6 +79,27 @@ class PaymentSelectVC: UIViewController {
     planImageView.layer.cornerRadius = 5
     planImageView.setImage(with: imgURL ?? "")
     
+  }
+  
+  private func showPaymentComplete(){
+    guard let paymentCompleteVC = self.storyboard?.instantiateViewController(withIdentifier: PaymentCompleteVC.className) as? PaymentCompleteVC else {return}
+    paymentCompleteVC.modalTransitionStyle = .coverVertical
+    paymentCompleteVC.modalPresentationStyle = .fullScreen
+    paymentCompleteVC.delegate = self
+    paymentCompleteVC.price = price ?? ""
+    paymentCompleteVC.paymentType = paymentList[selectedIndex]
+    paymentCompleteVC.planTitle = planTitle ?? ""
+    paymentCompleteVC.writer = writer ?? ""
+    paymentCompleteVC.postIdx = postIdx
+    present(paymentCompleteVC,animated: true)
+  }
+  
+  private func showEventPopup(){
+    let eventPopupVC = ModuleFactory.resolve().instantiatePaymentEventPopupVC()
+    eventPopupVC.modalTransitionStyle = .coverVertical
+    eventPopupVC.modalPresentationStyle = .fullScreen
+    eventPopupVC.delegate = self
+    present(eventPopupVC,animated: true)
   }
   
   private func setPaymentLog(){
@@ -108,7 +120,7 @@ class PaymentSelectVC: UIViewController {
     for (index,item) in paymentButtonList.enumerated(){
       item.setButtonState(isSelected: false)
       item.press(animated: true) {
-        
+
         self.selectedIndex = index
       }
     }

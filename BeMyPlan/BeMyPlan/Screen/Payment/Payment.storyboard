@@ -479,9 +479,20 @@
                                                 <color key="textColor" name="beMyBlue"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8O3-ji-Cx3">
+                                                <rect key="frame" x="0.0" y="1" width="360" height="61.5"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <connections>
+                                                    <action selector="okButtonClicked:" destination="rcr-CP-3W0" eventType="touchUpInside" id="oZP-Dc-iOP"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <constraints>
+                                            <constraint firstItem="8O3-ji-Cx3" firstAttribute="top" secondItem="rNN-Lx-OHY" secondAttribute="bottom" id="4DB-VN-hro"/>
+                                            <constraint firstItem="8O3-ji-Cx3" firstAttribute="leading" secondItem="jrA-cA-en5" secondAttribute="leading" id="6eZ-TQ-vH2"/>
                                             <constraint firstItem="FLG-ho-SLf" firstAttribute="centerY" secondItem="jrA-cA-en5" secondAttribute="centerY" id="De8-fl-9Ac"/>
+                                            <constraint firstAttribute="bottom" secondItem="8O3-ji-Cx3" secondAttribute="bottom" id="Vjj-NE-tEj"/>
+                                            <constraint firstAttribute="trailing" secondItem="8O3-ji-Cx3" secondAttribute="trailing" id="dYy-hI-1z0"/>
                                             <constraint firstItem="FLG-ho-SLf" firstAttribute="centerX" secondItem="jrA-cA-en5" secondAttribute="centerX" id="gjx-df-xwS"/>
                                             <constraint firstAttribute="trailing" secondItem="rNN-Lx-OHY" secondAttribute="trailing" id="lw5-YS-oaj"/>
                                             <constraint firstItem="rNN-Lx-OHY" firstAttribute="leading" secondItem="jrA-cA-en5" secondAttribute="leading" id="pPE-Lw-Z0t"/>
@@ -569,7 +580,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WUm-Yh-5Ws" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1916" y="75"/>
+            <point key="canvasLocation" x="1915.9420289855075" y="75"/>
         </scene>
     </scenes>
     <resources>

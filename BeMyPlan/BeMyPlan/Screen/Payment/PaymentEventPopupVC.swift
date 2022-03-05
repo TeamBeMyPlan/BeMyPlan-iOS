@@ -11,6 +11,7 @@ class PaymentEventPopupVC: UIViewController {
 
   // MARK: - Vars & Lets Part
 
+  var delegate : PaymentCompleteDelegate?
 
   // MARK: - UI Component Part
 
@@ -24,6 +25,13 @@ class PaymentEventPopupVC: UIViewController {
     
   // MARK: - IBAction Part
 
+  @IBAction func okButtonClicked(_ sender: Any) {
+    AppLog.log(at: FirebaseAnalyticsProvider.self, .clickPlanDetailViewInPayment(postIdx: String(postIdx)))
+    dismiss(animated: true) {
+      self.delegate?.completeButtonClicked()
+    }
+  
+  }
   
   // MARK: - Custom Method Part
 
