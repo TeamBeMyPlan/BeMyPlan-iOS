@@ -100,6 +100,7 @@
 		FD09DE2727857DE3006DA050 /* GenericResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD09DE2627857DE3006DA050 /* GenericResponse.swift */; };
 		FD09DE2927857E25006DA050 /* StoryboardLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD09DE2827857E25006DA050 /* StoryboardLiterals.swift */; };
 		FD09DE2D27858B41006DA050 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD09DE2C27858B41006DA050 /* Metal.framework */; };
+		FD122DE827D3638D00469189 /* showToastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD122DE727D3638D00469189 /* showToastMessage.swift */; };
 		FD1A78232795C69000FB10AB /* MyPlanSerivice.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1A78222795C69000FB10AB /* MyPlanSerivice.swift */; };
 		FD1A78262795DA7100FB10AB /* showNetworkErr + UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1A78252795DA7100FB10AB /* showNetworkErr + UIViewController.swift */; };
 		FD1A78292795E45600FB10AB /* PlanPreviewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1A78282795E45600FB10AB /* PlanPreviewService.swift */; };
@@ -368,6 +369,7 @@
 		FD09DE2627857DE3006DA050 /* GenericResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericResponse.swift; sourceTree = "<group>"; };
 		FD09DE2827857E25006DA050 /* StoryboardLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardLiterals.swift; sourceTree = "<group>"; };
 		FD09DE2C27858B41006DA050 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
+		FD122DE727D3638D00469189 /* showToastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = showToastMessage.swift; sourceTree = "<group>"; };
 		FD1A78222795C69000FB10AB /* MyPlanSerivice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlanSerivice.swift; sourceTree = "<group>"; };
 		FD1A78252795DA7100FB10AB /* showNetworkErr + UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "showNetworkErr + UIViewController.swift"; sourceTree = "<group>"; };
 		FD1A78282795E45600FB10AB /* PlanPreviewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanPreviewService.swift; sourceTree = "<group>"; };
@@ -817,6 +819,7 @@
 				FD61AFD92791DB9100D39F47 /* PanDirectionGesture.swift */,
 				FD93028727A3F9B800341C2A /* downloadImage.swift */,
 				FD2C9E1227B241AF00422E6B /* manageObserverAction.swift */,
+				FD122DE727D3638D00469189 /* showToastMessage.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1852,6 +1855,7 @@
 				FD1A78262795DA7100FB10AB /* showNetworkErr + UIViewController.swift in Sources */,
 				FD09DE1E27857CDC006DA050 /* HomeVC.swift in Sources */,
 				FD568E6F27CFE4ED0078D23C /* AnalyticsType.swift in Sources */,
+				FD122DE827D3638D00469189 /* showToastMessage.swift in Sources */,
 				FD5D731127A48491002DE484 /* ViewModelType.swift in Sources */,
 				FD61AFDC2791DC6E00D39F47 /* UINavigation + Extension.swift in Sources */,
 				FD20C623278EF11000AC6E34 /* MyPlanWithdrawVC.swift in Sources */,

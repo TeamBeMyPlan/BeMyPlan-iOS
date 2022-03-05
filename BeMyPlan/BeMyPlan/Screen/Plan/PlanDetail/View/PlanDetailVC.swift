@@ -145,6 +145,12 @@ class PlanDetailVC: UIViewController {
         self.viewModel.summaryFoldChanged(fold: state)
       }
     }
+    
+    addObserverAction(.copyComplete) { noti in
+      self.makeVibrate()
+      self.showToast(message: I18N.Alert.copyComplete)
+    }
+    
   }
   
   private func registerCells(){
