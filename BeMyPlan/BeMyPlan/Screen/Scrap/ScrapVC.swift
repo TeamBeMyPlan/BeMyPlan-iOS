@@ -21,8 +21,13 @@ class ScrapVC: UIViewController {
   // MARK: - Life Cycle Part
   override func viewDidLoad() {
     super.viewDidLoad()
-    fetchScrapListData()
+//    fetchScrapListData()
+    setUI()
     bottomSheetNotification()
+  }
+  
+  private func setUI(){
+    scrapEmptyView.alpha = 0
   }
     
   private func fetchScrapListData() {

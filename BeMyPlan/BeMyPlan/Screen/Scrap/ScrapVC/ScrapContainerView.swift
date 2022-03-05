@@ -33,17 +33,16 @@ class ScrapContainerView: XibView {
   }
   
   private func setAll() {
-    setSkeletonView()
-    registerCells()
-    fetchScrapItemList()
     setDelegate()
+    registerCells()
+    setSkeletonView()
+    fetchScrapItemList()
   }
   
   private func registerCells() {
     ScrapContainerCVC.register(target: contentCV)
   }
   
-
   private func setSkeletonView(){
     let animation = SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .leftRight)
     contentCV.isSkeletonable = true
@@ -61,13 +60,13 @@ class ScrapContainerView: XibView {
         self?.scrapDataList = []
         if let testedData = data {
           self?.scrapDataList = testedData.items
-          self?.contentCV.reloadData()
           DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-            self?.contentCV.hideSkeleton()
-            UIView.animate(withDuration: 0.3) {
+            UIView.animate(withDuration: 0.5){
               self?.contentCV.alpha = 0
             }
-            UIView.animate(withDuration: 0.7,delay: 0.1) {
+            self?.contentCV.hideSkeleton(reloadDataAfter:true, transition: .crossDissolve(1.0))
+            self?.contentCV.reloadData()
+            UIView.animate(withDuration: 1.0,delay: 0.1) {
               self?.contentCV.alpha = 1
             }
           }
