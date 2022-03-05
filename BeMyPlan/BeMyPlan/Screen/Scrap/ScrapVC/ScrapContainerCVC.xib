@@ -17,11 +17,17 @@
                 <rect key="frame" x="0.0" y="0.0" width="379" height="573"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mainlist1" translatesAutoresizingMaskIntoConstraints="NO" id="BCf-2v-e99">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BCf-2v-e99">
                         <rect key="frame" x="0.0" y="0.0" width="379" height="379"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="BCf-2v-e99" secondAttribute="height" multiplier="1:1" id="uZo-He-gVn"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                            <userDefinedRuntimeAttribute type="number" keyPath="skeletonCornerRadius">
+                                <real key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BWM-ET-Ubg">
                         <rect key="frame" x="0.0" y="389" width="379" height="39"/>
@@ -38,6 +44,15 @@
                             </fragment>
                         </attributedString>
                         <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                            <userDefinedRuntimeAttribute type="number" keyPath="skeletonCornerRadius">
+                                <real key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="skeletonLineSpacing">
+                                <real key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qvk-aj-Chp">
                         <rect key="frame" x="340" y="5" width="34" height="34"/>
@@ -57,9 +72,15 @@
                             <constraint firstAttribute="height" constant="19" id="JQ3-8t-enw"/>
                             <constraint firstAttribute="width" constant="41" id="aay-3s-gqT"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
                     </imageView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icnScrapWhite" translatesAutoresizingMaskIntoConstraints="NO" id="zDe-Xe-ffE">
                         <rect key="frame" x="345" y="10" width="24" height="24"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
                     </imageView>
                 </subviews>
             </view>
@@ -81,6 +102,12 @@
                 <constraint firstItem="41h-LC-8AU" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="13" id="wkq-kW-qRy"/>
             </constraints>
             <size key="customSize" width="379" height="561"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                <userDefinedRuntimeAttribute type="number" keyPath="skeletonCornerRadius">
+                    <real key="value" value="5"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="contentImage" destination="BCf-2v-e99" id="OGd-33-X7q"/>
                 <outlet property="scrapBtn" destination="qvk-aj-Chp" id="9Na-R8-eCa"/>
@@ -94,6 +121,5 @@
         <image name="icnFree" width="41" height="19"/>
         <image name="icnNotScrapWhite" width="24" height="24"/>
         <image name="icnScrapWhite" width="24" height="24"/>
-        <image name="mainlist1" width="160" height="160"/>
     </resources>
 </document>

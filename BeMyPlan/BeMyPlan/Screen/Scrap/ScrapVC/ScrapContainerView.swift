@@ -8,6 +8,7 @@
 import UIKit
 import PanModal
 import Moya
+import SkeletonView
 
 class ScrapContainerView: XibView {
   
@@ -32,6 +33,7 @@ class ScrapContainerView: XibView {
   }
   
   private func setAll() {
+    setSkeletonView()
     registerCells()
     fetchScrapItemList()
     setDelegate()
@@ -41,6 +43,13 @@ class ScrapContainerView: XibView {
     ScrapContainerCVC.register(target: contentCV)
   }
   
+
+  private func setSkeletonView(){
+    let animation = SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .leftRight)
+    contentCV.isSkeletonable = true
+    contentCV.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .grey04,secondaryColor: .grey06), animation: animation, transition: .crossDissolve(1.0))
+  }
+  
   private func setDelegate() {
     contentCV.dataSource = self
     contentCV.delegate = self
@@ -48,12 +57,22 @@ class ScrapContainerView: XibView {
   
   private func fetchScrapItemList() {
     BaseService.default.getScrapList(page: 0, pageSize: 5, sort: "created_at") { result in
-      result.success { data in
-        self.scrapDataList = []
+      result.success { [weak self] data in
+        self?.scrapDataList = []
         if let testedData = data {
-          self.scrapDataList = testedData.items
+          self?.scrapDataList = testedData.items
+          self?.contentCV.reloadData()
+          DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            self?.contentCV.hideSkeleton()
+            UIView.animate(withDuration: 0.3) {
+              self?.contentCV.alpha = 0
+            }
+            UIView.animate(withDuration: 0.7,delay: 0.1) {
+              self?.contentCV.alpha = 1
+            }
+          }
+
         }
-        self.contentCV.reloadData()
       }.catch { error in
         if let _ = error as? MoyaError {
         }
@@ -76,7 +95,16 @@ class ScrapContainerView: XibView {
   }
 }
 
-extension ScrapContainerView: UICollectionViewDataSource {
+extension ScrapContainerView: SkeletonCollectionViewDataSource {
+  
+  func collectionSkeletonView(_ skeletonView: UICollectionView, cellIdentifierForItemAt indexPath: IndexPath) -> ReusableCellIdentifier {
+    return ScrapContainerCVC.className
+  }
+  
+  func collectionSkeletonView(_ skeletonView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return 6
+  }
+  
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return scrapDataList.count
   }
@@ -93,7 +121,7 @@ extension ScrapContainerView: UICollectionViewDataSource {
   }
 }
 
-extension ScrapContainerView: UICollectionViewDelegate{
+extension ScrapContainerView: SkeletonCollectionViewDelegate{
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     AppLog.log(at: FirebaseAnalyticsProvider.self, .clickTravelPlan(source: .scrapView,
                                                                     postIdx:  String(scrapDataList[indexPath.row].postID)))

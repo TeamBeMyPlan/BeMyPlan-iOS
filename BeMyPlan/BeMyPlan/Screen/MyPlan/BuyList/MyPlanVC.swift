@@ -61,7 +61,7 @@ class MyPlanVC: UIViewController {
   private func setSkeletonOptions(){
     let animation = SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .leftRight)
     mainContentCV.isSkeletonable = true
-    mainContentCV.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .grey04,secondaryColor: .grey06), animation: animation, transition: .crossDissolve(2))
+    mainContentCV.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .grey04,secondaryColor: .grey06), animation: animation, transition: .crossDissolve(1.5))
   }
   
   private func fetchBuyList(){
@@ -83,8 +83,6 @@ class MyPlanVC: UIViewController {
       }
     }
   }
-  
-  
   
   private func setEmptyView(){
     emptyViewHeightConstraint.constant = mainContentCV.bounds.height - 224
