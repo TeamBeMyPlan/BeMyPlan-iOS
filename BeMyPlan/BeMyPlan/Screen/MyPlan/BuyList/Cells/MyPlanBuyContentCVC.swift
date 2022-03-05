@@ -36,6 +36,7 @@ class MyPlanBuyContentCVC: UICollectionViewCell {
   }
   
   @IBAction func scrapButtonClicked(_ sender: Any) {
+    makeVibrate()
     isScrap.toggle()
     scrapClicked?(isScrap,postIdx)
   }
