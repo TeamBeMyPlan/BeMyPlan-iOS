@@ -28,8 +28,8 @@
                     <attributedString key="attributedText">
                         <fragment content="내 취향에 맞는            여행 일정을 찾아보세요">
                             <attributes>
-                                <font key="NSFont" metaFont="system" size="20"/>
-                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.2" tighteningFactorForTruncation="0.0"/>
+                                <font key="NSFont" size="20" name="payboocOTFBold"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.1299999999999999" tighteningFactorForTruncation="0.0"/>
                             </attributes>
                         </fragment>
                     </attributedString>
