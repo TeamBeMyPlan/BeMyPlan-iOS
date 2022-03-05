@@ -101,6 +101,7 @@
 		FD09DE2927857E25006DA050 /* StoryboardLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD09DE2827857E25006DA050 /* StoryboardLiterals.swift */; };
 		FD09DE2D27858B41006DA050 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD09DE2C27858B41006DA050 /* Metal.framework */; };
 		FD122DE827D3638D00469189 /* showToastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD122DE727D3638D00469189 /* showToastMessage.swift */; };
+		FD122DEA27D3958700469189 /* PaymentEventPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD122DE927D3958700469189 /* PaymentEventPopupVC.swift */; };
 		FD1A78232795C69000FB10AB /* MyPlanSerivice.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1A78222795C69000FB10AB /* MyPlanSerivice.swift */; };
 		FD1A78262795DA7100FB10AB /* showNetworkErr + UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1A78252795DA7100FB10AB /* showNetworkErr + UIViewController.swift */; };
 		FD1A78292795E45600FB10AB /* PlanPreviewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1A78282795E45600FB10AB /* PlanPreviewService.swift */; };
@@ -370,6 +371,7 @@
 		FD09DE2827857E25006DA050 /* StoryboardLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardLiterals.swift; sourceTree = "<group>"; };
 		FD09DE2C27858B41006DA050 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 		FD122DE727D3638D00469189 /* showToastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = showToastMessage.swift; sourceTree = "<group>"; };
+		FD122DE927D3958700469189 /* PaymentEventPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentEventPopupVC.swift; sourceTree = "<group>"; };
 		FD1A78222795C69000FB10AB /* MyPlanSerivice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlanSerivice.swift; sourceTree = "<group>"; };
 		FD1A78252795DA7100FB10AB /* showNetworkErr + UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "showNetworkErr + UIViewController.swift"; sourceTree = "<group>"; };
 		FD1A78282795E45600FB10AB /* PlanPreviewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanPreviewService.swift; sourceTree = "<group>"; };
@@ -1265,6 +1267,7 @@
 				FD4C86B7278C7A7200D37A2D /* Payment.storyboard */,
 				FD4C86B9278C7A8400D37A2D /* PaymentSelectVC.swift */,
 				FD4C86BD278C9AF900D37A2D /* PaymentCompleteVC.swift */,
+				FD122DE927D3958700469189 /* PaymentEventPopupVC.swift */,
 			);
 			path = Payment;
 			sourceTree = "<group>";
@@ -1739,6 +1742,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FDF980E82786F1910009A14E /* MyPlanVC.swift in Sources */,
+				FD122DEA27D3958700469189 /* PaymentEventPopupVC.swift in Sources */,
 				FDB34C3D27A6D7CE0074B6CE /* ModuleFactory.swift in Sources */,
 				FDF7FEC927A7E16100E3AB62 /* Coordinator.swift in Sources */,
 				FD1A782D2795EBEF00FB10AB /* PreviewDetailDataGettable.swift in Sources */,

@@ -452,6 +452,21 @@
             </objects>
             <point key="canvasLocation" x="740.57971014492762" y="66.964285714285708"/>
         </scene>
+        <!--Payment Event PopupVC-->
+        <scene sceneID="A3b-4b-DId">
+            <objects>
+                <viewController storyboardIdentifier="PaymentEventPopupVC" id="rcr-CP-3W0" customClass="PaymentEventPopupVC" customModule="BeMyPlan" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZyE-19-YCV">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="zv1-te-kbK"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WUm-Yh-5Ws" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1916" y="75"/>
+        </scene>
     </scenes>
     <resources>
         <image name="_icn_done" width="60" height="60"/>
