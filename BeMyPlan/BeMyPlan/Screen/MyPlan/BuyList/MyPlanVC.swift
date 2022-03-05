@@ -39,12 +39,18 @@ class MyPlanVC: UIViewController {
   }
   
   override func viewDidLayoutSubviews() {
+    setUI()
     setEmptyView()
     setSkeletonOptions()
     fetchBuyList()
   }
   
   // MARK: - Custom Method Part
+  
+  private func setUI(){
+    emptyView.alpha = 0
+    mainContentCV.alpha = 1
+  }
   
   private func setButtonAction(){
     settingButton.press {
@@ -64,7 +70,12 @@ class MyPlanVC: UIViewController {
         if let buyList = data{
           self?.buyContentList = buyList.items
           DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-            self?.mainContentCV.hideSkeleton(transition: .crossDissolve(2))
+            self?.mainContentCV.hideSkeleton(transition: .crossDissolve(0.7))
+            UIView.animate(withDuration: 0.5) {
+              if self?.buyContentList.count == 0{
+                self?.emptyView.alpha = 1
+              }
+            }
           }
         }
       }.catch { error in
@@ -72,6 +83,8 @@ class MyPlanVC: UIViewController {
       }
     }
   }
+  
+  
   
   private func setEmptyView(){
     emptyViewHeightConstraint.constant = mainContentCV.bounds.height - 224
@@ -93,6 +106,9 @@ extension MyPlanVC: SkeletonCollectionViewDelegate{
 }
 
 extension MyPlanVC: SkeletonCollectionViewDataSource{
+  func collectionSkeletonView(_ skeletonView: UICollectionView, supplementaryViewIdentifierOfKind: String, at indexPath: IndexPath) -> ReusableCellIdentifier? {
+    return MyPlanCVUserResuableView.className
+  }
   func collectionSkeletonView(_ skeletonView: UICollectionView, cellIdentifierForItemAt indexPath: IndexPath) -> ReusableCellIdentifier {
     return MyPlanBuyContentCVC.className
   }
