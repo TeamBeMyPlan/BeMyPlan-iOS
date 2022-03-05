@@ -100,7 +100,12 @@ extension MyPlanVC : UICollectionViewDataSource{
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let contentCell = collectionView.dequeueReusableCell(withReuseIdentifier: MyPlanBuyContentCVC.className
                                                                , for: indexPath) as? MyPlanBuyContentCVC else {return UICollectionViewCell() }
-    contentCell.setContentata(title: buyContentList[indexPath.row].title, imageURL: buyContentList[indexPath.row].thumbnailURL)
+    contentCell.setContentData(title: buyContentList[indexPath.row].title, imageURL: buyContentList[indexPath.row].thumbnailURL,
+                               isScrap: false,
+                               postIdx: buyContentList[indexPath.row].id)
+    contentCell.scrapClicked = { isScrap,postIdx in
+      print("Clicked",isScrap,postIdx)
+    }
     return contentCell
   }
   

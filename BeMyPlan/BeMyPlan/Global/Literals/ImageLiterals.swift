@@ -47,4 +47,9 @@ struct ImageLiterals{
 		static let checkoffIcon = UIImage(named: "check_off_silver")
 		static let checkonIcon = UIImage(named: "check_on_blue")
 	}
+	
+	struct Scrap{
+		static let scrapIconNotFilled = UIImage(named: "icnNotScrapWhite")!
+		static let scrapFIconFilled = UIImage(named: "icnScrapWhite")!
+	}
 }
