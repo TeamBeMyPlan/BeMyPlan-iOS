@@ -24,7 +24,7 @@ final class Toast {
     
     toastContainer.backgroundColor = UIColor.black.withAlphaComponent(0.7)
     toastContainer.alpha = 1
-    toastContainer.layer.cornerRadius = 10
+    toastContainer.layer.cornerRadius = 5
     toastContainer.clipsToBounds = true
     toastContainer.isUserInteractionEnabled = false
     

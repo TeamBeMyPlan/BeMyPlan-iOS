@@ -91,7 +91,7 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Vix-i0-12b" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="5ak-gt-CyY"/>
+                            <constraint firstItem="Vix-i0-12b" firstAttribute="trailing" secondItem="5EZ-qb-Rvc" secondAttribute="trailing" id="5ak-gt-CyY"/>
                             <constraint firstItem="Vix-i0-12b" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="-44" id="fdc-4b-Gut"/>
                             <constraint firstItem="Vix-i0-12b" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="gFP-6V-xZH"/>
                             <constraint firstItem="mPh-Z6-q6l" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="iFu-1C-jnn"/>
@@ -134,7 +134,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XC7-Ww-na8">
-                                        <rect key="frame" x="55" y="16.666666666666664" width="315" height="21"/>
+                                        <rect key="frame" x="179.33333333333334" y="14.666666666666664" width="31.333333333333343" height="21"/>
                                         <attributedString key="attributedText">
                                             <fragment content="제주">
                                                 <attributes>
@@ -148,11 +148,9 @@
                                     </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="XC7-Ww-na8" firstAttribute="centerY" secondItem="DJB-u1-z67" secondAttribute="centerY" constant="2" id="0g3-Ii-yLE"/>
-                                    <constraint firstAttribute="trailing" secondItem="XC7-Ww-na8" secondAttribute="trailing" constant="20" symbolic="YES" id="3q4-mr-HU3"/>
-                                    <constraint firstItem="XC7-Ww-na8" firstAttribute="centerX" secondItem="DJB-u1-z67" secondAttribute="centerX" id="9CN-XK-YHr"/>
+                                    <constraint firstItem="XC7-Ww-na8" firstAttribute="centerY" secondItem="DJB-u1-z67" secondAttribute="centerY" id="Mt8-1U-YVl"/>
+                                    <constraint firstItem="XC7-Ww-na8" firstAttribute="centerX" secondItem="DJB-u1-z67" secondAttribute="centerX" id="U3f-WC-j7p"/>
                                     <constraint firstItem="adB-M0-sBz" firstAttribute="leading" secondItem="DJB-u1-z67" secondAttribute="leading" constant="24" id="Zyt-40-J3o"/>
-                                    <constraint firstItem="XC7-Ww-na8" firstAttribute="leading" secondItem="DJB-u1-z67" secondAttribute="leading" constant="55" id="tYG-sY-H4e"/>
                                     <constraint firstItem="adB-M0-sBz" firstAttribute="centerY" secondItem="DJB-u1-z67" secondAttribute="centerY" id="uKe-es-lYh"/>
                                     <constraint firstAttribute="height" constant="50" id="ypA-rg-p3D"/>
                                 </constraints>
@@ -202,7 +200,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c5E-qc-y7w" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1605.7971014492755" y="59.598214285714285"/>
+            <point key="canvasLocation" x="1604.6153846153845" y="59.004739336492889"/>
         </scene>
         <!--Travel Spot FilterVC-->
         <scene sceneID="eyc-Ew-SAh">
