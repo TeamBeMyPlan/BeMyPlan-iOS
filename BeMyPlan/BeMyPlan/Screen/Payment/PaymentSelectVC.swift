@@ -96,9 +96,10 @@ class PaymentSelectVC: UIViewController {
   
   private func showEventPopup(){
     let eventPopupVC = ModuleFactory.resolve().instantiatePaymentEventPopupVC()
-    eventPopupVC.modalTransitionStyle = .coverVertical
-    eventPopupVC.modalPresentationStyle = .fullScreen
+    eventPopupVC.modalTransitionStyle = .crossDissolve
+    eventPopupVC.modalPresentationStyle = .overCurrentContext
     eventPopupVC.delegate = self
+    eventPopupVC.postIdx = postIdx
     present(eventPopupVC,animated: true)
   }
   

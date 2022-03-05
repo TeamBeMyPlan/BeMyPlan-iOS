@@ -10,7 +10,7 @@ import UIKit
 class PaymentEventPopupVC: UIViewController {
 
   // MARK: - Vars & Lets Part
-
+  var postIdx: Int = 0
   var delegate : PaymentCompleteDelegate?
 
   // MARK: - UI Component Part
