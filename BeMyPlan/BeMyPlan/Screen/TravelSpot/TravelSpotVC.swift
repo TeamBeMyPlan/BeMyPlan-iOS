@@ -6,6 +6,7 @@
 //
 import UIKit
 import Moya
+import SkeletonView
 
 class TravelSpotVC: UIViewController {
   
@@ -25,6 +26,7 @@ class TravelSpotVC: UIViewController {
     super.viewDidLoad()
     configCollectionView()
     fetchTravelSpotItemList()
+    setSkeletonOptions()
   }
   
   override func viewDidLayoutSubviews() {
@@ -40,14 +42,25 @@ class TravelSpotVC: UIViewController {
   }
     
   // MARK: - Custom Method Part
+  
+  private func setSkeletonOptions(){
+    let animation = SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .leftRight)
+    locationCollectionView.isSkeletonable = true
+    locationCollectionView.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .grey04,secondaryColor: .grey06), animation: animation, transition: .crossDissolve(1.0))
+  }
+  
   private func fetchTravelSpotItemList() {
-    BaseService.default.getTravelSpotList { result in
+    BaseService.default.getTravelSpotList { [weak self] result in
       result.success { data in
-        self.travelSpotDataList = []
+        self?.travelSpotDataList = []
         if let testedData = data {
-          self.travelSpotDataList = testedData
+          self?.travelSpotDataList = testedData
+          self?.locationCollectionView.reloadData()
+          DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            self?.locationCollectionView.hideSkeleton(transition: .crossDissolve(0.7))
+          }
         }
-        self.locationCollectionView.reloadData()
+
       }.catch { error in
         if let _ = error as? MoyaError {
         }
@@ -57,7 +70,19 @@ class TravelSpotVC: UIViewController {
 }
 
 // MARK: - Extension Part
-extension TravelSpotVC: UICollectionViewDataSource {
+extension TravelSpotVC: SkeletonCollectionViewDataSource {
+  
+  func collectionSkeletonView(_ skeletonView: UICollectionView, supplementaryViewIdentifierOfKind: String, at indexPath: IndexPath) -> ReusableCellIdentifier? {
+    return "reusableView"
+  }
+  
+  func collectionSkeletonView(_ skeletonView: UICollectionView, cellIdentifierForItemAt indexPath: IndexPath) -> ReusableCellIdentifier {
+    return TravelSpotCVC.className
+  }
+  func collectionSkeletonView(_ skeletonView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return 6
+  }
+  
   func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
     let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "reusableView", for: indexPath)
     return headerView
@@ -69,7 +94,7 @@ extension TravelSpotVC: UICollectionViewDataSource {
     return CGSize(width: width, height: height)
   }
 }
-extension TravelSpotVC: UICollectionViewDelegate {
+extension TravelSpotVC: SkeletonCollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return travelSpotDataList.count
   }
