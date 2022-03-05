@@ -12,7 +12,9 @@ class TravelSpotCVC: UICollectionViewCell {
   static let identifier = "TravelSpotCVC"
   
   @IBOutlet var locationImageView: UIImageView!
-  @IBOutlet var lockImageView: UIImageView!
+  @IBOutlet var lockImageView: UIImageView!{didSet{
+    lockImageView.alpha = 0
+  }}
   @IBOutlet var locationLabel: UILabel!
   
   override func awakeFromNib() {
@@ -27,7 +29,13 @@ class TravelSpotCVC: UICollectionViewCell {
   }
   
   public func setData(data: TravelSpotDataGettable){
-    locationImageView.setImage(with: data.photoURL)
+    locationImageView.setImage(with: data.photoURL) { _ in
+      UIView.animate(withDuration: 0.5) {
+        if data.isActivated == false{
+          self.lockImageView.alpha = 1
+        }
+      }
+    }
     locationLabel.text = data.name
   }
   

@@ -7,6 +7,7 @@
 
 import UIKit
 import AVFoundation
+import SkeletonView
 
 class MyPlanVC: UIViewController {
   
@@ -38,11 +39,18 @@ class MyPlanVC: UIViewController {
   }
   
   override func viewDidLayoutSubviews() {
+    setUI()
     setEmptyView()
+    setSkeletonOptions()
     fetchBuyList()
   }
   
   // MARK: - Custom Method Part
+  
+  private func setUI(){
+    emptyView.alpha = 0
+    mainContentCV.alpha = 1
+  }
   
   private func setButtonAction(){
     settingButton.press {
@@ -50,11 +58,25 @@ class MyPlanVC: UIViewController {
     }
   }
   
+  private func setSkeletonOptions(){
+    let animation = SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .leftRight)
+    mainContentCV.isSkeletonable = true
+    mainContentCV.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .grey04,secondaryColor: .grey06), animation: animation, transition: .crossDissolve(1.5))
+  }
+  
   private func fetchBuyList(){
     BaseService.default.getOrderList{ result in
       result.success { [weak self] data in
         if let buyList = data{
           self?.buyContentList = buyList.items
+          DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            self?.mainContentCV.hideSkeleton(transition: .crossDissolve(0.7))
+            UIView.animate(withDuration: 0.5) {
+              if self?.buyContentList.count == 0{
+                self?.emptyView.alpha = 1
+              }
+            }
+          }
         }
       }.catch { error in
         dump(error)
@@ -68,7 +90,7 @@ class MyPlanVC: UIViewController {
   }
 }
 // MARK: - Extension Part
-extension MyPlanVC :UICollectionViewDelegate{
+extension MyPlanVC: SkeletonCollectionViewDelegate{
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     AppLog.log(at: FirebaseAnalyticsProvider.self, .clickTravelPlan(source: .myPlanView,
@@ -81,7 +103,17 @@ extension MyPlanVC :UICollectionViewDelegate{
   
 }
 
-extension MyPlanVC : UICollectionViewDataSource{
+extension MyPlanVC: SkeletonCollectionViewDataSource{
+  func collectionSkeletonView(_ skeletonView: UICollectionView, supplementaryViewIdentifierOfKind: String, at indexPath: IndexPath) -> ReusableCellIdentifier? {
+    return MyPlanCVUserResuableView.className
+  }
+  func collectionSkeletonView(_ skeletonView: UICollectionView, cellIdentifierForItemAt indexPath: IndexPath) -> ReusableCellIdentifier {
+    return MyPlanBuyContentCVC.className
+  }
+  func collectionSkeletonView(_ skeletonView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return 4
+  }
+  
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return buyContentList.count
   }
@@ -100,7 +132,12 @@ extension MyPlanVC : UICollectionViewDataSource{
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let contentCell = collectionView.dequeueReusableCell(withReuseIdentifier: MyPlanBuyContentCVC.className
                                                                , for: indexPath) as? MyPlanBuyContentCVC else {return UICollectionViewCell() }
-    contentCell.setContentata(title: buyContentList[indexPath.row].title, imageURL: buyContentList[indexPath.row].thumbnailURL)
+    contentCell.setContentData(title: buyContentList[indexPath.row].title, imageURL: buyContentList[indexPath.row].thumbnailURL,
+                               isScrap: false,
+                               postIdx: buyContentList[indexPath.row].id)
+    contentCell.scrapClicked = { isScrap,postIdx in
+      print("Clicked",isScrap,postIdx)
+    }
     return contentCell
   }
   

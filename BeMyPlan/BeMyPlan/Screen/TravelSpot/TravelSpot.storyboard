@@ -46,7 +46,19 @@
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="7Pv-Vl-TO2">
                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="skeletonCornerRadius">
+                                                    <real key="value" value="5"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
                                         </collectionViewCellContentView>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="skeletonCornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="reusableView" id="Y1O-KQ-m5a">
@@ -54,20 +66,38 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="어디로 떠나세요?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Unw-zl-PZQ">
-                                            <rect key="frame" x="24" y="12.666666666666664" width="250" height="25"/>
+                                            <rect key="frame" x="24" y="13.333333333333334" width="250" height="23.333333333333329"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="250" id="RoI-ls-hic"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="payboocOTFBold" family="paybooc OTF" pointSize="20"/>
                                             <color key="textColor" name="grey1"/>
                                             <nil key="highlightedColor"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="skeletonLineSpacing">
+                                                    <real key="value" value="5"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="skeletonCornerRadius">
+                                                    <real key="value" value="5"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="lastLineFillPercent">
+                                                    <integer key="value" value="70"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
                                         </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="Unw-zl-PZQ" firstAttribute="centerY" secondItem="Y1O-KQ-m5a" secondAttribute="centerY" id="df7-Yw-O4f"/>
                                         <constraint firstItem="Unw-zl-PZQ" firstAttribute="leading" secondItem="Y1O-KQ-m5a" secondAttribute="leading" constant="24" id="kHx-gz-KKh"/>
                                     </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
                                 </collectionReusableView>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vix-i0-12b">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="94"/>
@@ -125,17 +155,10 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DJB-u1-z67">
                                 <rect key="frame" x="0.0" y="44" width="390" height="50"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XC7-Ww-na8">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="제주" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XC7-Ww-na8">
                                         <rect key="frame" x="179.33333333333334" y="16.666666666666664" width="31.333333333333343" height="21"/>
-                                        <attributedString key="attributedText">
-                                            <fragment content="제주">
-                                                <attributes>
-                                                    <color key="NSColor" name="grey1"/>
-                                                    <font key="NSFont" metaFont="system" size="18"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                </attributes>
-                                            </fragment>
-                                        </attributedString>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <color key="textColor" name="grey1"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icnArrow" translatesAutoresizingMaskIntoConstraints="NO" id="5NH-Ht-RaL">
@@ -234,7 +257,7 @@
                                 <rect key="frame" x="0.0" y="566" width="390" height="278"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="정렬" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cLt-mt-ODd">
-                                        <rect key="frame" x="182" y="26" width="26" height="17"/>
+                                        <rect key="frame" x="183" y="26" width="24.333333333333343" height="17"/>
                                         <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="14"/>
                                         <color key="textColor" name="grey2"/>
                                         <nil key="highlightedColor"/>
@@ -279,7 +302,7 @@
                                         <rect key="frame" x="0.0" y="60" width="390" height="49"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zeX-yW-KX0">
-                                                <rect key="frame" x="24" y="10" width="39" height="29"/>
+                                                <rect key="frame" x="24" y="10" width="37" height="29"/>
                                                 <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="14"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="최신순">
@@ -288,9 +311,6 @@
                                                 <state key="selected">
                                                     <color key="titleColor" name="grey2"/>
                                                 </state>
-                                                <connections>
-                                                    <action selector="recentBtn:" destination="poI-w5-kQ4" eventType="touchUpInside" id="QvR-ms-ij8"/>
-                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aR5-CB-ahC">
                                                 <rect key="frame" x="342" y="12.666666666666629" width="24" height="24"/>
@@ -327,7 +347,7 @@
                                         <rect key="frame" x="0.0" y="110" width="390" height="49"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tGy-0B-u2F">
-                                                <rect key="frame" x="24" y="10" width="71" height="29"/>
+                                                <rect key="frame" x="24" y="10" width="69" height="29"/>
                                                 <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="14"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -337,9 +357,6 @@
                                                 <state key="selected">
                                                     <color key="titleColor" name="beMyBlue"/>
                                                 </state>
-                                                <connections>
-                                                    <action selector="orderBtn:" destination="poI-w5-kQ4" eventType="touchUpInside" id="h9j-KV-WR1"/>
-                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pn1-7M-pX1">
                                                 <rect key="frame" x="342" y="12.666666666666629" width="24" height="24"/>
@@ -376,7 +393,7 @@
                                         <rect key="frame" x="0.0" y="160" width="390" height="49"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tnM-L2-1tz">
-                                                <rect key="frame" x="24" y="10" width="84" height="29"/>
+                                                <rect key="frame" x="24" y="10" width="81" height="29"/>
                                                 <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="14"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="스크랩 많은 순">
@@ -385,9 +402,6 @@
                                                 <state key="selected">
                                                     <color key="titleColor" name="beMyBlue"/>
                                                 </state>
-                                                <connections>
-                                                    <action selector="priceBtn:" destination="poI-w5-kQ4" eventType="touchUpInside" id="4u5-l6-h9K"/>
-                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aEc-er-aCH">
                                                 <rect key="frame" x="342" y="12.666666666666629" width="24" height="24"/>
@@ -462,12 +476,12 @@
                     <connections>
                         <outlet property="filterHandleView" destination="f2m-BN-v0v" id="wD1-pu-y9v"/>
                         <outlet property="filterView" destination="GFj-Xt-x2a" id="CLc-wd-5Re"/>
-                        <outlet property="orderBtn" destination="tGy-0B-u2F" id="GOL-uq-YKT"/>
+                        <outlet property="orderBtn" destination="tGy-0B-u2F" id="WcR-7j-AfG"/>
                         <outlet property="orderCheckImg" destination="pn1-7M-pX1" id="DkX-il-uKW"/>
-                        <outlet property="priceBtn" destination="tnM-L2-1tz" id="HgM-fy-Zv1"/>
-                        <outlet property="priceScrapImg" destination="aEc-er-aCH" id="Tw3-Ol-I4u"/>
-                        <outlet property="recentBtn" destination="zeX-yW-KX0" id="mxC-sC-lSW"/>
+                        <outlet property="recentBtn" destination="zeX-yW-KX0" id="9Te-H5-PQx"/>
                         <outlet property="recentCheckImg" destination="aR5-CB-ahC" id="sth-1a-qmj"/>
+                        <outlet property="scrapBtn" destination="tnM-L2-1tz" id="WQn-yy-dMQ"/>
+                        <outlet property="scrapCheckImg" destination="aEc-er-aCH" id="Tw3-Ol-I4u"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C9C-r4-sOZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
