@@ -21,11 +21,8 @@ class TravelSpotFilterVC: UIViewController {
   @IBOutlet var filterView: UIView!
   @IBOutlet var filterHandleView: UIView!
   @IBOutlet var recentCheckImg: UIButton!
-  @IBOutlet var recentBtn: UIButton!
   @IBOutlet var orderCheckImg: UIButton!
-  @IBOutlet var orderBtn: UIButton!
   @IBOutlet var priceScrapImg: UIButton!
-  @IBOutlet var priceBtn: UIButton!
   
   // MARK: - Life Cycle Part
   override func viewDidLoad() {
@@ -65,14 +62,6 @@ class TravelSpotFilterVC: UIViewController {
     priceStandard()
   }
 
-  @IBAction func recentBtn(_ sender: Any) {
-  }
-  
-  @IBAction func orderBtn(_ sender: Any) {
-  }
-  
-  @IBAction func priceBtn(_ sender: Any) {
-  }
   
   // MARK: - Custom Method Part
   private func recentlyStandard() {
