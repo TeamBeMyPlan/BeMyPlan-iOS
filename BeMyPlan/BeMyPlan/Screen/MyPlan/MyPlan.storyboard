@@ -77,7 +77,7 @@
                                                         <constraint firstAttribute="height" relation="lessThanOrEqual" constant="40" id="7ru-5a-L1A"/>
                                                     </constraints>
                                                     <attributedString key="attributedText">
-                                                        <fragment content="워케이션을 위한 카페투어">
+                                                        <fragment content=" ">
                                                             <attributes>
                                                                 <font key="NSFont" size="14" name="SpoqaHanSansNeo-Bold"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.1899999999999999" tighteningFactorForTruncation="0.0"/>
@@ -86,7 +86,7 @@
                                                     </attributedString>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rectangle5694" translatesAutoresizingMaskIntoConstraints="NO" id="BH7-2b-WxT">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BH7-2b-WxT">
                                                     <rect key="frame" x="0.0" y="0.0" width="190" height="190"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="BH7-2b-WxT" secondAttribute="height" multiplier="1:1" id="CXp-00-cc5"/>
@@ -754,7 +754,6 @@
         <image name="icnUpload" width="24" height="24"/>
         <image name="imgProfile" width="50" height="50"/>
         <image name="img_creator_guide" width="328" height="439"/>
-        <image name="rectangle5694" width="154" height="154"/>
         <namedColor name="beMyBlue">
             <color red="0.0" green="0.46666666666666667" blue="0.69019607843137254" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
