@@ -21,14 +21,18 @@ class TravelSpotFilterVC: UIViewController {
   @IBOutlet var filterView: UIView!
   @IBOutlet var filterHandleView: UIView!
   @IBOutlet var recentCheckImg: UIButton!
+  @IBOutlet var recentBtn: UIButton!
   @IBOutlet var orderCheckImg: UIButton!
-  @IBOutlet var priceScrapImg: UIButton!
+  @IBOutlet var orderBtn: UIButton!
+  @IBOutlet var scrapCheckImg: UIButton!
+  @IBOutlet var scrapBtn: UIButton!
   
   // MARK: - Life Cycle Part
   override func viewDidLoad() {
     super.viewDidLoad()
     setUIs()
-    setButtonStatus()
+    setCheckButton()
+    setTitleColor()
   }
   
   // MARK: - Set Function Part
@@ -38,89 +42,52 @@ class TravelSpotFilterVC: UIViewController {
     filterView.layer.cornerRadius = 5
 
     orderCheckImg.isHidden = true
-    priceScrapImg.isHidden = true
+    scrapCheckImg.isHidden = true
     
     recentBtn.setTitleColor(.bemyBlue, for: .normal)
     orderBtn.setTitleColor(.grey02, for: .normal)
-    priceBtn.setTitleColor(.grey02, for: .normal)
+    scrapBtn.setTitleColor(.grey02, for: .normal)
   }
 
   // MARK: - IBAction Part
   
   @IBAction func recentButtonClicked(_ sender: Any) {
     makeVibrate()
-    recentlyStandard()
+    dismiss(animated: true){ self.filterClicked?(.recently) }
   }
 
   @IBAction func orderButtonCLicked(_ sender: Any) {
     makeVibrate()
-    orderCountStandard()
-
+    dismiss(animated: true){ self.filterClicked?(.orderCount) }
   }
   @IBAction func scrapButtonClicked(_ sender: Any) {
     makeVibrate()
-    priceStandard()
+    dismiss(animated: true){ self.filterClicked?(.scrapCount) }
   }
 
   
   // MARK: - Custom Method Part
-  private func recentlyStandard() {
-    recentCheckImg.isHidden = false
-    recentBtn.setTitleColor(.bemyBlue, for: .normal)
-    orderCheckImg.isHidden = true
-    orderBtn.setTitleColor(.grey02, for: .normal)
-    priceScrapImg.isHidden = true
-    priceBtn.setTitleColor(.grey02, for: .normal)
-    
-    if let filterClicked = filterClicked {
-      filterClicked(.recently)
-    }
-    dismiss(animated: true, completion: nil)
-  }
   
-  private func orderCountStandard() {
-    recentCheckImg.isHidden = true
+  private func setTitleColor(){
     recentBtn.setTitleColor(.grey02, for: .normal)
-    orderCheckImg.isHidden = false
-    orderBtn.setTitleColor(.bemyBlue, for: .normal)
-    priceScrapImg.isHidden = true
-    priceBtn.setTitleColor(.grey02, for: .normal)
-
-    if let filterClicked = filterClicked {
-      filterClicked(.orderCount)
-    }
-    dismiss(animated: true, completion: nil)
-  }
-  
-  private func priceStandard() {
-    recentCheckImg.isHidden = true
-    recentBtn.setTitleColor(.grey02, for: .normal)
-    orderCheckImg.isHidden = true
     orderBtn.setTitleColor(.grey02, for: .normal)
-    priceScrapImg.isHidden = false
-    priceBtn.setTitleColor(.bemyBlue, for: .normal)
+    scrapBtn.setTitleColor(.grey02, for: .normal)
 
-    if let filterClicked = filterClicked {
-      filterClicked(.price)
+    switch(filterStatus){
+      case .recently: recentBtn.setTitleColor(.bemyBlue, for: .normal)
+      case .orderCount: orderBtn.setTitleColor(.bemyBlue, for: .normal)
+      case .scrapCount: scrapBtn.setTitleColor(.bemyBlue, for: .normal)
     }
-
-    dismiss(animated: true, completion: nil)
   }
   
-  private func setButtonStatus() {
-    guard filterStatus.rawValue == SortCase.recently.rawValue else {
-      recentlyStandard()
-      return
-    }
-    
-    guard filterStatus.rawValue == SortCase.orderCount.rawValue else {
-      orderCountStandard()
-      return
-    }
-    
-    guard filterStatus.rawValue == SortCase.price.rawValue else {
-      priceStandard()
-      return
+  private func setCheckButton(){
+    recentCheckImg.isHidden = true
+    orderCheckImg.isHidden = true
+    scrapCheckImg.isHidden = true
+    switch(filterStatus){
+      case .recently: recentCheckImg.isHidden = false
+      case .orderCount: orderCheckImg.isHidden = false
+      case .scrapCount: scrapCheckImg.isHidden = false
     }
   }
   

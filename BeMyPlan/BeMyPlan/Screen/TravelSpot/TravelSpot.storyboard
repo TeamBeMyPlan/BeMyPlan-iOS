@@ -446,9 +446,12 @@
                     <connections>
                         <outlet property="filterHandleView" destination="f2m-BN-v0v" id="wD1-pu-y9v"/>
                         <outlet property="filterView" destination="GFj-Xt-x2a" id="CLc-wd-5Re"/>
+                        <outlet property="orderBtn" destination="tGy-0B-u2F" id="WcR-7j-AfG"/>
                         <outlet property="orderCheckImg" destination="pn1-7M-pX1" id="DkX-il-uKW"/>
-                        <outlet property="priceScrapImg" destination="aEc-er-aCH" id="Tw3-Ol-I4u"/>
+                        <outlet property="recentBtn" destination="zeX-yW-KX0" id="9Te-H5-PQx"/>
                         <outlet property="recentCheckImg" destination="aR5-CB-ahC" id="sth-1a-qmj"/>
+                        <outlet property="scrapBtn" destination="tnM-L2-1tz" id="WQn-yy-dMQ"/>
+                        <outlet property="scrapCheckImg" destination="aEc-er-aCH" id="Tw3-Ol-I4u"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C9C-r4-sOZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -234,5 +234,5 @@ extension TravelSpotDetailVC {
 enum SortCase: String {
   case recently = "created_at"
   case orderCount = "order_count"
-  case price = "price"
+  case scrapCount = "scrap_count"
 }
