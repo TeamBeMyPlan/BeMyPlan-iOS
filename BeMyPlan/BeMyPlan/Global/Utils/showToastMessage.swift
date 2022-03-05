@@ -15,8 +15,6 @@ extension UIViewController{
 }
 
 final class Toast {
-
-
   static func show(message: String, controller: UIViewController) {
     
     let toastContainer = UIView()
@@ -48,8 +46,6 @@ final class Toast {
     toastLabel.snp.makeConstraints {
       $0.center.equalToSuperview()
     }
-    
-    
     
     UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn, animations: {
       toastContainer.alpha = 1.0
