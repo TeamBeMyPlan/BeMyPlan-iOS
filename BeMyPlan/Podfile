@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+# platform :ios, '14.0'
 
 target 'BeMyPlan' do
   # Comment the next line if you don't want to use dynamic frameworks
@@ -25,5 +25,5 @@ target 'BeMyPlan' do
   pod 'PanModal'
   pod 'ListPlaceholder'
   pod 'SkeletonView'
-   pod 'ImageSlideShowSwift', :git => 'https://github.com/University-Link/ImageSlideShow.git', :branch => 'master'
+   pod 'ImageSlideShowSwift', :git => 'https://github.com/TeamBeMyPlan/ImageSlideShow.git', :branch => 'master'
 end
