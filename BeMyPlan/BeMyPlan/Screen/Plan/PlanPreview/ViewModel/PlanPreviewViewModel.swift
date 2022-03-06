@@ -7,42 +7,59 @@
 
 import Foundation
 import Moya
+import RxSwift
 
-protocol PlanPreviewViewModelType : ViewModelType{
+
+//protocol PlanPreviewViewModelType : ViewModelType{
+//
+//  // Inputs
+//  func viewDidLoad()
+//  func clickScrap()
+//  func clickBuyButton()
+//  func clickPreviewButton()
+//  func clickPreviewImage(index : Int)
+//  func showContentPage()
+//
+//  // Outputs
+//  var didFetchDataStart: (() -> Void)? { get set }
+//  var didFetchDataFinished: (() -> Void)? { get set }
+//  var didUpdatePriceData : ((String) -> Void)? { get set }
+//  var successScrap: (() -> Void)? { get set }
+//  var networkError: (() -> Void)? { get set }
+//  var unexpectedError: (() -> Void)? { get set }
+//  var movePaymentView: (() -> Void)? { get set }
+//  var movePreviewDetailView: (( ) -> Void)? { get set }
+//}
+
+class PlanPreviewViewModel : ViewModelType{
   
-  // Inputs
-  func viewDidLoad()
-  func clickScrap()
-  func clickBuyButton()
-  func clickPreviewButton()
-  func clickPreviewImage(index : Int)
-  func showContentPage()
 
-  // Outputs
-  var didFetchDataStart: (() -> Void)? { get set }
-  var didFetchDataFinished: (() -> Void)? { get set }
-  var didUpdatePriceData : ((String) -> Void)? { get set }
-  var successScrap: (() -> Void)? { get set }
-  var networkError: (() -> Void)? { get set }
-  var unexpectedError: (() -> Void)? { get set }
-  var movePaymentView: (() -> Void)? { get set }
-  var movePreviewDetailView: (( ) -> Void)? { get set }
-}
+  
 
-class PlanPreviewViewModel : PlanPreviewViewModelType{
+  struct Input {
+    
+  }
+  
+  struct Output {
+    var didFetchDataStart: (() -> Void)?
+    var didFetchDataFinished: (() -> Void)?
+    var didUpdatePriceData: ((String) -> Void)?
+    var successScrap: (() -> Void)?
+    var networkError: (() -> Void)?
+    var unexpectedError: (() -> Void)?
+    var movePaymentView: (() -> Void)?
+    var movePreviewDetailView: (( ) -> Void)?
+  }
+  
+  let input: Input?
+  let output: Output?
   
   // MARK: - Outputs
-  var didFetchDataStart: (() -> Void)?
-  var didFetchDataFinished: (() -> Void)?
-  var didUpdatePriceData: ((String) -> Void)?
-  var successScrap: (() -> Void)?
-  var networkError: (() -> Void)?
-  var unexpectedError: (() -> Void)?
-  var movePaymentView: (() -> Void)?
-  var movePreviewDetailView: (( ) -> Void)?
+
   
   // MARK: - Models
   
+
   var headerData : PlanPreview.HeaderData?
   var descriptionData : PlanPreview.DescriptionData?
   var photoData : [PlanPreview.PhotoData]?
@@ -54,18 +71,25 @@ class PlanPreviewViewModel : PlanPreviewViewModelType{
   var authID : Int = 0
   
   // MARK: - Dependency 주입
+
+  var disposeBag = DisposeBag()
   private var repository: PlanPreviewRepositoryInterface
   let postId: Int
   
-  init(postId: Int,repository: PlanPreviewRepositoryInterface){
-    self.postId = postId
+  init(repository: PlanPreviewRepositoryInterface,postId: Int){
     self.repository = repository
+    self.postId = postId
   }
 }
 
 extension PlanPreviewViewModel{
+  
+  func transform(input: Input) -> Output {
+
+  }
+  
   func viewDidLoad() {
-    didFetchDataStart?()
+    output.didFetchDataStart?()
     fetchData()
     bindRepository()
   }
@@ -75,11 +99,11 @@ extension PlanPreviewViewModel{
   }
   
   func clickBuyButton() {
-     movePaymentView?()
+    output.movePaymentView?()
   }
   
   func clickPreviewButton() {
-     movePreviewDetailView?()
+    output.movePreviewDetailView?()
   }
   
   func clickPreviewImage(index: Int) {
@@ -94,7 +118,7 @@ extension PlanPreviewViewModel{
 // MARK: - Logics
 extension PlanPreviewViewModel {
   func fetchData(){
-    didFetchDataStart?()
+    output.didFetchDataStart?()
 
     let group = DispatchGroup()
     group.enter()
@@ -103,7 +127,7 @@ extension PlanPreviewViewModel {
     fetchBodyData() { group.leave() }
     group.notify(queue: .main){
       self.setContentList()
-      self.didFetchDataFinished?()
+      self.output.didFetchDataFinished?()
     }
   }
   
@@ -111,9 +135,9 @@ extension PlanPreviewViewModel {
     repository.networkError = { [weak self] err in
       if let error = err as? MoyaError{
         if error.response?.statusCode == 500{
-          self?.networkError?()
+          self?.output.networkError?()
         }else{
-          self?.unexpectedError?()
+          self?.output.unexpectedError?()
         }
       }
     }
@@ -124,7 +148,7 @@ extension PlanPreviewViewModel {
       self?.headerData = header
       self?.descriptionData = description
       let priceString = String(price) + "원"
-      self?.didUpdatePriceData?(priceString)
+      self?.output.didUpdatePriceData?(priceString)
       self?.authID = authID
       completion()
     }

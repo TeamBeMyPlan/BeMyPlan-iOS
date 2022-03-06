@@ -92,7 +92,6 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (7.7.0):
     - GoogleUtilities/Logger
-  - HGCircularSlider (2.2.0)
   - ImageSlideShowSwift (0.1.8)
   - KakaoSDKAuth (2.8.5):
     - KakaoSDKCommon (= 2.8.5)
@@ -108,14 +107,11 @@ PODS:
   - Kingfisher (5.15.8):
     - Kingfisher/Core (= 5.15.8)
   - Kingfisher/Core (5.15.8)
-  - ListPlaceholder (1.5)
   - lottie-ios (3.3.0)
   - Moya (15.0.0):
     - Moya/Core (= 15.0.0)
   - Moya/Core (15.0.0):
     - Alamofire (~> 5.0)
-  - MSCircularSlider (1.3.2)
-  - Mute (0.6.0)
   - nanopb (2.30908.0):
     - nanopb/decode (= 2.30908.0)
     - nanopb/encode (= 2.30908.0)
@@ -123,6 +119,15 @@ PODS:
   - nanopb/encode (2.30908.0)
   - PanModal (1.2.7)
   - PromisesObjC (2.0.0)
+  - RxCocoa (6.5.0):
+    - RxRelay (= 6.5.0)
+    - RxSwift (= 6.5.0)
+  - RxGesture (4.0.3):
+    - RxCocoa (~> 6.0)
+    - RxSwift (~> 6.0)
+  - RxRelay (6.5.0):
+    - RxSwift (= 6.5.0)
+  - RxSwift (6.5.0)
   - SkeletonView (1.29.2)
   - SnapKit (5.0.1)
   - SwiftLint (0.46.1)
@@ -132,18 +137,18 @@ PODS:
 DEPENDENCIES:
   - Firebase/Analytics
   - Firebase/Crashlytics
-  - HGCircularSlider
   - ImageSlideShowSwift (from `https://github.com/TeamBeMyPlan/ImageSlideShow.git`, branch `master`)
   - KakaoSDKAuth
   - KakaoSDKCommon
   - KakaoSDKUser
   - Kingfisher (~> 5.0)
-  - ListPlaceholder
   - lottie-ios
   - Moya
-  - MSCircularSlider
-  - Mute
   - PanModal
+  - RxCocoa
+  - RxGesture
+  - RxRelay
+  - RxSwift
   - SkeletonView
   - SnapKit (~> 5.0.0)
   - SwiftLint
@@ -162,19 +167,19 @@ SPEC REPOS:
     - GoogleAppMeasurement
     - GoogleDataTransport
     - GoogleUtilities
-    - HGCircularSlider
     - KakaoSDKAuth
     - KakaoSDKCommon
     - KakaoSDKUser
     - Kingfisher
-    - ListPlaceholder
     - lottie-ios
     - Moya
-    - MSCircularSlider
-    - Mute
     - nanopb
     - PanModal
     - PromisesObjC
+    - RxCocoa
+    - RxGesture
+    - RxRelay
+    - RxSwift
     - SkeletonView
     - SnapKit
     - SwiftLint
@@ -202,26 +207,26 @@ SPEC CHECKSUMS:
   GoogleAppMeasurement: aa3cb422fab2b05d2efac543a5720d1a85b9dea5
   GoogleDataTransport: 629c20a4d363167143f30ea78320d5a7eb8bd940
   GoogleUtilities: e0913149f6b0625b553d70dae12b49fc62914fd1
-  HGCircularSlider: afb1942743a2df156dcc7a3500216e523e14266b
   ImageSlideShowSwift: bd0d5150bb687a6c47bafa92d654fb85310d5317
   KakaoSDKAuth: a9033bd3fbbb9a8c74dcd0dbd7705f7a2bc50ff1
   KakaoSDKCommon: b98d08cf838effdc9b82aca7dee3e50c048880ca
   KakaoSDKUser: a76667bb06c1d5072178eea5cee4ac9fdba94679
   Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
-  ListPlaceholder: 2d7950014852ee5613d636cf14fd1bb93419e330
   lottie-ios: 6ac74dcc09904798f59b18cb3075c089d76be9ae
   Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
-  MSCircularSlider: 07fe922e6a7e05fb67e876d449e365327fdad3d1
-  Mute: 66213d0aced6a074c7ab88b45ec20a9d54b1b7fb
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PanModal: 3e16ead1a907fb06f4df3f13492fd00149fa4974
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
+  RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
+  RxGesture: abadd243fc36db74df43dfc893829ddde94f1a3d
+  RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
+  RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
   SkeletonView: 915a80ecc2b6421ab7ac0f0212321c0cc1406472
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SwiftLint: aaa29a9f649316095a9079595cb60906bd899353
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
   Then: acfe0be7e98221c6204e12f8161459606d5d822d
 
-PODFILE CHECKSUM: 889852d2d760c9ee9effecc36ee52b484a1a3397
+PODFILE CHECKSUM: 6a9f7e833edd40c518fb7335bca761bf88a70e24
 
 COCOAPODS: 1.11.2
