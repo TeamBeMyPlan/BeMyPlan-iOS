@@ -37,6 +37,9 @@ class PlanPreviewViewModel : ViewModelType{
   
 
   struct Input {
+    let viewDidLoadEvent: Observable<Void>
+    let buyButtonDidTapEvent: Observable<Void>
+    let viewPreviewButtonDidTapEvent: Observable<Void>
     
   }
   
