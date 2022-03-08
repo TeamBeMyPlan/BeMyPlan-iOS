@@ -8,7 +8,7 @@
 import Foundation
 import Moya
 import RxSwift
-
+import RxRelay
 
 //protocol PlanPreviewViewModelType : ViewModelType{
 //
@@ -31,29 +31,30 @@ import RxSwift
 //  var movePreviewDetailView: (( ) -> Void)? { get set }
 //}
 
-class PlanPreviewViewModel : ViewModelType{
+final class PlanPreviewViewModel : ViewModelType{
   
-
+  // MARK: - Inputs
   
-
   struct Input {
     let viewDidLoadEvent: Observable<Void>
     let buyButtonDidTapEvent: Observable<Void>
     let viewPreviewButtonDidTapEvent: Observable<Void>
-    
   }
+  
+  // MARK: - Outputs
   
   struct Output {
-    var didFetchDataStart: (() -> Void)?
-    var didFetchDataFinished: (() -> Void)?
-    var didUpdatePriceData: ((String) -> Void)?
-    var successScrap: (() -> Void)?
-    var networkError: (() -> Void)?
-    var unexpectedError: (() -> Void)?
-    var movePaymentView: (() -> Void)?
-    var movePreviewDetailView: (( ) -> Void)?
+    var didFetchDataStart = PublishRelay<Void>()
+    var didFetchDataFinished = PublishRelay<Void>()
+    var didUpdatePriceData = PublishRelay<String>()
+    var successScrap = PublishRelay<Void>()
+    var networkError = PublishRelay<Void>()
+    var unexpectedError = PublishRelay<Void>()
+    var movePaymentView = PublishRelay<Void>()
+    var movePreviewDetailView = PublishRelay<Void>()
   }
   
+  var disposeBag = DisposeBag()
   let input: Input?
   let output: Output?
   
@@ -75,7 +76,6 @@ class PlanPreviewViewModel : ViewModelType{
   
   // MARK: - Dependency 주입
 
-  var disposeBag = DisposeBag()
   private var repository: PlanPreviewRepositoryInterface
   let postId: Int
   
@@ -88,7 +88,7 @@ class PlanPreviewViewModel : ViewModelType{
 extension PlanPreviewViewModel{
   
   func transform(input: Input) -> Output {
-
+    
   }
   
   func viewDidLoad() {
