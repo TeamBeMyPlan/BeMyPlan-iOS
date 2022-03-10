@@ -6,6 +6,11 @@
 //
 
 import Foundation
+import RxSwift
+
+protocol PlanPreviewUseCase{
+  
+}
 
 final class DefaultPlanPreviewUseCase: PlanPreviewUseCase{
   

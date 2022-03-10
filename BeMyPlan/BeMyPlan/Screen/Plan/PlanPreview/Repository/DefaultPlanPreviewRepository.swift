@@ -7,13 +7,13 @@
 
 import Foundation
 
-protocol PlanPreviewRepositoryInterface {
+protocol PlanPreviewRepository {
   var networkError: ((Error) -> Void)? { get set }
   func fetchHeaderData(idx: Int,onCompleted: @escaping (PlanPreview.HeaderData?,PlanPreview.DescriptionData?,Int,Int) -> Void)
   func fetchBodyData(idx: Int,onCompleted: @escaping ([PlanPreview.PhotoData]?,PlanPreview.SummaryData?) -> Void)
 }
 
-final class PlanPreviewRepository: PlanPreviewRepositoryInterface {
+final class DefaultPlanPreviewRepository: PlanPreviewRepository {
   
   // MARK: - Outputs
   var networkError: ((Error) -> Void)?

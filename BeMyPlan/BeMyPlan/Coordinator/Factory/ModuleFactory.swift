@@ -159,7 +159,7 @@ class ModuleFactory: ModuleFactoryProtocol{
   // MARK: - Plan
 
   func instantiatePlanPreviewVC(postID: Int) -> PlanPreviewVC {
-    let repository = PlanPreviewRepository(service: BaseService.default)
+    let repository = DefaultPlanPreviewRepository(service: BaseService.default)
     let viewModel = PlanPreviewViewModel(repository: repository, postId: postID)
     // 추후 postID 넣어야 됨
     let vc = PlanPreviewVC.controllerFromStoryboard(.planPreview)

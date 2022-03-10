@@ -77,10 +77,10 @@ final class PlanPreviewViewModel : ViewModelType{
   
   // MARK: - Dependency 주입
 
-  private var repository: PlanPreviewRepositoryInterface
+  private var repository: PlanPreviewRepository
   let postId: Int
   
-  init(repository: PlanPreviewRepositoryInterface,postId: Int){
+  init(repository: PlanPreviewRepository,postId: Int){
     self.repository = repository
     self.postId = postId
   }
