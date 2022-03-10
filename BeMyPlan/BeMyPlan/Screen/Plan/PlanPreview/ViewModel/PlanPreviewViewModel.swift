@@ -9,6 +9,7 @@ import Foundation
 import Moya
 import RxSwift
 import RxRelay
+import RxCocoa
 
 //protocol PlanPreviewViewModelType : ViewModelType{
 //
@@ -44,7 +45,7 @@ final class PlanPreviewViewModel : ViewModelType{
   // MARK: - Outputs
   
   struct Output {
-    var didFetchDataStart = PublishRelay<Void>()
+    var didFetchDataStart: Driver<Void>
     var didFetchDataFinished = PublishRelay<Void>()
     var didUpdatePriceData = PublishRelay<String>()
     var successScrap = PublishRelay<Void>()
@@ -55,8 +56,8 @@ final class PlanPreviewViewModel : ViewModelType{
   }
   
   var disposeBag = DisposeBag()
-  let input: Input?
-  let output: Output?
+//  let input: Input?
+//  let output: Output?
   
   // MARK: - Outputs
 
@@ -88,7 +89,14 @@ final class PlanPreviewViewModel : ViewModelType{
 extension PlanPreviewViewModel{
   
   func transform(input: Input) -> Output {
+    let output = Output()
     
+    input.viewDidLoadEvent
+      .subscribe(onNext: { [weak self] in
+        output.didFetchDataStart
+      })
+      .disposed(by: disposeBag)
+
   }
   
   func viewDidLoad() {
