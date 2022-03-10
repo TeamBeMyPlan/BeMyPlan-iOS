@@ -108,10 +108,11 @@ PODS:
     - Kingfisher/Core (= 5.15.8)
   - Kingfisher/Core (5.15.8)
   - lottie-ios (3.3.0)
-  - Moya (15.0.0):
-    - Moya/Core (= 15.0.0)
   - Moya/Core (15.0.0):
     - Alamofire (~> 5.0)
+  - Moya/RxSwift (15.0.0):
+    - Moya/Core
+    - RxSwift (~> 6.0)
   - nanopb (2.30908.0):
     - nanopb/decode (= 2.30908.0)
     - nanopb/encode (= 2.30908.0)
@@ -143,7 +144,7 @@ DEPENDENCIES:
   - KakaoSDKUser
   - Kingfisher (~> 5.0)
   - lottie-ios
-  - Moya
+  - Moya/RxSwift (~> 15.0)
   - PanModal
   - RxCocoa
   - RxGesture
@@ -227,6 +228,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
   Then: acfe0be7e98221c6204e12f8161459606d5d822d
 
-PODFILE CHECKSUM: 6a9f7e833edd40c518fb7335bca761bf88a70e24
+PODFILE CHECKSUM: 12f1f520583d5eb9f35bae088ac53d2e588a0fc7
 
 COCOAPODS: 1.11.2

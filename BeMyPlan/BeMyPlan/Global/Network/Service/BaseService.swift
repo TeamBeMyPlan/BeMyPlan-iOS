@@ -7,6 +7,7 @@
 
 import Moya
 import Alamofire
+import RxSwift
 
 fileprivate let provider: MoyaProvider<BaseAPI> = {
   let provider = MoyaProvider<BaseAPI>(endpointClosure: endpointClosure, session: DefaultAlamofireManager.shared)
@@ -33,6 +34,19 @@ fileprivate class DefaultAlamofireManager: Alamofire.Session {
 class BaseService{
   static let `default` = BaseService()
   private init() {}
+  
+  func requestObjectInReactive<T: Decodable>(_ target: BaseAPI) -> Single<T> {
+    return provider.rx.request(target)
+      .filterSuccessfulStatusAndRedirectCodes()
+      .map(T.self)
+  }
+  
+  func requestObjectInReactiveWithIgnore<T: Decodable>(_ target: BaseAPI) -> Single<T> {
+    return provider.rx.request(target)
+      .filterSuccessfulStatusAndRedirectCodes()
+      .map(T.self)
+      .asObservable().ignoreElements()
+  }
   
   func requestObject<T: Decodable>(_ target: BaseAPI, completion: @escaping (Result<T?, Error>) -> Void) {
     provider.request(target) { response in

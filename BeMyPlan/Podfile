@@ -15,7 +15,7 @@ target 'BeMyPlan' do
   pod 'lottie-ios'
   pod 'Kingfisher', '~> 5.0'
   pod 'Then'
-  pod 'Moya'
+  pod 'Moya/RxSwift', '~> 15.0'
   pod 'SwiftyJSON', '~> 4.0'
   pod 'Firebase/Analytics'
   pod 'Firebase/Crashlytics'
