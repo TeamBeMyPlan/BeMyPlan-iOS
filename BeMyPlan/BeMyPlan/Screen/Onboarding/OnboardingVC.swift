@@ -91,13 +91,13 @@ final class OnboardingVC: UIViewController {
   lazy var nextButtonLabel = UILabel().then {
     $0.font = .boldSystemFont(ofSize: 16)
     $0.textColor = .bemyBlue
-    $0.text = "다음"
+    $0.text = I18N.Onboarding.nextButton
   }
   
   lazy var skipButtonLabel = UILabel().then {
     $0.font = .boldSystemFont(ofSize: 16)
     $0.textColor = .grey03
-    $0.text = "건너뛰기"
+    $0.text = I18N.Onboarding.skipButton
   }
   
   lazy var pageControlImageView = UIImageView().then {

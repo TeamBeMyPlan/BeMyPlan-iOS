@@ -34,6 +34,8 @@ struct I18N {
     static let GuideFirstText = "여행 취향이 비슷한 크리에이터의 \n여행 일정을 찾아보세요"
     static let GuideSecondText = "미리보기로 원하는\n여행인지 확인하세요"
     static let GuideThirdText = "여행 일정을 구매하여\n알찬 여행 정보를 만나보세요"
+    static let skipButton = "건너뛰기"
+    static let nextButton = "다음"
   }
   
   struct Account {
