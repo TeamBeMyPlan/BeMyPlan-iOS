@@ -74,17 +74,17 @@ final class OnboardingVC: UIViewController {
   }
   
   lazy var contentFirstImageView = UIImageView().then {
-    $0.image = UIImage(named: "img_onboarding_01")
+    $0.image = ImageLiterals.Onboarding.pageControlDot1
     $0.contentMode = .scaleAspectFit
   }
   
   lazy var contentSecondImageView = UIImageView().then {
-    $0.image = UIImage(named: "img_onboarding_02")
+    $0.image = ImageLiterals.Onboarding.pageControlDot2
     $0.contentMode = .scaleAspectFit
   }
   
   lazy var contentThirdImageView = UIImageView().then {
-    $0.image = UIImage(named: "img_onboarding_03")
+    $0.image = ImageLiterals.Onboarding.pageControlDot3
     $0.contentMode = .scaleAspectFit
   }
   
@@ -101,7 +101,7 @@ final class OnboardingVC: UIViewController {
   }
   
   lazy var pageControlImageView = UIImageView().then {
-    $0.image = UIImage(named: "dots_1")
+    $0.image = ImageLiterals.Onboarding.pageControlDot1
   }
   
   // MARK: - Life Cycle Part
@@ -138,14 +138,13 @@ private extension OnboardingVC {
   func setPageControlImage(){
     switch(pageIndex) {
       case 0:
-        pageControlImageView.image = UIImage(named: "dots_1")
+        pageControlImageView.image = ImageLiterals.Onboarding.pageControlDot1
         
       case 1:
-        pageControlImageView.image = UIImage(named: "dots_2")
+        pageControlImageView.image = ImageLiterals.Onboarding.pageControlDot2
         
       default:
-        pageControlImageView.image = UIImage(named: "dots_3")
-        
+        pageControlImageView.image = ImageLiterals.Onboarding.pageControlDot3
     }
   }
 }
@@ -154,30 +153,23 @@ extension OnboardingVC: UIScrollViewDelegate {
   
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
     let pointX = scrollView.contentOffset.x
-    print("pointX",pointX)
-    
     switch(pointX){
       case 0 ... screenWidth/2 :
-        print("1")
         headerFirstLabel.alpha = (screenWidth/2 - pointX) / (screenWidth/2)
         headerSecondLabel.alpha = 0
         headerThirdLabel.alpha = 0
         
       case screenWidth/2 ... screenWidth * 2/2 :
-        print("2")
         headerFirstLabel.alpha = 0
         headerSecondLabel.alpha = (pointX - screenWidth/2) / (screenWidth/2)
         headerThirdLabel.alpha = 0
 
-        
       case screenWidth * 2/2 ... screenWidth * 3/2 :
-        print("3")
         headerFirstLabel.alpha = 0
         headerSecondLabel.alpha = (screenWidth * 3/2 - pointX) / (screenWidth/2)
         headerThirdLabel.alpha = 0
 
       case screenWidth * 3/2 ... screenWidth * 4/2 :
-        print("4")
         headerFirstLabel.alpha = 0
         headerSecondLabel.alpha = 0
         headerThirdLabel.alpha = (pointX - screenWidth * 3/2) / (screenWidth / 2)
