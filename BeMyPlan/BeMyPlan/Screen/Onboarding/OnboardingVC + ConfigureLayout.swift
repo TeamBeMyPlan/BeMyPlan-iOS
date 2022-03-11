@@ -30,8 +30,8 @@ extension OnboardingVC {
     [headerFirstLabel,headerSecondLabel,headerThirdLabel].forEach { label in
       mainContentView.addSubview(label)
       label.snp.makeConstraints {
-        $0.bottom.equalTo(imageStackView.snp.top).inset(-50)
-        $0.height.equalTo(50)
+        $0.bottom.equalTo(imageStackView.snp.top).inset(-40)
+        $0.height.equalTo(screenWidth * 60/375)
         $0.centerX.equalToSuperview()
       }
     }
@@ -83,7 +83,7 @@ extension OnboardingVC {
     bottomPageControlView.addSubview(skipActionButton)
     skipActionButton.snp.makeConstraints {
       $0.height.equalTo(50)
-      $0.height.equalTo(103)
+      $0.width.equalTo(103)
       $0.top.equalToSuperview()
       $0.leading.equalToSuperview().offset(15)
     }
@@ -91,9 +91,9 @@ extension OnboardingVC {
     bottomPageControlView.addSubview(nextActionButton)
     nextActionButton.snp.makeConstraints {
       $0.height.equalTo(50)
-      $0.height.equalTo(103)
+      $0.width.equalTo(103)
       $0.top.equalToSuperview()
-      $0.trailing.equalToSuperview().offset(15)
+      $0.trailing.equalToSuperview().inset(15)
     }
     
     bottomPageControlView.addSubview(pageControlImageView)
@@ -103,12 +103,7 @@ extension OnboardingVC {
       $0.centerX.equalToSuperview()
       $0.top.equalToSuperview().offset(19)
     }
-    
 
-
-
-    
-    
   }
   
   
