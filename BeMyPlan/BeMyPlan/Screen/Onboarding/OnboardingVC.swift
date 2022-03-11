@@ -108,6 +108,7 @@ final class OnboardingVC: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    AppLog.log(at: FirebaseAnalyticsProvider.self, .onboardingFirstOpen)
     self.configureUI()
     self.configureImageScrollView()
     self.configureMainContentView()
@@ -126,12 +127,12 @@ private extension OnboardingVC {
         self.contentScrollView.setContentOffset(CGPoint(x: CGFloat(self.pageIndex) * screenWidth, y: 0),
                                                 animated: true)
       }else {
-        print("온보딩 끝")
+        AppLog.log(at: FirebaseAnalyticsProvider.self, .onboardingComplete)
       }
     }
     
     skipActionButton.press {
-      print("온보딩 끝")
+      AppLog.log(at: FirebaseAnalyticsProvider.self, .onboardingSkip)
     }
   }
   
@@ -141,9 +142,11 @@ private extension OnboardingVC {
         pageControlImageView.image = ImageLiterals.Onboarding.pageControlDot1
         
       case 1:
+        AppLog.log(at: FirebaseAnalyticsProvider.self, .onboardingViewSecondPage)
         pageControlImageView.image = ImageLiterals.Onboarding.pageControlDot2
         
       default:
+        AppLog.log(at: FirebaseAnalyticsProvider.self, .onboardingViewThirdPage)
         pageControlImageView.image = ImageLiterals.Onboarding.pageControlDot3
     }
   }
