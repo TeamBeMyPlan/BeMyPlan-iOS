@@ -23,13 +23,13 @@ extension UIButton {
   // iOS14부터 UIAction이 addAction가능하기에... 이전에는 NSObject형태로 등록해서 처리하는 방식으로...
   func press(animated : Bool = false,for controlEvents: UIControl.Event = .touchUpInside, _ closure: @escaping()->()) {
       self.addAction(UIAction { (action: UIAction) in closure()
+        self.makeVibrate(degree: .medium)
         if animated {self.clickedAnimation()}
       }, for: controlEvents)
   }
   
   // 해당 함수를 통해서 Poppin 효과를 처리합니다. 줄어드는 정도를 조절하고싶다면 ,ScaleX,Y값을 조절합니다(최대값 1)
   func clickedAnimation() {
-    makeVibrate(degree: .medium)
     UIView.animate(withDuration: 0.1, animations: {
       self.transform = CGAffineTransform(scaleX: 0.9, y: 0.9) }, completion: { (finish: Bool) in
         UIView.animate(withDuration: 0.1, animations: {

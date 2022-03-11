@@ -30,6 +30,15 @@ struct I18N {
     static let total = "전체"
   }
   
+  struct Onboarding {
+    static let GuideFirstText = "여행 취향이 비슷한 크리에이터의 \n여행 일정을 찾아보세요"
+    static let GuideSecondText = "미리보기로 원하는\n여행인지 확인하세요"
+    static let GuideThirdText = "여행 일정을 구매하여\n알찬 여행 정보를 만나보세요"
+    static let skipButton = "건너뛰기"
+    static let nextButton = "다음"
+    static let completeButton = "시작하기"
+  }
+  
   struct Account {
     static let enterNamePlaceHolder = "이름을 입력해주세요"
     static let enterEmailPlaceHolder = "이메일 또는 휴대전화"

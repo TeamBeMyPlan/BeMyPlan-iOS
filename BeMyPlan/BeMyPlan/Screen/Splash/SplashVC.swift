@@ -41,7 +41,11 @@ class SplashVC: UIViewController {
         self.splashIconNoTitle.alpha = 0
       }
     } completion: { _ in
-      self.isLoginComplete ? self.moveBaseVC() : self.moveLoginVC()
+      if self.isLoginComplete {
+        self.moveBaseVC()
+      }else {
+        (UserDefaults.standard.bool(forKey: "onboardingComplete") != true) ? self.moveBaseVC() : self.moveLoginVC()
+      }
     }
   }
   
@@ -55,5 +59,11 @@ class SplashVC: UIViewController {
     let loginVC = factory.instantiateLoginVC()
     loginVC.modalPresentationStyle = .fullScreen
     self.present(loginVC, animated: false, completion: nil)
+  }
+  
+  private func moveOnboardingVC() {
+    let onboardingVC = factory.instantiateOnboardingVC()
+    onboardingVC.modalPresentationStyle = .fullScreen
+    self.present(onboardingVC, animated: false, completion: nil)
   }
 }
