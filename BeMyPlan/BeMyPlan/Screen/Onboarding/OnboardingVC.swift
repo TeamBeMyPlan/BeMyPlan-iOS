@@ -144,20 +144,42 @@ private extension OnboardingVC {
   }
 }
 
-
 extension OnboardingVC: UIScrollViewDelegate {
   
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
     let pointX = scrollView.contentOffset.x
+    print("pointX",pointX)
     
     switch(pointX){
       case 0 ... screenWidth/2 :
+        print("1")
         headerFirstLabel.alpha = (screenWidth/2 - pointX) / (screenWidth/2)
+        headerSecondLabel.alpha = 0
+        headerThirdLabel.alpha = 0
+        
       case screenWidth/2 ... screenWidth * 2/2 :
+        print("2")
+        headerFirstLabel.alpha = 0
+        headerSecondLabel.alpha = (pointX - screenWidth/2) / (screenWidth/2)
+        headerThirdLabel.alpha = 0
+
+        
       case screenWidth * 2/2 ... screenWidth * 3/2 :
+        print("3")
+        headerFirstLabel.alpha = 0
+        headerSecondLabel.alpha = (screenWidth * 3/2 - pointX) / (screenWidth/2)
+        headerThirdLabel.alpha = 0
+
       case screenWidth * 3/2 ... screenWidth * 4/2 :
-      case screenWidth * 4/2 ... screenWidth * 5/2 :
-      case screenWidth * 5/2 ... screenWidth * 6/2 :
+        print("4")
+        headerFirstLabel.alpha = 0
+        headerSecondLabel.alpha = 0
+        headerThirdLabel.alpha = (pointX - screenWidth * 3/2) / (screenWidth / 2)
+        
+      default :
+        headerFirstLabel.alpha = 0
+        headerSecondLabel.alpha = 0
+        headerThirdLabel.alpha = 0
     }
 
   }
