@@ -11,16 +11,14 @@ import Then
 final class OnboardingVC: UIViewController {
   
   // MARK: - Vars & Lets Part
-  
   private var pageIndex = 0{ didSet { setPageControlImage() }}
-  
+  private let factory: ModuleFactoryProtocol = ModuleFactory.resolve()
+
   // MARK: - UI Component Part
   
   lazy var mainContentView = UIView()
-
   lazy var contentScrollInnerView = UIView()
   lazy var bottomPageControlView = UIView()
-  
   lazy var nextActionButton = UIButton().then {
     $0.isExclusiveTouch = true
   }
@@ -74,17 +72,17 @@ final class OnboardingVC: UIViewController {
   }
   
   lazy var contentFirstImageView = UIImageView().then {
-    $0.image = ImageLiterals.Onboarding.pageControlDot1
+    $0.image = ImageLiterals.Onboarding.previewImage1
     $0.contentMode = .scaleAspectFit
   }
   
   lazy var contentSecondImageView = UIImageView().then {
-    $0.image = ImageLiterals.Onboarding.pageControlDot2
+    $0.image = ImageLiterals.Onboarding.previewImage2
     $0.contentMode = .scaleAspectFit
   }
   
   lazy var contentThirdImageView = UIImageView().then {
-    $0.image = ImageLiterals.Onboarding.pageControlDot3
+    $0.image = ImageLiterals.Onboarding.previewImage3
     $0.contentMode = .scaleAspectFit
   }
   
@@ -92,12 +90,14 @@ final class OnboardingVC: UIViewController {
     $0.font = .boldSystemFont(ofSize: 16)
     $0.textColor = .bemyBlue
     $0.text = I18N.Onboarding.nextButton
+    $0.textAlignment = .center
   }
   
   lazy var skipButtonLabel = UILabel().then {
     $0.font = .boldSystemFont(ofSize: 16)
     $0.textColor = .grey03
     $0.text = I18N.Onboarding.skipButton
+    $0.textAlignment = .center
   }
   
   lazy var pageControlImageView = UIImageView().then {
@@ -127,11 +127,14 @@ private extension OnboardingVC {
         self.contentScrollView.setContentOffset(CGPoint(x: CGFloat(self.pageIndex) * screenWidth, y: 0),
                                                 animated: true)
       }else {
+        self.moveLoginVC()
+        UserDefaults.standard.setValue(true, forKey: "onboardingComplete")
         AppLog.log(at: FirebaseAnalyticsProvider.self, .onboardingComplete)
       }
     }
-    
     skipActionButton.press {
+      self.moveLoginVC()
+      UserDefaults.standard.setValue(true, forKey: "onboardingComplete")
       AppLog.log(at: FirebaseAnalyticsProvider.self, .onboardingSkip)
     }
   }
@@ -139,21 +142,27 @@ private extension OnboardingVC {
   func setPageControlImage(){
     switch(pageIndex) {
       case 0:
+        nextButtonLabel.text = I18N.Onboarding.nextButton
         pageControlImageView.image = ImageLiterals.Onboarding.pageControlDot1
         
       case 1:
-        AppLog.log(at: FirebaseAnalyticsProvider.self, .onboardingViewSecondPage)
+        nextButtonLabel.text = I18N.Onboarding.nextButton
         pageControlImageView.image = ImageLiterals.Onboarding.pageControlDot2
         
       default:
-        AppLog.log(at: FirebaseAnalyticsProvider.self, .onboardingViewThirdPage)
+        nextButtonLabel.text = I18N.Onboarding.completeButton
         pageControlImageView.image = ImageLiterals.Onboarding.pageControlDot3
     }
+  }
+  
+  func moveLoginVC(){
+    let loginVC = factory.instantiateLoginVC()
+    loginVC.modalPresentationStyle = .fullScreen
+    self.present(loginVC, animated: false, completion: nil)
   }
 }
 
 extension OnboardingVC: UIScrollViewDelegate {
-  
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
     let pointX = scrollView.contentOffset.x
     switch(pointX){

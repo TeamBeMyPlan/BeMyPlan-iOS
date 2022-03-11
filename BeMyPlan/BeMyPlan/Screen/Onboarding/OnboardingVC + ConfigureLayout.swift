@@ -53,8 +53,16 @@ extension OnboardingVC {
     contentScrollInnerView.addSubview(imageStackView)
     imageStackView.snp.makeConstraints {
       $0.width.equalTo(screenWidth*3)
-      $0.bottom.equalToSuperview().inset(60)
-      $0.height.equalTo(screenWidth * 460/375)
+      if UIDevice.current.hasNotch {
+        print("노치있음")
+        $0.bottom.equalToSuperview().inset(60)
+        $0.height.equalTo(screenWidth * 460/375)
+      }else {
+        print("노치없음")
+        $0.bottom.equalToSuperview().inset(28)
+        $0.height.equalTo(screenHeight * 460/812)
+      }
+
     }
     
     [contentFirstImageView,contentSecondImageView,contentThirdImageView].forEach { imageView in
@@ -75,10 +83,10 @@ extension OnboardingVC {
     
     nextButtonLabel.snp.makeConstraints {
       $0.height.equalTo(20)
+      $0.width.equalTo(60)
       $0.top.equalToSuperview().offset(13)
-      $0.right.equalToSuperview().inset(53)
+      $0.right.equalToSuperview().inset(38)
     }
-    
     
     bottomPageControlView.addSubview(skipActionButton)
     skipActionButton.snp.makeConstraints {
@@ -103,9 +111,7 @@ extension OnboardingVC {
       $0.centerX.equalToSuperview()
       $0.top.equalToSuperview().offset(19)
     }
-
   }
-  
   
   func configureImageShadow(){
     [contentFirstImageView,contentSecondImageView,contentThirdImageView].forEach { imageView in

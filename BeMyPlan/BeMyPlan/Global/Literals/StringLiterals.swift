@@ -36,6 +36,7 @@ struct I18N {
     static let GuideThirdText = "여행 일정을 구매하여\n알찬 여행 정보를 만나보세요"
     static let skipButton = "건너뛰기"
     static let nextButton = "다음"
+    static let completeButton = "시작하기"
   }
   
   struct Account {

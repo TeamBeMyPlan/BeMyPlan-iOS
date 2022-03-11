@@ -49,6 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 extension AppDelegate{
   func setupFirebaseSDK() {
+    FirebaseConfiguration.shared.setLoggerLevel(.min)
     AppLog.configure()
   }
 }
