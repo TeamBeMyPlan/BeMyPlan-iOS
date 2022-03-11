@@ -15,6 +15,7 @@ import UIKit
 */
 enum Storyboards: String {
   case base = "Base"
+  case onboarding = "Onboarding"
   case splash = "Spalsh"
   case login = "Login"
   case home = "Home"

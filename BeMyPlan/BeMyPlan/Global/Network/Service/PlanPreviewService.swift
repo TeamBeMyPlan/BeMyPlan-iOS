@@ -15,23 +15,10 @@ protocol PlanPreviewServiceType{
 }
 
 extension BaseService : PlanPreviewServiceType{
-  
   func fetchPlanPreviewHeaderData(idx: Int) -> Observable<PlanPreviewEntity.Header?> {
-    
-    return .create { observer in
-      requestObjectInRx(.getPlanPreviewHeaderData(idx: idx))
-        .subscribe { on
-          <#code#>
-        } onFailure: { err in
-          observer(.error(err))
-        }
-
-
-    }
-    
-
-
+    return requestObjectInRx(.getPlanPreviewHeaderData(idx: idx))
   }
+  
   func getPlanPreviewHeaderData(idx: Int, completion: @escaping (Result<PlanPreviewEntity.Header?, Error>) -> Void) {
     requestObject(.getPlanPreviewHeaderData(idx: idx), completion: completion)
   }

@@ -60,46 +60,46 @@ class PlanPreviewVC: UIViewController {
   // MARK: - Custom Method Part
   
   private func bindViewModels(){
-    viewModel.didFetchDataStart = { [weak self] in
-      self?.showIndicator()
-    }
-    
-    viewModel.didFetchDataFinished = { [weak self] in
-      self?.headerTitleLabel.text = self?.viewModel.headerData?.title
-      self?.previewContentTV.reloadData()
-      self?.closeIndicator{
-        UIView.animate(withDuration: 0.4) {
-          self?.previewContentTV.alpha = 1
-        }
-      }
-    }
-    
-    viewModel.networkError = { [weak self] in
-      self?.closeIndicator{
-        self?.postObserverAction(.showNetworkError)
-      }
-    }
-    
-    viewModel.didUpdatePriceData = { [weak self] price in
-      self?.priceLabel.text = price
-    }
-    
-    viewModel.movePaymentView = { [weak self] in
-      guard let self = self else {return}
-      let vc = ModuleFactory.resolve().instantiatePaymentSelectVC(writer: self.viewModel.headerData?.writer,
-                                                                  planTitle: self.viewModel.headerData?.title,
-                                                                  imgURL: self.viewModel.photoData?.first?.photo,
-                                                         price: self.priceLabel.text,
-                                                                  postID: self.viewModel.postId)
-      self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    viewModel.movePreviewDetailView = { [weak self] in
-      AppLog.log(at: FirebaseAnalyticsProvider.self, .clickPlanDetailExample)
-      guard let self = self else {return}
-      let vc = ModuleFactory.resolve().instantiatePlanDetailVC(postID: self.viewModel.postId, isPreviewPage: true)
-      self.navigationController?.pushViewController(vc, animated: true)
-    }
+//    viewModel.didFetchDataStart = { [weak self] in
+//      self?.showIndicator()
+//    }
+//    
+//    viewModel.didFetchDataFinished = { [weak self] in
+//      self?.headerTitleLabel.text = self?.viewModel.headerData?.title
+//      self?.previewContentTV.reloadData()
+//      self?.closeIndicator{
+//        UIView.animate(withDuration: 0.4) {
+//          self?.previewContentTV.alpha = 1
+//        }
+//      }
+//    }
+//    
+//    viewModel.networkError = { [weak self] in
+//      self?.closeIndicator{
+//        self?.postObserverAction(.showNetworkError)
+//      }
+//    }
+//    
+//    viewModel.didUpdatePriceData = { [weak self] price in
+//      self?.priceLabel.text = price
+//    }
+//    
+//    viewModel.movePaymentView = { [weak self] in
+//      guard let self = self else {return}
+//      let vc = ModuleFactory.resolve().instantiatePaymentSelectVC(writer: self.viewModel.headerData?.writer,
+//                                                                  planTitle: self.viewModel.headerData?.title,
+//                                                                  imgURL: self.viewModel.photoData?.first?.photo,
+//                                                         price: self.priceLabel.text,
+//                                                                  postID: self.viewModel.postId)
+//      self.navigationController?.pushViewController(vc, animated: true)
+//    }
+//    
+//    viewModel.movePreviewDetailView = { [weak self] in
+//      AppLog.log(at: FirebaseAnalyticsProvider.self, .clickPlanDetailExample)
+//      guard let self = self else {return}
+//      let vc = ModuleFactory.resolve().instantiatePlanDetailVC(postID: self.viewModel.postId, isPreviewPage: true)
+//      self.navigationController?.pushViewController(vc, animated: true)
+//    }
   }
  
   private func addButtonActions(){

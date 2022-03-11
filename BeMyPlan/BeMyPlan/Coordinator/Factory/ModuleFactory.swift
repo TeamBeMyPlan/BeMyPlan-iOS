@@ -12,8 +12,12 @@ protocol ModuleFactoryProtocol {
   // MARK: - Splash
   func instantiateSplashVC() -> SplashVC
   
+  // MARK: - Onboarding
+  func instantiateOnboardingVC() -> OnboardingVC
+  
   // MARK: - Auth
   func instantiateLoginVC() -> LoginVC
+  
   //삭제해야함
   func instantiateSignupVC() -> SignUpVC
   func instantiateSignupNicknameVC() -> SignUpNicknameVC
@@ -67,6 +71,11 @@ class ModuleFactory: ModuleFactoryProtocol{
   // MARK: - Splash
   func instantiateSplashVC() -> SplashVC {
     return SplashVC.controllerFromStoryboard(.splash)
+  }
+  
+  // MARK: - Onboarding
+  func instantiateOnboardingVC() -> OnboardingVC {
+    return OnboardingVC.controllerFromStoryboard(.onboarding)
   }
   
   // MARK: - Auth

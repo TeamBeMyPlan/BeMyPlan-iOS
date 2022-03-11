@@ -13,7 +13,10 @@ enum LogEventType {
   
   // 2. 온보딩
   case onboardingFirstOpen // 온보딩 최초 실행
-  case onboardingEnd // 온보딩 완료
+  case onboardingViewSecondPage // 온보딩 두번째 페이지 보기
+  case onboardingViewThirdPage // 온보딩 세번째 페이지 보기
+  case onboardingSkip // 온보딩 스킵
+  case onboardingComplete // 온보딩 완료
   
   // 3. 로그인
   case signin(source: LoginSource) // 애플로그인,카카오로그인,둘러보기
@@ -79,7 +82,10 @@ extension LogEventType: EventType {
     switch self {
       case .appFirstOpen:                 return "firebase_first_open"
       case .onboardingFirstOpen:          return "onboarding_first_open"
-      case .onboardingEnd:                return "onboarding_complete"
+      case .onboardingViewSecondPage:     return "onboarding_view_second_page"
+      case .onboardingViewThirdPage:      return "onboarding_view_third_page"
+      case .onboardingSkip:               return "onboarding_skip"
+      case .onboardingComplete:           return "onboarding_complete"
       case .signin:                       return "signin_click"
       case .signupNickname:               return "signup_nickname"
       case .signupEmail:                  return "signup_email"

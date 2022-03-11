@@ -23,6 +23,16 @@ struct ImageLiterals{
     static let myPlanIconSelected = UIImage(named: "icon_myplan_selected")!
   }
 	
+	struct Onboarding {
+		static let previewImage1 = UIImage(named: "img_onboarding_01")!
+		static let previewImage2 = UIImage(named: "img_onboarding_02")!
+		static let previewImage3 = UIImage(named: "img_onboarding_03")!
+		
+		static let pageControlDot1 = UIImage(named: "dots_1")!
+		static let pageControlDot2 = UIImage(named: "dots_2")!
+		static let pageControlDot3 = UIImage(named: "dots_3")!
+	}
+	
 	struct Preview{
 		static let scrabIcon = UIImage(named: "icon_scrab")!
 		static let scrabIconSelected = UIImage(named: "icon_scrab_selected")!
