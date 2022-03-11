@@ -44,7 +44,7 @@ final class OnboardingVC: UIViewController {
   }
 
   lazy var headerFirstLabel = UILabel().then {
-    $0.setTextWithLineHeight(text: "여행 취향이 비슷한 크리에이터의 \n여행 일정을 찾아보세요",
+    $0.setTextWithLineHeight(text: I18N.Onboarding.GuideFirstText,
                              lineHeight: screenWidth*25/375)
     $0.font = .boldSystemFont(ofSize: screenWidth*18/375)
     $0.numberOfLines = 0
@@ -54,7 +54,7 @@ final class OnboardingVC: UIViewController {
   }
   
   lazy var headerSecondLabel = UILabel().then {
-    $0.setTextWithLineHeight(text: "미리보기로 원하는\n여행인지 확인하세요",
+    $0.setTextWithLineHeight(text: I18N.Onboarding.GuideSecondText,
                              lineHeight: screenWidth*25/375)
     $0.font = .boldSystemFont(ofSize: screenWidth*18/375)
     $0.numberOfLines = 0
@@ -64,7 +64,7 @@ final class OnboardingVC: UIViewController {
   }
   
   lazy var headerThirdLabel = UILabel().then {
-    $0.setTextWithLineHeight(text: "여행 일정을 구매하여\n알찬 여행 정보를 만나보세요",
+    $0.setTextWithLineHeight(text: I18N.Onboarding.GuideThirdText,
                              lineHeight: screenWidth*25/375)
     $0.font = .boldSystemFont(ofSize: screenWidth*18/375)
     $0.numberOfLines = 0
@@ -137,9 +137,15 @@ private extension OnboardingVC {
   
   func setPageControlImage(){
     switch(pageIndex) {
-      case 0: pageControlImageView.image = UIImage(named: "dots_1")
-      case 1: pageControlImageView.image = UIImage(named: "dots_2")
-      default: pageControlImageView.image = UIImage(named: "dots_3")
+      case 0:
+        pageControlImageView.image = UIImage(named: "dots_1")
+        
+      case 1:
+        pageControlImageView.image = UIImage(named: "dots_2")
+        
+      default:
+        pageControlImageView.image = UIImage(named: "dots_3")
+        
     }
   }
 }
