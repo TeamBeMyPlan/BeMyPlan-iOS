@@ -27,23 +27,12 @@ extension OnboardingVC {
   }
   
   func configureMainContentView() {
-    mainContentView.addSubview(headerFirstLabel)
-    mainContentView.addSubview(headerSecondLabel)
-    mainContentView.addSubview(headerThirdLabel)
-  
-    headerFirstLabel.snp.makeConstraints {
-      $0.top.equalToSuperview().offset(73)
-      $0.centerX.equalToSuperview()
-    }
-    
-    headerSecondLabel.snp.makeConstraints {
-      $0.top.equalToSuperview().offset(73)
-      $0.centerX.equalToSuperview()
-    }
-    
-    headerThirdLabel.snp.makeConstraints {
-      $0.top.equalToSuperview().offset(73)
-      $0.centerX.equalToSuperview()
+    [headerFirstLabel,headerSecondLabel,headerThirdLabel].forEach { label in
+      mainContentView.addSubview(label)
+      label.snp.makeConstraints {
+        $0.top.equalToSuperview().offset(73)
+        $0.centerX.equalToSuperview()
+      }
     }
   }
   
@@ -67,9 +56,9 @@ extension OnboardingVC {
       $0.height.equalTo(screenWidth * 460/375)
     }
     
-    imageStackView.addArrangedSubview(contentFirstImageView)
-    imageStackView.addArrangedSubview(contentSecondImageView)
-    imageStackView.addArrangedSubview(contentThirdImageView)
+    [contentFirstImageView,contentSecondImageView,contentThirdImageView].forEach { imageView in
+      imageStackView.addArrangedSubview(imageView)
+    }
   }
   
   func configureBottomPageControlView() {
@@ -95,6 +84,12 @@ extension OnboardingVC {
       $0.width.equalTo(58)
       $0.centerX.equalToSuperview()
       $0.top.equalToSuperview().offset(19)
+    }
+  }
+  
+  func configureImageShadow(){
+    [contentFirstImageView,contentSecondImageView,contentThirdImageView].forEach { imageView in
+      imageView.layer.applyShadow(color: .black, alpha: 0.15, x: 5, y: 4, blur: 15, spread: 0)
     }
   }
   

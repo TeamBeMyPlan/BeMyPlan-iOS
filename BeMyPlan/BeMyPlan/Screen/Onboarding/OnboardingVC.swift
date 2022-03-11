@@ -100,6 +100,7 @@ final class OnboardingVC: UIViewController {
     self.configureMainContentView()
     self.configureImageScrollView()
     self.configureBottomPageControlView()
+    self.configureImageShadow()
   }
   
   // MARK: - IBAction Part
