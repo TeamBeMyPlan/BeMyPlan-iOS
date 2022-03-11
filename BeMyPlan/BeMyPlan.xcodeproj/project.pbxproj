@@ -213,6 +213,8 @@
 		FDCE38282799BACB0042DC54 /* Indicator.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDCE38272799BACB0042DC54 /* Indicator.storyboard */; };
 		FDCE382A2799BAD80042DC54 /* IndicatorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCE38292799BAD80042DC54 /* IndicatorVC.swift */; };
 		FDCE382C2799BBC90042DC54 /* showIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCE382B2799BBC90042DC54 /* showIndicator.swift */; };
+		FDD41E2527DAF87B003BF531 /* OnboardingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD41E2427DAF87B003BF531 /* OnboardingVC.swift */; };
+		FDD41E2727DAF884003BF531 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDD41E2627DAF884003BF531 /* Onboarding.storyboard */; };
 		FDF3090E27D1436800FF783F /* ImageSlideShowProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF3090D27D1436800FF783F /* ImageSlideShowProtocol.swift */; };
 		FDF7FEC327A7E14600E3AB62 /* Presentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF7FEC227A7E14600E3AB62 /* Presentable.swift */; };
 		FDF7FEC527A7E14F00E3AB62 /* CoordinatorFinishOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF7FEC427A7E14F00E3AB62 /* CoordinatorFinishOutput.swift */; };
@@ -488,6 +490,8 @@
 		FDCE38272799BACB0042DC54 /* Indicator.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Indicator.storyboard; sourceTree = "<group>"; };
 		FDCE38292799BAD80042DC54 /* IndicatorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorVC.swift; sourceTree = "<group>"; };
 		FDCE382B2799BBC90042DC54 /* showIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = showIndicator.swift; sourceTree = "<group>"; };
+		FDD41E2427DAF87B003BF531 /* OnboardingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingVC.swift; sourceTree = "<group>"; };
+		FDD41E2627DAF884003BF531 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		FDF3090D27D1436800FF783F /* ImageSlideShowProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSlideShowProtocol.swift; sourceTree = "<group>"; };
 		FDF7FEC227A7E14600E3AB62 /* Presentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presentable.swift; sourceTree = "<group>"; };
 		FDF7FEC427A7E14F00E3AB62 /* CoordinatorFinishOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorFinishOutput.swift; sourceTree = "<group>"; };
@@ -1161,6 +1165,7 @@
 		FD3211C627843F64007D63D5 /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				FDD41E2327DAF5A3003BF531 /* Onboarding */,
 				F21AFA9A279187E900A84633 /* Alert */,
 				FD2D4DBF278D579A002084B9 /* Components */,
 				FD3151A0278D0C5D0076D92E /* Plan */,
@@ -1422,6 +1427,15 @@
 			path = Indicator;
 			sourceTree = "<group>";
 		};
+		FDD41E2327DAF5A3003BF531 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				FDD41E2427DAF87B003BF531 /* OnboardingVC.swift */,
+				FDD41E2627DAF884003BF531 /* Onboarding.storyboard */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 		FDF3090C27D1435300FF783F /* ImageViewer */ = {
 			isa = PBXGroup;
 			children = (
@@ -1640,6 +1654,7 @@
 				FD09DDDA27856A31006DA050 /* copyright.png in Resources */,
 				FD09DDD827856A31006DA050 /* map_pinup@3x.png in Resources */,
 				FDA2062F27C40FCC001A371D /* PlanDetail.storyboard in Resources */,
+				FDD41E2727DAF884003BF531 /* Onboarding.storyboard in Resources */,
 				FDF980CE2786D2550009A14E /* Login.storyboard in Resources */,
 				FDF980FD2788C9170009A14E /* PlanPreview.storyboard in Resources */,
 				FD2D4DDA278DB179002084B9 /* PlanDetailSummaryFoldTVC.xib in Resources */,
@@ -1855,6 +1870,7 @@
 				FD93028827A3F9B800341C2A /* downloadImage.swift in Sources */,
 				523C70FD2799DAA30073371D /* ScrapEmptyDataModel.swift in Sources */,
 				523C70A52795D32E0073371D /* TravelSpotService.swift in Sources */,
+				FDD41E2527DAF87B003BF531 /* OnboardingVC.swift in Sources */,
 				FD4C86BE278C9AF900D37A2D /* PaymentCompleteVC.swift in Sources */,
 				FDCDCB31278F4C2B002CEA15 /* PlanDetailSpotDataModel.swift in Sources */,
 				523C70A32795C3EF0073371D /* TravelSpotDataModel.swift in Sources */,
