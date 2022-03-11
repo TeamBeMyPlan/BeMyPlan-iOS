@@ -15,26 +15,27 @@ final class OnboardingVC: UIViewController {
   // MARK: - UI Component Part
   
   lazy var mainContentView = UIView()
-  lazy var contentScrollView = UIScrollView().then {
-    $0.isPagingEnabled = true
-    $0.showsVerticalScrollIndicator = false
-    $0.showsHorizontalScrollIndicator = false
-  }
+
   lazy var contentScrollInnerView = UIView()
   lazy var bottomPageControlView = UIView()
   lazy var nextActionButton = UIButton()
   lazy var skipActionButton = UIButton()
+  
   lazy var imageStackView = UIStackView().then {
     $0.distribution = .fillEqually
     $0.spacing = 0
     $0.axis = .horizontal
   }
-  
-  
+  lazy var contentScrollView = UIScrollView().then {
+    $0.isPagingEnabled = true
+    $0.showsVerticalScrollIndicator = false
+    $0.showsHorizontalScrollIndicator = false
+  }
+
   lazy var headerFirstLabel = UILabel().then {
     $0.setTextWithLineHeight(text: "여행 취향이 비슷한 크리에이터의 \n여행 일정을 찾아보세요",
-                             lineHeight: 1.16)
-    $0.font = .boldSystemFont(ofSize: 18)
+                             lineHeight: 25)
+    $0.font = .boldSystemFont(ofSize: screenWidth*18/375)
     $0.numberOfLines = 0
     $0.textColor = .grey01
     $0.textAlignment = .center
@@ -43,8 +44,8 @@ final class OnboardingVC: UIViewController {
   
   lazy var headerSecondLabel = UILabel().then {
     $0.setTextWithLineHeight(text: "미리보기로 원하는\n여행인지 확인하세요",
-                             lineHeight: 1.16)
-    $0.font = .boldSystemFont(ofSize: 18)
+                             lineHeight: 25)
+    $0.font = .boldSystemFont(ofSize: screenWidth*18/375)
     $0.numberOfLines = 0
     $0.textColor = .grey01
     $0.textAlignment = .center
@@ -53,8 +54,8 @@ final class OnboardingVC: UIViewController {
   
   lazy var headerThirdLabel = UILabel().then {
     $0.setTextWithLineHeight(text: "여행 일정을 구매하여\n알찬 여행 정보를 만나보세요",
-                             lineHeight: 1.16)
-    $0.font = .boldSystemFont(ofSize: 18)
+                             lineHeight: 25)
+    $0.font = .boldSystemFont(ofSize: screenWidth*18/375)
     $0.numberOfLines = 0
     $0.textColor = .grey01
     $0.textAlignment = .center
@@ -82,7 +83,7 @@ final class OnboardingVC: UIViewController {
     $0.text = "다음"
   }
   
-  lazy var skiptButtonLabel = UILabel().then {
+  lazy var skipButtonLabel = UILabel().then {
     $0.font = .boldSystemFont(ofSize: 16)
     $0.textColor = .grey03
     $0.text = "건너뛰기"
@@ -97,19 +98,12 @@ final class OnboardingVC: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.configureUI()
-    self.configureMainContentView()
     self.configureImageScrollView()
+    self.configureMainContentView()
     self.configureBottomPageControlView()
     self.configureImageShadow()
   }
   
-  // MARK: - IBAction Part
-  
-  
-  // MARK: - Custom Method Part
-  
-  
-  // MARK: - @objc Function Part
-  
 }
 // MARK: - Extension Part
+extension BaseServ

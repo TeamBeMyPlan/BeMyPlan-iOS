@@ -15,7 +15,7 @@ extension OnboardingVC {
     bottomPageControlView.snp.makeConstraints {
       $0.leading.trailing.equalToSuperview()
       $0.bottom.equalToSuperview()
-      $0.height.equalTo(80)
+      $0.height.equalTo(90)
     }
     
     self.view.addSubview(mainContentView)
@@ -30,7 +30,8 @@ extension OnboardingVC {
     [headerFirstLabel,headerSecondLabel,headerThirdLabel].forEach { label in
       mainContentView.addSubview(label)
       label.snp.makeConstraints {
-        $0.top.equalToSuperview().offset(73)
+        $0.bottom.equalTo(imageStackView.snp.top).inset(-50)
+        $0.height.equalTo(50)
         $0.centerX.equalToSuperview()
       }
     }
@@ -62,6 +63,23 @@ extension OnboardingVC {
   }
   
   func configureBottomPageControlView() {
+    
+    bottomPageControlView.addSubview(skipButtonLabel)
+    bottomPageControlView.addSubview(nextButtonLabel)
+    
+    skipButtonLabel.snp.makeConstraints {
+      $0.height.equalTo(20)
+      $0.top.equalToSuperview().offset(13)
+      $0.left.equalToSuperview().offset(37)
+    }
+    
+    nextButtonLabel.snp.makeConstraints {
+      $0.height.equalTo(20)
+      $0.top.equalToSuperview().offset(13)
+      $0.right.equalToSuperview().inset(53)
+    }
+    
+    
     bottomPageControlView.addSubview(skipActionButton)
     skipActionButton.snp.makeConstraints {
       $0.height.equalTo(50)
@@ -85,13 +103,19 @@ extension OnboardingVC {
       $0.centerX.equalToSuperview()
       $0.top.equalToSuperview().offset(19)
     }
+    
+
+
+
+    
+    
   }
+  
   
   func configureImageShadow(){
     [contentFirstImageView,contentSecondImageView,contentThirdImageView].forEach { imageView in
       imageView.layer.applyShadow(color: .black, alpha: 0.15, x: 5, y: 4, blur: 15, spread: 0)
     }
   }
-  
 
 }
