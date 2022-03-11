@@ -21,12 +21,12 @@ class OnboardingVC: UIViewController {
   private lazy var skipActionButton = UIButton()
 
   
-  
   private lazy var headerFirstLabel = UILabel().then {
     $0.setTextWithLineHeight(text: "여행 취향이 비슷한 크리에이터의 \n여행 일정을 찾아보세요",
                              lineHeight: 1.16)
     $0.font = .boldSystemFont(ofSize: 18)
     $0.numberOfLines = 0
+    $0.textColor = .grey01
     $0.alpha = 0
   }
   
@@ -35,6 +35,7 @@ class OnboardingVC: UIViewController {
                              lineHeight: 1.16)
     $0.font = .boldSystemFont(ofSize: 18)
     $0.numberOfLines = 0
+    $0.textColor = .grey01
     $0.alpha = 0
   }
   
@@ -43,9 +44,36 @@ class OnboardingVC: UIViewController {
                              lineHeight: 1.16)
     $0.font = .boldSystemFont(ofSize: 18)
     $0.numberOfLines = 0
+    $0.textColor = .grey01
     $0.alpha = 0
   }
   
+  private lazy var contentFirstImage = UIImageView().then {
+    $0.image = UIImage(named: "img_onboarding_01")
+    $0.contentMode = .scaleAspectFit
+  }
+  
+  private lazy var contentSecondImage = UIImageView().then {
+    $0.image = UIImage(named: "img_onboarding_02")
+    $0.contentMode = .scaleAspectFit
+  }
+  
+  private lazy var contentThirdImage = UIImageView().then {
+    $0.image = UIImage(named: "img_onboarding_03")
+    $0.contentMode = .scaleAspectFit
+  }
+  
+  private lazy var nextButtonLabel = UILabel().then {
+    $0.font = .boldSystemFont(ofSize: 16)
+    $0.textColor = .bemyBlue
+    $0.text = "다음"
+  }
+  
+  private lazy var skiptButtonLabel = UILabel().then {
+    $0.font = .boldSystemFont(ofSize: 16)
+    $0.textColor = .grey03
+    $0.text = "건너뛰기"
+  }
 
   // MARK: - Life Cycle Part
   

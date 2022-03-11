@@ -215,6 +215,7 @@
 		FDCE382C2799BBC90042DC54 /* showIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCE382B2799BBC90042DC54 /* showIndicator.swift */; };
 		FDD41E2527DAF87B003BF531 /* OnboardingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD41E2427DAF87B003BF531 /* OnboardingVC.swift */; };
 		FDD41E2727DAF884003BF531 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDD41E2627DAF884003BF531 /* Onboarding.storyboard */; };
+		FDD41E2927DB01AE003BF531 /* OnboardingVC + ConfigureLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD41E2827DB01AE003BF531 /* OnboardingVC + ConfigureLayout.swift */; };
 		FDF3090E27D1436800FF783F /* ImageSlideShowProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF3090D27D1436800FF783F /* ImageSlideShowProtocol.swift */; };
 		FDF7FEC327A7E14600E3AB62 /* Presentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF7FEC227A7E14600E3AB62 /* Presentable.swift */; };
 		FDF7FEC527A7E14F00E3AB62 /* CoordinatorFinishOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF7FEC427A7E14F00E3AB62 /* CoordinatorFinishOutput.swift */; };
@@ -492,6 +493,7 @@
 		FDCE382B2799BBC90042DC54 /* showIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = showIndicator.swift; sourceTree = "<group>"; };
 		FDD41E2427DAF87B003BF531 /* OnboardingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingVC.swift; sourceTree = "<group>"; };
 		FDD41E2627DAF884003BF531 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
+		FDD41E2827DB01AE003BF531 /* OnboardingVC + ConfigureLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnboardingVC + ConfigureLayout.swift"; sourceTree = "<group>"; };
 		FDF3090D27D1436800FF783F /* ImageSlideShowProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSlideShowProtocol.swift; sourceTree = "<group>"; };
 		FDF7FEC227A7E14600E3AB62 /* Presentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presentable.swift; sourceTree = "<group>"; };
 		FDF7FEC427A7E14F00E3AB62 /* CoordinatorFinishOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorFinishOutput.swift; sourceTree = "<group>"; };
@@ -1432,6 +1434,7 @@
 			children = (
 				FDD41E2427DAF87B003BF531 /* OnboardingVC.swift */,
 				FDD41E2627DAF884003BF531 /* Onboarding.storyboard */,
+				FDD41E2827DB01AE003BF531 /* OnboardingVC + ConfigureLayout.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -1848,6 +1851,7 @@
 				FD3566572792B2530082B4CE /* BaseNC.swift in Sources */,
 				F26A584E279AE217001986F2 /* AuthNickNameDataModel.swift in Sources */,
 				523C70B52796F11C0073371D /* ScrapBtnService.swift in Sources */,
+				FDD41E2927DB01AE003BF531 /* OnboardingVC + ConfigureLayout.swift in Sources */,
 				FD20C609278EB94100AC6E34 /* MyPlanCVUserResuableView.swift in Sources */,
 				FD2D9C602797DF8C00688A42 /* PlanDetailWriterContainerView.swift in Sources */,
 				F2C5F18E2786EACB00BE4036 /* MainCardView.swift in Sources */,
