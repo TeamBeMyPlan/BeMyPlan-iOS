@@ -35,17 +35,11 @@ class BaseService{
   static let `default` = BaseService()
   private init() {}
   
-  func requestObjectInReactive<T: Decodable>(_ target: BaseAPI) -> Single<T> {
-    return provider.rx.request(target)
-      .filterSuccessfulStatusAndRedirectCodes()
-      .map(T.self)
-  }
   
-  func requestObjectInReactiveWithIgnore<T: Decodable>(_ target: BaseAPI) -> Single<T> {
+  func requestObjectInRx<T: Decodable>(_ target: BaseAPI) -> Single<T> {
     return provider.rx.request(target)
       .filterSuccessfulStatusAndRedirectCodes()
       .map(T.self)
-      .asObservable().ignoreElements()
   }
   
   func requestObject<T: Decodable>(_ target: BaseAPI, completion: @escaping (Result<T?, Error>) -> Void) {
