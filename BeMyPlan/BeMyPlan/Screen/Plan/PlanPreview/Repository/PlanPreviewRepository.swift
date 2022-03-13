@@ -25,6 +25,10 @@ final class DefaultPlanPreviewRepository: PlanPreviewRepository {
     self.networkService = service
   }
   
+  func fetchHeaderDataInRx(idx: Int) {
+    
+  }
+  
   func fetchHeaderData(idx: Int,onCompleted: @escaping (PlanPreview.HeaderData?,PlanPreview.DescriptionData?,Int,Int) -> Void){
     networkService.getPlanPreviewHeaderData(idx: idx) { [weak self] result in
       guard let self = self else {return}

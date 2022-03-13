@@ -35,8 +35,6 @@ class BaseService{
   static let `default` = BaseService()
   private init() {}
   
-  
-  
   func requestObjectInRx<T: Decodable>(_ target: BaseAPI) -> Observable<T?>{
     
     return Observable<T?>.create { observer in

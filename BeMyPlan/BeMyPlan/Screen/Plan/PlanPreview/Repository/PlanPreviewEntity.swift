@@ -45,5 +45,28 @@ struct PlanPreviewEntity :Codable{
           case authorID = "author_id"
       }
   }
+  
 
+}
+
+extension PlanPreviewEntity.Header {
+  func toDomain() -> PlanPreview.HeaderData {
+    return .init(authorID: authorID,
+                 writer: author,
+                 title: title,
+                 descriptionContent:dataDescription,
+                 summary: PlanPreview.HeaderData.IconData.init(theme: tagTheme,
+                                        spotCount: String(tagCountSpot),
+                                        restaurantCount: String(tagCountRestaurant),
+                                        dayCount: String(tagCountDay),
+                                        peopleCase: tagPartner,
+                                        budget: tagMoney,
+                                        transport: tagMobility,
+                                        month: String(tagMonth)))
+  }
+}
+
+
+extension PlanPreviewEntity.Body {
+  
 }
