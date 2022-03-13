@@ -62,7 +62,8 @@ extension PlanPreviewEntity.Header {
                                         peopleCase: tagPartner,
                                         budget: tagMoney,
                                         transport: tagMobility,
-                                        month: String(tagMonth)))
+                                        month: String(tagMonth)),
+                 price: String(price))
   }
 }
 

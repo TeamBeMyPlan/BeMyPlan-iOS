@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RxSwift
 
 protocol PlanPreviewRepository {
   var networkError: ((Error) -> Void)? { get set }
@@ -25,8 +26,16 @@ final class DefaultPlanPreviewRepository: PlanPreviewRepository {
     self.networkService = service
   }
   
-  func fetchHeaderDataInRx(idx: Int) {
-    
+  func fetchHeaderDataInRx(idx: Int) -> Observable<PlanPreview.HeaderData?>{
+    return .create { observer in
+      self.networkService.fetchPlanPreviewHeaderData(idx: idx)
+        .subscribe(onNext: { entity in
+          let dto = entity?.toDomain()
+          observer.onNext(dto)
+        }, onError: { err in
+          observer.onError(err)
+        })
+    }
   }
   
   func fetchHeaderData(idx: Int,onCompleted: @escaping (PlanPreview.HeaderData?,PlanPreview.DescriptionData?,Int,Int) -> Void){

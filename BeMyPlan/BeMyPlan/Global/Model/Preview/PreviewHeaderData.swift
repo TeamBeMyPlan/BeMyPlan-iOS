@@ -12,8 +12,9 @@ extension PlanPreview{
     var authorID: Int
     var writer: String
     var title: String
-    var descriptionContent : String
-    var summary : IconData
+    var descriptionContent: String
+    var summary: IconData
+    var price: String
     
     struct IconData{
       var theme : String
