@@ -26,11 +26,12 @@ final class DefaultPlanPreviewRepository: PlanPreviewRepository {
     self.networkService = service
   }
   
-  func fetchHeaderDataInRx(idx: Int) -> Observable<PlanPreview.HeaderData?>{
+  func fetchHeaderDataInRx(idx: Int) -> Observable<PlanPreview.HeaderData>{
     return .create { observer in
       self.networkService.fetchPlanPreviewHeaderData(idx: idx)
         .subscribe(onNext: { entity in
-          let dto = entity?.toDomain()
+          guard let entity = entity else {return observer.onCompleted()}
+          let dto = entity.toDomain()
           observer.onNext(dto)
         }, onError: { err in
           observer.onError(err)
@@ -38,32 +39,19 @@ final class DefaultPlanPreviewRepository: PlanPreviewRepository {
     }
   }
   
-  func fetchHeaderData(idx: Int,onCompleted: @escaping (PlanPreview.HeaderData?,PlanPreview.DescriptionData?,Int,Int) -> Void){
-    networkService.getPlanPreviewHeaderData(idx: idx) { [weak self] result in
-      guard let self = self else {return}
-      result.success { entity in
-        guard let entity = entity else {return}
-        let headerData = PlanPreview.HeaderData.init(authorID: entity.authorID,
-                                                     writer: entity.author,
-                                                     title: entity.title)
-      
-        let descriptionData = PlanPreview.DescriptionData.init(descriptionContent: entity.dataDescription,
-                                                               summary: PlanPreview.IconData.init(theme: entity.tagTheme,
-                                                                                                  spotCount: String(entity.tagCountSpot),
-                                                                                                  restaurantCount: String(entity.tagCountRestaurant),
-                                                                                                  dayCount: String(entity.tagCountDay),
-                                                                                                  peopleCase: entity.tagPartner,
-                                                                                                  budget: entity.tagMoney,
-                                                                                                  transport: entity.tagMobility,
-                                                                                                  month: String(entity.tagMonth)))
-        let price = entity.price
-        let authID = entity.authorID
-        onCompleted(headerData,descriptionData,price,authID)
-      }.catch { error in
-        self.networkError?(error)
-      }
+  func fetchBodyDataInRx(idx: Int) -> Observable<PlanPreview.Body> {
+    return .create { observer in
+      self.networkService.fetchPlanPreviewHeaderData(idx: idx)
+        .subscribe(onNext: { entity in
+          guard let entity = entity else {return observer.onCompleted()}
+          let dto = entity.toDomain()
+          observer.onNext(dto)
+        }, onError: { err in
+          observer.onError(err)
+        })
     }
   }
+  
   
   func fetchBodyData(idx: Int,onCompleted: @escaping ([PlanPreview.PhotoData]?,PlanPreview.SummaryData?) -> Void){
     networkService.getPlanPreviewDetailData(idx: idx) { [weak self] result in
