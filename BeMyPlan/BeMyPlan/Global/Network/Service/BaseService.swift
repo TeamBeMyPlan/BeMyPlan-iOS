@@ -33,10 +33,11 @@ fileprivate class DefaultAlamofireManager: Alamofire.Session {
 
 class BaseService{
   static let `default` = BaseService()
+  var disposeBag = DisposeBag()
   private init() {}
   
+  
   func requestObjectInRx<T: Decodable>(_ target: BaseAPI) -> Observable<T?>{
-    
     return Observable<T?>.create { observer in
       provider.rx
         .request(target)
@@ -47,13 +48,15 @@ class BaseService{
                 let decoder = JSONDecoder()
                 let body = try decoder.decode(ResponseObject<T>.self, from: value.data)
                 observer.onNext(body.data)
+                observer.onCompleted()
               } catch let error {
                 observer.onError(error)
               }
             case .failure(let error):
               observer.onError(error)
           }
-        }
+        }.disposed(by: self.disposeBag)
+      return Disposables.create()
     }
   }
   

@@ -21,5 +21,4 @@ extension BaseService : PlanPreviewServiceType{
   func fetchPlanPreviewBodyData(idx: Int) -> Observable<PlanPreviewEntity.Body?> {
     return requestObjectInRx(.getPlanPreviewData(idx: idx))
   }
-  
 }

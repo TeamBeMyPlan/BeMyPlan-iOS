@@ -8,8 +8,8 @@
 import Foundation
 
 extension PlanPreview {
-  struct Body {
+  struct BodyData {
     var photos: [PlanPreview.PhotoData]
-    var summaryL PlanPreview.SummaryData
+    var summary: PlanPreview.SummaryData?
   }
 }

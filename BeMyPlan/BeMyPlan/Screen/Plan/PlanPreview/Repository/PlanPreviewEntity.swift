@@ -69,5 +69,11 @@ extension PlanPreviewEntity.Header {
 
 
 extension PlanPreviewEntity.Body {
-  
+  func toDomain() -> PlanPreview.BodyData {
+    let photo = photoUrls.map { url in
+      PlanPreview.PhotoData.init(photo: url, content: datumDescription)
+    }
+    return .init(photos: photo,
+                 summary: nil)
+  }
 }

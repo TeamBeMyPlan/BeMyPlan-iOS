@@ -9,64 +9,52 @@ import Foundation
 import RxSwift
 
 protocol PlanPreviewRepository {
-  var networkError: ((Error) -> Void)? { get set }
-  func fetchHeaderData(idx: Int,onCompleted: @escaping (PlanPreview.HeaderData?,PlanPreview.DescriptionData?,Int,Int) -> Void)
-  func fetchBodyData(idx: Int,onCompleted: @escaping ([PlanPreview.PhotoData]?,PlanPreview.SummaryData?) -> Void)
+  func fetchHeaderData(idx: Int) -> Observable<PlanPreview.HeaderData>
+  func fetchBodyData(idx: Int) -> Observable<PlanPreview.BodyData>
 }
 
-final class DefaultPlanPreviewRepository: PlanPreviewRepository {
+final class DefaultPlanPreviewRepository {
   
-  // MARK: - Outputs
-  var networkError: ((Error) -> Void)?
-  
+  var disposeBag = DisposeBag()
   // MARK: - Dependency
   private let networkService: PlanPreviewServiceType
   
   init(service : PlanPreviewServiceType){
     self.networkService = service
   }
-  
-  func fetchHeaderDataInRx(idx: Int) -> Observable<PlanPreview.HeaderData>{
-    return .create { observer in
+}
+
+extension DefaultPlanPreviewRepository: PlanPreviewRepository {
+  func fetchHeaderData(idx: Int) -> Observable<PlanPreview.HeaderData>{
+    return Observable.create { observer in
       self.networkService.fetchPlanPreviewHeaderData(idx: idx)
         .subscribe(onNext: { entity in
           guard let entity = entity else {return observer.onCompleted()}
           let dto = entity.toDomain()
           observer.onNext(dto)
+          observer.onCompleted()
         }, onError: { err in
           observer.onError(err)
         })
+        .disposed(by: self.disposeBag)
+      return Disposables.create()
+
     }
   }
   
-  func fetchBodyDataInRx(idx: Int) -> Observable<PlanPreview.Body> {
+  func fetchBodyData(idx: Int) -> Observable<PlanPreview.BodyData> {
     return .create { observer in
-      self.networkService.fetchPlanPreviewHeaderData(idx: idx)
+      self.networkService.fetchPlanPreviewBodyData(idx: idx)
         .subscribe(onNext: { entity in
           guard let entity = entity else {return observer.onCompleted()}
           let dto = entity.toDomain()
           observer.onNext(dto)
+          observer.onCompleted()
         }, onError: { err in
           observer.onError(err)
         })
-    }
-  }
-  
-  
-  func fetchBodyData(idx: Int,onCompleted: @escaping ([PlanPreview.PhotoData]?,PlanPreview.SummaryData?) -> Void){
-    networkService.getPlanPreviewDetailData(idx: idx) { [weak self] result in
-      guard let self = self else {return}
-      result.success { entity in
-        guard let entity = entity else {return}
-          var photoList : [PlanPreview.PhotoData] = []
-          for (_,item) in entity.enumerated(){
-            photoList.append(PlanPreview.PhotoData.init(photo: item.photoUrls.first ?? "",
-                                                        content: item.datumDescription))
-        }
-        onCompleted(photoList,nil)
-      }.catch { error in
-        self.networkError?(error)
-      }
+        .disposed(by: self.disposeBag)
+      return Disposables.create()
     }
   }
 }
