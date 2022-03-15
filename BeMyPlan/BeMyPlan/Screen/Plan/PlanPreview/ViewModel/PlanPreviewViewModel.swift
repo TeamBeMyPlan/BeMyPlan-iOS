@@ -68,8 +68,10 @@ extension PlanPreviewViewModel{
     let output = Output()
     self.bindOutput(output: output, disposeBag: disposeBag)
     
+    print("transForm")
     input.viewDidLoadEvent
       .subscribe(onNext: { [weak self] in
+        print("viewDidLoadEventLoad")
         self?.previewUseCase.fetchPlanPreviewData()
       })
       .disposed(by: disposeBag)
@@ -83,11 +85,15 @@ extension PlanPreviewViewModel{
     let contentDataIndexRelay = previewUseCase.contentIndexListData
     let imageHeightListRelay = previewUseCase.imageHeightData
     
-    _ = Observable.combineLatest(contentDataRelay, contentDataIndexRelay,imageHeightListRelay) { (content, indexList, heightList) in
+    Observable.combineLatest(contentDataRelay, contentDataIndexRelay,imageHeightListRelay) { (content, indexList, heightList) in
+      print("ViewModel Combine Complete",content,indexList,heightList)
       output.contentData.accept(content)
       output.contentlistData.accept(indexList)
       output.heightList.accept(heightList)
-    }
+    }.subscribe { _ in
+      print("@@@@")
+            }.disposed(by: self.disposeBag)
+
   }
 
 

@@ -10,7 +10,7 @@ import RxSwift
 
 protocol PlanPreviewServiceType{
   func fetchPlanPreviewHeaderData(idx: Int) -> Observable<PlanPreviewEntity.Header?>
-  func fetchPlanPreviewBodyData(idx: Int) -> Observable<PlanPreviewEntity.Body?>
+  func fetchPlanPreviewBodyData(idx: Int) -> Observable<[PlanPreviewEntity.Body]?>
 }
 
 extension BaseService : PlanPreviewServiceType{
@@ -18,7 +18,7 @@ extension BaseService : PlanPreviewServiceType{
     return requestObjectInRx(.getPlanPreviewHeaderData(idx: idx))
   }
   
-  func fetchPlanPreviewBodyData(idx: Int) -> Observable<PlanPreviewEntity.Body?> {
+  func fetchPlanPreviewBodyData(idx: Int) -> Observable<[PlanPreviewEntity.Body]?> {
     return requestObjectInRx(.getPlanPreviewData(idx: idx))
   }
 }

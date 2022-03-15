@@ -43,9 +43,13 @@ extension DefaultPlanPreviewUseCase: PlanPreviewUseCase {
       return PlanPreview.ContentData.init(headerData: headerData,
                                    bodyData: bodyData)
     }).subscribe { result in
+
+
       if let content = result.element{
         self.setContentIndexList(contentData: content)
         self.contentData.onNext(content)
+        print("CONTENT 합치기 끝")
+        dump(content)
       }
     }.disposed(by: self.disposeBag)
 
@@ -61,17 +65,24 @@ extension DefaultPlanPreviewUseCase: PlanPreviewUseCase {
     var count = 0
     let imageViewWidth = screenWidth - 48
     _ = bodyData.photos.enumerated().map { index,imageUrls -> Void in
-      guard let url = URL(string: imageUrls.photo) else { return }
+      guard let url = URL(string: imageUrls.photoUrl) else { return }
+      print("image url 생성 성공",url)
       self.imageSizeFetcher.sizeFor(atURL: url) { err, result in
-        guard let _ = err else { return }
-        guard let result = result else { return}
-        let ratio = result.size.width / result.size.height
-        let heightForDevice = imageViewWidth / ratio
-        heightList[index] = heightForDevice
-        count += 1
+        print("err!!!!",err)
+        print("resultss!!!!",result)
+        
+        if let result = result {
+          let ratio = result.size.width / result.size.height
+          let heightForDevice = imageViewWidth / ratio
+          heightList[index] = heightForDevice
+          count += 1
+          print("COUNT222",count,heightList)
+        }
         if count == bodyData.photos.count {
+          print("imageHEIGHLISTDATA Compelte",heightList)
           self.imageHeightData.onNext(heightList)
         }
+
       }
     }
   }
@@ -92,6 +103,8 @@ extension DefaultPlanPreviewUseCase: PlanPreviewUseCase {
         contentList.append(.summary)
       }
     }
+    print("Complete Set INdex List")
+    dump(contentList)
     contentIndexListData.onNext(contentList)
   }
   

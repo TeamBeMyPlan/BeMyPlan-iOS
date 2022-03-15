@@ -63,6 +63,7 @@ class PlanPreviewVC: UIViewController {
   // MARK: - Custom Method Part
   
   private func bindViewModels(){
+    print("bindVIewModels")
     let input = PlanPreviewViewModel.Input(
       viewDidLoadEvent:
         self.rx.methodInvoked(#selector(UIViewController.viewWillAppear)).map { _ in })
@@ -70,7 +71,7 @@ class PlanPreviewVC: UIViewController {
     
     output.contentData.subscribe { content in
       print("COTNETNETN",content)
-    }
+    }.disposed(by: self.disposeBag)
   }
  
   private func addButtonActions(){

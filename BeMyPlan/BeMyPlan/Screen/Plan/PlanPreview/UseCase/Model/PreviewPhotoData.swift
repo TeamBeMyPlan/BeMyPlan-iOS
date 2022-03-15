@@ -9,7 +9,7 @@ import Foundation
 
 extension PlanPreview{
   struct PhotoData{
-    var photo : String
+    var photoUrl : String
     var content : String
   }
   

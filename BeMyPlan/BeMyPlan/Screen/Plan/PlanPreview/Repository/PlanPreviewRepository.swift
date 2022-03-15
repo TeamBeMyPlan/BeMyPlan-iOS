@@ -29,9 +29,8 @@ extension DefaultPlanPreviewRepository: PlanPreviewRepository {
       self.networkService.fetchPlanPreviewHeaderData(idx: idx)
         .subscribe(onNext: { entity in
           guard let entity = entity else {return observer.onCompleted()}
-          let dto = entity.toDomain()
+          let dto = entity.toHeaderDomain()
           observer.onNext(dto)
-          observer.onCompleted()
         }, onError: { err in
           observer.onError(err)
         })
@@ -44,10 +43,8 @@ extension DefaultPlanPreviewRepository: PlanPreviewRepository {
     return .create { observer in
       self.networkService.fetchPlanPreviewBodyData(idx: idx)
         .subscribe(onNext: { entity in
-          guard let entity = entity else {return observer.onCompleted()}
-          let dto = entity.toDomain()
+          let dto = PlanPreviewEntity.toBodyDomain(body: entity)
           observer.onNext(dto)
-          observer.onCompleted()
         }, onError: { err in
           observer.onError(err)
         })
