@@ -189,6 +189,9 @@
 		FD93028027A3EC7500341C2A /* PlanPreviewRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD93027F27A3EC7500341C2A /* PlanPreviewRepository.swift */; };
 		FD93028227A3ED1D00341C2A /* PlanPreviewEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD93028127A3ED1D00341C2A /* PlanPreviewEntity.swift */; };
 		FD93028827A3F9B800341C2A /* downloadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD93028727A3F9B800341C2A /* downloadImage.swift */; };
+		FD958A3327E0D7B500264EE4 /* ImageSizeFetcherOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD958A3227E0D7B500264EE4 /* ImageSizeFetcherOperation.swift */; };
+		FD958A3527E0D81700264EE4 /* ImageSizeFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD958A3427E0D81700264EE4 /* ImageSizeFetcher.swift */; };
+		FD958A3727E0D88300264EE4 /* ImageSizeFetcherParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD958A3627E0D88300264EE4 /* ImageSizeFetcherParser.swift */; };
 		FD958E7427DE69B200AD1B59 /* PreviewBodyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD958E7327DE69B200AD1B59 /* PreviewBodyData.swift */; };
 		FDA2062D27C40FCC001A371D /* PlanDetailVC + fetchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA2062927C40FCC001A371D /* PlanDetailVC + fetchData.swift */; };
 		FDA2062E27C40FCC001A371D /* PlanDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA2062A27C40FCC001A371D /* PlanDetailVC.swift */; };
@@ -469,6 +472,9 @@
 		FD93027F27A3EC7500341C2A /* PlanPreviewRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanPreviewRepository.swift; sourceTree = "<group>"; };
 		FD93028127A3ED1D00341C2A /* PlanPreviewEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanPreviewEntity.swift; sourceTree = "<group>"; };
 		FD93028727A3F9B800341C2A /* downloadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = downloadImage.swift; sourceTree = "<group>"; };
+		FD958A3227E0D7B500264EE4 /* ImageSizeFetcherOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSizeFetcherOperation.swift; sourceTree = "<group>"; };
+		FD958A3427E0D81700264EE4 /* ImageSizeFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSizeFetcher.swift; sourceTree = "<group>"; };
+		FD958A3627E0D88300264EE4 /* ImageSizeFetcherParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSizeFetcherParser.swift; sourceTree = "<group>"; };
 		FD958E7327DE69B200AD1B59 /* PreviewBodyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewBodyData.swift; sourceTree = "<group>"; };
 		FDA2062927C40FCC001A371D /* PlanDetailVC + fetchData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PlanDetailVC + fetchData.swift"; sourceTree = "<group>"; };
 		FDA2062A27C40FCC001A371D /* PlanDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanDetailVC.swift; sourceTree = "<group>"; };
@@ -848,6 +854,7 @@
 		FD09DE0127857927006DA050 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				FD958A3127E0D78A00264EE4 /* ImageSizeFetcher */,
 				FD09DE022785794B006DA050 /* makeVibrate.swift */,
 				FD09DE042785795D006DA050 /* applyShadow.swift */,
 				FD09DE0627857971006DA050 /* calculateTopInset.swift */,
@@ -1368,6 +1375,16 @@
 				FD5D730E27A46BAB002DE484 /* PlanPreviewViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		FD958A3127E0D78A00264EE4 /* ImageSizeFetcher */ = {
+			isa = PBXGroup;
+			children = (
+				FD958A3227E0D7B500264EE4 /* ImageSizeFetcherOperation.swift */,
+				FD958A3427E0D81700264EE4 /* ImageSizeFetcher.swift */,
+				FD958A3627E0D88300264EE4 /* ImageSizeFetcherParser.swift */,
+			);
+			path = ImageSizeFetcher;
 			sourceTree = "<group>";
 		};
 		FDA2062427C40F83001A371D /* Repository */ = {
@@ -1900,6 +1917,7 @@
 				F27483F227CA39B4004164F0 /* SignUpNicknameVC.swift in Sources */,
 				FD2D4DB9278D3DCE002084B9 /* PlanDetailInformationTVC.swift in Sources */,
 				FD20C60B278EBBB500AC6E34 /* MyPlanBuyContentCVC.swift in Sources */,
+				FD958A3527E0D81700264EE4 /* ImageSizeFetcher.swift in Sources */,
 				FDF981022788D49C0009A14E /* PlanPreviewWriterTVC.swift in Sources */,
 				FDCEE68C27D9D400000D8F7F /* PlanPreviewUseCase.swift in Sources */,
 				FD568E7127CFE6CF0078D23C /* FirebaseServiceProtocol.swift in Sources */,
@@ -1920,6 +1938,7 @@
 				FDF981082788D4CF0009A14E /* PlanPreviewSummaryTVC.swift in Sources */,
 				FDF980D62786D5320009A14E /* makePayBoocFont.swift in Sources */,
 				FD3566532792AF2C0082B4CE /* ScrapEmptyContainerView.swift in Sources */,
+				FD958A3327E0D7B500264EE4 /* ImageSizeFetcherOperation.swift in Sources */,
 				FD1A78232795C69000FB10AB /* MyPlanSerivice.swift in Sources */,
 				FD2D4DBD278D3FA5002084B9 /* PlanDetailDayCVC.swift in Sources */,
 				FD3566552792AFCD0082B4CE /* PlanDetailSelectDayView.swift in Sources */,
@@ -1929,6 +1948,7 @@
 				FDF981062788D4C00009A14E /* PlanPreviewPhotoTVC.swift in Sources */,
 				FD1A78262795DA7100FB10AB /* showNetworkErr + UIViewController.swift in Sources */,
 				FD09DE1E27857CDC006DA050 /* HomeVC.swift in Sources */,
+				FD958A3727E0D88300264EE4 /* ImageSizeFetcherParser.swift in Sources */,
 				FD568E6F27CFE4ED0078D23C /* AnalyticsType.swift in Sources */,
 				FD122DE827D3638D00469189 /* showToastMessage.swift in Sources */,
 				FD5D731127A48491002DE484 /* ViewModelType.swift in Sources */,
