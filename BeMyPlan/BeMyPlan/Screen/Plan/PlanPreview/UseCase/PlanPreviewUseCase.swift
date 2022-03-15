@@ -19,6 +19,7 @@ final class DefaultPlanPreviewUseCase {
   private let imageSizeFetcher = ImageSizeFetcher()
   
   var contentData = PublishSubject<PlanPreview.ContentData>()
+  var contentIndexListData = PublishSubject<[PlanPreview.ContentList]>()
   var imageHeightData = PublishSubject<[CGFloat]>()
   
   init(repository: PlanPreviewRepository,postIdx: Int){
@@ -33,16 +34,25 @@ extension DefaultPlanPreviewUseCase: PlanPreviewUseCase {
     let body = self.repository.fetchBodyData(idx: self.postIdx)
     
     Observable.combineLatest(header,
-                             body, resultSelector: { (headerData,bodyData) in
+                             body, resultSelector: { (headerData,bodyData) -> PlanPreview.ContentData in
       self.calculateImageHeight(bodyData: bodyData)
       return PlanPreview.ContentData.init(headerData: headerData,
                                    bodyData: bodyData)
-    }).subscribe { content in
-      self.contentData.onNext(content)
+    }).subscribe { result in
+      if let content = result.element{
+        self.setContentIndexList(contentData: content)
+        self.contentData.onNext(content)
+      }
     }.disposed(by: self.disposeBag)
+
   }
-  
-  private func calculateImageHeight(bodyData: PlanPreview.BodyData) {
+
+  private func calculateImageHeight(bodyData: PlanPreview.BodyData?) {
+    guard let bodyData = bodyData else {
+      self.imageHeightData.onCompleted()
+      return
+    }
+    
     var heightList = [CGFloat](repeating: 0, count: bodyData.photos.count)
     var count = 0
     let imageViewWidth = screenWidth - 48
@@ -60,6 +70,25 @@ extension DefaultPlanPreviewUseCase: PlanPreviewUseCase {
         }
       }
     }
+  }
+  
+  private func setContentIndexList(contentData: PlanPreview.ContentData) {
+    var contentList: [PlanPreview.ContentList] = []
+    if let _ = contentData.headerData {
+      contentList.append(.header)
+      contentList.append(.description)
+    }
+    
+    if let body = contentData.bodyData{
+      for _ in body.photos {
+        contentList.append(.photo)
+      }
+      
+      if let _ = body.summary {
+        contentList.append(.summary)
+      }
+    }
+    contentIndexListData.onNext(contentList)
   }
   
 }

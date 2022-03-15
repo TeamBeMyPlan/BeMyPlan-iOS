@@ -49,7 +49,7 @@ struct PlanPreviewEntity :Codable{
 }
 
 extension PlanPreviewEntity.Header {
-  func toDomain() -> PlanPreview.HeaderData {
+  func toDomain() -> PlanPreview.HeaderData? {
     return .init(authorID: authorID,
                  writer: author,
                  title: title,
@@ -67,7 +67,7 @@ extension PlanPreviewEntity.Header {
 }
 
 extension PlanPreviewEntity.Body {
-  func toDomain() -> PlanPreview.BodyData {
+  func toDomain() -> PlanPreview.BodyData? {
     let photo = photoUrls.map { url in
       PlanPreview.PhotoData.init(photo: url, content: datumDescription)
     }

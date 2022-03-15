@@ -9,8 +9,8 @@ import Foundation
 import RxSwift
 
 protocol PlanPreviewRepository {
-  func fetchHeaderData(idx: Int) -> Observable<PlanPreview.HeaderData>
-  func fetchBodyData(idx: Int) -> Observable<PlanPreview.BodyData>
+  func fetchHeaderData(idx: Int) -> Observable<PlanPreview.HeaderData?>
+  func fetchBodyData(idx: Int) -> Observable<PlanPreview.BodyData?>
 }
 
 final class DefaultPlanPreviewRepository {
@@ -24,7 +24,7 @@ final class DefaultPlanPreviewRepository {
 }
 
 extension DefaultPlanPreviewRepository: PlanPreviewRepository {
-  func fetchHeaderData(idx: Int) -> Observable<PlanPreview.HeaderData>{
+  func fetchHeaderData(idx: Int) -> Observable<PlanPreview.HeaderData?>{
     return .create { observer in
       self.networkService.fetchPlanPreviewHeaderData(idx: idx)
         .subscribe(onNext: { entity in
@@ -40,7 +40,7 @@ extension DefaultPlanPreviewRepository: PlanPreviewRepository {
     }
   }
   
-  func fetchBodyData(idx: Int) -> Observable<PlanPreview.BodyData> {
+  func fetchBodyData(idx: Int) -> Observable<PlanPreview.BodyData?> {
     return .create { observer in
       self.networkService.fetchPlanPreviewBodyData(idx: idx)
         .subscribe(onNext: { entity in

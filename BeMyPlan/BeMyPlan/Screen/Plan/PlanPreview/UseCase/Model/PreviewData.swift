@@ -18,7 +18,7 @@ struct PlanPreview{
   }
   
   struct ContentData{
-    var headerData: PlanPreview.HeaderData
-    var bodyData: PlanPreview.BodyData
+    var headerData: PlanPreview.HeaderData?
+    var bodyData: PlanPreview.BodyData?
   }
 }
