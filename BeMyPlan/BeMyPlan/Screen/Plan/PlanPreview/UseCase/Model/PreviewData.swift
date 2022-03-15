@@ -16,4 +16,9 @@ struct PlanPreview{
     case summary
     case recommend
   }
+  
+  struct ContentData{
+    var headerData: PlanPreview.HeaderData
+    var bodyData: PlanPreview.BodyData
+  }
 }

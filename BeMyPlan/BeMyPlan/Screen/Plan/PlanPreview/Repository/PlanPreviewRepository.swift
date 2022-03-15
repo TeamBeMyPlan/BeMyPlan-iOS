@@ -15,9 +15,8 @@ protocol PlanPreviewRepository {
 
 final class DefaultPlanPreviewRepository {
   
-  var disposeBag = DisposeBag()
-  // MARK: - Dependency
   private let networkService: PlanPreviewServiceType
+  private let disposeBag = DisposeBag()
   
   init(service : PlanPreviewServiceType){
     self.networkService = service
@@ -26,7 +25,7 @@ final class DefaultPlanPreviewRepository {
 
 extension DefaultPlanPreviewRepository: PlanPreviewRepository {
   func fetchHeaderData(idx: Int) -> Observable<PlanPreview.HeaderData>{
-    return Observable.create { observer in
+    return .create { observer in
       self.networkService.fetchPlanPreviewHeaderData(idx: idx)
         .subscribe(onNext: { entity in
           guard let entity = entity else {return observer.onCompleted()}
@@ -38,7 +37,6 @@ extension DefaultPlanPreviewRepository: PlanPreviewRepository {
         })
         .disposed(by: self.disposeBag)
       return Disposables.create()
-
     }
   }
   

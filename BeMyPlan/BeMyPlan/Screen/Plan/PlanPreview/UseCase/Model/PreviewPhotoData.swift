@@ -12,5 +12,10 @@ extension PlanPreview{
     var photo : String
     var content : String
   }
+  
+  struct UIImageData{
+    var image: UIImage
+    var height: CGFloat
+  }
 
 }

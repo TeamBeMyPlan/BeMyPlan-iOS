@@ -45,7 +45,6 @@ struct PlanPreviewEntity :Codable{
           case authorID = "author_id"
       }
   }
-  
 
 }
 
@@ -66,7 +65,6 @@ extension PlanPreviewEntity.Header {
                  price: String(price))
   }
 }
-
 
 extension PlanPreviewEntity.Body {
   func toDomain() -> PlanPreview.BodyData {
