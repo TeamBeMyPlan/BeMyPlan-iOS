@@ -34,194 +34,61 @@ import RxCocoa
 
 final class PlanPreviewViewModel : ViewModelType{
 
+  private let previewUseCase: PlanPreviewUseCase
+  private let disposeBag = DisposeBag()
+
   // MARK: - Inputs
 
   struct Input {
     let viewDidLoadEvent: Observable<Void>
-    let buyButtonDidTapEvent: Observable<Void>
-    let viewPreviewButtonDidTapEvent: Observable<Void>
+//    let buyButtonDidTapEvent: Observable<Void>
+//    let backButtonDidTapEvent: Observable<Void>
+//    let viewPreviewButtonDidTapEvent: Observable<Void>
   }
 
   // MARK: - Outputs
 
   struct Output {
-    var didFetchDataStart: Driver<Void>
-    var didFetchDataFinished = PublishRelay<Void>()
-    var didUpdatePriceData = PublishRelay<String>()
-    var successScrap = PublishRelay<Void>()
-    var networkError = PublishRelay<Void>()
-    var unexpectedError = PublishRelay<Void>()
-    var movePaymentView = PublishRelay<Void>()
-    var movePreviewDetailView = PublishRelay<Void>()
+    var didFetchDataFinished = BehaviorRelay<Bool>(value: false)
+    var contentData = PublishRelay<PlanPreview.ContentData>()
+    var contentlistData = PublishRelay<[PlanPreview.ContentList]>()
+    var heightList = PublishRelay<[CGFloat]>()
+    var priceData = BehaviorRelay<String>(value: "")
+  }
+  
+  init(useCase: PlanPreviewUseCase){
+    self.previewUseCase = useCase
   }
 
-  var disposeBag = DisposeBag()
-//  let input: Input?
-//  let output: Output?
-
-  // MARK: - Outputs
-
-
-  // MARK: - Models
-
-
-  var headerData : PlanPreview.HeaderData?
-  var descriptionData : PlanPreview.DescriptionData?
-  var photoData : [PlanPreview.PhotoData]?
-  var summaryData : PlanPreview.SummaryData?
-  var recommendData : PlanPreview.RecommendData?
-  var contentList : [PlanPreview.ContentList] = []
-  var photoList:[UIImage] = []
-  var heightList:[CGFloat] = []
-  var authID : Int = 0
-
-  // MARK: - Dependency 주입
-
-  private var repository: PlanPreviewRepository
-  let postId: Int
-
-  init(repository: PlanPreviewRepository,postId: Int){
-    self.repository = repository
-    self.postId = postId
-  }
 }
 
 extension PlanPreviewViewModel{
+  
+  func transform(from input: Input, disposeBag: DisposeBag) -> Output {
+    let output = Output()
+    self.bindOutput(output: output, disposeBag: disposeBag)
+    
+    input.viewDidLoadEvent
+      .subscribe(onNext: { [weak self] in
+        self?.previewUseCase.fetchPlanPreviewData()
+      })
+      .disposed(by: disposeBag)
 
-//  func transform(input: Input) -> Output {
-////    let output = Output()
-//
-//    input.viewDidLoadEvent
-//      .subscribe(onNext: { [weak self] in
-//        output.didFetchDataStart
-//      })
-//      .disposed(by: disposeBag)
-//
-//  }
-
-  func viewDidLoad() {
-//    output.didFetchDataStart?()
-//    fetchData()
-//    bindRepository()
+    return output
+  }
+  
+  private func bindOutput(output: Output,
+                          disposeBag: DisposeBag) {
+    let contentDataRelay = previewUseCase.contentData
+    let contentDataIndexRelay = previewUseCase.contentIndexListData
+    let imageHeightListRelay = previewUseCase.imageHeightData
+    
+    _ = Observable.combineLatest(contentDataRelay, contentDataIndexRelay,imageHeightListRelay) { (content, indexList, heightList) in
+      output.contentData.accept(content)
+      output.contentlistData.accept(indexList)
+      output.heightList.accept(heightList)
+    }
   }
 
-  func clickScrap() {
 
-  }
-
-  func clickBuyButton() {
-//    output.movePaymentView?()
-  }
-
-  func clickPreviewButton() {
-//    output.movePreviewDetailView?()
-  }
-
-  func clickPreviewImage(index: Int) {
-
-  }
-
-  func showContentPage() {
-
-  }
-}
-
-// MARK: - Logics
-extension PlanPreviewViewModel {
-//  func fetchData(){
-////    output.didFetchDataStart?()
-//
-//    let group = DispatchGroup()
-//    group.enter()
-//    fetchHeaderData() { group.leave() }
-//    group.enter()
-//    fetchBodyData() { group.leave() }
-//    group.notify(queue: .main){
-//      self.setContentList()
-////      self.output.didFetchDataFinished?()
-//    }
-//  }
-//
-//  func bindRepository(){
-//    repository.networkError = { [weak self] err in
-//      if let error = err as? MoyaError{
-//        if error.response?.statusCode == 500{
-////          self?.output.networkError?()
-//        }else{
-////          self?.output.unexpectedError?()
-//        }
-//      }
-//    }
-//  }
-//
-//  private func fetchHeaderData(completion: @escaping () -> (Void)) {
-//    repository.fetchHeaderData(idx: postId) { [weak self] header, description, price, authID in
-//      self?.headerData = header
-//      self?.descriptionData = description
-//      let priceString = String(price) + "원"
-//      self?.output.didUpdatePriceData?(priceString)
-//      self?.authID = authID
-//      completion()
-//    }
-//  }
-//
-//  private func fetchBodyData(completion: @escaping () -> (Void)){
-//    repository.fetchBodyData(idx: postId)
-//    { [weak self] photoList, summary in
-//      guard let self = self else {return}
-//      self.photoData = photoList
-//      self.summaryData = summary
-//      if let photoList = photoList {
-//        self.generateImages(photoData: photoList) { imgList in
-//          self.photoList = imgList
-//          self.makeImageHeight(images: imgList) { heightList in
-//            self.heightList = heightList
-//            completion()
-//          }
-//        }
-//      }
-//    }
-//  }
-//
-//  private func setContentList(){
-//    contentList.removeAll()
-//    if let _ = headerData { contentList.append(.header) }
-//    if let _ = descriptionData{ contentList.append(.description) }
-//    if let photo = photoData{
-//      for (_,_) in photo.enumerated(){
-//        contentList.append(.photo)
-//      }
-//    }
-//    if let _ = summaryData  { contentList.append(.summary) }
-//    contentList.append(.recommend)
-//  }
-//
-//  private func generateImages(photoData:[PlanPreview.PhotoData],
-//                              completion: @escaping ([UIImage]) -> Void){
-//    var imgCount = 0 {didSet{
-//      if imgCount == photoData.count {completion(imageContainer) }}
-//    }
-//    var imageContainer = Array(repeating: UIImage(), count: photoData.count)
-//    _ = photoData.enumerated().map { (index,data) in
-//      let imgView = UIImageView()
-//      imgView.setImage(with: data.photo) { image in
-//        imageContainer[index] = image ?? UIImage()
-//        imgCount += 1
-//      }
-//    }
-//  }
-//
-//  private func makeImageHeight(images: [UIImage], completion: @escaping ([CGFloat]) -> Void){
-//    let imageViewWidth = screenWidth - 48
-//    var heightList:[CGFloat] = [] {didSet{
-//      if heightList.count == images.count {
-//        completion(heightList) }
-//    }}
-//    for (_,img) in images.enumerated(){
-//      let ratio = img.size.width / img.size.height
-//      let newHeight = imageViewWidth / ratio
-//      heightList.append(newHeight)
-//    }
-//
-//  }
 }

@@ -8,7 +8,11 @@
 import RxSwift
 
 protocol PlanPreviewUseCase{
-  
+  func fetchPlanPreviewData()
+
+  var contentData: PublishSubject<PlanPreview.ContentData> { get set }
+  var contentIndexListData: PublishSubject<[PlanPreview.ContentList]> { get set }
+  var imageHeightData: PublishSubject<[CGFloat]> { get set }
 }
 
 final class DefaultPlanPreviewUseCase {

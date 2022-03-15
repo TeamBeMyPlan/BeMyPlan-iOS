@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 import SkeletonView
 
 class PlanPreviewVC: UIViewController {
@@ -16,6 +18,7 @@ class PlanPreviewVC: UIViewController {
   private var isAnimationProceed: Bool = false
   private var lastContentOffset : CGFloat = 0
   var viewModel : PlanPreviewViewModel!
+  private let disposeBag = DisposeBag()
   private var isScrabed : Bool = false{
     didSet{
       setScrabImage()
@@ -47,59 +50,27 @@ class PlanPreviewVC: UIViewController {
     setScrabImage()
     addButtonActions()
     bindViewModels()
-    viewModel.viewDidLoad()
+//    viewModel.viewDidLoad()
   }
   @IBAction func backButtonClicked(_ sender: Any) {
     self.navigationController?.popViewController(animated: true)
   }
   
   @IBAction func previewButtonClicked(_ sender: Any) {
-    viewModel.clickPreviewButton()
+//    viewModel.clickPreviewButton()
   }
   
   // MARK: - Custom Method Part
   
   private func bindViewModels(){
-//    viewModel.didFetchDataStart = { [weak self] in
-//      self?.showIndicator()
-//    }
-//    
-//    viewModel.didFetchDataFinished = { [weak self] in
-//      self?.headerTitleLabel.text = self?.viewModel.headerData?.title
-//      self?.previewContentTV.reloadData()
-//      self?.closeIndicator{
-//        UIView.animate(withDuration: 0.4) {
-//          self?.previewContentTV.alpha = 1
-//        }
-//      }
-//    }
-//    
-//    viewModel.networkError = { [weak self] in
-//      self?.closeIndicator{
-//        self?.postObserverAction(.showNetworkError)
-//      }
-//    }
-//    
-//    viewModel.didUpdatePriceData = { [weak self] price in
-//      self?.priceLabel.text = price
-//    }
-//    
-//    viewModel.movePaymentView = { [weak self] in
-//      guard let self = self else {return}
-//      let vc = ModuleFactory.resolve().instantiatePaymentSelectVC(writer: self.viewModel.headerData?.writer,
-//                                                                  planTitle: self.viewModel.headerData?.title,
-//                                                                  imgURL: self.viewModel.photoData?.first?.photo,
-//                                                         price: self.priceLabel.text,
-//                                                                  postID: self.viewModel.postId)
-//      self.navigationController?.pushViewController(vc, animated: true)
-//    }
-//    
-//    viewModel.movePreviewDetailView = { [weak self] in
-//      AppLog.log(at: FirebaseAnalyticsProvider.self, .clickPlanDetailExample)
-//      guard let self = self else {return}
-//      let vc = ModuleFactory.resolve().instantiatePlanDetailVC(postID: self.viewModel.postId, isPreviewPage: true)
-//      self.navigationController?.pushViewController(vc, animated: true)
-//    }
+    let input = PlanPreviewViewModel.Input(
+      viewDidLoadEvent:
+        self.rx.methodInvoked(#selector(UIViewController.viewWillAppear)).map { _ in })
+    let output = self.viewModel.transform(from: input, disposeBag: self.disposeBag)
+    
+    output.contentData.subscribe { content in
+      print("COTNETNETN",content)
+    }
   }
  
   private func addButtonActions(){
@@ -108,7 +79,7 @@ class PlanPreviewVC: UIViewController {
     }
     
     buyButton.press {
-      self.viewModel.clickBuyButton()
+//      self.viewModel.clickBuyButton()
     }
   }
   
@@ -124,43 +95,44 @@ extension PlanPreviewVC : UITableViewDelegate{
 }
 extension PlanPreviewVC : UITableViewDataSource{
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return viewModel.contentList.count
+    return 0
+//    return viewModel.contentList.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    
-    let viewCase = viewModel.contentList[indexPath.row]
-    
-    switch(viewCase){
-      case .header:
-        guard let headerCell = tableView.dequeueReusableCell(withIdentifier: PlanPreviewWriterTVC.className, for: indexPath) as? PlanPreviewWriterTVC else {return UITableViewCell() }
-        headerCell.setHeaderData(author: viewModel.headerData?.writer,
-                                 title: viewModel.headerData?.title, authIDs: viewModel.authID)
-        return headerCell
-        
-      case .description:
-        guard let descriptionCell = tableView.dequeueReusableCell(withIdentifier: PlanPreviewDescriptionTVC.className, for: indexPath) as? PlanPreviewDescriptionTVC else {return UITableViewCell() }
-        descriptionCell.setDescriptionData(contentData: viewModel.descriptionData)
-        return descriptionCell
-        
-      case .photo:
-        guard let photoCell = tableView.dequeueReusableCell(withIdentifier: PlanPreviewPhotoTVC.className, for: indexPath) as? PlanPreviewPhotoTVC else {return UITableViewCell() }
-        
-        photoCell.setPhotoData(photo: viewModel.photoList[indexPath.row - 2],
-                               content: viewModel.photoData?[indexPath.row - 2].content,
-                               height: viewModel.heightList[indexPath.row - 2])
-        return photoCell
-        
-      case .summary:
-        guard let summaryCell = tableView.dequeueReusableCell(withIdentifier: PlanPreviewSummaryTVC.className, for: indexPath) as? PlanPreviewSummaryTVC else {return UITableViewCell()}
-        
-        summaryCell.setSummaryData(content: viewModel.summaryData?.content)
-        return summaryCell
-        
-      case .recommend:
-        guard let recommendCell = tableView.dequeueReusableCell(withIdentifier: PlanPreviewRecommendTVC.className, for: indexPath) as? PlanPreviewRecommendTVC else {return UITableViewCell() }
-        return recommendCell
-    }
+    return UITableViewCell()
+//    let viewCase = viewModel.contentList[indexPath.row]
+//
+//    switch(viewCase){
+//      case .header:
+//        guard let headerCell = tableView.dequeueReusableCell(withIdentifier: PlanPreviewWriterTVC.className, for: indexPath) as? PlanPreviewWriterTVC else {return UITableViewCell() }
+//        headerCell.setHeaderData(author: viewModel.headerData?.writer,
+//                                 title: viewModel.headerData?.title, authIDs: viewModel.authID)
+//        return headerCell
+//
+//      case .description:
+//        guard let descriptionCell = tableView.dequeueReusableCell(withIdentifier: PlanPreviewDescriptionTVC.className, for: indexPath) as? PlanPreviewDescriptionTVC else {return UITableViewCell() }
+//        descriptionCell.setDescriptionData(contentData: viewModel.descriptionData)
+//        return descriptionCell
+//
+//      case .photo:
+//        guard let photoCell = tableView.dequeueReusableCell(withIdentifier: PlanPreviewPhotoTVC.className, for: indexPath) as? PlanPreviewPhotoTVC else {return UITableViewCell() }
+//
+//        photoCell.setPhotoData(photo: viewModel.photoList[indexPath.row - 2],
+//                               content: viewModel.photoData?[indexPath.row - 2].content,
+//                               height: viewModel.heightList[indexPath.row - 2])
+//        return photoCell
+//
+//      case .summary:
+//        guard let summaryCell = tableView.dequeueReusableCell(withIdentifier: PlanPreviewSummaryTVC.className, for: indexPath) as? PlanPreviewSummaryTVC else {return UITableViewCell()}
+//
+//        summaryCell.setSummaryData(content: viewModel.summaryData?.content)
+//        return summaryCell
+//
+//      case .recommend:
+//        guard let recommendCell = tableView.dequeueReusableCell(withIdentifier: PlanPreviewRecommendTVC.className, for: indexPath) as? PlanPreviewRecommendTVC else {return UITableViewCell() }
+//        return recommendCell
+//    }
   }
 }
 
