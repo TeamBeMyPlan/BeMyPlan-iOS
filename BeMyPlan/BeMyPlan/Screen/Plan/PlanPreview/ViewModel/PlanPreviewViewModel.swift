@@ -11,29 +11,9 @@ import RxSwift
 import RxRelay
 import RxCocoa
 
-//protocol PlanPreviewViewModelType : ViewModelType{
-//
-//  // Inputs
-//  func viewDidLoad()
-//  func clickScrap()
-//  func clickBuyButton()
-//  func clickPreviewButton()
-//  func clickPreviewImage(index : Int)
-//  func showContentPage()
-//
-//  // Outputs
-//  var didFetchDataStart: (() -> Void)? { get set }
-//  var didFetchDataFinished: (() -> Void)? { get set }
-//  var didUpdatePriceData : ((String) -> Void)? { get set }
-//  var successScrap: (() -> Void)? { get set }
-//  var networkError: (() -> Void)? { get set }
-//  var unexpectedError: (() -> Void)? { get set }
-//  var movePaymentView: (() -> Void)? { get set }
-//  var movePreviewDetailView: (( ) -> Void)? { get set }
-//}
 
-final class PlanPreviewViewModel : ViewModelType{
-
+final class PlanPreviewViewModel: ViewModelType{
+  
   private let previewUseCase: PlanPreviewUseCase
   private let disposeBag = DisposeBag()
 
@@ -50,16 +30,14 @@ final class PlanPreviewViewModel : ViewModelType{
 
   struct Output {
     var didFetchDataFinished = BehaviorRelay<Bool>(value: false)
-    var contentData = PublishRelay<PlanPreview.ContentData>()
-    var contentlistData = PublishRelay<[PlanPreview.ContentList]>()
+    var contentList = PublishRelay<[PlanPreviewContent]>()
     var heightList = PublishRelay<[CGFloat]>()
-    var priceData = BehaviorRelay<String>(value: "")
+    var priceData = PublishRelay<String?>()
   }
   
   init(useCase: PlanPreviewUseCase){
     self.previewUseCase = useCase
   }
-
 }
 
 extension PlanPreviewViewModel{
@@ -68,10 +46,8 @@ extension PlanPreviewViewModel{
     let output = Output()
     self.bindOutput(output: output, disposeBag: disposeBag)
     
-    print("transForm")
     input.viewDidLoadEvent
       .subscribe(onNext: { [weak self] in
-        print("viewDidLoadEventLoad")
         self?.previewUseCase.fetchPlanPreviewData()
       })
       .disposed(by: disposeBag)
@@ -82,19 +58,47 @@ extension PlanPreviewViewModel{
   private func bindOutput(output: Output,
                           disposeBag: DisposeBag) {
     let contentDataRelay = previewUseCase.contentData
-    let contentDataIndexRelay = previewUseCase.contentIndexListData
     let imageHeightListRelay = previewUseCase.imageHeightData
     
-    Observable.combineLatest(contentDataRelay, contentDataIndexRelay,imageHeightListRelay) { (content, indexList, heightList) in
-      print("ViewModel Combine Complete",content,indexList,heightList)
-      output.contentData.accept(content)
-      output.contentlistData.accept(indexList)
-      output.heightList.accept(heightList)
+    Observable.combineLatest(contentDataRelay,imageHeightListRelay) { [weak self] (content, heightList) in
+      print("CHECKVIEWMODEL - CONTENT",content)
+      print("CHECKVIEWMODEL - HEIGHT",heightList)
+      guard let self = self else {return}
+      let contentData = self.generateContentData(contentData: content, heights: heightList)
+      output.priceData.accept(content.headerData?.price)
+      output.contentList.accept(contentData)
     }.subscribe { _ in
-      print("@@@@")
-            }.disposed(by: self.disposeBag)
-
+    }.disposed(by: self.disposeBag)
   }
-
-
+  
+  private func generateContentData(contentData: PlanPreview.ContentData,
+                                   heights: [CGFloat]) -> [PlanPreviewContent] {
+    var contentList: [PlanPreviewContent] = []
+    
+    if let header = contentData.headerData {
+      let headerData = PlanPreview.HeaderDataModel.init(writer: header.writer,
+                                                    title: header.title)
+      let descriptionData = PlanPreview.DescriptionData.init(descriptionContent: header.descriptionContent,
+                                                         summary: header.summary)
+      
+      contentList.append(headerData)
+      contentList.append(descriptionData)
+    }
+    
+    if let body = contentData.bodyData {
+      for (index,photo) in body.photos.enumerated() {
+        let photoData = PlanPreview.PhotoData.init(photoUrl: photo.photoUrl,
+                                                   content: photo.content,
+                                                   height: heights[index])
+        contentList.append(photoData)
+      }
+      if let summary = body.summary{
+        let summaryData = PlanPreview.SummaryData.init(content: summary.content)
+        contentList.append(summaryData)
+      }
+    }
+    let emptyRecommendData = PlanPreview.RecommendData()
+    contentList.append(emptyRecommendData)
+    return contentList
+  }
 }

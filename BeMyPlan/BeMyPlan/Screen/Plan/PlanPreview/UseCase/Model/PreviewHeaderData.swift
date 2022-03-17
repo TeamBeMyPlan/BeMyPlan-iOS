@@ -8,6 +8,12 @@
 import Foundation
 
 extension PlanPreview{
+  struct HeaderDataModel: PlanPreviewContent {
+    var `case`: PlanPreview.ContentList = .header
+    var writer: String
+    var title: String
+  }
+  
   struct HeaderData{
     var authorID: Int
     var writer: String
@@ -15,30 +21,5 @@ extension PlanPreview{
     var descriptionContent: String
     var summary: IconData
     var price: String
-    
-    struct IconData{
-      var theme : String
-      var spotCount : String
-      var restaurantCount : String
-      var dayCount : String
-      var peopleCase : String
-      var budget : String
-      var transport : String
-      var month : String
-    }
-    
-    enum SummaryCase{
-      case theme
-      case spotCount
-      case restaurantCount
-      case dayCount
-      case peopleCase
-      case budget
-      case transport
-      case month
-    }
   }
-  
-
-  
 }

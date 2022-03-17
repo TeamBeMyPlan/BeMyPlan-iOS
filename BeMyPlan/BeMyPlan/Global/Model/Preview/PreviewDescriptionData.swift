@@ -8,10 +8,9 @@
 import Foundation
 
 extension PlanPreview{
-  struct DescriptionData: PlanPreviewContent{
-    var `case`: PlanPreview.ContentList = .description
+  struct DescriptionData{
     var descriptionContent : String
-    var summary : PlanPreview.IconData
+    var summary : IconData
   }
   
   struct IconData{

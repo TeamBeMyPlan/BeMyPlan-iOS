@@ -35,9 +35,8 @@ class PlanPreviewVC: UIViewController {
   @IBOutlet var headerTitleLabel: UILabel!
   @IBOutlet var previewContentTV: UITableView!{
     didSet{
-      previewContentTV.alpha = 0
-      previewContentTV.delegate = self
-      previewContentTV.dataSource = self
+//      previewContentTV.delegate = self
+//      previewContentTV.dataSource = self
       previewContentTV.separatorStyle = .none
       previewContentTV.allowsSelection = false
     }
@@ -50,28 +49,66 @@ class PlanPreviewVC: UIViewController {
     setScrabImage()
     addButtonActions()
     bindViewModels()
-//    viewModel.viewDidLoad()
   }
   @IBAction func backButtonClicked(_ sender: Any) {
     self.navigationController?.popViewController(animated: true)
   }
   
   @IBAction func previewButtonClicked(_ sender: Any) {
-//    viewModel.clickPreviewButton()
+    
   }
   
   // MARK: - Custom Method Part
   
   private func bindViewModels(){
-    print("bindVIewModels")
     let input = PlanPreviewViewModel.Input(
       viewDidLoadEvent:
         self.rx.methodInvoked(#selector(UIViewController.viewWillAppear)).map { _ in })
     let output = self.viewModel.transform(from: input, disposeBag: self.disposeBag)
     
-    output.contentData.subscribe { content in
-      print("COTNETNETN",content)
-    }.disposed(by: self.disposeBag)
+    output.contentList
+      .bind(to: previewContentTV.rx.items) { (tableView,index,item) -> UITableViewCell in
+        print("CONCCC")
+        dump(item)
+        switch(item.case){
+          case .header:
+            let headerData = item as! PlanPreview.HeaderDataModel
+            guard let headerCell = tableView.dequeueReusableCell(withIdentifier: PlanPreviewWriterTVC.className) as? PlanPreviewWriterTVC else {return UITableViewCell() }
+            headerCell.setHeaderData(author: headerData.writer,
+                                     title: headerData.title)
+            return headerCell
+            
+          case .description:
+            let descriptionData = item as! PlanPreview.DescriptionData
+            guard let descriptionCell = tableView.dequeueReusableCell(withIdentifier: PlanPreviewDescriptionTVC.className) as? PlanPreviewDescriptionTVC else {return UITableViewCell() }
+             descriptionCell.setDescriptionData(contentData: descriptionData)
+            return descriptionCell
+
+          case .photo:
+            let photoData = item as! PlanPreview.PhotoData
+            guard let photoCell = tableView.dequeueReusableCell(withIdentifier: PlanPreviewPhotoTVC.className) as? PlanPreviewPhotoTVC else {return UITableViewCell() }
+            photoCell.setPhotoData(photoData)
+            return photoCell
+            
+          case .summary:
+            let summaryData = item as! PlanPreview.SummaryData
+            guard let summaryCell = tableView.dequeueReusableCell(withIdentifier: PlanPreviewSummaryTVC.className) as? PlanPreviewSummaryTVC else {return UITableViewCell() }
+            summaryCell.setSummaryData(content: summaryData.content)
+            return summaryCell
+            
+          case .recommend:
+            guard let recommendCell = tableView.dequeueReusableCell(withIdentifier: PlanPreviewRecommendTVC.className) as? PlanPreviewRecommendTVC else {return UITableViewCell() }
+            return recommendCell
+            
+        }
+      }.disposed(by: disposeBag)
+    
+    output.priceData
+      .asDriver(onErrorJustReturn: "")
+      .drive( onNext: { [weak self] price in
+          self?.priceLabel.text = (price != nil) ? "\(price!)원" : ""
+      })
+      .disposed(by: disposeBag)
   }
  
   private func addButtonActions(){
@@ -89,54 +126,6 @@ class PlanPreviewVC: UIViewController {
   }
 }
 // MARK: - Extension Part
-extension PlanPreviewVC : UITableViewDelegate{
-  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return UITableView.automaticDimension
-  }
-}
-extension PlanPreviewVC : UITableViewDataSource{
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 0
-//    return viewModel.contentList.count
-  }
-  
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    return UITableViewCell()
-//    let viewCase = viewModel.contentList[indexPath.row]
-//
-//    switch(viewCase){
-//      case .header:
-//        guard let headerCell = tableView.dequeueReusableCell(withIdentifier: PlanPreviewWriterTVC.className, for: indexPath) as? PlanPreviewWriterTVC else {return UITableViewCell() }
-//        headerCell.setHeaderData(author: viewModel.headerData?.writer,
-//                                 title: viewModel.headerData?.title, authIDs: viewModel.authID)
-//        return headerCell
-//
-//      case .description:
-//        guard let descriptionCell = tableView.dequeueReusableCell(withIdentifier: PlanPreviewDescriptionTVC.className, for: indexPath) as? PlanPreviewDescriptionTVC else {return UITableViewCell() }
-//        descriptionCell.setDescriptionData(contentData: viewModel.descriptionData)
-//        return descriptionCell
-//
-//      case .photo:
-//        guard let photoCell = tableView.dequeueReusableCell(withIdentifier: PlanPreviewPhotoTVC.className, for: indexPath) as? PlanPreviewPhotoTVC else {return UITableViewCell() }
-//
-//        photoCell.setPhotoData(photo: viewModel.photoList[indexPath.row - 2],
-//                               content: viewModel.photoData?[indexPath.row - 2].content,
-//                               height: viewModel.heightList[indexPath.row - 2])
-//        return photoCell
-//
-//      case .summary:
-//        guard let summaryCell = tableView.dequeueReusableCell(withIdentifier: PlanPreviewSummaryTVC.className, for: indexPath) as? PlanPreviewSummaryTVC else {return UITableViewCell()}
-//
-//        summaryCell.setSummaryData(content: viewModel.summaryData?.content)
-//        return summaryCell
-//
-//      case .recommend:
-//        guard let recommendCell = tableView.dequeueReusableCell(withIdentifier: PlanPreviewRecommendTVC.className, for: indexPath) as? PlanPreviewRecommendTVC else {return UITableViewCell() }
-//        return recommendCell
-//    }
-  }
-}
-
 
 extension PlanPreviewVC : UIScrollViewDelegate{
   func scrollViewDidScroll(_ scrollView: UIScrollView) {

@@ -54,7 +54,7 @@ extension PlanPreviewEntity.Header {
                  writer: author,
                  title: title,
                  descriptionContent:dataDescription,
-                 summary: PlanPreview.HeaderData.IconData.init(theme: tagTheme,
+                 summary: PlanPreview.IconData.init(theme: tagTheme,
                                         spotCount: String(tagCountSpot),
                                         restaurantCount: String(tagCountRestaurant),
                                         dayCount: String(tagCountDay),

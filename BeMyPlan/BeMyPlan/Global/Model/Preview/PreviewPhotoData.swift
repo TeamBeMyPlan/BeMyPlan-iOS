@@ -8,10 +8,9 @@
 import Foundation
 
 extension PlanPreview{
-  struct PhotoData: PlanPreviewContent{
-    var `case`: PlanPreview.ContentList = .photo
-    var photoUrl : String
+  struct PhotoData{
+    var photo : String
     var content : String
-    var height: CGFloat = 0
   }
+
 }

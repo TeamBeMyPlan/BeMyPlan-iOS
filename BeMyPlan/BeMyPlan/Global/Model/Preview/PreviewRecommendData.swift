@@ -8,8 +8,7 @@
 import Foundation
 
 extension PlanPreview{
-  struct RecommendData: PlanPreviewContent{
-    var `case`: PlanPreview.ContentList = .recommend
+  struct RecommendData{
     // 일단 고정값으로 진행
     var title = I18N.PlanPreview.Recommend.title
     var content = I18N.PlanPreview.Recommend.content

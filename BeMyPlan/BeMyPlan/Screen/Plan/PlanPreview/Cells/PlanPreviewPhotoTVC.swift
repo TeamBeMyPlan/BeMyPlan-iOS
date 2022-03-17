@@ -48,14 +48,10 @@ class PlanPreviewPhotoTVC: UITableViewCell {
     contentImageView.layer.cornerRadius = 5
     
   }
-  func setPhotoData(photo : UIImage, content :String?,height: CGFloat){
-    contentImageView.image = photo
-    imageHeightConstraint.constant = height
-    if let content = content {
-      makeShortContent(content: content)
-    }else{
-      contentTextView.text = ""
-    }
+  func setPhotoData(_ data : PlanPreview.PhotoData){
+    contentImageView.setImage(with: data.photoUrl)
+    imageHeightConstraint.constant = data.height
+    makeShortContent(content: data.content)
     layoutIfNeeded()
   }
   

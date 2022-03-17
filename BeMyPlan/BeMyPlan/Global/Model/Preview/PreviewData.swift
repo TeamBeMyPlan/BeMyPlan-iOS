@@ -7,9 +7,6 @@
 
 import Foundation
 
-protocol PlanPreviewContent {
-  var `case`: PlanPreview.ContentList { get set }
-}
 
 struct PlanPreview{
   enum ContentList{
@@ -18,10 +15,5 @@ struct PlanPreview{
     case photo
     case summary
     case recommend
-  }
-  
-  struct ContentData{
-    var headerData: PlanPreview.HeaderData?
-    var bodyData: PlanPreview.BodyData?
   }
 }
