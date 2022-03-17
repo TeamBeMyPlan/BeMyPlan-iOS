@@ -185,6 +185,10 @@
 		FD61AFDA2791DB9100D39F47 /* PanDirectionGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD61AFD92791DB9100D39F47 /* PanDirectionGesture.swift */; };
 		FD61AFDC2791DC6E00D39F47 /* UINavigation + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD61AFDB2791DC6E00D39F47 /* UINavigation + Extension.swift */; };
 		FD66701327E314C300296E4A /* PreviewBodyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD66701227E314C300296E4A /* PreviewBodyData.swift */; };
+		FD66701727E3CAB900296E4A /* 84481a29-524e-42fb-affc-b1d0e25d8eda-Untitled.png in Resources */ = {isa = PBXBuildFile; fileRef = FD66701627E3CAB900296E4A /* 84481a29-524e-42fb-affc-b1d0e25d8eda-Untitled.png */; };
+		FD66701A27E3CBF300296E4A /* sample1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = FD66701927E3CBF300296E4A /* sample1.jpeg */; };
+		FD66701C27E3D0AB00296E4A /* edc43536-73e2-484d-ac6b-efbb9d5b9d1c-바다다펜션2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = FD66701B27E3D0AB00296E4A /* edc43536-73e2-484d-ac6b-efbb9d5b9d1c-바다다펜션2.jpeg */; };
+		FD66701E27E3D76B00296E4A /* 7f01c180-7909-4358-a827-04129dddc461-레이지펌프2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = FD66701D27E3D76B00296E4A /* 7f01c180-7909-4358-a827-04129dddc461-레이지펌프2.jpeg */; };
 		FD93028027A3EC7500341C2A /* PlanPreviewRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD93027F27A3EC7500341C2A /* PlanPreviewRepository.swift */; };
 		FD93028227A3ED1D00341C2A /* PlanPreviewEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD93028127A3ED1D00341C2A /* PlanPreviewEntity.swift */; };
 		FD93028827A3F9B800341C2A /* downloadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD93028727A3F9B800341C2A /* downloadImage.swift */; };
@@ -465,6 +469,11 @@
 		FD61AFD92791DB9100D39F47 /* PanDirectionGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanDirectionGesture.swift; sourceTree = "<group>"; };
 		FD61AFDB2791DC6E00D39F47 /* UINavigation + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigation + Extension.swift"; sourceTree = "<group>"; };
 		FD66701227E314C300296E4A /* PreviewBodyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewBodyData.swift; sourceTree = "<group>"; };
+		FD66701627E3CAB900296E4A /* 84481a29-524e-42fb-affc-b1d0e25d8eda-Untitled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "84481a29-524e-42fb-affc-b1d0e25d8eda-Untitled.png"; path = "../../../../../../Downloads/84481a29-524e-42fb-affc-b1d0e25d8eda-Untitled.png"; sourceTree = "<group>"; };
+		FD66701827E3CB4900296E4A /* sample1.jfif */ = {isa = PBXFileReference; lastKnownFileType = file; name = sample1.jfif; path = ../../../../../../Downloads/sample1.jfif; sourceTree = "<group>"; };
+		FD66701927E3CBF300296E4A /* sample1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = sample1.jpeg; path = ../../../../../../Downloads/sample1.jpeg; sourceTree = "<group>"; };
+		FD66701B27E3D0AB00296E4A /* edc43536-73e2-484d-ac6b-efbb9d5b9d1c-바다다펜션2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "edc43536-73e2-484d-ac6b-efbb9d5b9d1c-바다다펜션2.jpeg"; path = "../../../../../../Downloads/edc43536-73e2-484d-ac6b-efbb9d5b9d1c-바다다펜션2.jpeg"; sourceTree = "<group>"; };
+		FD66701D27E3D76B00296E4A /* 7f01c180-7909-4358-a827-04129dddc461-레이지펌프2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "7f01c180-7909-4358-a827-04129dddc461-레이지펌프2.jpeg"; path = "../../../../../../Downloads/7f01c180-7909-4358-a827-04129dddc461-레이지펌프2.jpeg"; sourceTree = "<group>"; };
 		FD93027F27A3EC7500341C2A /* PlanPreviewRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanPreviewRepository.swift; sourceTree = "<group>"; };
 		FD93028127A3ED1D00341C2A /* PlanPreviewEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanPreviewEntity.swift; sourceTree = "<group>"; };
 		FD93028727A3F9B800341C2A /* downloadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = downloadImage.swift; sourceTree = "<group>"; };
@@ -1144,6 +1153,11 @@
 		FD3211A727841948007D63D5 /* BeMyPlan */ = {
 			isa = PBXGroup;
 			children = (
+				FD66701D27E3D76B00296E4A /* 7f01c180-7909-4358-a827-04129dddc461-레이지펌프2.jpeg */,
+				FD66701927E3CBF300296E4A /* sample1.jpeg */,
+				FD66701B27E3D0AB00296E4A /* edc43536-73e2-484d-ac6b-efbb9d5b9d1c-바다다펜션2.jpeg */,
+				FD66701827E3CB4900296E4A /* sample1.jfif */,
+				FD66701627E3CAB900296E4A /* 84481a29-524e-42fb-affc-b1d0e25d8eda-Untitled.png */,
 				F294EC30278EDB82001069F8 /* BeMyPlan.entitlements */,
 				FD09DD5027855E32006DA050 /* GoogleService-Info.plist */,
 				FD47D76627A50C1300272352 /* Coordinator */,
@@ -1674,6 +1688,7 @@
 				FDF980F8278827000009A14E /* Colors.xcassets in Resources */,
 				FD3211C3278433CF007D63D5 /* .swiftlint.yml in Resources */,
 				FD09DDD427856A31006DA050 /* shadow_balloon.png in Resources */,
+				FD66701A27E3CBF300296E4A /* sample1.jpeg in Resources */,
 				FD09DDE627856A31006DA050 /* map_present_direction.png in Resources */,
 				FDF980C62786D1A40009A14E /* Home.storyboard in Resources */,
 				FD09DDDF27856A31006DA050 /* map_present_tracking.png in Resources */,
@@ -1699,6 +1714,7 @@
 				FD09DDE027856A31006DA050 /* map_pin_red.png in Resources */,
 				FD09DDEA27856A31006DA050 /* map_present_background_update.png in Resources */,
 				FD3566522792AF2C0082B4CE /* ScrapEmptyCotainerCVC.xib in Resources */,
+				FD66701E27E3D76B00296E4A /* 7f01c180-7909-4358-a827-04129dddc461-레이지펌프2.jpeg in Resources */,
 				FD2D4DBE278D3FA5002084B9 /* PlanDetailDayCVC.xib in Resources */,
 				FD2D4DDE278DDB93002084B9 /* Spoqa_Han_Sans_Neo_Medium.otf in Resources */,
 				FD09DDE427856A31006DA050 /* info_box_tail.png in Resources */,
@@ -1720,6 +1736,7 @@
 				FDF980CA2786D23D0009A14E /* TravelSpot.storyboard in Resources */,
 				FD09DDE527856A31006DA050 /* noimage256.png in Resources */,
 				FD09DDD227856A31006DA050 /* map_pinup_custom@3x.png in Resources */,
+				FD66701727E3CAB900296E4A /* 84481a29-524e-42fb-affc-b1d0e25d8eda-Untitled.png in Resources */,
 				FDF980F4278825EF0009A14E /* TabBarIconView.xib in Resources */,
 				F266412D2788262800CCC751 /* MainListCVC.xib in Resources */,
 				FD2D4DAA278D3C55002084B9 /* PlanDetailMapContainerView.xib in Resources */,
@@ -1739,6 +1756,7 @@
 				FD09DDD627856A31006DA050 /* detail_button.png in Resources */,
 				FD2D4DB6278D3DB6002084B9 /* PlanDetailSummaryTVC.xib in Resources */,
 				FD09DDE827856A31006DA050 /* map_present.png in Resources */,
+				FD66701C27E3D0AB00296E4A /* edc43536-73e2-484d-ac6b-efbb9d5b9d1c-바다다펜션2.jpeg in Resources */,
 				F2C5F1942786EB3C00BE4036 /* MainListView.xib in Resources */,
 				FD09DDDC27856A31006DA050 /* map_pin_red@3x.png in Resources */,
 				FD09DDD527856A31006DA050 /* map_pinup.png in Resources */,
