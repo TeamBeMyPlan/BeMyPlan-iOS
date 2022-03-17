@@ -53,13 +53,13 @@ class ImageSizeFetcher: NSObject, URLSessionDataDelegate {
     callback(nil,entry)
   }
   
-  //MARK: - Helper Methods
+  // MARK: - Helper Methods
   
   private func operation(forTask task: URLSessionTask?) -> ImageSizeFetcherOp? {
     return (self.queue.operations as! [ImageSizeFetcherOp]).first(where: { $0.url == task?.currentRequest?.url })
   }
   
-  //MARK: - URLSessionDataDelegate
+  // MARK: - URLSessionDataDelegate
   
   public func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data) {
     operation(forTask: dataTask)?.onReceiveData(data)

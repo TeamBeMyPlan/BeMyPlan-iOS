@@ -18,7 +18,7 @@ final class ImageSizeFetcherParser {
   
   /// Supported image formats
   public enum Format {
-    case jpeg, png, gif, bmp
+    case jpeg, png, gif, bmp, jpg
     
     /// Minimum amount of data (in bytes) required to parse successfully the frame size.
     /// When `nil` it means the format has a variable data length and therefore
@@ -44,7 +44,11 @@ final class ImageSizeFetcherParser {
       case 0x8950:  self = .png
       case 0x4749:  self = .gif
       case 0x424D:   self = .bmp
-      default:    throw ImageParserErrors.unsupportedFormat
+      default:
+          
+          print("UNSUPPORTED IMAGE",String(describing: length))
+          
+          throw ImageParserErrors.unsupportedFormat
       }
     }
   }
@@ -114,11 +118,14 @@ final class ImageSizeFetcherParser {
       
       return CGSize(width: Int(w), height: Int(h))
       
+    case .jpg:
+        
     case .jpeg:
       var i: Int = 0
       // check for valid JPEG image
       // http://www.fastgraph.com/help/jpeg_header_format.html
       guard data[i] == 0xFF && data[i+1] == 0xD8 && data[i+2] == 0xFF && data[i+3] == 0xE0 else {
+        print("JPEG UNSUPPORTED",data)
         throw ImageParserErrors.unsupportedFormat // Not a valid SOI header
       }
       i += 4
@@ -129,6 +136,7 @@ final class ImageSizeFetcherParser {
         data[i+4].char == "I" &&
         data[i+5].char == "F" &&
         data[i+6] == 0x00 else {
+          print("Not a valid JFIF string",data,i)
           throw ImageParserErrors.unsupportedFormat // Not a valid JFIF string
       }
       
@@ -157,6 +165,7 @@ final class ImageSizeFetcherParser {
         }
       } while (i < data.count)
       return nil
+
     }
   }
   

@@ -59,6 +59,7 @@ extension DefaultPlanPreviewUseCase: PlanPreviewUseCase {
     var heightList = [CGFloat](repeating: 0, count: bodyData.photos.count)
     var count = 0
     let imageViewWidth = screenWidth - 48
+    
     _ = bodyData.photos.enumerated().map { index,imageUrls -> Void in
       guard let url = URL(string: imageUrls.photoUrl) else { return }
       self.imageSizeFetcher.sizeFor(atURL: url) { err, result in
