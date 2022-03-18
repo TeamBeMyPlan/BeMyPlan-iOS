@@ -68,7 +68,6 @@ class PlanPreviewVC: UIViewController {
     
     output.contentList
       .bind(to: previewContentTV.rx.items) { (tableView,index,item) -> UITableViewCell in
-        print("CONCCC")
         dump(item)
         switch(item.case){
           case .header:

@@ -15,6 +15,7 @@ struct ImageHeightProcessResult {
   var `case`: ProcessResult
   
   enum ProcessResult{
+    case empty
     case valueExist
     case invalidURL
     case calculateHeightFail
@@ -73,12 +74,16 @@ extension DefaultPlanPreviewUseCase: PlanPreviewUseCase {
       self.imageHeightData.onCompleted()
       return
     }
-    var heightList = [ImageHeightProcessResult](repeating: .init(), count: bodyData.photos.count){
-      didSet {
-        self.imageHeightData.onNext(heightList)
+    var count = 0 {
+      didSet{
+        if count == bodyData.photos.count * 2 {
+          print("KKKK")
+          dump(heightList)
+          self.imageHeightData.onNext(heightList)
+        }
       }
     }
-
+    var heightList = [ImageHeightProcessResult](repeating: .init(case: .empty), count: bodyData.photos.count)
                                             
     let imageViewWidth = screenWidth - 48
     
@@ -86,24 +91,31 @@ extension DefaultPlanPreviewUseCase: PlanPreviewUseCase {
       guard let url = URL(string: imageUrls.photoUrl) else { return }
       self.imageSizeFetcher.sizeFor(atURL: url) { err, result in
         
+        print("==========RESULT",result)
+        print("=========err",err)
         if let error = err as? ImageParserErrors {
           switch(error){
             case .unsupportedFormat:
-              if let size = self.sizeOfImageAt(url: url) {
-                let ratio = size.width / size.height
-                let heightForDevice = imageViewWidth / ratio
+              if heightList[index].case != .valueExist {
                 heightList[index] = .init(case: .calculateHeightFail)
               }
               default:
-                print("")
+              if heightList[index].case != .valueExist {
+                heightList[index] = .init(case: .calculateHeightFail)
+              }
           }
         } else {
           if let result = result {
             let ratio = result.size.width / result.size.height
             let heightForDevice = imageViewWidth / ratio
             heightList[index] = .init(value: heightForDevice)
+          }else{
+            if heightList[index].case != .valueExist {
+              heightList[index] = .init(case: .invalidURL)
+            }
           }
         }
+        count += 1
       }
     }
   }

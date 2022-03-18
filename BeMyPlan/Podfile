@@ -20,6 +20,7 @@ target 'BeMyPlan' do
   pod 'Firebase/Analytics'
   pod 'Firebase/Crashlytics'
   pod 'PanModal'
+  pod 'Gedatsu', configuration: %w(Debug)
   pod 'SkeletonView'
    pod 'ImageSlideShowSwift', :git => 'https://github.com/TeamBeMyPlan/ImageSlideShow.git', :branch => 'master'
    pod 'RxSwift'

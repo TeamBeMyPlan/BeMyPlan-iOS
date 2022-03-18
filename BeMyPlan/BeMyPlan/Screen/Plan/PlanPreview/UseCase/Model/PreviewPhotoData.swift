@@ -12,6 +12,6 @@ extension PlanPreview{
     var `case`: PlanPreview.ContentList = .photo
     var photoUrl : String
     var content : String
-    var height: Result<CGFloat,Error>
+    var height: ImageHeightProcessResult
   }
 }

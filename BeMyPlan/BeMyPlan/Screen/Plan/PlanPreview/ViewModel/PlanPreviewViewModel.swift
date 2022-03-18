@@ -72,7 +72,7 @@ extension PlanPreviewViewModel{
   }
   
   private func generateContentData(contentData: PlanPreview.ContentData,
-                                   heights: [CGFloat]) -> [PlanPreviewContent] {
+                                   heights: [ImageHeightProcessResult]) -> [PlanPreviewContent] {
     var contentList: [PlanPreviewContent] = []
     
     if let header = contentData.headerData {

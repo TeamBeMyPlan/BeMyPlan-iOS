@@ -5,6 +5,9 @@
 //  Created by 송지훈 on 2022/01/04.
 //
 
+#if DEBUG
+import Gedatsu
+#endif
 import UIKit
 import FirebaseCore
 import KakaoSDKCommon
@@ -21,6 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Override point for customization after application launch.
     setupFirebaseSDK()
     KakaoSDK.initSDK(appKey: "904d52aff326e5526e945eee5dfb8efd")
+    #if DEBUG
+    Gedatsu.open()
+    #endif
     return true
   }
   

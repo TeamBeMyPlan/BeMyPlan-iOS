@@ -49,14 +49,22 @@ class PlanPreviewPhotoTVC: UITableViewCell {
   }
   
   func setPhotoData(_ data : PlanPreview.PhotoData){
-    contentImageView.setImage(with: data.photoUrl)
     makeShortContent(content: data.content)
-    data.height.success { height in
-      imageHeightConstraint.constant = height
-    }.catch { _ in
-      imageHeightConstraint.constant = screenWidth
+
+    contentImageView.setImage(with: data.photoUrl) { image in
+      if data.height.case != .valueExist{
+        self.imageHeightConstraint.constant = self.makeImageHeight(image)
+        self.contentView.layoutIfNeeded()
+      }
     }
-    layoutIfNeeded()
+    switch(data.height.case){
+      case .valueExist:
+        imageHeightConstraint.constant = data.height.value
+      case .calculateHeightFail,.invalidURL:
+        imageHeightConstraint.constant = screenWidth
+      default :
+        imageHeightConstraint.constant = 0
+    }
   }
   
   private func makeShortContent(content: String){
@@ -64,6 +72,16 @@ class PlanPreviewPhotoTVC: UITableViewCell {
       contentTextView.text = content
     }else{
       contentTextView.text = content.prefix(99) + "..."
+    }
+  }
+  
+  private func makeImageHeight(_ image: UIImage?) -> CGFloat {
+    if let img = image {
+      let ratio = img.size.height / img.size.width
+      let imageViewWidth = screenWidth - 48
+      return imageViewWidth * ratio
+    } else {
+      return screenWidth
     }
   }
 }

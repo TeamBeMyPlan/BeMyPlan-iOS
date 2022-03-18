@@ -72,7 +72,8 @@ extension PlanPreviewEntity {
     if let body = body {
       for item in body {
           let photo = PlanPreview.PhotoData.init(photoUrl: item.photoUrls.first ?? "",
-                                                 content: item.datumDescription)
+                                                 content: item.datumDescription,
+                                                 height: .init())
           photoDataList.append(photo)
       }
     }

@@ -14,7 +14,7 @@ public enum ImageParserErrors: Error {
 
 /// Parser is the main core class which parse collected partial data and attempts
 /// to get the image format along with the size of the frame.
-final class ImageSizeFetcherParser {
+public class ImageSizeFetcherParser {
   
   /// Supported image formats
   public enum Format {
@@ -25,10 +25,10 @@ final class ImageSizeFetcherParser {
     /// a parsing operation is always required.
     var minimumSample: Int? {
       switch self {
-      case .jpeg: return nil // will be checked by the parser (variable data is required)
-      case .png:   return 25
-      case .gif:   return 11
-      case .bmp:  return 29
+        case .jpeg: return nil // will be checked by the parser (variable data is required)
+        case .png:   return 25
+        case .gif:   return 11
+        case .bmp:  return 29
       }
     }
     
@@ -39,17 +39,12 @@ final class ImageSizeFetcherParser {
     internal init(fromData data: Data) throws {
       // Evaluate the format of the image
       let length: UInt16 = data[0..<2]
-      print("HELLLO",CFSwapInt16(length))
       switch CFSwapInt16(length) {
-      case 0xFFD8:  self = .jpeg
-      case 0x8950:  self = .png
-      case 0x4749:  self = .gif
-      case 0x424D:   self = .bmp
-      default:
-          
-          print("UNSUPPORTED IMAGE",CFSwapInt16(length))
-          
-          throw ImageParserErrors.unsupportedFormat
+        case 0xFFD8:  self = .jpeg
+        case 0x8950:  self = .png
+        case 0x4749:  self = .gif
+        case 0x424D:   self = .bmp
+        default:    throw ImageParserErrors.unsupportedFormat
       }
     }
   }
@@ -96,104 +91,74 @@ final class ImageSizeFetcherParser {
     }
     
     switch format {
-    case .bmp:
-      let length: UInt16 = data[14, 4]
-
-      let start = 18
-      let startOffset = length == 12 ? 4 : 2
-
-      let w: UInt32 = data[start, startOffset]
-      let h: UInt32 = data[start, startOffset]
-      
-      return CGSize(width: Int(w), height: Int(h))
-      
-    case .png:
-      let w: UInt32 = data[16, 4]
-      let h: UInt32 = data[20, 4]
-      
-      return CGSize(width: Int(CFSwapInt32(w)), height: Int(CFSwapInt32(h)))
-      
-    case .gif:
-      let w: UInt16 = data[6, 2]
-      let h: UInt16 = data[8, 2]
-      
-      return CGSize(width: Int(w), height: Int(h))
-      
+      case .bmp:
+        let length: UInt16 = data[14, 4]
         
-    case .jpeg:
-      var i: Int = 0
-      // check for valid JPEG image
-      // http://www.fastgraph.com/help/jpeg_header_format.html
+        let start = 18
+        let startOffset = length == 12 ? 4 : 2
+        
+        let w: UInt32 = data[start, startOffset]
+        let h: UInt32 = data[start, startOffset]
+        
+        return CGSize(width: Int(w), height: Int(h))
+        
+      case .png:
+        let w: UInt32 = data[16, 4]
+        let h: UInt32 = data[20, 4]
+        
+        return CGSize(width: Int(CFSwapInt32(w)), height: Int(CFSwapInt32(h)))
+        
+      case .gif:
+        let w: UInt16 = data[6, 2]
+        let h: UInt16 = data[8, 2]
+        
+        return CGSize(width: Int(w), height: Int(h))
+        
+      case .jpeg:
+        var i: Int = 0
+        // check for valid JPEG image
+        // http://www.fastgraph.com/help/jpeg_header_format.html
         //0xFFD8
-        print("I",i)
-        print("JPEG",data[i],data[i+1],data[i+2],data[i+3])
-      guard data[i] == 0xFF && data[i+1] == 0xD8 && data[i+2] == 0xFF && (data[i+3] == 0xE0 || data[i+3] == 0xE1) else {
-        print("JPEG UNSUPPORTED",data)
-        throw ImageParserErrors.unsupportedFormat // Not a valid SOI header
-      }
-      i += 4
-      
-      // Check for valid JPEG header (null terminated JFIF)
-        print("!!!!!!!Not a valid JFIF string",data[i+2].char,data[i+3].char,data[i+4].char,data[i+5].char)
-
-      guard (data[i+2].char == "J"         || data[i+2].char == "E") &&
-              (data[i+3].char == "F"       || data[i+3].char == "x")  &&
-              (data[i+4].char == "I"       || data[i+4].char == "i") &&
-              (data[i+5].char == "F"       || data[i+5].char == "f") &&
-        data[i+6] == 0x00 else {
-          throw ImageParserErrors.unsupportedFormat // Not a valid JFIF string
-      }
-      print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
-        while(i+4<data.count) {
-          if data[i] == 0xFF &&
-              (data[i+1] == 0xC0 ||  data[i+1] == 0xC1 || data[i+1] == 0xC2 || data[i+1] == 0xC3) &&
-              data[i+2] == 0x00 &&
-              data[i+3] == 0x11 &&
-              data[i+4] == 0x08{
-            print("%^^^^^SIZE FOUND",data.count,i)
-            print(data[i],data[i+1],data[i+2],data[i+3],data[i+4],data[i+5],data[i+6],data[i+7])
+        guard data[i] == 0xFF && data[i+1] == 0xD8 && data[i+2] == 0xFF && (data[i+3] == 0xE0 || data[i+3] == 0xE1) else {
+          throw ImageParserErrors.unsupportedFormat // Not a valid SOI header
+        }
+        i += 4
+        
+        
+        // Check for valid JPEG header (null terminated JFIF)
+        guard (data[i+2].char == "J"         || data[i+2].char == "E") &&
+                (data[i+3].char == "F"       || data[i+3].char == "x")  &&
+                (data[i+4].char == "I"       || data[i+4].char == "i") &&
+                (data[i+5].char == "F"       || data[i+5].char == "f") &&
+                data[i+6] == 0x00 else {
+                  throw ImageParserErrors.unsupportedFormat // Not a valid JFIF string
+                }
+        
+        // Retrieve the block length of the first block since the
+        // first block will not contain the size of file
+        var block_length: UInt16 = UInt16(data[i]) * 256 + UInt16(data[i+1])
+        repeat {
+          i += Int(block_length) //I ncrease the file index to get to the next block
+          if i >= data.count { // Check to protect against segmentation faults
+            return nil
+          }
+          if data[i] != 0xFF { //Check that we are truly at the start of another block
+            return nil
+          }
+          if data[i+1] >= 0xC0 && data[i+1] <= 0xC3 { // if marker type is SOF0, SOF1, SOF2
+            // "Start of frame" marker which contains the file size
             let h: UInt16 = data[i + 5, 2]
             let w: UInt16 = data[i + 7, 2]
             
-            let size = CGSize(width: Int(CFSwapInt16(w)), height: Int(CFSwapInt16(h)));
+            let size = CGSize(width: Int(CFSwapInt16(w)), height: Int(CFSwapInt16(h)) );
             return size
-          }else{
-            i += 1
-            continue
+          } else {
+            // Skip the block marker
+            i+=2;
+            block_length = UInt16(data[i]) * 256 + UInt16(data[i+1]);   // Go to the next block
           }
-        }
-        print("ERROR@#@#",data.count,i)
+        } while (i < data.count)
         return nil
-//      // Retrieve the block length of the first block since the
-//      // first block will not contain the size of file
-//      var block_length: UInt16 = UInt16(data[i]) * 256 + UInt16(data[i+1])
-//      repeat {
-//        i += Int(block_length) //I ncrease the file index to get to the next block
-//        if i >= data.count { // Check to protect against segmentation faults
-//          print("FAILSSSS",i,data.count)
-//          return nil
-//        }
-//        if data[i] != 0xFF { //Check that we are truly at the start of another block
-//          print("are truly at the start of another block",i)
-//          return nil
-//        }
-//        print("=====@@@@")
-//        print(data[i],data[i+1])
-//        if data[i+1] >= 0xC0 && data[i+1] <= 0xC3 { // if marker type is SOF0, SOF1, SOF2
-//          // "Start of frame" marker which contains the file size
-//          let h: UInt16 = data[i + 5, 2]
-//          let w: UInt16 = data[i + 7, 2]
-//
-//          let size = CGSize(width: Int(CFSwapInt16(w)), height: Int(CFSwapInt16(h)) );
-//          return size
-//        } else {
-//          // Skip the block marker
-//          i+=2;
-//          block_length = UInt16(data[i]) * 256 + UInt16(data[i+1]);   // Go to the next block
-//        }
-//      } while (i < data.count)
-//      return nil
-
     }
   }
   
