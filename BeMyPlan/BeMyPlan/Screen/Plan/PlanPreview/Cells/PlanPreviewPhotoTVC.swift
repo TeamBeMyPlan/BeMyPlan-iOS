@@ -11,6 +11,8 @@ class PlanPreviewPhotoTVC: UITableViewCell {
   
   // MARK: - Vars & Lets Part
   
+  var heightLoadComplete: ((CGFloat) -> ())?
+  
   @IBOutlet var contentImageView: UIImageView!
   @IBOutlet var contentTextView: UITextView!{
     didSet{
@@ -28,7 +30,7 @@ class PlanPreviewPhotoTVC: UITableViewCell {
     }
   }
   @IBOutlet var imageHeightConstraint: NSLayoutConstraint!
-  
+  @IBOutlet var textViewHeightConstraint: NSLayoutConstraint!
   // MARK: - Life Cycle Part
   
   override func awakeFromNib() {
@@ -46,24 +48,36 @@ class PlanPreviewPhotoTVC: UITableViewCell {
   // MARK: - Custom Method Part
   private func setUI(){
     contentImageView.layer.cornerRadius = 5
+    contentImageView
   }
   
-  func setPhotoData(_ data : PlanPreview.PhotoData){
+  func setPhotoData(_ data : PlanPreview.PhotoData,_ cachedHeight: CGFloat = 0){
     makeShortContent(content: data.content)
 
     contentImageView.setImage(with: data.photoUrl) { image in
-      if data.height.case != .valueExist{
-        self.imageHeightConstraint.constant = self.makeImageHeight(image)
-        self.contentView.layoutIfNeeded()
+      let height = self.makeImageHeight(image)
+      
+      
+      print("셀 내에서 계삳ㄴ된 높이",height)
+      print("밖에서 꽂아준 height ",data.height.value)
+      print("cachedHeight",cachedHeight)
+      if let heightLoadComplete = self.heightLoadComplete,
+         data.height.value != height,
+         cachedHeight == 0{
+        heightLoadComplete(height)
       }
     }
     switch(data.height.case){
       case .valueExist:
-        imageHeightConstraint.constant = data.height.value
-      case .calculateHeightFail,.invalidURL:
-        imageHeightConstraint.constant = screenWidth
+        imageHeightConstraint.constant = cachedHeight != 0 ? cachedHeight : data.height.value
+
       default :
-        imageHeightConstraint.constant = 0
+        if cachedHeight == 0 {
+          imageHeightConstraint.constant = screenWidth
+        } else {
+          print("캐싱된 height",cachedHeight,data.content)
+          imageHeightConstraint.constant = cachedHeight
+        }
     }
   }
   
@@ -76,10 +90,11 @@ class PlanPreviewPhotoTVC: UITableViewCell {
   }
   
   private func makeImageHeight(_ image: UIImage?) -> CGFloat {
+    let imageViewWidth = screenWidth - 48
     if let img = image {
-      let ratio = img.size.height / img.size.width
-      let imageViewWidth = screenWidth - 48
-      return imageViewWidth * ratio
+      let ratio = img.size.width / img.size.height
+      let heightForDevice = imageViewWidth / ratio
+      return heightForDevice
     } else {
       return screenWidth
     }

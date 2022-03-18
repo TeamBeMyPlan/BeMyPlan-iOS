@@ -25,6 +25,7 @@ class PlanPreviewVC: UIViewController {
     }
   }
   private var contentList : [PlanPreview.ContentList] = []
+  private var cachedHeightList: [Int: CGFloat] = [:]
   
   // MARK: - UI Component Part
   
@@ -39,6 +40,7 @@ class PlanPreviewVC: UIViewController {
 //      previewContentTV.dataSource = self
       previewContentTV.separatorStyle = .none
       previewContentTV.allowsSelection = false
+      previewContentTV.rowHeight = UITableView.automaticDimension
     }
   }
   
@@ -68,7 +70,6 @@ class PlanPreviewVC: UIViewController {
     
     output.contentList
       .bind(to: previewContentTV.rx.items) { (tableView,index,item) -> UITableViewCell in
-        dump(item)
         switch(item.case){
           case .header:
             let headerData = item as! PlanPreview.HeaderDataModel
@@ -86,7 +87,17 @@ class PlanPreviewVC: UIViewController {
           case .photo:
             let photoData = item as! PlanPreview.PhotoData
             guard let photoCell = tableView.dequeueReusableCell(withIdentifier: PlanPreviewPhotoTVC.className) as? PlanPreviewPhotoTVC else {return UITableViewCell() }
-            photoCell.setPhotoData(photoData)
+            
+            if let height = self.cachedHeightList[index] {
+              photoCell.setPhotoData(photoData,height)
+            }else {
+              photoCell.setPhotoData(photoData)
+            }
+
+            photoCell.heightLoadComplete = { [weak self] height in
+              self?.cachedHeightList[index] = height
+              self?.previewContentTV.reloadRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+            }
             return photoCell
             
           case .summary:
