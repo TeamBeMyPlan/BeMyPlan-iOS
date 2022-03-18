@@ -7,12 +7,29 @@
 
 import RxSwift
 import ImageIO
+import Accelerate
+
+
+struct ImageHeightProcessResult {
+  var value: CGFloat
+  var `case`: ProcessResult
+  
+  enum ProcessResult{
+    case valueExist
+    case invalidURL
+    case calculateHeightFail
+  }
+  
+  init(case: ProcessResult = .valueExist, value: CGFloat = 0) {
+    self.value = value
+    self.case = `case`
+  }
+}
 
 protocol PlanPreviewUseCase{
   func fetchPlanPreviewData()
-
   var contentData: PublishSubject<PlanPreview.ContentData> { get set }
-  var imageHeightData: PublishSubject<[CGFloat]> { get set }
+  var imageHeightData: PublishSubject<[ImageHeightProcessResult]> { get set }
 }
 
 final class DefaultPlanPreviewUseCase {
@@ -23,7 +40,7 @@ final class DefaultPlanPreviewUseCase {
   private let imageSizeFetcher = ImageSizeFetcher()
   
   var contentData = PublishSubject<PlanPreview.ContentData>()
-  var imageHeightData = PublishSubject<[CGFloat]>()
+  var imageHeightData = PublishSubject<[ImageHeightProcessResult]>()
   
   init(repository: PlanPreviewRepository,postIdx: Int){
     self.repository = repository
@@ -56,45 +73,18 @@ extension DefaultPlanPreviewUseCase: PlanPreviewUseCase {
       self.imageHeightData.onCompleted()
       return
     }
-    
-    var heightList = [CGFloat](repeating: 0, count: bodyData.photos.count){
+    var heightList = [ImageHeightProcessResult](repeating: .init(), count: bodyData.photos.count){
       didSet {
-        print("heightList",heightList)
-        if !heightList.contains(0){
-//          if index == 3 {
-//            print("@$@!!!!!",result?.size.width,result?.size.height)
-//          }
-         
-        print("CHECKUSECASE - HEIGHT",heightList)
         self.imageHeightData.onNext(heightList)
       }
-    }}
-    var count = 0
+    }
+
+                                            
     let imageViewWidth = screenWidth - 48
     
     _ = bodyData.photos.enumerated().map { index,imageUrls -> Void in
       guard let url = URL(string: imageUrls.photoUrl) else { return }
-//      let data = NSData(contentsOf: url)!
-//      let source = CGImageSourceCreateWithData(data as CFData, nil)!
-//      let image = CGImageSourceCreateThumbnailAtIndex(source, 0, nil)!
-//      print("image",image.width,image.height)
-//      let metadata = CGImageSourceCopyPropertiesAtIndex(source, 0, nil)!
-//      print(metadata)
-      
-//      let size = sizeOfImageAt(url: url)
-//      print("KKKKK",size?.width,size?.height)
-//
-//
-      print("INDEX + URL",index,imageUrls.photoUrl)
       self.imageSizeFetcher.sizeFor(atURL: url) { err, result in
-        
-        
-        print("INDEX:",index)
-        print("=====================")
-        print("ERR",err)
-        print("=====================")
-        print("result",result)
-        print("=====================")
         
         if let error = err as? ImageParserErrors {
           switch(error){
@@ -102,7 +92,7 @@ extension DefaultPlanPreviewUseCase: PlanPreviewUseCase {
               if let size = self.sizeOfImageAt(url: url) {
                 let ratio = size.width / size.height
                 let heightForDevice = imageViewWidth / ratio
-                heightList[index] = heightForDevice
+                heightList[index] = .init(case: .calculateHeightFail)
               }
               default:
                 print("")
@@ -111,24 +101,9 @@ extension DefaultPlanPreviewUseCase: PlanPreviewUseCase {
           if let result = result {
             let ratio = result.size.width / result.size.height
             let heightForDevice = imageViewWidth / ratio
-            heightList[index] = heightForDevice
-  //
-            count += 1
+            heightList[index] = .init(value: heightForDevice)
           }
-
         }
-
-        if let result = result {
-
-        }
-//        if count == bodyData.photos.count {
-////          if index == 3 {
-////            print("@$@!!!!!",result?.size.width,result?.size.height)
-////          }
-//          print("CHECKUSECASE - HEIGHT",heightList)
-//          self.imageHeightData.onNext(heightList)
-//        }
-
       }
     }
   }
