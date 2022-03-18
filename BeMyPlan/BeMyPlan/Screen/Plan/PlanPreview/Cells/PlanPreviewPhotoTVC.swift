@@ -6,11 +6,11 @@
 //
 
 import UIKit
+import SkeletonView
 
 class PlanPreviewPhotoTVC: UITableViewCell {
   
   // MARK: - Vars & Lets Part
-  
   var heightLoadComplete: ((CGFloat) -> ())?
   
   @IBOutlet var contentImageView: UIImageView!
@@ -36,6 +36,7 @@ class PlanPreviewPhotoTVC: UITableViewCell {
   override func awakeFromNib() {
     super.awakeFromNib()
     setUI()
+    setSkeletonUI()
   }
   
   override func setSelected(_ selected: Bool, animated: Bool) {
@@ -48,36 +49,51 @@ class PlanPreviewPhotoTVC: UITableViewCell {
   // MARK: - Custom Method Part
   private func setUI(){
     contentImageView.layer.cornerRadius = 5
-    contentImageView
+  }
+  
+  private func setSkeletonUI(){
+    let animation = SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .leftRight)
+    contentImageView.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .grey04,secondaryColor: .grey06), animation: animation, transition: .none)
   }
   
   func setPhotoData(_ data : PlanPreview.PhotoData,_ cachedHeight: CGFloat = 0){
     makeShortContent(content: data.content)
-
-    contentImageView.setImage(with: data.photoUrl) { image in
-      let height = self.makeImageHeight(image)
-      
-      
-      print("셀 내에서 계삳ㄴ된 높이",height)
-      print("밖에서 꽂아준 height ",data.height.value)
-      print("cachedHeight",cachedHeight)
-      if let heightLoadComplete = self.heightLoadComplete,
-         data.height.value != height,
-         cachedHeight == 0{
-        heightLoadComplete(height)
-      }
-    }
+    
     switch(data.height.case){
       case .valueExist:
         imageHeightConstraint.constant = cachedHeight != 0 ? cachedHeight : data.height.value
-
+        
       default :
         if cachedHeight == 0 {
           imageHeightConstraint.constant = screenWidth
         } else {
           print("캐싱된 height",cachedHeight,data.content)
           imageHeightConstraint.constant = cachedHeight
+//          self.layoutIfNeeded()
         }
+    }
+
+    contentImageView.setImage(with: data.photoUrl) { image in
+      let height = self.makeImageHeight(image)
+      
+      
+      DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+        self.contentImageView.hideSkeleton(reloadDataAfter: false, transition: .crossDissolve(1))
+        print("--------------------")
+        print("셀 내에서 계삳ㄴ된 높이",height)
+        print("밖에서 꽂아준 height ",data.height.value)
+        print("cachedHeight",cachedHeight,data.content)
+        print("--------------------")
+        print("WHAT..?",self.heightLoadComplete)
+
+        if let heightLoadComplete = self.heightLoadComplete,
+           data.height.value != height,
+           cachedHeight == 0{
+          print("INDDDDD",data.content)
+          heightLoadComplete(height)
+        }
+      }
+
     }
   }
   
@@ -99,4 +115,6 @@ class PlanPreviewPhotoTVC: UITableViewCell {
       return screenWidth
     }
   }
+  
+
 }

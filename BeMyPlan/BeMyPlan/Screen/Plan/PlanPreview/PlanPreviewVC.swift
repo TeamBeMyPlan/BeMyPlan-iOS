@@ -88,16 +88,19 @@ class PlanPreviewVC: UIViewController {
             let photoData = item as! PlanPreview.PhotoData
             guard let photoCell = tableView.dequeueReusableCell(withIdentifier: PlanPreviewPhotoTVC.className) as? PlanPreviewPhotoTVC else {return UITableViewCell() }
             
+            photoCell.heightLoadComplete = { [weak self] height in
+              self?.cachedHeightList[index] = height
+              print("height VC에서 캐싱됨",self?.cachedHeightList,index)
+              self?.previewContentTV.reloadRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+            }
             if let height = self.cachedHeightList[index] {
+              print("캐싱된 height VC에서 셀로 주입중",height,index)
               photoCell.setPhotoData(photoData,height)
             }else {
               photoCell.setPhotoData(photoData)
             }
 
-            photoCell.heightLoadComplete = { [weak self] height in
-              self?.cachedHeightList[index] = height
-              self?.previewContentTV.reloadRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
-            }
+
             return photoCell
             
           case .summary:
