@@ -46,12 +46,16 @@ class PlanPreviewPhotoTVC: UITableViewCell {
   // MARK: - Custom Method Part
   private func setUI(){
     contentImageView.layer.cornerRadius = 5
-    
   }
+  
   func setPhotoData(_ data : PlanPreview.PhotoData){
     contentImageView.setImage(with: data.photoUrl)
-    imageHeightConstraint.constant = data.height
     makeShortContent(content: data.content)
+    data.height.success { height in
+      imageHeightConstraint.constant = height
+    }.catch { _ in
+      imageHeightConstraint.constant = screenWidth
+    }
     layoutIfNeeded()
   }
   
