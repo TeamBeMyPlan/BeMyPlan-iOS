@@ -10,6 +10,7 @@ import UIKit
 class PlanPreviewRecommendTVC: UITableViewCell {
 
   // MARK: - Vars & Lets Part
+  var previewButtonDidTap: (() -> Void)?
 
   @IBOutlet var titleLabel: UILabel!
   @IBOutlet var contentTextView: UITextView!{
@@ -40,6 +41,11 @@ class PlanPreviewRecommendTVC: UITableViewCell {
   
   // MARK: - Custom Method Part
   
+  @IBAction func previewButtonClicked(_ sender: Any) {
+    if let previewButtonDidTap = previewButtonDidTap {
+      previewButtonDidTap()
+    }
+  }
   func setRecommendData(title : String?,content : String?){
     titleLabel.text = (title != nil) ? title : ""
     contentTextView.text = (content != nil) ? content : ""

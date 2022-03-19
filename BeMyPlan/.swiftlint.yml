@@ -1,6 +1,4 @@
 
-function_body_length:
-    error:  200
 
 trailing_whitespace:
     ignores_empty_lines: true
@@ -45,6 +43,7 @@ disabled_rules: # Default Rules에서 비활성화할 규칙
     - cyclomatic_complexity
     - empty_parentheses_with_trailing_closure
     - type_name
+    - function_body_length
 
 ### 배열을 사용해 warning과 error의 수준을 모두 설정할 수 있습니다.
 type_body_length:

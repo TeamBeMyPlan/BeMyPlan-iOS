@@ -19,7 +19,7 @@
 		523C70FD2799DAA30073371D /* ScrapEmptyDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523C70FC2799DAA30073371D /* ScrapEmptyDataModel.swift */; };
 		523C70FF2799DCC10073371D /* ScrapEmptyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523C70FE2799DCC10073371D /* ScrapEmptyService.swift */; };
 		52E26A8D278C17A800D84F0C /* TravelSpotFilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E26A8C278C17A800D84F0C /* TravelSpotFilterVC.swift */; };
-		BD1BAB7694ADAB729CC8361B /* Pods_BeMyPlan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2959FD9F8462A7CED1A2D9D0 /* Pods_BeMyPlan.framework */; };
+		EE831B81D3DC73F817ACFA24 /* Pods_BeMyPlan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 962E177CA1BE7F07312102C9 /* Pods_BeMyPlan.framework */; };
 		F21AFAA027919A8000A84633 /* CustomAlert.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F21AFA9F27919A8000A84633 /* CustomAlert.storyboard */; };
 		F21AFAA827919BA200A84633 /* CustomAlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21AFAA727919BA200A84633 /* CustomAlertVC.swift */; };
 		F250440A2799CFEB00791AB7 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25044092799CFEB00791AB7 /* AuthService.swift */; };
@@ -108,8 +108,6 @@
 		FD1A78232795C69000FB10AB /* MyPlanSerivice.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1A78222795C69000FB10AB /* MyPlanSerivice.swift */; };
 		FD1A78262795DA7100FB10AB /* showNetworkErr + UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1A78252795DA7100FB10AB /* showNetworkErr + UIViewController.swift */; };
 		FD1A78292795E45600FB10AB /* PlanPreviewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1A78282795E45600FB10AB /* PlanPreviewService.swift */; };
-		FD1A782B2795E63600FB10AB /* PreviewTagDataGettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1A782A2795E63600FB10AB /* PreviewTagDataGettable.swift */; };
-		FD1A782D2795EBEF00FB10AB /* PreviewDetailDataGettable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1A782C2795EBEF00FB10AB /* PreviewDetailDataGettable.swift */; };
 		FD1C568C2792DA7300EEDFCE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD3211B127841949007D63D5 /* Assets.xcassets */; };
 		FD1C568F2795893700EEDFCE /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1C568E2795893700EEDFCE /* HomeService.swift */; };
 		FD1C569127958A9B00EEDFCE /* ResponseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1C569027958A9B00EEDFCE /* ResponseObject.swift */; };
@@ -186,9 +184,13 @@
 		FD61AFA327902C7A00D39F47 /* PlanDetailSelectDayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD61AFA227902C7A00D39F47 /* PlanDetailSelectDayView.xib */; };
 		FD61AFDA2791DB9100D39F47 /* PanDirectionGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD61AFD92791DB9100D39F47 /* PanDirectionGesture.swift */; };
 		FD61AFDC2791DC6E00D39F47 /* UINavigation + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD61AFDB2791DC6E00D39F47 /* UINavigation + Extension.swift */; };
+		FD66701327E314C300296E4A /* PreviewBodyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD66701227E314C300296E4A /* PreviewBodyData.swift */; };
 		FD93028027A3EC7500341C2A /* PlanPreviewRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD93027F27A3EC7500341C2A /* PlanPreviewRepository.swift */; };
 		FD93028227A3ED1D00341C2A /* PlanPreviewEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD93028127A3ED1D00341C2A /* PlanPreviewEntity.swift */; };
 		FD93028827A3F9B800341C2A /* downloadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD93028727A3F9B800341C2A /* downloadImage.swift */; };
+		FD958A3327E0D7B500264EE4 /* ImageSizeFetcherOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD958A3227E0D7B500264EE4 /* ImageSizeFetcherOperation.swift */; };
+		FD958A3527E0D81700264EE4 /* ImageSizeFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD958A3427E0D81700264EE4 /* ImageSizeFetcher.swift */; };
+		FD958A3727E0D88300264EE4 /* ImageSizeFetcherParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD958A3627E0D88300264EE4 /* ImageSizeFetcherParser.swift */; };
 		FDA2062D27C40FCC001A371D /* PlanDetailVC + fetchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA2062927C40FCC001A371D /* PlanDetailVC + fetchData.swift */; };
 		FDA2062E27C40FCC001A371D /* PlanDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA2062A27C40FCC001A371D /* PlanDetailVC.swift */; };
 		FDA2062F27C40FCC001A371D /* PlanDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDA2062B27C40FCC001A371D /* PlanDetail.storyboard */; };
@@ -213,6 +215,7 @@
 		FDCE38282799BACB0042DC54 /* Indicator.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDCE38272799BACB0042DC54 /* Indicator.storyboard */; };
 		FDCE382A2799BAD80042DC54 /* IndicatorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCE38292799BAD80042DC54 /* IndicatorVC.swift */; };
 		FDCE382C2799BBC90042DC54 /* showIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCE382B2799BBC90042DC54 /* showIndicator.swift */; };
+		FDCEE68C27D9D400000D8F7F /* PlanPreviewUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCEE68B27D9D400000D8F7F /* PlanPreviewUseCase.swift */; };
 		FDD41E2527DAF87B003BF531 /* OnboardingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD41E2427DAF87B003BF531 /* OnboardingVC.swift */; };
 		FDD41E2727DAF884003BF531 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDD41E2627DAF884003BF531 /* Onboarding.storyboard */; };
 		FDD41E2927DB01AE003BF531 /* OnboardingVC + ConfigureLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD41E2827DB01AE003BF531 /* OnboardingVC + ConfigureLayout.swift */; };
@@ -258,7 +261,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2959FD9F8462A7CED1A2D9D0 /* Pods_BeMyPlan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeMyPlan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		523C70A22795C3EF0073371D /* TravelSpotDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelSpotDataModel.swift; sourceTree = "<group>"; };
 		523C70A42795D32E0073371D /* TravelSpotService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelSpotService.swift; sourceTree = "<group>"; };
 		523C70A72795E7560073371D /* TravelSpotDetailDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelSpotDetailDataModel.swift; sourceTree = "<group>"; };
@@ -279,8 +281,9 @@
 		52B0A5A2278F424700242D35 /* ScrapEmptyCotainerCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapEmptyCotainerCVC.swift; sourceTree = "<group>"; };
 		52B0A5A3278F424700242D35 /* ScrapEmptyCotainerCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScrapEmptyCotainerCVC.xib; sourceTree = "<group>"; };
 		52E26A8C278C17A800D84F0C /* TravelSpotFilterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelSpotFilterVC.swift; sourceTree = "<group>"; };
-		9FD7FC1E03E330FEBAF0E26D /* Pods-BeMyPlan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeMyPlan.release.xcconfig"; path = "Target Support Files/Pods-BeMyPlan/Pods-BeMyPlan.release.xcconfig"; sourceTree = "<group>"; };
-		C5F36517E11C902289F23123 /* Pods-BeMyPlan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeMyPlan.debug.xcconfig"; path = "Target Support Files/Pods-BeMyPlan/Pods-BeMyPlan.debug.xcconfig"; sourceTree = "<group>"; };
+		962E177CA1BE7F07312102C9 /* Pods_BeMyPlan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeMyPlan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB06789E6122312ADD152CAB /* Pods-BeMyPlan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeMyPlan.debug.xcconfig"; path = "Target Support Files/Pods-BeMyPlan/Pods-BeMyPlan.debug.xcconfig"; sourceTree = "<group>"; };
+		BF7B7728BC14272B410863D6 /* Pods-BeMyPlan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeMyPlan.release.xcconfig"; path = "Target Support Files/Pods-BeMyPlan/Pods-BeMyPlan.release.xcconfig"; sourceTree = "<group>"; };
 		F2191EF52795DF600058EF9A /* HomeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeData.swift; sourceTree = "<group>"; };
 		F21AFA9F27919A8000A84633 /* CustomAlert.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CustomAlert.storyboard; sourceTree = "<group>"; };
 		F21AFAA727919BA200A84633 /* CustomAlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertVC.swift; sourceTree = "<group>"; };
@@ -384,8 +387,6 @@
 		FD1A78222795C69000FB10AB /* MyPlanSerivice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlanSerivice.swift; sourceTree = "<group>"; };
 		FD1A78252795DA7100FB10AB /* showNetworkErr + UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "showNetworkErr + UIViewController.swift"; sourceTree = "<group>"; };
 		FD1A78282795E45600FB10AB /* PlanPreviewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanPreviewService.swift; sourceTree = "<group>"; };
-		FD1A782A2795E63600FB10AB /* PreviewTagDataGettable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewTagDataGettable.swift; sourceTree = "<group>"; };
-		FD1A782C2795EBEF00FB10AB /* PreviewDetailDataGettable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewDetailDataGettable.swift; sourceTree = "<group>"; };
 		FD1C568E2795893700EEDFCE /* HomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeService.swift; sourceTree = "<group>"; };
 		FD1C569027958A9B00EEDFCE /* ResponseObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseObject.swift; sourceTree = "<group>"; };
 		FD20C608278EB94100AC6E34 /* MyPlanCVUserResuableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlanCVUserResuableView.swift; sourceTree = "<group>"; };
@@ -464,9 +465,13 @@
 		FD61AFA427902C9400D39F47 /* PlanDetailSelectDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDetailSelectDayView.swift; sourceTree = "<group>"; };
 		FD61AFD92791DB9100D39F47 /* PanDirectionGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanDirectionGesture.swift; sourceTree = "<group>"; };
 		FD61AFDB2791DC6E00D39F47 /* UINavigation + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigation + Extension.swift"; sourceTree = "<group>"; };
+		FD66701227E314C300296E4A /* PreviewBodyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewBodyData.swift; sourceTree = "<group>"; };
 		FD93027F27A3EC7500341C2A /* PlanPreviewRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanPreviewRepository.swift; sourceTree = "<group>"; };
 		FD93028127A3ED1D00341C2A /* PlanPreviewEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanPreviewEntity.swift; sourceTree = "<group>"; };
 		FD93028727A3F9B800341C2A /* downloadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = downloadImage.swift; sourceTree = "<group>"; };
+		FD958A3227E0D7B500264EE4 /* ImageSizeFetcherOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSizeFetcherOperation.swift; sourceTree = "<group>"; };
+		FD958A3427E0D81700264EE4 /* ImageSizeFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSizeFetcher.swift; sourceTree = "<group>"; };
+		FD958A3627E0D88300264EE4 /* ImageSizeFetcherParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSizeFetcherParser.swift; sourceTree = "<group>"; };
 		FDA2062927C40FCC001A371D /* PlanDetailVC + fetchData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PlanDetailVC + fetchData.swift"; sourceTree = "<group>"; };
 		FDA2062A27C40FCC001A371D /* PlanDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanDetailVC.swift; sourceTree = "<group>"; };
 		FDA2062B27C40FCC001A371D /* PlanDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PlanDetail.storyboard; sourceTree = "<group>"; };
@@ -491,6 +496,7 @@
 		FDCE38272799BACB0042DC54 /* Indicator.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Indicator.storyboard; sourceTree = "<group>"; };
 		FDCE38292799BAD80042DC54 /* IndicatorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorVC.swift; sourceTree = "<group>"; };
 		FDCE382B2799BBC90042DC54 /* showIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = showIndicator.swift; sourceTree = "<group>"; };
+		FDCEE68B27D9D400000D8F7F /* PlanPreviewUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanPreviewUseCase.swift; sourceTree = "<group>"; };
 		FDD41E2427DAF87B003BF531 /* OnboardingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingVC.swift; sourceTree = "<group>"; };
 		FDD41E2627DAF884003BF531 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		FDD41E2827DB01AE003BF531 /* OnboardingVC + ConfigureLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnboardingVC + ConfigureLayout.swift"; sourceTree = "<group>"; };
@@ -545,7 +551,7 @@
 				FD09DDED27856A31006DA050 /* DaumMap.framework in Frameworks */,
 				FD09DD9A27856394006DA050 /* CoreLocation.framework in Frameworks */,
 				FD09DD9827856387006DA050 /* SystemConfiguration.framework in Frameworks */,
-				BD1BAB7694ADAB729CC8361B /* Pods_BeMyPlan.framework in Frameworks */,
+				EE831B81D3DC73F817ACFA24 /* Pods_BeMyPlan.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -564,7 +570,7 @@
 				FD09DD9927856394006DA050 /* CoreLocation.framework */,
 				FD09DD9727856387006DA050 /* SystemConfiguration.framework */,
 				FD09DD9527856377006DA050 /* OpenGLES.framework */,
-				2959FD9F8462A7CED1A2D9D0 /* Pods_BeMyPlan.framework */,
+				962E177CA1BE7F07312102C9 /* Pods_BeMyPlan.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -607,8 +613,8 @@
 		6F77842C2239262E3D685F1B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				C5F36517E11C902289F23123 /* Pods-BeMyPlan.debug.xcconfig */,
-				9FD7FC1E03E330FEBAF0E26D /* Pods-BeMyPlan.release.xcconfig */,
+				AB06789E6122312ADD152CAB /* Pods-BeMyPlan.debug.xcconfig */,
+				BF7B7728BC14272B410863D6 /* Pods-BeMyPlan.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -844,6 +850,7 @@
 		FD09DE0127857927006DA050 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				FD958A3127E0D78A00264EE4 /* ImageSizeFetcher */,
 				FD09DE022785794B006DA050 /* makeVibrate.swift */,
 				FD09DE042785795D006DA050 /* applyShadow.swift */,
 				FD09DE0627857971006DA050 /* calculateTopInset.swift */,
@@ -905,7 +912,6 @@
 				523C70AD27969F1A0073371D /* Scrap */,
 				FD20C60C278EBF0100AC6E34 /* MyPlan */,
 				FD2D4DCD278D90BA002084B9 /* PlanDetail */,
-				FDC47DE9278951EF00A152E8 /* Preview */,
 				FD09DE2627857DE3006DA050 /* GenericResponse.swift */,
 			);
 			path = Model;
@@ -1367,6 +1373,16 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		FD958A3127E0D78A00264EE4 /* ImageSizeFetcher */ = {
+			isa = PBXGroup;
+			children = (
+				FD958A3227E0D7B500264EE4 /* ImageSizeFetcherOperation.swift */,
+				FD958A3427E0D81700264EE4 /* ImageSizeFetcher.swift */,
+				FD958A3627E0D88300264EE4 /* ImageSizeFetcherParser.swift */,
+			);
+			path = ImageSizeFetcher;
+			sourceTree = "<group>";
+		};
 		FDA2062427C40F83001A371D /* Repository */ = {
 			isa = PBXGroup;
 			children = (
@@ -1404,7 +1420,7 @@
 			path = Factory;
 			sourceTree = "<group>";
 		};
-		FDC47DE9278951EF00A152E8 /* Preview */ = {
+		FDC47DE9278951EF00A152E8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				FDC47DF427895DDB00A152E8 /* PreviewData.swift */,
@@ -1413,10 +1429,9 @@
 				FDC47DEE2789521C00A152E8 /* PreviewPhotoData.swift */,
 				FDC47DF02789524000A152E8 /* PreviewSummaryData.swift */,
 				FDC47DF22789524A00A152E8 /* PreviewRecommendData.swift */,
-				FD1A782A2795E63600FB10AB /* PreviewTagDataGettable.swift */,
-				FD1A782C2795EBEF00FB10AB /* PreviewDetailDataGettable.swift */,
+				FD66701227E314C300296E4A /* PreviewBodyData.swift */,
 			);
-			path = Preview;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		FDCE38262799BABF0042DC54 /* Indicator */ = {
@@ -1427,6 +1442,15 @@
 				FDCE382B2799BBC90042DC54 /* showIndicator.swift */,
 			);
 			path = Indicator;
+			sourceTree = "<group>";
+		};
+		FDCEE68A27D9D3EC000D8F7F /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				FDCEE68B27D9D400000D8F7F /* PlanPreviewUseCase.swift */,
+				FDC47DE9278951EF00A152E8 /* Model */,
+			);
+			path = UseCase;
 			sourceTree = "<group>";
 		};
 		FDD41E2327DAF5A3003BF531 /* Onboarding */ = {
@@ -1564,6 +1588,7 @@
 			isa = PBXGroup;
 			children = (
 				FD93027B27A3EC3700341C2A /* Repository */,
+				FDCEE68A27D9D3EC000D8F7F /* UseCase */,
 				FD93027D27A3EC4500341C2A /* ViewModel */,
 				FDF981002788D4770009A14E /* Cells */,
 				FDF980FC2788C9170009A14E /* PlanPreview.storyboard */,
@@ -1592,12 +1617,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FD3211B927841949007D63D5 /* Build configuration list for PBXNativeTarget "BeMyPlan" */;
 			buildPhases = (
-				F2CFE47FC9E16DBC8CE393CC /* [CP] Check Pods Manifest.lock */,
+				E1189514920059BD2E0880C8 /* [CP] Check Pods Manifest.lock */,
 				FD3211A127841947007D63D5 /* Sources */,
 				FD3211A227841947007D63D5 /* Frameworks */,
 				FD3211A327841947007D63D5 /* Resources */,
 				FD3211C127843342007D63D5 /* ShellScript */,
-				626105EB68F1D138282A6EBB /* [CP] Embed Pods Frameworks */,
+				0EC11CBE3D7B0F9126A7BF09 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1729,7 +1754,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		626105EB68F1D138282A6EBB /* [CP] Embed Pods Frameworks */ = {
+		0EC11CBE3D7B0F9126A7BF09 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1746,7 +1771,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BeMyPlan/Pods-BeMyPlan-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F2CFE47FC9E16DBC8CE393CC /* [CP] Check Pods Manifest.lock */ = {
+		E1189514920059BD2E0880C8 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1796,7 +1821,6 @@
 				FD122DEA27D3958700469189 /* PaymentEventPopupVC.swift in Sources */,
 				FDB34C3D27A6D7CE0074B6CE /* ModuleFactory.swift in Sources */,
 				FDF7FEC927A7E16100E3AB62 /* Coordinator.swift in Sources */,
-				FD1A782D2795EBEF00FB10AB /* PreviewDetailDataGettable.swift in Sources */,
 				FDF980F6278826140009A14E /* TabBarIconView.swift in Sources */,
 				FD09DE0F27857A2E006DA050 /* makeAlert.swift in Sources */,
 				FDF980DB2786E2F60009A14E /* BaseVC.swift in Sources */,
@@ -1815,9 +1839,9 @@
 				FDF7FED427A7E84000E3AB62 /* CoordinatorFactory.swift in Sources */,
 				FDA2063027C40FCC001A371D /* PlanDetailViewModel + setPreviewDummy.swift in Sources */,
 				FD2D9C562796ADC800688A42 /* PlanDetailService.swift in Sources */,
-				FD1A782B2795E63600FB10AB /* PreviewTagDataGettable.swift in Sources */,
 				F266412E2788262800CCC751 /* MainListData.swift in Sources */,
 				FD20C610278EBF2800AC6E34 /* MyPlanBuyData.swift in Sources */,
+				FD66701327E314C300296E4A /* PreviewBodyData.swift in Sources */,
 				FD09DDF1278577CF006DA050 /* BaseService.swift in Sources */,
 				FD568E7927CFE80E0078D23C /* RuntimeProviderType.swift in Sources */,
 				FDF980D22786D2EB0009A14E /* TravelSpotVC.swift in Sources */,
@@ -1886,7 +1910,9 @@
 				F27483F227CA39B4004164F0 /* SignUpNicknameVC.swift in Sources */,
 				FD2D4DB9278D3DCE002084B9 /* PlanDetailInformationTVC.swift in Sources */,
 				FD20C60B278EBBB500AC6E34 /* MyPlanBuyContentCVC.swift in Sources */,
+				FD958A3527E0D81700264EE4 /* ImageSizeFetcher.swift in Sources */,
 				FDF981022788D49C0009A14E /* PlanPreviewWriterTVC.swift in Sources */,
+				FDCEE68C27D9D400000D8F7F /* PlanPreviewUseCase.swift in Sources */,
 				FD568E7127CFE6CF0078D23C /* FirebaseServiceProtocol.swift in Sources */,
 				523C70FF2799DCC10073371D /* ScrapEmptyService.swift in Sources */,
 				FDF981042788D4AB0009A14E /* PlanPreviewDescriptionTVC.swift in Sources */,
@@ -1905,6 +1931,7 @@
 				FDF981082788D4CF0009A14E /* PlanPreviewSummaryTVC.swift in Sources */,
 				FDF980D62786D5320009A14E /* makePayBoocFont.swift in Sources */,
 				FD3566532792AF2C0082B4CE /* ScrapEmptyContainerView.swift in Sources */,
+				FD958A3327E0D7B500264EE4 /* ImageSizeFetcherOperation.swift in Sources */,
 				FD1A78232795C69000FB10AB /* MyPlanSerivice.swift in Sources */,
 				FD2D4DBD278D3FA5002084B9 /* PlanDetailDayCVC.swift in Sources */,
 				FD3566552792AFCD0082B4CE /* PlanDetailSelectDayView.swift in Sources */,
@@ -1914,6 +1941,7 @@
 				FDF981062788D4C00009A14E /* PlanPreviewPhotoTVC.swift in Sources */,
 				FD1A78262795DA7100FB10AB /* showNetworkErr + UIViewController.swift in Sources */,
 				FD09DE1E27857CDC006DA050 /* HomeVC.swift in Sources */,
+				FD958A3727E0D88300264EE4 /* ImageSizeFetcherParser.swift in Sources */,
 				FD568E6F27CFE4ED0078D23C /* AnalyticsType.swift in Sources */,
 				FD122DE827D3638D00469189 /* showToastMessage.swift in Sources */,
 				FD5D731127A48491002DE484 /* ViewModelType.swift in Sources */,
@@ -2100,7 +2128,7 @@
 		};
 		FD3211BA27841949007D63D5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C5F36517E11C902289F23123 /* Pods-BeMyPlan.debug.xcconfig */;
+			baseConfigurationReference = AB06789E6122312ADD152CAB /* Pods-BeMyPlan.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -2139,7 +2167,7 @@
 		};
 		FD3211BB27841949007D63D5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9FD7FC1E03E330FEBAF0E26D /* Pods-BeMyPlan.release.xcconfig */;
+			baseConfigurationReference = BF7B7728BC14272B410863D6 /* Pods-BeMyPlan.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

@@ -7,7 +7,6 @@
 
 import UIKit
 import Moya
-import ListPlaceholder
 import SkeletonView
 
 class MainCardView: UIView {

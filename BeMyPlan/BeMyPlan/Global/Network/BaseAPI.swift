@@ -37,7 +37,6 @@ enum BaseAPI{
 }
 
 extension BaseAPI: TargetType {
-  
   // MARK: - Base URL & Path
   /// - Parameters:
   ///   - base : 각 api case별로 앞에 공통적으로 붙는 주소 부분을 정의합니다.
@@ -279,4 +278,6 @@ extension BaseAPI: TargetType {
   public var validationType: ValidationType {
     return .successCodes
   }
+  
+  typealias Response = Codable
 }

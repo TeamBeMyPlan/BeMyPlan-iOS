@@ -7,186 +7,105 @@
 
 import Foundation
 import Moya
+import RxSwift
+import RxRelay
+import RxCocoa
 
-protocol PlanPreviewViewModelType : ViewModelType{
+final class PlanPreviewViewModel: ViewModelType{
   
-  // Inputs
-  func viewDidLoad()
-  func clickScrap()
-  func clickBuyButton()
-  func clickPreviewButton()
-  func clickPreviewImage(index : Int)
-  func showContentPage()
+  private let previewUseCase: PlanPreviewUseCase
+  private let disposeBag = DisposeBag()
 
-  // Outputs
-  var didFetchDataStart: (() -> Void)? { get set }
-  var didFetchDataFinished: (() -> Void)? { get set }
-  var didUpdatePriceData : ((String) -> Void)? { get set }
-  var successScrap: (() -> Void)? { get set }
-  var networkError: (() -> Void)? { get set }
-  var unexpectedError: (() -> Void)? { get set }
-  var movePaymentView: (() -> Void)? { get set }
-  var movePreviewDetailView: (( ) -> Void)? { get set }
-}
+  // MARK: - Inputs
 
-class PlanPreviewViewModel : PlanPreviewViewModelType{
-  
+  struct Input {
+    let viewDidLoadEvent: Observable<Void>
+    let buyButtonDidTapEvent: Observable<Void>
+    let viewPreviewButtonDidTapEvent: Observable<Void>
+  }
+
   // MARK: - Outputs
-  var didFetchDataStart: (() -> Void)?
-  var didFetchDataFinished: (() -> Void)?
-  var didUpdatePriceData: ((String) -> Void)?
-  var successScrap: (() -> Void)?
-  var networkError: (() -> Void)?
-  var unexpectedError: (() -> Void)?
-  var movePaymentView: (() -> Void)?
-  var movePreviewDetailView: (( ) -> Void)?
+
+  struct Output {
+    var didFetchDataFinished = BehaviorRelay<Bool>(value: false)
+    var contentList = PublishRelay<[PlanPreviewContent]>()
+    var heightList = PublishRelay<[CGFloat]>()
+    var priceData = PublishRelay<String?>()
+    var pushBuyView = PublishRelay<PaymentContentData>()
+  }
   
-  // MARK: - Models
-  
-  var headerData : PlanPreview.HeaderData?
-  var descriptionData : PlanPreview.DescriptionData?
-  var photoData : [PlanPreview.PhotoData]?
-  var summaryData : PlanPreview.SummaryData?
-  var recommendData : PlanPreview.RecommendData?
-  var contentList : [PlanPreview.ContentList] = []
-  var photoList:[UIImage] = []
-  var heightList:[CGFloat] = []
-  var authID : Int = 0
-  
-  // MARK: - Dependency 주입
-  private var repository: PlanPreviewRepositoryInterface
-  let postId: Int
-  
-  init(postId: Int,repository: PlanPreviewRepositoryInterface){
-    self.postId = postId
-    self.repository = repository
+  init(useCase: PlanPreviewUseCase){
+    self.previewUseCase = useCase
   }
 }
 
 extension PlanPreviewViewModel{
-  func viewDidLoad() {
-    didFetchDataStart?()
-    fetchData()
-    bindRepository()
+  
+  func transform(from input: Input, disposeBag: DisposeBag) -> Output {
+    let output = Output()
+    self.bindOutput(output: output, disposeBag: disposeBag)
+    
+    input.viewDidLoadEvent
+      .subscribe(onNext: { [weak self] in
+        self?.previewUseCase.fetchPlanPreviewData()
+      })
+      .disposed(by: disposeBag)
+    
+    input.buyButtonDidTapEvent
+      .subscribe(onNext: { [weak self] in
+        self?.previewUseCase.getPaymentData()
+        })
+      .disposed(by: disposeBag)
+      return output
   }
   
-  func clickScrap() {
-     
-  }
-  
-  func clickBuyButton() {
-     movePaymentView?()
-  }
-  
-  func clickPreviewButton() {
-     movePreviewDetailView?()
-  }
-  
-  func clickPreviewImage(index: Int) {
-     
-  }
-  
-  func showContentPage() {
-     
-  }
-}
-
-// MARK: - Logics
-extension PlanPreviewViewModel {
-  func fetchData(){
-    didFetchDataStart?()
-
-    let group = DispatchGroup()
-    group.enter()
-    fetchHeaderData() { group.leave() }
-    group.enter()
-    fetchBodyData() { group.leave() }
-    group.notify(queue: .main){
-      self.setContentList()
-      self.didFetchDataFinished?()
-    }
-  }
-  
-  func bindRepository(){
-    repository.networkError = { [weak self] err in
-      if let error = err as? MoyaError{
-        if error.response?.statusCode == 500{
-          self?.networkError?()
-        }else{
-          self?.unexpectedError?()
-        }
-      }
-    }
-  }
-  
-  private func fetchHeaderData(completion: @escaping () -> (Void)) {
-    repository.fetchHeaderData(idx: postId) { [weak self] header, description, price, authID in
-      self?.headerData = header
-      self?.descriptionData = description
-      let priceString = String(price) + "원"
-      self?.didUpdatePriceData?(priceString)
-      self?.authID = authID
-      completion()
-    }
-  }
-  
-  private func fetchBodyData(completion: @escaping () -> (Void)){
-    repository.fetchBodyData(idx: postId)
-    { [weak self] photoList, summary in
+  private func bindOutput(output: Output,
+                          disposeBag: DisposeBag) {
+    let contentDataRelay = previewUseCase.contentData
+    let imageHeightListRelay = previewUseCase.imageHeightData
+    let postIdxRelay = previewUseCase.paymentContentData
+    
+    Observable.combineLatest(contentDataRelay,imageHeightListRelay) { [weak self] (content, heightList) in
       guard let self = self else {return}
-      self.photoData = photoList
-      self.summaryData = summary
-      if let photoList = photoList {
-        self.generateImages(photoData: photoList) { imgList in
-          self.photoList = imgList
-          self.makeImageHeight(images: imgList) { heightList in
-            self.heightList = heightList
-            completion()
-          }
-        }
-      }
-    }
+      let contentData = self.generateContentData(contentData: content, heights: heightList)
+      output.priceData.accept(content.headerData?.price)
+      output.contentList.accept(contentData)
+    }.subscribe { _ in
+    }.disposed(by: self.disposeBag)
+    
+    postIdxRelay.bind(to: output.pushBuyView)
+      .disposed(by: self.disposeBag)
   }
   
-  private func setContentList(){
-    contentList.removeAll()
-    if let _ = headerData { contentList.append(.header) }
-    if let _ = descriptionData{ contentList.append(.description) }
-    if let photo = photoData{
-      for (_,_) in photo.enumerated(){
-        contentList.append(.photo)
+  private func generateContentData(contentData: PlanPreview.ContentData,
+                                   heights: [ImageHeightProcessResult]) -> [PlanPreviewContent] {
+    var contentList: [PlanPreviewContent] = []
+    
+    if let header = contentData.headerData {
+      let headerData = PlanPreview.HeaderDataModel.init(writer: header.writer,
+                                                        title: header.title,
+                                                        authorID: header.authorID)
+      let descriptionData = PlanPreview.DescriptionData.init(descriptionContent: header.descriptionContent,
+                                                             summary: header.summary)
+      
+      contentList.append(headerData)
+      contentList.append(descriptionData)
+    }
+    
+    if let body = contentData.bodyData {
+      for (index,photo) in body.photos.enumerated() {
+        let photoData = PlanPreview.PhotoData.init(photoUrl: photo.photoUrl,
+                                                   content: photo.content,
+                                                   height: heights[index])
+        contentList.append(photoData)
+      }
+      if let summary = body.summary{
+        let summaryData = PlanPreview.SummaryData.init(content: summary.content)
+        contentList.append(summaryData)
       }
     }
-    if let _ = summaryData  { contentList.append(.summary) }
-    contentList.append(.recommend)
-  }
-  
-  private func generateImages(photoData:[PlanPreview.PhotoData],
-                              completion: @escaping ([UIImage]) -> Void){
-    var imgCount = 0 {didSet{
-      if imgCount == photoData.count {completion(imageContainer) }}
-    }
-    var imageContainer = Array(repeating: UIImage(), count: photoData.count)
-    _ = photoData.enumerated().map { (index,data) in
-      let imgView = UIImageView()
-      imgView.setImage(with: data.photo) { image in
-        imageContainer[index] = image ?? UIImage()
-        imgCount += 1
-      }
-    }
-  }
-  
-  private func makeImageHeight(images: [UIImage], completion: @escaping ([CGFloat]) -> Void){
-    let imageViewWidth = screenWidth - 48
-    var heightList:[CGFloat] = [] {didSet{
-      if heightList.count == images.count {
-        completion(heightList) }
-    }}
-    for (_,img) in images.enumerated(){
-      let ratio = img.size.width / img.size.height
-      let newHeight = imageViewWidth / ratio
-      heightList.append(newHeight)
-    }
-
+    let emptyRecommendData = PlanPreview.RecommendData()
+    contentList.append(emptyRecommendData)
+    return contentList
   }
 }

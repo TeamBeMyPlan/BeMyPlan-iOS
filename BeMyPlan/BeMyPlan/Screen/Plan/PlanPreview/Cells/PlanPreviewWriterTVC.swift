@@ -11,10 +11,11 @@ class PlanPreviewWriterTVC: UITableViewCell,UITableViewRegisterable{
   
   // MARK: - Vars & Lets Part
   static var isFromNib: Bool = true
+  var writerButtonClicked: ((String,Int) -> Void)?
   // MARK: - UI Component Part
   
-  var nickname : String = ""
-  var authID : Int = 0
+  private var nickname: String = ""
+  private var authID: Int?
   @IBOutlet var authorLabel: UILabel!
   @IBOutlet var titleLabel: UITextView!{
     didSet{
@@ -37,10 +38,10 @@ class PlanPreviewWriterTVC: UITableViewCell,UITableViewRegisterable{
   // MARK: - IBAction Part
 
   @IBAction func nicknameButtonClicked(_ sender: Any) {
-    let data = PlanWriterDataModel.init(authorName: nickname,
-                                        authorID: authID)
-    AppLog.log(at: FirebaseAnalyticsProvider.self, .clickEditorName(source: .planPreview))
-    postObserverAction(.moveNicknamePlanList,object: data)
+    if let writerButtonClicked = writerButtonClicked,
+       let authID = authID{
+      writerButtonClicked(nickname,authID)
+    }
   }
   
   // MARK: - Custom Method Part
@@ -61,14 +62,12 @@ class PlanPreviewWriterTVC: UITableViewCell,UITableViewRegisterable{
     
   }
   
-  func setHeaderData(author: String?, title : String?,authIDs: Int){
-    if let author = author {
-      nickname = author
-    }
-    authID = authIDs
+  func setHeaderData(author: String?, title : String?,authorID: Int?){
+    if let author = author { nickname = author }
     authorLabel.text = (author != nil) ? author : ""
     titleLabel.text = (title != nil) ? title : ""
     titleLabel.sizeToFit()
+    authID = authorID
   }
 }
 

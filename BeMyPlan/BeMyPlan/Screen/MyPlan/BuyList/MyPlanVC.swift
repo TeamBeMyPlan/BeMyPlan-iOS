@@ -15,7 +15,7 @@ class MyPlanVC: UIViewController {
   
   var buyContentList : [MyPlanData.BuyListData] = []{
     didSet{
-      mainContentCV.reloadData()
+//      mainContentCV.reloadData()
       setEmptyView()
     }
   }
@@ -69,20 +69,40 @@ class MyPlanVC: UIViewController {
       result.success { [weak self] data in
         if let buyList = data{
           self?.buyContentList = buyList.items
-          DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-            self?.mainContentCV.hideSkeleton(transition: .crossDissolve(0.7))
-            UIView.animate(withDuration: 0.5) {
-              if self?.buyContentList.count == 0{
-                self?.emptyView.alpha = 1
-              }
-            }
-          }
+          self?.mainContentCV.delegate = self
+//          self?.removeDummyDataSource(reloadAfter: true)
+          self?.mainContentCV.hideSkeleton(transition: .crossDissolve(2.5))
+
+    
+//          DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+//            self?.mainContentCV.hideSkeleton(transition: .crossDissolve(0.7))
+//            UIView.animate(withDuration: 0.5) {
+//              if self?.buyContentList.count == 0{
+//                self?.emptyView.alpha = 1
+//              }
+//            }
+//          }
         }
       }.catch { error in
         dump(error)
       }
     }
   }
+  
+//  func removeDummyDataSource(reloadAfter: Bool) {
+//          /*
+//          guard let dataSource = self.dataSource as? SkeletonCollectionDataSource else { return }
+//          restoreRowHeight()
+//          self.skeletonDataSource = nil
+//          self.dataSource = dataSource.originalTableViewDataSource
+//          */
+//          if let delegate = self.delegate as? SkeletonCollectionDelegate {
+//            self.mainContentCV.skeletonDelegate = nil
+//            self.mainContentCV.delegate = delegate.originalTableViewDelegate
+//          }
+//
+//          //if reloadAfter { self.reloadData() }
+//  }
   
   private func setEmptyView(){
     emptyViewHeightConstraint.constant = mainContentCV.bounds.height - 224
@@ -127,6 +147,9 @@ extension MyPlanVC: SkeletonCollectionViewDataSource{
       default :
         return UICollectionReusableView()
     }
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

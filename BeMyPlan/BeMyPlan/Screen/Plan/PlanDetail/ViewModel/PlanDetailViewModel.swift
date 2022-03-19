@@ -8,7 +8,7 @@
 import Foundation
 import Moya
 
-protocol PlanDetailViewModelType: ViewModelType {
+protocol PlanDetailViewModelType {
   
   // Inputs
   

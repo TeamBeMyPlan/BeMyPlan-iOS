@@ -47,3 +47,36 @@ struct PlanPreviewEntity :Codable{
   }
 
 }
+
+extension PlanPreviewEntity.Header {
+  func toHeaderDomain() -> PlanPreview.HeaderData? {
+    return .init(authorID: authorID,
+                 writer: author,
+                 title: title,
+                 descriptionContent:dataDescription,
+                 summary: PlanPreview.IconData.init(theme: tagTheme,
+                                        spotCount: String(tagCountSpot),
+                                        restaurantCount: String(tagCountRestaurant),
+                                        dayCount: String(tagCountDay),
+                                        peopleCase: tagPartner,
+                                        budget: tagMoney,
+                                        transport: tagMobility,
+                                        month: String(tagMonth)),
+                 price: String(price))
+  }
+}
+
+extension PlanPreviewEntity {
+  static func toBodyDomain(body: [PlanPreviewEntity.Body]?) -> PlanPreview.BodyData? {
+    var photoDataList: [PlanPreview.PhotoData] = []
+    if let body = body {
+      for item in body {
+          let photo = PlanPreview.PhotoData.init(photoUrl: item.photoUrls.first ?? "",
+                                                 content: item.datumDescription,
+                                                 height: .init())
+          photoDataList.append(photo)
+      }
+    }
+    return PlanPreview.BodyData.init(photos: photoDataList, summary: nil)
+  }
+}

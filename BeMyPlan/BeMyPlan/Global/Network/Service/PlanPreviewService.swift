@@ -6,18 +6,19 @@
 //
 
 import Foundation
+import RxSwift
 
 protocol PlanPreviewServiceType{
-  func getPlanPreviewHeaderData(idx : Int,completion: @escaping (Result<PlanPreviewEntity.Header?, Error>) -> Void)
-  func getPlanPreviewDetailData(idx : Int,completion: @escaping (Result<[PlanPreviewEntity.Body]?, Error>) -> Void)
+  func fetchPlanPreviewHeaderData(idx: Int) -> Observable<PlanPreviewEntity.Header?>
+  func fetchPlanPreviewBodyData(idx: Int) -> Observable<[PlanPreviewEntity.Body]?>
 }
 
 extension BaseService : PlanPreviewServiceType{
-  func getPlanPreviewHeaderData(idx: Int, completion: @escaping (Result<PlanPreviewEntity.Header?, Error>) -> Void) {
-    requestObject(.getPlanPreviewHeaderData(idx: idx), completion: completion)
+  func fetchPlanPreviewHeaderData(idx: Int) -> Observable<PlanPreviewEntity.Header?> {
+    return requestObjectInRx(.getPlanPreviewHeaderData(idx: idx))
   }
   
-  func getPlanPreviewDetailData(idx: Int, completion: @escaping (Result<[PlanPreviewEntity.Body]?, Error>) -> Void) {
-    requestObject(.getPlanPreviewData(idx: idx), completion: completion)
+  func fetchPlanPreviewBodyData(idx: Int) -> Observable<[PlanPreviewEntity.Body]?> {
+    return requestObjectInRx(.getPlanPreviewData(idx: idx))
   }
 }

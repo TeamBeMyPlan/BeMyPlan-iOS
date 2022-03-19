@@ -43,11 +43,7 @@ protocol ModuleFactoryProtocol {
   func instantiateMyPlanWithdrawVC() -> MyPlanWithdrawVC
   
   // MARK: - Payment
-  func instantiatePaymentSelectVC(writer: String?,
-                                  planTitle: String?,
-                                  imgURL: String?,
-                                  price : String?,
-                                  postID: Int) -> PaymentSelectVC
+  func instantiatePaymentSelectVC(paymentData: PaymentContentData) -> PaymentSelectVC
   func instantiatePaymentCompleteVC() -> PaymentCompleteVC
   func instantiatePaymentEventPopupVC() -> PaymentEventPopupVC
   
@@ -56,7 +52,7 @@ protocol ModuleFactoryProtocol {
   func instantiatePlanDetailVC(postID: Int,isPreviewPage: Bool) -> PlanDetailVC
   
   // MARK: - PlanList
-  func instantiatePlanListVC() -> TravelSpotDetailVC
+  func instantiatePlanListVC(authID: Int,nickName: String,type:TravelSpotDetailType) -> TravelSpotDetailVC
   
   // MARK: - Indiciator
   func instantiateIndicatorVC() -> IndicatorVC
@@ -143,17 +139,9 @@ class ModuleFactory: ModuleFactoryProtocol{
   
   // MARK: - Payment
 
-  func instantiatePaymentSelectVC(writer: String?,
-                                  planTitle: String?,
-                                  imgURL: String?,
-                                  price : String?,
-                                  postID: Int) -> PaymentSelectVC {
+  func instantiatePaymentSelectVC(paymentData: PaymentContentData) -> PaymentSelectVC {
     let vc = PaymentSelectVC.controllerFromStoryboard(.payment)
-    vc.writer = writer
-    vc.planTitle = planTitle
-    vc.imgURL = imgURL
-    vc.price = price
-    vc.postIdx = postID
+    vc.paymentData = paymentData
     return vc
   }
   
@@ -168,10 +156,9 @@ class ModuleFactory: ModuleFactoryProtocol{
   // MARK: - Plan
 
   func instantiatePlanPreviewVC(postID: Int) -> PlanPreviewVC {
-    let repository = PlanPreviewRepository(service: BaseService.default)
-    let viewModel = PlanPreviewViewModel(postId: postID,
-                                         repository: repository)
-    // 추후 postID 넣어야 됨
+    let repository = DefaultPlanPreviewRepository(service: BaseService.default)
+    let useCase = DefaultPlanPreviewUseCase(repository: repository, postIdx: postID)
+    let viewModel = PlanPreviewViewModel(useCase: useCase)
     let vc = PlanPreviewVC.controllerFromStoryboard(.planPreview)
     vc.viewModel = viewModel
   
@@ -189,8 +176,12 @@ class ModuleFactory: ModuleFactoryProtocol{
     return vc
   }
   
-  func instantiatePlanListVC() -> TravelSpotDetailVC {
-    return TravelSpotDetailVC.controllerFromStoryboard(.travelSpot)
+  func instantiatePlanListVC(authID: Int = 0,nickName:String = "",type:TravelSpotDetailType) -> TravelSpotDetailVC {
+    let travelDetailVC = TravelSpotDetailVC.controllerFromStoryboard(.travelSpot)
+    travelDetailVC.userId = authID
+    travelDetailVC.nickname = nickName
+    travelDetailVC.type = type
+    return travelDetailVC
   }
   
   // MARK: - Indicator

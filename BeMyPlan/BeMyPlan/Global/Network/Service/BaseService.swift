@@ -7,6 +7,7 @@
 
 import Moya
 import Alamofire
+import RxSwift
 
 fileprivate let provider: MoyaProvider<BaseAPI> = {
   let provider = MoyaProvider<BaseAPI>(endpointClosure: endpointClosure, session: DefaultAlamofireManager.shared)
@@ -32,7 +33,32 @@ fileprivate class DefaultAlamofireManager: Alamofire.Session {
 
 class BaseService{
   static let `default` = BaseService()
+  var disposeBag = DisposeBag()
   private init() {}
+  
+  
+  func requestObjectInRx<T: Decodable>(_ target: BaseAPI) -> Observable<T?>{
+    return Observable<T?>.create { observer in
+      provider.rx
+        .request(target)
+        .subscribe { event in
+          switch event {
+            case .success(let value):
+              do {
+                let decoder = JSONDecoder()
+                let body = try decoder.decode(ResponseObject<T>.self, from: value.data)
+                observer.onNext(body.data)
+                observer.onCompleted()
+              } catch let error {
+                observer.onError(error)
+              }
+            case .failure(let error):
+              observer.onError(error)
+          }
+        }.disposed(by: self.disposeBag)
+      return Disposables.create()
+    }
+  }
   
   func requestObject<T: Decodable>(_ target: BaseAPI, completion: @escaping (Result<T?, Error>) -> Void) {
     provider.request(target) { response in

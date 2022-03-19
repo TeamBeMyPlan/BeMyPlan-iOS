@@ -12,7 +12,8 @@ class SplashVC: UIViewController {
   // MARK: - Vars & Lets Part
   var isLoginComplete = false
   private let factory: ModuleFactoryProtocol = ModuleFactory.resolve()
-  
+  private let networkService: PlanPreviewServiceType = BaseService.default
+
   // MARK: - UI Component Part
   
   @IBOutlet var splashIconNoTitle: UIImageView!

@@ -115,6 +115,7 @@ final class OnboardingVC: UIViewController {
     self.configureBottomPageControlView()
     self.configureImageShadow()
     self.setButtonActions()
+    
   }
   
 }

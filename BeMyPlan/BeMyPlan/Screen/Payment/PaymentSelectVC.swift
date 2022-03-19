@@ -7,14 +7,30 @@
 
 import UIKit
 
+struct PaymentContentData{
+  var writer: String = ""
+  var title: String = ""
+  var imgURL: String = ""
+  var price: String = ""
+  var postIdx: Int = 0
+  
+  init(writer: String? = nil,title: String? = nil,imgURL:String? = nil, price:String? = nil, postIdx:Int? = nil){
+    self.writer = writer ?? ""
+    self.title = title ?? ""
+    self.imgURL = imgURL ?? ""
+    self.postIdx = postIdx ?? 0
+    if let price = price{
+      self.price = price + "원"
+    }else {
+      self.price = ""
+    }
+  }
+}
+
 class PaymentSelectVC: UIViewController {
   
   // MARK: - Vars & Lets Part
   
-  var writer : String?
-  var planTitle : String?
-  var imgURL : String?
-  var postIdx = 0
   private var selectedIndex : Int = -1{
     didSet{
       if selectedIndex == -1{
@@ -26,10 +42,10 @@ class PaymentSelectVC: UIViewController {
       setButtonState()
     }
   }
-  
-  var price : String?
   private var paymentList :[PaymentList] = [.kakaoPay,
                                     .toss,.naverPay]
+  var paymentData = PaymentContentData()
+
 
   // MARK: - UI Component Part
   
@@ -61,7 +77,7 @@ class PaymentSelectVC: UIViewController {
   
   @IBAction func paymentButtonClicked(_ sender: Any) {
     if selectedIndex != -1{
-      AppLog.log(at: FirebaseAnalyticsProvider.self, .clickPaymentButton(postIdx: String(postIdx)))
+      AppLog.log(at: FirebaseAnalyticsProvider.self, .clickPaymentButton(postIdx: String(paymentData.postIdx)))
       showEventPopup()
     }
  
@@ -74,10 +90,10 @@ class PaymentSelectVC: UIViewController {
   }
   
   private func setContainerInfo(){
-    titleLabel.text = planTitle
-    writerLabel.text = writer
+    titleLabel.text = paymentData.title
+    writerLabel.text = paymentData.writer
     planImageView.layer.cornerRadius = 5
-    planImageView.setImage(with: imgURL ?? "")
+    planImageView.setImage(with: paymentData.imgURL)
     
   }
   
@@ -86,11 +102,11 @@ class PaymentSelectVC: UIViewController {
     paymentCompleteVC.modalTransitionStyle = .coverVertical
     paymentCompleteVC.modalPresentationStyle = .fullScreen
     paymentCompleteVC.delegate = self
-    paymentCompleteVC.price = price ?? ""
+    paymentCompleteVC.price = paymentData.price
     paymentCompleteVC.paymentType = paymentList[selectedIndex]
-    paymentCompleteVC.planTitle = planTitle ?? ""
-    paymentCompleteVC.writer = writer ?? ""
-    paymentCompleteVC.postIdx = postIdx
+    paymentCompleteVC.planTitle = paymentData.title
+    paymentCompleteVC.writer = paymentData.writer
+    paymentCompleteVC.postIdx = paymentData.postIdx
     present(paymentCompleteVC,animated: true)
   }
   
@@ -99,7 +115,7 @@ class PaymentSelectVC: UIViewController {
     eventPopupVC.modalTransitionStyle = .crossDissolve
     eventPopupVC.modalPresentationStyle = .overCurrentContext
     eventPopupVC.delegate = self
-    eventPopupVC.postIdx = postIdx
+    eventPopupVC.postIdx = paymentData.postIdx
     present(eventPopupVC,animated: true)
   }
   
@@ -114,7 +130,7 @@ class PaymentSelectVC: UIViewController {
   }
   
   private func setPriceLabel(){
-    moneyLabel.text = price
+    moneyLabel.text = paymentData.price
   }
   
   private func setButtonUI(){
@@ -148,7 +164,7 @@ enum PaymentList : String{
 
 extension PaymentSelectVC : PaymentCompleteDelegate{
   func completeButtonClicked() {
-    let detailVC = ModuleFactory.resolve().instantiatePlanDetailVC(postID: postIdx)
+    let detailVC = ModuleFactory.resolve().instantiatePlanDetailVC(postID: paymentData.postIdx)
     self.navigationController?.pushViewController(detailVC, animated: true)
   }
 }
