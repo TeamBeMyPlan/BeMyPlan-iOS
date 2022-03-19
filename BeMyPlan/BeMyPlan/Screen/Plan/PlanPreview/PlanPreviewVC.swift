@@ -73,8 +73,6 @@ class PlanPreviewVC: UIViewController {
     let output = self.viewModel.transform(from: input, disposeBag: self.disposeBag)
     
     output.pushBuyView.subscribe { [weak self] data in
-      dump(data)
-      print("???")
       guard let self = self else { return }
       if let paymentData = data.element {
         let paymentVC = self.factory.instantiatePaymentSelectVC(paymentData: paymentData)
@@ -111,7 +109,6 @@ class PlanPreviewVC: UIViewController {
             }else {
               photoCell.setPhotoData(photoData)
             }
-
 
             return photoCell
             

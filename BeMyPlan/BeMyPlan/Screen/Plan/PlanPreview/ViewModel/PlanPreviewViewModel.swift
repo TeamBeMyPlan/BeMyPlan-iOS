@@ -11,8 +11,6 @@ import RxSwift
 import RxRelay
 import RxCocoa
 
-
-
 final class PlanPreviewViewModel: ViewModelType{
   
   private let previewUseCase: PlanPreviewUseCase
@@ -54,15 +52,12 @@ extension PlanPreviewViewModel{
       .disposed(by: disposeBag)
     
     input.buyButtonDidTapEvent
-      .subscribe ( onNext: { [weak self] in
+      .subscribe( onNext: { [weak self] in
         self?.previewUseCase.getPaymentData()
         })
       .disposed(by: disposeBag)
-
       return output
   }
-  
-  
   
   private func bindOutput(output: Output,
                           disposeBag: DisposeBag) {
