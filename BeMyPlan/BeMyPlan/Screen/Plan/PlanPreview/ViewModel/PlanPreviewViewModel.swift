@@ -52,7 +52,7 @@ extension PlanPreviewViewModel{
       .disposed(by: disposeBag)
     
     input.buyButtonDidTapEvent
-      .subscribe( onNext: { [weak self] in
+      .subscribe(onNext: { [weak self] in
         self?.previewUseCase.getPaymentData()
         })
       .disposed(by: disposeBag)
@@ -83,9 +83,10 @@ extension PlanPreviewViewModel{
     
     if let header = contentData.headerData {
       let headerData = PlanPreview.HeaderDataModel.init(writer: header.writer,
-                                                    title: header.title)
+                                                        title: header.title,
+                                                        authorID: header.authorID)
       let descriptionData = PlanPreview.DescriptionData.init(descriptionContent: header.descriptionContent,
-                                                         summary: header.summary)
+                                                             summary: header.summary)
       
       contentList.append(headerData)
       contentList.append(descriptionData)

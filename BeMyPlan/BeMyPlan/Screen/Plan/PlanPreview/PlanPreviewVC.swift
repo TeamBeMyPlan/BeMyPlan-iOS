@@ -60,12 +60,10 @@ class PlanPreviewVC: UIViewController {
   }
   
   // MARK: - Custom Method Part
-  
   private func bindViewModels(){
     let input = PlanPreviewViewModel.Input(
       viewDidLoadEvent:
         self.rx.methodInvoked(#selector(UIViewController.viewWillAppear)).map { _ in },
-      
       buyButtonDidTapEvent:
         self.buyButton.rx.tap.asObservable(),
       viewPreviewButtonDidTapEvent:
@@ -87,7 +85,11 @@ class PlanPreviewVC: UIViewController {
             let headerData = item as! PlanPreview.HeaderDataModel
             guard let headerCell = tableView.dequeueReusableCell(withIdentifier: PlanPreviewWriterTVC.className) as? PlanPreviewWriterTVC else {return UITableViewCell() }
             headerCell.setHeaderData(author: headerData.writer,
-                                     title: headerData.title)
+                                     title: headerData.title,
+                                     authorID: headerData.authorID)
+            headerCell.writerButtonClicked = { [weak self] nickname, authID in
+              self?.moveAuthorPage(nickname: nickname, authID: authID)
+            }
             return headerCell
             
           case .description:
@@ -120,6 +122,9 @@ class PlanPreviewVC: UIViewController {
             
           case .recommend:
             guard let recommendCell = tableView.dequeueReusableCell(withIdentifier: PlanPreviewRecommendTVC.className) as? PlanPreviewRecommendTVC else {return UITableViewCell() }
+            recommendCell.previewButtonDidTap = { [weak self] in
+              self?.movePaymentView()
+            }
             return recommendCell
             
         }
@@ -144,7 +149,16 @@ class PlanPreviewVC: UIViewController {
   }
   
   private func movePaymentView() {
-    
+    let previewVC = self.factory.instantiatePlanDetailVC(postID: 0, isPreviewPage: true)
+    self.navigationController?.pushViewController(previewVC, animated: true)
+  }
+  
+  private func moveAuthorPage(nickname: String,authID: Int){
+    let authorVC = self.factory.instantiatePlanListVC(authID: authID, nickName: nickname,type: .nickname)
+    self.navigationController?.pushViewController(authorVC, animated: true)
+//
+//    authorVC.modalPresentationStyle = .fullScreen
+//    present(authorVC,animated: true)
   }
   
   private func setScrabImage(){

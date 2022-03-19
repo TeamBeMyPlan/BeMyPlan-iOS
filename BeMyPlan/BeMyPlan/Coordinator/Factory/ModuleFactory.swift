@@ -52,7 +52,7 @@ protocol ModuleFactoryProtocol {
   func instantiatePlanDetailVC(postID: Int,isPreviewPage: Bool) -> PlanDetailVC
   
   // MARK: - PlanList
-  func instantiatePlanListVC() -> TravelSpotDetailVC
+  func instantiatePlanListVC(authID: Int,nickName: String,type:TravelSpotDetailType) -> TravelSpotDetailVC
   
   // MARK: - Indiciator
   func instantiateIndicatorVC() -> IndicatorVC
@@ -176,8 +176,12 @@ class ModuleFactory: ModuleFactoryProtocol{
     return vc
   }
   
-  func instantiatePlanListVC() -> TravelSpotDetailVC {
-    return TravelSpotDetailVC.controllerFromStoryboard(.travelSpot)
+  func instantiatePlanListVC(authID: Int = 0,nickName:String = "",type:TravelSpotDetailType) -> TravelSpotDetailVC {
+    let travelDetailVC = TravelSpotDetailVC.controllerFromStoryboard(.travelSpot)
+    travelDetailVC.userId = authID
+    travelDetailVC.nickname = nickName
+    travelDetailVC.type = type
+    return travelDetailVC
   }
   
   // MARK: - Indicator

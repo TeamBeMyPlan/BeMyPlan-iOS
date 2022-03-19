@@ -12,6 +12,7 @@ extension PlanPreview{
     var `case`: PlanPreview.ContentList = .header
     var writer: String
     var title: String
+    var authorID :Int
   }
   
   struct HeaderData{
