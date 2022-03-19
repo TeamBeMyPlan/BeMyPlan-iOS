@@ -43,11 +43,7 @@ protocol ModuleFactoryProtocol {
   func instantiateMyPlanWithdrawVC() -> MyPlanWithdrawVC
   
   // MARK: - Payment
-  func instantiatePaymentSelectVC(writer: String?,
-                                  planTitle: String?,
-                                  imgURL: String?,
-                                  price : String?,
-                                  postID: Int) -> PaymentSelectVC
+  func instantiatePaymentSelectVC(paymentData: PaymentContentData) -> PaymentSelectVC
   func instantiatePaymentCompleteVC() -> PaymentCompleteVC
   func instantiatePaymentEventPopupVC() -> PaymentEventPopupVC
   
@@ -143,17 +139,9 @@ class ModuleFactory: ModuleFactoryProtocol{
   
   // MARK: - Payment
 
-  func instantiatePaymentSelectVC(writer: String?,
-                                  planTitle: String?,
-                                  imgURL: String?,
-                                  price : String?,
-                                  postID: Int) -> PaymentSelectVC {
+  func instantiatePaymentSelectVC(paymentData: PaymentContentData) -> PaymentSelectVC {
     let vc = PaymentSelectVC.controllerFromStoryboard(.payment)
-    vc.writer = writer
-    vc.planTitle = planTitle
-    vc.imgURL = imgURL
-    vc.price = price
-    vc.postIdx = postID
+    vc.paymentData = paymentData
     return vc
   }
   

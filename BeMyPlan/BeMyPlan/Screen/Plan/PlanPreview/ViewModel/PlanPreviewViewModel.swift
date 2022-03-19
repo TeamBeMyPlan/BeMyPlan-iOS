@@ -12,6 +12,7 @@ import RxRelay
 import RxCocoa
 
 
+
 final class PlanPreviewViewModel: ViewModelType{
   
   private let previewUseCase: PlanPreviewUseCase
@@ -21,9 +22,8 @@ final class PlanPreviewViewModel: ViewModelType{
 
   struct Input {
     let viewDidLoadEvent: Observable<Void>
-//    let buyButtonDidTapEvent: Observable<Void>
-//    let backButtonDidTapEvent: Observable<Void>
-//    let viewPreviewButtonDidTapEvent: Observable<Void>
+    let buyButtonDidTapEvent: Observable<Void>
+    let viewPreviewButtonDidTapEvent: Observable<Void>
   }
 
   // MARK: - Outputs
@@ -33,6 +33,7 @@ final class PlanPreviewViewModel: ViewModelType{
     var contentList = PublishRelay<[PlanPreviewContent]>()
     var heightList = PublishRelay<[CGFloat]>()
     var priceData = PublishRelay<String?>()
+    var pushBuyView = PublishRelay<PaymentContentData>()
   }
   
   init(useCase: PlanPreviewUseCase){
@@ -51,24 +52,34 @@ extension PlanPreviewViewModel{
         self?.previewUseCase.fetchPlanPreviewData()
       })
       .disposed(by: disposeBag)
+    
+    input.buyButtonDidTapEvent
+      .subscribe ( onNext: { [weak self] in
+        self?.previewUseCase.getPaymentData()
+        })
+      .disposed(by: disposeBag)
 
-    return output
+      return output
   }
+  
+  
   
   private func bindOutput(output: Output,
                           disposeBag: DisposeBag) {
     let contentDataRelay = previewUseCase.contentData
     let imageHeightListRelay = previewUseCase.imageHeightData
+    let postIdxRelay = previewUseCase.paymentContentData
     
     Observable.combineLatest(contentDataRelay,imageHeightListRelay) { [weak self] (content, heightList) in
-      print("CHECKVIEWMODEL - CONTENT",content)
-      print("CHECKVIEWMODEL - HEIGHT",heightList)
       guard let self = self else {return}
       let contentData = self.generateContentData(contentData: content, heights: heightList)
       output.priceData.accept(content.headerData?.price)
       output.contentList.accept(contentData)
     }.subscribe { _ in
     }.disposed(by: self.disposeBag)
+    
+    postIdxRelay.bind(to: output.pushBuyView)
+      .disposed(by: self.disposeBag)
   }
   
   private func generateContentData(contentData: PlanPreview.ContentData,

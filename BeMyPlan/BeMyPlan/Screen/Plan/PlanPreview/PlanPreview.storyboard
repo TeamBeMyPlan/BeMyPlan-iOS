@@ -332,9 +332,6 @@
                                                         <constraint firstAttribute="height" constant="44" id="4lW-ja-8Ag"/>
                                                     </constraints>
                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                    <connections>
-                                                        <action selector="previewButtonClicked:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="6lN-fb-7Sx"/>
-                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>

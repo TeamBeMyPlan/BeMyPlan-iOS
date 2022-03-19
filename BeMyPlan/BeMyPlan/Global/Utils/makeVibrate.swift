@@ -38,3 +38,13 @@ extension UIView{
         generator.impactOccurred()
     }
 }
+
+extension ViewModelType{
+    
+    public func makeVibrate(degree : UIImpactFeedbackGenerator.FeedbackStyle = .medium)
+    {
+        let generator = UIImpactFeedbackGenerator(style: degree)
+        generator.impactOccurred()
+    }
+}
+

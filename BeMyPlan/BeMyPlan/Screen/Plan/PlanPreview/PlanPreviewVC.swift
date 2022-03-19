@@ -14,16 +14,19 @@ class PlanPreviewVC: UIViewController {
   
   // MARK: - Vars & Lets Part
   
-  var idx : Int = 29
+  private let factory: ModuleFactoryProtocol = ModuleFactory.resolve()
   private var isAnimationProceed: Bool = false
   private var lastContentOffset : CGFloat = 0
-  var viewModel : PlanPreviewViewModel!
   private let disposeBag = DisposeBag()
   private var isScrabed : Bool = false{
     didSet{
       setScrabImage()
     }
   }
+  var idx : Int = 29
+
+  var viewModel : PlanPreviewViewModel!
+
   private var contentList : [PlanPreview.ContentList] = []
   private var cachedHeightList: [Int: CGFloat] = [:]
   
@@ -56,17 +59,28 @@ class PlanPreviewVC: UIViewController {
     self.navigationController?.popViewController(animated: true)
   }
   
-  @IBAction func previewButtonClicked(_ sender: Any) {
-    
-  }
-  
   // MARK: - Custom Method Part
   
   private func bindViewModels(){
     let input = PlanPreviewViewModel.Input(
       viewDidLoadEvent:
-        self.rx.methodInvoked(#selector(UIViewController.viewWillAppear)).map { _ in })
+        self.rx.methodInvoked(#selector(UIViewController.viewWillAppear)).map { _ in },
+      
+      buyButtonDidTapEvent:
+        self.buyButton.rx.tap.asObservable(),
+      viewPreviewButtonDidTapEvent:
+        self.buyButton.rx.tap.asObservable()) // 버튼 바꿔야 됨.
     let output = self.viewModel.transform(from: input, disposeBag: self.disposeBag)
+    
+    output.pushBuyView.subscribe { [weak self] data in
+      dump(data)
+      print("???")
+      guard let self = self else { return }
+      if let paymentData = data.element {
+        let paymentVC = self.factory.instantiatePaymentSelectVC(paymentData: paymentData)
+        self.navigationController?.pushViewController(paymentVC, animated: true)
+      }
+    }.disposed(by: disposeBag)
     
     output.contentList
       .bind(to: previewContentTV.rx.items) { (tableView,index,item) -> UITableViewCell in
@@ -90,11 +104,9 @@ class PlanPreviewVC: UIViewController {
             
             photoCell.heightLoadComplete = { [weak self] height in
               self?.cachedHeightList[index] = height
-              print("height VC에서 캐싱됨",self?.cachedHeightList,index)
               self?.previewContentTV.reloadRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
             }
             if let height = self.cachedHeightList[index] {
-              print("캐싱된 height VC에서 셀로 주입중",height,index)
               photoCell.setPhotoData(photoData,height)
             }else {
               photoCell.setPhotoData(photoData)
@@ -132,6 +144,10 @@ class PlanPreviewVC: UIViewController {
     buyButton.press {
 //      self.viewModel.clickBuyButton()
     }
+  }
+  
+  private func movePaymentView() {
+    
   }
   
   private func setScrabImage(){

@@ -9,7 +9,6 @@ import RxSwift
 import ImageIO
 import Accelerate
 
-
 struct ImageHeightProcessResult {
   var value: CGFloat
   var `case`: ProcessResult
@@ -29,8 +28,10 @@ struct ImageHeightProcessResult {
 
 protocol PlanPreviewUseCase{
   func fetchPlanPreviewData()
+  func getPaymentData()
   var contentData: PublishSubject<PlanPreview.ContentData> { get set }
   var imageHeightData: PublishSubject<[ImageHeightProcessResult]> { get set }
+  var paymentContentData: PublishSubject<PaymentContentData> { get set }
 }
 
 final class DefaultPlanPreviewUseCase {
@@ -39,9 +40,11 @@ final class DefaultPlanPreviewUseCase {
   private let postIdx: Int
   private let disposeBag = DisposeBag()
   private let imageSizeFetcher = ImageSizeFetcher()
+  private var paymentData = PaymentContentData()
   
   var contentData = PublishSubject<PlanPreview.ContentData>()
   var imageHeightData = PublishSubject<[ImageHeightProcessResult]>()
+  var paymentContentData = PublishSubject<PaymentContentData>()
   
   init(repository: PlanPreviewRepository,postIdx: Int){
     self.repository = repository
@@ -50,19 +53,27 @@ final class DefaultPlanPreviewUseCase {
 }
 
 extension DefaultPlanPreviewUseCase: PlanPreviewUseCase {
+
+  func getPaymentData() {
+    paymentContentData.onNext(paymentData)
+  }
+  
   func fetchPlanPreviewData() {
-    print("fetchPlanPreviewData")
     let header = self.repository.fetchHeaderData(idx: self.postIdx)
     let body = self.repository.fetchBodyData(idx: self.postIdx)
     
     Observable.combineLatest(header,
                              body, resultSelector: { (headerData,bodyData) -> PlanPreview.ContentData in
+      self.paymentData = .init(writer: headerData?.writer,
+                          title: headerData?.title,
+                          imgURL: bodyData?.photos.first?.photoUrl,
+                          price: headerData?.price,
+                          postIdx: self.postIdx)
       self.calculateImageHeight(bodyData: bodyData)
       return PlanPreview.ContentData.init(headerData: headerData,
                                    bodyData: bodyData)
     }).subscribe { result in
       if let content = result.element{
-        print("CHECKUSECASE - content",content)
         self.contentData.onNext(content)
       }
     }.disposed(by: self.disposeBag)
@@ -77,7 +88,6 @@ extension DefaultPlanPreviewUseCase: PlanPreviewUseCase {
     var count = 0 {
       didSet{
         if count == bodyData.photos.count * 2 {
-          print("KKKK")
           dump(heightList)
           self.imageHeightData.onNext(heightList)
         }
@@ -90,9 +100,7 @@ extension DefaultPlanPreviewUseCase: PlanPreviewUseCase {
     _ = bodyData.photos.enumerated().map { index,imageUrls -> Void in
       guard let url = URL(string: imageUrls.photoUrl) else { return }
       self.imageSizeFetcher.sizeFor(atURL: url) { err, result in
-        
-        print("==========RESULT",result)
-        print("=========err",err)
+
         if let error = err as? ImageParserErrors {
           switch(error){
             case .unsupportedFormat:
