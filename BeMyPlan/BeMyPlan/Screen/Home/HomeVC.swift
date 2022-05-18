@@ -60,13 +60,11 @@ class HomeVC: UIViewController, UIGestureRecognizerDelegate {
   // MARK: - Life Cycle Part
   override func viewDidLoad() {
     super.viewDidLoad()
-    //    setDummyData()
-//    getListData()
+
   }
   
   override func viewDidAppear(_ animated: Bool) {
-    //    navigationController?.interactivePopGestureRecognizer?.delegate = self
-    //    navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+
   }
   
   override func viewDidLayoutSubviews() {

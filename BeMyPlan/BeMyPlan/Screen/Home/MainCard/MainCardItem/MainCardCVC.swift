@@ -23,28 +23,35 @@ class MainCardCVC: UICollectionViewCell {
   // MARK: - Life Cycle
   override func awakeFromNib() {
     super.awakeFromNib()
-    setUI()
+    self.setSkeletonView()
+    self.setUI()
+
+  }
+  
+  // MARK: - Custom Method
+  private func setSkeletonView() {
     let animation = SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .leftRight)
     mainCardImageView.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .grey04,secondaryColor: .grey06), animation: animation)
     mainCardTitle.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .grey05,secondaryColor: .grey07), animation: animation)
     mainCardCategory.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .grey05,secondaryColor: .grey07), animation: animation)
   }
   
-  // MARK: - Custom Method
-  func setUI(){
+  private func setUI(){
     contentView.layer.masksToBounds = false
     contentView.layer.cornerRadius = 5
     mainCardImageLayer.layer.cornerRadius = 5
     //이미지를 radius 적용안 한것을 줄 경우
     mainCardImageView.layer.cornerRadius = 5
-    
   }
   
-  func setData(appData: HomeListDataGettable.Item,image : UIImage){
-    mainCardImageView.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(1))
+  func setData(appData: HomeListDataGettable.Item) {
+    
+    mainCardTitle.text = appData.title
     mainCardTitle.hideSkeleton()
     mainCardCategory.hideSkeleton()
-    mainCardTitle.text = appData.title
-    mainCardImageView.image = image
+    
+    mainCardImageView.setImage(with: appData.thumbnailURL) { _ in
+      self.mainCardImageView.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(1))
+    }
   }
 }

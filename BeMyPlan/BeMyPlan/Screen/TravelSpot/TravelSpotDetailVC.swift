@@ -111,31 +111,32 @@ class TravelSpotDetailVC: UIViewController {
   }
   
   private func fetchTravelSpotDetailItemList(isRefresh: Bool) {
-    BaseService.default.getPlanAllinOneList(area: areaId,
-                                            userId: userId,
-                                            page: currentPageIndex,
-                                            sort: sortCase.rawValue,
-                                            viewCase: type) { result in
-      result.success { [weak self] list in
-        if let list = list {
-          if list.items.count != 0 {
-            if isRefresh == false {
-              list.items.forEach { item in
-                self?.planDataList.append(item)
-              }
-              self?.currentPageIndex += 1
-            } else {
-              self?.planDataList.removeAll()
-              self?.planDataList = list.items
-              self?.currentPageIndex = 0
-            }
-            self?.contentTableView.reloadData()
-          }
-        }
-      }.catch{ error in
-        dump(error)
-      }
-    }
+    // FIXME
+//    BaseService.default.getPlanAllinOneList(area: areaId,
+//                                            userId: userId,
+//                                            page: currentPageIndex,
+//                                            sort: sortCase.rawValue,
+//                                            viewCase: type) { result in
+//      result.success { [weak self] list in
+//        if let list = list {
+//          if list.items.count != 0 {
+//            if isRefresh == false {
+//              list.items.forEach { item in
+//                self?.planDataList.append(item)
+//              }
+//              self?.currentPageIndex += 1
+//            } else {
+//              self?.planDataList.removeAll()
+//              self?.planDataList = list.items
+//              self?.currentPageIndex = 0
+//            }
+//            self?.contentTableView.reloadData()
+//          }
+//        }
+//      }.catch{ error in
+//        dump(error)
+//      }
+//    }
   }
   
   private func scrapBtnAPI() {
@@ -197,9 +198,9 @@ extension TravelSpotDetailVC: UITableViewDelegate {
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    AppLog.log(at: FirebaseAnalyticsProvider.self, .clickTravelPlan(source: .planListView,
-                                                                    postIdx:  String(planDataList[indexPath.row].id)))
-    postObserverAction(.movePlanPreview,object: planDataList[indexPath.row].id)
+//    AppLog.log(at: FirebaseAnalyticsProvider.self, .clickTravelPlan(source: .planListView,
+//                                                                    postIdx:  String(planDataList[indexPath.row].id)))
+//    postObserverAction(.movePlanPreview,object: planDataList[indexPath.row].id)
   }
 }
 

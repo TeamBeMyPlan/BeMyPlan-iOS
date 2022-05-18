@@ -20,20 +20,16 @@ class MainCardView: UIView {
   override init(frame: CGRect) {
     super.init(frame: frame)
     addSubviewFromNib(view: self)
-    //    initMainCardDataList()
     registerCVC()
     setMainCardCV()
-    setSkeletonUI()
     getCardData()
   }
   
   required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
     addSubviewFromNib(view: self)
-    //    initMainCardDataList()
     registerCVC()
     setMainCardCV()
-    setSkeletonUI()
     getCardData()
   }
   
@@ -59,11 +55,6 @@ class MainCardView: UIView {
     let cellWidth = (327/375) * screenWidth
     let cellHeight = cellWidth * (435/327)
     
-    //    let centerItemWidthScale: CGFloat = (327/375) * screenWidth
-    //    let centerItemHeightScale: CGFloat = 1
-    //    let insetX : CGFloat = 24
-    //    layout.itemSize = CGSize(width: mainCardCV.frame.size.width*centerItemWidthScale, height: mainCardCV.frame.size.height*centerItemHeightScale)
-    
     //sideItemScale
     layout.sideItemScale = 310/327
     layout.spacing = 6
@@ -75,7 +66,6 @@ class MainCardView: UIView {
     mainCardCV.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     mainCardCV.decelerationRate = .fast
     mainCardCV.collectionViewLayout = layout
-    
   }
   
   func registerCVC() {
@@ -88,80 +78,21 @@ class MainCardView: UIView {
     
   }
   
-  private func getCardData(){
-    
-    BaseService.default.getPopularTravelList { result in
-      result.success { list in
-        self.popularList = []
-        if let popular = list {
-          self.popularList = popular
-          self.downloadImages {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.7) {
-              UIView.animate(withDuration: 0.5) {
-                self.mainCardCV.alpha = 0
-              }
-            }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-              self.mainCardCV.hideSkeleton(transition: .crossDissolve(2))
-              UIView.animate(withDuration: 0.5) {
-                self.mainCardCV.alpha = 1
-              }
-            }
-          }
-        }
-      }.catch{ error in
-        self.postObserverAction(.showNetworkError)
+  private func setSkeletonOptions(){
+    mainCardCV.isSkeletonable = true
+  }
+  
+  private func getCardData() {
+    BaseService.default.getHomeOrderSortList { result in
+      print("KKKK")
+      dump(result)
+      result.success { entity in
+        guard let entity = entity else { return }
+        self.popularList = entity.contents
+        self.mainCardCV.reloadData()
       }
     }
   }
-  
-  private func setSkeletonUI(){
-    let animation = SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .leftRight)
-    mainCardCV.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .grey04,secondaryColor: .grey06), animation: animation, transition: .crossDissolve(2))
-  }
-  
-  private func downloadImages(onCompleted: @escaping () -> (Void)){
-    for (index,item) in popularList.enumerated(){
-      imageList.append(UIImage())
-      downloadImage(with: item.thumbnailURL) { [weak self] image in
-        if let img = image{
-          self?.imageList[index] = img
-        }
-        self?.checkDownloadCompelte { onCompleted() }
-      }
-    }
-  }
-  
-  private func checkDownloadCompelte(onCompleted : @escaping () -> (Void)){
-    if popularList.count > 0 &&
-        imageList.count == popularList.count{
-      onCompleted()
-    }
-  }
-  //  var id : Int
-  //  var title : String
-  //  var photo : String
-  
-  //  private func fetchEventItemList(){
-  //    BaseService.default.getEventBannerList { result in
-  //      result.success{ list in
-  //        self.imageList = []
-  //
-  //        if let banner = list{
-  //          self.imgList.append(contentsOf: [
-  //            banner.eventImage1,
-  //            banner.eventImage2,
-  //            banner.eventImage3
-  //          ])
-  //          print("Banner List",self.imgList)
-  //          self.eventCV.reloadData()
-  //        }
-  //      }.catch{ error in
-  //        //                dump(error)
-  //      }
-  //    }
-  //  }
-  
   
 }
 
@@ -170,8 +101,8 @@ class MainCardView: UIView {
 extension MainCardView : SkeletonCollectionViewDelegate{
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     AppLog.log(at: FirebaseAnalyticsProvider.self, .clickTravelPlan(source: .homeView,
-                                                                    postIdx:  String(popularList[indexPath.row].id)))
-    postObserverAction(.movePlanPreview,object: popularList[indexPath.row].id)
+                                                                    postIdx:  String(popularList[indexPath.row].planID)))
+    postObserverAction(.movePlanPreview,object: popularList[indexPath.row].planID)
   }
 }
 
@@ -194,8 +125,7 @@ extension MainCardView: SkeletonCollectionViewDataSource {
     cell.layer.cornerRadius = 5
     cell.layer.masksToBounds = false
     cell.clipsToBounds = false
-    cell.setData(appData: popularList[indexPath.row],
-                 image: imageList[indexPath.row])
+    cell.setData(appData: popularList[indexPath.row])
     return cell
   }
 }
@@ -203,18 +133,3 @@ extension MainCardView: SkeletonCollectionViewDataSource {
 extension MainCardView: UICollectionViewDelegateFlowLayout {
   
 }
-//extension MainCardView : UIScrollViewDelegate {
-//  func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-//    //    let page = Int(targetContentOffset.pointee.x / self.frame.width)
-//    let layout = mainCardCV.collectionViewLayout as! UICollectionViewFlowLayout
-//    let cellWidthIncludingSpacing = layout.itemSize.width + layout.minimumLineSpacing
-//
-//    var offSet = targetContentOffset.pointee
-//    let index = (offSet.x + scrollView.contentInset.left) / cellWidthIncludingSpacing
-//    let roundedIndex = round(index)
-//    offSet = CGPoint(x: roundedIndex * cellWidthIncludingSpacing - scrollView.contentInset.left,
-//                     y: -scrollView.contentInset.top)
-//    targetContentOffset.pointee = offSet
-//    //    self.pageControl.currentPage = Int(roundedIndex)
-//  }
-//}

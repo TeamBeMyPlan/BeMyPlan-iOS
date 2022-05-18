@@ -127,7 +127,7 @@ class MainListView: UIView {
         self?.mainListDataList.removeAll()
         
         if let list = list {
-          self?.mainListDataList = list.items
+//          self?.mainListDataList = list.items
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
           self?.mainListCV.reloadData()
@@ -146,21 +146,21 @@ class MainListView: UIView {
     mainListCV.showSkeleton()
   }
   private func getSuggestListData(){
-    BaseService.default.getSuggestTravelList(page: listIndex, sort: "created_at") { result in
-      result.success { [weak self] list in
-        self?.mainListDataList.removeAll()
-        if let list = list {
-          self?.mainListDataList = list.items
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-          self?.mainListCV.reloadData()
-          self?.mainListCV.hideSkeleton( transition: .crossDissolve(1))
-        }
-        
-      }.catch{ error in
-        self.postObserverAction(.showNetworkError)
-      }
-    }
+//    BaseService.default.getSuggestTravelList(page: listIndex, sort: "created_at") { result in
+//      result.success { [weak self] list in
+//        self?.mainListDataList.removeAll()
+//        if let list = list {
+//          self?.mainListDataList = list.items
+//        }
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+//          self?.mainListCV.reloadData()
+//          self?.mainListCV.hideSkeleton( transition: .crossDissolve(1))
+//        }
+//
+//      }.catch{ error in
+//        self.postObserverAction(.showNetworkError)
+//      }
+//    }
   }
   
 }
@@ -170,8 +170,8 @@ class MainListView: UIView {
 extension MainListView : SkeletonCollectionViewDelegate{
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     AppLog.log(at: FirebaseAnalyticsProvider.self, .clickTravelPlan(source: .homeView,
-                                                                    postIdx:  String(mainListDataList[indexPath.row].id)))
-    postObserverAction(.movePlanPreview,object: mainListDataList[indexPath.row].id)
+                                                                    postIdx:  String(mainListDataList[indexPath.row].planID)))
+    postObserverAction(.movePlanPreview,object: mainListDataList[indexPath.row].planID)
   }
 }
 

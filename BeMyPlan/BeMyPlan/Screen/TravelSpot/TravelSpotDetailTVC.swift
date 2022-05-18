@@ -53,34 +53,33 @@ class TravelSpotDetailTVC: UITableViewCell {
   }
   
   public func setData(data: HomeListDataGettable.Item){
-    contentImage.setImage(with: data.thumbnailURL)
-    titleTextView.text = data.title
-    nickNameLabel.text = data.nickname
-    postId = data.id
-
-    if data.isScraped == true {
-      scrapImage.image = UIImage(named: "icnScrapWhite")
+//    contentImage.setImage(with: data.thumbnailURL)
+//    titleTextView.text = data.title
+//    nickNameLabel.text = data.nickname
+//    postId = data.id
+//
+//    if data.isScraped == true {
+//      scrapImage.image = UIImage(named: "icnScrapWhite")
 //      scrapBtn.setImage(UIImage(named: "icnScrapWhite"), for: .normal)
 //      scrapBtn.setImage(UIImage(named: "icnNotScrapWhite"), for: .selected)
-    } else {
-      scrapImage.image = UIImage(named: "icnNotScrapWhite")
-      
+//    } else {
+//      scrapImage.image = UIImage(named: "icnNotScrapWhite")
+//      
 //      scrapBtn.setImage(UIImage(named: "icnNotScrapWhite"), for: .normal)
     }
   }
   
-  @IBAction func scrapBtnTapped(_ sender: Any) {
-    if let scrapBtnClicked = scrapBtnClicked {
-      scrapBtnClicked(postId)
-    }
-//    scrapBtn.isSelected.toggle()
-    if scrapImage.image == UIImage(named: "icnScrapWhite"){
-      scrapImage.image = UIImage(named: "icnNotScrapWhite")
-    } else {
-      scrapImage.image = UIImage(named: "icnScrapWhite")
-    }
+//  @IBAction func scrapBtnTapped(_ sender: Any) {
+//    if let scrapBtnClicked = scrapBtnClicked {
+//      scrapBtnClicked(postId)
+//    }
+////    scrapBtn.isSelected.toggle()
+//    if scrapImage.image == UIImage(named: "icnScrapWhite"){
+//      scrapImage.image = UIImage(named: "icnNotScrapWhite")
+//    } else {
+//      scrapImage.image = UIImage(named: "icnScrapWhite")
+//    }
+//
+//
     
-    
-    
-  }
-}
+

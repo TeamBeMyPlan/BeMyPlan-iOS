@@ -223,7 +223,8 @@ extension BaseAPI: TargetType {
         
       case .getHomeOrderList:
         params["size"] = 5
-        params["sort"] = "orderCnt,desc"
+        params["sort"] = "orderCnt"
+				params["sort"] = "desc"
         params["region"] = "JEJU"
 				
 			case .getHomeRecentlyList:
@@ -266,7 +267,7 @@ extension BaseAPI: TargetType {
   ///
   private var parameterEncoding : ParameterEncoding{
     switch self {
-    case .sampleAPI, .getTravelSpotDetailList, .getNicknameDetailList, .getScrapList, .getNewTravelList, .getSuggestTravelList, .postScrapBtn:
+			case .sampleAPI, .getTravelSpotDetailList, .getNicknameDetailList, .getScrapList, .getNewTravelList, .getSuggestTravelList, .postScrapBtn,.getHomeOrderList:
       return URLEncoding.init(destination: .queryString, arrayEncoding: .noBrackets, boolEncoding: .literal)
     case .postSocialLogin, .postSocialSignUp, .postNickNameCheck :
       return JSONEncoding.default
@@ -282,7 +283,7 @@ extension BaseAPI: TargetType {
   ///
   var task: Task {
     switch self{
-    case .sampleAPI,.getTravelSpotDetailList, .getNicknameDetailList, .getScrapList,.getNewTravelList, .getSuggestTravelList, .postScrapBtn, .postSocialLogin, .postSocialSignUp, .postNickNameCheck:
+			case .sampleAPI,.getTravelSpotDetailList, .getNicknameDetailList, .getScrapList,.getNewTravelList, .getSuggestTravelList, .postScrapBtn, .postSocialLogin, .postSocialSignUp, .postNickNameCheck,.getHomeOrderList:
       return .requestParameters(parameters: bodyParameters ?? [:], encoding: parameterEncoding)
     default:
       return .requestPlain
@@ -291,12 +292,18 @@ extension BaseAPI: TargetType {
   }
 
   public var headers: [String: String]? {
-    if let userToken = UserDefaults.standard.string(forKey: "userToken") {
-      return ["Authorization": userToken,
-              "Content-Type": "application/json"]
-    } else {
-      return ["Content-Type": "application/json"]
-    }
+		// FIXME: - 헤더 부분 추후 수정해야 함.
+		return ["Content-Type": "application/json",
+						"Visit-Option": "MEMBERSHIP",
+						"Authorization" : "a76f83fe-b1e4-476b-ac57-ac46bcdd6cd0"]
+		
+		
+//    if let userToken = UserDefaults.standard.string(forKey: "userToken") {
+//      return ["Authorization": userToken,
+//              "Content-Type": "application/json"]
+//    } else {
+//      return ["Content-Type": "application/json"]
+//    }
   }
   
   public var validationType: ValidationType {
