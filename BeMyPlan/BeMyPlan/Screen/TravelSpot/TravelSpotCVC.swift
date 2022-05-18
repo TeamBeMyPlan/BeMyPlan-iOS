@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SkeletonView
 
 class TravelSpotCVC: UICollectionViewCell {
   
@@ -19,7 +20,14 @@ class TravelSpotCVC: UICollectionViewCell {
   
   override func awakeFromNib() {
     super.awakeFromNib()
+    configureSkeletonAnimation()
     setUIs()
+  }
+  
+  private func configureSkeletonAnimation() {
+    let animation = SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .leftRight)
+    locationImageView.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .grey04,secondaryColor: .grey06), animation: animation)
+    lockImageView.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .grey05,secondaryColor: .grey07), animation: animation)
   }
   
   private func setUIs() {
@@ -30,6 +38,8 @@ class TravelSpotCVC: UICollectionViewCell {
   
   public func setData(data: TravelSpotDataGettable){
     locationImageView.setImage(with: data.photoURL) { _ in
+      self.locationImageView.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.5))
+      self.lockImageView.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.5))
       UIView.animate(withDuration: 0.5) {
         if data.isActivated == false{
           self.lockImageView.alpha = 1

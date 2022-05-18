@@ -44,9 +44,7 @@ class TravelSpotVC: UIViewController {
   // MARK: - Custom Method Part
   
   private func setSkeletonOptions(){
-    let animation = SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .leftRight)
     locationCollectionView.isSkeletonable = true
-    locationCollectionView.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .grey04,secondaryColor: .grey06), animation: animation, transition: .crossDissolve(1.0))
   }
   
   private func fetchTravelSpotItemList() {
@@ -56,9 +54,7 @@ class TravelSpotVC: UIViewController {
         if let testedData = data {
           self?.travelSpotDataList = testedData
           self?.locationCollectionView.reloadData()
-          DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-            self?.locationCollectionView.hideSkeleton(transition: .crossDissolve(0.7))
-          }
+
         }
 
       }.catch { error in
@@ -80,7 +76,7 @@ extension TravelSpotVC: SkeletonCollectionViewDataSource {
     return TravelSpotCVC.className
   }
   func collectionSkeletonView(_ skeletonView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 6
+    return 4
   }
   
   func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -113,7 +109,7 @@ extension TravelSpotVC: SkeletonCollectionViewDelegate {
     _ = completionHandler?(indexPath.row)
     //    self.navigationController?.popViewController(animated: true)
     if travelSpotDataList[indexPath.row].isActivated {
-      postObserverAction(.movePlanList,object: travelSpotDataList[indexPath.row].id)
+      postObserverAction(.movePlanList,object: travelSpotDataList[indexPath.row].region)
       AppLog.log(at: FirebaseAnalyticsProvider.self, .clickOpenedTravelSpot(spot: travelSpotDataList[indexPath.row].name))
     }else{
       showToast(message: I18N.Alert.notOpenTravelSpot)
