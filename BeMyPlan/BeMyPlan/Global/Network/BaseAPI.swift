@@ -64,7 +64,7 @@ extension BaseAPI: TargetType {
       base += "/post"
       
     case .getTravelSpotList:
-      base += "/area"
+      base += "/plan/regions"
     
     case .deleteUserWithdraw, .postSocialLogin, .postSocialSignUp, .postNickNameCheck:
       base += "/auth"
