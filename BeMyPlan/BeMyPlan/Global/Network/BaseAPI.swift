@@ -34,6 +34,11 @@ enum BaseAPI{
   case getPlanPreviewHeaderData(idx : Int)
   case getPlanPreviewData(idx : Int)
   case getPlanDetailData(idx : Int)
+  
+  // MARK: - HomeList
+  case getHomeOrderList // (최상단 부분, 구매순 정렬)
+  case getHomeRecentlyList // (최신순 정렬)
+  case getHomeBemyPlanList // (비마플 추천 데이터)
 }
 
 extension BaseAPI: TargetType {
@@ -81,6 +86,9 @@ extension BaseAPI: TargetType {
     case .getScrapEmptyList:
       base += "/post/random"
 
+    case .getHomeOrderList,.getHomeRecentlyList,.getHomeBemyPlanList:
+      base += "/plans"
+        
       }
     guard let url = URL(string: base) else {
       fatalError("baseURL could not be configured")
@@ -132,6 +140,8 @@ extension BaseAPI: TargetType {
       return "/signup"
     case .postNickNameCheck:
       return "/check/nickname"
+      case .getHomeBemyPlanList:
+        return "/bemyplanPick"
     default :
       return ""
     }
@@ -210,6 +220,20 @@ extension BaseAPI: TargetType {
       
     case .postNickNameCheck(let nickName):
       params["nickname"] = nickName
+        
+      case .getHomeOrderList:
+        params["size"] = 5
+        params["sort"] = "orderCnt,desc"
+        params["region"] = "JEJU"
+				
+			case .getHomeRecentlyList:
+				params["size"] = 5
+				params["sort"] = "createdAt,desc"
+				params["region"] = "JEJU"
+				
+			case .getHomeBemyPlanList:
+				params["sort"] = "createdAt,desc"
+				params["region"] = "JEJU"
     
     default:
       break
