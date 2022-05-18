@@ -8,12 +8,12 @@
 import Foundation
 
 struct ResponseObject<T> {
-  let status: Int?
+  let resultCode: Int?
   let message: String?
   let data: T?
   
   enum CodingKeys: String, CodingKey {
-    case status
+    case resultCode
     case message
     case data
   }
@@ -22,7 +22,7 @@ struct ResponseObject<T> {
 extension ResponseObject: Decodable where T: Decodable  {
   init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
-    status = try? container.decode(Int.self, forKey: .status)
+    resultCode = try? container.decode(Int.self, forKey: .resultCode)
     message = try? container.decode(String.self, forKey: .message)
     data = try? container.decode(T.self, forKey: .data)
   }

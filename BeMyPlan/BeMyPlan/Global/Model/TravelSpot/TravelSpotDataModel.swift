@@ -7,17 +7,17 @@
 
 import Foundation
 
-  struct TravelSpotDataGettable: Codable {
-      let id: Int
-      let name: String
-      let photoURL: String
-      let isActivated: Bool
-
-      enum CodingKeys: String, CodingKey {
-          case name
-          case id = "area_id"
-          case photoURL = "photo_url"
-          case isActivated = "is_activated"
-      }
-  }
+struct TravelSpotDataGettable: Codable {
+  let region: String
+  let name: String
+  let photoURL: String
+  let isActivated: Bool
   
+  enum CodingKeys: String, CodingKey {
+    case name
+    case region = "region"
+    case photoURL = "thumbnailUrl"
+    case isActivated = "locked"
+  }
+}
+
