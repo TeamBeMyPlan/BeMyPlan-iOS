@@ -50,9 +50,11 @@ class BaseVC: UIViewController {
   override func viewWillDisappear(_ animated: Bool) {
     hideTabbar()
   }
+  override func viewDidLayoutSubviews() {
+    showContainerView()
+  }
   
   override func viewDidAppear(_ animated: Bool) {
-    showContainerView()
 //    self.navigationController?.viewControllers.removeAll()
 
     navigationController?.interactivePopGestureRecognizer?.delegate = nil

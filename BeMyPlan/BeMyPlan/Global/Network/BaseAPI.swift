@@ -233,6 +233,7 @@ extension BaseAPI: TargetType {
 				params["region"] = "JEJU"
 				
 			case .getHomeBemyPlanList:
+				params["size"] = 5
 				params["sort"] = "createdAt,desc"
 				params["region"] = "JEJU"
     
@@ -267,7 +268,7 @@ extension BaseAPI: TargetType {
   ///
   private var parameterEncoding : ParameterEncoding{
     switch self {
-			case .sampleAPI, .getTravelSpotDetailList, .getNicknameDetailList, .getScrapList, .getNewTravelList, .getSuggestTravelList, .postScrapBtn,.getHomeOrderList:
+			case .sampleAPI, .getTravelSpotDetailList, .getNicknameDetailList, .getScrapList, .getNewTravelList, .getSuggestTravelList, .postScrapBtn,.getHomeOrderList,.getHomeRecentlyList,.getHomeBemyPlanList:
       return URLEncoding.init(destination: .queryString, arrayEncoding: .noBrackets, boolEncoding: .literal)
     case .postSocialLogin, .postSocialSignUp, .postNickNameCheck :
       return JSONEncoding.default
@@ -283,7 +284,7 @@ extension BaseAPI: TargetType {
   ///
   var task: Task {
     switch self{
-			case .sampleAPI,.getTravelSpotDetailList, .getNicknameDetailList, .getScrapList,.getNewTravelList, .getSuggestTravelList, .postScrapBtn, .postSocialLogin, .postSocialSignUp, .postNickNameCheck,.getHomeOrderList:
+			case .sampleAPI,.getTravelSpotDetailList, .getNicknameDetailList, .getScrapList,.getNewTravelList, .getSuggestTravelList, .postScrapBtn, .postSocialLogin, .postSocialSignUp, .postNickNameCheck,.getHomeOrderList,.getHomeRecentlyList,.getHomeBemyPlanList:
       return .requestParameters(parameters: bodyParameters ?? [:], encoding: parameterEncoding)
     default:
       return .requestPlain
@@ -296,14 +297,6 @@ extension BaseAPI: TargetType {
 		return ["Content-Type": "application/json",
 						"Visit-Option": "MEMBERSHIP",
 						"Authorization" : "a76f83fe-b1e4-476b-ac57-ac46bcdd6cd0"]
-		
-		
-//    if let userToken = UserDefaults.standard.string(forKey: "userToken") {
-//      return ["Authorization": userToken,
-//              "Content-Type": "application/json"]
-//    } else {
-//      return ["Content-Type": "application/json"]
-//    }
   }
   
   public var validationType: ValidationType {

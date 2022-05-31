@@ -17,11 +17,7 @@ enum MainListViewType{
 class MainListView: UIView {
   
   // MARK: - Vars & Lets Part
-  var mainListDataList: [HomeListDataGettable.Item] = [] {
-    didSet {
-      mainListCV.reloadData()
-    }
-  }
+  var mainListDataList: [HomeListDataGettable.Item] = []
   
   var type : MainListViewType = .recently {
     didSet {
@@ -39,8 +35,6 @@ class MainListView: UIView {
     registerCVC()
     setTitle()
     setMainListCV()
-    //    getListData()
-    setSkeletonAnimation()
   }
   
   required init?(coder aDecoder: NSCoder) {
@@ -49,15 +43,13 @@ class MainListView: UIView {
     registerCVC()
     setTitle()
     setMainListCV()
-    //    getListData()
-    setSkeletonAnimation()
   }
   
   // MARK: - UI Component Part
-  @IBOutlet var mainListCategotyLabel: UILabel!
-  @IBOutlet var mainListCV: UICollectionView!
+  @IBOutlet private var mainListCategotyLabel: UILabel!
+  @IBOutlet private var mainListCV: UICollectionView!
   
-  @IBOutlet var mainListCVCHeightConstraint: NSLayoutConstraint!{
+  @IBOutlet private var mainListCVCHeightConstraint: NSLayoutConstraint!{
     didSet {
       let screenWidth = UIScreen.main.bounds.width
       let cellWidth = screenWidth * (160/375)
@@ -67,11 +59,11 @@ class MainListView: UIView {
   }
   
   // MARK: - @IBAction
-  @IBAction func touchUpToGoGallery(_ sender: Any) {
+  @IBAction private func touchUpToGoGallery(_ sender: Any) {
     
   }
   
-  @IBAction func touchUpToPlanList(_ sender: Any) {
+  @IBAction private func touchUpToPlanList(_ sender: Any) {
     var detailCase : TravelSpotDetailType = .new
     if type == .recently {
       detailCase = .new
@@ -90,10 +82,6 @@ class MainListView: UIView {
   }
   
   private func setMainListCV(){
-    //    let cellWidth = (160/375) * screenWidth
-    //    let cellHeight = cellWidth * (208/160)
-    //
-    //    let insetX = (20/375) * screenWidth
     
     let cellWidth = 160
     let cellHeight = 208
@@ -111,56 +99,39 @@ class MainListView: UIView {
     
   }
   
-  func registerCVC() {
+  private func registerCVC() {
     mainListCV.dataSource = self
     mainListCV.delegate = self
     mainListCV.isSkeletonable = true
-    
-    let mainListCVC = UINib(nibName: MainListCVC.className, bundle: nil)
-    mainListCV.register(mainListCVC, forCellWithReuseIdentifier: MainListCVC.className)
+    MainListCVC.register(target: mainListCV)
   }
   
-  //mainListDataList 에 넣기
+  private func setSkeletonOption() {
+    mainListCV.isSkeletonable = true
+  }
+  
   private func getRecentlyListData(){
-    BaseService.default.getNewTravelList(page: listIndex) { result in
+    BaseService.default.getHomeRecentSortList { result in
       result.success { [weak self] list in
-        self?.mainListDataList.removeAll()
-        
-        if let list = list {
-//          self?.mainListDataList = list.items
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-          self?.mainListCV.reloadData()
-          self?.mainListCV.hideSkeleton( transition: .crossDissolve(1))
-        }
-      }.catch{ error in
-        self.postObserverAction(.showNetworkError, object: nil)
+        guard let list = list else { return }
+        self?.mainListDataList = list.contents
+        self?.mainListCV.reloadData()
+      }.catch { error in
+        self.postObserverAction(.showNetworkError,object: nil)
       }
     }
   }
-  
-  private func setSkeletonAnimation(){
-    let animation = SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .leftRight)
-    
-    self.mainListCV.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .grey04,secondaryColor: .grey05), animation: animation, transition: .crossDissolve(1))
-    mainListCV.showSkeleton()
-  }
+
   private func getSuggestListData(){
-//    BaseService.default.getSuggestTravelList(page: listIndex, sort: "created_at") { result in
-//      result.success { [weak self] list in
-//        self?.mainListDataList.removeAll()
-//        if let list = list {
-//          self?.mainListDataList = list.items
-//        }
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-//          self?.mainListCV.reloadData()
-//          self?.mainListCV.hideSkeleton( transition: .crossDissolve(1))
-//        }
-//
-//      }.catch{ error in
-//        self.postObserverAction(.showNetworkError)
-//      }
-//    }
+    BaseService.default.getHomeBemyPlanSortList{ result in
+      result.success { [weak self] list in
+        guard let list = list else { return }
+        self?.mainListDataList = list.contents
+        self?.mainListCV.reloadData()
+      }.catch { error in
+        self.postObserverAction(.showNetworkError,object: nil)
+      }
+    }
   }
   
 }
@@ -230,5 +201,4 @@ extension MainListView : UIScrollViewDelegate {
     offset = CGPoint(x: roundedIndex * cellWidthIncludingSpacing - scrollView.contentInset.left, y: -scrollView.contentInset.top)
     targetContentOffset.pointee = offset
   }
-  
 }

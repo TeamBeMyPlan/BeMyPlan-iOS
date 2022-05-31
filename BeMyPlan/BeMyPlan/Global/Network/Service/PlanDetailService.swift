@@ -16,3 +16,4 @@ extension BaseService : PlanDetailServiceType{
     requestObject(.getPlanDetailData(idx: idx), completion: completion)
   }
 }
+
