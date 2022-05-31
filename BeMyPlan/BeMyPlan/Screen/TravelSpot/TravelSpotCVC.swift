@@ -8,15 +8,12 @@
 import UIKit
 import SkeletonView
 
-class TravelSpotCVC: UICollectionViewCell {
-  
-  static let identifier = "TravelSpotCVC"
-  
-  @IBOutlet var locationImageView: UIImageView!
-  @IBOutlet var lockImageView: UIImageView!{didSet{
-    lockImageView.alpha = 0
-  }}
-  @IBOutlet var locationLabel: UILabel!
+class TravelSpotCVC: UICollectionViewCell,UICollectionViewRegisterable {
+    
+  static var isFromNib: Bool = true
+  @IBOutlet private var locationImageView: UIImageView!
+  @IBOutlet var lockImageView: UIImageView!
+  @IBOutlet private var locationLabel: UILabel!
   
   override func awakeFromNib() {
     super.awakeFromNib()
@@ -26,25 +23,25 @@ class TravelSpotCVC: UICollectionViewCell {
   
   private func configureSkeletonAnimation() {
     let animation = SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .leftRight)
-    locationImageView.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .grey04,secondaryColor: .grey06), animation: animation)
-    lockImageView.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .grey05,secondaryColor: .grey07), animation: animation)
+    locationImageView.layer.masksToBounds = true
+    locationImageView.clipsToBounds = true
+//    locationImageView.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .grey05,secondaryColor: .grey07), animation: animation)
   }
   
   private func setUIs() {
     locationImageView.layer.cornerRadius = 5
     lockImageView.layer.cornerRadius = 5
-    locationImageView.contentMode = .scaleAspectFill
   }
   
   public func setData(data: TravelSpotDataGettable){
+
+    
+    
     locationImageView.setImage(with: data.photoURL) { _ in
-      self.locationImageView.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.5))
-      self.lockImageView.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.5))
-      UIView.animate(withDuration: 0.5) {
-        if data.isActivated == false{
-          self.lockImageView.alpha = 1
-        }
-      }
+      self.lockImageView.isHidden = !data.isActivated
+      self.locationImageView.hideSkeleton(reloadDataAfter: false, transition: .crossDissolve(0.5))
+      self.lockImageView.layer.cornerRadius = 5
+      self.locationImageView.layer.cornerRadius = 5
     }
     locationLabel.text = data.name
   }
