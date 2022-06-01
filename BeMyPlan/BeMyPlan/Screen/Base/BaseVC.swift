@@ -152,6 +152,7 @@ class BaseVC: UIViewController {
 extension BaseVC : TabBarDelegate{
   func tabClicked(index: TabList) {
     if index != self.clickedIndex{
+      postObserverAction(.changeCurrentTab,object: index)
       UIView.animate(withDuration: 0.25) {
         self.containerView.alpha = 1
       }completion: { _ in

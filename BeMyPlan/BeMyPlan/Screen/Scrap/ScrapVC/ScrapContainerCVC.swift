@@ -10,8 +10,8 @@ import SkeletonView
 
 class ScrapContainerCVC: UICollectionViewCell, UICollectionViewRegisterable {
   static var isFromNib: Bool = true
-  public var scrapBtnClicked: ((Int) -> ())?
-  private var postId:Int?
+  private var postId: Int?
+  private var scrapState: Bool = false { didSet { setScrapImageState() }}
   
   @IBOutlet private var contentImage: UIImageView!
   @IBOutlet private var scrapBtn: UIButton!
@@ -25,19 +25,20 @@ class ScrapContainerCVC: UICollectionViewCell, UICollectionViewRegisterable {
   }
   
   @IBAction func scrapBtnTapped(_ sender: Any) {
-    guard let idx = postId else { return }
-    if let scrapBtnClicked = scrapBtnClicked {
-      scrapBtnClicked(idx)
-      toggleScrapImage()
-    }
+    makeVibrate()
+    postScrapAction()
+    scrapState.toggle()
   }
   
-  private func toggleScrapImage() {
-    if scrapImage.image == UIImage(named: "icnScrapWhite"){
-      scrapImage.image = UIImage(named: "icnNotScrapWhite")
-    } else {
-      scrapImage.image = UIImage(named: "icnScrapWhite")
-    }
+  private func postScrapAction() {
+    guard let postId = postId else { return }
+    let dto = ScrapRequestDTO(planID: postId,
+                              scrapState: scrapState)
+    postObserverAction(.scrapButtonClicked, object: dto)
+  }
+  
+  private func setScrapImageState() {
+    scrapImage.image = scrapState ? ImageLiterals.Scrap.scrapFIconFilled : ImageLiterals.Scrap.scrapIconNotFilled
   }
   
   private func configureSkeleton() {
@@ -58,6 +59,8 @@ class ScrapContainerCVC: UICollectionViewCell, UICollectionViewRegisterable {
   func setData(data: PlanContent) {
     titleLabel.text = data.title
     titleLabel.hideSkeleton()
+    postId = data.planID
+    scrapState = data.scrapStatus
     contentImage.setImage(with: data.thumbnailURL) { _ in
       self.contentImage.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.75))
       self.scrapBtn.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.75))
@@ -65,5 +68,9 @@ class ScrapContainerCVC: UICollectionViewCell, UICollectionViewRegisterable {
       self.contentImage.layoutIfNeeded()
     }
   }
-  
+}
+
+struct ScrapRequestDTO {
+  let planID: Int
+  let scrapState: Bool
 }

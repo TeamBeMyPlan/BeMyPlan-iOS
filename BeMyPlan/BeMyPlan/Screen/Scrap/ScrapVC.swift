@@ -15,6 +15,7 @@ class ScrapVC: UIViewController {
   @IBOutlet var scrapEmptyView: ScrapEmptyContainerView!
   
   // MARK: - Vars & Lets Part
+  private var isInitial = true
   var scrapDataList: [ScrapDataGettable] = []
   var sortCase: FilterSortCase = .recently
   var nextCursor: Int = 0
@@ -28,6 +29,10 @@ class ScrapVC: UIViewController {
     fetchRecomendData()
   }
   
+  override func viewDidAppear(_ animated: Bool) {
+    self.isInitial = false
+  }
+  
   override func viewWillAppear(_ animated: Bool) {
     fetchScrapListData(sort: .recently)
   }
@@ -37,7 +42,6 @@ class ScrapVC: UIViewController {
   }
     
   private func fetchScrapListData(lastId: Int? = nil,sort: FilterSortCase) {
-    guard nextCursor != -1 else { return }
     var sortCase: FilterSortCase
     if sort == .scrapCount { sortCase = .orderCount }
     else { sortCase = sort }
@@ -47,8 +51,8 @@ class ScrapVC: UIViewController {
         self.scrapEmptyView.isHidden = !entity.contents.isEmpty
         self.scrapView.isHidden = entity.contents.isEmpty
         self.nextCursor = entity.nextCursor
-
         self.scrapView.scrapDataList = entity.contents
+        print("현재 들어오는 스크랩 리스트",entity.contents)
       }.catch { _ in
         self.postObserverAction(.showNetworkError)
       }
@@ -66,6 +70,24 @@ class ScrapVC: UIViewController {
     }
   }
   
+  private func postScrapAction(planID: Int) {
+    BaseService.default.postScrap(postId: planID) { result in
+      result.success { _ in }
+        .catch { _ in
+          print("스크랩 실패")
+        }
+    }
+  }
+  
+  private func deleteScrapAction(planID: Int) {
+    BaseService.default.deleteScrap(postId: planID) { result in
+      result.success { _ in }
+        .catch { _ in
+          print("스크랩 취소 실패")
+        }
+    }
+  }
+  
   private func bottomSheetNotification() {
     addObserverAction(.filterBottomSheet) { _ in
       let vc = UIStoryboard(name: "TravelSpot", bundle: nil).instantiateViewController(withIdentifier: "TravelSpotFilterVC") as! TravelSpotFilterVC
@@ -79,19 +101,24 @@ class ScrapVC: UIViewController {
   }
   
   private func registerObserverActions() {
-    addObserverAction(.moveHomeTab) { [weak self] _ in
-      self?.fetchScrapListData(sort: .recently)
+    addObserverAction(.changeCurrentTab) { [weak self] noti in
+      if let index = noti.object as? TabList {
+
+        if index == .scrap  && self?.isInitial == false {
+          self?.fetchScrapListData(sort: .recently)
+        }
+      }
     }
     
-    addObserverAction(.moveTravelSpotTab) { [weak self] _ in
-      self?.fetchScrapListData(sort: .recently)
-    }
-    
-    addObserverAction(.moveMyPlanTab) { [weak self] _ in
-      self?.fetchScrapListData(sort: .recently)
+    addObserverAction(.scrapButtonClicked) { noti in
+      if let scrapObject = noti.object as? ScrapRequestDTO {
+        if scrapObject.scrapState {
+          // 스크랩된 상태라면 delete로 부숴야 함
+          self.deleteScrapAction(planID: scrapObject.planID)
+        } else {
+          self.postScrapAction(planID: scrapObject.planID)
+        }
+      }
     }
   }
-
-  
-  
 }

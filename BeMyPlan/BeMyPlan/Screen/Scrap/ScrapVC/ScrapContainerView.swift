@@ -43,20 +43,6 @@ class ScrapContainerView: XibView {
     contentCV.delegate = self
     contentCV.isSkeletonable = true
   }
-  
-  private func scrapBtnAPI() {
-    BaseService.default.postScrapBtnTapped(postId: postId) { result in
-      result.success { data in
-        if let testedData = data {
-          self.scrapBtnData = testedData.scrapped
-        }
-      }.catch { error in
-        if let err = error as? MoyaError {
-          dump(err)
-        }
-      }
-    }
-  }
 }
 
 extension ScrapContainerView: SkeletonCollectionViewDataSource {
@@ -77,10 +63,6 @@ extension ScrapContainerView: SkeletonCollectionViewDataSource {
     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ScrapContainerCVC.className, for: indexPath) as? ScrapContainerCVC else {return UICollectionViewCell()
     }
     cell.setData(data: scrapDataList[indexPath.row])
-    cell.scrapBtnClicked = { [weak self] post in
-      self?.postId = post
-      self?.scrapBtnAPI()
-    }
     return cell
   }
 }
@@ -101,7 +83,6 @@ extension ScrapContainerView: UICollectionViewDelegateFlowLayout {
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-//    let inset = screenWidth * (24/375)
     return UIEdgeInsets(top: 0, left: 24, bottom: 24, right: 24)
      
   }

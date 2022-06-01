@@ -9,7 +9,8 @@ import Foundation
 
 protocol ScrapService {
   func getScrapList(lastId: Int?, sort: FilterSortCase, completion: @escaping (Result<ScrapDataGettable?, Error>) -> Void)
-  func postScrapBtnTapped(postId: Int, completion: @escaping (Result<ScrapBtnDataGettable?, Error>) -> Void)
+  func postScrap(postId: Int, completion: @escaping (Result<String?, Error>) -> Void)
+  func deleteScrap(postId: Int, completion: @escaping (Result<String?, Error>) -> Void)
 
 }
 
@@ -18,8 +19,11 @@ extension BaseService: ScrapService {
     requestObject(.getScrapList(lastScrapId: lastId, sort: sort.rawValue),completion: completion)
   }
   
-  func postScrapBtnTapped(postId: Int, completion: @escaping (Result<ScrapBtnDataGettable?, Error>) -> Void) {
-    requestObject(.postScrapBtn(postId: postId), completion: completion)
+  func postScrap(postId: Int, completion: @escaping (Result<String?, Error>) -> Void) {
+    requestObject(.postScrap(postId: postId), completion: completion)
+  }
+  
+  func deleteScrap(postId: Int, completion: @escaping (Result<String?, Error>) -> Void) {
+    requestObject(.deleteScrap(postId: postId), completion: completion)
   }
 }
-
