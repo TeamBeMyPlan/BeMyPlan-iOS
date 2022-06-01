@@ -24,6 +24,8 @@ class SplashVC: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     UserDefaults.standard.setValue(100, forKey: "userIdx")
+  //FIXME: - 추후 닉네임 받아올 수 있도록 처리해야 함.
+    UserDefaults.standard.setValue("혜화동불가마", forKey: "userNickname")
     AppLog.setFirebaseUserProperty()
     startSplash()
   }

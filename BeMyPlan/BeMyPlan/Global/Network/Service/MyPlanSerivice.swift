@@ -8,7 +8,7 @@
 import Foundation
 
 protocol MyPlanServiceType{
-  func getOrderList(completion: @escaping (Result<MyPlanData.BuyListDataGettable?, Error>) -> Void)
+  func getOrderList(completion: @escaping (Result<PlanDataGettable?, Error>) -> Void)
   func deleteUserWithdraw(completion: @escaping (Result<String?, Error>) -> Void)
 }
 
@@ -17,7 +17,7 @@ extension BaseService : MyPlanServiceType{
     requestObject(.deleteUserWithdraw, completion: completion)
   }
   
-  func getOrderList( completion: @escaping (Result<MyPlanData.BuyListDataGettable?, Error>) -> Void) {
+  func getOrderList( completion: @escaping (Result<PlanDataGettable?, Error>) -> Void) {
     requestObject(.getBuyList, completion: completion)
   }
 }

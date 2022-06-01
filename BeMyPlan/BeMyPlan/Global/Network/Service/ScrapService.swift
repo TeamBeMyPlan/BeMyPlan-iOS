@@ -8,14 +8,14 @@
 import Foundation
 
 protocol ScrapService {
-  func getScrapList(lastId: Int?, sort: FilterSortCase, completion: @escaping (Result<ScrapDataGettable?, Error>) -> Void)
+  func getScrapList(lastId: Int?, sort: FilterSortCase, completion: @escaping (Result<PlanDataGettable?, Error>) -> Void)
   func postScrap(postId: Int, completion: @escaping (Result<String?, Error>) -> Void)
   func deleteScrap(postId: Int, completion: @escaping (Result<String?, Error>) -> Void)
 
 }
 
 extension BaseService: ScrapService {
-  func getScrapList(lastId: Int? = nil, sort: FilterSortCase, completion: @escaping (Result<ScrapDataGettable?, Error>) -> Void) {
+  func getScrapList(lastId: Int? = nil, sort: FilterSortCase, completion: @escaping (Result<PlanDataGettable?, Error>) -> Void) {
     requestObject(.getScrapList(lastScrapId: lastId, sort: sort.rawValue),completion: completion)
   }
   

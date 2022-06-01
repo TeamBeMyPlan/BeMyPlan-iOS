@@ -16,7 +16,7 @@ class ScrapVC: UIViewController {
   
   // MARK: - Vars & Lets Part
   private var isInitial = true
-  var scrapDataList: [ScrapDataGettable] = []
+  var scrapDataList: [PlanDataGettable] = []
   var sortCase: FilterSortCase = .recently
   var nextCursor: Int = 0
   
@@ -70,24 +70,6 @@ class ScrapVC: UIViewController {
     }
   }
   
-  private func postScrapAction(planID: Int) {
-    BaseService.default.postScrap(postId: planID) { result in
-      result.success { _ in }
-        .catch { _ in
-          print("스크랩 실패")
-        }
-    }
-  }
-  
-  private func deleteScrapAction(planID: Int) {
-    BaseService.default.deleteScrap(postId: planID) { result in
-      result.success { _ in }
-        .catch { _ in
-          print("스크랩 취소 실패")
-        }
-    }
-  }
-  
   private func bottomSheetNotification() {
     addObserverAction(.filterBottomSheet) { _ in
       let vc = UIStoryboard(name: "TravelSpot", bundle: nil).instantiateViewController(withIdentifier: "TravelSpotFilterVC") as! TravelSpotFilterVC
@@ -109,16 +91,6 @@ class ScrapVC: UIViewController {
         }
       }
     }
-    
-    addObserverAction(.scrapButtonClicked) { noti in
-      if let scrapObject = noti.object as? ScrapRequestDTO {
-        if scrapObject.scrapState {
-          // 스크랩된 상태라면 delete로 부숴야 함
-          self.deleteScrapAction(planID: scrapObject.planID)
-        } else {
-          self.postScrapAction(planID: scrapObject.planID)
-        }
-      }
-    }
+
   }
 }
