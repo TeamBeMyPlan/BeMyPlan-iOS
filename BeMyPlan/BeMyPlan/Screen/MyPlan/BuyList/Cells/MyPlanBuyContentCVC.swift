@@ -6,34 +6,59 @@
 //
 
 import UIKit
+import SkeletonView
 
 class MyPlanBuyContentCVC: UICollectionViewCell {
   
-  var isScrap = false { didSet{ setScrapImage() }}
-  var postIdx: Int = 0
-  var scrapClicked: ((Bool,Int) -> (Void))?
+  
+  private var postId: Int?
+  private var scrapState: Bool = false { didSet { setScrapImageState() }}
   
   @IBOutlet var contentImageView : UIImageView!
   @IBOutlet var titleLabel : UILabel!
   @IBOutlet var scrapImageView: UIImageView!
   
-  @IBAction func scrapButtonClicked(_ sender: Any) {
-    makeVibrate()
-    isScrap.toggle()
-    scrapClicked?(isScrap,postIdx)
-  }
-
-  func setContentData(title : String, imageURL: String,isScrap: Bool,postIdx: Int){
-    contentImageView.layer.cornerRadius = 5
-    titleLabel.text = title
-    contentImageView.setImage(with: imageURL)
-    self.isScrap = isScrap
-    self.postIdx = postIdx
+  override func awakeFromNib() {
+    configureSkeleton()
   }
   
-  private func setScrapImage(){
-    let image: UIImage
-    isScrap ? (image = ImageLiterals.Scrap.scrapFIconFilled) : (image = ImageLiterals.Scrap.scrapIconNotFilled)
-    scrapImageView.image = image
+  @IBAction func scrapButtonClicked(_ sender: Any) {
+    makeVibrate()
+    postScrapAction()
+    scrapState.toggle()
+  }
+  
+  private func postScrapAction() {
+    guard let postId = postId else { return }
+    let dto = ScrapRequestDTO(planID: postId,
+                              scrapState: scrapState)
+    postObserverAction(.scrapButtonClicked, object: dto)
+  }
+  
+  private func setScrapImageState() {
+    scrapImageView.image = scrapState ? ImageLiterals.Scrap.scrapFIconFilled : ImageLiterals.Scrap.scrapIconNotFilled
+  }
+  
+  private func configureSkeleton() {
+    let animation = SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .leftRight)
+    scrapImageView
+      .showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .grey04,secondaryColor: .grey06), animation: animation)
+    contentImageView
+      .showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .grey04,secondaryColor: .grey06), animation: animation)
+    titleLabel
+      .showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .grey04,secondaryColor: .grey06), animation: animation)
+  }
+
+  func setData(data: PlanContent) {
+    titleLabel.text = data.title
+    titleLabel.hideSkeleton()
+    postId = data.planID
+    scrapState = data.scrapStatus
+    contentImageView.setImage(with: data.thumbnailURL) { _ in
+      self.contentImageView.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.75))
+      self.scrapImageView.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.75))
+      self.contentImageView.layer.cornerRadius = 5
+      self.contentImageView.layoutIfNeeded()
+    }
   }
 }

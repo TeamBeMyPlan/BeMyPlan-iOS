@@ -12,11 +12,11 @@ import SkeletonView
 class MyPlanVC: UIViewController {
   
   // MARK: - Vars & Lets Part
-  
-  var buyContentList : [MyPlanData.BuyListData] = []{
+  private var isInitial = true
+  var buyContentList : [PlanContent] = []{
     didSet{
-//      mainContentCV.reloadData()
       setEmptyView()
+      mainContentCV.reloadData()
     }
   }
   
@@ -45,10 +45,14 @@ class MyPlanVC: UIViewController {
     fetchBuyList()
   }
   
+  override func viewDidAppear(_ animated: Bool) {
+    isInitial = false
+  }
+  
   // MARK: - Custom Method Part
   
   private func setUI(){
-    emptyView.alpha = 0
+    emptyView.isHidden = true
     mainContentCV.alpha = 1
   }
   
@@ -59,63 +63,45 @@ class MyPlanVC: UIViewController {
   }
   
   private func setSkeletonOptions(){
-    let animation = SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .leftRight)
     mainContentCV.isSkeletonable = true
-    mainContentCV.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .grey04,secondaryColor: .grey06), animation: animation, transition: .crossDissolve(1.5))
   }
   
   private func fetchBuyList(){
     BaseService.default.getOrderList{ result in
-      result.success { [weak self] data in
-        if let buyList = data{
-          self?.buyContentList = buyList.items
-          self?.mainContentCV.delegate = self
-//          self?.removeDummyDataSource(reloadAfter: true)
-          self?.mainContentCV.hideSkeleton(transition: .crossDissolve(2.5))
-
-    
-//          DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-//            self?.mainContentCV.hideSkeleton(transition: .crossDissolve(0.7))
-//            UIView.animate(withDuration: 0.5) {
-//              if self?.buyContentList.count == 0{
-//                self?.emptyView.alpha = 1
-//              }
-//            }
-//          }
-        }
+      result.success { [weak self] entity in
+        guard let entity = entity else { return }
+        self?.buyContentList = entity.contents
       }.catch { error in
         dump(error)
       }
     }
   }
   
-//  func removeDummyDataSource(reloadAfter: Bool) {
-//          /*
-//          guard let dataSource = self.dataSource as? SkeletonCollectionDataSource else { return }
-//          restoreRowHeight()
-//          self.skeletonDataSource = nil
-//          self.dataSource = dataSource.originalTableViewDataSource
-//          */
-//          if let delegate = self.delegate as? SkeletonCollectionDelegate {
-//            self.mainContentCV.skeletonDelegate = nil
-//            self.mainContentCV.delegate = delegate.originalTableViewDelegate
-//          }
-//
-//          //if reloadAfter { self.reloadData() }
-//  }
-  
   private func setEmptyView(){
     emptyViewHeightConstraint.constant = mainContentCV.bounds.height - 224
     emptyView.isHidden = !buyContentList.isEmpty
+  }
+  
+  private func registerObserverActions() {
+    addObserverAction(.changeCurrentTab) { [weak self] noti in
+      if let index = noti.object as? TabList {
+
+        if index == .myPlan  && self?.isInitial == false {
+          self?.fetchBuyList()
+        }
+      }
+    }
+
   }
 }
 // MARK: - Extension Part
 extension MyPlanVC: SkeletonCollectionViewDelegate{
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    makeVibrate()
     AppLog.log(at: FirebaseAnalyticsProvider.self, .clickTravelPlan(source: .myPlanView,
-                                                                    postIdx:  String(buyContentList[indexPath.row].id)))
-    postObserverAction(.movePlanDetail,object: buyContentList[indexPath.row].id)
+                                                                    postIdx:  String(buyContentList[indexPath.row].planID)))
+    postObserverAction(.movePlanDetail,object: buyContentList[indexPath.row].planID)
   }
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
     return CGSize(width: screenWidth, height: 224)
@@ -142,7 +128,8 @@ extension MyPlanVC: SkeletonCollectionViewDataSource{
     switch(kind){
       case UICollectionView.elementKindSectionHeader:
         guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: MyPlanCVUserResuableView.className, for: indexPath) as? MyPlanCVUserResuableView else{ return UICollectionReusableView() }
-        headerView.setData(nickName: "다운타운베이비", buyCount: buyContentList.count) // 이후 수정필요
+        guard let nickname = UserDefaults.standard.string(forKey: "userNickname") else { return headerView }
+        headerView.setData(nickName: nickname, buyCount: buyContentList.count) // 이후 수정필요
         return headerView
       default :
         return UICollectionReusableView()
@@ -155,12 +142,7 @@ extension MyPlanVC: SkeletonCollectionViewDataSource{
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let contentCell = collectionView.dequeueReusableCell(withReuseIdentifier: MyPlanBuyContentCVC.className
                                                                , for: indexPath) as? MyPlanBuyContentCVC else {return UICollectionViewCell() }
-    contentCell.setContentData(title: buyContentList[indexPath.row].title, imageURL: buyContentList[indexPath.row].thumbnailURL,
-                               isScrap: false,
-                               postIdx: buyContentList[indexPath.row].id)
-    contentCell.scrapClicked = { isScrap,postIdx in
-      print("Clicked",isScrap,postIdx)
-    }
+    contentCell.setData(data: buyContentList[indexPath.row])
     return contentCell
   }
   

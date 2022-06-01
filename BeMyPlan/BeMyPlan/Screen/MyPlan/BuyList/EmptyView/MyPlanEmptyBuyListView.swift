@@ -9,6 +9,7 @@ import UIKit
 
 class MyPlanEmptyBuyListView: XibView {
   @IBAction func clickedLookAroundButton(_ sender: Any) {
+    makeVibrate()
     postObserverAction(.moveHomeTab)
   }
 }

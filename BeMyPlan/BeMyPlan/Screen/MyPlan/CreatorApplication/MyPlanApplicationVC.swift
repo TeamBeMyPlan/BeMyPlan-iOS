@@ -51,7 +51,6 @@ class MyPlanApplicationVC: UIViewController, MFMailComposeViewControllerDelegate
     controller.dismiss(animated: true, completion: nil)
   }
 }
-// MARK: - Extension Part
 let mailTemplate  = """
 
 업로드 신청 입력 양식

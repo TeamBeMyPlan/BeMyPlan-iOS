@@ -27,7 +27,6 @@ enum BaseAPI{
   case getScrapEmptyList
 
   // MARK: - 지훈
-  case getBuyList
   case deleteUserWithdraw
   case getPlanPreviewHeaderData(idx : Int)
   case getPlanPreviewData(idx : Int)
@@ -42,6 +41,9 @@ enum BaseAPI{
 	case getScrapList(lastScrapId: Int?, sort: String)
   case postScrap(postId: Int)
 	case deleteScrap(postId: Int)
+	
+	// MARK: - MyPlan
+	case getBuyList
 
 }
 
@@ -66,7 +68,7 @@ extension BaseAPI: TargetType {
         base += ""
 
       case .getBuyList:
-        base += "/order"
+        base += "/plan/orders"
       
     case .getPopularTravelList, .getNewTravelList, .getSuggestTravelList, .getRecentTripList, .getPlanPreviewHeaderData,
         .getPlanPreviewData, .getPlanDetailData:
@@ -236,6 +238,10 @@ extension BaseAPI: TargetType {
 				params["size"] = 5
 				params["sort"] = "createdAt,desc"
 				params["region"] = "JEJU"
+				
+			case .getBuyList:
+				params["sort"] = "createdAt"
+				params["size"] = 20
     
     default:
       break
@@ -268,7 +274,7 @@ extension BaseAPI: TargetType {
   ///
   private var parameterEncoding : ParameterEncoding{
     switch self {
-			case .sampleAPI, .getTravelSpotDetailList, .getNicknameDetailList, .getScrapList, .getNewTravelList, .getSuggestTravelList, .postScrap,.deleteScrap,.getHomeOrderList,.getHomeRecentlyList,.getHomeBemyPlanList:
+			case .sampleAPI, .getTravelSpotDetailList, .getNicknameDetailList, .getScrapList, .getNewTravelList, .getSuggestTravelList, .postScrap,.deleteScrap,.getHomeOrderList,.getHomeRecentlyList,.getHomeBemyPlanList,.getBuyList:
       return URLEncoding.init(destination: .queryString, arrayEncoding: .noBrackets, boolEncoding: .literal)
     case .postSocialLogin, .postSocialSignUp, .postNickNameCheck :
       return JSONEncoding.default
@@ -284,7 +290,7 @@ extension BaseAPI: TargetType {
   ///
   var task: Task {
     switch self{
-			case .sampleAPI,.getTravelSpotDetailList, .getNicknameDetailList, .getScrapList,.getNewTravelList, .getSuggestTravelList, .postScrap,.deleteScrap,.postSocialLogin, .postSocialSignUp, .postNickNameCheck,.getHomeOrderList,.getHomeRecentlyList,.getHomeBemyPlanList:
+			case .sampleAPI,.getTravelSpotDetailList, .getNicknameDetailList, .getScrapList,.getNewTravelList, .getSuggestTravelList, .postScrap,.deleteScrap,.postSocialLogin, .postSocialSignUp, .postNickNameCheck,.getHomeOrderList,.getHomeRecentlyList,.getHomeBemyPlanList,.getBuyList:
       return .requestParameters(parameters: bodyParameters ?? [:], encoding: parameterEncoding)
     default:
       return .requestPlain

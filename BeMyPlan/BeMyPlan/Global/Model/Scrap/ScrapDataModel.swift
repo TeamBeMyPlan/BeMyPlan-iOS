@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ScrapDataGettable: Codable {
+struct PlanDataGettable: Codable {
     let contents: [PlanContent]
     let nextCursor: Int
 }

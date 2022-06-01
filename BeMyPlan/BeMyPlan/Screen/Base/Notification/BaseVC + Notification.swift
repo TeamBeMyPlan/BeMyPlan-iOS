@@ -117,11 +117,16 @@ extension BaseVC{
       self.navigationController?.pushViewController(spotlistVC, animated: true)
     }
     
-    /**
-    hello my name is hyunju An
-    whats your name???
-    DDogak DDogak
-     */
+    addObserverAction(.scrapButtonClicked) { noti in
+      if let scrapObject = noti.object as? ScrapRequestDTO {
+        if scrapObject.scrapState {
+          self.deleteScrapAction(planID: scrapObject.planID)
+        } else {
+          self.postScrapAction(planID: scrapObject.planID)
+        }
+      }
+    }
+
     
     addObserverAction(.moveHomeTab) { _ in
       self.tabClicked(index: .home)
@@ -141,4 +146,23 @@ extension BaseVC{
     
   }
   
+  private func postScrapAction(planID: Int) {
+    BaseService.default.postScrap(postId: planID) { result in
+      result.success { _ in }
+        .catch { _ in
+          print("스크랩 실패")
+        }
+    }
+  }
+  
+  private func deleteScrapAction(planID: Int) {
+    BaseService.default.deleteScrap(postId: planID) { result in
+      result.success { _ in }
+        .catch { _ in
+          print("스크랩 취소 실패")
+        }
+    }
+  }
+  
 }
+

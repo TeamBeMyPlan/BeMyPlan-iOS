@@ -9,9 +9,9 @@ import UIKit
 
 class MyPlanCVUserResuableView: UICollectionReusableView {
     
-  @IBOutlet var profileImageView: UIImageView!
-  @IBOutlet var nicknameLabel: UILabel!
-  @IBOutlet var buyCountLabel: UILabel!
+  @IBOutlet private var profileImageView: UIImageView!
+  @IBOutlet private var nicknameLabel: UILabel!
+  @IBOutlet private var buyCountLabel: UILabel!
   
   func setData(nickName : String, buyCount : Int){
     buyCountLabel.text = String(buyCount)
