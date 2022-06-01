@@ -6,24 +6,36 @@
 //
 
 import Foundation
-// MARK: - wiData
+
 struct ScrapDataGettable: Codable {
-  let items: [ScrapItem]
-    let totalPage: Int
+    let contents: [PlanContent]
+    let nextCursor: Int
 }
 
-// MARK: - wiItem
-struct ScrapItem: Codable {
-    let postID: Int
-    let title: String
-    let price: Int
+// MARK: - Content
+struct PlanContent: Codable {
+    let createdAt, updatedAt: String
+    let planID: Int
     let thumbnailURL: String
-    let isPurchased: Bool
+    let title: String
+    let user: User
+    let scrapStatus, orderStatus: Bool
 
     enum CodingKeys: String, CodingKey {
-        case postID = "post_id"
-        case title, price
-        case thumbnailURL = "thumbnail_url"
-        case isPurchased = "is_purchased"
+        case createdAt, updatedAt
+        case planID = "planId"
+        case thumbnailURL = "thumbnailUrl"
+        case title, user, scrapStatus, orderStatus
+    }
+}
+
+// MARK: - User
+struct User: Codable {
+    let userID: Int
+    let nickname: String
+
+    enum CodingKeys: String, CodingKey {
+        case userID = "userId"
+        case nickname
     }
 }

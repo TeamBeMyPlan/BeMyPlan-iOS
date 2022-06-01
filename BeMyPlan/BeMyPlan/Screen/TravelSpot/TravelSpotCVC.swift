@@ -12,7 +12,7 @@ class TravelSpotCVC: UICollectionViewCell,UICollectionViewRegisterable {
     
   static var isFromNib: Bool = true
   @IBOutlet private var locationImageView: UIImageView!
-  @IBOutlet var lockImageView: UIImageView!
+  @IBOutlet private var lockImageView: UIImageView!
   @IBOutlet private var locationLabel: UILabel!
   
   override func awakeFromNib() {
@@ -33,10 +33,7 @@ class TravelSpotCVC: UICollectionViewCell,UICollectionViewRegisterable {
     lockImageView.layer.cornerRadius = 5
   }
   
-  public func setData(data: TravelSpotDataGettable){
-
-    
-    
+  public func setData(data: TravelSpotDataGettable) {
     locationImageView.setImage(with: data.photoURL) { _ in
       self.lockImageView.isHidden = !data.isActivated
       self.locationImageView.hideSkeleton(reloadDataAfter: false, transition: .crossDissolve(0.5))

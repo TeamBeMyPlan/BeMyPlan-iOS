@@ -12,85 +12,36 @@ import SkeletonView
 
 class ScrapContainerView: XibView {
   
-  private var scrapDataList: [ScrapItem] = []
+  var scrapDataList: [PlanContent] = [] { didSet { contentCV.reloadData() } }
   var postId: Int = 0
   var scrapBtnData: Bool = true
 
-  @IBOutlet var contentCV: UICollectionView!
+  @IBOutlet private var contentCV: UICollectionView!
 
   override init(frame: CGRect) {
     super.init(frame: frame)
-    setAll()
+    setDelegate()
+    registerCells()
   }
   
   required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
-    setAll()
+    setDelegate()
+    registerCells()
   }
   
   @IBAction func filterBtn(_ sender: Any) {
     postObserverAction(.filterBottomSheet)
   }
   
-  private func setAll() {
-    setDelegate()
-    registerCells()
-    setSkeletonView()
-    fetchScrapItemList()
-  }
-  
   private func registerCells() {
     ScrapContainerCVC.register(target: contentCV)
-  }
-  
-  private func setSkeletonView(){
-    let animation = SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .leftRight)
-    contentCV.isSkeletonable = true
-    contentCV.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .grey04,secondaryColor: .grey06), animation: animation, transition: .crossDissolve(1.0))
   }
   
   private func setDelegate() {
     contentCV.dataSource = self
     contentCV.delegate = self
-  }
-  
-  private func fetchScrapItemList() {
-    BaseService.default.getScrapList(page: 0, pageSize: 5, sort: "created_at") { result in
-      result.success { [weak self] data in
-        self?.scrapDataList = []
-        if let testedData = data {
-          self?.scrapDataList = testedData.items
-          DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-            UIView.animate(withDuration: 0.5){
-              self?.contentCV.alpha = 0
-            }
-            self?.contentCV.hideSkeleton(reloadDataAfter:true, transition: .crossDissolve(1.0))
-            self?.contentCV.reloadData()
-            UIView.animate(withDuration: 1.0,delay: 0.1) {
-              self?.contentCV.alpha = 1
-            }
-          }
-
-        }
-      }.catch { error in
-        if let _ = error as? MoyaError {
-        }
-      }
-    }
-  }
-  
-  private func scrapBtnAPI() {
-    BaseService.default.postScrapBtnTapped(postId: postId) { result in
-      result.success { data in
-        if let testedData = data {
-          self.scrapBtnData = testedData.scrapped
-        }
-      }.catch { error in
-        if let err = error as? MoyaError {
-          dump(err)
-        }
-      }
-    }
+    contentCV.isSkeletonable = true
   }
 }
 
@@ -112,10 +63,6 @@ extension ScrapContainerView: SkeletonCollectionViewDataSource {
     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ScrapContainerCVC.className, for: indexPath) as? ScrapContainerCVC else {return UICollectionViewCell()
     }
     cell.setData(data: scrapDataList[indexPath.row])
-    cell.scrapBtnClicked = { [weak self] post in
-      self?.postId = post
-      self?.scrapBtnAPI()
-    }
     return cell
   }
 }
@@ -123,8 +70,8 @@ extension ScrapContainerView: SkeletonCollectionViewDataSource {
 extension ScrapContainerView: SkeletonCollectionViewDelegate{
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     AppLog.log(at: FirebaseAnalyticsProvider.self, .clickTravelPlan(source: .scrapView,
-                                                                    postIdx:  String(scrapDataList[indexPath.row].postID)))
-    postObserverAction(.movePlanPreview,object: scrapDataList[indexPath.row].postID)
+                                                                    postIdx:  String(scrapDataList[indexPath.row].planID)))
+    postObserverAction(.movePlanPreview,object: scrapDataList[indexPath.row].planID)
   }
 }
 
@@ -136,7 +83,6 @@ extension ScrapContainerView: UICollectionViewDelegateFlowLayout {
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-//    let inset = screenWidth * (24/375)
     return UIEdgeInsets(top: 0, left: 24, bottom: 24, right: 24)
      
   }

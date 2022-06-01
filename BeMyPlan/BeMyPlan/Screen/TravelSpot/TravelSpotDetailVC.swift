@@ -30,7 +30,7 @@ class TravelSpotDetailVC: UIViewController {
   var areaId: Int? = 2
   var userId: Int?
   var type : TravelSpotDetailType = .travelspot
-  var sortCase : SortCase = .recently
+  var sortCase : FilterSortCase = .recently
   
   // MARK: - UI Component Part
   @IBOutlet var contentTableView: UITableView!
@@ -138,21 +138,7 @@ class TravelSpotDetailVC: UIViewController {
 //      }
 //    }
   }
-  
-  private func scrapBtnAPI() {
-    BaseService.default.postScrapBtnTapped(postId: postId) { result in
-      result.success { data in
-        if let testedData = data {
-          self.scrapBtnData = testedData.scrapped
-        }
-      }.catch { error in
-        if let err = error as? MoyaError {
-          dump(err)
-        }
-      }
-    }
-  }
-  
+
   private func initRefresh() {
     let refresh = UIRefreshControl()
     refresh.addTarget(self, action: #selector(updateUI(refresh:)), for: .valueChanged)
@@ -183,11 +169,6 @@ extension TravelSpotDetailVC: UITableViewDataSource {
     }
     cell.selectionStyle = .none
     cell.setData(data: planDataList[indexPath.row])
-
-    cell.scrapBtnClicked = { [weak self] post in
-      self?.postId = post
-      self?.scrapBtnAPI()
-    }
     return cell
   }
 }
@@ -230,8 +211,4 @@ extension TravelSpotDetailVC {
   }
 }
 
-enum SortCase: String {
-  case recently = "created_at"
-  case orderCount = "order_count"
-  case scrapCount = "scrap_count"
-}
+

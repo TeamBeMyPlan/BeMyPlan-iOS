@@ -15,32 +15,76 @@ class ScrapVC: UIViewController {
   @IBOutlet var scrapEmptyView: ScrapEmptyContainerView!
   
   // MARK: - Vars & Lets Part
-  var scrapDataList:[ScrapDataGettable] = []
-  var sortCase : SortCase = .recently
+  private var isInitial = true
+  var scrapDataList: [ScrapDataGettable] = []
+  var sortCase: FilterSortCase = .recently
+  var nextCursor: Int = 0
   
   // MARK: - Life Cycle Part
   override func viewDidLoad() {
     super.viewDidLoad()
-//    fetchScrapListData()
     setUI()
+    registerObserverActions()
     bottomSheetNotification()
+    fetchRecomendData()
   }
   
+  override func viewDidAppear(_ animated: Bool) {
+    self.isInitial = false
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    fetchScrapListData(sort: .recently)
+  }
+
   private func setUI(){
-    scrapEmptyView.alpha = 0
+    scrapEmptyView.isHidden = true
   }
     
-  private func fetchScrapListData() {
-    BaseService.default.getScrapList(page: 0, pageSize: 5, sort: "created_at") { result in
-      result.success { data in
-        if let testedData = data {
-          if testedData.items.count == 0 {
-            self.scrapView.isHidden = true
-          } else {
-            self.scrapEmptyView.isHidden = true
-          }
-        }
+  private func fetchScrapListData(lastId: Int? = nil,sort: FilterSortCase) {
+    var sortCase: FilterSortCase
+    if sort == .scrapCount { sortCase = .orderCount }
+    else { sortCase = sort }
+    BaseService.default.getScrapList(lastId: lastId, sort: sortCase) { result in
+      result.success { entity in
+        guard let entity = entity else {return}
+        self.scrapEmptyView.isHidden = !entity.contents.isEmpty
+        self.scrapView.isHidden = entity.contents.isEmpty
+        self.nextCursor = entity.nextCursor
+        self.scrapView.scrapDataList = entity.contents
+        print("현재 들어오는 스크랩 리스트",entity.contents)
+      }.catch { _ in
+        self.postObserverAction(.showNetworkError)
       }
+    }
+  }
+  
+  private func fetchRecomendData() {
+    BaseService.default.getHomeBemyPlanSortList { result in
+      result.success { entity in
+        guard let entity = entity else { return }
+        self.scrapEmptyView.contentDataList = entity.contents
+      }.catch { _ in
+        self.postObserverAction(.showNetworkError)
+      }
+    }
+  }
+  
+  private func postScrapAction(planID: Int) {
+    BaseService.default.postScrap(postId: planID) { result in
+      result.success { _ in }
+        .catch { _ in
+          print("스크랩 실패")
+        }
+    }
+  }
+  
+  private func deleteScrapAction(planID: Int) {
+    BaseService.default.deleteScrap(postId: planID) { result in
+      result.success { _ in }
+        .catch { _ in
+          print("스크랩 취소 실패")
+        }
     }
   }
   
@@ -48,8 +92,33 @@ class ScrapVC: UIViewController {
     addObserverAction(.filterBottomSheet) { _ in
       let vc = UIStoryboard(name: "TravelSpot", bundle: nil).instantiateViewController(withIdentifier: "TravelSpotFilterVC") as! TravelSpotFilterVC
       vc.filterStatus = self.sortCase
-      vc.filterClicked = { filter in self.sortCase = filter }
+      vc.filterClicked = { filter in
+        self.sortCase = filter
+        self.fetchScrapListData(sort: filter)
+      }
       self.presentPanModal(vc)
+    }
+  }
+  
+  private func registerObserverActions() {
+    addObserverAction(.changeCurrentTab) { [weak self] noti in
+      if let index = noti.object as? TabList {
+
+        if index == .scrap  && self?.isInitial == false {
+          self?.fetchScrapListData(sort: .recently)
+        }
+      }
+    }
+    
+    addObserverAction(.scrapButtonClicked) { noti in
+      if let scrapObject = noti.object as? ScrapRequestDTO {
+        if scrapObject.scrapState {
+          // 스크랩된 상태라면 delete로 부숴야 함
+          self.deleteScrapAction(planID: scrapObject.planID)
+        } else {
+          self.postScrapAction(planID: scrapObject.planID)
+        }
+      }
     }
   }
 }

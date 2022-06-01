@@ -13,8 +13,6 @@
 		523C70AA2795EC770073371D /* TravelSpotDetailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523C70A92795EC770073371D /* TravelSpotDetailService.swift */; };
 		523C70AF27969F340073371D /* ScrapDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523C70AE27969F340073371D /* ScrapDataModel.swift */; };
 		523C70B127969FF80073371D /* ScrapService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523C70B027969FF80073371D /* ScrapService.swift */; };
-		523C70B32796EC890073371D /* ScrapBtnDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523C70B22796EC890073371D /* ScrapBtnDataModel.swift */; };
-		523C70B52796F11C0073371D /* ScrapBtnService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523C70B42796F11C0073371D /* ScrapBtnService.swift */; };
 		523C70B8279858040073371D /* HomeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523C70B7279858040073371D /* HomeData.swift */; };
 		523C70FD2799DAA30073371D /* ScrapEmptyDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523C70FC2799DAA30073371D /* ScrapEmptyDataModel.swift */; };
 		523C70FF2799DCC10073371D /* ScrapEmptyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523C70FE2799DCC10073371D /* ScrapEmptyService.swift */; };
@@ -267,8 +265,6 @@
 		523C70A92795EC770073371D /* TravelSpotDetailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelSpotDetailService.swift; sourceTree = "<group>"; };
 		523C70AE27969F340073371D /* ScrapDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapDataModel.swift; sourceTree = "<group>"; };
 		523C70B027969FF80073371D /* ScrapService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapService.swift; sourceTree = "<group>"; };
-		523C70B22796EC890073371D /* ScrapBtnDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapBtnDataModel.swift; sourceTree = "<group>"; };
-		523C70B42796F11C0073371D /* ScrapBtnService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapBtnService.swift; sourceTree = "<group>"; };
 		523C70B7279858040073371D /* HomeData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeData.swift; sourceTree = "<group>"; };
 		523C70FC2799DAA30073371D /* ScrapEmptyDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapEmptyDataModel.swift; sourceTree = "<group>"; };
 		523C70FE2799DCC10073371D /* ScrapEmptyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrapEmptyService.swift; sourceTree = "<group>"; };
@@ -358,7 +354,7 @@
 		FD09DDD027856A31006DA050 /* map_pin_shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_pin_shadow.png; sourceTree = "<group>"; };
 		FD09DDD127856A31006DA050 /* DaumMap.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DaumMap.framework; sourceTree = "<group>"; };
 		FD09DDF0278577CF006DA050 /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
-		FD09DDF2278577F4006DA050 /* BaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAPI.swift; sourceTree = "<group>"; usesTabs = 1; };
+		FD09DDF2278577F4006DA050 /* BaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAPI.swift; sourceTree = "<group>"; usesTabs = 1; wrapsLines = 0; };
 		FD09DDF427857809006DA050 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		FD09DDF627857841006DA050 /* UITableViewRegisterable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewRegisterable.swift; sourceTree = "<group>"; };
 		FD09DDF827857858006DA050 /* UICollectionViewRegisterable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewRegisterable.swift; sourceTree = "<group>"; };
@@ -435,7 +431,7 @@
 		FD3211B427841949007D63D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FD3211B627841949007D63D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FD3211C2278433CF007D63D5 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
-		FD35663F2792AF2C0082B4CE /* ScrapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrapVC.swift; sourceTree = "<group>"; };
+		FD35663F2792AF2C0082B4CE /* ScrapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrapVC.swift; sourceTree = "<group>"; wrapsLines = 0; };
 		FD3566412792AF2C0082B4CE /* ScrapContainerCVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScrapContainerCVC.xib; sourceTree = "<group>"; };
 		FD3566422792AF2C0082B4CE /* ScrapContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrapContainerView.swift; sourceTree = "<group>"; };
 		FD3566432792AF2C0082B4CE /* ScrapContainerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScrapContainerView.xib; sourceTree = "<group>"; };
@@ -596,7 +592,6 @@
 			isa = PBXGroup;
 			children = (
 				523C70AE27969F340073371D /* ScrapDataModel.swift */,
-				523C70B22796EC890073371D /* ScrapBtnDataModel.swift */,
 				523C70FC2799DAA30073371D /* ScrapEmptyDataModel.swift */,
 			);
 			path = Scrap;
@@ -829,7 +824,6 @@
 				523C70A42795D32E0073371D /* TravelSpotService.swift */,
 				523C70A92795EC770073371D /* TravelSpotDetailService.swift */,
 				523C70B027969FF80073371D /* ScrapService.swift */,
-				523C70B42796F11C0073371D /* ScrapBtnService.swift */,
 				523C70FE2799DCC10073371D /* ScrapEmptyService.swift */,
 				F25044092799CFEB00791AB7 /* AuthService.swift */,
 			);
@@ -1876,7 +1870,6 @@
 				FD2D4DC9278D8190002084B9 /* PlanDetailSummaryRouteTVC.swift in Sources */,
 				FD3566572792B2530082B4CE /* BaseNC.swift in Sources */,
 				F26A584E279AE217001986F2 /* AuthNickNameDataModel.swift in Sources */,
-				523C70B52796F11C0073371D /* ScrapBtnService.swift in Sources */,
 				FDD41E2927DB01AE003BF531 /* OnboardingVC + ConfigureLayout.swift in Sources */,
 				FD20C609278EB94100AC6E34 /* MyPlanCVUserResuableView.swift in Sources */,
 				FD2D9C602797DF8C00688A42 /* PlanDetailWriterContainerView.swift in Sources */,
@@ -1920,7 +1913,6 @@
 				FDF981042788D4AB0009A14E /* PlanPreviewDescriptionTVC.swift in Sources */,
 				FDA2063427C40FF6001A371D /* PlanDetailViewModel.swift in Sources */,
 				FD20C615278ECBE800AC6E34 /* MyPlanEmptyBuyListView.swift in Sources */,
-				523C70B32796EC890073371D /* ScrapBtnDataModel.swift in Sources */,
 				FDF7FECC27A7E1DD00E3AB62 /* LaunchInstructor.swift in Sources */,
 				FD3211AB27841948007D63D5 /* SceneDelegate.swift in Sources */,
 				F250440A2799CFEB00791AB7 /* AuthService.swift in Sources */,
