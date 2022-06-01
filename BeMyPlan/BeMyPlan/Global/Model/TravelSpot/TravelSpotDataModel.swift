@@ -24,5 +24,5 @@ struct TravelSpotDataGettable: Codable {
 enum FilterSortCase: String {
   case recently = "createdAt"
   case orderCount = "orderCnt"
-  case scrapCount = "orderCnt"
+  case scrapCount = "scrapCnt"
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,7 +17,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="552" height="337"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mainlist1" translatesAutoresizingMaskIntoConstraints="NO" id="ncT-qe-use">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mainlist1" translatesAutoresizingMaskIntoConstraints="NO" id="ncT-qe-use">
                         <rect key="frame" x="0.0" y="0.0" width="552" height="552"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="ncT-qe-use" secondAttribute="height" multiplier="1:1" id="KVF-h5-2Zx"/>
@@ -31,8 +31,9 @@
                         <attributedString key="attributedText">
                             <fragment content="워케이션을 위한 카페투어어어어어러워케이션을 위한 카페투어어어어어러">
                                 <attributes>
-                                    <color key="NSColor" name="grey1"/>
-                                    <font key="NSFont" metaFont="system" size="14"/>
+                                    <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <font key="NSFont" size="14" name="SpoqaHanSansNeo-Bold"/>
+                                    <font key="NSOriginalFont" size="14" name="SpoqaHanSansNeo-Bold"/>
                                     <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="6" tighteningFactorForTruncation="0.0"/>
                                 </attributes>
                             </fragment>
@@ -61,8 +62,5 @@
     </objects>
     <resources>
         <image name="mainlist1" width="160" height="160"/>
-        <namedColor name="grey1">
-            <color red="0.19215686274509805" green="0.21568627450980393" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
     </resources>
 </document>

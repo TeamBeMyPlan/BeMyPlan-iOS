@@ -7,10 +7,15 @@
 
 import UIKit
 import Moya
+import SkeletonView
 
 class ScrapEmptyContainerView: XibView {
   
-  private var contentDataList:[ScrapEmptyDataGettable] = []
+  var contentDataList: [HomeListDataGettable.Item] = [] {
+    didSet{
+      contentCV.reloadData()
+    }
+  }
   private var userId: Int = 3
   
   @IBOutlet var emptyImage: UIImageView!
@@ -36,7 +41,6 @@ class ScrapEmptyContainerView: XibView {
     setUIs()
     registerCells()
     setDelegate()
-    fetchScrapRandomList()
   }
   
   private func registerCells() {
@@ -64,22 +68,7 @@ class ScrapEmptyContainerView: XibView {
   private func setDelegate() {
     contentCV.dataSource = self
     contentCV.delegate = self
-  }
-  
-  private func fetchScrapRandomList() {
-    BaseService.default.getScrapEmptyList { result in
-      result.success { data in
-        self.contentDataList = []
-        if let testedData = data {
-          self.contentDataList = testedData
-        }
-        self.contentCV.reloadData()
-      }.catch { error in
-        if let err = error as? MoyaError {
-          dump(err)
-        }
-      }
-    }
+    contentCV.isSkeletonable = true
   }
   
 }
@@ -100,8 +89,8 @@ extension ScrapEmptyContainerView: UICollectionViewDataSource {
 extension ScrapEmptyContainerView : UICollectionViewDelegate{
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     AppLog.log(at: FirebaseAnalyticsProvider.self, .clickTravelPlan(source: .scrapRecommendView,
-                                                                    postIdx:  String(contentDataList[indexPath.row].postID)))
-    postObserverAction(.movePlanPreview,object: contentDataList[indexPath.row].postID)
+                                                                    postIdx:  String(contentDataList[indexPath.row].planID)))
+    postObserverAction(.movePlanPreview,object: contentDataList[indexPath.row].planID)
   }
 }
 

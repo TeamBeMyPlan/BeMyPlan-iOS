@@ -20,40 +20,29 @@ class ScrapContainerView: XibView {
 
   override init(frame: CGRect) {
     super.init(frame: frame)
-    setAll()
+    setDelegate()
+    registerCells()
   }
   
   required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
-    setAll()
+    setDelegate()
+    registerCells()
   }
   
   @IBAction func filterBtn(_ sender: Any) {
     postObserverAction(.filterBottomSheet)
   }
   
-  private func setAll() {
-    setDelegate()
-    registerCells()
-    setSkeletonView()
-    fetchScrapItemList()
-  }
-  
   private func registerCells() {
     ScrapContainerCVC.register(target: contentCV)
-  }
-  
-  private func setSkeletonView(){
-    let animation = SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .leftRight)
-    contentCV.isSkeletonable = true
-    contentCV.showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .grey04,secondaryColor: .grey06), animation: animation, transition: .crossDissolve(1.0))
   }
   
   private func setDelegate() {
     contentCV.dataSource = self
     contentCV.delegate = self
+    contentCV.isSkeletonable = true
   }
-  
   
   private func scrapBtnAPI() {
     BaseService.default.postScrapBtnTapped(postId: postId) { result in
@@ -99,8 +88,8 @@ extension ScrapContainerView: SkeletonCollectionViewDataSource {
 extension ScrapContainerView: SkeletonCollectionViewDelegate{
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     AppLog.log(at: FirebaseAnalyticsProvider.self, .clickTravelPlan(source: .scrapView,
-                                                                    postIdx:  String(scrapDataList[indexPath.row].postID)))
-    postObserverAction(.movePlanPreview,object: scrapDataList[indexPath.row].postID)
+                                                                    postIdx:  String(scrapDataList[indexPath.row].planID)))
+    postObserverAction(.movePlanPreview,object: scrapDataList[indexPath.row].planID)
   }
 }
 

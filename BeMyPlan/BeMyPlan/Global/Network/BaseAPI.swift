@@ -202,6 +202,7 @@ extension BaseAPI: TargetType {
 					params["lastPlanId"] = lastId
 				}
       params["sort"] = sort
+			params["size"] = 10
 
     case .getNewTravelList(let page):
       params["page"] = page

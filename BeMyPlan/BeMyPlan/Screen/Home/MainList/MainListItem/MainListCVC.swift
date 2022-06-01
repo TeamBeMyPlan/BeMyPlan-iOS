@@ -35,9 +35,7 @@ class MainListCVC: UICollectionViewCell,UICollectionViewRegisterable {
       .showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .grey04,secondaryColor: .grey06), animation: animation)
     mainListTitle
       .showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .grey04,secondaryColor: .grey06), animation: animation)
-
-
-
+    
   }
   
   private func setUI(){

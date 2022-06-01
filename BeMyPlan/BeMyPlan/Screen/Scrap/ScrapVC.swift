@@ -21,28 +21,37 @@ class ScrapVC: UIViewController {
   // MARK: - Life Cycle Part
   override func viewDidLoad() {
     super.viewDidLoad()
-//    fetchScrapListData()
     setUI()
     bottomSheetNotification()
+    fetchScrapListData(sort: .recently)
+    fetchRecomendData()
   }
   
   private func setUI(){
-    scrapEmptyView.alpha = 0
+    scrapEmptyView.isHidden = true
   }
     
-  private func fetchScrapListData(lastId: Int? = nil) {
-    
-                                      
-    BaseService.default.getScrapList(lastId: lastId, sort: .recently) { result in
+  private func fetchScrapListData(lastId: Int? = nil,sort: FilterSortCase) {
+    BaseService.default.getScrapList(lastId: lastId, sort: sort) { result in
       result.success { entity in
         guard let entity = entity else {return}
-        
         self.scrapEmptyView.isHidden = !entity.contents.isEmpty
         self.scrapView.isHidden = entity.contents.isEmpty
-        
-        scrapView.scrapDataList = entity.contents
-        
 
+        self.scrapView.scrapDataList = entity.contents
+      }.catch { _ in
+        self.postObserverAction(.showNetworkError)
+      }
+    }
+  }
+  
+  private func fetchRecomendData() {
+    BaseService.default.getHomeBemyPlanSortList { result in
+      result.success { entity in
+        guard let entity = entity else { return }
+        self.scrapEmptyView.contentDataList = entity.contents
+      }.catch { _ in
+        self.postObserverAction(.showNetworkError)
       }
     }
   }
