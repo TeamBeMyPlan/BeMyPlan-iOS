@@ -24,7 +24,6 @@ enum BaseAPI{
   // MARK: - 양원
   case getTravelSpotList
   case getRecentTripList(page: Int, pageSize: Int)
-  case getScrapList(page: Int, pageSize: Int, sort: String)
   case postScrapBtn(postId: Int)
   case getScrapEmptyList
 
@@ -39,6 +38,11 @@ enum BaseAPI{
   case getHomeOrderList // (최상단 부분, 구매순 정렬)
   case getHomeRecentlyList // (최신순 정렬)
   case getHomeBemyPlanList // (비마플 추천 데이터)
+	
+	// MARK: - ScrapList
+	case getScrapList(lastScrapId: Int?, sort: String)
+
+
 }
 
 extension BaseAPI: TargetType {
@@ -80,8 +84,11 @@ extension BaseAPI: TargetType {
     case .getNicknameDetailList:
         base += "/user"
           
-    case  .postScrapBtn, .getScrapList:
+    case  .postScrapBtn:
       base += "/scrap"
+					
+		case .getScrapList:
+			base += "/plan"
       
     case .getScrapEmptyList:
       base += "/post/random"
@@ -124,10 +131,8 @@ extension BaseAPI: TargetType {
     case .getScrapEmptyList:
       return "/"
     
-//    case .getScrapList(let userId, _, _, _):
-//      return "/\(userId)"
-    case .getScrapList(_, _, _):
-      return "/"
+		case .getScrapList:
+      return "/bookmark"
     case .getNewTravelList, .getRecentTripList:
       return "/new"
     case .getSuggestTravelList:
@@ -191,13 +196,11 @@ extension BaseAPI: TargetType {
       params["pageSize"] = 5
       params["sort"] = sort
       
-//    case .getScrapList(_, let page, _, let sort):
-//      params["page"] = page
-//      params["pageSize"] = 5
-//      params["sort"] = sort
-    case .getScrapList(let page, _, let sort):
-      params["page"] = page
-      params["pageSize"] = 5
+
+    case .getScrapList(let lastId,let sort):
+				if let lastId = lastId {
+					params["lastPlanId"] = lastId
+				}
       params["sort"] = sort
 
     case .getNewTravelList(let page):

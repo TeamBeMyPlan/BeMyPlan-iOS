@@ -30,7 +30,7 @@ class TravelSpotDetailVC: UIViewController {
   var areaId: Int? = 2
   var userId: Int?
   var type : TravelSpotDetailType = .travelspot
-  var sortCase : SortCase = .recently
+  var sortCase : FilterSortCase = .recently
   
   // MARK: - UI Component Part
   @IBOutlet var contentTableView: UITableView!
@@ -230,8 +230,4 @@ extension TravelSpotDetailVC {
   }
 }
 
-enum SortCase: String {
-  case recently = "created_at"
-  case orderCount = "order_count"
-  case scrapCount = "scrap_count"
-}
+

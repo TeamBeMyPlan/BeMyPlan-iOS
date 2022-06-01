@@ -12,11 +12,11 @@ import SkeletonView
 
 class ScrapContainerView: XibView {
   
-  private var scrapDataList: [ScrapItem] = []
+  var scrapDataList: [PlanContent] = [] { didSet { contentCV.reloadData() } }
   var postId: Int = 0
   var scrapBtnData: Bool = true
 
-  @IBOutlet var contentCV: UICollectionView!
+  @IBOutlet private var contentCV: UICollectionView!
 
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -54,30 +54,6 @@ class ScrapContainerView: XibView {
     contentCV.delegate = self
   }
   
-  private func fetchScrapItemList() {
-    BaseService.default.getScrapList(page: 0, pageSize: 5, sort: "created_at") { result in
-      result.success { [weak self] data in
-        self?.scrapDataList = []
-        if let testedData = data {
-          self?.scrapDataList = testedData.items
-          DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-            UIView.animate(withDuration: 0.5){
-              self?.contentCV.alpha = 0
-            }
-            self?.contentCV.hideSkeleton(reloadDataAfter:true, transition: .crossDissolve(1.0))
-            self?.contentCV.reloadData()
-            UIView.animate(withDuration: 1.0,delay: 0.1) {
-              self?.contentCV.alpha = 1
-            }
-          }
-
-        }
-      }.catch { error in
-        if let _ = error as? MoyaError {
-        }
-      }
-    }
-  }
   
   private func scrapBtnAPI() {
     BaseService.default.postScrapBtnTapped(postId: postId) { result in

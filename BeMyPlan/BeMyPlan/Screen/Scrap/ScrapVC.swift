@@ -16,7 +16,7 @@ class ScrapVC: UIViewController {
   
   // MARK: - Vars & Lets Part
   var scrapDataList:[ScrapDataGettable] = []
-  var sortCase : SortCase = .recently
+  var sortCase : FilterSortCase = .recently
   
   // MARK: - Life Cycle Part
   override func viewDidLoad() {
@@ -30,16 +30,19 @@ class ScrapVC: UIViewController {
     scrapEmptyView.alpha = 0
   }
     
-  private func fetchScrapListData() {
-    BaseService.default.getScrapList(page: 0, pageSize: 5, sort: "created_at") { result in
-      result.success { data in
-        if let testedData = data {
-          if testedData.items.count == 0 {
-            self.scrapView.isHidden = true
-          } else {
-            self.scrapEmptyView.isHidden = true
-          }
-        }
+  private func fetchScrapListData(lastId: Int? = nil) {
+    
+                                      
+    BaseService.default.getScrapList(lastId: lastId, sort: .recently) { result in
+      result.success { entity in
+        guard let entity = entity else {return}
+        
+        self.scrapEmptyView.isHidden = !entity.contents.isEmpty
+        self.scrapView.isHidden = entity.contents.isEmpty
+        
+        scrapView.scrapDataList = entity.contents
+        
+
       }
     }
   }

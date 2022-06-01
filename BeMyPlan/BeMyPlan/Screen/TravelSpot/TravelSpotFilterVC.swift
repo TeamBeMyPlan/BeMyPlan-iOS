@@ -14,8 +14,8 @@ import PanModal
 class TravelSpotFilterVC: UIViewController {
   
   // MARK: - Vars & Lets Part
-  public var filterClicked: ((SortCase) -> ())?
-  public var filterStatus: SortCase = .recently
+  public var filterClicked: ((FilterSortCase) -> ())?
+  public var filterStatus: FilterSortCase = .recently
   
   // MARK: - UI Component Part
   @IBOutlet var filterView: UIView!

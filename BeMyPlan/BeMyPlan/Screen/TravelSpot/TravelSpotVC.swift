@@ -102,6 +102,7 @@ extension TravelSpotVC: SkeletonCollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     _ = completionHandler?(indexPath.row)
     //    self.navigationController?.popViewController(animated: true)
+    makeVibrate()
     if !travelSpotDataList[indexPath.row].isActivated {
       postObserverAction(.movePlanList,object: travelSpotDataList[indexPath.row].region)
       AppLog.log(at: FirebaseAnalyticsProvider.self, .clickOpenedTravelSpot(spot: travelSpotDataList[indexPath.row].name))
