@@ -34,6 +34,11 @@ enum BaseAPI{
   case getPlanPreviewHeaderData(idx : Int)
   case getPlanPreviewData(idx : Int)
   case getPlanDetailData(idx : Int)
+  
+  // MARK: - HomeList
+  case getHomeOrderList // (최상단 부분, 구매순 정렬)
+  case getHomeRecentlyList // (최신순 정렬)
+  case getHomeBemyPlanList // (비마플 추천 데이터)
 }
 
 extension BaseAPI: TargetType {
@@ -81,6 +86,9 @@ extension BaseAPI: TargetType {
     case .getScrapEmptyList:
       base += "/post/random"
 
+    case .getHomeOrderList,.getHomeRecentlyList,.getHomeBemyPlanList:
+      base += "/plans"
+        
       }
     guard let url = URL(string: base) else {
       fatalError("baseURL could not be configured")
@@ -132,6 +140,8 @@ extension BaseAPI: TargetType {
       return "/signup"
     case .postNickNameCheck:
       return "/check/nickname"
+      case .getHomeBemyPlanList:
+        return "/bemyplanPick"
     default :
       return ""
     }
@@ -210,6 +220,22 @@ extension BaseAPI: TargetType {
       
     case .postNickNameCheck(let nickName):
       params["nickname"] = nickName
+        
+      case .getHomeOrderList:
+        params["size"] = 5
+        params["sort"] = "orderCnt"
+				params["sort"] = "desc"
+        params["region"] = "JEJU"
+				
+			case .getHomeRecentlyList:
+				params["size"] = 5
+				params["sort"] = "createdAt,desc"
+				params["region"] = "JEJU"
+				
+			case .getHomeBemyPlanList:
+				params["size"] = 5
+				params["sort"] = "createdAt,desc"
+				params["region"] = "JEJU"
     
     default:
       break
@@ -242,7 +268,7 @@ extension BaseAPI: TargetType {
   ///
   private var parameterEncoding : ParameterEncoding{
     switch self {
-    case .sampleAPI, .getTravelSpotDetailList, .getNicknameDetailList, .getScrapList, .getNewTravelList, .getSuggestTravelList, .postScrapBtn:
+			case .sampleAPI, .getTravelSpotDetailList, .getNicknameDetailList, .getScrapList, .getNewTravelList, .getSuggestTravelList, .postScrapBtn,.getHomeOrderList,.getHomeRecentlyList,.getHomeBemyPlanList:
       return URLEncoding.init(destination: .queryString, arrayEncoding: .noBrackets, boolEncoding: .literal)
     case .postSocialLogin, .postSocialSignUp, .postNickNameCheck :
       return JSONEncoding.default
@@ -258,7 +284,7 @@ extension BaseAPI: TargetType {
   ///
   var task: Task {
     switch self{
-    case .sampleAPI,.getTravelSpotDetailList, .getNicknameDetailList, .getScrapList,.getNewTravelList, .getSuggestTravelList, .postScrapBtn, .postSocialLogin, .postSocialSignUp, .postNickNameCheck:
+			case .sampleAPI,.getTravelSpotDetailList, .getNicknameDetailList, .getScrapList,.getNewTravelList, .getSuggestTravelList, .postScrapBtn, .postSocialLogin, .postSocialSignUp, .postNickNameCheck,.getHomeOrderList,.getHomeRecentlyList,.getHomeBemyPlanList:
       return .requestParameters(parameters: bodyParameters ?? [:], encoding: parameterEncoding)
     default:
       return .requestPlain
@@ -267,12 +293,10 @@ extension BaseAPI: TargetType {
   }
 
   public var headers: [String: String]? {
-    if let userToken = UserDefaults.standard.string(forKey: "userToken") {
-      return ["Authorization": userToken,
-              "Content-Type": "application/json"]
-    } else {
-      return ["Content-Type": "application/json"]
-    }
+		// FIXME: - 헤더 부분 추후 수정해야 함.
+		return ["Content-Type": "application/json",
+						"Visit-Option": "MEMBERSHIP",
+						"Authorization" : "a76f83fe-b1e4-476b-ac57-ac46bcdd6cd0"]
   }
   
   public var validationType: ValidationType {

@@ -358,7 +358,7 @@
 		FD09DDD027856A31006DA050 /* map_pin_shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_pin_shadow.png; sourceTree = "<group>"; };
 		FD09DDD127856A31006DA050 /* DaumMap.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DaumMap.framework; sourceTree = "<group>"; };
 		FD09DDF0278577CF006DA050 /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
-		FD09DDF2278577F4006DA050 /* BaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAPI.swift; sourceTree = "<group>"; };
+		FD09DDF2278577F4006DA050 /* BaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAPI.swift; sourceTree = "<group>"; usesTabs = 1; };
 		FD09DDF427857809006DA050 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		FD09DDF627857841006DA050 /* UITableViewRegisterable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewRegisterable.swift; sourceTree = "<group>"; };
 		FD09DDF827857858006DA050 /* UICollectionViewRegisterable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewRegisterable.swift; sourceTree = "<group>"; };
@@ -1132,6 +1132,7 @@
 				FD35663D2792AEEA0082B4CE /* Recovered References */,
 			);
 			sourceTree = "<group>";
+			usesTabs = 1;
 		};
 		FD3211A627841948007D63D5 /* Products */ = {
 			isa = PBXGroup;
@@ -1153,6 +1154,7 @@
 			);
 			path = BeMyPlan;
 			sourceTree = "<group>";
+			usesTabs = 0;
 		};
 		FD3211C527843F5E007D63D5 /* Global */ = {
 			isa = PBXGroup;

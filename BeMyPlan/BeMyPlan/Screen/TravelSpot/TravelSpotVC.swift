@@ -25,18 +25,17 @@ class TravelSpotVC: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     configCollectionView()
-    fetchTravelSpotItemList()
-    setSkeletonOptions()
   }
   
   override func viewDidLayoutSubviews() {
+    fetchTravelSpotItemList()
+    setSkeletonOptions()
     logoView.layer.applyShadow(color: UIColor(displayP3Red: 0.796, green: 0.796, blue: 0.796, alpha: 0.25), alpha: 1, x: 1, y: 4, blur: 8, spread: 1)
   }
   
   // MARK: - Set Function Part
   func configCollectionView() {
-    let nibName = UINib(nibName: TravelSpotCVC.identifier, bundle: nil)
-    locationCollectionView.register(nibName, forCellWithReuseIdentifier: TravelSpotCVC.identifier)
+    TravelSpotCVC.register(target: locationCollectionView)
     locationCollectionView.dataSource = self
     locationCollectionView.delegate = self
   }
@@ -54,7 +53,6 @@ class TravelSpotVC: UIViewController {
         if let testedData = data {
           self?.travelSpotDataList = testedData
           self?.locationCollectionView.reloadData()
-
         }
 
       }.catch { error in
@@ -95,12 +93,8 @@ extension TravelSpotVC: SkeletonCollectionViewDelegate {
     return travelSpotDataList.count
   }
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TravelSpotCVC.identifier, for: indexPath) as? TravelSpotCVC else {return UICollectionViewCell()}
-    
+    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TravelSpotCVC.className, for: indexPath) as? TravelSpotCVC else {return UICollectionViewCell()}
     cell.setData(data: travelSpotDataList[indexPath.row])
-    if travelSpotDataList[indexPath.row].isActivated == true {
-      cell.lockImageView.isHidden = true
-    }
     
     return cell
   }
@@ -108,7 +102,7 @@ extension TravelSpotVC: SkeletonCollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     _ = completionHandler?(indexPath.row)
     //    self.navigationController?.popViewController(animated: true)
-    if travelSpotDataList[indexPath.row].isActivated {
+    if !travelSpotDataList[indexPath.row].isActivated {
       postObserverAction(.movePlanList,object: travelSpotDataList[indexPath.row].region)
       AppLog.log(at: FirebaseAnalyticsProvider.self, .clickOpenedTravelSpot(spot: travelSpotDataList[indexPath.row].name))
     }else{

@@ -7,26 +7,54 @@
 
 import UIKit
 import Kingfisher
+import SkeletonView
 
-class MainListCVC: UICollectionViewCell {
-  
-  @IBOutlet var mainListImageView: UIImageView!
-  @IBOutlet var mainListTitle: UILabel!
+class MainListCVC: UICollectionViewCell,UICollectionViewRegisterable {
+  static var isFromNib: Bool = true
+  @IBOutlet private var mainListImageView: UIImageView!
+  @IBOutlet private var mainListTitle: UILabel!
   
   override func awakeFromNib() {
     super.awakeFromNib()
+    configureSkeleton()
     setUI()
   }
   
   // MARK: - Custom Method
-  func setUI(){
-    //이미지를 radius 적용안 한것을 줄 경우
+  private func configureSkeleton() {
+    
+    mainListTitle.layer.masksToBounds = true
+    mainListTitle.skeletonCornerRadius = 5
+
+    mainListImageView.layer.masksToBounds = true
+    mainListImageView.skeletonCornerRadius = 5
+    
+    
+    let animation = SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .leftRight)
+    mainListImageView
+      .showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .grey04,secondaryColor: .grey06), animation: animation)
+    mainListTitle
+      .showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .grey04,secondaryColor: .grey06), animation: animation)
+
+
+
+  }
+  
+  private func setUI(){
     mainListImageView.layer.cornerRadius = 5
   }
   
   func setData(appData: HomeListDataGettable.Item){
-    mainListImageView.setImage(with: appData.thumbnailURL)
     mainListTitle.text = appData.title
-  }
+    mainListTitle.hideSkeleton()
+    
+    mainListImageView.setImage(with: appData.thumbnailURL) { _ in
+      self.mainListImageView.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.75))
+      self.mainListImageView.layer.cornerRadius = 5
+      self.mainListImageView.layoutIfNeeded()
+    
+    }
+
+    }
   
 }
