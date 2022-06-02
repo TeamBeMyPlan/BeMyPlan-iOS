@@ -45,6 +45,13 @@ enum BaseAPI{
 	// MARK: - MyPlan
 	case getBuyList
 
+	
+	// MARK: - Plan List + Paging
+	case getRecentlyListWithPaging(lastPlanID: Int?)
+	case getBemyPlanListWithPaging(lastPlanID: Int?)
+	case getSpotPlanListWithPaging(spotName: String, lastPlanID: Int?,sortCase: String)
+	case getUserPlanListWithPaging(userID: Int, lastPlanID: Int?,sortCase: String)
+
 }
 
 extension BaseAPI: TargetType {
@@ -97,6 +104,14 @@ extension BaseAPI: TargetType {
 
     case .getHomeOrderList,.getHomeRecentlyList,.getHomeBemyPlanList:
       base += "/plans"
+			
+		case .getRecentlyListWithPaging,
+						.getSpotPlanListWithPaging,
+						.getUserPlanListWithPaging,
+					  .getBemyPlanListWithPaging:
+			base += "/plans"
+		
+
         
       }
     guard let url = URL(string: base) else {
@@ -146,7 +161,7 @@ extension BaseAPI: TargetType {
       return "/signup"
     case .postNickNameCheck:
       return "/check/nickname"
-      case .getHomeBemyPlanList:
+			case .getHomeBemyPlanList,.getBemyPlanListWithPaging:
         return "/bemyplanPick"
     default :
       return ""
@@ -242,7 +257,39 @@ extension BaseAPI: TargetType {
 			case .getBuyList:
 				params["sort"] = "createdAt"
 				params["size"] = 20
-    
+				
+			case .getRecentlyListWithPaging(let lastPlanID):
+				params["sort"] = "createdAt"
+				params["size"] = 10
+				params["region"] = "JEJU"
+				if let id = lastPlanID {
+					params["lastPlanId"] = id
+				}
+			
+			case .getBemyPlanListWithPaging(let lastPlanID):
+				params["sort"] = "createdAt"
+				params["size"] = 10
+				params["region"] = "JEJU"
+				if let id = lastPlanID {
+					params["lastPlanId"] = id
+				}
+				
+			case .getSpotPlanListWithPaging(let spotName,let lastPlanID, let sortCase):
+				params["region"] = spotName
+				params["sort"] = sortCase
+				params["size"] = 10
+				if let id = lastPlanID {
+					params["lastPlanId"] = id
+				}
+				
+			case .getUserPlanListWithPaging(let userID, let lastPlanID , let sortCase):
+				params["region"] = "JEJU"
+				params["sort"] = sortCase
+				params["size"] = 10
+				params["userId"] = userID
+				if let id = lastPlanID {
+					params["lastPlanId"] = id
+				}
     default:
       break
       
@@ -274,7 +321,10 @@ extension BaseAPI: TargetType {
   ///
   private var parameterEncoding : ParameterEncoding{
     switch self {
-			case .sampleAPI, .getTravelSpotDetailList, .getNicknameDetailList, .getScrapList, .getNewTravelList, .getSuggestTravelList, .postScrap,.deleteScrap,.getHomeOrderList,.getHomeRecentlyList,.getHomeBemyPlanList,.getBuyList:
+			case .sampleAPI, .getTravelSpotDetailList, .getNicknameDetailList, .getScrapList, .getNewTravelList,
+					.getSuggestTravelList, .postScrap,.deleteScrap,.getHomeOrderList,.getHomeRecentlyList,
+					.getHomeBemyPlanList,.getBuyList,.getRecentlyListWithPaging, .getSpotPlanListWithPaging,
+					.getUserPlanListWithPaging, .getBemyPlanListWithPaging:
       return URLEncoding.init(destination: .queryString, arrayEncoding: .noBrackets, boolEncoding: .literal)
     case .postSocialLogin, .postSocialSignUp, .postNickNameCheck :
       return JSONEncoding.default
@@ -290,7 +340,13 @@ extension BaseAPI: TargetType {
   ///
   var task: Task {
     switch self{
-			case .sampleAPI,.getTravelSpotDetailList, .getNicknameDetailList, .getScrapList,.getNewTravelList, .getSuggestTravelList, .postScrap,.deleteScrap,.postSocialLogin, .postSocialSignUp, .postNickNameCheck,.getHomeOrderList,.getHomeRecentlyList,.getHomeBemyPlanList,.getBuyList:
+			case .sampleAPI,.getTravelSpotDetailList, .getNicknameDetailList,
+					.getScrapList,.getNewTravelList, .getSuggestTravelList,
+					.postScrap,.deleteScrap,.postSocialLogin, .postSocialSignUp,
+					.postNickNameCheck,.getHomeOrderList,.getHomeRecentlyList,
+					.getHomeBemyPlanList,.getBuyList,.getRecentlyListWithPaging,
+					.getSpotPlanListWithPaging,.getUserPlanListWithPaging,
+					 .getBemyPlanListWithPaging:
       return .requestParameters(parameters: bodyParameters ?? [:], encoding: parameterEncoding)
     default:
       return .requestPlain

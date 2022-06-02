@@ -11,8 +11,8 @@ import PanModal
 import AVFoundation
 
 enum TravelSpotDetailType{
-  case new
-  case suggest
+  case recently
+  case bemyPlanRecommend
   case nickname
   case travelspot
 }
@@ -43,9 +43,8 @@ class TravelSpotDetailVC: UIViewController {
   // MARK: - Life Cycle Part
   override func viewDidLoad() {
     super.viewDidLoad()
-    getAreaData()
-    regiterXib()
     setTableViewDelegate()
+    regiterCells()
     setUIs()
     fetchTravelSpotDetailItemList(isRefresh: true)
     initRefresh()
@@ -55,24 +54,22 @@ class TravelSpotDetailVC: UIViewController {
   override func viewWillAppear(_ animated: Bool) {
     fetchTravelSpotDetailItemList(isRefresh: true)
   }
+}
   
-  // MARK: - Set Function Part
-  private func getAreaData() {
-    guard let vc = storyboard?.instantiateViewController(identifier: TravelSpotVC.className) as? TravelSpotVC else { return }
-    vc.completionHandler = { area in
-      self.areaNum = area
-      return area
-    }
-  }
+
+extension TravelSpotDetailVC {
   
   private func setTableViewDelegate() {
     contentTableView.delegate = self
     contentTableView.dataSource = self
   }
   
-  private func regiterXib() {
-    let xibName = UINib(nibName: TravelSpotDetailTVC.className, bundle: nil)
-    contentTableView.register(xibName, forCellReuseIdentifier: TravelSpotDetailTVC.className)
+  private func regiterCells() {
+    TravelSpotDetailTVC.register(target: contentTableView)
+  }
+  
+  private func setUIs() {
+    contentTableView.separatorStyle = .none
   }
   
   // MARK: - IBAction Part
@@ -90,53 +87,23 @@ class TravelSpotDetailVC: UIViewController {
   }
 
   // MARK: - Custom Method Part
-  private func setUIs() {
-    contentTableView.separatorStyle = .none
-  }
-  
+
   private func setHeaderLabel() {
     switch (type) {
-    case .new:
+    case .recently:
       self.headerLabel.text = "최신 여행 일정"
-    case .suggest:
+    case .bemyPlanRecommend:
       self.headerLabel.text = "에디터 추천 일정"
     case .nickname:
-        if let nickname = nickname {
-          self.headerLabel.text = nickname
-        }
+        if let nickname = nickname { self.headerLabel.text = nickname }
     case .travelspot:
       self.headerLabel.text = "제주"
-      
     }
   }
   
   private func fetchTravelSpotDetailItemList(isRefresh: Bool) {
-    // FIXME
-//    BaseService.default.getPlanAllinOneList(area: areaId,
-//                                            userId: userId,
-//                                            page: currentPageIndex,
-//                                            sort: sortCase.rawValue,
-//                                            viewCase: type) { result in
-//      result.success { [weak self] list in
-//        if let list = list {
-//          if list.items.count != 0 {
-//            if isRefresh == false {
-//              list.items.forEach { item in
-//                self?.planDataList.append(item)
-//              }
-//              self?.currentPageIndex += 1
-//            } else {
-//              self?.planDataList.removeAll()
-//              self?.planDataList = list.items
-//              self?.currentPageIndex = 0
-//            }
-//            self?.contentTableView.reloadData()
-//          }
-//        }
-//      }.catch{ error in
-//        dump(error)
-//      }
-//    }
+
+    
   }
 
   private func initRefresh() {
@@ -210,5 +177,3 @@ extension TravelSpotDetailVC {
     }
   }
 }
-
-

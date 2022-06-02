@@ -18,8 +18,8 @@ func setFontTextView(text: String, lineSpacing: CGFloat, fontName: String, fontS
   textType.textColor = textColor
 }
 
-class TravelSpotDetailTVC: UITableViewCell {
-  
+class TravelSpotDetailTVC: UITableViewCell, UITableViewRegisterable {
+  static var isFromNib: Bool = true
   private var postId:Int = 1
   private var userId:Int = 1
   public var scrapBtnClicked: ((Int) -> ())?
