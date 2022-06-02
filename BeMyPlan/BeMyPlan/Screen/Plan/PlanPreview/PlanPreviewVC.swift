@@ -54,7 +54,9 @@ class PlanPreviewVC: UIViewController {
     setScrabImage()
     addButtonActions()
     bindViewModels()
+    bindTableView()
   }
+
   @IBAction func backButtonClicked(_ sender: Any) {
     self.navigationController?.popViewController(animated: true)
   }
@@ -136,6 +138,14 @@ class PlanPreviewVC: UIViewController {
           self?.priceLabel.text = (price != nil) ? "\(price!)원" : ""
       })
       .disposed(by: disposeBag)
+    
+    output.contentTitle
+      .asDriver(onErrorJustReturn: "")
+      .filter{ $0 != nil}
+      .drive( onNext: { [weak self] headerTitle in
+        self?.headerTitleLabel.text = headerTitle!
+      })
+      .disposed(by: self.disposeBag)
   }
  
   private func addButtonActions(){
@@ -146,6 +156,14 @@ class PlanPreviewVC: UIViewController {
     buyButton.press {
 //      self.viewModel.clickBuyButton()
     }
+  }
+  
+  private func bindTableView() {
+    previewContentTV.rx.contentOffset
+      .filter { $0 != nil }
+      .subscribe {
+        self.setYPosition($0.element!.y)
+    }.disposed(by: self.disposeBag)
   }
   
   private func movePaymentView() {
@@ -165,26 +183,26 @@ class PlanPreviewVC: UIViewController {
 }
 // MARK: - Extension Part
 
-extension PlanPreviewVC : UIScrollViewDelegate{
-  func scrollViewDidScroll(_ scrollView: UIScrollView) {
+extension PlanPreviewVC{
+  func setYPosition(_ yPos: CGFloat) {
 
-    if scrollView.contentOffset.y > 127{
+    if yPos > 127{
       headerTitleLabel.alpha = 1
     }else{
       headerTitleLabel.alpha = 0
     }
     
-    if lastContentOffset > scrollView.contentOffset.y && lastContentOffset - 40 < scrollView.contentSize.height - scrollView.frame.height {
+    if lastContentOffset > yPos && lastContentOffset - 40 < previewContentTV.contentSize.height - previewContentTV.frame.height {
       moveBuyContainer(state: .show)
-    } else if lastContentOffset < scrollView.contentOffset.y && scrollView.contentOffset.y > 0 {
+    } else if lastContentOffset < yPos && yPos > 0 {
       
-      if (scrollView.contentOffset.y >= (scrollView.contentSize.height - scrollView.frame.size.height)) {
+      if (yPos >= (previewContentTV.contentSize.height - previewContentTV.frame.size.height)) {
         moveBuyContainer(state: .show)
       }else{
         moveBuyContainer(state: .hide)
       }
     }
-    lastContentOffset = scrollView.contentOffset.y
+    lastContentOffset = yPos
   }
   
   private func moveBuyContainer(state : ViewState){

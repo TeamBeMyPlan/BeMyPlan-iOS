@@ -59,20 +59,22 @@ extension DefaultPlanPreviewUseCase: PlanPreviewUseCase {
   }
   
   func fetchPlanPreviewData() {
-    let header = self.repository.fetchHeaderData(idx: self.postIdx)
-    let body = self.repository.fetchBodyData(idx: self.postIdx)
+    let header = self.repository.fetchPreviewData(idx: self.postIdx)
     
-    Observable.combineLatest(header,
-                             body, resultSelector: { (headerData,bodyData) -> PlanPreview.ContentData in
+    print("FETCH PREVIEW DATA")
+    header.map { (headerData,bodyData) -> PlanPreview.ContentData in
       self.paymentData = .init(writer: headerData?.writer,
-                          title: headerData?.title,
-                          imgURL: bodyData?.photos.first?.photoUrl,
-                          price: headerData?.price,
-                          postIdx: self.postIdx)
-      self.calculateImageHeight(bodyData: bodyData)
+                               title: headerData?.title,
+                               imgURL: bodyData?.photos.first?.photoUrl,
+                               price: headerData?.price,
+                               postIdx: self.postIdx)
+           self.calculateImageHeight(bodyData: bodyData)
       return PlanPreview.ContentData.init(headerData: headerData,
                                    bodyData: bodyData)
-    }).subscribe { result in
+    }.subscribe { result in
+      print("FETCH result DATA")
+      dump(result)
+
       if let content = result.element{
         self.contentData.onNext(content)
       }
@@ -87,7 +89,8 @@ extension DefaultPlanPreviewUseCase: PlanPreviewUseCase {
     }
     var count = 0 {
       didSet{
-        if count == bodyData.photos.count * 2 {
+        print("COUNTCOUNT",count)
+        if count == bodyData.photos.count {
           dump(heightList)
           self.imageHeightData.onNext(heightList)
         }

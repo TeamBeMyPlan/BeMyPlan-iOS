@@ -7,10 +7,10 @@
 
 import Foundation
 import RxSwift
+import RxRelay
 
 protocol PlanPreviewRepository {
-  func fetchHeaderData(idx: Int) -> Observable<PlanPreview.HeaderData?>
-  func fetchBodyData(idx: Int) -> Observable<PlanPreview.BodyData?>
+  func fetchPreviewData(idx: Int) -> Observable<(PlanPreview.HeaderData?,PlanPreview.BodyData?)>
 }
 
 final class DefaultPlanPreviewRepository {
@@ -24,13 +24,15 @@ final class DefaultPlanPreviewRepository {
 }
 
 extension DefaultPlanPreviewRepository: PlanPreviewRepository {
-  func fetchHeaderData(idx: Int) -> Observable<PlanPreview.HeaderData?>{
+  func fetchPreviewData(idx: Int) -> Observable<(PlanPreview.HeaderData?,PlanPreview.BodyData?)>{
     return .create { observer in
-      self.networkService.fetchPlanPreviewHeaderData(idx: idx)
+      self.networkService.fetchPlanPreviewData(idx: idx)
         .subscribe(onNext: { entity in
           guard let entity = entity else {return observer.onCompleted()}
-          let dto = entity.toHeaderDomain()
-          observer.onNext(dto)
+          let headerDataModel = entity.toHeaderDomain()
+          let bodyDataModel = PlanPreviewEntity.toBodyDomain(body: entity.previewContents)
+
+          observer.onNext((headerDataModel,bodyDataModel))
         }, onError: { err in
           observer.onError(err)
         })
@@ -38,18 +40,5 @@ extension DefaultPlanPreviewRepository: PlanPreviewRepository {
       return Disposables.create()
     }
   }
-  
-  func fetchBodyData(idx: Int) -> Observable<PlanPreview.BodyData?> {
-    return .create { observer in
-      self.networkService.fetchPlanPreviewBodyData(idx: idx)
-        .subscribe(onNext: { entity in
-          let dto = PlanPreviewEntity.toBodyDomain(body: entity)
-          observer.onNext(dto)
-        }, onError: { err in
-          observer.onError(err)
-        })
-        .disposed(by: self.disposeBag)
-      return Disposables.create()
-    }
-  }
+
 }

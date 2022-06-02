@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -91,7 +91,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b96-RL-bbk">
                                                 <rect key="frame" x="24" y="20" width="366" height="176"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sampleImg" translatesAutoresizingMaskIntoConstraints="NO" id="xUR-Nz-M1l">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sampleImg" translatesAutoresizingMaskIntoConstraints="NO" id="xUR-Nz-M1l">
                                                         <rect key="frame" x="20" y="22" width="60" height="60"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="FTs-Tf-hKI"/>
@@ -503,7 +503,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="360" height="144.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GgC-ge-Uj9">
-                                                <rect key="frame" x="85.5" y="58" width="189" height="22"/>
+                                                <rect key="frame" x="83.5" y="58" width="193.5" height="22"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="22" id="YMn-mH-4kX"/>
                                                 </constraints>
@@ -514,19 +514,7 @@
                                                             <font key="NSFont" size="14" name="SpoqaHanSansNeo-Bold"/>
                                                         </attributes>
                                                     </fragment>
-                                                    <fragment content=" ">
-                                                        <attributes>
-                                                            <color key="NSColor" name="grey1"/>
-                                                            <font key="NSFont" metaFont="system" size="14"/>
-                                                        </attributes>
-                                                    </fragment>
-                                                    <fragment content="중입니다">
-                                                        <attributes>
-                                                            <color key="NSColor" name="grey1"/>
-                                                            <font key="NSFont" size="14" name=".AppleSDGothicNeoI-Regular"/>
-                                                        </attributes>
-                                                    </fragment>
-                                                    <fragment content=".">
+                                                    <fragment content=" 중입니다.">
                                                         <attributes>
                                                             <color key="NSColor" name="grey1"/>
                                                             <font key="NSFont" metaFont="system" size="14"/>

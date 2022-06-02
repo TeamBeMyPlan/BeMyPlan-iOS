@@ -28,7 +28,6 @@ enum BaseAPI{
 
   // MARK: - 지훈
   case deleteUserWithdraw
-  case getPlanPreviewHeaderData(idx : Int)
   case getPlanPreviewData(idx : Int)
   case getPlanDetailData(idx : Int)
   
@@ -77,8 +76,8 @@ extension BaseAPI: TargetType {
       case .getBuyList:
         base += "/plan/orders"
       
-    case .getPopularTravelList, .getNewTravelList, .getSuggestTravelList, .getRecentTripList, .getPlanPreviewHeaderData,
-        .getPlanPreviewData, .getPlanDetailData:
+    case .getPopularTravelList, .getNewTravelList, .getSuggestTravelList, .getRecentTripList
+        , .getPlanDetailData:
       base += "/post"
       
     case .getTravelSpotList:
@@ -110,9 +109,10 @@ extension BaseAPI: TargetType {
 						.getUserPlanListWithPaging,
 					  .getBemyPlanListWithPaging:
 			base += "/plans"
+					
+		case .getPlanPreviewData :
+				base += "/plan"
 		
-
-        
       }
     guard let url = URL(string: base) else {
       fatalError("baseURL could not be configured")
@@ -134,8 +134,6 @@ extension BaseAPI: TargetType {
 
     case .deleteUserWithdraw:
       return "/withdraw"
-    case .getPlanPreviewHeaderData(let idx):
-      return "/\(idx)/preview/tag"
     case .getPlanPreviewData(let idx):
       return "/\(idx)/preview"
     case .getTravelSpotDetailList(let areaID,_,_,_):

@@ -32,6 +32,7 @@ final class PlanPreviewViewModel: ViewModelType{
     var heightList = PublishRelay<[CGFloat]>()
     var priceData = PublishRelay<String?>()
     var pushBuyView = PublishRelay<PaymentContentData>()
+    var contentTitle = PublishRelay<String?>()
   }
   
   init(useCase: PlanPreviewUseCase){
@@ -47,6 +48,7 @@ extension PlanPreviewViewModel{
     
     input.viewDidLoadEvent
       .subscribe(onNext: { [weak self] in
+        print("fetchPlanPreview")
         self?.previewUseCase.fetchPlanPreviewData()
       })
       .disposed(by: disposeBag)
@@ -69,6 +71,7 @@ extension PlanPreviewViewModel{
       guard let self = self else {return}
       let contentData = self.generateContentData(contentData: content, heights: heightList)
       output.priceData.accept(content.headerData?.price)
+      output.contentTitle.accept(content.headerData?.title)
       output.contentList.accept(contentData)
     }.subscribe { _ in
     }.disposed(by: self.disposeBag)

@@ -7,6 +7,7 @@
 
 import UIKit
 import SkeletonView
+import Kingfisher
 
 class PlanPreviewPhotoTVC: UITableViewCell {
   
@@ -36,6 +37,12 @@ class PlanPreviewPhotoTVC: UITableViewCell {
   override func awakeFromNib() {
     super.awakeFromNib()
     setUI()
+    setSkeletonUI()
+  }
+  
+  override func prepareForReuse() {
+    contentImageView.kf.cancelDownloadTask() // first, cancel currenct download task
+    contentImageView.image = nil
     setSkeletonUI()
   }
   
@@ -78,7 +85,7 @@ class PlanPreviewPhotoTVC: UITableViewCell {
       
       
       DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-        self.contentImageView.hideSkeleton(reloadDataAfter: false, transition: .crossDissolve(1))
+        self.contentImageView.hideSkeleton(reloadDataAfter: false, transition: .crossDissolve(0.6))
         print("--------------------")
         print("셀 내에서 계삳ㄴ된 높이",height)
         print("밖에서 꽂아준 height ",data.height.value)
