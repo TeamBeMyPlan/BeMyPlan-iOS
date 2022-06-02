@@ -79,8 +79,9 @@ extension BaseVC{
     // Home
     
     addObserverAction(.movePlanPreview) { noti in
-      if let index = noti.object as? Int{
-        let vc = ModuleFactory.resolve().instantiatePlanPreviewVC(postID: index)
+      if let state = noti.object as? PlanPreviewStateModel{
+        let vc = ModuleFactory.resolve().instantiatePlanPreviewVC(postID: state.planId,
+                                                                  scrapState: state.scrapState)
         self.navigationController?.pushViewController(vc, animated: true)
       }
     }

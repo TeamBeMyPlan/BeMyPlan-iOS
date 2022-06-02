@@ -33,6 +33,7 @@ final class PlanPreviewViewModel: ViewModelType{
     var priceData = PublishRelay<String?>()
     var pushBuyView = PublishRelay<PaymentContentData>()
     var contentTitle = PublishRelay<String?>()
+    var scrapState = BehaviorRelay<Bool>(value: false)
   }
   
   init(useCase: PlanPreviewUseCase){
@@ -111,4 +112,9 @@ extension PlanPreviewViewModel{
     contentList.append(emptyRecommendData)
     return contentList
   }
+}
+
+struct PlanPreviewStateModel {
+  let scrapState: Bool
+  let planId: Int
 }

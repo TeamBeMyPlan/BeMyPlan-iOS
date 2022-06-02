@@ -142,7 +142,10 @@ extension MainListView : SkeletonCollectionViewDelegate{
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     AppLog.log(at: FirebaseAnalyticsProvider.self, .clickTravelPlan(source: .homeView,
                                                                     postIdx:  String(mainListDataList[indexPath.row].planID)))
-    postObserverAction(.movePlanPreview,object: mainListDataList[indexPath.row].planID)
+    
+    let stateModel = PlanPreviewStateModel(scrapState: mainListDataList[indexPath.row].scrapStatus,
+                                           planId: mainListDataList[indexPath.row].planID)
+    postObserverAction(.movePlanPreview,object: stateModel)
   }
 }
 
@@ -202,3 +205,4 @@ extension MainListView : UIScrollViewDelegate {
     targetContentOffset.pointee = offset
   }
 }
+

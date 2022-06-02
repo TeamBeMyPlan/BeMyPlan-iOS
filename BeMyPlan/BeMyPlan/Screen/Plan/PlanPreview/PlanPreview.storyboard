@@ -204,7 +204,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a8w-Cj-HDv">
-                                                    <rect key="frame" x="24" y="241" width="366" height="95"/>
+                                                    <rect key="frame" x="24" y="261" width="366" height="95"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="95" id="B66-77-m9P"/>
@@ -220,7 +220,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </textView>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img" translatesAutoresizingMaskIntoConstraints="NO" id="ZGA-tA-uBS">
-                                                    <rect key="frame" x="24" y="0.0" width="366" height="221"/>
+                                                    <rect key="frame" x="24" y="0.0" width="366" height="241"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="238.5" id="78B-e2-y5P"/>
                                                     </constraints>
@@ -239,7 +239,7 @@
                                                 <constraint firstItem="ZGA-tA-uBS" firstAttribute="leading" secondItem="uqn-sq-PvU" secondAttribute="leading" constant="24" id="eHV-NB-K6u"/>
                                                 <constraint firstItem="a8w-Cj-HDv" firstAttribute="top" secondItem="ZGA-tA-uBS" secondAttribute="bottom" constant="20" id="em6-9c-sx0"/>
                                                 <constraint firstAttribute="trailing" secondItem="a8w-Cj-HDv" secondAttribute="trailing" constant="24" id="mij-zi-eFw"/>
-                                                <constraint firstAttribute="bottom" secondItem="a8w-Cj-HDv" secondAttribute="bottom" constant="36" id="tLC-Ju-jJ8"/>
+                                                <constraint firstAttribute="bottom" secondItem="a8w-Cj-HDv" secondAttribute="bottom" constant="16" id="tLC-Ju-jJ8"/>
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>

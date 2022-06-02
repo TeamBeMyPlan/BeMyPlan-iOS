@@ -48,7 +48,7 @@ protocol ModuleFactoryProtocol {
   func instantiatePaymentEventPopupVC() -> PaymentEventPopupVC
   
   // MARK: - Plan
-  func instantiatePlanPreviewVC(postID: Int) -> PlanPreviewVC
+  func instantiatePlanPreviewVC(postID: Int,scrapState: Bool) -> PlanPreviewVC
   func instantiatePlanDetailVC(postID: Int,isPreviewPage: Bool) -> PlanDetailVC
   
   // MARK: - PlanList
@@ -157,13 +157,14 @@ class ModuleFactory: ModuleFactoryProtocol{
   
   // MARK: - Plan
 
-  func instantiatePlanPreviewVC(postID: Int) -> PlanPreviewVC {
+  func instantiatePlanPreviewVC(postID: Int,scrapState: Bool) -> PlanPreviewVC {
     let repository = DefaultPlanPreviewRepository(service: BaseService.default)
     let useCase = DefaultPlanPreviewUseCase(repository: repository, postIdx: postID)
     let viewModel = PlanPreviewViewModel(useCase: useCase)
     let vc = PlanPreviewVC.controllerFromStoryboard(.planPreview)
     vc.viewModel = viewModel
-  
+    vc.idx = postID
+    vc.scrapState = scrapState
     return vc
   }
   

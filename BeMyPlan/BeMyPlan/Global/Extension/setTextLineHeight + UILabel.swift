@@ -41,3 +41,20 @@ extension UILabel {
     }
   }
 }
+
+extension UITextView {
+  func setTextWithLineHeight(text: String?, lineHeightMultiple: CGFloat) {
+    if let text = text {
+      let style = NSMutableParagraphStyle()
+      style.lineHeightMultiple = lineHeightMultiple
+      
+      let attributes: [NSAttributedString.Key: Any] = [
+        .paragraphStyle: style
+      ]
+      
+      let attrString = NSAttributedString(string: text,
+                                          attributes: attributes)
+      self.attributedText = attrString
+    }
+  }
+}

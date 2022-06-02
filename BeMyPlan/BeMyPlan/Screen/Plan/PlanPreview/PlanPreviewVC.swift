@@ -18,11 +18,7 @@ class PlanPreviewVC: UIViewController {
   private var isAnimationProceed: Bool = false
   private var lastContentOffset : CGFloat = 0
   private let disposeBag = DisposeBag()
-  private var isScrabed : Bool = false{
-    didSet{
-      setScrabImage()
-    }
-  }
+  var scrapState : Bool = false
   var idx : Int = 29
 
   var viewModel : PlanPreviewViewModel!
@@ -55,6 +51,7 @@ class PlanPreviewVC: UIViewController {
     addButtonActions()
     bindViewModels()
     bindTableView()
+    setScrabImage()
   }
 
   @IBAction func backButtonClicked(_ sender: Any) {
@@ -150,7 +147,7 @@ class PlanPreviewVC: UIViewController {
  
   private func addButtonActions(){
     scrabButton.press {
-      self.isScrabed = !self.isScrabed
+      self.postScrapAction()
     }
     
     buyButton.press {
@@ -177,9 +174,19 @@ class PlanPreviewVC: UIViewController {
     postObserverAction(.moveNicknamePlanList, object: data)
   }
   
-  private func setScrabImage(){
-    scrabIconImageView.image = isScrabed ? ImageLiterals.Preview.scrabIconSelected : ImageLiterals.Preview.scrabIcon
+  private func setScrabImage() {
+    scrabIconImageView.image = scrapState ? ImageLiterals.Preview.scrabIconSelected : ImageLiterals.Preview.scrabIcon
   }
+  
+  private func postScrapAction() {
+    let dto = ScrapRequestDTO(planID: idx,
+                              scrapState: scrapState)
+    postObserverAction(.scrapButtonClicked, object: dto)
+    scrapState.toggle()
+    setScrabImage()
+  }
+  
+  
 }
 // MARK: - Extension Part
 
