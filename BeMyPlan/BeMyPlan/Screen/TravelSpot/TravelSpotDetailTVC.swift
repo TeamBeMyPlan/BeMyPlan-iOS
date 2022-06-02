@@ -8,6 +8,7 @@
 import UIKit
 import Moya
 import SkeletonView
+import Kingfisher
 
 class TravelSpotDetailTVC: UITableViewCell, UITableViewRegisterable {
   static var isFromNib: Bool = true
@@ -15,7 +16,7 @@ class TravelSpotDetailTVC: UITableViewCell, UITableViewRegisterable {
   private var userId:Int = 1
   private var scrapState: Bool = false { didSet { setScrapImageState() }}
 
-  @IBOutlet private var contentImage: UIImageView!
+  @IBOutlet var contentImage: UIImageView!
   @IBOutlet private var nickNameLabel: UILabel!
   @IBOutlet private var titleTextView: UITextView!
   @IBOutlet private var scrapBtn: UIButton!
@@ -23,13 +24,18 @@ class TravelSpotDetailTVC: UITableViewCell, UITableViewRegisterable {
   
   override func awakeFromNib() {
     super.awakeFromNib()
+    contentImage.image = nil
     setUIs()
     configureSkeleton()
   }
   
-  override func layoutSubviews() {
-    super.layoutSubviews()
+  override func prepareForReuse() {
+    contentImage.image = nil
+    contentImage.kf.cancelDownloadTask() // first, cancel currenct download task
+    contentImage.setImage(with: "")
+    configureSkeleton()
   }
+  
   
   @IBAction func scrapButtonClicked(_ sender: Any) {
     makeVibrate()
@@ -67,20 +73,20 @@ class TravelSpotDetailTVC: UITableViewCell, UITableViewRegisterable {
   }
   
   public func setData(data: HomeListDataGettable.Item){
+    contentImage.image = nil
     titleTextView.text = data.title
     nickNameLabel.text = data.user.nickname
     postId = data.planID
     scrapState = data.scrapStatus
     
-    titleTextView.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.75))
-    nickNameLabel.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.75))
+    titleTextView.hideSkeleton(reloadDataAfter: false, transition: .crossDissolve(0.75))
+    nickNameLabel.hideSkeleton(reloadDataAfter: false, transition: .crossDissolve(0.75))
     
     contentImage.setImage(with: data.thumbnailURL) { _ in
-      self.contentImage.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(1.0))
+      self.contentImage.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0))
       self.contentImage.layer.cornerRadius = 5
       self.contentImage.layoutIfNeeded()
     }
-
   }
 }
 

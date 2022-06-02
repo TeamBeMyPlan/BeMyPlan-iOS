@@ -10,6 +10,8 @@ import Moya
 import PanModal
 import AVFoundation
 import SkeletonView
+import RxCocoa
+import RxSwift
 
 enum TravelSpotDetailType{
   case recently
@@ -34,6 +36,9 @@ class TravelSpotDetailVC: UIViewController {
   @IBOutlet private var contentTableView: UITableView!
   @IBOutlet private var headerLabel: UILabel!
   
+  @IBOutlet private var filterButton: UIButton!
+  @IBOutlet private var filterImageView: UIImageView!
+  
   // MARK: - Life Cycle Part
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -43,10 +48,10 @@ class TravelSpotDetailVC: UIViewController {
     fetchPlanListData()
     initRefresh()
     setHeaderLabel()
+    setFilterButtonState()
   }
   
 }
-
 
 extension TravelSpotDetailVC {
   
@@ -74,7 +79,21 @@ extension TravelSpotDetailVC {
     filterVC.filterStatus = self.sortCase
     filterVC.filterClicked = { [weak self] filter in
       self?.sortCase = filter
+      self?.lastPlanId = nil
+      UIView.animate(withDuration: 0.5, delay: 0) {
+        self?.contentTableView.alpha = 0
+        self?.contentTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+      } completion: { _ in
+        self?.planDataList.removeAll()
+        self?.fetchPlanListData()
+        UIView.animate(withDuration: 0.5, delay: 0.25) {
+          self?.contentTableView.alpha = 1
+        }
+      }
+
     }
+
+    
     presentPanModal(filterVC)
   }
   
@@ -97,6 +116,18 @@ extension TravelSpotDetailVC {
     }
   }
   
+  private func setFilterButtonState() {
+    switch(viewType) {
+      case .recently,.bemyPlanRecommend:
+        filterButton.isEnabled = false
+        filterImageView.isHidden = true
+        
+      case .nickname,.travelspot:
+        filterButton.isEnabled = true
+        filterImageView.isHidden = false
+    }
+  }
+  
   private func initRefresh() {
     let refresh = UIRefreshControl()
     refresh.addTarget(self, action: #selector(updateUI), for: .valueChanged)
@@ -106,7 +137,8 @@ extension TravelSpotDetailVC {
   
   // MARK: - @objc Function Part
   @objc func updateUI(refresh: UIRefreshControl) {
-    DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+    print("UPDATEUI")
+    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
       self.planDataList.removeAll()
       self.lastPlanId = nil
       self.fetchPlanListData()
@@ -120,6 +152,10 @@ extension TravelSpotDetailVC {
 extension TravelSpotDetailVC {
   
   private func fetchPlanListData() {
+    guard lastPlanId != -1 else { return }
+    print("======FETCH=======")
+    print("lastCURSOR:",lastPlanId)
+    print("palnCOUNT",planDataList.count)
     switch(viewType) {
       case .recently: getRecentlyList()
       case .bemyPlanRecommend: getBemyPlanRecommendList()
@@ -178,10 +214,21 @@ extension TravelSpotDetailVC {
   }
   
   private func presentDataToTableView(_ entity: HomeListDataGettable) {
-    self.planDataList = entity.contents
-    self.planDataList.append(contentsOf: entity.contents)
-    self.lastPlanId = entity.nextCursor
-    self.contentTableView.reloadData()
+    addPlanData(entity.contents)
+    lastPlanId = entity.nextCursor
+    contentTableView.reloadData()
+  }
+  
+  private func addPlanData(_ contents: [HomeListDataGettable.Item]) {
+    guard contents.count > 0 else { return }
+    let firstItem = contents.first!
+    
+    if !planDataList.contains(where: { item in
+      item.planID == firstItem.planID
+    }) {
+      planDataList += contents
+    }
+  
   }
 }
 
@@ -195,6 +242,8 @@ extension TravelSpotDetailVC: UITableViewDataSource {
     guard let cell = tableView.dequeueReusableCell(withIdentifier: TravelSpotDetailTVC.className) as? TravelSpotDetailTVC else {
       return UITableViewCell() }
     cell.selectionStyle = .none
+    cell.contentImage.kf.cancelDownloadTask()
+    cell.contentImage.image = nil
     cell.setData(data: planDataList[indexPath.row])
     return cell
   }

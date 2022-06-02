@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8uG-eS-VYR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8uG-eS-VYR">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -66,7 +66,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="어디로 떠나세요?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Unw-zl-PZQ">
-                                            <rect key="frame" x="24" y="13.333333333333334" width="250" height="23.333333333333329"/>
+                                            <rect key="frame" x="24" y="12.666666666666664" width="250" height="25"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="250" id="RoI-ls-hic"/>
                                             </constraints>
@@ -238,6 +238,8 @@
                     </view>
                     <connections>
                         <outlet property="contentTableView" destination="nxe-Pf-SRD" id="bUB-4V-szA"/>
+                        <outlet property="filterButton" destination="msy-u6-2a1" id="fQ5-Oo-UdI"/>
+                        <outlet property="filterImageView" destination="e91-G2-xTz" id="lbV-2x-5Ci"/>
                         <outlet property="headerLabel" destination="XC7-Ww-na8" id="OSv-d0-QDz"/>
                     </connections>
                 </viewController>
@@ -257,7 +259,7 @@
                                 <rect key="frame" x="0.0" y="566" width="390" height="278"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="정렬" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cLt-mt-ODd">
-                                        <rect key="frame" x="183" y="26" width="24.333333333333343" height="17"/>
+                                        <rect key="frame" x="182" y="26" width="26" height="17"/>
                                         <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Bold" family="Spoqa Han Sans Neo" pointSize="14"/>
                                         <color key="textColor" name="grey2"/>
                                         <nil key="highlightedColor"/>
@@ -302,7 +304,7 @@
                                         <rect key="frame" x="0.0" y="60" width="390" height="49"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zeX-yW-KX0">
-                                                <rect key="frame" x="24" y="10" width="37" height="29"/>
+                                                <rect key="frame" x="24" y="10" width="39" height="29"/>
                                                 <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="14"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="최신순">
@@ -347,7 +349,7 @@
                                         <rect key="frame" x="0.0" y="110" width="390" height="49"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tGy-0B-u2F">
-                                                <rect key="frame" x="24" y="10" width="69" height="29"/>
+                                                <rect key="frame" x="24" y="10" width="71" height="29"/>
                                                 <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="14"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -393,7 +395,7 @@
                                         <rect key="frame" x="0.0" y="160" width="390" height="49"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tnM-L2-1tz">
-                                                <rect key="frame" x="24" y="10" width="81" height="29"/>
+                                                <rect key="frame" x="24" y="10" width="84" height="29"/>
                                                 <fontDescription key="fontDescription" name="SpoqaHanSansNeo-Regular" family="Spoqa Han Sans Neo" pointSize="14"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="스크랩 많은 순">

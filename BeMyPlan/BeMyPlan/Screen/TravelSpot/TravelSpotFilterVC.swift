@@ -65,7 +65,6 @@ class TravelSpotFilterVC: UIViewController {
     dismiss(animated: true){ self.filterClicked?(.scrapCount) }
   }
 
-  
   // MARK: - Custom Method Part
   
   private func setTitleColor(){
