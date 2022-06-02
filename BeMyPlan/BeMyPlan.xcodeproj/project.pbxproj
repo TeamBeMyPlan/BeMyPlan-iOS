@@ -175,6 +175,7 @@
 		FD5100C92848ABB30037AC8E /* FilterSortCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5100C82848ABB30037AC8E /* FilterSortCase.swift */; };
 		FD5100CB2848ABC50037AC8E /* TravelSpotList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5100CA2848ABC50037AC8E /* TravelSpotList.swift */; };
 		FD5100CE2848AF2B0037AC8E /* UserDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5100CD2848AF2B0037AC8E /* UserDataModel.swift */; };
+		FD5100D0284933630037AC8E /* PlanDetailTransportEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5100CF284933630037AC8E /* PlanDetailTransportEntity.swift */; };
 		FD568E6F27CFE4ED0078D23C /* AnalyticsType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD568E6E27CFE4ED0078D23C /* AnalyticsType.swift */; };
 		FD568E7127CFE6CF0078D23C /* FirebaseServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD568E7027CFE6CF0078D23C /* FirebaseServiceProtocol.swift */; };
 		FD568E7327CFE6DF0078D23C /* AppLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD568E7227CFE6DF0078D23C /* AppLog.swift */; };
@@ -457,6 +458,7 @@
 		FD5100C82848ABB30037AC8E /* FilterSortCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSortCase.swift; sourceTree = "<group>"; };
 		FD5100CA2848ABC50037AC8E /* TravelSpotList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelSpotList.swift; sourceTree = "<group>"; };
 		FD5100CD2848AF2B0037AC8E /* UserDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataModel.swift; sourceTree = "<group>"; };
+		FD5100CF284933630037AC8E /* PlanDetailTransportEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDetailTransportEntity.swift; sourceTree = "<group>"; };
 		FD568E6E27CFE4ED0078D23C /* AnalyticsType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsType.swift; sourceTree = "<group>"; };
 		FD568E7027CFE6CF0078D23C /* FirebaseServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseServiceProtocol.swift; sourceTree = "<group>"; };
 		FD568E7227CFE6DF0078D23C /* AppLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLog.swift; sourceTree = "<group>"; };
@@ -1404,6 +1406,7 @@
 			children = (
 				FDA2063127C40FE9001A371D /* PlanDetailRepository.swift */,
 				FDA2063527C41006001A371D /* PlanDetailEntity.swift */,
+				FD5100CF284933630037AC8E /* PlanDetailTransportEntity.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -1935,6 +1938,7 @@
 				523C70FF2799DCC10073371D /* ScrapEmptyService.swift in Sources */,
 				FDF981042788D4AB0009A14E /* PlanPreviewDescriptionTVC.swift in Sources */,
 				FDA2063427C40FF6001A371D /* PlanDetailViewModel.swift in Sources */,
+				FD5100D0284933630037AC8E /* PlanDetailTransportEntity.swift in Sources */,
 				FD20C615278ECBE800AC6E34 /* MyPlanEmptyBuyListView.swift in Sources */,
 				FDF7FECC27A7E1DD00E3AB62 /* LaunchInstructor.swift in Sources */,
 				FD3211AB27841948007D63D5 /* SceneDelegate.swift in Sources */,
