@@ -48,10 +48,10 @@ extension BaseService : HomeServiceType ,TravelSpotDetailService{
         requestObject(.getNicknameDetailList(userId: userId, page: page, pageSize: pageSize, sort: sort), completion: completion)
       }
       
-    case .new:
+    case .recently:
       requestObject(.getNewTravelList(page: page), completion: completion)
 
-    case .suggest:
+    case .bemyPlanRecommend:
       requestObject(.getSuggestTravelList(page: page, sort: sort), completion: completion)
     }
   }

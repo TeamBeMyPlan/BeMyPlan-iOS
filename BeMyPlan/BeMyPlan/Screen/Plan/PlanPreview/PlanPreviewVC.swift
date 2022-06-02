@@ -154,11 +154,9 @@ class PlanPreviewVC: UIViewController {
   }
   
   private func moveAuthorPage(nickname: String,authID: Int){
-    let authorVC = self.factory.instantiatePlanListVC(authID: authID, nickName: nickname,type: .nickname)
-    self.navigationController?.pushViewController(authorVC, animated: true)
-//
-//    authorVC.modalPresentationStyle = .fullScreen
-//    present(authorVC,animated: true)
+    let data = PlanWriterDataModel.init(authorName: nickname,
+                                        authorID: authID)
+    postObserverAction(.moveNicknamePlanList, object: data)
   }
   
   private func setScrabImage(){

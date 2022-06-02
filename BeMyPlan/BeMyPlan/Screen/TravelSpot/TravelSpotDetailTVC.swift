@@ -7,40 +7,40 @@
 
 import UIKit
 import Moya
+import SkeletonView
+import Kingfisher
 
-func setFontTextView(text: String, lineSpacing: CGFloat, fontName: String, fontSize: CGFloat, textColor: UIColor, textType: UITextView) {
-  let attributedString = NSMutableAttributedString(string: text)
-  let paragraphStyle = NSMutableParagraphStyle()
-  paragraphStyle.lineSpacing = lineSpacing
-  attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attributedString.length))
-  textType.attributedText = attributedString
-  textType.font = UIFont(name: fontName, size: fontSize)
-  textType.textColor = textColor
-}
-
-class TravelSpotDetailTVC: UITableViewCell {
-  
-  private var postId:Int = 1
+class TravelSpotDetailTVC: UITableViewCell, UITableViewRegisterable {
+  static var isFromNib: Bool = true
+  private var postId: Int?
   private var userId:Int = 1
-  public var scrapBtnClicked: ((Int) -> ())?
-  
+  private var scrapState: Bool = false { didSet { setScrapImageState() }}
+
   @IBOutlet var contentImage: UIImageView!
-  @IBOutlet var nickNameLabel: UILabel!
-  @IBOutlet var titleTextView: UITextView!
-  @IBOutlet var scrapBtn: UIButton!
-  @IBOutlet var scrapImage: UIImageView!
+  @IBOutlet private var nickNameLabel: UILabel!
+  @IBOutlet private var titleTextView: UITextView!
+  @IBOutlet private var scrapBtn: UIButton!
+  @IBOutlet private var scrapImage: UIImageView!
   
   override func awakeFromNib() {
     super.awakeFromNib()
+    contentImage.image = nil
     setUIs()
+    configureSkeleton()
   }
   
-  override func setSelected(_ selected: Bool, animated: Bool) {
-    super.setSelected(selected, animated: animated)
+  override func prepareForReuse() {
+    contentImage.image = nil
+    contentImage.kf.cancelDownloadTask() // first, cancel currenct download task
+    contentImage.setImage(with: "")
+    configureSkeleton()
   }
   
-  override func layoutSubviews() {
-    super.layoutSubviews()
+  
+  @IBAction func scrapButtonClicked(_ sender: Any) {
+    makeVibrate()
+    postScrapAction()
+    scrapState.toggle()
   }
   
   private func setUIs() {
@@ -49,37 +49,44 @@ class TravelSpotDetailTVC: UITableViewCell {
     titleTextView.textContainer.lineFragmentPadding = .zero
     titleTextView.textContainer.lineBreakMode = .byTruncatingTail
     contentImage.layer.cornerRadius = 5
-    contentImage.contentMode = .scaleAspectFill
+  }
+  
+  private func setScrapImageState() {
+    scrapImage.image = scrapState ? ImageLiterals.Scrap.scrapFIconFilled : ImageLiterals.Scrap.scrapIconNotFilled
+  }
+  
+  private func postScrapAction() {
+    guard let postId = postId else { return }
+    let dto = ScrapRequestDTO(planID: postId,
+                              scrapState: scrapState)
+    postObserverAction(.scrapButtonClicked, object: dto)
+  }
+  
+  private func configureSkeleton() {
+    let animation = SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .leftRight)
+    contentImage
+      .showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .grey04,secondaryColor: .grey06), animation: animation)
+    nickNameLabel
+      .showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .grey04,secondaryColor: .grey06), animation: animation)
+    titleTextView
+      .showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .grey04,secondaryColor: .grey06), animation: animation)
   }
   
   public func setData(data: HomeListDataGettable.Item){
-//    contentImage.setImage(with: data.thumbnailURL)
-//    titleTextView.text = data.title
-//    nickNameLabel.text = data.nickname
-//    postId = data.id
-//
-//    if data.isScraped == true {
-//      scrapImage.image = UIImage(named: "icnScrapWhite")
-//      scrapBtn.setImage(UIImage(named: "icnScrapWhite"), for: .normal)
-//      scrapBtn.setImage(UIImage(named: "icnNotScrapWhite"), for: .selected)
-//    } else {
-//      scrapImage.image = UIImage(named: "icnNotScrapWhite")
-//      
-//      scrapBtn.setImage(UIImage(named: "icnNotScrapWhite"), for: .normal)
+    contentImage.image = nil
+    titleTextView.text = data.title
+    nickNameLabel.text = data.user.nickname
+    postId = data.planID
+    scrapState = data.scrapStatus
+    
+    titleTextView.hideSkeleton(reloadDataAfter: false, transition: .crossDissolve(0.75))
+    nickNameLabel.hideSkeleton(reloadDataAfter: false, transition: .crossDissolve(0.75))
+    
+    contentImage.setImage(with: data.thumbnailURL) { _ in
+      self.contentImage.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0))
+      self.contentImage.layer.cornerRadius = 5
+      self.contentImage.layoutIfNeeded()
     }
   }
-  
-//  @IBAction func scrapBtnTapped(_ sender: Any) {
-//    if let scrapBtnClicked = scrapBtnClicked {
-//      scrapBtnClicked(postId)
-//    }
-////    scrapBtn.isSelected.toggle()
-//    if scrapImage.image == UIImage(named: "icnScrapWhite"){
-//      scrapImage.image = UIImage(named: "icnNotScrapWhite")
-//    } else {
-//      scrapImage.image = UIImage(named: "icnScrapWhite")
-//    }
-//
-//
-    
+}
 

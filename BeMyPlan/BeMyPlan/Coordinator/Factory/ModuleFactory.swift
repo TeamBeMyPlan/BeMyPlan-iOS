@@ -52,13 +52,15 @@ protocol ModuleFactoryProtocol {
   func instantiatePlanDetailVC(postID: Int,isPreviewPage: Bool) -> PlanDetailVC
   
   // MARK: - PlanList
-  func instantiatePlanListVC(authID: Int,nickName: String,type:TravelSpotDetailType) -> TravelSpotDetailVC
+  func instantiatePlanListVC() -> TravelSpotDetailVC
   
   // MARK: - Indiciator
   func instantiateIndicatorVC() -> IndicatorVC
 }
 
 class ModuleFactory: ModuleFactoryProtocol{
+
+  
 
   static func resolve() -> ModuleFactory {
     return ModuleFactory()
@@ -165,6 +167,10 @@ class ModuleFactory: ModuleFactoryProtocol{
     return vc
   }
   
+  func instantiatePlanListVC() -> TravelSpotDetailVC {
+    return TravelSpotDetailVC.controllerFromStoryboard(.travelSpot)
+  }
+  
   func instantiatePlanDetailVC(postID: Int,isPreviewPage: Bool = false) -> PlanDetailVC {
     
     let repository = PlanDetailRepository(service: BaseService.default)
@@ -176,13 +182,6 @@ class ModuleFactory: ModuleFactoryProtocol{
     return vc
   }
   
-  func instantiatePlanListVC(authID: Int = 0,nickName:String = "",type:TravelSpotDetailType) -> TravelSpotDetailVC {
-    let travelDetailVC = TravelSpotDetailVC.controllerFromStoryboard(.travelSpot)
-    travelDetailVC.userId = authID
-    travelDetailVC.nickname = nickName
-    travelDetailVC.type = type
-    return travelDetailVC
-  }
   
   // MARK: - Indicator
   func instantiateIndicatorVC() -> IndicatorVC{

@@ -95,7 +95,7 @@ extension BaseVC{
     addObserverAction(.moveHomeToPlanList) { noti in
       if let viewCase = noti.object as? TravelSpotDetailType{
         guard let spotlistVC = UIStoryboard.list(.travelSpot).instantiateViewController(withIdentifier: TravelSpotDetailVC.className) as? TravelSpotDetailVC else {return}
-        spotlistVC.type = viewCase
+        spotlistVC.viewType = viewCase
         self.navigationController?.pushViewController(spotlistVC, animated: true)
       }
     }
@@ -103,16 +103,16 @@ extension BaseVC{
     addObserverAction(.moveNicknamePlanList) { noti in
       if let authData = noti.object as? PlanWriterDataModel{
         guard let spotlistVC = UIStoryboard.list(.travelSpot).instantiateViewController(withIdentifier: TravelSpotDetailVC.className) as? TravelSpotDetailVC else {return}
-        spotlistVC.nickname = authData.authorName
-        spotlistVC.userId = authData.authorID
-        spotlistVC.type = .nickname
+        let userData = UserDataRequestDTO(name: authData.authorName, userID: authData.authorID)
+        spotlistVC.userData = userData
+        spotlistVC.viewType = .nickname
         self.navigationController?.pushViewController(spotlistVC, animated: true)
       }
     }
     addObserverAction(.movePlanList) { noti in
       guard let spotlistVC = UIStoryboard.list(.travelSpot).instantiateViewController(withIdentifier: TravelSpotDetailVC.className) as? TravelSpotDetailVC else {return}
-      if let notiIndex = noti.object as? Int {
-        spotlistVC.areaId = notiIndex
+      if let spot = noti.object as? TravelSpotList {
+        spotlistVC.travelSpot = spot
       }
       self.navigationController?.pushViewController(spotlistVC, animated: true)
     }

@@ -171,6 +171,10 @@
 		FD4C86B8278C7A7200D37A2D /* Payment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD4C86B7278C7A7200D37A2D /* Payment.storyboard */; };
 		FD4C86BA278C7A8400D37A2D /* PaymentSelectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4C86B9278C7A8400D37A2D /* PaymentSelectVC.swift */; };
 		FD4C86BE278C9AF900D37A2D /* PaymentCompleteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4C86BD278C9AF900D37A2D /* PaymentCompleteVC.swift */; };
+		FD5100C72848A35B0037AC8E /* PlanListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5100C62848A35B0037AC8E /* PlanListService.swift */; };
+		FD5100C92848ABB30037AC8E /* FilterSortCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5100C82848ABB30037AC8E /* FilterSortCase.swift */; };
+		FD5100CB2848ABC50037AC8E /* TravelSpotList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5100CA2848ABC50037AC8E /* TravelSpotList.swift */; };
+		FD5100CE2848AF2B0037AC8E /* UserDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5100CD2848AF2B0037AC8E /* UserDataModel.swift */; };
 		FD568E6F27CFE4ED0078D23C /* AnalyticsType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD568E6E27CFE4ED0078D23C /* AnalyticsType.swift */; };
 		FD568E7127CFE6CF0078D23C /* FirebaseServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD568E7027CFE6CF0078D23C /* FirebaseServiceProtocol.swift */; };
 		FD568E7327CFE6DF0078D23C /* AppLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD568E7227CFE6DF0078D23C /* AppLog.swift */; };
@@ -449,6 +453,10 @@
 		FD4C86B7278C7A7200D37A2D /* Payment.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Payment.storyboard; sourceTree = "<group>"; };
 		FD4C86B9278C7A8400D37A2D /* PaymentSelectVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentSelectVC.swift; sourceTree = "<group>"; };
 		FD4C86BD278C9AF900D37A2D /* PaymentCompleteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentCompleteVC.swift; sourceTree = "<group>"; };
+		FD5100C62848A35B0037AC8E /* PlanListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanListService.swift; sourceTree = "<group>"; };
+		FD5100C82848ABB30037AC8E /* FilterSortCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSortCase.swift; sourceTree = "<group>"; };
+		FD5100CA2848ABC50037AC8E /* TravelSpotList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelSpotList.swift; sourceTree = "<group>"; };
+		FD5100CD2848AF2B0037AC8E /* UserDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataModel.swift; sourceTree = "<group>"; };
 		FD568E6E27CFE4ED0078D23C /* AnalyticsType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsType.swift; sourceTree = "<group>"; };
 		FD568E7027CFE6CF0078D23C /* FirebaseServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseServiceProtocol.swift; sourceTree = "<group>"; };
 		FD568E7227CFE6DF0078D23C /* AppLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLog.swift; sourceTree = "<group>"; };
@@ -574,8 +582,10 @@
 		523C70A12795C1220073371D /* TravelSpot */ = {
 			isa = PBXGroup;
 			children = (
+				FD5100C82848ABB30037AC8E /* FilterSortCase.swift */,
 				523C70A22795C3EF0073371D /* TravelSpotDataModel.swift */,
 				523C70A62795E6DC0073371D /* TravelSpotDetail */,
+				FD5100CA2848ABC50037AC8E /* TravelSpotList.swift */,
 			);
 			path = TravelSpot;
 			sourceTree = "<group>";
@@ -826,6 +836,7 @@
 				523C70B027969FF80073371D /* ScrapService.swift */,
 				523C70FE2799DCC10073371D /* ScrapEmptyService.swift */,
 				F25044092799CFEB00791AB7 /* AuthService.swift */,
+				FD5100C62848A35B0037AC8E /* PlanListService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -902,6 +913,7 @@
 			children = (
 				F250440B2799D00E00791AB7 /* Auth */,
 				523C70B62798574D0073371D /* Home */,
+				FD5100CC2848AF1E0037AC8E /* User */,
 				523C70A12795C1220073371D /* TravelSpot */,
 				523C70AD27969F1A0073371D /* Scrap */,
 				FD20C60C278EBF0100AC6E34 /* MyPlan */,
@@ -1126,7 +1138,7 @@
 				FD35663D2792AEEA0082B4CE /* Recovered References */,
 			);
 			sourceTree = "<group>";
-			usesTabs = 1;
+			usesTabs = 0;
 		};
 		FD3211A627841948007D63D5 /* Products */ = {
 			isa = PBXGroup;
@@ -1312,6 +1324,14 @@
 				FD122DE927D3958700469189 /* PaymentEventPopupVC.swift */,
 			);
 			path = Payment;
+			sourceTree = "<group>";
+		};
+		FD5100CC2848AF1E0037AC8E /* User */ = {
+			isa = PBXGroup;
+			children = (
+				FD5100CD2848AF2B0037AC8E /* UserDataModel.swift */,
+			);
+			path = User;
 			sourceTree = "<group>";
 		};
 		FD568E6C27CFE3FD0078D23C /* Manager */ = {
@@ -1838,7 +1858,9 @@
 				F266412E2788262800CCC751 /* MainListData.swift in Sources */,
 				FD20C610278EBF2800AC6E34 /* MyPlanBuyData.swift in Sources */,
 				FD66701327E314C300296E4A /* PreviewBodyData.swift in Sources */,
+				FD5100C92848ABB30037AC8E /* FilterSortCase.swift in Sources */,
 				FD09DDF1278577CF006DA050 /* BaseService.swift in Sources */,
+				FD5100CB2848ABC50037AC8E /* TravelSpotList.swift in Sources */,
 				FD568E7927CFE80E0078D23C /* RuntimeProviderType.swift in Sources */,
 				FDF980D22786D2EB0009A14E /* TravelSpotVC.swift in Sources */,
 				FD008829278FE94C00C194B5 /* PlanDetailInfoPhotoCVC.swift in Sources */,
@@ -1891,6 +1913,7 @@
 				FD09DE1727857B5D006DA050 /* controllerFromStoryboard + UIViewController.swift in Sources */,
 				F2C5F1922786EB3300BE4036 /* MainListView.swift in Sources */,
 				FD93028827A3F9B800341C2A /* downloadImage.swift in Sources */,
+				FD5100C72848A35B0037AC8E /* PlanListService.swift in Sources */,
 				523C70FD2799DAA30073371D /* ScrapEmptyDataModel.swift in Sources */,
 				523C70A52795D32E0073371D /* TravelSpotService.swift in Sources */,
 				FDD41E2527DAF87B003BF531 /* OnboardingVC.swift in Sources */,
@@ -1962,6 +1985,7 @@
 				FDF7FED227A7E2B900E3AB62 /* BaseCoordinator.swift in Sources */,
 				FD09DE092785797B006DA050 /* addToolBar.swift in Sources */,
 				FD09DDF527857809006DA050 /* Config.swift in Sources */,
+				FD5100CE2848AF2B0037AC8E /* UserDataModel.swift in Sources */,
 				523C70AA2795EC770073371D /* TravelSpotDetailService.swift in Sources */,
 				FD09DE1327857AE1006DA050 /* successCatch + Result.swift in Sources */,
 				F261EC7927873A7D00AF094F /* MainCardCVC.swift in Sources */,
