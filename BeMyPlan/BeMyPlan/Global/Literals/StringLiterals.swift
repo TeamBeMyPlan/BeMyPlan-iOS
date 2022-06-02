@@ -64,6 +64,11 @@ struct I18N {
     }
   }
   
+  struct PlanList {
+    static let bemyPlanRecommendHeader = "비마플 추천 일정"
+    static let recentlyHeader = "최신 여행 일정"
+  }
+  
   struct PlanPreview{
     struct Recommend{
       static let title = "콘텐츠를 구매하시면 이런 내용을 볼 수 있어요!"

@@ -20,9 +20,3 @@ struct TravelSpotDataGettable: Codable {
     case isActivated = "locked"
   }
 }
-
-enum FilterSortCase: String {
-  case recently = "createdAt"
-  case orderCount = "orderCnt"
-  case scrapCount = "scrapCnt"
-}

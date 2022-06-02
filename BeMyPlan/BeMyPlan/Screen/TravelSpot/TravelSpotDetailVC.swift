@@ -9,6 +9,7 @@ import UIKit
 import Moya
 import PanModal
 import AVFoundation
+import SkeletonView
 
 enum TravelSpotDetailType{
   case recently
@@ -20,48 +21,39 @@ enum TravelSpotDetailType{
 class TravelSpotDetailVC: UIViewController {
   
   // MARK: - Vars & Lets Part
-  var planDataList: [HomeListDataGettable.Item] = []
-  var scrapBtnData: Bool = true
-  var areaNum: Int?
-  var nickname : String?
-  var postId: Int = 0
+  private var planDataList: [HomeListDataGettable.Item] = []
+  private let networkService = BaseService.default
   
-  var currentPageIndex = 0
-  var areaId: Int? = 2
-  var userId: Int?
-  var type : TravelSpotDetailType = .travelspot
+  var viewType: TravelSpotDetailType = .travelspot
   var sortCase : FilterSortCase = .recently
+  var lastPlanId: Int?
+  var userData: UserDataRequestDTO?
+  var travelSpot: TravelSpotList?
   
   // MARK: - UI Component Part
-  @IBOutlet var contentTableView: UITableView!
-  @IBOutlet var headerLabel: UILabel!{
-    didSet {
-      setHeaderLabel()
-    }
-  }
+  @IBOutlet private var contentTableView: UITableView!
+  @IBOutlet private var headerLabel: UILabel!
   
   // MARK: - Life Cycle Part
   override func viewDidLoad() {
     super.viewDidLoad()
+    setUIs()
     setTableViewDelegate()
     regiterCells()
-    setUIs()
-    fetchTravelSpotDetailItemList(isRefresh: true)
+    fetchPlanListData()
     initRefresh()
     setHeaderLabel()
   }
   
-  override func viewWillAppear(_ animated: Bool) {
-    fetchTravelSpotDetailItemList(isRefresh: true)
-  }
 }
-  
+
 
 extension TravelSpotDetailVC {
   
   private func setTableViewDelegate() {
     contentTableView.delegate = self
     contentTableView.dataSource = self
+    contentTableView.isSkeletonable = true
   }
   
   private func regiterCells() {
@@ -71,7 +63,7 @@ extension TravelSpotDetailVC {
   private func setUIs() {
     contentTableView.separatorStyle = .none
   }
-  
+    
   // MARK: - IBAction Part
   @IBAction func backBtn(_ sender: Any) {
     self.navigationController?.popViewController(animated: true)
@@ -85,30 +77,29 @@ extension TravelSpotDetailVC {
     }
     presentPanModal(filterVC)
   }
-
+  
   // MARK: - Custom Method Part
-
+  
   private func setHeaderLabel() {
-    switch (type) {
-    case .recently:
-      self.headerLabel.text = "최신 여행 일정"
-    case .bemyPlanRecommend:
-      self.headerLabel.text = "에디터 추천 일정"
-    case .nickname:
-        if let nickname = nickname { self.headerLabel.text = nickname }
-    case .travelspot:
-      self.headerLabel.text = "제주"
+    switch (viewType) {
+      case .recently:
+        self.headerLabel.text = I18N.PlanList.recentlyHeader
+      case .bemyPlanRecommend:
+        self.headerLabel.text = I18N.PlanList.bemyPlanRecommendHeader
+      case .nickname:
+        if let userData = userData {
+          self.headerLabel.text = userData.name
+        }
+      case .travelspot:
+        if let travelSpot = travelSpot {
+          self.headerLabel.text = travelSpot.getKoreanName()
+        }
     }
   }
   
-  private func fetchTravelSpotDetailItemList(isRefresh: Bool) {
-
-    
-  }
-
   private func initRefresh() {
     let refresh = UIRefreshControl()
-    refresh.addTarget(self, action: #selector(updateUI(refresh:)), for: .valueChanged)
+    refresh.addTarget(self, action: #selector(updateUI), for: .valueChanged)
     refresh.attributedTitle = NSAttributedString(string: "")
     contentTableView.refreshControl = refresh
   }
@@ -116,12 +107,82 @@ extension TravelSpotDetailVC {
   // MARK: - @objc Function Part
   @objc func updateUI(refresh: UIRefreshControl) {
     DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
-      self.currentPageIndex = 0
-      self.fetchTravelSpotDetailItemList(isRefresh: true)
+      self.planDataList.removeAll()
+      self.lastPlanId = nil
+      self.fetchPlanListData()
       refresh.endRefreshing()
     }
   }
   
+}
+// MARK: - Fetching Data Parts
+
+extension TravelSpotDetailVC {
+  
+  private func fetchPlanListData() {
+    switch(viewType) {
+      case .recently: getRecentlyList()
+      case .bemyPlanRecommend: getBemyPlanRecommendList()
+      case .travelspot: getTravelSpotPlanList()
+      case .nickname: getUserPlanList()
+    }
+  }
+  
+  private func getRecentlyList() {
+    networkService.getRecentlyListWithPagination(lastId: lastPlanId) { result in
+      result.success { [weak self] entity in
+        guard let entity = entity else { return }
+        self?.presentDataToTableView(entity)
+      }.catch { err in
+        print("GET RECENTLY LIST ERR")
+        self.postObserverAction(.showNetworkError)
+      }
+      
+    }
+  }
+  
+  private func getBemyPlanRecommendList() {
+    networkService.getBemyPlanListWithPagination(lastId: lastPlanId) { result in
+      result.success { [weak self] entity in
+        guard let entity = entity else { return }
+        self?.presentDataToTableView(entity)
+      }.catch { err in
+        print("GET RECENTLY LIST ERR")
+        self.postObserverAction(.showNetworkError)
+      }
+    }
+  }
+  
+  private func getTravelSpotPlanList() {
+    networkService.getRecentlyListWithPagination(lastId: lastPlanId) { result in
+      result.success { [weak self] entity in
+        guard let entity = entity else { return }
+        self?.presentDataToTableView(entity)
+      }.catch { err in
+        print("GET RECENTLY LIST ERR")
+        self.postObserverAction(.showNetworkError)
+      }
+    }
+  }
+  
+  private func getUserPlanList() {
+    networkService.getRecentlyListWithPagination(lastId: lastPlanId) { result in
+      result.success { [weak self] entity in
+        guard let entity = entity else { return }
+        self?.presentDataToTableView(entity)
+      }.catch { err in
+        print("GET RECENTLY LIST ERR")
+        self.postObserverAction(.showNetworkError)
+      }
+    }
+  }
+  
+  private func presentDataToTableView(_ entity: HomeListDataGettable) {
+    self.planDataList = entity.contents
+    self.planDataList.append(contentsOf: entity.contents)
+    self.lastPlanId = entity.nextCursor
+    self.contentTableView.reloadData()
+  }
 }
 
 // MARK: - Extension Part
@@ -132,8 +193,7 @@ extension TravelSpotDetailVC: UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard let cell = tableView.dequeueReusableCell(withIdentifier: TravelSpotDetailTVC.className) as? TravelSpotDetailTVC else {
-      return UITableViewCell()
-    }
+      return UITableViewCell() }
     cell.selectionStyle = .none
     cell.setData(data: planDataList[indexPath.row])
     return cell
@@ -146,9 +206,9 @@ extension TravelSpotDetailVC: UITableViewDelegate {
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//    AppLog.log(at: FirebaseAnalyticsProvider.self, .clickTravelPlan(source: .planListView,
-//                                                                    postIdx:  String(planDataList[indexPath.row].id)))
-//    postObserverAction(.movePlanPreview,object: planDataList[indexPath.row].id)
+    //    AppLog.log(at: FirebaseAnalyticsProvider.self, .clickTravelPlan(source: .planListView,
+    //                                                                    postIdx:  String(planDataList[indexPath.row].id)))
+    //    postObserverAction(.movePlanPreview,object: planDataList[indexPath.row].id)
   }
 }
 
@@ -173,7 +233,7 @@ extension TravelSpotDetailVC {
     let contentYoffset = scrollView.contentOffset.y
     let distanceFromBottom = scrollView.contentSize.height - contentYoffset
     if distanceFromBottom < height {
-      fetchTravelSpotDetailItemList(isRefresh: false)
+      fetchPlanListData()
     }
   }
 }

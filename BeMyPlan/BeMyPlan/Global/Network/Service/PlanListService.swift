@@ -15,7 +15,7 @@ protocol PlanListServiceType{
   func getBemyPlanListWithPagination(lastId: Int?,
                                      completion: @escaping (Result<HomeListDataGettable?, Error>) -> Void)
   
-  func getTravelSpotListWithPagination(spot: String, sortCase: FilterSortCase,lastId: Int?,
+  func getTravelSpotListWithPagination(spot: TravelSpotList, sortCase: FilterSortCase,lastId: Int?,
                                        completion: @escaping (Result<HomeListDataGettable?, Error>) -> Void)
   
   func getUserPlanListWithPagination(userID: Int, sortCase: FilterSortCase,lastId: Int?,
@@ -25,20 +25,23 @@ protocol PlanListServiceType{
 
 extension BaseService: PlanListServiceType {
   func getRecentlyListWithPagination(lastId: Int?, completion: @escaping (Result<HomeListDataGettable?, Error>) -> Void) {
-    requestObject(<#T##target: BaseAPI##BaseAPI#>, completion: <#T##(Result<Decodable?, Error>) -> Void#>)
+    requestObject(.getRecentlyListWithPaging(lastPlanID: lastId),
+                  completion: completion)
   }
   
   func getBemyPlanListWithPagination(lastId: Int?, completion: @escaping (Result<HomeListDataGettable?, Error>) -> Void) {
-    <#code#>
+    requestObject(.getBemyPlanListWithPaging(lastPlanID: lastId),
+                  completion: completion)
   }
   
-  func getTravelSpotListWithPagination(spot: String, sortCase: FilterSortCase, lastId: Int?, completion: @escaping (Result<HomeListDataGettable?, Error>) -> Void) {
-    <#code#>
+  func getTravelSpotListWithPagination(spot: TravelSpotList, sortCase: FilterSortCase, lastId: Int?, completion: @escaping (Result<HomeListDataGettable?, Error>) -> Void) {
+    requestObject(.getSpotPlanListWithPaging(spotName: spot.rawValue, lastPlanID: lastId, sortCase: sortCase.rawValue),
+                  completion: completion)
+
   }
   
   func getUserPlanListWithPagination(userID: Int, sortCase: FilterSortCase, lastId: Int?, completion: @escaping (Result<HomeListDataGettable?, Error>) -> Void) {
-    <#code#>
+    requestObject(.getUserPlanListWithPaging(userID: userID, lastPlanID: lastId, sortCase: sortCase.rawValue),
+                  completion: completion)
   }
-  
-
 }

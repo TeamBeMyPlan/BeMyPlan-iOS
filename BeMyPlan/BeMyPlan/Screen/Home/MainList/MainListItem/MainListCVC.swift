@@ -29,13 +29,11 @@ class MainListCVC: UICollectionViewCell,UICollectionViewRegisterable {
     mainListImageView.layer.masksToBounds = true
     mainListImageView.skeletonCornerRadius = 5
     
-    
     let animation = SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .leftRight)
     mainListImageView
       .showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .grey04,secondaryColor: .grey06), animation: animation)
     mainListTitle
       .showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .grey04,secondaryColor: .grey06), animation: animation)
-    
   }
   
   private func setUI(){

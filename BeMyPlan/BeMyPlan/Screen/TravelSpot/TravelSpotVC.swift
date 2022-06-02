@@ -61,6 +61,11 @@ class TravelSpotVC: UIViewController {
       }
     }
   }
+  
+  private func makeTravelSpotCase(_ name: String) -> TravelSpotList{
+    // FIXME: - 우선 제주밖에 없어서 제주만 return
+    return .jeju
+  }
 }
 
 // MARK: - Extension Part
@@ -104,7 +109,7 @@ extension TravelSpotVC: SkeletonCollectionViewDelegate {
     //    self.navigationController?.popViewController(animated: true)
     makeVibrate()
     if !travelSpotDataList[indexPath.row].isActivated {
-      postObserverAction(.movePlanList,object: travelSpotDataList[indexPath.row].region)
+      postObserverAction(.movePlanList,object: makeTravelSpotCase(travelSpotDataList[indexPath.row].name))
       AppLog.log(at: FirebaseAnalyticsProvider.self, .clickOpenedTravelSpot(spot: travelSpotDataList[indexPath.row].name))
     }else{
       showToast(message: I18N.Alert.notOpenTravelSpot)
