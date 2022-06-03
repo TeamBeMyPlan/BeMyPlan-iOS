@@ -165,7 +165,6 @@ extension PlanDetailViewModel {
             mapPointList.append(PlanDetailMapData.init(title: dayData.title,
                                                        latitude: dayData.latitude,
                                                        longtitude: dayData.longitude))
-            print("야야야",dayData.nextSpotMobility,dayData.nextSpotRequiredTime)
             let summary = PlanDetail.Summary.init(transportCase: self.makeTransportCase(mobilityName: dayData.nextSpotMobility),
                                                   locationName: dayData.title,
                                                   time: dayData.nextSpotRequiredTime + "분")
@@ -225,8 +224,6 @@ extension PlanDetailViewModel {
   }
   
 }
-
-
 extension PlanDetailViewModel {
 
   func makeDaySelectViewModel(day: Int) -> PlanDetailSelectDayViewModel {

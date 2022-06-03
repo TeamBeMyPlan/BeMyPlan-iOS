@@ -39,6 +39,7 @@ class PlanDetailInformationTVC: UITableViewCell,UITableViewRegisterable {
       }
     }
   }
+  var nextLocationName: String?
   
   // MARK: - UI Components
 
@@ -152,10 +153,11 @@ class PlanDetailInformationTVC: UITableViewCell,UITableViewRegisterable {
   private func configure(){
     if let nextTravel = viewModel.nextTravel,
        let transportCase = viewModel.transport,
-       let nextTime = viewModel.transportTime{
+       let nextTime = viewModel.transportTime,
+       let nextLocationName = nextLocationName{
       nextTripTimeView.isHidden = false
       nextTripTimeLabel.text = transportCase.rawValue + " " + nextTime
-      nextTripLocationNameLabel.text = viewModel.title + " -> " + nextTravel.locationName
+      nextTripLocationNameLabel.text = viewModel.title + " -> " + nextLocationName
     }else{
       nextTripTimeView.isHidden = true
     }
@@ -172,8 +174,6 @@ class PlanDetailInformationTVC: UITableViewCell,UITableViewRegisterable {
       progressBar.isHidden = true
     }
     contentCV.reloadData()
-    
-    
   }
   
   private func registerCells(){
