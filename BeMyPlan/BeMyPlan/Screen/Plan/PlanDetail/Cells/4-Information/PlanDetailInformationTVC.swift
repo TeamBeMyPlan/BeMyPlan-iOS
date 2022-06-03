@@ -6,20 +6,21 @@
 //
 
 import UIKit
-
+import SkeletonView
+import CoreLocation
 
 struct PlanDetailInformationViewModel{
-  var title: String
-  var address: String
-  var imgUrls: [String]
-  var content: String
-  var transport: TransportCase?
-  var transportTime: String?
-  var nextTravel: PlanDetail.Summary?
+  let title: String
+  let latitude: Double
+  let longtitude: Double
+  let imgUrls: [String]
+  let content: String
+  let transport: TransportCase?
+  let transportTime: String?
+  let nextTravel: PlanDetail.Summary?
 }
 
 class PlanDetailInformationTVC: UITableViewCell,UITableViewRegisterable {
-  
   
   // MARK: - Models
   var viewModel: PlanDetailInformationViewModel! {
@@ -86,9 +87,13 @@ class PlanDetailInformationTVC: UITableViewCell,UITableViewRegisterable {
     super.awakeFromNib()
     registerCells()
     setUI()
-    // Initialization code
+    configureSkeleton()
   }
   
+  override func prepareForReuse() {
+    configureSkeleton()
+  }
+
   override func setSelected(_ selected: Bool, animated: Bool) {
     super.setSelected(selected, animated: animated)
   }
@@ -97,7 +102,7 @@ class PlanDetailInformationTVC: UITableViewCell,UITableViewRegisterable {
   @IBAction func addressCopyButtonClicked(_ sender: Any) {
     AppLog.log(at: FirebaseAnalyticsProvider.self, .clickAddressCopy)
 
-    UIPasteboard.general.string = viewModel.address
+    UIPasteboard.general.string = addressLabel.text ?? "" 
     postObserverAction(.copyComplete)
   }
   
@@ -119,6 +124,31 @@ class PlanDetailInformationTVC: UITableViewCell,UITableViewRegisterable {
     nextLocationGuideLabelCenterLayout.constant = -1 * farWidth
   }
   
+  private func configureSkeleton() {
+    let animation = SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .leftRight)
+    titleLabel
+      .showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .grey04,secondaryColor: .grey06), animation: animation)
+  }
+  
+  private func findLocation(latitude: Double, longtitude: Double) {
+    let findLocation = CLLocation(latitude: latitude, longitude: longtitude)
+    let geocoder = CLGeocoder()
+    let locale = Locale(identifier: "Ko-kr")
+    geocoder.reverseGeocodeLocation(findLocation, preferredLocale: locale, completionHandler: {(placemarks, error) in
+        if let address: [CLPlacemark] = placemarks {
+          
+          if let addressData: CLPlacemark = address.last{
+          
+            self.addressLabel.text =  (addressData.locality ?? "") + " " +
+                                      (addressData.thoroughfare ?? "") + " " +
+                                      (addressData.name ?? "")
+            
+              self.addressLabel.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.5))
+            }
+        }
+    })
+  }
+  
   private func configure(){
     if let nextTravel = viewModel.nextTravel,
        let transportCase = viewModel.transport,
@@ -130,12 +160,11 @@ class PlanDetailInformationTVC: UITableViewCell,UITableViewRegisterable {
       nextTripTimeView.isHidden = true
     }
     titleLabel.text = viewModel.title
-    addressLabel.text = viewModel.address
     contentTextView.text = viewModel.content
     nextTripLocationNameLabel.sizeToFit()
     nextTripTimeLabel.sizeToFit()
     setNextLocationLabelCenter()
-    
+    findLocation(latitude: viewModel.latitude, longtitude: viewModel.longtitude)
     if viewModel.imgUrls.count > 1{
       progressBar.isHidden = false
       progressBar.setPercentage(ratio: CGFloat((currentIndex + 1)) / CGFloat(viewModel.imgUrls.count))
@@ -143,6 +172,8 @@ class PlanDetailInformationTVC: UITableViewCell,UITableViewRegisterable {
       progressBar.isHidden = true
     }
     contentCV.reloadData()
+    
+    
   }
   
   private func registerCells(){
@@ -196,5 +227,3 @@ extension PlanDetailInformationTVC : UIScrollViewDelegate{
     lastPointee = scrollView.contentOffset.x
   }
 }
-
-
