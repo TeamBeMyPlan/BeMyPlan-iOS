@@ -44,6 +44,7 @@
 		FD008829278FE94C00C194B5 /* PlanDetailInfoPhotoCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD008827278FE94C00C194B5 /* PlanDetailInfoPhotoCVC.swift */; };
 		FD00882A278FE94C00C194B5 /* PlanDetailInfoPhotoCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD008828278FE94C00C194B5 /* PlanDetailInfoPhotoCVC.xib */; };
 		FD00882F278FF1EF00C194B5 /* PlanDetailWriterContainerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD00882D278FF1EF00C194B5 /* PlanDetailWriterContainerView.xib */; };
+		FD0562BC2849F7CF0027832A /* OrderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD0562BB2849F7CF0027832A /* OrderService.swift */; };
 		FD09DD5127855E33006DA050 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FD09DD5027855E32006DA050 /* GoogleService-Info.plist */; };
 		FD09DD9827856387006DA050 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD09DD9727856387006DA050 /* SystemConfiguration.framework */; };
 		FD09DD9A27856394006DA050 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD09DD9927856394006DA050 /* CoreLocation.framework */; };
@@ -175,6 +176,7 @@
 		FD5100C92848ABB30037AC8E /* FilterSortCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5100C82848ABB30037AC8E /* FilterSortCase.swift */; };
 		FD5100CB2848ABC50037AC8E /* TravelSpotList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5100CA2848ABC50037AC8E /* TravelSpotList.swift */; };
 		FD5100CE2848AF2B0037AC8E /* UserDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5100CD2848AF2B0037AC8E /* UserDataModel.swift */; };
+		FD5100D0284933630037AC8E /* PlanDetailTransportEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5100CF284933630037AC8E /* PlanDetailTransportEntity.swift */; };
 		FD568E6F27CFE4ED0078D23C /* AnalyticsType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD568E6E27CFE4ED0078D23C /* AnalyticsType.swift */; };
 		FD568E7127CFE6CF0078D23C /* FirebaseServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD568E7027CFE6CF0078D23C /* FirebaseServiceProtocol.swift */; };
 		FD568E7327CFE6DF0078D23C /* AppLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD568E7227CFE6DF0078D23C /* AppLog.swift */; };
@@ -193,7 +195,6 @@
 		FD958A3327E0D7B500264EE4 /* ImageSizeFetcherOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD958A3227E0D7B500264EE4 /* ImageSizeFetcherOperation.swift */; };
 		FD958A3527E0D81700264EE4 /* ImageSizeFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD958A3427E0D81700264EE4 /* ImageSizeFetcher.swift */; };
 		FD958A3727E0D88300264EE4 /* ImageSizeFetcherParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD958A3627E0D88300264EE4 /* ImageSizeFetcherParser.swift */; };
-		FDA2062D27C40FCC001A371D /* PlanDetailVC + fetchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA2062927C40FCC001A371D /* PlanDetailVC + fetchData.swift */; };
 		FDA2062E27C40FCC001A371D /* PlanDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA2062A27C40FCC001A371D /* PlanDetailVC.swift */; };
 		FDA2062F27C40FCC001A371D /* PlanDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDA2062B27C40FCC001A371D /* PlanDetail.storyboard */; };
 		FDA2063027C40FCC001A371D /* PlanDetailViewModel + setPreviewDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA2062C27C40FCC001A371D /* PlanDetailViewModel + setPreviewDummy.swift */; };
@@ -312,6 +313,7 @@
 		FD008827278FE94C00C194B5 /* PlanDetailInfoPhotoCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDetailInfoPhotoCVC.swift; sourceTree = "<group>"; };
 		FD008828278FE94C00C194B5 /* PlanDetailInfoPhotoCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanDetailInfoPhotoCVC.xib; sourceTree = "<group>"; };
 		FD00882D278FF1EF00C194B5 /* PlanDetailWriterContainerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanDetailWriterContainerView.xib; sourceTree = "<group>"; };
+		FD0562BB2849F7CF0027832A /* OrderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderService.swift; sourceTree = "<group>"; };
 		FD09DD5027855E32006DA050 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FD09DD9527856377006DA050 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		FD09DD9727856387006DA050 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -457,6 +459,7 @@
 		FD5100C82848ABB30037AC8E /* FilterSortCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSortCase.swift; sourceTree = "<group>"; };
 		FD5100CA2848ABC50037AC8E /* TravelSpotList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelSpotList.swift; sourceTree = "<group>"; };
 		FD5100CD2848AF2B0037AC8E /* UserDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataModel.swift; sourceTree = "<group>"; };
+		FD5100CF284933630037AC8E /* PlanDetailTransportEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDetailTransportEntity.swift; sourceTree = "<group>"; };
 		FD568E6E27CFE4ED0078D23C /* AnalyticsType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsType.swift; sourceTree = "<group>"; };
 		FD568E7027CFE6CF0078D23C /* FirebaseServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseServiceProtocol.swift; sourceTree = "<group>"; };
 		FD568E7227CFE6DF0078D23C /* AppLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLog.swift; sourceTree = "<group>"; };
@@ -476,7 +479,6 @@
 		FD958A3227E0D7B500264EE4 /* ImageSizeFetcherOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSizeFetcherOperation.swift; sourceTree = "<group>"; };
 		FD958A3427E0D81700264EE4 /* ImageSizeFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSizeFetcher.swift; sourceTree = "<group>"; };
 		FD958A3627E0D88300264EE4 /* ImageSizeFetcherParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSizeFetcherParser.swift; sourceTree = "<group>"; };
-		FDA2062927C40FCC001A371D /* PlanDetailVC + fetchData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PlanDetailVC + fetchData.swift"; sourceTree = "<group>"; };
 		FDA2062A27C40FCC001A371D /* PlanDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanDetailVC.swift; sourceTree = "<group>"; };
 		FDA2062B27C40FCC001A371D /* PlanDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PlanDetail.storyboard; sourceTree = "<group>"; };
 		FDA2062C27C40FCC001A371D /* PlanDetailViewModel + setPreviewDummy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PlanDetailViewModel + setPreviewDummy.swift"; sourceTree = "<group>"; };
@@ -837,6 +839,7 @@
 				523C70FE2799DCC10073371D /* ScrapEmptyService.swift */,
 				F25044092799CFEB00791AB7 /* AuthService.swift */,
 				FD5100C62848A35B0037AC8E /* PlanListService.swift */,
+				FD0562BB2849F7CF0027832A /* OrderService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -1404,6 +1407,7 @@
 			children = (
 				FDA2063127C40FE9001A371D /* PlanDetailRepository.swift */,
 				FDA2063527C41006001A371D /* PlanDetailEntity.swift */,
+				FD5100CF284933630037AC8E /* PlanDetailTransportEntity.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -1420,7 +1424,6 @@
 		FDA2062827C40FCC001A371D /* View */ = {
 			isa = PBXGroup;
 			children = (
-				FDA2062927C40FCC001A371D /* PlanDetailVC + fetchData.swift */,
 				FDA2062A27C40FCC001A371D /* PlanDetailVC.swift */,
 				FDA2062B27C40FCC001A371D /* PlanDetail.storyboard */,
 			);
@@ -1935,6 +1938,7 @@
 				523C70FF2799DCC10073371D /* ScrapEmptyService.swift in Sources */,
 				FDF981042788D4AB0009A14E /* PlanPreviewDescriptionTVC.swift in Sources */,
 				FDA2063427C40FF6001A371D /* PlanDetailViewModel.swift in Sources */,
+				FD5100D0284933630037AC8E /* PlanDetailTransportEntity.swift in Sources */,
 				FD20C615278ECBE800AC6E34 /* MyPlanEmptyBuyListView.swift in Sources */,
 				FDF7FECC27A7E1DD00E3AB62 /* LaunchInstructor.swift in Sources */,
 				FD3211AB27841948007D63D5 /* SceneDelegate.swift in Sources */,
@@ -1954,6 +1958,7 @@
 				FD3566552792AFCD0082B4CE /* PlanDetailSelectDayView.swift in Sources */,
 				FD35664B2792AF2C0082B4CE /* ScrapVC.swift in Sources */,
 				FD09DDF3278577F4006DA050 /* BaseAPI.swift in Sources */,
+				FD0562BC2849F7CF0027832A /* OrderService.swift in Sources */,
 				FD35664F2792AF2C0082B4CE /* ScrapContainerCVC.swift in Sources */,
 				FDF981062788D4C00009A14E /* PlanPreviewPhotoTVC.swift in Sources */,
 				FD1A78262795DA7100FB10AB /* showNetworkErr + UIViewController.swift in Sources */,
@@ -1980,7 +1985,6 @@
 				52E26A8D278C17A800D84F0C /* TravelSpotFilterVC.swift in Sources */,
 				FD2D4DCC278D8636002084B9 /* drawDashedLine + UIView.swift in Sources */,
 				F273216F278BEB7700A9B0CC /* MainCardCarouselLayout.swift in Sources */,
-				FDA2062D27C40FCC001A371D /* PlanDetailVC + fetchData.swift in Sources */,
 				FD2D9C5C2797DC4B00688A42 /* PlanDetailMapContainerView.swift in Sources */,
 				FDF7FED227A7E2B900E3AB62 /* BaseCoordinator.swift in Sources */,
 				FD09DE092785797B006DA050 /* addToolBar.swift in Sources */,
@@ -2151,9 +2155,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = BeMyPlan/BeMyPlan.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 23;
-				DEVELOPMENT_TEAM = L9D5M5DM3Y;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 2022060302;
+				DEVELOPMENT_TEAM = PLJU22T9YZ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -2162,6 +2167,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BeMyPlan/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "비마이플랜";
+				INFOPLIST_KEY_NSLocationUsageDescription = "지도 데이터를 표기하기 위해 사용자의 위치정보가 필요합니다.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "지도 데이터를 표기하기 위해 사용자의 위치정보가 필요합니다.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "사진을 저장하기 위해 사용자의 갤러리 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -2173,9 +2181,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.release.BeMyPlan;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.BeMyPlan.release;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = BeMyPlan_develop_colours;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "BeMyPlan-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -2190,9 +2199,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = BeMyPlan/BeMyPlan.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 23;
-				DEVELOPMENT_TEAM = L9D5M5DM3Y;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 2022060302;
+				DEVELOPMENT_TEAM = PLJU22T9YZ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -2201,6 +2211,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BeMyPlan/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "비마이플랜";
+				INFOPLIST_KEY_NSLocationUsageDescription = "지도 데이터를 표기하기 위해 사용자의 위치정보가 필요합니다.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "지도 데이터를 표기하기 위해 사용자의 위치정보가 필요합니다.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "사진을 저장하기 위해 사용자의 갤러리 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -2212,9 +2225,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.release.BeMyPlan;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.BeMyPlan.release;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = BeMyPlan_distribution_provisioning;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "BeMyPlan-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;

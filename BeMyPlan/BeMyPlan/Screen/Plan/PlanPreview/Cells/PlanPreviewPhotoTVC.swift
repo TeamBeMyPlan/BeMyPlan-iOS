@@ -7,6 +7,7 @@
 
 import UIKit
 import SkeletonView
+import Kingfisher
 
 class PlanPreviewPhotoTVC: UITableViewCell {
   
@@ -39,6 +40,12 @@ class PlanPreviewPhotoTVC: UITableViewCell {
     setSkeletonUI()
   }
   
+  override func prepareForReuse() {
+    contentImageView.kf.cancelDownloadTask() // first, cancel currenct download task
+    contentImageView.image = nil
+    setSkeletonUI()
+  }
+  
   override func setSelected(_ selected: Bool, animated: Bool) {
     super.setSelected(selected, animated: animated)
     
@@ -57,7 +64,8 @@ class PlanPreviewPhotoTVC: UITableViewCell {
   }
   
   func setPhotoData(_ data : PlanPreview.PhotoData,_ cachedHeight: CGFloat = 0){
-    makeShortContent(content: data.content)
+    contentTextView.text = data.content
+    textViewHeightConstraint.constant = makeTextHeight(data.content)
     
     switch(data.height.case){
       case .valueExist:
@@ -76,9 +84,8 @@ class PlanPreviewPhotoTVC: UITableViewCell {
     contentImageView.setImage(with: data.photoUrl) { image in
       let height = self.makeImageHeight(image)
       
-      
       DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-        self.contentImageView.hideSkeleton(reloadDataAfter: false, transition: .crossDissolve(1))
+        self.contentImageView.hideSkeleton(reloadDataAfter: false, transition: .crossDissolve(0.6))
         print("--------------------")
         print("셀 내에서 계삳ㄴ된 높이",height)
         print("밖에서 꽂아준 height ",data.height.value)
@@ -97,12 +104,25 @@ class PlanPreviewPhotoTVC: UITableViewCell {
     }
   }
   
-  private func makeShortContent(content: String){
-    if content.count < 100{
-      contentTextView.text = content
-    }else{
-      contentTextView.text = content.prefix(99) + "..."
-    }
+
+  
+  private func makeTextHeight(_ text: String) -> CGFloat{
+    return calculateTextViewHeight(width: screenWidth - 48,
+                                   font: .systemFont(ofSize: 14),
+                                   lineHeightMultiple: 1.31, text: text)
+  }
+  
+  private func calculateTextViewHeight(width: CGFloat,font: UIFont, lineHeightMultiple: CGFloat, text: String) -> CGFloat {
+    let mockTextView = UITextView()
+    let newSize = CGSize(width: width, height: CGFloat.infinity)
+    mockTextView.textContainerInset = .zero
+    mockTextView.textContainer.lineFragmentPadding = 0
+    mockTextView.setTextWithLineHeight(text: text, lineHeightMultiple: lineHeightMultiple)
+    mockTextView.isScrollEnabled = false
+    mockTextView.translatesAutoresizingMaskIntoConstraints = false
+    mockTextView.font = font
+    let estimatedSize = mockTextView.sizeThatFits(newSize)
+    return estimatedSize.height + 20
   }
   
   private func makeImageHeight(_ image: UIImage?) -> CGFloat {

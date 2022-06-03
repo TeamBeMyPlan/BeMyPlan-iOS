@@ -15,8 +15,6 @@ extension PlanDetailViewModel {
     setSummaryList()
     setInfoList()
     completion()
-
-    
   }
   
   private func makeHeaderDummyData(){

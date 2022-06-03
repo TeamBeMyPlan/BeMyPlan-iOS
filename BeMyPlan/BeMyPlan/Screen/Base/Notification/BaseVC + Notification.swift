@@ -79,9 +79,16 @@ extension BaseVC{
     // Home
     
     addObserverAction(.movePlanPreview) { noti in
-      if let index = noti.object as? Int{
-        let vc = ModuleFactory.resolve().instantiatePlanPreviewVC(postID: index)
-        self.navigationController?.pushViewController(vc, animated: true)
+      if let state = noti.object as? PlanPreviewStateModel{
+        if state.isPurchased {
+          let detailVC = ModuleFactory.resolve().instantiatePlanDetailVC(postID: state.planId)
+          self.navigationController?.pushViewController(detailVC, animated: true)
+        } else {
+          let vc = ModuleFactory.resolve().instantiatePlanPreviewVC(postID: state.planId,
+                                                                    scrapState: state.scrapState)
+          self.navigationController?.pushViewController(vc, animated: true)
+        }
+
       }
     }
     

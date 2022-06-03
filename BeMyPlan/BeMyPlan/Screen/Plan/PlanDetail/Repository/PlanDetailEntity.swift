@@ -8,32 +8,44 @@
 import Foundation
 
 struct PlanDetailDataEntity: Codable {
-  let author, title: String
-  let spots: [[PlanDetailDataEntity.SpotData?]]
-  let totalDays: Int
-  let authorID : Int
-  
-  enum CodingKeys: String, CodingKey {
-    case authorID = "author_id"
-    case author, title, spots
-    case totalDays = "total_days"
-  }
-  
-  // MARK: - Spot
-  struct SpotData: Codable {
-    let title, spotDescription: String
-    let photoUrls: [String]
-    let address: String
-    let latitude, longitude: Double
-    let nextSpotMobility, nextSpotRequiredTime: String
-    
+    let createdAt, updatedAt: String
+    let planID: Int
+    let title: String
+    let user: User
+    let contents: [Content]
+
     enum CodingKeys: String, CodingKey {
-      case title
-      case spotDescription = "description"
-      case photoUrls = "photo_urls"
-      case address, latitude, longitude
-      case nextSpotMobility = "next_spot_mobility"
-      case nextSpotRequiredTime = "next_spot_required_time"
+        case createdAt, updatedAt
+        case planID = "planId"
+        case title, user, contents
     }
-  }
 }
+
+// MARK: - Content
+struct Content: Codable {
+    let spots: [Spot]
+}
+
+// MARK: - Spot
+struct Spot: Codable {
+    let createdAt, updatedAt: String
+    let name: String
+    let latitude, longitude: Double
+    let tip, review: String
+    let images: [PlanDetailImage]
+}
+
+
+// MARK: - Image
+struct PlanDetailImage: Codable {
+    let createdAt, updatedAt: String
+    let imageID: Int
+    let url: String
+
+    enum CodingKeys: String, CodingKey {
+        case createdAt, updatedAt
+        case imageID = "imageId"
+        case url
+    }
+}
+

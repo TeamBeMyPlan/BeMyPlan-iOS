@@ -81,6 +81,30 @@ struct I18N {
 ✔️  다음 장소로 이동할 때의 교통편
 """
     }
+    
+    struct Theme {
+      static let activity = "액티비티"
+      static let camping = "캠핑"
+      static let eating = "먹방"
+      static let healing = "힐링"
+      static let hotplacing = "핫플"
+      static let lifeshot = "인생샷"
+      static let local = "로컬"
+    }
+    
+    struct Partner {
+      static let couple = "커플"
+      static let family = "가족"
+      static let friend = "친구"
+      static let solo = "혼자"
+    }
+    
+    struct Mobility {
+      static let bicycle = "자전거"
+      static let car = "차량"
+      static let `public` = "대중교통"
+      static let walk = "도보"
+    }
   }
   
   struct MyPlan{

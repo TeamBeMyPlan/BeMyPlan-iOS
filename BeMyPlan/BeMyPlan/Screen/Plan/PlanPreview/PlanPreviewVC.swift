@@ -18,11 +18,7 @@ class PlanPreviewVC: UIViewController {
   private var isAnimationProceed: Bool = false
   private var lastContentOffset : CGFloat = 0
   private let disposeBag = DisposeBag()
-  private var isScrabed : Bool = false{
-    didSet{
-      setScrabImage()
-    }
-  }
+  var scrapState : Bool = false
   var idx : Int = 29
 
   var viewModel : PlanPreviewViewModel!
@@ -54,7 +50,10 @@ class PlanPreviewVC: UIViewController {
     setScrabImage()
     addButtonActions()
     bindViewModels()
+    bindTableView()
+    setScrabImage()
   }
+
   @IBAction func backButtonClicked(_ sender: Any) {
     self.navigationController?.popViewController(animated: true)
   }
@@ -136,16 +135,32 @@ class PlanPreviewVC: UIViewController {
           self?.priceLabel.text = (price != nil) ? "\(price!)원" : ""
       })
       .disposed(by: disposeBag)
+    
+    output.contentTitle
+      .asDriver(onErrorJustReturn: "")
+      .filter{ $0 != nil}
+      .drive( onNext: { [weak self] headerTitle in
+        self?.headerTitleLabel.text = headerTitle!
+      })
+      .disposed(by: self.disposeBag)
   }
  
   private func addButtonActions(){
     scrabButton.press {
-      self.isScrabed = !self.isScrabed
+      self.postScrapAction()
     }
     
     buyButton.press {
 //      self.viewModel.clickBuyButton()
     }
+  }
+  
+  private func bindTableView() {
+    previewContentTV.rx.contentOffset
+      .filter { $0 != nil }
+      .subscribe {
+        self.setYPosition($0.element!.y)
+    }.disposed(by: self.disposeBag)
   }
   
   private func movePaymentView() {
@@ -159,32 +174,42 @@ class PlanPreviewVC: UIViewController {
     postObserverAction(.moveNicknamePlanList, object: data)
   }
   
-  private func setScrabImage(){
-    scrabIconImageView.image = isScrabed ? ImageLiterals.Preview.scrabIconSelected : ImageLiterals.Preview.scrabIcon
+  private func setScrabImage() {
+    scrabIconImageView.image = scrapState ? ImageLiterals.Preview.scrabIconSelected : ImageLiterals.Preview.scrabIcon
   }
+  
+  private func postScrapAction() {
+    let dto = ScrapRequestDTO(planID: idx,
+                              scrapState: scrapState)
+    postObserverAction(.scrapButtonClicked, object: dto)
+    scrapState.toggle()
+    setScrabImage()
+  }
+  
+  
 }
 // MARK: - Extension Part
 
-extension PlanPreviewVC : UIScrollViewDelegate{
-  func scrollViewDidScroll(_ scrollView: UIScrollView) {
+extension PlanPreviewVC{
+  func setYPosition(_ yPos: CGFloat) {
 
-    if scrollView.contentOffset.y > 127{
+    if yPos > 127{
       headerTitleLabel.alpha = 1
     }else{
       headerTitleLabel.alpha = 0
     }
     
-    if lastContentOffset > scrollView.contentOffset.y && lastContentOffset - 40 < scrollView.contentSize.height - scrollView.frame.height {
+    if lastContentOffset > yPos && lastContentOffset - 40 < previewContentTV.contentSize.height - previewContentTV.frame.height {
       moveBuyContainer(state: .show)
-    } else if lastContentOffset < scrollView.contentOffset.y && scrollView.contentOffset.y > 0 {
+    } else if lastContentOffset < yPos && yPos > 0 {
       
-      if (scrollView.contentOffset.y >= (scrollView.contentSize.height - scrollView.frame.size.height)) {
+      if (yPos >= (previewContentTV.contentSize.height - previewContentTV.frame.size.height)) {
         moveBuyContainer(state: .show)
       }else{
         moveBuyContainer(state: .hide)
       }
     }
-    lastContentOffset = scrollView.contentOffset.y
+    lastContentOffset = yPos
   }
   
   private func moveBuyContainer(state : ViewState){

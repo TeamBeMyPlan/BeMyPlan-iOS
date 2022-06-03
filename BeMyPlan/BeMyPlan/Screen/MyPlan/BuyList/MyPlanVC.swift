@@ -71,6 +71,7 @@ class MyPlanVC: UIViewController {
       result.success { [weak self] entity in
         guard let entity = entity else { return }
         self?.buyContentList = entity.contents
+        self?.mainContentCV.reloadData()
       }.catch { error in
         dump(error)
       }
@@ -85,7 +86,6 @@ class MyPlanVC: UIViewController {
   private func registerObserverActions() {
     addObserverAction(.changeCurrentTab) { [weak self] noti in
       if let index = noti.object as? TabList {
-
         if index == .myPlan  && self?.isInitial == false {
           self?.fetchBuyList()
         }

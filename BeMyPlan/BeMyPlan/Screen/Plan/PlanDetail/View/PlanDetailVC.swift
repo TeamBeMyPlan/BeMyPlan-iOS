@@ -7,6 +7,7 @@
 
 import UIKit
 import ImageSlideShowSwift
+import SkeletonView
 
 class PlanDetailVC: UIViewController {
   
@@ -58,6 +59,7 @@ class PlanDetailVC: UIViewController {
       registerCells()
       bindViewModel()
       addObserver()
+      setSkeletonView()
       viewModel.viewDidLoad()
     }
   
@@ -167,6 +169,10 @@ class PlanDetailVC: UIViewController {
     mapContainerView.currentDay = self.viewModel.currentDay
   }
   
+  private func setSkeletonView() {
+    mainContainerTV.isSkeletonable = true
+  }
+  
   private func foldContentTableView(){
     if viewModel.isFullPage {
       headerTitleLabel.isHidden = false
@@ -228,6 +234,9 @@ extension PlanDetailVC : UITableViewDataSource{
         default:
           guard informationCellViewModels.count >= indexPath.row else {return UITableViewCell() }
          guard let infoCell = tableView.dequeueReusableCell(withIdentifier: PlanDetailInformationTVC.className, for: indexPath) as? PlanDetailInformationTVC else {return UITableViewCell() }
+          if indexPath.row != self.informationCellViewModels.count {
+            infoCell.nextLocationName = self.informationCellViewModels[indexPath.row].title
+          }
           infoCell.viewModel = self.informationCellViewModels[indexPath.row - 1]
           infoCell.clickImageClosure = { [weak self] idx,urls in
             self?.viewModel.clickPhotos(index: idx, urls: urls)

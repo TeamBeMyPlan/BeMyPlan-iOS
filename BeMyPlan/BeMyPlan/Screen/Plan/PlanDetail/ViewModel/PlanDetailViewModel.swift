@@ -121,6 +121,7 @@ extension PlanDetailViewModel {
   
   func clickPhotos(index: Int,urls: [String]){
     let images = urls.enumerated().map { index,url in
+
       ImageForSlide(title: "\(index+1)/\(urls.count)", url: URL(string: url)!)
     }
     showImageSlide?(index,images)
@@ -164,13 +165,14 @@ extension PlanDetailViewModel {
             mapPointList.append(PlanDetailMapData.init(title: dayData.title,
                                                        latitude: dayData.latitude,
                                                        longtitude: dayData.longitude))
-            
             let summary = PlanDetail.Summary.init(transportCase: self.makeTransportCase(mobilityName: dayData.nextSpotMobility),
                                                   locationName: dayData.title,
-                                                  time: dayData.nextSpotRequiredTime)
+                                                  time: dayData.nextSpotRequiredTime + "분")
             summaryList.append(summary)
             infoList.append(PlanDetail.SpotData(locationTitle: dayData.title,
-                                                address: dayData.address,
+                                                address: "",
+                                                latitude: dayData.latitude,
+                                                longtitude: dayData.longitude,
                                                 imagerUrls: dayData.photoUrls,
                                                 textContent: dayData.spotDescription,
                                                 nextLocationData: summary))
@@ -181,16 +183,16 @@ extension PlanDetailViewModel {
         self.summaryList.append(summaryList)
         self.infoList.append(infoList)
       }
-      print("END333")
       completion()
     }
   }
   
   private func makeTransportCase(mobilityName : String) -> TransportCase{
     switch(mobilityName){
-      case "도보" : return .walk
-      case "지하철","버스","지하철타고가요" : return .bus
-      default : return .car
+      case "WALK"   : return .walk
+      case "CAR"    : return .car
+      case "PUBLIC" : return .bus
+      default : return .bus
     }
   }
   
@@ -222,8 +224,6 @@ extension PlanDetailViewModel {
   }
   
 }
-
-
 extension PlanDetailViewModel {
 
   func makeDaySelectViewModel(day: Int) -> PlanDetailSelectDayViewModel {
@@ -248,8 +248,10 @@ extension PlanDetailViewModel {
   func makeInformationViewModelList(day: Int) -> [PlanDetailInformationViewModel] {
     let spotData = infoList[day-1]
     let viewModel = spotData.enumerated().map { index,data in
+      
       PlanDetailInformationViewModel.init(title: data.locationTitle,
-                                          address: data.address,
+                                          latitude: data.latitude ?? 0,
+                                          longtitude: data.longtitude ?? 0,
                                           imgUrls: data.imagerUrls,
                                           content: data.textContent,
                                           transport: data.nextLocationData?.transportCase,

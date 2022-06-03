@@ -28,9 +28,7 @@ enum BaseAPI{
 
   // MARK: - 지훈
   case deleteUserWithdraw
-  case getPlanPreviewHeaderData(idx : Int)
-  case getPlanPreviewData(idx : Int)
-  case getPlanDetailData(idx : Int)
+
   
   // MARK: - HomeList
   case getHomeOrderList // (최상단 부분, 구매순 정렬)
@@ -44,6 +42,9 @@ enum BaseAPI{
 	
 	// MARK: - MyPlan
 	case getBuyList
+	
+	// MARK: - Order
+	case postOrderPlan(postId: Int)
 
 	
 	// MARK: - Plan List + Paging
@@ -51,7 +52,11 @@ enum BaseAPI{
 	case getBemyPlanListWithPaging(lastPlanID: Int?)
 	case getSpotPlanListWithPaging(spotName: String, lastPlanID: Int?,sortCase: String)
 	case getUserPlanListWithPaging(userID: Int, lastPlanID: Int?,sortCase: String)
-
+	
+	// MARK: - Plan Preview, Detail
+	case getPlanPreviewData(idx : Int)
+	case getPlanDetailData(idx : Int)
+	case getPlanDetailTransportData(idx: Int)
 }
 
 extension BaseAPI: TargetType {
@@ -77,8 +82,8 @@ extension BaseAPI: TargetType {
       case .getBuyList:
         base += "/plan/orders"
       
-    case .getPopularTravelList, .getNewTravelList, .getSuggestTravelList, .getRecentTripList, .getPlanPreviewHeaderData,
-        .getPlanPreviewData, .getPlanDetailData:
+    case .getPopularTravelList, .getNewTravelList, .getSuggestTravelList, .getRecentTripList
+        :
       base += "/post"
       
     case .getTravelSpotList:
@@ -110,9 +115,9 @@ extension BaseAPI: TargetType {
 						.getUserPlanListWithPaging,
 					  .getBemyPlanListWithPaging:
 			base += "/plans"
-		
-
-        
+					
+				case .getPlanPreviewData,.getPlanDetailData, .getPlanDetailTransportData,.postOrderPlan :
+				base += "/plan"
       }
     guard let url = URL(string: base) else {
       fatalError("baseURL could not be configured")
@@ -134,8 +139,6 @@ extension BaseAPI: TargetType {
 
     case .deleteUserWithdraw:
       return "/withdraw"
-    case .getPlanPreviewHeaderData(let idx):
-      return "/\(idx)/preview/tag"
     case .getPlanPreviewData(let idx):
       return "/\(idx)/preview"
     case .getTravelSpotDetailList(let areaID,_,_,_):
@@ -155,6 +158,8 @@ extension BaseAPI: TargetType {
       return "/suggest"
     case .getPlanDetailData(let idx):
       return "/\(idx)"
+		case .getPlanDetailTransportData(let idx):
+			return "/\(idx)/moveInfo"
     case .postSocialLogin:
       return "/login"
     case .postSocialSignUp:
@@ -163,6 +168,8 @@ extension BaseAPI: TargetType {
       return "/check/nickname"
 			case .getHomeBemyPlanList,.getBemyPlanListWithPaging:
         return "/bemyplanPick"
+			case .postOrderPlan:
+				return "/order"
     default :
       return ""
     }
@@ -173,7 +180,7 @@ extension BaseAPI: TargetType {
   ///  각 case 별로 get,post,delete,put 인지 정의합니다.
   var method: Moya.Method {
     switch self{
-    case .sampleAPI, .postScrap, .postSocialLogin, .postSocialSignUp, .postNickNameCheck:
+			case .sampleAPI, .postScrap, .postSocialLogin, .postSocialSignUp, .postNickNameCheck,.postOrderPlan:
       return .post
 			case .deleteUserWithdraw,.deleteScrap:
       return .delete
@@ -290,6 +297,8 @@ extension BaseAPI: TargetType {
 				if let id = lastPlanID {
 					params["lastPlanId"] = id
 				}
+			case .postOrderPlan(let planID) :
+				params["planId"] = planID
     default:
       break
       
@@ -346,7 +355,7 @@ extension BaseAPI: TargetType {
 					.postNickNameCheck,.getHomeOrderList,.getHomeRecentlyList,
 					.getHomeBemyPlanList,.getBuyList,.getRecentlyListWithPaging,
 					.getSpotPlanListWithPaging,.getUserPlanListWithPaging,
-					 .getBemyPlanListWithPaging:
+					.getBemyPlanListWithPaging,.postOrderPlan:
       return .requestParameters(parameters: bodyParameters ?? [:], encoding: parameterEncoding)
     default:
       return .requestPlain
