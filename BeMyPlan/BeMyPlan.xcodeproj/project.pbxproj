@@ -194,7 +194,6 @@
 		FD958A3327E0D7B500264EE4 /* ImageSizeFetcherOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD958A3227E0D7B500264EE4 /* ImageSizeFetcherOperation.swift */; };
 		FD958A3527E0D81700264EE4 /* ImageSizeFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD958A3427E0D81700264EE4 /* ImageSizeFetcher.swift */; };
 		FD958A3727E0D88300264EE4 /* ImageSizeFetcherParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD958A3627E0D88300264EE4 /* ImageSizeFetcherParser.swift */; };
-		FDA2062D27C40FCC001A371D /* PlanDetailVC + fetchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA2062927C40FCC001A371D /* PlanDetailVC + fetchData.swift */; };
 		FDA2062E27C40FCC001A371D /* PlanDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA2062A27C40FCC001A371D /* PlanDetailVC.swift */; };
 		FDA2062F27C40FCC001A371D /* PlanDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDA2062B27C40FCC001A371D /* PlanDetail.storyboard */; };
 		FDA2063027C40FCC001A371D /* PlanDetailViewModel + setPreviewDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA2062C27C40FCC001A371D /* PlanDetailViewModel + setPreviewDummy.swift */; };
@@ -478,7 +477,6 @@
 		FD958A3227E0D7B500264EE4 /* ImageSizeFetcherOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSizeFetcherOperation.swift; sourceTree = "<group>"; };
 		FD958A3427E0D81700264EE4 /* ImageSizeFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSizeFetcher.swift; sourceTree = "<group>"; };
 		FD958A3627E0D88300264EE4 /* ImageSizeFetcherParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSizeFetcherParser.swift; sourceTree = "<group>"; };
-		FDA2062927C40FCC001A371D /* PlanDetailVC + fetchData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PlanDetailVC + fetchData.swift"; sourceTree = "<group>"; };
 		FDA2062A27C40FCC001A371D /* PlanDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanDetailVC.swift; sourceTree = "<group>"; };
 		FDA2062B27C40FCC001A371D /* PlanDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PlanDetail.storyboard; sourceTree = "<group>"; };
 		FDA2062C27C40FCC001A371D /* PlanDetailViewModel + setPreviewDummy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PlanDetailViewModel + setPreviewDummy.swift"; sourceTree = "<group>"; };
@@ -1423,7 +1421,6 @@
 		FDA2062827C40FCC001A371D /* View */ = {
 			isa = PBXGroup;
 			children = (
-				FDA2062927C40FCC001A371D /* PlanDetailVC + fetchData.swift */,
 				FDA2062A27C40FCC001A371D /* PlanDetailVC.swift */,
 				FDA2062B27C40FCC001A371D /* PlanDetail.storyboard */,
 			);
@@ -1984,7 +1981,6 @@
 				52E26A8D278C17A800D84F0C /* TravelSpotFilterVC.swift in Sources */,
 				FD2D4DCC278D8636002084B9 /* drawDashedLine + UIView.swift in Sources */,
 				F273216F278BEB7700A9B0CC /* MainCardCarouselLayout.swift in Sources */,
-				FDA2062D27C40FCC001A371D /* PlanDetailVC + fetchData.swift in Sources */,
 				FD2D9C5C2797DC4B00688A42 /* PlanDetailMapContainerView.swift in Sources */,
 				FDF7FED227A7E2B900E3AB62 /* BaseCoordinator.swift in Sources */,
 				FD09DE092785797B006DA050 /* addToolBar.swift in Sources */,

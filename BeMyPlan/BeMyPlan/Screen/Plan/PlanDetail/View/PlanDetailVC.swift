@@ -7,6 +7,7 @@
 
 import UIKit
 import ImageSlideShowSwift
+import SkeletonView
 
 class PlanDetailVC: UIViewController {
   
@@ -58,6 +59,7 @@ class PlanDetailVC: UIViewController {
       registerCells()
       bindViewModel()
       addObserver()
+      setSkeletonView()
       viewModel.viewDidLoad()
     }
   
@@ -165,6 +167,10 @@ class PlanDetailVC: UIViewController {
   func setMapContainerView(){
     mapContainerView.mapPointList = self.viewModel.locationList
     mapContainerView.currentDay = self.viewModel.currentDay
+  }
+  
+  private func setSkeletonView() {
+    mainContainerTV.isSkeletonable = true
   }
   
   private func foldContentTableView(){

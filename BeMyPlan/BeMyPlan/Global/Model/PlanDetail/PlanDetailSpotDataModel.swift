@@ -9,10 +9,12 @@ import Foundation
 
 extension PlanDetail{
   struct SpotData{
-    var locationTitle : String
-    var address : String
-    var imagerUrls :[String]
-    var textContent : String
-    var nextLocationData : PlanDetail.Summary?
+    let locationTitle : String
+    let address: String
+    var latitude : Double? = nil
+    var longtitude: Double? = nil
+    let imagerUrls :[String]
+    let textContent : String
+    let nextLocationData : PlanDetail.Summary?
   }
 }

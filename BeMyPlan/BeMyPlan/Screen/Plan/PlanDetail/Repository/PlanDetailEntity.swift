@@ -32,12 +32,12 @@ struct Spot: Codable {
     let name: String
     let latitude, longitude: Double
     let tip, review: String
-    let images: [Image]
+    let images: [PlanDetailImage]
 }
 
 
 // MARK: - Image
-struct Image: Codable {
+struct PlanDetailImage: Codable {
     let createdAt, updatedAt: String
     let imageID: Int
     let url: String

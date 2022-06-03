@@ -60,8 +60,6 @@ protocol ModuleFactoryProtocol {
 
 class ModuleFactory: ModuleFactoryProtocol{
 
-  
-
   static func resolve() -> ModuleFactory {
     return ModuleFactory()
   }
@@ -182,7 +180,6 @@ class ModuleFactory: ModuleFactoryProtocol{
     vc.viewModel = viewModel
     return vc
   }
-  
   
   // MARK: - Indicator
   func instantiateIndicatorVC() -> IndicatorVC{

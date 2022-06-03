@@ -28,8 +28,7 @@ enum BaseAPI{
 
   // MARK: - 지훈
   case deleteUserWithdraw
-  case getPlanPreviewData(idx : Int)
-  case getPlanDetailData(idx : Int)
+
   
   // MARK: - HomeList
   case getHomeOrderList // (최상단 부분, 구매순 정렬)
@@ -50,7 +49,11 @@ enum BaseAPI{
 	case getBemyPlanListWithPaging(lastPlanID: Int?)
 	case getSpotPlanListWithPaging(spotName: String, lastPlanID: Int?,sortCase: String)
 	case getUserPlanListWithPaging(userID: Int, lastPlanID: Int?,sortCase: String)
-
+	
+	// MARK: - Plan Preview, Detail
+	case getPlanPreviewData(idx : Int)
+	case getPlanDetailData(idx : Int)
+	case getPlanDetailTransportData(idx: Int)
 }
 
 extension BaseAPI: TargetType {
@@ -77,7 +80,7 @@ extension BaseAPI: TargetType {
         base += "/plan/orders"
       
     case .getPopularTravelList, .getNewTravelList, .getSuggestTravelList, .getRecentTripList
-        , .getPlanDetailData:
+        :
       base += "/post"
       
     case .getTravelSpotList:
@@ -110,9 +113,8 @@ extension BaseAPI: TargetType {
 					  .getBemyPlanListWithPaging:
 			base += "/plans"
 					
-		case .getPlanPreviewData :
+		case .getPlanPreviewData,.getPlanDetailData, .getPlanDetailTransportData :
 				base += "/plan"
-		
       }
     guard let url = URL(string: base) else {
       fatalError("baseURL could not be configured")
@@ -153,6 +155,8 @@ extension BaseAPI: TargetType {
       return "/suggest"
     case .getPlanDetailData(let idx):
       return "/\(idx)"
+		case .getPlanDetailTransportData(let idx):
+			return "/\(idx)/moveInfo"
     case .postSocialLogin:
       return "/login"
     case .postSocialSignUp:
