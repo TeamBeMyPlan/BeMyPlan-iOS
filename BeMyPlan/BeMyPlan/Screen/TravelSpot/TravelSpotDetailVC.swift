@@ -258,7 +258,8 @@ extension TravelSpotDetailVC: UITableViewDelegate {
     //    AppLog.log(at: FirebaseAnalyticsProvider.self, .clickTravelPlan(source: .planListView,
     //                                                                    postIdx:  String(planDataList[indexPath.row].id)))
     let stateModel = PlanPreviewStateModel(scrapState: planDataList[indexPath.row].scrapStatus,
-                                           planId: planDataList[indexPath.row].planID)
+                                           planId: planDataList[indexPath.row].planID,
+                                           isPurchased: planDataList[indexPath.row].orderStatus)
     postObserverAction(.movePlanPreview,object: stateModel)
   }
 }

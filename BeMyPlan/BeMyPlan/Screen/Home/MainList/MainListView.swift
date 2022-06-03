@@ -144,7 +144,9 @@ extension MainListView : SkeletonCollectionViewDelegate{
                                                                     postIdx:  String(mainListDataList[indexPath.row].planID)))
     
     let stateModel = PlanPreviewStateModel(scrapState: mainListDataList[indexPath.row].scrapStatus,
-                                           planId: mainListDataList[indexPath.row].planID)
+                                           planId: mainListDataList[indexPath.row].planID,
+                                           isPurchased: mainListDataList[indexPath.row].orderStatus)
+
     postObserverAction(.movePlanPreview,object: stateModel)
   }
 }

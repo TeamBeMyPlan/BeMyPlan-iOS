@@ -117,4 +117,5 @@ extension PlanPreviewViewModel{
 struct PlanPreviewStateModel {
   let scrapState: Bool
   let planId: Int
+  let isPurchased: Bool
 }

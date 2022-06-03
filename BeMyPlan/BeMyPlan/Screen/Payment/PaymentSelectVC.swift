@@ -77,8 +77,15 @@ class PaymentSelectVC: UIViewController {
   
   @IBAction func paymentButtonClicked(_ sender: Any) {
     if selectedIndex != -1{
-      AppLog.log(at: FirebaseAnalyticsProvider.self, .clickPaymentButton(postIdx: String(paymentData.postIdx)))
-      showEventPopup()
+      BaseService.default.postOrderPlan(planIdx: self.paymentData.postIdx) { result in
+        result.success { _ in
+          AppLog.log(at: FirebaseAnalyticsProvider.self, .clickPaymentButton(postIdx: String(self.paymentData.postIdx)))
+          self.showEventPopup()
+        }.catch { _ in
+          self.postObserverAction(.showNetworkError)
+        }
+      }
+
     }
  
   }

@@ -102,7 +102,8 @@ extension MainCardView : SkeletonCollectionViewDelegate{
     AppLog.log(at: FirebaseAnalyticsProvider.self, .clickTravelPlan(source: .homeView,
                                                                     postIdx:  String(popularList[indexPath.row].planID)))
     let stateModel = PlanPreviewStateModel(scrapState: popularList[indexPath.row].scrapStatus,
-                                           planId: popularList[indexPath.row].planID)
+                                           planId: popularList[indexPath.row].planID,
+                                           isPurchased: popularList[indexPath.row].orderStatus)
     postObserverAction(.movePlanPreview,object: stateModel)
   }
 }

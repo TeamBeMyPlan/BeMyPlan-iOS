@@ -91,7 +91,8 @@ extension ScrapEmptyContainerView : UICollectionViewDelegate{
     AppLog.log(at: FirebaseAnalyticsProvider.self, .clickTravelPlan(source: .scrapRecommendView,
                                                                     postIdx:  String(contentDataList[indexPath.row].planID)))
     let stateModel = PlanPreviewStateModel(scrapState: contentDataList[indexPath.row].scrapStatus,
-                                           planId: contentDataList[indexPath.row].planID)
+                                           planId: contentDataList[indexPath.row].planID,
+                                           isPurchased: contentDataList[indexPath.row].orderStatus)
     postObserverAction(.movePlanPreview,object: stateModel)
   }
 }

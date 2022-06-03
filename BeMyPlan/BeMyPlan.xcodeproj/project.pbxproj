@@ -44,6 +44,7 @@
 		FD008829278FE94C00C194B5 /* PlanDetailInfoPhotoCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD008827278FE94C00C194B5 /* PlanDetailInfoPhotoCVC.swift */; };
 		FD00882A278FE94C00C194B5 /* PlanDetailInfoPhotoCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD008828278FE94C00C194B5 /* PlanDetailInfoPhotoCVC.xib */; };
 		FD00882F278FF1EF00C194B5 /* PlanDetailWriterContainerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD00882D278FF1EF00C194B5 /* PlanDetailWriterContainerView.xib */; };
+		FD0562BC2849F7CF0027832A /* OrderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD0562BB2849F7CF0027832A /* OrderService.swift */; };
 		FD09DD5127855E33006DA050 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FD09DD5027855E32006DA050 /* GoogleService-Info.plist */; };
 		FD09DD9827856387006DA050 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD09DD9727856387006DA050 /* SystemConfiguration.framework */; };
 		FD09DD9A27856394006DA050 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD09DD9927856394006DA050 /* CoreLocation.framework */; };
@@ -312,6 +313,7 @@
 		FD008827278FE94C00C194B5 /* PlanDetailInfoPhotoCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDetailInfoPhotoCVC.swift; sourceTree = "<group>"; };
 		FD008828278FE94C00C194B5 /* PlanDetailInfoPhotoCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanDetailInfoPhotoCVC.xib; sourceTree = "<group>"; };
 		FD00882D278FF1EF00C194B5 /* PlanDetailWriterContainerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanDetailWriterContainerView.xib; sourceTree = "<group>"; };
+		FD0562BB2849F7CF0027832A /* OrderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderService.swift; sourceTree = "<group>"; };
 		FD09DD5027855E32006DA050 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FD09DD9527856377006DA050 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		FD09DD9727856387006DA050 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -837,6 +839,7 @@
 				523C70FE2799DCC10073371D /* ScrapEmptyService.swift */,
 				F25044092799CFEB00791AB7 /* AuthService.swift */,
 				FD5100C62848A35B0037AC8E /* PlanListService.swift */,
+				FD0562BB2849F7CF0027832A /* OrderService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -1955,6 +1958,7 @@
 				FD3566552792AFCD0082B4CE /* PlanDetailSelectDayView.swift in Sources */,
 				FD35664B2792AF2C0082B4CE /* ScrapVC.swift in Sources */,
 				FD09DDF3278577F4006DA050 /* BaseAPI.swift in Sources */,
+				FD0562BC2849F7CF0027832A /* OrderService.swift in Sources */,
 				FD35664F2792AF2C0082B4CE /* ScrapContainerCVC.swift in Sources */,
 				FDF981062788D4C00009A14E /* PlanPreviewPhotoTVC.swift in Sources */,
 				FD1A78262795DA7100FB10AB /* showNetworkErr + UIViewController.swift in Sources */,
@@ -2177,7 +2181,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.BeMyPlan.release;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = BeMyPlan_develop_colours;
@@ -2221,7 +2225,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.BeMyPlan.release;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = BeMyPlan_distribution_provisioning;
