@@ -17,12 +17,10 @@ enum nicknameStatus{
 class SignUpNicknameVC: UIViewController {
   
   // MARK: - Vars & Lets Part
-  var delegate : SignupDelegate?
   var userToken : String = ""
   var socialType : String = ""
-  var time: Float = 0.0
   var timer: Timer?
-  
+  var time: Float = 0
   
   private var isNicknameValid : Bool = false {
     didSet {
@@ -38,8 +36,8 @@ class SignUpNicknameVC: UIViewController {
       signUpProgressView.progressViewStyle = .bar
       signUpProgressView.progressTintColor = .black
       signUpProgressView.trackTintColor = .grey05
-      DispatchQueue.main.asyncAfter(deadline: .now() + 0.3){
-        self.timer = Timer.scheduledTimer(timeInterval: 0.06, target: self, selector: #selector(self.setProgress), userInfo: nil, repeats: true)
+      DispatchQueue.main.asyncAfter(deadline: .now() + 0.2){
+        self.timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(self.setProgress), userInfo: nil, repeats: true)
       }
     }
   }
@@ -69,6 +67,16 @@ class SignUpNicknameVC: UIViewController {
     //    setBtnStatus()
     setTextField() // 변경되는거 감지 -> 글자수 값, 글자수 제한
     addBtnActions() //다음 버튼을 눌렀을 때, postNickNameData 호출-> 닉네임 중복 체크해서 (1)중복 아니면 postSocialSignUpData 호출해서 Email로 이동? (2) 중복이면 "alert 보이게"
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    if (self.nicknameInputTextField.text?.isEmpty ?? true) {
+      nextBtn.backgroundColor = .grey04
+      nextBtn.isEnabled = false
+    } else {
+      nextBtn.backgroundColor = .bemyBlue
+      nextBtn.isEnabled = true
+    }
   }
   
   
@@ -108,61 +116,6 @@ class SignUpNicknameVC: UIViewController {
       }
     }
   }
-  
-  
-  //  private func checkMaxLabelCount(){
-  //    if let text = nicknameInputTextField.text {
-  //      if text.count > 15 || text.count < 2{ //이 범위 안에 없는
-  //        // 🪓 주어진 인덱스에서 특정 거리만큼 떨어진 인덱스 반환
-  //        // 🪓 문자열 자르기
-  //        self.nextBtn.isEnabled = false
-  //        //        self.nickNameCheckLabel.isHidden = true
-  //
-  //
-  //        nicknameCountLabel.textColor = .alertRed
-  //        nicknameInputTextField.layer.borderWidth = 1
-  //        nicknameInputTextField.layer.cornerRadius = 5
-  //        nicknameInputTextField.layer.borderColor = UIColor.alertRed.cgColor
-  //        isNicknameValid = false
-  //        self.nicknameCheckLabel.isHidden = true
-  //
-  //        if text.count > 15{
-  //          let maxIndex = text.index(text.startIndex, offsetBy: 15)
-  //          let newString = String(text[text.startIndex..<maxIndex])
-  //          nicknameInputTextField.text = newString
-  //        }
-  //        //경고문구..!까지 띄우기
-  //
-  //      }else{ //2글자 이상 15글자 이내
-  //        self.nextBtn.isEnabled = true
-  //
-  //
-  //        if isValidNickname(nickname: nicknameInputTextField.text){ // 성공인 경우
-  //          isNicknameValid = true
-  //          nicknameCountLabel.textColor = .grey03
-  //          nicknameInputTextField.layer.borderWidth = 1
-  //          nicknameInputTextField.layer.cornerRadius = 5
-  //          nicknameInputTextField.layer.borderColor = UIColor.grey04.cgColor
-  //
-  //          self.nicknameCheckLabel.isHidden = true
-  //        }else{
-  //          //if-else
-  //          print("특수문자 여기여기여기")  //문제 ㅁ ,ㅇ ㄹ 외자는 특수문자 아닌데 아래의 alert가 뜸, 특수 문자 등등 정규식 아닌 부분
-  //          nicknameCheckLabel.textColor = .alertRed
-  //          nicknameCheckLabel.text = I18N.SignUp.SpecialChar.errorAlert
-  //          nicknameInputTextField.layer.borderWidth = 1
-  //          nicknameInputTextField.layer.cornerRadius = 5
-  //          nicknameInputTextField.layer.borderColor = UIColor.alertRed.cgColor
-  //          isNicknameValid = false
-  //          self.nicknameCheckLabel.isHidden = false
-  //        }
-  //
-  //        //여기에 if else로
-  //
-  //
-  //      }
-  //    }
-  //  }
   
   private func isValidNickname(nickname: String?) -> nicknameStatus {
     if !checkMaxLabelCount(nickname: nickname) { //글자수
@@ -213,8 +166,8 @@ class SignUpNicknameVC: UIViewController {
       switch(isValidNickname(nickname: nickname)){
       case .countLetterErr:
         //글자수 문제 있을 경우
-        print("글자수")
         self.nextBtn.isEnabled = false
+        nicknameInputTextField.shake()
         nicknameCountLabel.textColor = .alertRed
         nicknameInputTextField.layer.borderWidth = 1
         nicknameInputTextField.layer.cornerRadius = 5
@@ -224,9 +177,9 @@ class SignUpNicknameVC: UIViewController {
         break
         
       case .specialCharErr:
-        print("특수문자")
         self.nextBtn.isEnabled = true
         nicknameCheckLabel.textColor = .alertRed
+        nicknameInputTextField.shake()
         nicknameCheckLabel.text = I18N.SignUp.SpecialChar.errorAlert
         nicknameInputTextField.layer.borderWidth = 1
         nicknameInputTextField.layer.cornerRadius = 5
@@ -236,27 +189,27 @@ class SignUpNicknameVC: UIViewController {
         break
         
       case .strangeCharErr:
-        print("이상한문자 ex)ㅇㄹ")
         self.nextBtn.isEnabled = true
+        nicknameInputTextField.shake()
+
         nicknameCheckLabel.textColor = .alertRed
-        //        nicknameCheckLabel.text = I18N.SignUp.StrangeChar.errorAlert
+        nicknameCheckLabel.text = I18N.SignUp.StrangeChar.errorAlert
         nicknameInputTextField.layer.borderWidth = 1
         nicknameInputTextField.layer.cornerRadius = 5
         nicknameInputTextField.layer.borderColor = UIColor.alertRed.cgColor
         isNicknameValid = false
-        self.nicknameCheckLabel.isHidden = true
+        self.nicknameCheckLabel.isHidden = false
         break
         
         
       case .normal :
         //세팅들
-        print("정상")
         self.nextBtn.isEnabled = true
         isNicknameValid = true
         nicknameCountLabel.textColor = .grey03
         nicknameInputTextField.layer.borderWidth = 1
         nicknameInputTextField.layer.cornerRadius = 5
-        nicknameInputTextField.layer.borderColor = UIColor.grey04.cgColor
+        nicknameInputTextField.layer.borderColor = UIColor.bemyBlue.cgColor
         
         self.nicknameCheckLabel.isHidden = true
         break
@@ -278,8 +231,6 @@ class SignUpNicknameVC: UIViewController {
     cancelBtn.press {
       self.makeAlert(alertCase: .requestAlert, content: "회원가입을 그만두시겠습니까?"){
         self.dismiss(animated: true) {
-          self.delegate?.loginComplete() //BaseVC로 이동
-          print("base로 이동") //제대로 출력됩니당
         }
       }
     }
@@ -288,25 +239,12 @@ class SignUpNicknameVC: UIViewController {
   private func postNickNameData(nickName: String) {
     BaseService.default.postNickNameCheck(nickName: nickName) { result in
       result.success { [weak self] data in
-        if let data = data {
-          
-          if !data.duplicated { // w
-            
-            self?.pushSignUpEmailVC()
-            self?.nextBtn.isEnabled = true //되돌아왔을때 pop 했을때 버튼 비활되어 있어서 다시 true해주기
-            
-          } else { //중복 돠면 중복된 멘트 뜨게 해야하는데
-            // 빨간 테투리 뜨는 걸로
-            self?.nicknameCheckLabel.isHidden = false
-            //회원가입 버튼 비활
-            self?.setBtnStatus()
-            self?.nicknameCheckLabel.text = I18N.SignUp.NickName.errorAlert
-            self?.nicknameInputTextField.layer.borderColor = UIColor.alertRed.cgColor
-          }
-        }
-      }.catch {error in
-        //        self.pushSignUPVC(socialToken: socialToken, socialType: socialType)
-        
+        self?.pushSignUpEmailVC()
+      }.catch { error in
+        self.nicknameCheckLabel.isHidden = false
+        self.setBtnStatus()
+        self.nicknameCheckLabel.text = I18N.SignUp.NickName.errorAlert
+        self.nicknameInputTextField.layer.borderColor = UIColor.alertRed.cgColor
       }
     }
   }

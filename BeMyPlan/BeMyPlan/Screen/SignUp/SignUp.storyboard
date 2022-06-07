@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xho-xP-A1J">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xho-xP-A1J">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -13,7 +13,7 @@
         <!--Sign Up NicknameVC-->
         <scene sceneID="EAf-Pl-9Ib">
             <objects>
-                <viewController storyboardIdentifier="SignUpNickNameVC" id="uUb-ME-v4F" customClass="SignUpNicknameVC" customModule="BeMyPlan" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignUpNicknameVC" id="uUb-ME-v4F" customClass="SignUpNicknameVC" customModule="BeMyPlan" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="u3B-Jd-Xu4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -68,6 +68,7 @@
                                     <constraint firstAttribute="height" constant="88" id="7fU-4L-laf"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="88" id="bVg-Qx-NlM"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="다음"/>
                             </button>
@@ -161,6 +162,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="88" id="pai-lR-TGt"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="다음"/>
                             </button>
@@ -225,6 +227,7 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="88" id="KYa-Pn-WRN"/>
                                     <constraint firstAttribute="height" constant="88" id="W68-eW-Z2n"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="시작하기"/>
                             </button>
@@ -302,6 +305,9 @@
                                         <color key="tintColor" name="grey2"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" backgroundImage="vector"/>
+                                        <connections>
+                                            <action selector="agreeButtonClicked:" destination="fNH-mz-qhR" eventType="touchUpInside" id="O8a-qs-VSR"/>
+                                        </connections>
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="check_off_silver" translatesAutoresizingMaskIntoConstraints="NO" id="vuK-Xk-k9R">
                                         <rect key="frame" x="15" y="69" width="12" height="12"/>
@@ -336,6 +342,9 @@
                                         <color key="tintColor" name="grey2"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" backgroundImage="vector"/>
+                                        <connections>
+                                            <action selector="informationButtonClicked:" destination="fNH-mz-qhR" eventType="touchUpInside" id="XQV-Gh-QDz"/>
+                                        </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fo1-7W-QP0">
                                         <rect key="frame" x="0.0" y="50" width="327" height="1"/>
@@ -741,19 +750,16 @@
             </objects>
             <point key="canvasLocation" x="-348" y="94"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--SignupNC-->
         <scene sceneID="LWI-gl-SKA">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="xho-xP-A1J" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="SignupNC" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="xho-xP-A1J" customClass="SignupNC" customModule="BeMyPlan" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedTopBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="JIL-Gb-04N">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="uUb-ME-v4F" kind="relationship" relationship="rootViewController" id="Raw-IR-Ad1"/>
-                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0CT-FC-htb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

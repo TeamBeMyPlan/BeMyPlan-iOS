@@ -43,6 +43,7 @@ class MyPlanVC: UIViewController {
     setEmptyView()
     setSkeletonOptions()
     fetchBuyList()
+    registerObserverActions()
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -73,6 +74,7 @@ class MyPlanVC: UIViewController {
         self?.buyContentList = entity.contents
         self?.mainContentCV.reloadData()
       }.catch { error in
+        self.buyContentList.removeAll()
         dump(error)
       }
     }
@@ -89,6 +91,16 @@ class MyPlanVC: UIViewController {
         if index == .myPlan  && self?.isInitial == false {
           self?.fetchBuyList()
         }
+      }
+    }
+    
+    addObserverAction(.loginButtonClickedInMyPlan) { _ in
+      self.makeAlert(alertCase: .requestAlert, title: "알림", content: "로그인 페이지로 돌아가시겠습니까?") {
+        UserDefaults.standard.removeObject(forKey: "userSessionID")
+        guard let loginVC = UIStoryboard.list(.login).instantiateViewController(withIdentifier: LoginNC.className) as? LoginNC else {return}
+        loginVC.modalPresentationStyle = .fullScreen
+        AppLog.log(at: FirebaseAnalyticsProvider.self, .logout)
+        self.present(loginVC, animated: false, completion: nil)
       }
     }
 
@@ -127,9 +139,14 @@ extension MyPlanVC: SkeletonCollectionViewDataSource{
   func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
     switch(kind){
       case UICollectionView.elementKindSectionHeader:
-        guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: MyPlanCVUserResuableView.className, for: indexPath) as? MyPlanCVUserResuableView else{ return UICollectionReusableView() }
-        guard let nickname = UserDefaults.standard.string(forKey: "userNickname") else { return headerView }
-        headerView.setData(nickName: nickname, buyCount: buyContentList.count) // 이후 수정필요
+        guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: MyPlanCVUserResuableView.className, for: indexPath) as?
+                MyPlanCVUserResuableView else{ return UICollectionReusableView() }
+        if let _ = UserDefaults.standard.string(forKey: "userSessionID") {
+          guard let nickname = UserDefaults.standard.string(forKey: "userNickname") else { return headerView }
+          headerView.setData(nickName: nickname, buyCount: buyContentList.count) // 이후 수정필요
+        } else {
+          headerView.setData(nickName: "", buyCount: 0,isGuestMode: true) // 이후 수정필요
+        }
         return headerView
       default :
         return UICollectionReusableView()

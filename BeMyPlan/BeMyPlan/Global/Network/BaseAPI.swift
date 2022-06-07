@@ -18,16 +18,17 @@ enum BaseAPI{
   case getNicknameDetailList(userId: Int, page: Int, pageSize: Int?, sort: String)
   
   case postSocialLogin(socialToken: String, socialType: String)
-  case postSocialSignUp(socialToken: String, socialType: String, nickName: String)
-  case postNickNameCheck(nickName: String)
+	case postSocialSignUp(socialToken: String, socialType: String, nickName: String,email: String)
+  case getNickNameCheck(nickName: String)
 
   // MARK: - 양원
   case getTravelSpotList
   case getRecentTripList(page: Int, pageSize: Int)
   case getScrapEmptyList
 
-  // MARK: - 지훈
-  case deleteUserWithdraw
+  // MARK: - Auth
+	case postUserLogout
+	case deleteUserWithdraw(reason: String)
 
   
   // MARK: - HomeList
@@ -89,8 +90,20 @@ extension BaseAPI: TargetType {
     case .getTravelSpotList:
       base += "/plan/regions"
     
-    case .deleteUserWithdraw, .postSocialLogin, .postSocialSignUp, .postNickNameCheck:
-      base += "/auth"
+		case .postUserLogout:
+			base += "/logout"
+					
+    case  .postSocialLogin:
+      base += "/login"
+					
+		case .deleteUserWithdraw:
+			base += "/signout"
+					
+		case .postSocialSignUp:
+			base += "/signup"
+		
+		case .getNickNameCheck:
+			base += "/user"
       
     case .getTravelSpotDetailList:
       base += "/area"
@@ -136,9 +149,6 @@ extension BaseAPI: TargetType {
     switch self{
     case .getPopularTravelList:
       return "/popular"
-
-    case .deleteUserWithdraw:
-      return "/withdraw"
     case .getPlanPreviewData(let idx):
       return "/\(idx)/preview"
     case .getTravelSpotDetailList(let areaID,_,_,_):
@@ -160,12 +170,9 @@ extension BaseAPI: TargetType {
       return "/\(idx)"
 		case .getPlanDetailTransportData(let idx):
 			return "/\(idx)/moveInfo"
-    case .postSocialLogin:
-      return "/login"
-    case .postSocialSignUp:
-      return "/signup"
-    case .postNickNameCheck:
-      return "/check/nickname"
+
+    case .getNickNameCheck:
+      return "/name/check"
 			case .getHomeBemyPlanList,.getBemyPlanListWithPaging:
         return "/bemyplanPick"
 			case .postOrderPlan:
@@ -180,7 +187,7 @@ extension BaseAPI: TargetType {
   ///  각 case 별로 get,post,delete,put 인지 정의합니다.
   var method: Moya.Method {
     switch self{
-			case .sampleAPI, .postScrap, .postSocialLogin, .postSocialSignUp, .postNickNameCheck,.postOrderPlan:
+			case .sampleAPI, .postScrap, .postSocialLogin, .postSocialSignUp,.postOrderPlan:
       return .post
 			case .deleteUserWithdraw,.deleteScrap:
       return .delete
@@ -233,16 +240,17 @@ extension BaseAPI: TargetType {
       params["page"] = page
       params["sort"] = sort
       
-    case .postSocialLogin(let socialToken, _):
-      params["social_token"] = socialToken
-      params["social_type"] = "KAKAO"
+    case .postSocialLogin(let socialToken, let socialType):
+      params["token"] = socialToken
+      params["socialType"] = socialType
       
-    case .postSocialSignUp(let socialToken, let socialType, let nickName):
-      params["social_token"] = socialToken
-      params["social_type"] = socialType
+    case .postSocialSignUp(let socialToken, let socialType, let nickName,let email):
+			params["email"] = email
+      params["token"] = socialToken
+      params["socialType"] = socialType
       params["nickname"] = nickName
-      
-    case .postNickNameCheck(let nickName):
+				
+    case .getNickNameCheck(let nickName):
       params["nickname"] = nickName
         
       case .getHomeOrderList:
@@ -299,6 +307,9 @@ extension BaseAPI: TargetType {
 				}
 			case .postOrderPlan(let planID) :
 				params["planId"] = planID
+				
+			case .deleteUserWithdraw(let reason) :
+				params["reasonForWithdrawal"] = reason
     default:
       break
       
@@ -333,9 +344,9 @@ extension BaseAPI: TargetType {
 			case .sampleAPI, .getTravelSpotDetailList, .getNicknameDetailList, .getScrapList, .getNewTravelList,
 					.getSuggestTravelList, .postScrap,.deleteScrap,.getHomeOrderList,.getHomeRecentlyList,
 					.getHomeBemyPlanList,.getBuyList,.getRecentlyListWithPaging, .getSpotPlanListWithPaging,
-					.getUserPlanListWithPaging, .getBemyPlanListWithPaging:
+					.getUserPlanListWithPaging, .getBemyPlanListWithPaging,.getNickNameCheck:
       return URLEncoding.init(destination: .queryString, arrayEncoding: .noBrackets, boolEncoding: .literal)
-    case .postSocialLogin, .postSocialSignUp, .postNickNameCheck :
+    case .postSocialLogin, .postSocialSignUp :
       return JSONEncoding.default
     default :
       return JSONEncoding.default
@@ -352,10 +363,10 @@ extension BaseAPI: TargetType {
 			case .sampleAPI,.getTravelSpotDetailList, .getNicknameDetailList,
 					.getScrapList,.getNewTravelList, .getSuggestTravelList,
 					.postScrap,.deleteScrap,.postSocialLogin, .postSocialSignUp,
-					.postNickNameCheck,.getHomeOrderList,.getHomeRecentlyList,
+					.getNickNameCheck,.getHomeOrderList,.getHomeRecentlyList,
 					.getHomeBemyPlanList,.getBuyList,.getRecentlyListWithPaging,
 					.getSpotPlanListWithPaging,.getUserPlanListWithPaging,
-					.getBemyPlanListWithPaging,.postOrderPlan:
+					.getBemyPlanListWithPaging,.postOrderPlan,.deleteUserWithdraw:
       return .requestParameters(parameters: bodyParameters ?? [:], encoding: parameterEncoding)
     default:
       return .requestPlain
@@ -364,10 +375,14 @@ extension BaseAPI: TargetType {
   }
 
   public var headers: [String: String]? {
-		// FIXME: - 헤더 부분 추후 수정해야 함.
-		return ["Content-Type": "application/json",
-						"Visit-Option": "MEMBERSHIP",
-						"Authorization" : "a76f83fe-b1e4-476b-ac57-ac46bcdd6cd0"]
+		if let sessionID = UserDefaults.standard.string(forKey: "userSessionID") {
+			return ["Content-Type": "application/json",
+							"Visit-Option": "MEMBERSHIP",
+							"Authorization" : sessionID]
+		} else {
+			return ["Content-Type": "application/json",
+							"Visit-Option": "GUEST"]
+		}
   }
   
   public var validationType: ValidationType {

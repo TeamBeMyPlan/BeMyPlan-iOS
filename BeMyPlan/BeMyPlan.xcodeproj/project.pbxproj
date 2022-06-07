@@ -172,6 +172,7 @@
 		FD4C86B8278C7A7200D37A2D /* Payment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD4C86B7278C7A7200D37A2D /* Payment.storyboard */; };
 		FD4C86BA278C7A8400D37A2D /* PaymentSelectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4C86B9278C7A8400D37A2D /* PaymentSelectVC.swift */; };
 		FD4C86BE278C9AF900D37A2D /* PaymentCompleteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4C86BD278C9AF900D37A2D /* PaymentCompleteVC.swift */; };
+		FD50D13C284B12B50014F3CD /* setAttributedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD50D13B284B12B50014F3CD /* setAttributedText.swift */; };
 		FD5100C72848A35B0037AC8E /* PlanListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5100C62848A35B0037AC8E /* PlanListService.swift */; };
 		FD5100C92848ABB30037AC8E /* FilterSortCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5100C82848ABB30037AC8E /* FilterSortCase.swift */; };
 		FD5100CB2848ABC50037AC8E /* TravelSpotList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5100CA2848ABC50037AC8E /* TravelSpotList.swift */; };
@@ -222,6 +223,8 @@
 		FDD41E2527DAF87B003BF531 /* OnboardingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD41E2427DAF87B003BF531 /* OnboardingVC.swift */; };
 		FDD41E2727DAF884003BF531 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDD41E2627DAF884003BF531 /* Onboarding.storyboard */; };
 		FDD41E2927DB01AE003BF531 /* OnboardingVC + ConfigureLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD41E2827DB01AE003BF531 /* OnboardingVC + ConfigureLayout.swift */; };
+		FDEF170C284E413000BB5001 /* SignupNC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDEF170B284E413000BB5001 /* SignupNC.swift */; };
+		FDEF170E284E456100BB5001 /* shakeAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDEF170D284E456100BB5001 /* shakeAnimation.swift */; };
 		FDF3090E27D1436800FF783F /* ImageSlideShowProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF3090D27D1436800FF783F /* ImageSlideShowProtocol.swift */; };
 		FDF7FEC327A7E14600E3AB62 /* Presentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF7FEC227A7E14600E3AB62 /* Presentable.swift */; };
 		FDF7FEC527A7E14F00E3AB62 /* CoordinatorFinishOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF7FEC427A7E14F00E3AB62 /* CoordinatorFinishOutput.swift */; };
@@ -455,6 +458,7 @@
 		FD4C86B7278C7A7200D37A2D /* Payment.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Payment.storyboard; sourceTree = "<group>"; };
 		FD4C86B9278C7A8400D37A2D /* PaymentSelectVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentSelectVC.swift; sourceTree = "<group>"; };
 		FD4C86BD278C9AF900D37A2D /* PaymentCompleteVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentCompleteVC.swift; sourceTree = "<group>"; };
+		FD50D13B284B12B50014F3CD /* setAttributedText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = setAttributedText.swift; sourceTree = "<group>"; };
 		FD5100C62848A35B0037AC8E /* PlanListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanListService.swift; sourceTree = "<group>"; };
 		FD5100C82848ABB30037AC8E /* FilterSortCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSortCase.swift; sourceTree = "<group>"; };
 		FD5100CA2848ABC50037AC8E /* TravelSpotList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelSpotList.swift; sourceTree = "<group>"; };
@@ -506,6 +510,8 @@
 		FDD41E2427DAF87B003BF531 /* OnboardingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingVC.swift; sourceTree = "<group>"; };
 		FDD41E2627DAF884003BF531 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		FDD41E2827DB01AE003BF531 /* OnboardingVC + ConfigureLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnboardingVC + ConfigureLayout.swift"; sourceTree = "<group>"; };
+		FDEF170B284E413000BB5001 /* SignupNC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupNC.swift; sourceTree = "<group>"; };
+		FDEF170D284E456100BB5001 /* shakeAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shakeAnimation.swift; sourceTree = "<group>"; };
 		FDF3090D27D1436800FF783F /* ImageSlideShowProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSlideShowProtocol.swift; sourceTree = "<group>"; };
 		FDF7FEC227A7E14600E3AB62 /* Presentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presentable.swift; sourceTree = "<group>"; };
 		FDF7FEC427A7E14F00E3AB62 /* CoordinatorFinishOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorFinishOutput.swift; sourceTree = "<group>"; };
@@ -713,6 +719,7 @@
 				F27483EA27CA38FE004164F0 /* NickName */,
 				F294EC2E278EBD7E001069F8 /* SignUpVC.swift */,
 				F294EC31278EFA0F001069F8 /* SignUp.storyboard */,
+				FDEF170B284E413000BB5001 /* SignupNC.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -876,6 +883,8 @@
 				FD93028727A3F9B800341C2A /* downloadImage.swift */,
 				FD2C9E1227B241AF00422E6B /* manageObserverAction.swift */,
 				FD122DE727D3638D00469189 /* showToastMessage.swift */,
+				FD50D13B284B12B50014F3CD /* setAttributedText.swift */,
+				FDEF170D284E456100BB5001 /* shakeAnimation.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1883,6 +1892,7 @@
 				FD568E7327CFE6DF0078D23C /* AppLog.swift in Sources */,
 				F250440D2799D02900791AB7 /* AuthDataModel.swift in Sources */,
 				FDF980D42786D2F60009A14E /* PlanListVC.swift in Sources */,
+				FD50D13C284B12B50014F3CD /* setAttributedText.swift in Sources */,
 				FD2D9C5A2796FDA400688A42 /* UITableViewCell + Animator.swift in Sources */,
 				FDF980E52786E8370009A14E /* XibPresentable.swift in Sources */,
 				FDC47E132789875800A152E8 /* makeCellInstance.swift in Sources */,
@@ -1932,6 +1942,7 @@
 				FD2D4DB9278D3DCE002084B9 /* PlanDetailInformationTVC.swift in Sources */,
 				FD20C60B278EBBB500AC6E34 /* MyPlanBuyContentCVC.swift in Sources */,
 				FD958A3527E0D81700264EE4 /* ImageSizeFetcher.swift in Sources */,
+				FDEF170E284E456100BB5001 /* shakeAnimation.swift in Sources */,
 				FDF981022788D49C0009A14E /* PlanPreviewWriterTVC.swift in Sources */,
 				FDCEE68C27D9D400000D8F7F /* PlanPreviewUseCase.swift in Sources */,
 				FD568E7127CFE6CF0078D23C /* FirebaseServiceProtocol.swift in Sources */,
@@ -1976,6 +1987,7 @@
 				FDA2063627C41006001A371D /* PlanDetailEntity.swift in Sources */,
 				FDF7FEC527A7E14F00E3AB62 /* CoordinatorFinishOutput.swift in Sources */,
 				FD09DE2727857DE3006DA050 /* GenericResponse.swift in Sources */,
+				FDEF170C284E413000BB5001 /* SignupNC.swift in Sources */,
 				FD09DE1527857B36006DA050 /* getClassName.swift in Sources */,
 				FD5D730F27A46BAB002DE484 /* PlanPreviewViewModel.swift in Sources */,
 				FD20C626278EF6AE00AC6E34 /* BarSelectButton.swift in Sources */,

@@ -13,14 +13,7 @@ import AuthenticationServices
 class LoginVC: UIViewController {
   
   // MARK: - Vars & Lets Part
-  
-  let dd : UIButton =  {
-    let button = UIButton()
-    button.addTarget(self, action: #selector(aa), for: .allEditingEvents)
-    return button
-    
-  }()
-  private let factory: ModuleFactoryProtocol = ModuleFactory.resolve()
+  let factory: ModuleFactoryProtocol = ModuleFactory.resolve()
 
   // MARK: - UI Component Part
   
@@ -42,6 +35,7 @@ class LoginVC: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     setBtnActions()
+    addObserver()
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -51,7 +45,8 @@ class LoginVC: UIViewController {
   // MARK: - IBAction Part
   
   @IBAction func touchUpToGoBaseView(_ sender: Any) {
-    makeVibrate()
+    UserDefaults.standard.removeObject(forKey: "userSessionID")
+    self.makeVibrate()
     self.moveBaseVC()
   }
   
@@ -67,7 +62,6 @@ class LoginVC: UIViewController {
   }
   
   func setBtnActions() {
-    //IBAction 대용으로 만든 함수
     self.kakaoLoginBtn.press(animated: true) {
       self.kakaoLogin()
     }
@@ -80,7 +74,6 @@ class LoginVC: UIViewController {
   func moveSignup(){
     let signupNicknameVC = factory.instantiateSignupNicknameVC()
     signupNicknameVC.modalPresentationStyle = .overFullScreen
-    signupNicknameVC.delegate = self
     self.present(signupNicknameVC, animated: true, completion: nil)
   }
   
@@ -89,8 +82,11 @@ class LoginVC: UIViewController {
      baseVC.modalPresentationStyle = .fullScreen
      self.present(baseVC, animated: false, completion: nil)
   }
-  @objc func aa(){
-    
+  
+  private func addObserver() {
+    addObserverAction(.signupComplete) { _ in
+      self.moveBaseVC()
+    }
   }
 }
 

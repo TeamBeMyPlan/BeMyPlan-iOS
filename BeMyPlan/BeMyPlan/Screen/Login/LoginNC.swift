@@ -8,7 +8,8 @@
 import UIKit
 
 class LoginNC: UINavigationController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+  }
 }

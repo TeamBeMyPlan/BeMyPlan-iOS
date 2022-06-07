@@ -37,10 +37,9 @@ extension LoginVC : ASAuthorizationControllerDelegate {
       //계정 정보 가져오기
       let identityToken = appleIDCredential.identityToken
       let tokenString = String(data: identityToken!, encoding: .utf8)
-      
-      //성공할 때 성공VC로 이동
-      self.moveBaseVC()
-
+        if let token = tokenString {
+          postSocialLoginData(socialToken: token, socialType: "APPLE")
+        }
     default:
       //실패할 때 실패VC로 이동
       break

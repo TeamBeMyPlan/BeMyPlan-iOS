@@ -151,8 +151,7 @@ class PlanDetailInformationTVC: UITableViewCell,UITableViewRegisterable {
   }
   
   private func configure(){
-    if let nextTravel = viewModel.nextTravel,
-       let transportCase = viewModel.transport,
+    if let transportCase = viewModel.transport,
        let nextTime = viewModel.transportTime,
        let nextLocationName = nextLocationName{
       nextTripTimeView.isHidden = false
@@ -163,6 +162,22 @@ class PlanDetailInformationTVC: UITableViewCell,UITableViewRegisterable {
     }
     titleLabel.text = viewModel.title
     contentTextView.text = viewModel.content
+
+    self.contentTextView.font = .systemFont(ofSize: 15)
+
+    let fullText = viewModel.content
+    let tipRange = (fullText as NSString).range(of: I18N.PlanDetail.tipsHeaderTitle)
+    let reviewRange = (fullText as NSString).range(of: I18N.PlanDetail.reviewHeaderTitle)
+    let attributedString = NSMutableAttributedString(string: fullText)
+    
+    attributedString.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: 20), range: tipRange)
+    attributedString.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: 20), range: reviewRange)
+    
+    self.contentTextView.attributedText = attributedString
+    
+    contentTextView.attributedText = attributedString
+
+//    contentTextView.setTargetAttributedText(targetString: I18N.PlanDetail.tipsHeaderTitle, fontType: UIFont.boldSystemFont(ofSize: 20), text:  viewModel.content)
     nextTripLocationNameLabel.sizeToFit()
     nextTripTimeLabel.sizeToFit()
     setNextLocationLabelCenter()
@@ -227,3 +242,6 @@ extension PlanDetailInformationTVC : UIScrollViewDelegate{
     lastPointee = scrollView.contentOffset.x
   }
 }
+
+
+

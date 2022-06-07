@@ -8,6 +8,7 @@
 import UIKit
 
 enum BaseNotiList : String{
+  case signupComplete
   case copyComplete
   case showNotInstallKakaomap
   case moveHomeTab
@@ -39,6 +40,7 @@ enum BaseNotiList : String{
   case summaryFoldStateChanged
   
   case scrapButtonClicked
+  case loginButtonClickedInMyPlan
   
   static func makeNotiName(list : BaseNotiList) -> NSNotification.Name{
     return Notification.Name(String(describing: list))
@@ -154,6 +156,13 @@ extension BaseVC{
   }
   
   private func postScrapAction(planID: Int) {
+    guard let _ = UserDefaults.standard.string(forKey: "userSessionID")
+    else {
+      self.makeAlert(alertCase: .requestAlert, title: "알림", content: "로그인 페이지로 돌아가시겠습니까?") {
+        self.presentLoginVC()
+      }
+      return
+    }
     BaseService.default.postScrap(postId: planID) { result in
       result.success { _ in }
         .catch { _ in
@@ -171,5 +180,12 @@ extension BaseVC{
     }
   }
   
+  private func presentLoginVC() {
+    UserDefaults.standard.removeObject(forKey: "userSessionID")
+    guard let loginVC = UIStoryboard.list(.login).instantiateViewController(withIdentifier: LoginNC.className) as? LoginNC else {return}
+    loginVC.modalPresentationStyle = .fullScreen
+    AppLog.log(at: FirebaseAnalyticsProvider.self, .logout)
+    self.present(loginVC, animated: false, completion: nil)
+  }
 }
 

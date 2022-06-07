@@ -143,6 +143,21 @@ class PlanPreviewVC: UIViewController {
         self?.headerTitleLabel.text = headerTitle!
       })
       .disposed(by: self.disposeBag)
+    
+    output.showLoginPage
+      .asDriver(onErrorJustReturn: false)
+      .drive( onNext: { [weak self] state in
+        print("state",state)
+        self?.presentLoginVC()
+      })
+  }
+  
+  private func presentLoginVC() {
+    UserDefaults.standard.removeObject(forKey: "userSessionID")
+    guard let loginVC = UIStoryboard.list(.login).instantiateViewController(withIdentifier: LoginNC.className) as? LoginNC else {return}
+    loginVC.modalPresentationStyle = .fullScreen
+    AppLog.log(at: FirebaseAnalyticsProvider.self, .logout)
+    self.present(loginVC, animated: false, completion: nil)
   }
  
   private func addButtonActions(){
@@ -185,8 +200,6 @@ class PlanPreviewVC: UIViewController {
     scrapState.toggle()
     setScrabImage()
   }
-  
-  
 }
 // MARK: - Extension Part
 
