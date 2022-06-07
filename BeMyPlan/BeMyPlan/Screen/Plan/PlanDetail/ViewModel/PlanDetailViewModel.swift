@@ -256,7 +256,8 @@ extension PlanDetailViewModel {
                                           content: data.textContent,
                                           transport: data.nextLocationData?.transportCase,
                                           transportTime: data.nextLocationData?.time,
-                                          nextTravel: index != spotData.count - 1 ? data.nextLocationData : nil)
+                                          nextTravel: index != spotData.count - 1 ? data.nextLocationData : nil,
+                                          address: data.address)
     }
     return viewModel
   }

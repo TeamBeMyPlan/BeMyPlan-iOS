@@ -18,6 +18,7 @@ struct PlanDetailInformationViewModel{
   let transport: TransportCase?
   let transportTime: String?
   let nextTravel: PlanDetail.Summary?
+  let address: String?
 }
 
 class PlanDetailInformationTVC: UITableViewCell,UITableViewRegisterable {
@@ -131,7 +132,12 @@ class PlanDetailInformationTVC: UITableViewCell,UITableViewRegisterable {
       .showAnimatedGradientSkeleton(usingGradient: .init(baseColor: .grey04,secondaryColor: .grey06), animation: animation)
   }
   
-  private func findLocation(latitude: Double, longtitude: Double) {
+  private func findLocation(latitude: Double, longtitude: Double,address: String) {
+    
+    guard latitude != 0 else {
+      self.addressLabel.text = address
+      return
+    }
     let findLocation = CLLocation(latitude: latitude, longitude: longtitude)
     let geocoder = CLGeocoder()
     let locale = Locale(identifier: "Ko-kr")
@@ -163,25 +169,32 @@ class PlanDetailInformationTVC: UITableViewCell,UITableViewRegisterable {
     titleLabel.text = viewModel.title
     contentTextView.text = viewModel.content
 
-    self.contentTextView.font = .systemFont(ofSize: 15)
-
     let fullText = viewModel.content
-    let tipRange = (fullText as NSString).range(of: I18N.PlanDetail.tipsHeaderTitle)
-    let reviewRange = (fullText as NSString).range(of: I18N.PlanDetail.reviewHeaderTitle)
+  
     let attributedString = NSMutableAttributedString(string: fullText)
-    
-    attributedString.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: 20), range: tipRange)
-    attributedString.addAttribute(.font, value: UIFont.boldSystemFont(ofSize: 20), range: reviewRange)
-    
-    self.contentTextView.attributedText = attributedString
-    
-    contentTextView.attributedText = attributedString
+    let font = UIFont.systemFont(ofSize: 14)
+    attributedString.addAttribute(NSAttributedString.Key.font, value: font, range: NSRange(location:0, length: fullText.count))
+    attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.grey01
+                                  , range: NSRange(location:0, length: fullText.count))
+    let style = NSMutableParagraphStyle()
+    style.lineHeightMultiple = 1.31
+    attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value: style, range: NSRange(location:0, length: fullText.count))
 
-//    contentTextView.setTargetAttributedText(targetString: I18N.PlanDetail.tipsHeaderTitle, fontType: UIFont.boldSystemFont(ofSize: 20), text:  viewModel.content)
+    let highlightedWords = [I18N.PlanDetail.reviewHeaderTitle, I18N.PlanDetail.tipsHeaderTitle]
+
+    for highlightedWord in highlightedWords {
+      let textRange = (fullText as NSString).range(of: highlightedWord)
+      let boldFont = UIFont.boldSystemFont(ofSize: 20)
+      attributedString.addAttribute(NSAttributedString.Key.font, value: boldFont, range: textRange)
+    }
+
+    contentTextView.attributedText = attributedString
+    contentTextView.sizeToFit()
+
     nextTripLocationNameLabel.sizeToFit()
     nextTripTimeLabel.sizeToFit()
     setNextLocationLabelCenter()
-    findLocation(latitude: viewModel.latitude, longtitude: viewModel.longtitude)
+    findLocation(latitude: viewModel.latitude, longtitude: viewModel.longtitude, address: viewModel.address ?? "")
     if viewModel.imgUrls.count > 1{
       progressBar.isHidden = false
       progressBar.setPercentage(ratio: CGFloat((currentIndex + 1)) / CGFloat(viewModel.imgUrls.count))
