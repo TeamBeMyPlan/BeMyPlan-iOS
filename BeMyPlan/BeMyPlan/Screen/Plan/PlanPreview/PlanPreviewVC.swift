@@ -143,6 +143,22 @@ class PlanPreviewVC: UIViewController {
         self?.headerTitleLabel.text = headerTitle!
       })
       .disposed(by: self.disposeBag)
+    
+    output.showLoginPage
+      .asDriver(onErrorJustReturn: false)
+      .drive( onNext: { [weak self] state in
+        self?.makeAlert(alertCase: .requestAlert, title: "알림", content: "구매 기능은 로그인이 필요합니다.\n로그인 페이지로 돌아가시겠습니까?") {
+          self?.presentLoginVC()
+        }
+      })
+  }
+  
+  private func presentLoginVC() {
+    UserDefaults.standard.removeObject(forKey: UserDefaultKey.sessionID)
+    guard let loginVC = UIStoryboard.list(.login).instantiateViewController(withIdentifier: LoginNC.className) as? LoginNC else {return}
+    loginVC.modalPresentationStyle = .fullScreen
+    AppLog.log(at: FirebaseAnalyticsProvider.self, .logout)
+    self.present(loginVC, animated: false, completion: nil)
   }
  
   private func addButtonActions(){
@@ -185,8 +201,6 @@ class PlanPreviewVC: UIViewController {
     scrapState.toggle()
     setScrabImage()
   }
-  
-  
 }
 // MARK: - Extension Part
 

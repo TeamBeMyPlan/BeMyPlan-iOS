@@ -15,6 +15,11 @@ struct I18N {
     static let myPlan = "마이 플랜"
   }
   
+  struct Auth {
+    static let kakaoLoginError = "카카오 로그인에 실패하였습니다."
+    static let appleLoginError = "애플 로그인에 실패하였습니다."
+  }
+  
   struct Alert {
     static let alarm = "알림"
     static let error = "오류"
@@ -82,6 +87,8 @@ struct I18N {
 """
     }
     
+
+    
     struct Theme {
       static let activity = "액티비티"
       static let camping = "캠핑"
@@ -105,6 +112,11 @@ struct I18N {
       static let `public` = "대중교통"
       static let walk = "도보"
     }
+  }
+  
+  struct PlanDetail {
+    static let reviewHeaderTitle = "✅ 솔직 후기  "
+    static let tipsHeaderTitle = "🍯 꿀팁  "
   }
   
   struct MyPlan{

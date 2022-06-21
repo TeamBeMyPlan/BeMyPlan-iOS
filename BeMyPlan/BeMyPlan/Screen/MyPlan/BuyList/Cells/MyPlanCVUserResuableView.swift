@@ -9,11 +9,17 @@ import UIKit
 
 class MyPlanCVUserResuableView: UICollectionReusableView {
     
+  @IBOutlet var guestModeView: UIView!
   @IBOutlet private var profileImageView: UIImageView!
   @IBOutlet private var nicknameLabel: UILabel!
   @IBOutlet private var buyCountLabel: UILabel!
   
-  func setData(nickName : String, buyCount : Int){
+  @IBAction func logoutButtonClicked(_ sender: Any) {
+    postObserverAction(.loginButtonClickedInMyPlan)
+  }
+  
+  func setData(nickName : String, buyCount : Int,isGuestMode: Bool = false){
+    self.guestModeView.isHidden = !isGuestMode
     buyCountLabel.text = String(buyCount)
     nicknameLabel.text = nickName
   }

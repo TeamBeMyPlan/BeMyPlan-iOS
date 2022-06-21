@@ -12,9 +12,6 @@ class PaymentEventPopupVC: UIViewController {
   // MARK: - Vars & Lets Part
   var postIdx: Int = 0
   var delegate : PaymentCompleteDelegate?
-
-  // MARK: - UI Component Part
-
   
   // MARK: - Life Cycle Part
   
@@ -32,11 +29,4 @@ class PaymentEventPopupVC: UIViewController {
     }
   
   }
-  
-  // MARK: - Custom Method Part
-
-  
-  // MARK: - @objc Function Part
-
 }
-// MARK: - Extension Part

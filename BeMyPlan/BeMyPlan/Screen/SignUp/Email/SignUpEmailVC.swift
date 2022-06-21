@@ -31,8 +31,8 @@ class SignUpEmailVC: UIViewController {
       signUpProgressView.progressViewStyle = .bar
       signUpProgressView.progressTintColor = .black
       signUpProgressView.trackTintColor = .grey05
-      DispatchQueue.main.asyncAfter(deadline: .now() + 0.3){
-        self.timer = Timer.scheduledTimer(timeInterval: 0.06, target: self, selector: #selector(self.setProgress), userInfo: nil, repeats: true)
+      DispatchQueue.main.asyncAfter(deadline: .now() + 0.2){
+        self.timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(self.setProgress), userInfo: nil, repeats: true)
       }
     }
   }
@@ -59,7 +59,6 @@ class SignUpEmailVC: UIViewController {
     print(socialType)
   }
   
-  
   // MARK: - Custom Method Part
   private func setNextBtnStatus(){
     if isEmailValid{
@@ -78,6 +77,9 @@ class SignUpEmailVC: UIViewController {
   
   private func setTextField() {
     emailInputTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+    let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: self.emailInputTextField.frame.height))
+    emailInputTextField.leftView = paddingView
+    emailInputTextField.leftViewMode = .always
   }
   
   //여기서 유효성 검사
@@ -111,7 +113,6 @@ class SignUpEmailVC: UIViewController {
     return pred.evaluate(with: email)
   }
   
-  
   private func addBtnActions() {
     //실제로는 이방법이 아니라 dismiss 되었을때 completion에 새로운 escaping closure를 선언해서 파라미터로 받아와서 해야한다....!
     nextBtn.press{
@@ -129,7 +130,6 @@ class SignUpEmailVC: UIViewController {
       self.navigationController?.popViewController(animated: true)
     }
   }
-  
   
   private func postEmailData(email: String) {
     //email 서버 세팅 해야함
@@ -174,8 +174,6 @@ class SignUpEmailVC: UIViewController {
     tosVC.userToken = userToken
   }
   
-  
-  
   // MARK: - @objc Function Part
   @objc func textFieldDidChange() {
     checkMaxLabelCount()
@@ -190,8 +188,6 @@ class SignUpEmailVC: UIViewController {
   }
   
 }
-
-
 // MARK: - Extension Part
 extension SignUpEmailVC : UITextFieldDelegate{
   private func textViewDidBeginEditing(_ textField: UITextField) {
@@ -211,6 +207,4 @@ extension SignUpEmailVC : UITextFieldDelegate{
     }
     emailInputTextField.layer.borderColor = UIColor.grey04.cgColor
   }
-  
-  
 }

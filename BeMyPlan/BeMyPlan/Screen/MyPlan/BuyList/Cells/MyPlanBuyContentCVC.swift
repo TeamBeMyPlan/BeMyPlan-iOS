@@ -7,6 +7,7 @@
 
 import UIKit
 import SkeletonView
+import Kingfisher
 
 class MyPlanBuyContentCVC: UICollectionViewCell {
   
@@ -19,6 +20,12 @@ class MyPlanBuyContentCVC: UICollectionViewCell {
   @IBOutlet var scrapImageView: UIImageView!
   
   override func awakeFromNib() {
+    configureSkeleton()
+  }
+  
+  override func prepareForReuse() {
+    contentImageView.kf.cancelDownloadTask()
+    contentImageView.image = nil
     configureSkeleton()
   }
   

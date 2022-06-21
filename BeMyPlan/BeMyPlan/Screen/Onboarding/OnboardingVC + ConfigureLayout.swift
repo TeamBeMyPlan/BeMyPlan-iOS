@@ -54,11 +54,9 @@ extension OnboardingVC {
     imageStackView.snp.makeConstraints {
       $0.width.equalTo(screenWidth*3)
       if UIDevice.current.hasNotch {
-        print("노치있음")
         $0.bottom.equalToSuperview().inset(60)
         $0.height.equalTo(screenWidth * 460/375)
       }else {
-        print("노치없음")
         $0.bottom.equalToSuperview().inset(28)
         $0.height.equalTo(screenHeight * 460/812)
       }

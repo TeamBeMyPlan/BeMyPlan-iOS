@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
     setupFirebaseSDK()
-    KakaoSDK.initSDK(appKey: "904d52aff326e5526e945eee5dfb8efd")
+    KakaoSDK.initSDK(appKey: "8813c8c6fdcec872713a666700d19b80")
     #if DEBUG
     Gedatsu.open()
     #endif

@@ -9,11 +9,6 @@ import Foundation
 
 struct AuthDataGettable : Codable{
   let nickname : String
-  let accessToken : String?
-  
-  enum CodingKeys: String, CodingKey {
-    case nickname
-    case accessToken = "access_token"
-    
-  }
+  let sessionId: String
+  let userId: Int
 }

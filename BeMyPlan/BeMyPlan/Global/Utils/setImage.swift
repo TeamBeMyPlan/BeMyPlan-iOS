@@ -30,7 +30,7 @@ extension UIImageView {
   }
   
   private func setNewImage(with urlString: String, placeholder: String? = "img_placeholder", completion: ((UIImage?) -> Void)? = nil) {
-    guard let url = URL(string: urlString) else { return }
+    guard let url = URL.decodeURL(urlString: urlString) else { return }
     let resource = ImageResource(downloadURL: url, cacheKey: urlString)
     let placeholderImage = UIImage(named: "img_placeholder")
     let placeholder = placeholderImage
@@ -39,8 +39,8 @@ extension UIImageView {
       with: resource,
       placeholder: placeholder,
       options: [
-        .scaleFactor(UIScreen.main.scale/4),
-        .transition(.fade(0.5)),
+        .scaleFactor(UIScreen.main.scale/1),
+        .transition(.fade(0.3)),
         .cacheMemoryOnly
       ],
       completionHandler:  { result in

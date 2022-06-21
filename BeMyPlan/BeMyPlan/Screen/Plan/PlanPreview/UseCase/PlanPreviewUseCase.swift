@@ -89,7 +89,7 @@ extension DefaultPlanPreviewUseCase: PlanPreviewUseCase {
     }
     var count = 0 {
       didSet{
-        print("COUNTCOUNT",count)
+        print(bodyData.photos.count)
         if count == bodyData.photos.count {
           dump(heightList)
           self.imageHeightData.onNext(heightList)
@@ -101,7 +101,7 @@ extension DefaultPlanPreviewUseCase: PlanPreviewUseCase {
     let imageViewWidth = screenWidth - 48
     
     _ = bodyData.photos.enumerated().map { index,imageUrls -> Void in
-      guard let url = URL(string: imageUrls.photoUrl) else { return }
+      guard let url = URL.decodeURL(urlString: imageUrls.photoUrl) else { return }
       self.imageSizeFetcher.sizeFor(atURL: url) { err, result in
 
         if let error = err as? ImageParserErrors {

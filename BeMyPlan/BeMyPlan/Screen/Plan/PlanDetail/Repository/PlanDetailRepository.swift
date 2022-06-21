@@ -80,10 +80,23 @@ extension PlanDetailRepository {
     return result
   }
   
-  private func makeDescription(tip: String, review: String) -> String {
-    return tip.replacingOccurrences(of: "\\n", with: "")
-    + "\n\n"
-    + review.replacingOccurrences(of: "\\n", with: "")
+  private func makeDescription(tip: String?, review: String?) -> String {
+    var description = ""
+    
+    if let review = review {
+      description += I18N.PlanDetail.reviewHeaderTitle
+      description += "\n\n"
+      description += review.replacingOccurrences(of: "\\n", with: "")
+    }
+    description += "\n\n"
+    
+    if let tip = tip {
+      description += I18N.PlanDetail.tipsHeaderTitle
+      description += "\n\n"
+      description += tip.replacingOccurrences(of: "\\n", with: "")
+    }
+    
+    return description
   }
                                                                                                               
   private func makeNextSpotMobility(spotIndex: Int,transportInfo: [TransportInfo]) -> String {

@@ -31,8 +31,8 @@ class SignUpTOSVC: UIViewController {
       signUpProgressView.progressViewStyle = .bar
       signUpProgressView.progressTintColor = .black
       signUpProgressView.trackTintColor = .grey05
-      DispatchQueue.main.asyncAfter(deadline: .now() + 0.3){
-        self.timer = Timer.scheduledTimer(timeInterval: 0.06, target: self, selector: #selector(self.setProgress), userInfo: nil, repeats: true)
+      DispatchQueue.main.asyncAfter(deadline: .now() + 0.2){
+        self.timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(self.setProgress), userInfo: nil, repeats: true)
       }
     }
   }
@@ -43,17 +43,12 @@ class SignUpTOSVC: UIViewController {
   @IBOutlet var startBtn: UIButton!
   
   
-  
   // MARK: - Life Cycle Part
   override func viewDidLoad() {
     super.viewDidLoad()
     setBoxViewUI()
     setStartBtnStatus()
     addBtnActions()
-    print("________________")
-    print(nickname)
-    print(email)
-    print(socialType)
   }
   
   // MARK: - IBAction Part
@@ -70,6 +65,16 @@ class SignUpTOSVC: UIViewController {
   @IBAction func pressSecondAgree(_ sender: Any) {
     statusList[2] = !statusList[2]
     manageTotalStatus()
+  }
+  
+  @IBAction func agreeButtonClicked(_ sender: Any) {
+    guard let url = URL(string: "https://boggy-snowstorm-fdb.notion.site/a69b7abcdb9f42399825f4ff25343bfd"), UIApplication.shared.canOpenURL(url) else { return }
+    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+  }
+  
+  @IBAction func informationButtonClicked(_ sender: Any) {
+    guard let url = URL(string: "https://boggy-snowstorm-fdb.notion.site/41be86bb755a40c09414be125908228d"), UIApplication.shared.canOpenURL(url) else { return }
+    UIApplication.shared.open(url, options: [:], completionHandler: nil)
   }
   
   // MARK: - Custom Method Part
@@ -114,7 +119,6 @@ class SignUpTOSVC: UIViewController {
   }
   
   private func addBtnActions() {
-    //실제로는 이방법이 아니라 dismiss 되었을때 completion에 새로운 escaping closure를 선언해서 파라미터로 받아와서 해야한다....!
     startBtn.press{
       self.postSocialSignUpData()
     }
@@ -126,27 +130,20 @@ class SignUpTOSVC: UIViewController {
   
   //여기서 닉네임, 아이디, 소셜타입, userToken 전달 해야함
   private func postSocialSignUpData() {
-    BaseService.default.postSocialSignUp(socialToken: userToken , socialType: socialType, nickName: nickname) { result in
+    BaseService.default.postSocialSignUp(socialToken: userToken , socialType: socialType, nickName: nickname, email: email) { result in
       result.success{ [weak self] data in
         if let data = data {
-          UserDefaults.standard.setValue(data.accessToken, forKey: "userToken")
-          //BaseVC로 이동
+          UserDefaults.standard.setValue(data.sessionId, forKey: UserDefaultKey.sessionID)
+          UserDefaults.standard.setValue(data.nickname, forKey: UserDefaultKey.userNickname)
           
           self?.makeAlert(alertCase: .simpleAlert, title: "알림", content: "회원가입이 완료되었습니다."){
             self?.dismiss(animated: true) {
-              self?.delegate?.loginComplete()
-              self?.pushBaseVC()
-              
+              self?.postObserverAction(.signupComplete)
             }
           }
-          
         }
-        //성공 하면 회원가입 성공 창으로 가기
-        //서버에 데이터 넘겨주기
-        
       }.catch { error in
-        self.makeAlert(alertCase: .simpleAlert, title: "알림", content: "회원가입이 실패되었습니다.")
-        
+        self.makeAlert(alertCase: .simpleAlert, title: "알림", content: "네트워크 상태를 확인해주세요")
       }
     }
   }
@@ -155,7 +152,6 @@ class SignUpTOSVC: UIViewController {
     guard let baseVC = UIStoryboard.list(.base).instantiateViewController(withIdentifier: BaseVC.className) as? BaseVC else {return}
     self.navigationController?.pushViewController(baseVC, animated: true)
   }
-  
   
   // MARK: - @objc Function Part
   @objc func setProgress() {
@@ -167,7 +163,3 @@ class SignUpTOSVC: UIViewController {
   }
   
 }
-
-// MARK: - Extension Part
-
-

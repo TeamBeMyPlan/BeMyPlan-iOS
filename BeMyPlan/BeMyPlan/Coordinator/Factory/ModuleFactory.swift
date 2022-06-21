@@ -17,9 +17,7 @@ protocol ModuleFactoryProtocol {
   
   // MARK: - Auth
   func instantiateLoginVC() -> LoginVC
-  
-  //삭제해야함
-  func instantiateSignupVC() -> SignUpVC
+  func instantiateSignupNC(socialType: String,socialToken: String,email: String?) -> SignupNC
   func instantiateSignupNicknameVC() -> SignUpNicknameVC
   func instantiateSignupEmailVC() -> SignUpEmailVC
   func instantiateSignupTOSVC() -> SignUpTOSVC
@@ -59,7 +57,6 @@ protocol ModuleFactoryProtocol {
 }
 
 class ModuleFactory: ModuleFactoryProtocol{
-
   static func resolve() -> ModuleFactory {
     return ModuleFactory()
   }
@@ -75,13 +72,17 @@ class ModuleFactory: ModuleFactoryProtocol{
   }
   
   // MARK: - Auth
+  
   func instantiateLoginVC() -> LoginVC {
     return LoginVC.controllerFromStoryboard(.login)
   }
   
-  //삭제해야함
-  func instantiateSignupVC() -> SignUpVC {
-    return SignUpVC.controllerFromStoryboard(.signup)
+  func instantiateSignupNC(socialType: String,socialToken: String,email: String?) -> SignupNC {
+    let signupNC = SignupNC.controllerFromStoryboard(.signup)
+    signupNC.socialToken = socialToken
+    signupNC.socialType = socialType
+    signupNC.email = email
+    return signupNC
   }
   
   func instantiateSignupNicknameVC() -> SignUpNicknameVC {

@@ -34,6 +34,7 @@ final class PlanPreviewViewModel: ViewModelType{
     var pushBuyView = PublishRelay<PaymentContentData>()
     var contentTitle = PublishRelay<String?>()
     var scrapState = BehaviorRelay<Bool>(value: false)
+    var showLoginPage = PublishRelay<Bool>()
   }
   
   init(useCase: PlanPreviewUseCase){
@@ -49,13 +50,16 @@ extension PlanPreviewViewModel{
     
     input.viewDidLoadEvent
       .subscribe(onNext: { [weak self] in
-        print("fetchPlanPreview")
         self?.previewUseCase.fetchPlanPreviewData()
       })
       .disposed(by: disposeBag)
     
     input.buyButtonDidTapEvent
       .subscribe(onNext: { [weak self] in
+        guard let _ = UserDefaults.standard.string(forKey: UserDefaultKey.sessionID) else {
+          output.showLoginPage.accept(true)
+          return
+        }
         self?.previewUseCase.getPaymentData()
         })
       .disposed(by: disposeBag)

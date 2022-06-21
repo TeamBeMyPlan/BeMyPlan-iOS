@@ -31,7 +31,7 @@ struct Spot: Codable {
     let createdAt, updatedAt: String
     let name: String
     let latitude, longitude: Double
-    let tip, review: String
+    let tip, review: String?
     let images: [PlanDetailImage]
 }
 

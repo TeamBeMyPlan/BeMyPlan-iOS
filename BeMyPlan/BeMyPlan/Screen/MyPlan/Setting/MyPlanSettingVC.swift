@@ -17,6 +17,7 @@ class MyPlanSettingVC: UIViewController, MFMailComposeViewControllerDelegate {
   @IBOutlet var serviceTermButton: UIButton!
   @IBOutlet var logoutButton: UIButton!
   @IBOutlet var withdrawButton: UIButton!
+  @IBOutlet var guestModeHideenView: UIView!
   @IBOutlet var headerTopConstraint: NSLayoutConstraint!{
     didSet{
       headerTopConstraint.constant = calculateTopInset()
@@ -27,6 +28,7 @@ class MyPlanSettingVC: UIViewController, MFMailComposeViewControllerDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
     addButtonActions()
+    setGuestMode()
   }
   
   // MARK: - Custom Method Part
@@ -54,7 +56,6 @@ class MyPlanSettingVC: UIViewController, MFMailComposeViewControllerDelegate {
         self.present(compseVC, animated: true, completion: nil)
       }else{
         guard let url = URL(string: "https://www.notion.so/a69b7abcdb9f42399825f4ff25343bfd"), UIApplication.shared.canOpenURL(url) else { return }
-
         UIApplication.shared.open(url, options: [:], completionHandler: nil)
       }
 
@@ -62,31 +63,54 @@ class MyPlanSettingVC: UIViewController, MFMailComposeViewControllerDelegate {
     
     serviceTermButton.press {
       guard let url = URL(string: "https://boggy-snowstorm-fdb.notion.site/a69b7abcdb9f42399825f4ff25343bfd"), UIApplication.shared.canOpenURL(url) else { return }
-
       UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     
     logoutButton.press {
-      self.makeAlert(alertCase: .requestAlert, title: "로그아웃", content: "로그아웃 하시겠습니까?") {
-        //실제로는 이방법이 아니라 dismiss 되었을때 completion에 새로운 escaping closure를 선언해서 파라미터로 받아와서 해야한다....!
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.001) {
-          self.makeAlert(alertCase: .simpleAlert, title: "로그아웃", content: "로그아웃 되었습니다.") {
-            guard let loginVC = UIStoryboard.list(.login).instantiateViewController(withIdentifier: LoginNC.className) as? LoginNC else {return}
-            loginVC
-              .modalPresentationStyle = .fullScreen
-            AppLog.log(at: FirebaseAnalyticsProvider.self, .logout)
-            self.present(loginVC, animated: false, completion: nil)
-          }
+      if let _ = UserDefaults.standard.string(forKey: UserDefaultKey.sessionID) {
+        self.logoutAction()
+      } else {
+        self.makeAlert(alertCase: .requestAlert, title: "알림", content: "로그인 페이지로 돌아가시겠습니까?") {
+          self.presentLoginVC()
         }
       }
     }
     
     withdrawButton.press {
-      self.postObserverAction(.moveSettingWithdrawView)
+      if let _ = UserDefaults.standard.string(forKey: UserDefaultKey.sessionID) {
+        self.postObserverAction(.moveSettingWithdrawView)
+      } else {
+        self.makeAlert(content: "둘러보기에서는 회원탈퇴가 불가능합니다.")
+      }
     }
-
   }
   
+  private func logoutAction() {
+    self.makeAlert(alertCase: .requestAlert, title: "로그아웃", content: "로그아웃 하시겠습니까?") {
+      BaseService.default.postUserLogout { _ in
+        self.makeAlert(alertCase: .simpleAlert, title: "로그아웃", content: "로그아웃 되었습니다.") {
+          self.presentLoginVC()
+        }
+      }
+    }
+  }
+  
+  private func presentLoginVC() {
+    UserDefaults.standard.removeObject(forKey: UserDefaultKey.sessionID)
+    guard let loginVC = UIStoryboard.list(.login).instantiateViewController(withIdentifier: LoginNC.className) as? LoginNC else {return}
+    loginVC.modalPresentationStyle = .fullScreen
+    AppLog.log(at: FirebaseAnalyticsProvider.self, .logout)
+    self.present(loginVC, animated: false, completion: nil)
+  }
+  
+  private func setGuestMode() {
+    if let _ = UserDefaults.standard.string(forKey: UserDefaultKey.sessionID) {
+      guestModeHideenView.isHidden = true
+    } else {
+      guestModeHideenView.isHidden = false
+    }
+  }
+    
   func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
     controller.dismiss(animated: true, completion: nil)
   }

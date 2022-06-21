@@ -76,7 +76,7 @@ class CustomAlertVC: UIViewController {
     }
     cancelBtnArea.press {
       self.dismiss(animated: true){
-        (self.okAction ?? self.emptyActions)()
+        self.emptyActions()
       }
     }
   }
