@@ -11,13 +11,11 @@ import KakaoSDKUser
 
 extension LoginVC {
   func kakaoLogin() {
-    print("KAKAO LOGINGING")
     if (UserApi.isKakaoTalkLoginAvailable()) {
       // 카카오톡 로그인. api 호출 결과를 클로저로 전달.
       UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
         if let _ = error { self.showKakaoLoginFailMessage() }
         else {
-          print("KAKAO accessToken")
           if let accessToken = oauthToken?.accessToken {
             
             //토큰 가져오려면 다음과 같이 accessToken 사용
@@ -36,7 +34,6 @@ extension LoginVC {
           if let accessToken = oauthToken?.accessToken {
             self.postSocialLoginData(socialToken: accessToken, socialType: "KAKAO")
           }
-          print("loginWithKakaoTalk() success.")
           //성공해서 성공 VC로 이동
         }
       }
@@ -44,7 +41,6 @@ extension LoginVC {
   }
   
   func postSocialLoginData(socialToken: String, socialType: String,email: String? = nil) {
-    print("postSocialLoginData",socialToken)
     BaseService.default.postSocialLogin(socialToken: socialToken, socialType: socialType) { result in
       result.success { [weak self] data in
         if let data = data{

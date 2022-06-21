@@ -82,7 +82,6 @@ extension PlanDetailViewModel {
       fetchDataFromRepository { [unowned self] in
         self.updateWriterViewModel()
         self.currentDayChanged(day: 1)
-        print("END")
         self.didFetchDataComplete?()
       }
     }else{

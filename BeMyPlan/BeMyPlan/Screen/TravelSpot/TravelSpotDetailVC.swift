@@ -153,9 +153,6 @@ extension TravelSpotDetailVC {
   
   private func fetchPlanListData() {
     guard lastPlanId != -1 else { return }
-    print("======FETCH=======")
-    print("lastCURSOR:",lastPlanId)
-    print("palnCOUNT",planDataList.count)
     switch(viewType) {
       case .recently: getRecentlyList()
       case .bemyPlanRecommend: getBemyPlanRecommendList()
@@ -170,7 +167,6 @@ extension TravelSpotDetailVC {
         guard let entity = entity else { return }
         self?.presentDataToTableView(entity)
       }.catch { err in
-        print("GET RECENTLY LIST ERR")
         self.postObserverAction(.showNetworkError)
       }
       
@@ -195,7 +191,6 @@ extension TravelSpotDetailVC {
         guard let entity = entity else { return }
         self?.presentDataToTableView(entity)
       }.catch { err in
-        print("GET RECENTLY LIST ERR")
         self.postObserverAction(.showNetworkError)
       }
     }
@@ -207,7 +202,6 @@ extension TravelSpotDetailVC {
         guard let entity = entity else { return }
         self?.presentDataToTableView(entity)
       }.catch { err in
-        print("GET RECENTLY LIST ERR")
         self.postObserverAction(.showNetworkError)
       }
     }

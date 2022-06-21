@@ -166,7 +166,6 @@ extension BaseVC{
     BaseService.default.postScrap(postId: planID) { result in
       result.success { _ in }
         .catch { _ in
-          print("스크랩 실패")
         }
     }
   }
@@ -182,7 +181,6 @@ extension BaseVC{
     BaseService.default.deleteScrap(postId: planID) { result in
       result.success { _ in }
         .catch { _ in
-          print("스크랩 취소 실패")
         }
     }
   }

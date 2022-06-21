@@ -61,7 +61,6 @@ extension DefaultPlanPreviewUseCase: PlanPreviewUseCase {
   func fetchPlanPreviewData() {
     let header = self.repository.fetchPreviewData(idx: self.postIdx)
     
-    print("FETCH PREVIEW DATA")
     header.map { (headerData,bodyData) -> PlanPreview.ContentData in
       self.paymentData = .init(writer: headerData?.writer,
                                title: headerData?.title,
@@ -72,8 +71,6 @@ extension DefaultPlanPreviewUseCase: PlanPreviewUseCase {
       return PlanPreview.ContentData.init(headerData: headerData,
                                    bodyData: bodyData)
     }.subscribe { result in
-      print("FETCH result DATA")
-      dump(result)
 
       if let content = result.element{
         self.contentData.onNext(content)
@@ -89,7 +86,6 @@ extension DefaultPlanPreviewUseCase: PlanPreviewUseCase {
     }
     var count = 0 {
       didSet{
-        print(bodyData.photos.count)
         if count == bodyData.photos.count {
           dump(heightList)
           self.imageHeightData.onNext(heightList)
