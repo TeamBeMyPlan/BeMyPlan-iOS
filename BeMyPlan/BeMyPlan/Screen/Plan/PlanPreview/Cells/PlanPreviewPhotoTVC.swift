@@ -43,7 +43,7 @@ class PlanPreviewPhotoTVC: UITableViewCell {
   override func prepareForReuse() {
     contentImageView.kf.cancelDownloadTask() // first, cancel currenct download task
     contentImageView.image = nil
-    setSkeletonUI()
+//    setSkeletonUI()
   }
   
   override func setSelected(_ selected: Bool, animated: Bool) {
@@ -75,7 +75,6 @@ class PlanPreviewPhotoTVC: UITableViewCell {
         if cachedHeight == 0 {
           imageHeightConstraint.constant = screenWidth
         } else {
-          print("캐싱된 height",cachedHeight,data.content)
           imageHeightConstraint.constant = cachedHeight
 //          self.layoutIfNeeded()
         }
@@ -84,21 +83,16 @@ class PlanPreviewPhotoTVC: UITableViewCell {
     contentImageView.setImage(with: data.photoUrl) { image in
       let height = self.makeImageHeight(image)
       
-      DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-        self.contentImageView.hideSkeleton(reloadDataAfter: false, transition: .crossDissolve(0.6))
+        self.contentImageView.hideSkeleton(reloadDataAfter: false, transition: .crossDissolve(0.2))
         if let heightLoadComplete = self.heightLoadComplete,
            data.height.value != height,
            cachedHeight == 0{
-          print("INDDDDD",data.content)
           heightLoadComplete(height)
         }
-      }
-
     }
   }
   
 
-  
   private func makeTextHeight(_ text: String) -> CGFloat{
     return calculateTextViewHeight(width: screenWidth - 48,
                                    font: .systemFont(ofSize: 14),
