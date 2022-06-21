@@ -52,7 +52,6 @@ class ScrapVC: UIViewController {
         self.scrapView.isHidden = entity.contents.isEmpty
         self.nextCursor = entity.nextCursor
         self.scrapView.scrapDataList = entity.contents
-        print("현재 들어오는 스크랩 리스트",entity.contents)
       }.catch { _ in
         self.postObserverAction(.showNetworkError)
       }
