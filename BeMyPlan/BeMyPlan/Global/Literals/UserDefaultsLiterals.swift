@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+
+struct UserDefaultKey {
+  static let sessionID: String = "userSessionID"
+  static let previewMode: String = "accountPreviewMode"
+  static let userNickname: String = "userNickname"
+}

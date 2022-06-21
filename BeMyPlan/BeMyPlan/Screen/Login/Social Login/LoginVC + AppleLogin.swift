@@ -33,12 +33,16 @@ extension LoginVC : ASAuthorizationControllerDelegate {
     switch authorization.credential {
       //Apple ID
     case let appleIDCredential as ASAuthorizationAppleIDCredential :
+        
+        let email = appleIDCredential.email
+        appleIDCredential.email
+        print("EMAIL",email)
       
       //계정 정보 가져오기
       let identityToken = appleIDCredential.identityToken
       let tokenString = String(data: identityToken!, encoding: .utf8)
         if let token = tokenString {
-          postSocialLoginData(socialToken: token, socialType: "APPLE")
+          postSocialLoginData(socialToken: token, socialType: "APPLE",email: email)
         }
     default:
       //실패할 때 실패VC로 이동

@@ -53,6 +53,7 @@ class BaseService{
                 observer.onError(error)
               }
             case .failure(let error):
+              print("ERRERERE")
               observer.onError(error)
           }
         }.disposed(by: self.disposeBag)

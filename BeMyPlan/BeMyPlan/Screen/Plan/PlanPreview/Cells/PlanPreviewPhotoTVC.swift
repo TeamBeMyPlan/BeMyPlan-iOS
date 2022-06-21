@@ -86,13 +86,6 @@ class PlanPreviewPhotoTVC: UITableViewCell {
       
       DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
         self.contentImageView.hideSkeleton(reloadDataAfter: false, transition: .crossDissolve(0.6))
-        print("--------------------")
-        print("셀 내에서 계삳ㄴ된 높이",height)
-        print("밖에서 꽂아준 height ",data.height.value)
-        print("cachedHeight",cachedHeight,data.content)
-        print("--------------------")
-        print("WHAT..?",self.heightLoadComplete)
-
         if let heightLoadComplete = self.heightLoadComplete,
            data.height.value != height,
            cachedHeight == 0{

@@ -147,13 +147,14 @@ class PlanPreviewVC: UIViewController {
     output.showLoginPage
       .asDriver(onErrorJustReturn: false)
       .drive( onNext: { [weak self] state in
-        print("state",state)
-        self?.presentLoginVC()
+        self?.makeAlert(alertCase: .requestAlert, title: "알림", content: "구매 기능은 로그인이 필요합니다.\n로그인 페이지로 돌아가시겠습니까?") {
+          self?.presentLoginVC()
+        }
       })
   }
   
   private func presentLoginVC() {
-    UserDefaults.standard.removeObject(forKey: "userSessionID")
+    UserDefaults.standard.removeObject(forKey: UserDefaultKey.sessionID)
     guard let loginVC = UIStoryboard.list(.login).instantiateViewController(withIdentifier: LoginNC.className) as? LoginNC else {return}
     loginVC.modalPresentationStyle = .fullScreen
     AppLog.log(at: FirebaseAnalyticsProvider.self, .logout)

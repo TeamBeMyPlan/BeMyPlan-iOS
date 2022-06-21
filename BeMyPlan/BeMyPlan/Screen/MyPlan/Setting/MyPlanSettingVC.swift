@@ -17,6 +17,7 @@ class MyPlanSettingVC: UIViewController, MFMailComposeViewControllerDelegate {
   @IBOutlet var serviceTermButton: UIButton!
   @IBOutlet var logoutButton: UIButton!
   @IBOutlet var withdrawButton: UIButton!
+  @IBOutlet var guestModeHideenView: UIView!
   @IBOutlet var headerTopConstraint: NSLayoutConstraint!{
     didSet{
       headerTopConstraint.constant = calculateTopInset()
@@ -27,6 +28,7 @@ class MyPlanSettingVC: UIViewController, MFMailComposeViewControllerDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
     addButtonActions()
+    setGuestMode()
   }
   
   // MARK: - Custom Method Part
@@ -65,7 +67,7 @@ class MyPlanSettingVC: UIViewController, MFMailComposeViewControllerDelegate {
     }
     
     logoutButton.press {
-      if let _ = UserDefaults.standard.string(forKey: "userSessionID") {
+      if let _ = UserDefaults.standard.string(forKey: UserDefaultKey.sessionID) {
         self.logoutAction()
       } else {
         self.makeAlert(alertCase: .requestAlert, title: "알림", content: "로그인 페이지로 돌아가시겠습니까?") {
@@ -75,7 +77,11 @@ class MyPlanSettingVC: UIViewController, MFMailComposeViewControllerDelegate {
     }
     
     withdrawButton.press {
-      self.postObserverAction(.moveSettingWithdrawView)
+      if let _ = UserDefaults.standard.string(forKey: UserDefaultKey.sessionID) {
+        self.postObserverAction(.moveSettingWithdrawView)
+      } else {
+        self.makeAlert(content: "둘러보기에서는 회원탈퇴가 불가능합니다.")
+      }
     }
   }
   
@@ -90,11 +96,19 @@ class MyPlanSettingVC: UIViewController, MFMailComposeViewControllerDelegate {
   }
   
   private func presentLoginVC() {
-    UserDefaults.standard.removeObject(forKey: "userSessionID")
+    UserDefaults.standard.removeObject(forKey: UserDefaultKey.sessionID)
     guard let loginVC = UIStoryboard.list(.login).instantiateViewController(withIdentifier: LoginNC.className) as? LoginNC else {return}
     loginVC.modalPresentationStyle = .fullScreen
     AppLog.log(at: FirebaseAnalyticsProvider.self, .logout)
     self.present(loginVC, animated: false, completion: nil)
+  }
+  
+  private func setGuestMode() {
+    if let _ = UserDefaults.standard.string(forKey: UserDefaultKey.sessionID) {
+      guestModeHideenView.isHidden = true
+    } else {
+      guestModeHideenView.isHidden = false
+    }
   }
     
   func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {

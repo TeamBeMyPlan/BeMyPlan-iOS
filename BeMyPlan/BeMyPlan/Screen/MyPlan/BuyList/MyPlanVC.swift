@@ -96,7 +96,7 @@ class MyPlanVC: UIViewController {
     
     addObserverAction(.loginButtonClickedInMyPlan) { _ in
       self.makeAlert(alertCase: .requestAlert, title: "알림", content: "로그인 페이지로 돌아가시겠습니까?") {
-        UserDefaults.standard.removeObject(forKey: "userSessionID")
+        UserDefaults.standard.removeObject(forKey: UserDefaultKey.sessionID)
         guard let loginVC = UIStoryboard.list(.login).instantiateViewController(withIdentifier: LoginNC.className) as? LoginNC else {return}
         loginVC.modalPresentationStyle = .fullScreen
         AppLog.log(at: FirebaseAnalyticsProvider.self, .logout)
@@ -141,8 +141,8 @@ extension MyPlanVC: SkeletonCollectionViewDataSource{
       case UICollectionView.elementKindSectionHeader:
         guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: MyPlanCVUserResuableView.className, for: indexPath) as?
                 MyPlanCVUserResuableView else{ return UICollectionReusableView() }
-        if let _ = UserDefaults.standard.string(forKey: "userSessionID") {
-          guard let nickname = UserDefaults.standard.string(forKey: "userNickname") else { return headerView }
+        if let _ = UserDefaults.standard.string(forKey: UserDefaultKey.sessionID) {
+          guard let nickname = UserDefaults.standard.string(forKey: UserDefaultKey.userNickname) else { return headerView }
           headerView.setData(nickName: nickname, buyCount: buyContentList.count) // 이후 수정필요
         } else {
           headerView.setData(nickName: "", buyCount: 0,isGuestMode: true) // 이후 수정필요

@@ -45,7 +45,7 @@ class LoginVC: UIViewController {
   // MARK: - IBAction Part
   
   @IBAction func touchUpToGoBaseView(_ sender: Any) {
-    UserDefaults.standard.removeObject(forKey: "userSessionID")
+    UserDefaults.standard.removeObject(forKey: UserDefaultKey.sessionID)
     self.makeVibrate()
     self.moveBaseVC()
   }

@@ -17,8 +17,7 @@ protocol ModuleFactoryProtocol {
   
   // MARK: - Auth
   func instantiateLoginVC() -> LoginVC
-  func instantiateSignupNC(socialType: String,socialToken: String) -> SignupNC
-  func instantiateSignupVC() -> SignUpVC
+  func instantiateSignupNC(socialType: String,socialToken: String,email: String?) -> SignupNC
   func instantiateSignupNicknameVC() -> SignUpNicknameVC
   func instantiateSignupEmailVC() -> SignUpEmailVC
   func instantiateSignupTOSVC() -> SignUpTOSVC
@@ -78,15 +77,12 @@ class ModuleFactory: ModuleFactoryProtocol{
     return LoginVC.controllerFromStoryboard(.login)
   }
   
-  func instantiateSignupNC(socialType: String,socialToken: String) -> SignupNC {
+  func instantiateSignupNC(socialType: String,socialToken: String,email: String?) -> SignupNC {
     let signupNC = SignupNC.controllerFromStoryboard(.signup)
     signupNC.socialToken = socialToken
     signupNC.socialType = socialType
+    signupNC.email = email
     return signupNC
-  }
-
-  func instantiateSignupVC() -> SignUpVC {
-    return SignUpVC.controllerFromStoryboard(.signup)
   }
   
   func instantiateSignupNicknameVC() -> SignUpNicknameVC {

@@ -19,6 +19,7 @@ class SignUpNicknameVC: UIViewController {
   // MARK: - Vars & Lets Part
   var userToken : String = ""
   var socialType : String = ""
+  var email: String?
   var timer: Timer?
   var time: Float = 0
   
@@ -239,7 +240,12 @@ class SignUpNicknameVC: UIViewController {
   private func postNickNameData(nickName: String) {
     BaseService.default.postNickNameCheck(nickName: nickName) { result in
       result.success { [weak self] data in
-        self?.pushSignUpEmailVC()
+        if self?.socialType == "APPLE" {
+          self?.pushSignUpTOSVC()
+        } else {
+          self?.pushSignUpEmailVC()
+        }
+        
       }.catch { error in
         self.nicknameCheckLabel.isHidden = false
         self.setBtnStatus()
@@ -255,6 +261,15 @@ class SignUpNicknameVC: UIViewController {
     emailVC.nickname = nicknameInputTextField.text!  //?? ""  //근데 ! 해도 될거 같은데 무조건 넘어오니까 맞죠..?
     emailVC.socialType = socialType
     emailVC.userToken = userToken
+  }
+  
+  private func pushSignUpTOSVC() {
+    guard let tosVC = UIStoryboard.list(.signup).instantiateViewController(withIdentifier: SignUpTOSVC.className) as? SignUpTOSVC else {return}
+    self.navigationController?.pushViewController(tosVC, animated: true)
+    tosVC.nickname = nicknameInputTextField.text!
+    tosVC.email = email ?? ""
+    tosVC.socialType = socialType
+    tosVC.userToken = userToken
   }
   
   

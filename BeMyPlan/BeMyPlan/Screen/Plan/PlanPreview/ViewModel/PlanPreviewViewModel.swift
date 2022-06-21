@@ -56,7 +56,7 @@ extension PlanPreviewViewModel{
     
     input.buyButtonDidTapEvent
       .subscribe(onNext: { [weak self] in
-        guard let _ = UserDefaults.standard.string(forKey: "userSessionID") else {
+        guard let _ = UserDefaults.standard.string(forKey: UserDefaultKey.sessionID) else {
           output.showLoginPage.accept(true)
           return
         }

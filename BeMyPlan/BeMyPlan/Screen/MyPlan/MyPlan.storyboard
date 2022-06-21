@@ -606,14 +606,22 @@
                                                     <constraint firstAttribute="height" constant="100" id="uym-PH-c0G"/>
                                                 </constraints>
                                             </stackView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vDS-AL-ZRg" userLabel="guestModeHiddenView">
+                                                <rect key="frame" x="27" y="269" width="360" height="100"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="9D5-5d-eK9" firstAttribute="leading" secondItem="qxC-sn-gqM" secondAttribute="leading" constant="27" id="59i-yG-ndf"/>
                                             <constraint firstItem="Hj3-xy-PXx" firstAttribute="top" secondItem="qxC-sn-gqM" secondAttribute="top" constant="11" id="5EP-QT-qph"/>
+                                            <constraint firstItem="vDS-AL-ZRg" firstAttribute="leading" secondItem="MtY-vc-6v5" secondAttribute="leading" id="9FE-Da-wLa"/>
                                             <constraint firstItem="Hj3-xy-PXx" firstAttribute="leading" secondItem="qxC-sn-gqM" secondAttribute="leading" constant="27" id="FSq-ff-m31"/>
+                                            <constraint firstItem="vDS-AL-ZRg" firstAttribute="top" secondItem="MtY-vc-6v5" secondAttribute="top" id="Pxj-dm-nfI"/>
+                                            <constraint firstItem="vDS-AL-ZRg" firstAttribute="bottom" secondItem="lak-SE-Kdd" secondAttribute="bottom" id="eLW-DF-8Br"/>
                                             <constraint firstItem="9D5-5d-eK9" firstAttribute="top" secondItem="Hj3-xy-PXx" secondAttribute="bottom" constant="21" id="mga-K9-QRm"/>
                                             <constraint firstAttribute="bottom" secondItem="9D5-5d-eK9" secondAttribute="bottom" constant="200" id="o4I-fO-LN2"/>
+                                            <constraint firstItem="vDS-AL-ZRg" firstAttribute="trailing" secondItem="MtY-vc-6v5" secondAttribute="trailing" id="ou7-tz-u1q"/>
                                             <constraint firstAttribute="trailing" secondItem="9D5-5d-eK9" secondAttribute="trailing" constant="27" id="u3Y-xR-3Ga"/>
                                             <constraint firstAttribute="trailing" secondItem="Hj3-xy-PXx" secondAttribute="trailing" constant="27" id="zU7-Dj-5u3"/>
                                         </constraints>
@@ -643,6 +651,7 @@
                     </view>
                     <connections>
                         <outlet property="askButton" destination="G45-lR-VGa" id="bah-pJ-dCK"/>
+                        <outlet property="guestModeHideenView" destination="vDS-AL-ZRg" id="I7B-79-QiZ"/>
                         <outlet property="headerTopConstraint" destination="nTZ-Ed-v9L" id="TJI-5S-1Od"/>
                         <outlet property="logoutButton" destination="MtY-vc-6v5" id="vMZ-Pe-s6b"/>
                         <outlet property="serviceTermButton" destination="xfJ-ma-H3z" id="YQW-el-F5E"/>

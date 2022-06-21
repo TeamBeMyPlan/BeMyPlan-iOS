@@ -11,6 +11,7 @@ class SignupNC: UINavigationController {
   
   var socialType: String?
   var socialToken: String?
+  var email: String?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -18,6 +19,7 @@ class SignupNC: UINavigationController {
     let signupNicknameVC = ModuleFactory.resolve().instantiateSignupNicknameVC()
     signupNicknameVC.socialType = socialType ?? ""
     signupNicknameVC.userToken = socialToken ?? ""
+    signupNicknameVC.email = email
     
     self.pushViewController(signupNicknameVC, animated: false)
 

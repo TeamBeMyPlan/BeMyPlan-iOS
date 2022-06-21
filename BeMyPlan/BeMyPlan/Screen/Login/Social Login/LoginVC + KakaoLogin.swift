@@ -29,7 +29,6 @@ extension LoginVC {
       }
     }
     else { // 카카오 계정으로 로그인
-      print("카카오톡 설치 되지 않음")
       UserApi.shared.loginWithKakaoAccount { (oauthToken, error) in
         if let _ = error { self.showKakaoLoginFailMessage() }
         else {
@@ -44,25 +43,24 @@ extension LoginVC {
     }
   }
   
-  func postSocialLoginData(socialToken: String, socialType: String) {
+  func postSocialLoginData(socialToken: String, socialType: String,email: String? = nil) {
     print("postSocialLoginData",socialToken)
     BaseService.default.postSocialLogin(socialToken: socialToken, socialType: socialType) { result in
       result.success { [weak self] data in
         if let data = data{
-          UserDefaults.standard.setValue(data.nickname, forKey: "userNickname")
-            UserDefaults.standard.setValue(data.sessionId, forKey: "userSessionID")
+          UserDefaults.standard.setValue(data.nickname, forKey: UserDefaultKey.userNickname)
+          UserDefaults.standard.setValue(data.sessionId, forKey: UserDefaultKey.sessionID)
             self?.moveBaseVC()
           }
       }.catch {error in
-        self.pushSignUpNicknameVC(socialToken: socialToken, socialType: socialType)
-
+          self.pushSignUpNicknameVC(socialToken: socialToken, socialType: socialType,email: email)
       }
     }
   }
-
-  private func pushSignUpNicknameVC(socialToken : String, socialType : String) {
+  
+  private func pushSignUpNicknameVC(socialToken : String, socialType : String,email: String?) {
     
-    let signupNicknameVC = factory.instantiateSignupNC(socialType: socialType, socialToken: socialToken)
+    let signupNicknameVC = factory.instantiateSignupNC(socialType: socialType, socialToken: socialToken,email: email)
     signupNicknameVC.modalPresentationStyle = .overFullScreen
     self.present(signupNicknameVC, animated: true, completion: nil)
   }

@@ -35,7 +35,6 @@
 		F27483F227CA39B4004164F0 /* SignUpNicknameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27483F127CA39B4004164F0 /* SignUpNicknameVC.swift */; };
 		F294EC28278EBC2C001069F8 /* LoginVC + KakaoLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F294EC27278EBC2C001069F8 /* LoginVC + KakaoLogin.swift */; };
 		F294EC2B278EBC66001069F8 /* LoginVC + AppleLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = F294EC2A278EBC66001069F8 /* LoginVC + AppleLogin.swift */; };
-		F294EC2F278EBD7E001069F8 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F294EC2E278EBD7E001069F8 /* SignUpVC.swift */; };
 		F294EC32278EFA0F001069F8 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F294EC31278EFA0F001069F8 /* SignUp.storyboard */; };
 		F2C5F18E2786EACB00BE4036 /* MainCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C5F18D2786EACB00BE4036 /* MainCardView.swift */; };
 		F2C5F1902786EAE200BE4036 /* MainCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2C5F18F2786EAE200BE4036 /* MainCardView.xib */; };
@@ -110,6 +109,7 @@
 		FD1C568C2792DA7300EEDFCE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD3211B127841949007D63D5 /* Assets.xcassets */; };
 		FD1C568F2795893700EEDFCE /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1C568E2795893700EEDFCE /* HomeService.swift */; };
 		FD1C569127958A9B00EEDFCE /* ResponseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1C569027958A9B00EEDFCE /* ResponseObject.swift */; };
+		FD1CBBA3284F3588002A54C4 /* UserDefaultsLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD1CBBA2284F3588002A54C4 /* UserDefaultsLiterals.swift */; };
 		FD20C609278EB94100AC6E34 /* MyPlanCVUserResuableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD20C608278EB94100AC6E34 /* MyPlanCVUserResuableView.swift */; };
 		FD20C60B278EBBB500AC6E34 /* MyPlanBuyContentCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD20C60A278EBBB500AC6E34 /* MyPlanBuyContentCVC.swift */; };
 		FD20C60E278EBF1800AC6E34 /* MyPlanData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD20C60D278EBF1800AC6E34 /* MyPlanData.swift */; };
@@ -190,6 +190,7 @@
 		FD61AFDA2791DB9100D39F47 /* PanDirectionGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD61AFD92791DB9100D39F47 /* PanDirectionGesture.swift */; };
 		FD61AFDC2791DC6E00D39F47 /* UINavigation + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD61AFDB2791DC6E00D39F47 /* UINavigation + Extension.swift */; };
 		FD66701327E314C300296E4A /* PreviewBodyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD66701227E314C300296E4A /* PreviewBodyData.swift */; };
+		FD6934DC286199A30003A818 /* encodeURLWithKorean.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6934DB286199A30003A818 /* encodeURLWithKorean.swift */; };
 		FD93028027A3EC7500341C2A /* PlanPreviewRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD93027F27A3EC7500341C2A /* PlanPreviewRepository.swift */; };
 		FD93028227A3ED1D00341C2A /* PlanPreviewEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD93028127A3ED1D00341C2A /* PlanPreviewEntity.swift */; };
 		FD93028827A3F9B800341C2A /* downloadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD93028727A3F9B800341C2A /* downloadImage.swift */; };
@@ -306,7 +307,6 @@
 		F27483F127CA39B4004164F0 /* SignUpNicknameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpNicknameVC.swift; sourceTree = "<group>"; };
 		F294EC27278EBC2C001069F8 /* LoginVC + KakaoLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginVC + KakaoLogin.swift"; sourceTree = "<group>"; };
 		F294EC2A278EBC66001069F8 /* LoginVC + AppleLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginVC + AppleLogin.swift"; sourceTree = "<group>"; };
-		F294EC2E278EBD7E001069F8 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		F294EC30278EDB82001069F8 /* BeMyPlan.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BeMyPlan.entitlements; sourceTree = "<group>"; };
 		F294EC31278EFA0F001069F8 /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		F2C5F18D2786EACB00BE4036 /* MainCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCardView.swift; sourceTree = "<group>"; };
@@ -394,6 +394,7 @@
 		FD1A78282795E45600FB10AB /* PlanPreviewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanPreviewService.swift; sourceTree = "<group>"; };
 		FD1C568E2795893700EEDFCE /* HomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeService.swift; sourceTree = "<group>"; };
 		FD1C569027958A9B00EEDFCE /* ResponseObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseObject.swift; sourceTree = "<group>"; };
+		FD1CBBA2284F3588002A54C4 /* UserDefaultsLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsLiterals.swift; sourceTree = "<group>"; };
 		FD20C608278EB94100AC6E34 /* MyPlanCVUserResuableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlanCVUserResuableView.swift; sourceTree = "<group>"; };
 		FD20C60A278EBBB500AC6E34 /* MyPlanBuyContentCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlanBuyContentCVC.swift; sourceTree = "<group>"; };
 		FD20C60D278EBF1800AC6E34 /* MyPlanData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlanData.swift; sourceTree = "<group>"; };
@@ -477,6 +478,7 @@
 		FD61AFD92791DB9100D39F47 /* PanDirectionGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanDirectionGesture.swift; sourceTree = "<group>"; };
 		FD61AFDB2791DC6E00D39F47 /* UINavigation + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigation + Extension.swift"; sourceTree = "<group>"; };
 		FD66701227E314C300296E4A /* PreviewBodyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewBodyData.swift; sourceTree = "<group>"; };
+		FD6934DB286199A30003A818 /* encodeURLWithKorean.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = encodeURLWithKorean.swift; sourceTree = "<group>"; };
 		FD93027F27A3EC7500341C2A /* PlanPreviewRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanPreviewRepository.swift; sourceTree = "<group>"; };
 		FD93028127A3ED1D00341C2A /* PlanPreviewEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanPreviewEntity.swift; sourceTree = "<group>"; };
 		FD93028727A3F9B800341C2A /* downloadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = downloadImage.swift; sourceTree = "<group>"; };
@@ -717,7 +719,6 @@
 				F27483EC27CA3955004164F0 /* TermsOfService */,
 				F27483EB27CA390C004164F0 /* Email */,
 				F27483EA27CA38FE004164F0 /* NickName */,
-				F294EC2E278EBD7E001069F8 /* SignUpVC.swift */,
 				F294EC31278EFA0F001069F8 /* SignUp.storyboard */,
 				FDEF170B284E413000BB5001 /* SignupNC.swift */,
 			);
@@ -858,6 +859,7 @@
 				FD09DDFD278578BA006DA050 /* StringLiterals.swift */,
 				FD09DDFF278578C4006DA050 /* ImageLiterals.swift */,
 				FD09DE2827857E25006DA050 /* StoryboardLiterals.swift */,
+				FD1CBBA2284F3588002A54C4 /* UserDefaultsLiterals.swift */,
 			);
 			path = Literals;
 			sourceTree = "<group>";
@@ -885,6 +887,7 @@
 				FD122DE727D3638D00469189 /* showToastMessage.swift */,
 				FD50D13B284B12B50014F3CD /* setAttributedText.swift */,
 				FDEF170D284E456100BB5001 /* shakeAnimation.swift */,
+				FD6934DB286199A30003A818 /* encodeURLWithKorean.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1929,6 +1932,7 @@
 				FD5100C72848A35B0037AC8E /* PlanListService.swift in Sources */,
 				523C70FD2799DAA30073371D /* ScrapEmptyDataModel.swift in Sources */,
 				523C70A52795D32E0073371D /* TravelSpotService.swift in Sources */,
+				FD1CBBA3284F3588002A54C4 /* UserDefaultsLiterals.swift in Sources */,
 				FDD41E2527DAF87B003BF531 /* OnboardingVC.swift in Sources */,
 				FD4C86BE278C9AF900D37A2D /* PaymentCompleteVC.swift in Sources */,
 				FDCDCB31278F4C2B002CEA15 /* PlanDetailSpotDataModel.swift in Sources */,
@@ -1992,7 +1996,6 @@
 				FD5D730F27A46BAB002DE484 /* PlanPreviewViewModel.swift in Sources */,
 				FD20C626278EF6AE00AC6E34 /* BarSelectButton.swift in Sources */,
 				F266412F2788262800CCC751 /* MainListCVC.swift in Sources */,
-				F294EC2F278EBD7E001069F8 /* SignUpVC.swift in Sources */,
 				FDC47E0E2789742800A152E8 /* TravelSpotCVC.swift in Sources */,
 				52E26A8D278C17A800D84F0C /* TravelSpotFilterVC.swift in Sources */,
 				FD2D4DCC278D8636002084B9 /* drawDashedLine + UIView.swift in Sources */,
@@ -2012,6 +2015,7 @@
 				FD09DE0D278579CC006DA050 /* showNetworkAlert.swift in Sources */,
 				FD2D9C542796ABDD00688A42 /* PlanDetailDataGettable.swift in Sources */,
 				FDCE382C2799BBC90042DC54 /* showIndicator.swift in Sources */,
+				FD6934DC286199A30003A818 /* encodeURLWithKorean.swift in Sources */,
 				FD09DDF927857858006DA050 /* UICollectionViewRegisterable.swift in Sources */,
 				FD93028027A3EC7500341C2A /* PlanPreviewRepository.swift in Sources */,
 				FD35664D2792AF2C0082B4CE /* ScrapContainerView.swift in Sources */,
@@ -2169,7 +2173,7 @@
 				CODE_SIGN_ENTITLEMENTS = BeMyPlan/BeMyPlan.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2022060302;
+				CURRENT_PROJECT_VERSION = 2022061601;
 				DEVELOPMENT_TEAM = PLJU22T9YZ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2213,7 +2217,7 @@
 				CODE_SIGN_ENTITLEMENTS = BeMyPlan/BeMyPlan.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2022060302;
+				CURRENT_PROJECT_VERSION = 2022061601;
 				DEVELOPMENT_TEAM = PLJU22T9YZ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

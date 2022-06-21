@@ -375,13 +375,15 @@ extension BaseAPI: TargetType {
   }
 
   public var headers: [String: String]? {
-		if let sessionID = UserDefaults.standard.string(forKey: "userSessionID") {
+
+		if let sessionID = UserDefaults.standard.string(forKey: UserDefaultKey.sessionID) {
 			return ["Content-Type": "application/json",
 							"Visit-Option": "MEMBERSHIP",
 							"Authorization" : sessionID]
 		} else {
 			return ["Content-Type": "application/json",
-							"Visit-Option": "GUEST"]
+							"Visit-Option": "MEMBERSHIP",
+							"Authorization" : Config.PreviewAccount.guestSessionID]
 		}
   }
   

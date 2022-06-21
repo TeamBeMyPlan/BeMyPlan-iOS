@@ -41,7 +41,7 @@ class SplashVC: UIViewController {
         self.splashIconNoTitle.alpha = 0
       }
     } completion: { _ in
-      if let _ = UserDefaults.standard.string(forKey: "userSessionID") {
+      if let sessionID = UserDefaults.standard.string(forKey: UserDefaultKey.sessionID) {
         self.moveBaseVC()
       }else {
         UserDefaults.standard.bool(forKey: "onboardingComplete") ? self.moveLoginVC() : self.moveOnboardingVC()

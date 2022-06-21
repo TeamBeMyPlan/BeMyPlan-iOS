@@ -58,7 +58,7 @@ class MyPlanWithdrawVC: UIViewController {
       self.makeAlert(alertCase: .requestAlert, title: "탈퇴하기", content: "정말 탈퇴하시겠습니까?") {
         self.withdrawAction { result in
           if result{
-            UserDefaults.standard.removeObject(forKey: "userSessionID")
+            UserDefaults.standard.removeObject(forKey: UserDefaultKey.sessionID)
             self.makeAlert(alertCase: .simpleAlert, title: "탈퇴하기", content: "탈퇴 완료되었습니다.") {
               AppLog.log(at: FirebaseAnalyticsProvider.self, .withdrawal)
               guard let loginVC = UIStoryboard.list(.login).instantiateViewController(withIdentifier: LoginNC.className) as? LoginNC else {return}
