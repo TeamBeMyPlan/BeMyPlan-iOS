@@ -7,8 +7,6 @@
 
 import UIKit
 
-
-
 class PlanDetailMapContainerView: XibView,MTMapViewDelegate{
   
   // MARK: - View Model

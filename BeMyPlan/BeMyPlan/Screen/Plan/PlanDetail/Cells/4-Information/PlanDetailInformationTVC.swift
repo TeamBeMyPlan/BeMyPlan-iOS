@@ -160,7 +160,7 @@ class PlanDetailInformationTVC: UITableViewCell,UITableViewRegisterable {
     if let transportCase = viewModel.transport,
        let nextTime = viewModel.transportTime,
        let nextLocationName = nextLocationName{
-      nextTripTimeView.isHidden = false
+      nextTripTimeView.isHidden = nextTime == "분" ? true : false
       nextTripTimeLabel.text = transportCase.rawValue + " " + nextTime
       nextTripLocationNameLabel.text = viewModel.title + " -> " + nextLocationName
     }else{

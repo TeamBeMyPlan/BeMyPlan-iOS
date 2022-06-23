@@ -23,6 +23,7 @@ class MainCardView: UIView {
     registerCVC()
     setMainCardCV()
     getCardData()
+    addObserver()
   }
   
   required init?(coder aDecoder: NSCoder) {
@@ -31,6 +32,7 @@ class MainCardView: UIView {
     registerCVC()
     setMainCardCV()
     getCardData()
+    addObserver()
   }
   
   // MARK: - UI Component Part
@@ -90,6 +92,12 @@ class MainCardView: UIView {
         self.popularList = entity.contents
         self.mainCardCV.reloadData()
       }
+    }
+  }
+  
+  private func addObserver() {
+    addObserverAction(.viewWillAppearInHome) { _ in
+      self.getCardData()
     }
   }
   

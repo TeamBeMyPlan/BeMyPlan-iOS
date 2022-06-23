@@ -21,7 +21,7 @@ enum BaseNotiList : String{
   case movePlanList // 여행지 목록
   case movePlanDetail // 구매후 뷰
   case changeCurrentTab
-  
+  case viewWillAppearInHome
   case moveHomeToPlanList
   case moveNicknamePlanList
   

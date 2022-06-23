@@ -24,9 +24,9 @@ class MyPlanBuyContentCVC: UICollectionViewCell {
   }
   
   override func prepareForReuse() {
-    contentImageView.kf.cancelDownloadTask()
+//    contentImageView.kf.cancelDownloadTask()
     contentImageView.image = nil
-    configureSkeleton()
+//    configureSkeleton()
   }
   
   @IBAction func scrapButtonClicked(_ sender: Any) {
@@ -62,8 +62,8 @@ class MyPlanBuyContentCVC: UICollectionViewCell {
     postId = data.planID
     scrapState = data.scrapStatus
     contentImageView.setImage(with: data.thumbnailURL) { _ in
-      self.contentImageView.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.75))
-      self.scrapImageView.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.75))
+      self.contentImageView.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.5))
+      self.scrapImageView.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.5))
       self.contentImageView.layer.cornerRadius = 5
       self.contentImageView.layoutIfNeeded()
     }

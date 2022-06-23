@@ -38,8 +38,8 @@ class MyPlanSettingVC: UIViewController, MFMailComposeViewControllerDelegate {
   }
   private func addButtonActions(){
     uploadButton.press {
-      guard let uploadVC = self.storyboard?.instantiateViewController(withIdentifier: MyPlanApplicationVC.className) as? MyPlanApplicationVC else {return}
-      self.navigationController?.pushViewController(uploadVC, animated: true)
+      guard let url = URL(string: "https://www.notion.so/abef1fe27502476383063d2772bf7770"), UIApplication.shared.canOpenURL(url) else { return }
+      UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     
     askButton.press {
@@ -49,7 +49,7 @@ class MyPlanSettingVC: UIViewController, MFMailComposeViewControllerDelegate {
         let compseVC = MFMailComposeViewController()
         compseVC.mailComposeDelegate = self
         
-        compseVC.setToRecipients(["bemyplan@gmail.com"])
+        compseVC.setToRecipients(["bemyplanteam@gmail.com"])
         compseVC.setSubject("비마이플랜에게 문의하기")
         compseVC.setMessageBody("", isHTML: false)
         

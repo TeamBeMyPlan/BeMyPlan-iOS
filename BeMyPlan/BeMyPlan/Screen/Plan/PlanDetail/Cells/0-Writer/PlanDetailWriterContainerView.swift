@@ -62,10 +62,11 @@ class PlanDetailWriterContainerView: XibView {
   private func configure(){
     writerLabel.text = viewModel.title
     locationTitleView.text = viewModel.nickname
-    arrowIconImageView.isHidden = viewModel.isPreviewPage
+//    arrowIconImageView.isHidden = viewModel.isPreviewPage
+    arrowIconImageView.isHidden = true
     locationTitleView.sizeToFit()
   }
-  // FIXME: - 나중에 ViewModel 완성하면 지워야 함.
+  
   func setTitleData(title : String, writer: String,isPreviewPage : Bool,authorID : Int){
     writerLabel.text = title
     locationTitleView.text = writer
