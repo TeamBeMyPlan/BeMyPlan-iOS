@@ -21,7 +21,6 @@ class ScrapContainerCVC: UICollectionViewCell, UICollectionViewRegisterable {
   override func awakeFromNib() {
     super.awakeFromNib()
     setUIs()
-    configureSkeleton()
   }
   
   @IBAction func scrapBtnTapped(_ sender: Any) {
