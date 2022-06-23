@@ -35,6 +35,7 @@ class MainListView: UIView {
     registerCVC()
     setTitle()
     setMainListCV()
+    addObserver()
   }
   
   required init?(coder aDecoder: NSCoder) {
@@ -43,6 +44,7 @@ class MainListView: UIView {
     registerCVC()
     setTitle()
     setMainListCV()
+    addObserver()
   }
   
   // MARK: - UI Component Part
@@ -131,6 +133,13 @@ class MainListView: UIView {
       }.catch { error in
         self.postObserverAction(.showNetworkError,object: nil)
       }
+    }
+  }
+  
+  private func addObserver() {
+    addObserverAction(.viewWillAppearInHome) { _ in
+      self.getRecentlyListData()
+      self.getSuggestListData()
     }
   }
   

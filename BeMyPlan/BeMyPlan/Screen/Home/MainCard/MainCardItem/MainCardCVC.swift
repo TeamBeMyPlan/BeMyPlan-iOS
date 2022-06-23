@@ -25,9 +25,7 @@ class MainCardCVC: UICollectionViewCell {
     super.awakeFromNib()
     self.setSkeletonView()
     self.setUI()
-
   }
-  
   
   // MARK: - Custom Method
   private func setSkeletonView() {
