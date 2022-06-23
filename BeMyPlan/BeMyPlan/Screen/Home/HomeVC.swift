@@ -63,6 +63,10 @@ class HomeVC: UIViewController, UIGestureRecognizerDelegate {
 
   }
   
+  override func viewWillAppear(_ animated: Bool) {
+    postObserverAction(.viewWillAppearInHome)
+  }
+  
   override func viewDidAppear(_ animated: Bool) {
 
   }
