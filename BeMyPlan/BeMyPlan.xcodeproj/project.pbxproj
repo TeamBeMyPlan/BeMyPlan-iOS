@@ -220,6 +220,16 @@
 		FD958A3327E0D7B500264EE4 /* ImageSizeFetcherOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD958A3227E0D7B500264EE4 /* ImageSizeFetcherOperation.swift */; };
 		FD958A3527E0D81700264EE4 /* ImageSizeFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD958A3427E0D81700264EE4 /* ImageSizeFetcher.swift */; };
 		FD958A3727E0D88300264EE4 /* ImageSizeFetcherParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD958A3627E0D88300264EE4 /* ImageSizeFetcherParser.swift */; };
+		FD9CE27C286B49B800020056 /* HashtagContainerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD9CE27B286B49B800020056 /* HashtagContainerView.xib */; };
+		FD9CE280286B49DC00020056 /* HashtagContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9CE27F286B49DC00020056 /* HashtagContainerView.swift */; };
+		FD9CE283286B5E3C00020056 /* HashtagCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9CE281286B5E3C00020056 /* HashtagCVC.swift */; };
+		FD9CE284286B5E3C00020056 /* HashtagCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD9CE282286B5E3C00020056 /* HashtagCVC.xib */; };
+		FD9CE287286B6DA400020056 /* ImageIndexContainerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD9CE286286B6DA400020056 /* ImageIndexContainerView.xib */; };
+		FD9CE289286B6DB600020056 /* ImageIndexContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9CE288286B6DB600020056 /* ImageIndexContainerView.swift */; };
+		FD9CE28C286B703800020056 /* ImageContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9CE28B286B703800020056 /* ImageContainerView.swift */; };
+		FD9CE28E286B704000020056 /* ImageContainerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD9CE28D286B704000020056 /* ImageContainerView.xib */; };
+		FD9CE291286B716100020056 /* ImageContainerPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9CE28F286B716100020056 /* ImageContainerPhotoCell.swift */; };
+		FD9CE292286B716100020056 /* ImageContainerPhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD9CE290286B716100020056 /* ImageContainerPhotoCell.xib */; };
 		FDA2062E27C40FCC001A371D /* PlanDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA2062A27C40FCC001A371D /* PlanDetailVC.swift */; };
 		FDA2062F27C40FCC001A371D /* PlanDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDA2062B27C40FCC001A371D /* PlanDetail.storyboard */; };
 		FDA2063027C40FCC001A371D /* PlanDetailViewModel + setPreviewDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA2062C27C40FCC001A371D /* PlanDetailViewModel + setPreviewDummy.swift */; };
@@ -531,6 +541,16 @@
 		FD958A3227E0D7B500264EE4 /* ImageSizeFetcherOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSizeFetcherOperation.swift; sourceTree = "<group>"; };
 		FD958A3427E0D81700264EE4 /* ImageSizeFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSizeFetcher.swift; sourceTree = "<group>"; };
 		FD958A3627E0D88300264EE4 /* ImageSizeFetcherParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSizeFetcherParser.swift; sourceTree = "<group>"; };
+		FD9CE27B286B49B800020056 /* HashtagContainerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HashtagContainerView.xib; sourceTree = "<group>"; };
+		FD9CE27F286B49DC00020056 /* HashtagContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashtagContainerView.swift; sourceTree = "<group>"; };
+		FD9CE281286B5E3C00020056 /* HashtagCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashtagCVC.swift; sourceTree = "<group>"; };
+		FD9CE282286B5E3C00020056 /* HashtagCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HashtagCVC.xib; sourceTree = "<group>"; };
+		FD9CE286286B6DA400020056 /* ImageIndexContainerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageIndexContainerView.xib; sourceTree = "<group>"; };
+		FD9CE288286B6DB600020056 /* ImageIndexContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageIndexContainerView.swift; sourceTree = "<group>"; };
+		FD9CE28B286B703800020056 /* ImageContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageContainerView.swift; sourceTree = "<group>"; };
+		FD9CE28D286B704000020056 /* ImageContainerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageContainerView.xib; sourceTree = "<group>"; };
+		FD9CE28F286B716100020056 /* ImageContainerPhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageContainerPhotoCell.swift; sourceTree = "<group>"; };
+		FD9CE290286B716100020056 /* ImageContainerPhotoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageContainerPhotoCell.xib; sourceTree = "<group>"; };
 		FDA2062A27C40FCC001A371D /* PlanDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanDetailVC.swift; sourceTree = "<group>"; };
 		FDA2062B27C40FCC001A371D /* PlanDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PlanDetail.storyboard; sourceTree = "<group>"; };
 		FDA2062C27C40FCC001A371D /* PlanDetailViewModel + setPreviewDummy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PlanDetailViewModel + setPreviewDummy.swift"; sourceTree = "<group>"; };
@@ -1110,6 +1130,9 @@
 		FD2D4DBF278D579A002084B9 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				FD9CE28A286B702800020056 /* ImageContainerView */,
+				FD9CE285286B6D8E00020056 /* ImageIndexContainerView */,
+				FD9CE27A286B499E00020056 /* HashtagContainerView */,
 				FDCE38262799BABF0042DC54 /* Indicator */,
 				FD20C624278EF6A200AC6E34 /* Button */,
 				FD2D4DC0278D57A5002084B9 /* ProgressBar.xib */,
@@ -1627,6 +1650,37 @@
 			path = ImageSizeFetcher;
 			sourceTree = "<group>";
 		};
+		FD9CE27A286B499E00020056 /* HashtagContainerView */ = {
+			isa = PBXGroup;
+			children = (
+				FD9CE27B286B49B800020056 /* HashtagContainerView.xib */,
+				FD9CE27F286B49DC00020056 /* HashtagContainerView.swift */,
+				FD9CE281286B5E3C00020056 /* HashtagCVC.swift */,
+				FD9CE282286B5E3C00020056 /* HashtagCVC.xib */,
+			);
+			path = HashtagContainerView;
+			sourceTree = "<group>";
+		};
+		FD9CE285286B6D8E00020056 /* ImageIndexContainerView */ = {
+			isa = PBXGroup;
+			children = (
+				FD9CE286286B6DA400020056 /* ImageIndexContainerView.xib */,
+				FD9CE288286B6DB600020056 /* ImageIndexContainerView.swift */,
+			);
+			path = ImageIndexContainerView;
+			sourceTree = "<group>";
+		};
+		FD9CE28A286B702800020056 /* ImageContainerView */ = {
+			isa = PBXGroup;
+			children = (
+				FD9CE28B286B703800020056 /* ImageContainerView.swift */,
+				FD9CE28D286B704000020056 /* ImageContainerView.xib */,
+				FD9CE28F286B716100020056 /* ImageContainerPhotoCell.swift */,
+				FD9CE290286B716100020056 /* ImageContainerPhotoCell.xib */,
+			);
+			path = ImageContainerView;
+			sourceTree = "<group>";
+		};
 		FDA2062427C40F83001A371D /* Repository */ = {
 			isa = PBXGroup;
 			children = (
@@ -1918,7 +1972,9 @@
 				FD54873F286ADDC900822478 /* NewPlanPreviewPurchaseGuide.xib in Resources */,
 				FDF980F8278827000009A14E /* Colors.xcassets in Resources */,
 				FD3211C3278433CF007D63D5 /* .swiftlint.yml in Resources */,
+				FD9CE284286B5E3C00020056 /* HashtagCVC.xib in Resources */,
 				FD09DDD427856A31006DA050 /* shadow_balloon.png in Resources */,
+				FD9CE292286B716100020056 /* ImageContainerPhotoCell.xib in Resources */,
 				FD548744286ADDEE00822478 /* NewPlanPreviewTerms.xib in Resources */,
 				FD09DDE627856A31006DA050 /* map_present_direction.png in Resources */,
 				FDF980C62786D1A40009A14E /* Home.storyboard in Resources */,
@@ -1934,8 +1990,10 @@
 				FDF980FD2788C9170009A14E /* PlanPreview.storyboard in Resources */,
 				FD2D4DDA278DB179002084B9 /* PlanDetailSummaryFoldTVC.xib in Resources */,
 				FD3211B527841949007D63D5 /* LaunchScreen.storyboard in Resources */,
+				FD9CE28E286B704000020056 /* ImageContainerView.xib in Resources */,
 				FD548735286ADD6600822478 /* NewPlanPreviewNaviBar.xib in Resources */,
 				FD09DDE927856A31006DA050 /* noimage.png in Resources */,
+				FD9CE287286B6DA400020056 /* ImageIndexContainerView.xib in Resources */,
 				F294EC32278EFA0F001069F8 /* SignUp.storyboard in Resources */,
 				FD09DDEB27856A31006DA050 /* daum_th_line.png in Resources */,
 				FD09DD5127855E33006DA050 /* GoogleService-Info.plist in Resources */,
@@ -1956,6 +2014,7 @@
 				FDCE38282799BACB0042DC54 /* Indicator.storyboard in Resources */,
 				FD4C86B8278C7A7200D37A2D /* Payment.storyboard in Resources */,
 				FD54871B286AD38F00822478 /* NewPlanPreview.storyboard in Resources */,
+				FD9CE27C286B49B800020056 /* HashtagContainerView.xib in Resources */,
 				FD35664E2792AF2C0082B4CE /* ScrapContainerView.xib in Resources */,
 				FD2D4DC1278D57A5002084B9 /* ProgressBar.xib in Resources */,
 				FD2D9C63279835D600688A42 /* MapBallonView.xib in Resources */,
@@ -2132,6 +2191,7 @@
 				FD3566572792B2530082B4CE /* BaseNC.swift in Sources */,
 				F26A584E279AE217001986F2 /* AuthNickNameDataModel.swift in Sources */,
 				FDD41E2927DB01AE003BF531 /* OnboardingVC + ConfigureLayout.swift in Sources */,
+				FD9CE283286B5E3C00020056 /* HashtagCVC.swift in Sources */,
 				FD20C609278EB94100AC6E34 /* MyPlanCVUserResuableView.swift in Sources */,
 				FD2D9C602797DF8C00688A42 /* PlanDetailWriterContainerView.swift in Sources */,
 				F2C5F18E2786EACB00BE4036 /* MainCardView.swift in Sources */,
@@ -2147,8 +2207,10 @@
 				FD3211A927841948007D63D5 /* AppDelegate.swift in Sources */,
 				FD548710286ABF0E00822478 /* NewPlanPreviewModel.swift in Sources */,
 				FD4C86B5278BD82D00D37A2D /* PreviewIconContainerView.swift in Sources */,
+				FD9CE280286B49DC00020056 /* HashtagContainerView.swift in Sources */,
 				FD54870F286ABF0E00822478 /* NewPlanPreviewRepository.swift in Sources */,
 				523C70B127969FF80073371D /* ScrapService.swift in Sources */,
+				FD9CE289286B6DB600020056 /* ImageIndexContainerView.swift in Sources */,
 				FD93028227A3ED1D00341C2A /* PlanPreviewEntity.swift in Sources */,
 				FD1C568F2795893700EEDFCE /* HomeService.swift in Sources */,
 				FD09DE1727857B5D006DA050 /* controllerFromStoryboard + UIViewController.swift in Sources */,
@@ -2168,6 +2230,7 @@
 				FDC47DF12789524000A152E8 /* PreviewSummaryData.swift in Sources */,
 				FDF7FECF27A7E21600E3AB62 /* Router.swift in Sources */,
 				FD20C620278EF0C900AC6E34 /* MyPlanSettingVC.swift in Sources */,
+				FD9CE28C286B703800020056 /* ImageContainerView.swift in Sources */,
 				FD20C628278EF6CA00AC6E34 /* BarFullButton.swift in Sources */,
 				F27483F227CA39B4004164F0 /* SignUpNicknameVC.swift in Sources */,
 				FD2D4DB9278D3DCE002084B9 /* PlanDetailInformationTVC.swift in Sources */,
@@ -2192,6 +2255,7 @@
 				FD09DE0B27857995006DA050 /* calculatePastTime.swift in Sources */,
 				FD09DE00278578C4006DA050 /* ImageLiterals.swift in Sources */,
 				FDC47E112789742800A152E8 /* TravelSpotDetailVC.swift in Sources */,
+				FD9CE291286B716100020056 /* ImageContainerPhotoCell.swift in Sources */,
 				FDF981082788D4CF0009A14E /* PlanPreviewSummaryTVC.swift in Sources */,
 				FDF980D62786D5320009A14E /* makePayBoocFont.swift in Sources */,
 				FD3566532792AF2C0082B4CE /* ScrapEmptyContainerView.swift in Sources */,

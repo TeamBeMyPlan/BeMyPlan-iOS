@@ -4,22 +4,145 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="NewPlanPreviewHeader" customModule="BeMyPlan" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iN0-l3-epB" customClass="NewPlanPreviewHeader" customModule="BeMyPlan" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="389" height="750"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="여행" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LRT-ET-k4b">
+                    <rect key="frame" x="24" y="517.5" width="341" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="24" id="5cm-gs-ShB"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                    <color key="textColor" name="grey1"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icn_mainpin_select" translatesAutoresizingMaskIntoConstraints="NO" id="tTy-fI-lxl">
+                    <rect key="frame" x="24" y="561.5" width="13" height="16"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="16" id="CEk-SV-79t"/>
+                        <constraint firstAttribute="width" constant="13" id="kIN-0I-zOC"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="제주 동부" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eqE-VU-JMp">
+                    <rect key="frame" x="40" y="562" width="45" height="15"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" name="grey2"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4H0-dp-D8W" customClass="HashtagContainerView" customModule="BeMyPlan" customModuleProvider="target">
+                    <rect key="frame" x="101" y="557.5" width="264" height="25"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="TFO-89-Uk4"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1,000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tpo-Yj-RrM">
+                    <rect key="frame" x="24" y="594.5" width="71" height="31"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="31" id="ieC-nU-Ezo"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="원" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KSW-z2-Oco">
+                    <rect key="frame" x="97" y="600.5" width="16" height="21"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ncS-RM-Lph" customClass="PreviewIconContainerView" customModule="BeMyPlan" customModuleProvider="target">
+                    <rect key="frame" x="24" y="643.5" width="341" height="86"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="86" id="dII-0A-cDa"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cpo-Pm-zbC">
+                    <rect key="frame" x="0.0" y="742" width="389" height="8"/>
+                    <color key="backgroundColor" name="grey6"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="8" id="TRD-rq-ybu"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pxh-vQ-uao">
+                    <rect key="frame" x="340" y="699" width="34" height="34"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="34" id="c5E-FB-zDY"/>
+                        <constraint firstAttribute="width" constant="34" id="i6i-Zw-QOc"/>
+                    </constraints>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" backgroundImage="information"/>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jvM-ls-d52" customClass="ImageContainerView" customModule="BeMyPlan" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="389" height="489.5"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="jvM-ls-d52" secondAttribute="height" multiplier="375:472" id="WW4-Vc-uBT"/>
+                    </constraints>
+                </view>
+            </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-            <point key="canvasLocation" x="132" y="120"/>
+            <constraints>
+                <constraint firstItem="4H0-dp-D8W" firstAttribute="leading" secondItem="eqE-VU-JMp" secondAttribute="trailing" constant="16" id="2FT-i1-WL7"/>
+                <constraint firstItem="LRT-ET-k4b" firstAttribute="top" secondItem="jvM-ls-d52" secondAttribute="bottom" constant="28" id="7s0-yX-Cei"/>
+                <constraint firstItem="cpo-Pm-zbC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Cqi-j3-m0J"/>
+                <constraint firstItem="jvM-ls-d52" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="IDW-lR-Z7H"/>
+                <constraint firstItem="KSW-z2-Oco" firstAttribute="centerY" secondItem="tpo-Yj-RrM" secondAttribute="centerY" constant="1" id="NWr-6K-0er"/>
+                <constraint firstItem="tTy-fI-lxl" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="24" id="Q3t-EM-0oq"/>
+                <constraint firstItem="jvM-ls-d52" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="QC8-u7-hTk"/>
+                <constraint firstItem="KSW-z2-Oco" firstAttribute="leading" secondItem="tpo-Yj-RrM" secondAttribute="trailing" constant="2" id="Rxr-ms-Ysd"/>
+                <constraint firstItem="eqE-VU-JMp" firstAttribute="centerY" secondItem="tTy-fI-lxl" secondAttribute="centerY" id="TqD-Cw-CfD"/>
+                <constraint firstAttribute="trailing" secondItem="ncS-RM-Lph" secondAttribute="trailing" constant="24" id="bJ7-AN-3Wb"/>
+                <constraint firstItem="cpo-Pm-zbC" firstAttribute="top" secondItem="pxh-vQ-uao" secondAttribute="bottom" constant="9" id="gcX-OM-Axq"/>
+                <constraint firstItem="4H0-dp-D8W" firstAttribute="top" secondItem="LRT-ET-k4b" secondAttribute="bottom" constant="16" id="iR4-Fr-vdn"/>
+                <constraint firstItem="eqE-VU-JMp" firstAttribute="leading" secondItem="tTy-fI-lxl" secondAttribute="trailing" constant="3" id="jI7-pn-hcE"/>
+                <constraint firstAttribute="bottom" secondItem="cpo-Pm-zbC" secondAttribute="bottom" id="kdz-OO-9wj"/>
+                <constraint firstItem="tpo-Yj-RrM" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="24" id="nBW-XH-WgV"/>
+                <constraint firstAttribute="trailing" secondItem="4H0-dp-D8W" secondAttribute="trailing" constant="24" id="oX5-DF-aWb"/>
+                <constraint firstItem="tTy-fI-lxl" firstAttribute="top" secondItem="LRT-ET-k4b" secondAttribute="bottom" constant="20" id="olj-UF-LmW"/>
+                <constraint firstItem="LRT-ET-k4b" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="24" id="qMx-tG-PAs"/>
+                <constraint firstAttribute="trailing" secondItem="pxh-vQ-uao" secondAttribute="trailing" constant="15" id="qkt-Q7-jhO"/>
+                <constraint firstItem="tpo-Yj-RrM" firstAttribute="top" secondItem="tTy-fI-lxl" secondAttribute="bottom" constant="17" id="qy5-ZY-6Ec"/>
+                <constraint firstAttribute="trailing" secondItem="LRT-ET-k4b" secondAttribute="trailing" constant="24" id="sMn-1H-sH2"/>
+                <constraint firstAttribute="trailing" secondItem="jvM-ls-d52" secondAttribute="trailing" id="sy7-st-G0x"/>
+                <constraint firstItem="ncS-RM-Lph" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="24" id="vA8-0a-5pA"/>
+                <constraint firstAttribute="trailing" secondItem="cpo-Pm-zbC" secondAttribute="trailing" id="vMt-9F-IAG"/>
+                <constraint firstItem="ncS-RM-Lph" firstAttribute="top" secondItem="tpo-Yj-RrM" secondAttribute="bottom" constant="18" id="xJP-Wn-IAY"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="addressLabel" destination="eqE-VU-JMp" id="ItC-bj-XXE"/>
+                <outlet property="hashtagContainerView" destination="4H0-dp-D8W" id="qZV-7h-59r"/>
+                <outlet property="iconContainerView" destination="ncS-RM-Lph" id="xO4-af-Uwl"/>
+                <outlet property="imageContainerView" destination="jvM-ls-d52" id="oDe-jt-vhq"/>
+                <outlet property="informationButton" destination="pxh-vQ-uao" id="UOn-1P-EzC"/>
+                <outlet property="priceLabel" destination="tpo-Yj-RrM" id="BQi-Nz-W33"/>
+                <outlet property="titleLabel" destination="LRT-ET-k4b" id="ypV-EY-6rl"/>
+            </connections>
+            <point key="canvasLocation" x="113.768115942029" y="70.982142857142847"/>
         </view>
     </objects>
     <resources>
+        <image name="icn_mainpin_select" width="21.5" height="29"/>
+        <image name="information" width="34" height="34"/>
+        <namedColor name="grey1">
+            <color red="0.19215686274509805" green="0.21568627450980393" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="grey2">
+            <color red="0.36470588235294116" green="0.40784313725490196" blue="0.47843137254901963" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="grey6">
+            <color red="0.95686274509803926" green="0.96078431372549022" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
