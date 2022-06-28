@@ -9,7 +9,7 @@ import UIKit
 
 class HashtagCVC: UICollectionViewCell,UICollectionViewRegisterable {
   
-  var viewModel: HashtagCellViewModel
+  var viewModel: HashtagCellViewModel!
   static var isFromNib: Bool = true
   
   @IBOutlet var backgroundContentView: UIView!
@@ -28,6 +28,4 @@ extension HashtagCVC {
   }
 }
 
-struct HashtagCellViewModel {
-  let title: String
-}
+typealias HashtagCellViewModel = String
