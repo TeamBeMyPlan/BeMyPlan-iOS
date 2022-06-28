@@ -178,6 +178,12 @@
 		FD5100CB2848ABC50037AC8E /* TravelSpotList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5100CA2848ABC50037AC8E /* TravelSpotList.swift */; };
 		FD5100CE2848AF2B0037AC8E /* UserDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5100CD2848AF2B0037AC8E /* UserDataModel.swift */; };
 		FD5100D0284933630037AC8E /* PlanDetailTransportEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5100CF284933630037AC8E /* PlanDetailTransportEntity.swift */; };
+		FD54870E286ABF0E00822478 /* NewPlanPreviewUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD548708286ABF0E00822478 /* NewPlanPreviewUseCase.swift */; };
+		FD54870F286ABF0E00822478 /* NewPlanPreviewRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD548709286ABF0E00822478 /* NewPlanPreviewRepository.swift */; };
+		FD548710286ABF0E00822478 /* NewPlanPreviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD54870A286ABF0E00822478 /* NewPlanPreviewModel.swift */; };
+		FD548711286ABF0E00822478 /* NewPlanPreviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD54870B286ABF0E00822478 /* NewPlanPreviewVC.swift */; };
+		FD548712286ABF0E00822478 /* NewPlanPreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD54870C286ABF0E00822478 /* NewPlanPreviewViewModel.swift */; };
+		FD548713286ABF0E00822478 /* NewPlanPreviewEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD54870D286ABF0E00822478 /* NewPlanPreviewEntity.swift */; };
 		FD568E6F27CFE4ED0078D23C /* AnalyticsType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD568E6E27CFE4ED0078D23C /* AnalyticsType.swift */; };
 		FD568E7127CFE6CF0078D23C /* FirebaseServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD568E7027CFE6CF0078D23C /* FirebaseServiceProtocol.swift */; };
 		FD568E7327CFE6DF0078D23C /* AppLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD568E7227CFE6DF0078D23C /* AppLog.swift */; };
@@ -465,6 +471,12 @@
 		FD5100CA2848ABC50037AC8E /* TravelSpotList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelSpotList.swift; sourceTree = "<group>"; };
 		FD5100CD2848AF2B0037AC8E /* UserDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataModel.swift; sourceTree = "<group>"; };
 		FD5100CF284933630037AC8E /* PlanDetailTransportEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDetailTransportEntity.swift; sourceTree = "<group>"; };
+		FD548708286ABF0E00822478 /* NewPlanPreviewUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlanPreviewUseCase.swift; sourceTree = "<group>"; };
+		FD548709286ABF0E00822478 /* NewPlanPreviewRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlanPreviewRepository.swift; sourceTree = "<group>"; };
+		FD54870A286ABF0E00822478 /* NewPlanPreviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlanPreviewModel.swift; sourceTree = "<group>"; };
+		FD54870B286ABF0E00822478 /* NewPlanPreviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlanPreviewVC.swift; sourceTree = "<group>"; };
+		FD54870C286ABF0E00822478 /* NewPlanPreviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlanPreviewViewModel.swift; sourceTree = "<group>"; };
+		FD54870D286ABF0E00822478 /* NewPlanPreviewEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlanPreviewEntity.swift; sourceTree = "<group>"; };
 		FD568E6E27CFE4ED0078D23C /* AnalyticsType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsType.swift; sourceTree = "<group>"; };
 		FD568E7027CFE6CF0078D23C /* FirebaseServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseServiceProtocol.swift; sourceTree = "<group>"; };
 		FD568E7227CFE6DF0078D23C /* AppLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLog.swift; sourceTree = "<group>"; };
@@ -1200,6 +1212,7 @@
 				F21AFA9A279187E900A84633 /* Alert */,
 				FD2D4DBF278D579A002084B9 /* Components */,
 				FD3151A0278D0C5D0076D92E /* Plan */,
+				FD548703286ABED700822478 /* NewPlanPreview */,
 				FDF980D92786E02C0009A14E /* Base */,
 				FD09DE1827857CA6006DA050 /* Home */,
 				FDF980C32786D1670009A14E /* TravelSpot */,
@@ -1347,6 +1360,91 @@
 				FD5100CD2848AF2B0037AC8E /* UserDataModel.swift */,
 			);
 			path = User;
+			sourceTree = "<group>";
+		};
+		FD548703286ABED700822478 /* NewPlanPreview */ = {
+			isa = PBXGroup;
+			children = (
+				FD548716286ABF2500822478 /* Presentation */,
+				FD548714286ABF1A00822478 /* Data */,
+				FD548715286ABF2000822478 /* Domain */,
+				FD548705286ABEE300822478 /* Usecase */,
+				FD548706286ABEE700822478 /* ViewModel */,
+				FD548707286ABEEC00822478 /* VC */,
+			);
+			path = NewPlanPreview;
+			sourceTree = "<group>";
+		};
+		FD548705286ABEE300822478 /* Usecase */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Usecase;
+			sourceTree = "<group>";
+		};
+		FD548706286ABEE700822478 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		FD548707286ABEEC00822478 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = VC;
+			sourceTree = "<group>";
+		};
+		FD548714286ABF1A00822478 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				FD548709286ABF0E00822478 /* NewPlanPreviewRepository.swift */,
+				FD54870D286ABF0E00822478 /* NewPlanPreviewEntity.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		FD548715286ABF2000822478 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				FD54870A286ABF0E00822478 /* NewPlanPreviewModel.swift */,
+				FD548708286ABF0E00822478 /* NewPlanPreviewUseCase.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		FD548716286ABF2500822478 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				FD548719286AD2F100822478 /* ViewModel */,
+				FD548718286AD2EE00822478 /* VC */,
+				FD548717286AD2E900822478 /* Views */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		FD548717286AD2E900822478 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FD548718286AD2EE00822478 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				FD54870B286ABF0E00822478 /* NewPlanPreviewVC.swift */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		FD548719286AD2F100822478 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				FD54870C286ABF0E00822478 /* NewPlanPreviewViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		FD568E6C27CFE3FD0078D23C /* Manager */ = {
@@ -1922,7 +2020,9 @@
 				FD20C61A278EDCF900AC6E34 /* BaseVC + Notification.swift in Sources */,
 				FDA2062E27C40FCC001A371D /* PlanDetailVC.swift in Sources */,
 				FD3211A927841948007D63D5 /* AppDelegate.swift in Sources */,
+				FD548710286ABF0E00822478 /* NewPlanPreviewModel.swift in Sources */,
 				FD4C86B5278BD82D00D37A2D /* PreviewIconContainerView.swift in Sources */,
+				FD54870F286ABF0E00822478 /* NewPlanPreviewRepository.swift in Sources */,
 				523C70B127969FF80073371D /* ScrapService.swift in Sources */,
 				FD93028227A3ED1D00341C2A /* PlanPreviewEntity.swift in Sources */,
 				FD1C568F2795893700EEDFCE /* HomeService.swift in Sources */,
@@ -1937,6 +2037,7 @@
 				FD4C86BE278C9AF900D37A2D /* PaymentCompleteVC.swift in Sources */,
 				FDCDCB31278F4C2B002CEA15 /* PlanDetailSpotDataModel.swift in Sources */,
 				523C70A32795C3EF0073371D /* TravelSpotDataModel.swift in Sources */,
+				FD548711286ABF0E00822478 /* NewPlanPreviewVC.swift in Sources */,
 				FDF980FF2788C9220009A14E /* PlanPreviewVC.swift in Sources */,
 				FDC47DF12789524000A152E8 /* PreviewSummaryData.swift in Sources */,
 				FDF7FECF27A7E21600E3AB62 /* Router.swift in Sources */,
@@ -1968,6 +2069,7 @@
 				FDF980D62786D5320009A14E /* makePayBoocFont.swift in Sources */,
 				FD3566532792AF2C0082B4CE /* ScrapEmptyContainerView.swift in Sources */,
 				FD958A3327E0D7B500264EE4 /* ImageSizeFetcherOperation.swift in Sources */,
+				FD548712286ABF0E00822478 /* NewPlanPreviewViewModel.swift in Sources */,
 				FD1A78232795C69000FB10AB /* MyPlanSerivice.swift in Sources */,
 				FD2D4DBD278D3FA5002084B9 /* PlanDetailDayCVC.swift in Sources */,
 				FD3566552792AFCD0082B4CE /* PlanDetailSelectDayView.swift in Sources */,
@@ -2014,8 +2116,10 @@
 				F294EC28278EBC2C001069F8 /* LoginVC + KakaoLogin.swift in Sources */,
 				FD09DE0D278579CC006DA050 /* showNetworkAlert.swift in Sources */,
 				FD2D9C542796ABDD00688A42 /* PlanDetailDataGettable.swift in Sources */,
+				FD54870E286ABF0E00822478 /* NewPlanPreviewUseCase.swift in Sources */,
 				FDCE382C2799BBC90042DC54 /* showIndicator.swift in Sources */,
 				FD6934DC286199A30003A818 /* encodeURLWithKorean.swift in Sources */,
+				FD548713286ABF0E00822478 /* NewPlanPreviewEntity.swift in Sources */,
 				FD09DDF927857858006DA050 /* UICollectionViewRegisterable.swift in Sources */,
 				FD93028027A3EC7500341C2A /* PlanPreviewRepository.swift in Sources */,
 				FD35664D2792AF2C0082B4CE /* ScrapContainerView.swift in Sources */,
