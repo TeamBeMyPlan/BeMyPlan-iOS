@@ -8,10 +8,16 @@
 import UIKit
 
 class ImageContainerPhotoCell: UICollectionViewCell {
+  var viewModel: ImageContainerPhotoCellViewModel! { didSet{ setImage() }}
+  @IBOutlet var contentImageView: UIImageView!
+}
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
+extension ImageContainerPhotoCell {
+  private func setImage() {
+    contentImageView.setImage(with: viewModel.imgURL)
+  }
+}
 
+struct ImageContainerPhotoCellViewModel {
+  var imgURL: String
 }
