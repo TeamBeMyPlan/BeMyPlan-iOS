@@ -184,6 +184,23 @@
 		FD548711286ABF0E00822478 /* NewPlanPreviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD54870B286ABF0E00822478 /* NewPlanPreviewVC.swift */; };
 		FD548712286ABF0E00822478 /* NewPlanPreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD54870C286ABF0E00822478 /* NewPlanPreviewViewModel.swift */; };
 		FD548713286ABF0E00822478 /* NewPlanPreviewEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD54870D286ABF0E00822478 /* NewPlanPreviewEntity.swift */; };
+		FD54871B286AD38F00822478 /* NewPlanPreview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD54871A286AD38F00822478 /* NewPlanPreview.storyboard */; };
+		FD548725286ADAAC00822478 /* NewPlanPreviewNaviBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD548724286ADAAC00822478 /* NewPlanPreviewNaviBar.swift */; };
+		FD548727286ADAD300822478 /* NewPlanPreviewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD548726286ADAD300822478 /* NewPlanPreviewHeader.swift */; };
+		FD548729286ADADD00822478 /* NewPlanPreviewCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD548728286ADADD00822478 /* NewPlanPreviewCreator.swift */; };
+		FD54872B286ADAEA00822478 /* NewPlanPreviewRecommendReason.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD54872A286ADAEA00822478 /* NewPlanPreviewRecommendReason.swift */; };
+		FD54872D286ADAF700822478 /* NewPlanPreviewMainContents.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD54872C286ADAF700822478 /* NewPlanPreviewMainContents.swift */; };
+		FD54872F286ADB0300822478 /* NewPlanPreviewPurchaseGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD54872E286ADB0300822478 /* NewPlanPreviewPurchaseGuide.swift */; };
+		FD548731286ADD4200822478 /* NewPlanPreviewSuggestList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD548730286ADD4200822478 /* NewPlanPreviewSuggestList.swift */; };
+		FD548733286ADD4D00822478 /* NewPlanPreviewTerms.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD548732286ADD4D00822478 /* NewPlanPreviewTerms.swift */; };
+		FD548735286ADD6600822478 /* NewPlanPreviewNaviBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD548734286ADD6600822478 /* NewPlanPreviewNaviBar.xib */; };
+		FD548737286ADD7700822478 /* NewPlanPreviewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD548736286ADD7700822478 /* NewPlanPreviewHeader.xib */; };
+		FD548739286ADD8F00822478 /* NewPlanPreviewCreator.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD548738286ADD8F00822478 /* NewPlanPreviewCreator.xib */; };
+		FD54873B286ADDA200822478 /* NewPlanPreviewRecommendReason.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD54873A286ADDA200822478 /* NewPlanPreviewRecommendReason.xib */; };
+		FD54873D286ADDB800822478 /* NewPlanPreviewMainContents.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD54873C286ADDB800822478 /* NewPlanPreviewMainContents.xib */; };
+		FD54873F286ADDC900822478 /* NewPlanPreviewPurchaseGuide.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD54873E286ADDC900822478 /* NewPlanPreviewPurchaseGuide.xib */; };
+		FD548741286ADDE100822478 /* NewPlanPreviewSuggestList.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD548740286ADDE100822478 /* NewPlanPreviewSuggestList.xib */; };
+		FD548744286ADDEE00822478 /* NewPlanPreviewTerms.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD548743286ADDEE00822478 /* NewPlanPreviewTerms.xib */; };
 		FD568E6F27CFE4ED0078D23C /* AnalyticsType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD568E6E27CFE4ED0078D23C /* AnalyticsType.swift */; };
 		FD568E7127CFE6CF0078D23C /* FirebaseServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD568E7027CFE6CF0078D23C /* FirebaseServiceProtocol.swift */; };
 		FD568E7327CFE6DF0078D23C /* AppLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD568E7227CFE6DF0078D23C /* AppLog.swift */; };
@@ -477,6 +494,23 @@
 		FD54870B286ABF0E00822478 /* NewPlanPreviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlanPreviewVC.swift; sourceTree = "<group>"; };
 		FD54870C286ABF0E00822478 /* NewPlanPreviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlanPreviewViewModel.swift; sourceTree = "<group>"; };
 		FD54870D286ABF0E00822478 /* NewPlanPreviewEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlanPreviewEntity.swift; sourceTree = "<group>"; };
+		FD54871A286AD38F00822478 /* NewPlanPreview.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewPlanPreview.storyboard; sourceTree = "<group>"; };
+		FD548724286ADAAC00822478 /* NewPlanPreviewNaviBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlanPreviewNaviBar.swift; sourceTree = "<group>"; };
+		FD548726286ADAD300822478 /* NewPlanPreviewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlanPreviewHeader.swift; sourceTree = "<group>"; };
+		FD548728286ADADD00822478 /* NewPlanPreviewCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlanPreviewCreator.swift; sourceTree = "<group>"; };
+		FD54872A286ADAEA00822478 /* NewPlanPreviewRecommendReason.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlanPreviewRecommendReason.swift; sourceTree = "<group>"; };
+		FD54872C286ADAF700822478 /* NewPlanPreviewMainContents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlanPreviewMainContents.swift; sourceTree = "<group>"; };
+		FD54872E286ADB0300822478 /* NewPlanPreviewPurchaseGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlanPreviewPurchaseGuide.swift; sourceTree = "<group>"; };
+		FD548730286ADD4200822478 /* NewPlanPreviewSuggestList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlanPreviewSuggestList.swift; sourceTree = "<group>"; };
+		FD548732286ADD4D00822478 /* NewPlanPreviewTerms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlanPreviewTerms.swift; sourceTree = "<group>"; };
+		FD548734286ADD6600822478 /* NewPlanPreviewNaviBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewPlanPreviewNaviBar.xib; sourceTree = "<group>"; };
+		FD548736286ADD7700822478 /* NewPlanPreviewHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewPlanPreviewHeader.xib; sourceTree = "<group>"; };
+		FD548738286ADD8F00822478 /* NewPlanPreviewCreator.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewPlanPreviewCreator.xib; sourceTree = "<group>"; };
+		FD54873A286ADDA200822478 /* NewPlanPreviewRecommendReason.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewPlanPreviewRecommendReason.xib; sourceTree = "<group>"; };
+		FD54873C286ADDB800822478 /* NewPlanPreviewMainContents.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewPlanPreviewMainContents.xib; sourceTree = "<group>"; };
+		FD54873E286ADDC900822478 /* NewPlanPreviewPurchaseGuide.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewPlanPreviewPurchaseGuide.xib; sourceTree = "<group>"; };
+		FD548740286ADDE100822478 /* NewPlanPreviewSuggestList.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewPlanPreviewSuggestList.xib; sourceTree = "<group>"; };
+		FD548743286ADDEE00822478 /* NewPlanPreviewTerms.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewPlanPreviewTerms.xib; sourceTree = "<group>"; };
 		FD568E6E27CFE4ED0078D23C /* AnalyticsType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsType.swift; sourceTree = "<group>"; };
 		FD568E7027CFE6CF0078D23C /* FirebaseServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseServiceProtocol.swift; sourceTree = "<group>"; };
 		FD568E7227CFE6DF0078D23C /* AppLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLog.swift; sourceTree = "<group>"; };
@@ -1427,6 +1461,15 @@
 		FD548717286AD2E900822478 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				FD54871C286AD8EC00822478 /* 0-NaviBar */,
+				FD54871D286AD8F500822478 /* 1-Header */,
+				FD54871E286AD91D00822478 /* 2-Creator */,
+				FD548723286AD93E00822478 /* 3-RecommendReason */,
+				FD548722286AD93C00822478 /* 4-MainContents */,
+				FD548721286AD93600822478 /* 5-PurchaseGuide */,
+				FD548720286AD93400822478 /* 6-SuggestLlist */,
+				FD54871F286AD93200822478 /* 7-Terms */,
+				FD54871A286AD38F00822478 /* NewPlanPreview.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1445,6 +1488,78 @@
 				FD54870C286ABF0E00822478 /* NewPlanPreviewViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		FD54871C286AD8EC00822478 /* 0-NaviBar */ = {
+			isa = PBXGroup;
+			children = (
+				FD548724286ADAAC00822478 /* NewPlanPreviewNaviBar.swift */,
+				FD548734286ADD6600822478 /* NewPlanPreviewNaviBar.xib */,
+			);
+			path = "0-NaviBar";
+			sourceTree = "<group>";
+		};
+		FD54871D286AD8F500822478 /* 1-Header */ = {
+			isa = PBXGroup;
+			children = (
+				FD548726286ADAD300822478 /* NewPlanPreviewHeader.swift */,
+				FD548736286ADD7700822478 /* NewPlanPreviewHeader.xib */,
+			);
+			path = "1-Header";
+			sourceTree = "<group>";
+		};
+		FD54871E286AD91D00822478 /* 2-Creator */ = {
+			isa = PBXGroup;
+			children = (
+				FD548728286ADADD00822478 /* NewPlanPreviewCreator.swift */,
+				FD548738286ADD8F00822478 /* NewPlanPreviewCreator.xib */,
+			);
+			path = "2-Creator";
+			sourceTree = "<group>";
+		};
+		FD54871F286AD93200822478 /* 7-Terms */ = {
+			isa = PBXGroup;
+			children = (
+				FD548732286ADD4D00822478 /* NewPlanPreviewTerms.swift */,
+				FD548743286ADDEE00822478 /* NewPlanPreviewTerms.xib */,
+			);
+			path = "7-Terms";
+			sourceTree = "<group>";
+		};
+		FD548720286AD93400822478 /* 6-SuggestLlist */ = {
+			isa = PBXGroup;
+			children = (
+				FD548730286ADD4200822478 /* NewPlanPreviewSuggestList.swift */,
+				FD548740286ADDE100822478 /* NewPlanPreviewSuggestList.xib */,
+			);
+			path = "6-SuggestLlist";
+			sourceTree = "<group>";
+		};
+		FD548721286AD93600822478 /* 5-PurchaseGuide */ = {
+			isa = PBXGroup;
+			children = (
+				FD54872E286ADB0300822478 /* NewPlanPreviewPurchaseGuide.swift */,
+				FD54873E286ADDC900822478 /* NewPlanPreviewPurchaseGuide.xib */,
+			);
+			path = "5-PurchaseGuide";
+			sourceTree = "<group>";
+		};
+		FD548722286AD93C00822478 /* 4-MainContents */ = {
+			isa = PBXGroup;
+			children = (
+				FD54872C286ADAF700822478 /* NewPlanPreviewMainContents.swift */,
+				FD54873C286ADDB800822478 /* NewPlanPreviewMainContents.xib */,
+			);
+			path = "4-MainContents";
+			sourceTree = "<group>";
+		};
+		FD548723286AD93E00822478 /* 3-RecommendReason */ = {
+			isa = PBXGroup;
+			children = (
+				FD54872A286ADAEA00822478 /* NewPlanPreviewRecommendReason.swift */,
+				FD54873A286ADDA200822478 /* NewPlanPreviewRecommendReason.xib */,
+			);
+			path = "3-RecommendReason";
 			sourceTree = "<group>";
 		};
 		FD568E6C27CFE3FD0078D23C /* Manager */ = {
@@ -1800,15 +1915,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD54873F286ADDC900822478 /* NewPlanPreviewPurchaseGuide.xib in Resources */,
 				FDF980F8278827000009A14E /* Colors.xcassets in Resources */,
 				FD3211C3278433CF007D63D5 /* .swiftlint.yml in Resources */,
 				FD09DDD427856A31006DA050 /* shadow_balloon.png in Resources */,
+				FD548744286ADDEE00822478 /* NewPlanPreviewTerms.xib in Resources */,
 				FD09DDE627856A31006DA050 /* map_present_direction.png in Resources */,
 				FDF980C62786D1A40009A14E /* Home.storyboard in Resources */,
 				FD09DDDF27856A31006DA050 /* map_present_tracking.png in Resources */,
 				F21AFAA027919A8000A84633 /* CustomAlert.storyboard in Resources */,
 				FD09DDD727856A31006DA050 /* map_pin_custom@3x.png in Resources */,
 				FD09DDDA27856A31006DA050 /* copyright.png in Resources */,
+				FD548737286ADD7700822478 /* NewPlanPreviewHeader.xib in Resources */,
 				FD09DDD827856A31006DA050 /* map_pinup@3x.png in Resources */,
 				FDA2062F27C40FCC001A371D /* PlanDetail.storyboard in Resources */,
 				FDD41E2727DAF884003BF531 /* Onboarding.storyboard in Resources */,
@@ -1816,6 +1934,7 @@
 				FDF980FD2788C9170009A14E /* PlanPreview.storyboard in Resources */,
 				FD2D4DDA278DB179002084B9 /* PlanDetailSummaryFoldTVC.xib in Resources */,
 				FD3211B527841949007D63D5 /* LaunchScreen.storyboard in Resources */,
+				FD548735286ADD6600822478 /* NewPlanPreviewNaviBar.xib in Resources */,
 				FD09DDE927856A31006DA050 /* noimage.png in Resources */,
 				F294EC32278EFA0F001069F8 /* SignUp.storyboard in Resources */,
 				FD09DDEB27856A31006DA050 /* daum_th_line.png in Resources */,
@@ -1827,6 +1946,7 @@
 				FD00882A278FE94C00C194B5 /* PlanDetailInfoPhotoCVC.xib in Resources */,
 				FD09DDE027856A31006DA050 /* map_pin_red.png in Resources */,
 				FD09DDEA27856A31006DA050 /* map_present_background_update.png in Resources */,
+				FD54873B286ADDA200822478 /* NewPlanPreviewRecommendReason.xib in Resources */,
 				FD3566522792AF2C0082B4CE /* ScrapEmptyCotainerCVC.xib in Resources */,
 				FD2D4DBE278D3FA5002084B9 /* PlanDetailDayCVC.xib in Resources */,
 				FD2D4DDE278DDB93002084B9 /* Spoqa_Han_Sans_Neo_Medium.otf in Resources */,
@@ -1835,10 +1955,13 @@
 				FD2D4DBA278D3DCE002084B9 /* PlanDetailInformationTVC.xib in Resources */,
 				FDCE38282799BACB0042DC54 /* Indicator.storyboard in Resources */,
 				FD4C86B8278C7A7200D37A2D /* Payment.storyboard in Resources */,
+				FD54871B286AD38F00822478 /* NewPlanPreview.storyboard in Resources */,
 				FD35664E2792AF2C0082B4CE /* ScrapContainerView.xib in Resources */,
 				FD2D4DC1278D57A5002084B9 /* ProgressBar.xib in Resources */,
 				FD2D9C63279835D600688A42 /* MapBallonView.xib in Resources */,
 				FD4C86B3278BD81900D37A2D /* PreviewIconContainerView.xib in Resources */,
+				FD548741286ADDE100822478 /* NewPlanPreviewSuggestList.xib in Resources */,
+				FD54873D286ADDB800822478 /* NewPlanPreviewMainContents.xib in Resources */,
 				FDC47E0C2789742800A152E8 /* TravelSpotCVC.xib in Resources */,
 				FD61AFA327902C7A00D39F47 /* PlanDetailSelectDayView.xib in Resources */,
 				FD3566502792AF2C0082B4CE /* Scrap.storyboard in Resources */,
@@ -1863,6 +1986,7 @@
 				FD09DDE127856A31006DA050 /* info_box.png in Resources */,
 				FD2D4DCA278D8190002084B9 /* PlanDetailSummaryRouteTVC.xib in Resources */,
 				FD09DDD327856A31006DA050 /* map_pin_custom.png in Resources */,
+				FD548739286ADD8F00822478 /* NewPlanPreviewCreator.xib in Resources */,
 				FD20C617278ECBF000AC6E34 /* MyPlanEmptyBuyListView.xib in Resources */,
 				FD09DDDE27856A31006DA050 /* map_pin@3x.png in Resources */,
 				FD09DDD627856A31006DA050 /* detail_button.png in Resources */,
@@ -1978,6 +2102,7 @@
 				FDF980D22786D2EB0009A14E /* TravelSpotVC.swift in Sources */,
 				FD008829278FE94C00C194B5 /* PlanDetailInfoPhotoCVC.swift in Sources */,
 				FD3566512792AF2C0082B4CE /* ScrapEmptyCotainerCVC.swift in Sources */,
+				FD548727286ADAD300822478 /* NewPlanPreviewHeader.swift in Sources */,
 				FD3566592792BA190082B4CE /* LoginNC.swift in Sources */,
 				FD09DE2927857E25006DA050 /* StoryboardLiterals.swift in Sources */,
 				FDC47DF32789524A00A152E8 /* PreviewRecommendData.swift in Sources */,
@@ -2030,6 +2155,7 @@
 				F2C5F1922786EB3300BE4036 /* MainListView.swift in Sources */,
 				FD93028827A3F9B800341C2A /* downloadImage.swift in Sources */,
 				FD5100C72848A35B0037AC8E /* PlanListService.swift in Sources */,
+				FD548729286ADADD00822478 /* NewPlanPreviewCreator.swift in Sources */,
 				523C70FD2799DAA30073371D /* ScrapEmptyDataModel.swift in Sources */,
 				523C70A52795D32E0073371D /* TravelSpotService.swift in Sources */,
 				FD1CBBA3284F3588002A54C4 /* UserDefaultsLiterals.swift in Sources */,
@@ -2060,6 +2186,7 @@
 				FD3211AB27841948007D63D5 /* SceneDelegate.swift in Sources */,
 				F250440A2799CFEB00791AB7 /* AuthService.swift in Sources */,
 				FDC47DED2789521000A152E8 /* PreviewDescriptionData.swift in Sources */,
+				FD54872D286ADAF700822478 /* NewPlanPreviewMainContents.swift in Sources */,
 				FD09DE1127857A5C006DA050 /* pressAction.swift in Sources */,
 				FDC47E0D2789742800A152E8 /* TravelSpotDetailTVC.swift in Sources */,
 				FD09DE0B27857995006DA050 /* calculatePastTime.swift in Sources */,
@@ -2078,10 +2205,13 @@
 				FD0562BC2849F7CF0027832A /* OrderService.swift in Sources */,
 				FD35664F2792AF2C0082B4CE /* ScrapContainerCVC.swift in Sources */,
 				FDF981062788D4C00009A14E /* PlanPreviewPhotoTVC.swift in Sources */,
+				FD548725286ADAAC00822478 /* NewPlanPreviewNaviBar.swift in Sources */,
+				FD548733286ADD4D00822478 /* NewPlanPreviewTerms.swift in Sources */,
 				FD1A78262795DA7100FB10AB /* showNetworkErr + UIViewController.swift in Sources */,
 				FD09DE1E27857CDC006DA050 /* HomeVC.swift in Sources */,
 				FD958A3727E0D88300264EE4 /* ImageSizeFetcherParser.swift in Sources */,
 				FD568E6F27CFE4ED0078D23C /* AnalyticsType.swift in Sources */,
+				FD54872B286ADAEA00822478 /* NewPlanPreviewRecommendReason.swift in Sources */,
 				FD122DE827D3638D00469189 /* showToastMessage.swift in Sources */,
 				FD5D731127A48491002DE484 /* ViewModelType.swift in Sources */,
 				FD61AFDC2791DC6E00D39F47 /* UINavigation + Extension.swift in Sources */,
@@ -2094,6 +2224,7 @@
 				FDF7FEC527A7E14F00E3AB62 /* CoordinatorFinishOutput.swift in Sources */,
 				FD09DE2727857DE3006DA050 /* GenericResponse.swift in Sources */,
 				FDEF170C284E413000BB5001 /* SignupNC.swift in Sources */,
+				FD54872F286ADB0300822478 /* NewPlanPreviewPurchaseGuide.swift in Sources */,
 				FD09DE1527857B36006DA050 /* getClassName.swift in Sources */,
 				FD5D730F27A46BAB002DE484 /* PlanPreviewViewModel.swift in Sources */,
 				FD20C626278EF6AE00AC6E34 /* BarSelectButton.swift in Sources */,
@@ -2119,6 +2250,7 @@
 				FD54870E286ABF0E00822478 /* NewPlanPreviewUseCase.swift in Sources */,
 				FDCE382C2799BBC90042DC54 /* showIndicator.swift in Sources */,
 				FD6934DC286199A30003A818 /* encodeURLWithKorean.swift in Sources */,
+				FD548731286ADD4200822478 /* NewPlanPreviewSuggestList.swift in Sources */,
 				FD548713286ABF0E00822478 /* NewPlanPreviewEntity.swift in Sources */,
 				FD09DDF927857858006DA050 /* UICollectionViewRegisterable.swift in Sources */,
 				FD93028027A3EC7500341C2A /* PlanPreviewRepository.swift in Sources */,
