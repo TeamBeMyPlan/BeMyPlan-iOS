@@ -377,7 +377,6 @@ extension BaseAPI: TargetType {
   public var headers: [String: String]? {
 
 		if let sessionID = UserDefaults.standard.string(forKey: UserDefaultKey.sessionID) {
-			print("현재 너의 세션아이디",sessionID)
 			return ["Content-Type": "application/json",
 							"Visit-Option": "MEMBERSHIP",
 							"Authorization" : sessionID]
