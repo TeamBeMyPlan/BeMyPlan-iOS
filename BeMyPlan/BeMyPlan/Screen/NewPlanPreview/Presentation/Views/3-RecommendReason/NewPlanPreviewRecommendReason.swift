@@ -8,11 +8,33 @@
 import UIKit
 
 class NewPlanPreviewRecommendReason: XibView{
-  override init(frame: CGRect) {
-    super.init(frame: frame)
-  }
+  var viewModel: NewPlanPreviewRecommendViewModel! {
+    didSet{ configureUI() }}
   
-  required init?(coder aDecoder: NSCoder) {
-    super.init(coder: aDecoder)
+  @IBOutlet var recommendIconList: [UILabel]!
+  @IBOutlet var recommendLabelList: [UILabel]!
+  
+  deinit {
+    recommendLabelList = nil;
+    recommendIconList = nil;
+  }
+}
+
+extension NewPlanPreviewRecommendReason {
+  private func configureUI() {
+    for (index,reason) in viewModel.reasonList.enumerated() {
+      recommendIconList[index].text = reason.icon
+      recommendLabelList[index].text = reason.reason
+    }
+  }
+}
+
+
+struct NewPlanPreviewRecommendViewModel{
+  let reasonList: [RecommendData]
+  
+  struct RecommendData{
+    let icon: String
+    let reason: String
   }
 }
