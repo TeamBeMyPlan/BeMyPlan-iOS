@@ -56,5 +56,5 @@ struct NewPlanPreviewHeaderViewModel {
   let address: String
   let hashtag: [String]
   let price: String
-  let iconData: NewPlanPreviewHeaderDataModel.IconData
+  let iconData: PlanPreview.IconData
 }

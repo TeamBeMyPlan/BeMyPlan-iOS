@@ -97,3 +97,9 @@ extension UIFont {
     }
   }
 }
+
+extension UIFont {
+  static func getSpooqaMediumFont(size: CGFloat) -> UIFont {
+    return UIFont.init(name: "SpoqaHanSansNeo-Medium", size: size)!
+  }
+}

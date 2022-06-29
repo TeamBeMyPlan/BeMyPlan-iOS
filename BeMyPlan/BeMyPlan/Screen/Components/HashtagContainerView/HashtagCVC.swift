@@ -24,7 +24,7 @@ class HashtagCVC: UICollectionViewCell,UICollectionViewRegisterable {
 extension HashtagCVC {
   private func configureUI() {
     backgroundContentView.layer.cornerRadius = 2
-    titleLabel.text = viewModel.title
+    titleLabel.text = viewModel
   }
 }
 
