@@ -22,12 +22,14 @@ class ScrapContainerView: XibView {
     super.init(frame: frame)
     setDelegate()
     registerCells()
+    addObserver()
   }
   
   required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
     setDelegate()
     registerCells()
+    addObserver()
   }
   
   @IBAction func filterBtn(_ sender: Any) {
@@ -42,6 +44,19 @@ class ScrapContainerView: XibView {
     contentCV.dataSource = self
     contentCV.delegate = self
     contentCV.isSkeletonable = true
+  }
+  
+  private func addObserver() {
+    addObserverAction(.scrapButtonClicked) { noti in
+      if let scrapDTO = noti.object as? ScrapRequestDTO {
+        guard var item = self.scrapDataList.filter({ $0.planID == scrapDTO.planID }).first else { return }
+        let index = self.scrapDataList.firstIndex { $0.planID == item.planID }.map { Int($0) }
+        if let itemIndex = index {
+          item.scrapStatus.toggle()
+          self.scrapDataList[itemIndex] = item
+        }
+      }
+    }
   }
 }
 
