@@ -8,6 +8,7 @@
 import Foundation
 
 struct HomeListDataGettable: Codable {
+
   let contents: [HomeListDataGettable.Item]
   let nextCursor: Int
   
@@ -17,7 +18,7 @@ struct HomeListDataGettable: Codable {
     let thumbnailURL: String
     let title: String
     let user: User
-    let scrapStatus, orderStatus: Bool
+    var scrapStatus, orderStatus: Bool
 
     enum CodingKeys: String, CodingKey {
         case createdAt, updatedAt

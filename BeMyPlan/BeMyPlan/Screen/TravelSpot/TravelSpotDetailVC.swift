@@ -49,6 +49,7 @@ class TravelSpotDetailVC: UIViewController {
     initRefresh()
     setHeaderLabel()
     setFilterButtonState()
+    addObserver()
   }
   
 }
@@ -150,6 +151,21 @@ extension TravelSpotDetailVC {
 // MARK: - Fetching Data Parts
 
 extension TravelSpotDetailVC {
+  
+  private func addObserver() {
+    addObserverAction(.scrapButtonClicked) { noti in
+      if let scrapDTO = noti.object as? ScrapRequestDTO {
+        guard var item = self.planDataList.filter({ $0.planID == scrapDTO.planID }).first else { return }
+        let index = self.planDataList.firstIndex { $0.planID == item.planID }.map { Int($0) }
+        if let itemIndex = index {
+          print("바뀌는 index",itemIndex)
+          item.scrapStatus.toggle()
+          self.planDataList[itemIndex] = item
+        }
+      }
+    }
+
+  }
   
   private func fetchPlanListData() {
     guard lastPlanId != -1 else { return }

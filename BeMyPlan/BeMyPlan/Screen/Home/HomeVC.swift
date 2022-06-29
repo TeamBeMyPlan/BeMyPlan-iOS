@@ -64,7 +64,8 @@ class HomeVC: UIViewController, UIGestureRecognizerDelegate {
   }
   
   override func viewWillAppear(_ animated: Bool) {
-    postObserverAction(.viewWillAppearInHome)
+    self.getRecentlyListData()
+    self.getSuggestListData()
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -73,6 +74,33 @@ class HomeVC: UIViewController, UIGestureRecognizerDelegate {
   
   override func viewDidLayoutSubviews() {
     naviView.layer.applyShadow(color: UIColor(displayP3Red: 0.796, green: 0.796, blue: 0.796, alpha: 0.25), alpha: 1, x: 1, y: 4, blur: 8, spread: 1)
+  }
+  
+  private func getRecentlyListData(){
+    BaseService.default.getHomeRecentSortList { result in
+      result.success { [weak self] list in
+        guard let list = list else { return }
+        print("@@@getRecentlyListData@@@@@@@@@@@")
+        print(list.contents.first?.title)
+        print(list.contents.first?.thumbnailURL)
+        self?.mainListView.mainListDataList = list.contents
+      }.catch { error in
+        self.postObserverAction(.showNetworkError,object: nil)
+      }
+    }
+  }
+  
+  private func getSuggestListData(){
+    BaseService.default.getHomeBemyPlanSortList{ result in
+      result.success { [weak self] list in
+        guard let list = list else { return }
+        print("@@@getSuggestListData@@@@@@@@@@@")
+        print(list.contents.first?.title)
+        self?.mainEditorListView.mainListDataList = list.contents
+      }.catch { error in
+        self.postObserverAction(.showNetworkError,object: nil)
+      }
+    }
   }
   
 

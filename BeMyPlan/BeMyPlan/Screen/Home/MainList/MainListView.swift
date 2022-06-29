@@ -17,12 +17,11 @@ enum MainListViewType{
 class MainListView: UIView {
   
   // MARK: - Vars & Lets Part
-  var mainListDataList: [HomeListDataGettable.Item] = []
+  var mainListDataList: [HomeListDataGettable.Item] = [] { didSet { mainListCV.reloadData() }}
   
   var type : MainListViewType = .recently {
     didSet {
       setTitle()
-      type == .recently ? getRecentlyListData() : getSuggestListData()
     }
   }
   
@@ -35,7 +34,6 @@ class MainListView: UIView {
     registerCVC()
     setTitle()
     setMainListCV()
-    addObserver()
   }
   
   required init?(coder aDecoder: NSCoder) {
@@ -44,7 +42,6 @@ class MainListView: UIView {
     registerCVC()
     setTitle()
     setMainListCV()
-    addObserver()
   }
   
   // MARK: - UI Component Part
@@ -80,7 +77,7 @@ class MainListView: UIView {
   // MARK: - Custom Method Part
   
   private func setTitle(){
-    mainListCategotyLabel.text = (type == .recently ? "최신 여행 일정" : "비마플 추천 여행 일정")
+    mainListCategotyLabel.text = (type == .recently ? "최신 등록 여행 일정" : "비마플 추천 여행 일정")
   }
   
   private func setMainListCV(){
@@ -111,38 +108,7 @@ class MainListView: UIView {
   private func setSkeletonOption() {
     mainListCV.isSkeletonable = true
   }
-  
-  private func getRecentlyListData(){
-    BaseService.default.getHomeRecentSortList { result in
-      result.success { [weak self] list in
-        guard let list = list else { return }
-        self?.mainListDataList = list.contents
-        self?.mainListCV.reloadData()
-      }.catch { error in
-        self.postObserverAction(.showNetworkError,object: nil)
-      }
-    }
-  }
 
-  private func getSuggestListData(){
-    BaseService.default.getHomeBemyPlanSortList{ result in
-      result.success { [weak self] list in
-        guard let list = list else { return }
-        self?.mainListDataList = list.contents
-        self?.mainListCV.reloadData()
-      }.catch { error in
-        self.postObserverAction(.showNetworkError,object: nil)
-      }
-    }
-  }
-  
-  private func addObserver() {
-    addObserverAction(.viewWillAppearInHome) { _ in
-      self.getRecentlyListData()
-      self.getSuggestListData()
-    }
-  }
-  
 }
 
 // MARK: - Extension Part

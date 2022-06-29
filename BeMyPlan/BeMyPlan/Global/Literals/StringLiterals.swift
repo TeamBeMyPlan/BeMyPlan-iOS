@@ -71,7 +71,7 @@ struct I18N {
   
   struct PlanList {
     static let bemyPlanRecommendHeader = "비마플 추천 일정"
-    static let recentlyHeader = "최신 여행 일정"
+    static let recentlyHeader = "최신 등록 여행 일정"
   }
   
   struct PlanPreview{

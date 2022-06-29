@@ -254,7 +254,7 @@ extension BaseAPI: TargetType {
       params["nickname"] = nickName
         
       case .getHomeOrderList:
-        params["size"] = 5
+        params["size"] = 10
         params["sort"] = "orderCnt"
 				params["sort"] = "desc"
         params["region"] = "JEJU"
