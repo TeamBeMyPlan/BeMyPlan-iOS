@@ -1488,10 +1488,10 @@
 				FD54871D286AD8F500822478 /* 1-Header */,
 				FD54871E286AD91D00822478 /* 2-Creator */,
 				FD548723286AD93E00822478 /* 3-RecommendReason */,
-				FD548722286AD93C00822478 /* 4-MainContents */,
-				FD548721286AD93600822478 /* 5-PurchaseGuide */,
-				FD548720286AD93400822478 /* 6-SuggestLlist */,
-				FD54871F286AD93200822478 /* 7-Terms */,
+				FD548722286AD93C00822478 /* 5-MainContents */,
+				FD548721286AD93600822478 /* 6-PurchaseGuide */,
+				FD548720286AD93400822478 /* 7-SuggestLlist */,
+				FD54871F286AD93200822478 /* 8-Terms */,
 				FD54871A286AD38F00822478 /* NewPlanPreview.storyboard */,
 			);
 			path = Views;
@@ -1540,40 +1540,40 @@
 			path = "2-Creator";
 			sourceTree = "<group>";
 		};
-		FD54871F286AD93200822478 /* 7-Terms */ = {
+		FD54871F286AD93200822478 /* 8-Terms */ = {
 			isa = PBXGroup;
 			children = (
 				FD548732286ADD4D00822478 /* NewPlanPreviewTerms.swift */,
 				FD548743286ADDEE00822478 /* NewPlanPreviewTerms.xib */,
 			);
-			path = "7-Terms";
+			path = "8-Terms";
 			sourceTree = "<group>";
 		};
-		FD548720286AD93400822478 /* 6-SuggestLlist */ = {
+		FD548720286AD93400822478 /* 7-SuggestLlist */ = {
 			isa = PBXGroup;
 			children = (
 				FD548730286ADD4200822478 /* NewPlanPreviewSuggestList.swift */,
 				FD548740286ADDE100822478 /* NewPlanPreviewSuggestList.xib */,
 			);
-			path = "6-SuggestLlist";
+			path = "7-SuggestLlist";
 			sourceTree = "<group>";
 		};
-		FD548721286AD93600822478 /* 5-PurchaseGuide */ = {
+		FD548721286AD93600822478 /* 6-PurchaseGuide */ = {
 			isa = PBXGroup;
 			children = (
 				FD54872E286ADB0300822478 /* NewPlanPreviewPurchaseGuide.swift */,
 				FD54873E286ADDC900822478 /* NewPlanPreviewPurchaseGuide.xib */,
 			);
-			path = "5-PurchaseGuide";
+			path = "6-PurchaseGuide";
 			sourceTree = "<group>";
 		};
-		FD548722286AD93C00822478 /* 4-MainContents */ = {
+		FD548722286AD93C00822478 /* 5-MainContents */ = {
 			isa = PBXGroup;
 			children = (
 				FD54872C286ADAF700822478 /* NewPlanPreviewMainContents.swift */,
 				FD54873C286ADDB800822478 /* NewPlanPreviewMainContents.xib */,
 			);
-			path = "4-MainContents";
+			path = "5-MainContents";
 			sourceTree = "<group>";
 		};
 		FD548723286AD93E00822478 /* 3-RecommendReason */ = {
