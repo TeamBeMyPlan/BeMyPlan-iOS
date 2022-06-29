@@ -240,12 +240,10 @@
 		FDF980BF2786CE700009A14E /* Spoqa_Han_Sans_Neo_Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = FDF980BE2786CE700009A14E /* Spoqa_Han_Sans_Neo_Regular.otf */; };
 		FDF980C12786D14B0009A14E /* setDefaultFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF980C02786D14B0009A14E /* setDefaultFonts.swift */; };
 		FDF980C62786D1A40009A14E /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDF980C52786D1A40009A14E /* Home.storyboard */; };
-		FDF980C82786D2360009A14E /* PlanList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDF980C72786D2360009A14E /* PlanList.storyboard */; };
 		FDF980CA2786D23D0009A14E /* TravelSpot.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDF980C92786D23D0009A14E /* TravelSpot.storyboard */; };
 		FDF980CC2786D2470009A14E /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDF980CB2786D2470009A14E /* Splash.storyboard */; };
 		FDF980CE2786D2550009A14E /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDF980CD2786D2550009A14E /* Login.storyboard */; };
 		FDF980D22786D2EB0009A14E /* TravelSpotVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF980D12786D2EB0009A14E /* TravelSpotVC.swift */; };
-		FDF980D42786D2F60009A14E /* PlanListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF980D32786D2F60009A14E /* PlanListVC.swift */; };
 		FDF980D62786D5320009A14E /* makePayBoocFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF980D52786D5320009A14E /* makePayBoocFont.swift */; };
 		FDF980DB2786E2F60009A14E /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF980DA2786E2F60009A14E /* BaseVC.swift */; };
 		FDF980DE2786E6090009A14E /* addSubViewFromNib.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF980DD2786E6090009A14E /* addSubViewFromNib.swift */; };
@@ -528,12 +526,10 @@
 		FDF980BE2786CE700009A14E /* Spoqa_Han_Sans_Neo_Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Spoqa_Han_Sans_Neo_Regular.otf; sourceTree = "<group>"; };
 		FDF980C02786D14B0009A14E /* setDefaultFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = setDefaultFonts.swift; sourceTree = "<group>"; };
 		FDF980C52786D1A40009A14E /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
-		FDF980C72786D2360009A14E /* PlanList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PlanList.storyboard; sourceTree = "<group>"; };
 		FDF980C92786D23D0009A14E /* TravelSpot.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TravelSpot.storyboard; sourceTree = "<group>"; };
 		FDF980CB2786D2470009A14E /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
 		FDF980CD2786D2550009A14E /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		FDF980D12786D2EB0009A14E /* TravelSpotVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelSpotVC.swift; sourceTree = "<group>"; };
-		FDF980D32786D2F60009A14E /* PlanListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanListVC.swift; sourceTree = "<group>"; };
 		FDF980D52786D5320009A14E /* makePayBoocFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = makePayBoocFont.swift; sourceTree = "<group>"; };
 		FDF980DA2786E2F60009A14E /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
 		FDF980DD2786E6090009A14E /* addSubViewFromNib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addSubViewFromNib.swift; sourceTree = "<group>"; };
@@ -1206,7 +1202,6 @@
 				FDF980E62786F1810009A14E /* MyPlan */,
 				FD35663E2792AF2C0082B4CE /* Scrap */,
 				FD4C86B6278C7A3800D37A2D /* Payment */,
-				FDF980C42786D1900009A14E /* PlanList */,
 				FD09DE1927857CAA006DA050 /* Splash */,
 				F294EC2D278EBD58001069F8 /* SignUp */,
 				FD09DE1A27857CB0006DA050 /* Login */,
@@ -1563,15 +1558,6 @@
 			path = TravelSpot;
 			sourceTree = "<group>";
 		};
-		FDF980C42786D1900009A14E /* PlanList */ = {
-			isa = PBXGroup;
-			children = (
-				FDF980C72786D2360009A14E /* PlanList.storyboard */,
-				FDF980D32786D2F60009A14E /* PlanListVC.swift */,
-			);
-			path = PlanList;
-			sourceTree = "<group>";
-		};
 		FDF980D92786E02C0009A14E /* Base */ = {
 			isa = PBXGroup;
 			children = (
@@ -1744,7 +1730,6 @@
 				FDC47E0C2789742800A152E8 /* TravelSpotCVC.xib in Resources */,
 				FD61AFA327902C7A00D39F47 /* PlanDetailSelectDayView.xib in Resources */,
 				FD3566502792AF2C0082B4CE /* Scrap.storyboard in Resources */,
-				FDF980C82786D2360009A14E /* PlanList.storyboard in Resources */,
 				FD09DDEC27856A31006DA050 /* map_pin_shadow.png in Resources */,
 				FD09DDD927856A31006DA050 /* map_pin_shadow@3x.png in Resources */,
 				FDF980EA2786F19D0009A14E /* MyPlan.storyboard in Resources */,
@@ -1894,7 +1879,6 @@
 				FD20C612278EC29600AC6E34 /* setTextLineHeight + UILabel.swift in Sources */,
 				FD568E7327CFE6DF0078D23C /* AppLog.swift in Sources */,
 				F250440D2799D02900791AB7 /* AuthDataModel.swift in Sources */,
-				FDF980D42786D2F60009A14E /* PlanListVC.swift in Sources */,
 				FD50D13C284B12B50014F3CD /* setAttributedText.swift in Sources */,
 				FD2D9C5A2796FDA400688A42 /* UITableViewCell + Animator.swift in Sources */,
 				FDF980E52786E8370009A14E /* XibPresentable.swift in Sources */,
@@ -2173,7 +2157,7 @@
 				CODE_SIGN_ENTITLEMENTS = BeMyPlan/BeMyPlan.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2022062301;
+				CURRENT_PROJECT_VERSION = 2022062901;
 				DEVELOPMENT_TEAM = PLJU22T9YZ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2197,7 +2181,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.BeMyPlan.release;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = BeMyPlan_develop_colours;
@@ -2217,7 +2201,7 @@
 				CODE_SIGN_ENTITLEMENTS = BeMyPlan/BeMyPlan.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2022062301;
+				CURRENT_PROJECT_VERSION = 2022062901;
 				DEVELOPMENT_TEAM = PLJU22T9YZ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2241,7 +2225,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.BeMyPlan.release;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = BeMyPlan_distribution_provisioning;
