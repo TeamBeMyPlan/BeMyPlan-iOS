@@ -254,7 +254,7 @@ extension BaseAPI: TargetType {
       params["nickname"] = nickName
         
       case .getHomeOrderList:
-        params["size"] = 5
+        params["size"] = 10
         params["sort"] = "orderCnt"
 				params["sort"] = "desc"
         params["region"] = "JEJU"
@@ -377,6 +377,7 @@ extension BaseAPI: TargetType {
   public var headers: [String: String]? {
 
 		if let sessionID = UserDefaults.standard.string(forKey: UserDefaultKey.sessionID) {
+			print("현재 너의 세션아이디",sessionID)
 			return ["Content-Type": "application/json",
 							"Visit-Option": "MEMBERSHIP",
 							"Authorization" : sessionID]
