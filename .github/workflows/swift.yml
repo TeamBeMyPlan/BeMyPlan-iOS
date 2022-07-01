@@ -4,7 +4,7 @@ on:
   push:
     branches: [ "dev" ]
   pull_request:
-      paths:
+    paths:
       - '.github/workflows/swiftlint.yml'
       - 'BeMyPlan/.swiftlint.yml'
       - '**/*.swift'
