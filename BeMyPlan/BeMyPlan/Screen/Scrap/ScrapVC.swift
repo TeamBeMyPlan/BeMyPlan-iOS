@@ -68,7 +68,7 @@ class ScrapVC: UIViewController {
       }
     }
   }
-  
+  badAccess
   private func bottomSheetNotification() {
     addObserverAction(.filterBottomSheet) { _ in
       let vc = UIStoryboard(name: "TravelSpot", bundle: nil).instantiateViewController(withIdentifier: "TravelSpotFilterVC") as! TravelSpotFilterVC
