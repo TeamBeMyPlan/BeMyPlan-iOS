@@ -1,0 +1,21 @@
+name: Swift
+
+on:
+  push:
+    branches: [ "dev" ]
+  pull_request:
+    branches: [ "dev" ]
+
+jobs:
+  build:
+
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build
+      run: swift build -v
+    - name: Run tests
+      run:
+        xcodebuild clean test -project ExGithubAction.xcodeproj -scheme ExGithubAction -destination "platform=iOS Simulator,name=iPhone 11"
+
