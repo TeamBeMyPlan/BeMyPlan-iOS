@@ -4,7 +4,9 @@ on:
   push:
     branches: [ "dev" ]
   pull_request:
-    branches: [ "dev" ]
+    branches:
+      - dev
+      - 'feature/**'
 
 jobs:
   build:
@@ -13,6 +15,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    
+    - name: Branch name
+      run: echo running on branch ${GITHUB_REF##*/}
     
     - name: Start xcode build 🛠
       run: |
