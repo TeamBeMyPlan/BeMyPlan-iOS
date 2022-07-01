@@ -11,9 +11,11 @@ disabled_rules:
 - force_cast
 - type_name
 - shorthand_operator
+- switch_case_alignment
+- for_where
+- comma
+- opening_brace
 
-opt_in_rules:
-- empty_string
 
 excluded:
   - .github/workflows/swift.yml
