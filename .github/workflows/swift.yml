@@ -13,7 +13,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    
+    - name: Cocoapod Install
+      run: pod install --repo-update
+    
     - name: Run tests
       run:
-        xcodebuild clean test -project BeMyPlan/BeMyPlan.xcodeproj -scheme BeMyPlan -destination "platform=iOS Simulator,name=iPhone 11"
-
+        pod install --repo-update --clean-install --project-directory=BeMyPlan/
+        xcodebuild clean test -workspace BeMyPlan/BeMyPlan.xcworkspace -scheme BeMyPlan -destination 'platform=iOS Simulator,name=iPhone 11 Pro,OS=latest'
