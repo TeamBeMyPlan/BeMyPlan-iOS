@@ -6,12 +6,18 @@ disabled_rules:
 - function_body_length
 - cyclomatic_complexity
 - file_length
+- identifier_name
+- empty_count
+- force_cast
+- type_name
+- shorthand_operator
 
 opt_in_rules:
 - empty_count
 - empty_string
 
 excluded:
+  - .github/workflows/swift.yml
   - Pods
   - ../Pods
   - ./Pods
