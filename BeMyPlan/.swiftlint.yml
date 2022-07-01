@@ -6,6 +6,9 @@ disabled_rules:
 - function_body_length
 - cyclomatic_complexity
 - file_length
+- identifier_name
+- empty_count
+- force_cast
 
 opt_in_rules:
 - empty_count
