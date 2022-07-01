@@ -12,6 +12,7 @@ opt_in_rules:
 - empty_string
 
 excluded:
+  - .github/workflows/swift.yml
   - Pods
   - ../Pods
   - ./Pods
