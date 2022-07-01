@@ -12,9 +12,7 @@ jobs:
     runs-on: macos-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Build
-      run: swift build -v
+    - uses: actions/checkout@v2
     - name: Run tests
       run:
         xcodebuild clean test -project ExGithubAction.xcodeproj -scheme ExGithubAction -destination "platform=iOS Simulator,name=iPhone 11"
