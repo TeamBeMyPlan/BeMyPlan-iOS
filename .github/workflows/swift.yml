@@ -4,13 +4,13 @@ on:
   push:
     branches: [ "dev" ]
   pull_request:
+    branches:
+      - dev
+      - 'feature/**'
     paths:
       - '.github/workflows/swiftlint.yml'
       - 'BeMyPlan/.swiftlint.yml'
       - '**/*.swift'
-    branches:    
-      - dev
-      - 'feature/**'
 
 jobs:
   SwiftLint:
