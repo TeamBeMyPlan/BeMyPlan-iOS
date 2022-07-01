@@ -14,9 +14,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
-    - name: Cocoapod Install
-      run: pod install --repo-update
-    
     - name: Run tests
       run:
         pod install --repo-update --clean-install --project-directory=BeMyPlan/
