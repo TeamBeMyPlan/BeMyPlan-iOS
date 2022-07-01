@@ -17,4 +17,4 @@ jobs:
     - name: Start xcode build 🛠
       run: |
         pod install --repo-update --clean-install --project-directory=BeMyPlan/
-        xcodebuild clean test -workspace BeMyPlan/BeMyPlan.xcworkspace -scheme BeMyPlan -destination 'platform=iOS Simulator,name=iPhone 11 Pro,OS=latest'
+        xcodebuild clean build -workspace BeMyPlan/BeMyPlan.xcworkspace -scheme BeMyPlan -destination 'platform=iOS Simulator,name=iPhone 11 Pro,OS=latest'
