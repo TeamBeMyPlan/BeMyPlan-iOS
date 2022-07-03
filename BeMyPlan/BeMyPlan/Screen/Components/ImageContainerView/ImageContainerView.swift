@@ -9,7 +9,7 @@ import UIKit
 
 class ImageContainerView: XibView{
   var viewModel: ImageContainerViewModel! { didSet{ setCounterView() }}
-  
+  private var currentIndex = 0 { didSet{ setCounterView() }}
   @IBOutlet var imageCounterContainerView: ImageIndexContainerView!
   @IBOutlet var photoCV: UICollectionView! { didSet {
     photoCV.delegate = self
@@ -34,14 +34,21 @@ extension ImageContainerView: UICollectionViewDelegate,UICollectionViewDataSourc
   }
 }
 
+extension ImageContainerView: UIScrollViewDelegate {
+  func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+    let positionX = scrollView.contentOffset.x
+    let index = positionX / self.bounds.width
+    currentIndex = Int(index)
+  }
+}
+
 extension ImageContainerView {
   private func setCounterView() {
-    imageCounterContainerView.viewModel = .init(currentIndex: self.viewModel.currentIndex,
+    imageCounterContainerView.viewModel = .init(currentIndex: self.currentIndex,
       totalIndex: self.viewModel.imgList.count)
   }
 }
 
 struct ImageContainerViewModel {
-  var currentIndex: Int
   var imgList: [String]
 }
