@@ -17,8 +17,7 @@ extension LoginVC {
         if let _ = error { self.showKakaoLoginFailMessage() }
         else {
           if let accessToken = oauthToken?.accessToken {
-            
-            //토큰 가져오려면 다음과 같이 accessToken 사용
+            // 액세스 토큰 받아와서 서버에게 넘겨주는 로직 작성
             print("TOKEN",accessToken)
             self.postSocialLoginData(socialToken: accessToken, socialType: "KAKAO")
 
@@ -26,12 +25,12 @@ extension LoginVC {
         }
       }
     }
-    else { // 카카오 계정으로 로그인
+    else { // 웹으로 로그인해도 똑같이 처리되도록
       UserApi.shared.loginWithKakaoAccount { (oauthToken, error) in
         if let _ = error { self.showKakaoLoginFailMessage() }
         else {
-          // 여기서도 위와 같이 로그인 처리해주면 됨.
           if let accessToken = oauthToken?.accessToken {
+            // 액세스 토큰 받아와서 서버에게 넘겨주는 로직 작성
             self.postSocialLoginData(socialToken: accessToken, socialType: "KAKAO")
           }
           //성공해서 성공 VC로 이동
@@ -39,7 +38,7 @@ extension LoginVC {
       }
     }
   }
-  
+    
   func postSocialLoginData(socialToken: String, socialType: String,email: String? = nil) {
     BaseService.default.postSocialLogin(socialToken: socialToken, socialType: socialType) { result in
       result.success { [weak self] data in

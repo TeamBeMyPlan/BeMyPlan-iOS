@@ -39,14 +39,24 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="YBa-Xw-dLz">
-                    <rect key="frame" x="0.0" y="114" width="371" height="1369"/>
+                    <rect key="frame" x="0.0" y="114" width="371" height="1361"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Rq-7d-hoe">
+                    <rect key="frame" x="0.0" y="1519" width="371" height="8"/>
+                    <color key="backgroundColor" name="grey6"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="8" id="DL3-o3-fe0"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="7Rq-7d-hoe" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="7Z1-rJ-OIb"/>
+                <constraint firstAttribute="trailing" secondItem="7Rq-7d-hoe" secondAttribute="trailing" id="8OB-3W-PMU"/>
                 <constraint firstItem="eCL-JZ-NyX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="39" id="8bb-jQ-kuU"/>
-                <constraint firstAttribute="bottom" secondItem="YBa-Xw-dLz" secondAttribute="bottom" constant="44" id="Jzg-j1-6zK"/>
+                <constraint firstAttribute="bottom" secondItem="7Rq-7d-hoe" secondAttribute="bottom" id="Izx-qe-kqf"/>
+                <constraint firstAttribute="bottom" secondItem="YBa-Xw-dLz" secondAttribute="bottom" constant="52" id="Jzg-j1-6zK"/>
                 <constraint firstItem="nUK-dl-TcB" firstAttribute="top" secondItem="eCL-JZ-NyX" secondAttribute="bottom" constant="6" id="RuS-8w-YnD"/>
                 <constraint firstItem="nUK-dl-TcB" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Y8v-j3-ZHR"/>
                 <constraint firstItem="YBa-Xw-dLz" firstAttribute="top" secondItem="nUK-dl-TcB" secondAttribute="bottom" constant="39" id="anF-BU-Iat"/>
@@ -61,6 +71,9 @@
     <resources>
         <namedColor name="grey1">
             <color red="0.19215686274509805" green="0.21568627450980393" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="grey6">
+            <color red="0.95686274509803926" green="0.96078431372549022" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -35,9 +35,7 @@ extension LoginVC : ASAuthorizationControllerDelegate {
     case let appleIDCredential as ASAuthorizationAppleIDCredential :
         
         let email = appleIDCredential.email
-        appleIDCredential.email
-        print("EMAIL",email)
-      
+        
       //계정 정보 가져오기
       let identityToken = appleIDCredential.identityToken
       let tokenString = String(data: identityToken!, encoding: .utf8)

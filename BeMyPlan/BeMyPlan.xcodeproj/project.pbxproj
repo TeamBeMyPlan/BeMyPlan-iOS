@@ -214,6 +214,8 @@
 		FD61AFDC2791DC6E00D39F47 /* UINavigation + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD61AFDB2791DC6E00D39F47 /* UINavigation + Extension.swift */; };
 		FD66701327E314C300296E4A /* PreviewBodyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD66701227E314C300296E4A /* PreviewBodyData.swift */; };
 		FD6934DC286199A30003A818 /* encodeURLWithKorean.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6934DB286199A30003A818 /* encodeURLWithKorean.swift */; };
+		FD8D3A98287A96B30071036D /* NewPlanPreviewPurchaseGuideTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8D3A96287A96B30071036D /* NewPlanPreviewPurchaseGuideTVC.swift */; };
+		FD8D3A99287A96B30071036D /* NewPlanPreviewPurchaseGuideTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD8D3A97287A96B30071036D /* NewPlanPreviewPurchaseGuideTVC.xib */; };
 		FD93028027A3EC7500341C2A /* PlanPreviewRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD93027F27A3EC7500341C2A /* PlanPreviewRepository.swift */; };
 		FD93028227A3ED1D00341C2A /* PlanPreviewEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD93028127A3ED1D00341C2A /* PlanPreviewEntity.swift */; };
 		FD93028827A3F9B800341C2A /* downloadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD93028727A3F9B800341C2A /* downloadImage.swift */; };
@@ -542,6 +544,8 @@
 		FD61AFDB2791DC6E00D39F47 /* UINavigation + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigation + Extension.swift"; sourceTree = "<group>"; };
 		FD66701227E314C300296E4A /* PreviewBodyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewBodyData.swift; sourceTree = "<group>"; };
 		FD6934DB286199A30003A818 /* encodeURLWithKorean.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = encodeURLWithKorean.swift; sourceTree = "<group>"; };
+		FD8D3A96287A96B30071036D /* NewPlanPreviewPurchaseGuideTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlanPreviewPurchaseGuideTVC.swift; sourceTree = "<group>"; };
+		FD8D3A97287A96B30071036D /* NewPlanPreviewPurchaseGuideTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewPlanPreviewPurchaseGuideTVC.xib; sourceTree = "<group>"; };
 		FD93027F27A3EC7500341C2A /* PlanPreviewRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanPreviewRepository.swift; sourceTree = "<group>"; };
 		FD93028127A3ED1D00341C2A /* PlanPreviewEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanPreviewEntity.swift; sourceTree = "<group>"; };
 		FD93028727A3F9B800341C2A /* downloadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = downloadImage.swift; sourceTree = "<group>"; };
@@ -1576,6 +1580,7 @@
 		FD548721286AD93600822478 /* 6-PurchaseGuide */ = {
 			isa = PBXGroup;
 			children = (
+				FD8D3A95287A96910071036D /* Cells */,
 				FD54872E286ADB0300822478 /* NewPlanPreviewPurchaseGuide.swift */,
 				FD54873E286ADDC900822478 /* NewPlanPreviewPurchaseGuide.xib */,
 			);
@@ -1637,6 +1642,15 @@
 				FD568E7A27CFE8200078D23C /* FirebaseAnalyticsProvider.swift */,
 			);
 			path = Provider;
+			sourceTree = "<group>";
+		};
+		FD8D3A95287A96910071036D /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				FD8D3A96287A96B30071036D /* NewPlanPreviewPurchaseGuideTVC.swift */,
+				FD8D3A97287A96B30071036D /* NewPlanPreviewPurchaseGuideTVC.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		FD93027B27A3EC3700341C2A /* Repository */ = {
@@ -2029,6 +2043,7 @@
 				FD2D4DDA278DB179002084B9 /* PlanDetailSummaryFoldTVC.xib in Resources */,
 				FD3211B527841949007D63D5 /* LaunchScreen.storyboard in Resources */,
 				FD9CE28E286B704000020056 /* ImageContainerView.xib in Resources */,
+				FD8D3A99287A96B30071036D /* NewPlanPreviewPurchaseGuideTVC.xib in Resources */,
 				FD548735286ADD6600822478 /* NewPlanPreviewNaviBar.xib in Resources */,
 				FD09DDE927856A31006DA050 /* noimage.png in Resources */,
 				FD9CE287286B6DA400020056 /* ImageIndexContainerView.xib in Resources */,
@@ -2224,6 +2239,7 @@
 				FDF980E52786E8370009A14E /* XibPresentable.swift in Sources */,
 				FDC47E132789875800A152E8 /* makeCellInstance.swift in Sources */,
 				FD61AFDA2791DB9100D39F47 /* PanDirectionGesture.swift in Sources */,
+				FD8D3A98287A96B30071036D /* NewPlanPreviewPurchaseGuideTVC.swift in Sources */,
 				FDA2063227C40FE9001A371D /* PlanDetailRepository.swift in Sources */,
 				FD2D4DC3278D57B7002084B9 /* ProgressBar.swift in Sources */,
 				FDC47DEF2789521C00A152E8 /* PreviewPhotoData.swift in Sources */,
