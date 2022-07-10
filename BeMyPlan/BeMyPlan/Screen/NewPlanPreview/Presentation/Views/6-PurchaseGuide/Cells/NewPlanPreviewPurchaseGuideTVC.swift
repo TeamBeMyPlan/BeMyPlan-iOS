@@ -9,6 +9,8 @@ import UIKit
 import SnapKit
 
 class NewPlanPreviewPurchaseGuideTVC: UITableViewCell,UITableViewRegisterable {
+  static var isFromNib: Bool = true
+  
   var viewModel: PurchaseGuideCellViewModel! {
     didSet{ bindViewModel() }}
   @IBOutlet var titleLabel: UILabel!

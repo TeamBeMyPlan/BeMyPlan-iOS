@@ -7,7 +7,8 @@
 
 import UIKit
 
-class NewPlanPreviewHeader: XibView{
+class NewPlanPreviewHeader: UITableViewCell,UITableViewRegisterable {
+  static var isFromNib: Bool = true
   var viewModel: NewPlanPreviewHeaderViewModel!
   var currentIndex = 0 { didSet{ setImageContainerViewUI() }}
   
@@ -19,13 +20,8 @@ class NewPlanPreviewHeader: XibView{
   @IBOutlet var iconContainerView: PreviewIconContainerView!
   @IBOutlet var informationButton: UIButton!
   
-  override init(frame: CGRect) {
-    super.init(frame: frame)
-    addButtonAction()
-  }
-  
-  required init?(coder aDecoder: NSCoder) {
-    super.init(coder: aDecoder)
+  override func awakeFromNib() {
+    super.awakeFromNib()
     addButtonAction()
   }
 }
@@ -40,7 +36,7 @@ extension NewPlanPreviewHeader {
   }
   
   private func setImageContainerViewUI() {
-    imageContainerView.viewModel = .init(currentIndex: 0, imgList: viewModel.imgList)
+    imageContainerView.viewModel = .init(imgList: viewModel.imgList)
   }
   
   private func addButtonAction() {
