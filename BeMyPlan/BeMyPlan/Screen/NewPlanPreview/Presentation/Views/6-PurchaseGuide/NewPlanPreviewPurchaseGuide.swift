@@ -16,24 +16,33 @@ class NewPlanPreviewPurchaseGuide: XibView{
   @IBOutlet var previewActionTitleLabel: UILabel!
   @IBOutlet var previewActionButton: UIButton!
   
-  
   override init(frame: CGRect) {
     super.init(frame: frame)
+    registerCell()
     setDelegate()
     setButtonActions()
   }
   
   required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
+    registerCell()
     setDelegate()
     setButtonActions()
   }
 }
 
 extension NewPlanPreviewPurchaseGuide {
+  private func setUI() {
+    previewActionTitleLabel.font = .getSpooqaMediumFont(size: 14)
+  }
+  
   private func setDelegate() {
     guideTableView.delegate = self
     guideTableView.dataSource = self
+  }
+  
+  private func registerCell() {
+    NewPlanPreviewPurchaseGuideTVC.register(target: guideTableView)
   }
   
   private func setButtonActions() {

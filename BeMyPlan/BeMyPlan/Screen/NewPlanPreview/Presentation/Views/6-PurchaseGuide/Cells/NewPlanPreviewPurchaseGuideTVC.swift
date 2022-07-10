@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class NewPlanPreviewPurchaseGuideTVC: UITableViewCell {
+class NewPlanPreviewPurchaseGuideTVC: UITableViewCell,UITableViewRegisterable {
   var viewModel: PurchaseGuideCellViewModel! {
     didSet{ bindViewModel() }}
   @IBOutlet var titleLabel: UILabel!

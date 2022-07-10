@@ -8,6 +8,8 @@
 import UIKit
 
 class NewPlanPreviewTerms: XibView{
+  
+  @IBOutlet var collectionViewHeightConstraint: NSLayoutConstraint!
   override init(frame: CGRect) {
     super.init(frame: frame)
   }
@@ -16,3 +18,12 @@ class NewPlanPreviewTerms: XibView{
     super.init(coder: aDecoder)
   }
 }
+extension NewPlanPreviewTerms {
+
+  
+  private func setDelegate() {
+    
+  }
+}
+
+

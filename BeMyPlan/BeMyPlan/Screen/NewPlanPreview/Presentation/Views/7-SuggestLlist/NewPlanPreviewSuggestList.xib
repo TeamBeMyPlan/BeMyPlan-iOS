@@ -4,22 +4,70 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewPlanPreviewTerms" customModule="BeMyPlan" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewPlanPreviewSuggestList" customModule="BeMyPlan" customModuleProvider="target">
+            <connections>
+                <outlet property="contentCollectionViewHeightConstraint" destination="jId-7B-YBB" id="ceA-MM-zeX"/>
+                <outlet property="contentCollectonView" destination="45k-D8-V77" id="cG4-2y-fJA"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <rect key="frame" x="0.0" y="0.0" width="449" height="367"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이런 여행 코스도 추천해요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g55-y4-gu5">
+                    <rect key="frame" x="24" y="40" width="401" height="21"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="45k-D8-V77">
+                    <rect key="frame" x="0.0" y="83" width="449" height="238"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="238" id="jId-7B-YBB"/>
+                    </constraints>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3Gf-QB-gOk">
+                        <size key="itemSize" width="128" height="128"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lnl-G1-Beq">
+                    <rect key="frame" x="0.0" y="359" width="449" height="8"/>
+                    <color key="backgroundColor" name="grey6"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="8" id="kVC-1A-tru"/>
+                    </constraints>
+                </view>
+            </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-            <point key="canvasLocation" x="132" y="120"/>
+            <constraints>
+                <constraint firstItem="g55-y4-gu5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="24" id="UXI-Po-OuM"/>
+                <constraint firstAttribute="bottom" secondItem="Lnl-G1-Beq" secondAttribute="bottom" id="XlZ-0v-pRe"/>
+                <constraint firstItem="45k-D8-V77" firstAttribute="top" secondItem="g55-y4-gu5" secondAttribute="bottom" constant="22" id="bDr-Wg-t5K"/>
+                <constraint firstItem="Lnl-G1-Beq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="bRZ-Ya-pxJ"/>
+                <constraint firstItem="Lnl-G1-Beq" firstAttribute="top" secondItem="45k-D8-V77" secondAttribute="bottom" constant="38" id="cKl-CS-B02"/>
+                <constraint firstAttribute="trailing" secondItem="g55-y4-gu5" secondAttribute="trailing" constant="24" id="fzF-5h-iBE"/>
+                <constraint firstItem="g55-y4-gu5" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="40" id="kMG-9o-KcC"/>
+                <constraint firstAttribute="trailing" secondItem="45k-D8-V77" secondAttribute="trailing" id="qLJ-VJ-Uur"/>
+                <constraint firstItem="45k-D8-V77" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="tLs-WE-V4W"/>
+                <constraint firstAttribute="trailing" secondItem="Lnl-G1-Beq" secondAttribute="trailing" id="yDm-aj-cr9"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="157.24637681159422" y="-57.254464285714285"/>
         </view>
     </objects>
     <resources>
+        <namedColor name="grey6">
+            <color red="0.95686274509803926" green="0.96078431372549022" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

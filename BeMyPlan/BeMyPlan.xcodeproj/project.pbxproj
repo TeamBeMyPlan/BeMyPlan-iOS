@@ -216,6 +216,8 @@
 		FD6934DC286199A30003A818 /* encodeURLWithKorean.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6934DB286199A30003A818 /* encodeURLWithKorean.swift */; };
 		FD8D3A98287A96B30071036D /* NewPlanPreviewPurchaseGuideTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8D3A96287A96B30071036D /* NewPlanPreviewPurchaseGuideTVC.swift */; };
 		FD8D3A99287A96B30071036D /* NewPlanPreviewPurchaseGuideTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD8D3A97287A96B30071036D /* NewPlanPreviewPurchaseGuideTVC.xib */; };
+		FD8D3AA5287AB0700071036D /* NewPlanPreviewSuggestCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8D3AA3287AB0700071036D /* NewPlanPreviewSuggestCVC.swift */; };
+		FD8D3AA6287AB0700071036D /* NewPlanPreviewSuggestCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD8D3AA4287AB0700071036D /* NewPlanPreviewSuggestCVC.xib */; };
 		FD93028027A3EC7500341C2A /* PlanPreviewRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD93027F27A3EC7500341C2A /* PlanPreviewRepository.swift */; };
 		FD93028227A3ED1D00341C2A /* PlanPreviewEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD93028127A3ED1D00341C2A /* PlanPreviewEntity.swift */; };
 		FD93028827A3F9B800341C2A /* downloadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD93028727A3F9B800341C2A /* downloadImage.swift */; };
@@ -546,6 +548,8 @@
 		FD6934DB286199A30003A818 /* encodeURLWithKorean.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = encodeURLWithKorean.swift; sourceTree = "<group>"; };
 		FD8D3A96287A96B30071036D /* NewPlanPreviewPurchaseGuideTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlanPreviewPurchaseGuideTVC.swift; sourceTree = "<group>"; };
 		FD8D3A97287A96B30071036D /* NewPlanPreviewPurchaseGuideTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewPlanPreviewPurchaseGuideTVC.xib; sourceTree = "<group>"; };
+		FD8D3AA3287AB0700071036D /* NewPlanPreviewSuggestCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlanPreviewSuggestCVC.swift; sourceTree = "<group>"; };
+		FD8D3AA4287AB0700071036D /* NewPlanPreviewSuggestCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewPlanPreviewSuggestCVC.xib; sourceTree = "<group>"; };
 		FD93027F27A3EC7500341C2A /* PlanPreviewRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanPreviewRepository.swift; sourceTree = "<group>"; };
 		FD93028127A3ED1D00341C2A /* PlanPreviewEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanPreviewEntity.swift; sourceTree = "<group>"; };
 		FD93028727A3F9B800341C2A /* downloadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = downloadImage.swift; sourceTree = "<group>"; };
@@ -1571,6 +1575,7 @@
 		FD548720286AD93400822478 /* 7-SuggestLlist */ = {
 			isa = PBXGroup;
 			children = (
+				FD8D3A9A287AAF4F0071036D /* Cells */,
 				FD548730286ADD4200822478 /* NewPlanPreviewSuggestList.swift */,
 				FD548740286ADDE100822478 /* NewPlanPreviewSuggestList.xib */,
 			);
@@ -1649,6 +1654,15 @@
 			children = (
 				FD8D3A96287A96B30071036D /* NewPlanPreviewPurchaseGuideTVC.swift */,
 				FD8D3A97287A96B30071036D /* NewPlanPreviewPurchaseGuideTVC.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		FD8D3A9A287AAF4F0071036D /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				FD8D3AA3287AB0700071036D /* NewPlanPreviewSuggestCVC.swift */,
+				FD8D3AA4287AB0700071036D /* NewPlanPreviewSuggestCVC.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -2022,6 +2036,7 @@
 			files = (
 				FD54873F286ADDC900822478 /* NewPlanPreviewPurchaseGuide.xib in Resources */,
 				FDF980F8278827000009A14E /* Colors.xcassets in Resources */,
+				FD8D3AA6287AB0700071036D /* NewPlanPreviewSuggestCVC.xib in Resources */,
 				FD3211C3278433CF007D63D5 /* .swiftlint.yml in Resources */,
 				FD9CE284286B5E3C00020056 /* HashtagCVC.xib in Resources */,
 				FD09DDD427856A31006DA050 /* shadow_balloon.png in Resources */,
@@ -2326,6 +2341,7 @@
 				FD35664B2792AF2C0082B4CE /* ScrapVC.swift in Sources */,
 				FD09DDF3278577F4006DA050 /* BaseAPI.swift in Sources */,
 				FD0562BC2849F7CF0027832A /* OrderService.swift in Sources */,
+				FD8D3AA5287AB0700071036D /* NewPlanPreviewSuggestCVC.swift in Sources */,
 				FD35664F2792AF2C0082B4CE /* ScrapContainerCVC.swift in Sources */,
 				FDF981062788D4C00009A14E /* PlanPreviewPhotoTVC.swift in Sources */,
 				FD548725286ADAAC00822478 /* NewPlanPreviewNaviBar.swift in Sources */,
