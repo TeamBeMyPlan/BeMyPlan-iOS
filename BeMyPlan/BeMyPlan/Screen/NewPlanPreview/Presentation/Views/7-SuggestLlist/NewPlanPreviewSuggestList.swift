@@ -7,20 +7,15 @@
 
 import UIKit
 
-class NewPlanPreviewSuggestList: XibView{
+class NewPlanPreviewSuggestList: UITableViewCell, UITableViewRegisterable{
   
+  static var isFromNib: Bool = true
   var viewModel: NewPlanPreviewSuggestViewModel!
-  
   @IBOutlet var contentCollectonView: UICollectionView!
   @IBOutlet var contentCollectionViewHeightConstraint: NSLayoutConstraint!
-  override init(frame: CGRect) {
-    super.init(frame: frame)
-    setLayout()
-    registerCells()
-  }
   
-  required init?(coder aDecoder: NSCoder) {
-    super.init(coder: aDecoder)
+  override func awakeFromNib() {
+    super.awakeFromNib()
     setLayout()
     registerCells()
   }

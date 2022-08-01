@@ -7,19 +7,15 @@
 
 import UIKit
 
-class NewPlanPreviewMainContents: XibView{
+final class NewPlanPreviewMainContents: UITableViewCell, UITableViewRegisterable{
+  static var isFromNib: Bool = true
   var viewModel: NewPlanPreviewMainContentViewModel!
+  
   @IBOutlet var placeCountDescriptionLabel: UILabel!
-  
   @IBOutlet var contentTV: UITableView!
-  override init(frame: CGRect) {
-    super.init(frame: frame)
-    configureUI()
-    registerCell()
-  }
   
-  required init?(coder aDecoder: NSCoder) {
-    super.init(coder: aDecoder)
+  override func awakeFromNib() {
+    super.awakeFromNib()
     configureUI()
     registerCell()
   }

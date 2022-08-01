@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NewPlanPreviewHeader: UITableViewCell,UITableViewRegisterable {
+class NewPlanPreviewHeader: UITableViewCell, UITableViewRegisterable {
   static var isFromNib: Bool = true
   var viewModel: NewPlanPreviewHeaderViewModel!
   var currentIndex = 0 { didSet{ setImageContainerViewUI() }}

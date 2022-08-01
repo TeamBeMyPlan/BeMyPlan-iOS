@@ -7,7 +7,8 @@
 
 import UIKit
 
-class NewPlanPreviewCreator: XibView{
+final class NewPlanPreviewCreator: UITableViewCell, UITableViewRegisterable {
+  static var isFromNib: Bool = true
   var viewModel: NewPlanPreviewCreatorViewModel!
   
   @IBOutlet var userImageView: UIImageView!
@@ -15,13 +16,8 @@ class NewPlanPreviewCreator: XibView{
   @IBOutlet var descriptionLabel: UILabel!
   @IBOutlet var contentTextView: UITextView!
   
-  override init(frame: CGRect) {
-    super.init(frame: frame)
-    configureUI()
-  }
-  
-  required init?(coder aDecoder: NSCoder) {
-    super.init(coder: aDecoder)
+  override func awakeFromNib() {
+    super.awakeFromNib()
     configureUI()
   }
 }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NewPlanMainContentsTVC: UITableViewCell,UITableViewRegisterable {
+class NewPlanMainContentsTVC: UITableViewCell, UITableViewRegisterable {
   static var isFromNib: Bool = true
   var viewModel: NewPlanMainContentsCellViewModel!
   

@@ -7,8 +7,9 @@
 
 import UIKit
 
-class NewPlanPreviewPurchaseGuide: XibView{
+class NewPlanPreviewPurchaseGuide: UITableViewCell, UITableViewRegisterable {
   
+  static var isFromNib: Bool = true
   var previewActionClickEvent: (() -> Void)?
   var viewModel: NewPlanPreviewPurchaseGuideViewModel!
   
@@ -16,15 +17,8 @@ class NewPlanPreviewPurchaseGuide: XibView{
   @IBOutlet var previewActionTitleLabel: UILabel!
   @IBOutlet var previewActionButton: UIButton!
   
-  override init(frame: CGRect) {
-    super.init(frame: frame)
-    registerCell()
-    setDelegate()
-    setButtonActions()
-  }
-  
-  required init?(coder aDecoder: NSCoder) {
-    super.init(coder: aDecoder)
+  override func awakeFromNib() {
+    super.awakeFromNib()
     registerCell()
     setDelegate()
     setButtonActions()

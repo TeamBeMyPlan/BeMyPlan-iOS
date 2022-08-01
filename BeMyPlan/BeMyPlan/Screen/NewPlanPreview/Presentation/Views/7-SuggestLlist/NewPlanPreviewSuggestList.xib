@@ -9,60 +9,61 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewPlanPreviewSuggestList" customModule="BeMyPlan" customModuleProvider="target">
-            <connections>
-                <outlet property="contentCollectionViewHeightConstraint" destination="jId-7B-YBB" id="ceA-MM-zeX"/>
-                <outlet property="contentCollectonView" destination="45k-D8-V77" id="cG4-2y-fJA"/>
-            </connections>
-        </placeholder>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="449" height="367"/>
-            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이런 여행 코스도 추천해요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g55-y4-gu5">
-                    <rect key="frame" x="24" y="40" width="401" height="21"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="45k-D8-V77">
-                    <rect key="frame" x="0.0" y="83" width="449" height="238"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="238" id="jId-7B-YBB"/>
-                    </constraints>
-                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3Gf-QB-gOk">
-                        <size key="itemSize" width="128" height="128"/>
-                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                    </collectionViewFlowLayout>
-                </collectionView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lnl-G1-Beq">
-                    <rect key="frame" x="0.0" y="359" width="449" height="8"/>
-                    <color key="backgroundColor" name="grey6"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="8" id="kVC-1A-tru"/>
-                    </constraints>
-                </view>
-            </subviews>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-            <constraints>
-                <constraint firstItem="g55-y4-gu5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="24" id="UXI-Po-OuM"/>
-                <constraint firstAttribute="bottom" secondItem="Lnl-G1-Beq" secondAttribute="bottom" id="XlZ-0v-pRe"/>
-                <constraint firstItem="45k-D8-V77" firstAttribute="top" secondItem="g55-y4-gu5" secondAttribute="bottom" constant="22" id="bDr-Wg-t5K"/>
-                <constraint firstItem="Lnl-G1-Beq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="bRZ-Ya-pxJ"/>
-                <constraint firstItem="Lnl-G1-Beq" firstAttribute="top" secondItem="45k-D8-V77" secondAttribute="bottom" constant="38" id="cKl-CS-B02"/>
-                <constraint firstAttribute="trailing" secondItem="g55-y4-gu5" secondAttribute="trailing" constant="24" id="fzF-5h-iBE"/>
-                <constraint firstItem="g55-y4-gu5" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="40" id="kMG-9o-KcC"/>
-                <constraint firstAttribute="trailing" secondItem="45k-D8-V77" secondAttribute="trailing" id="qLJ-VJ-Uur"/>
-                <constraint firstItem="45k-D8-V77" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="tLs-WE-V4W"/>
-                <constraint firstAttribute="trailing" secondItem="Lnl-G1-Beq" secondAttribute="trailing" id="yDm-aj-cr9"/>
-            </constraints>
-            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="157.24637681159422" y="-57.254464285714285"/>
-        </view>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewPlanPreviewSuggestList" rowHeight="417" id="MMK-3E-9mC" customClass="NewPlanPreviewSuggestList" customModule="BeMyPlan" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="417"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MMK-3E-9mC" id="7Cq-Tw-1N5">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="417"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이런 여행 코스도 추천해요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JSO-rx-Erm">
+                        <rect key="frame" x="24" y="40" width="366" height="22"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="lXx-JW-Beq">
+                        <rect key="frame" x="0.0" y="84" width="414" height="287"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="287" id="dxn-9X-Iw4"/>
+                        </constraints>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CLg-gc-QYf">
+                            <size key="itemSize" width="128" height="128"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                    </collectionView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gCv-gr-GI5">
+                        <rect key="frame" x="0.0" y="409" width="414" height="8"/>
+                        <color key="backgroundColor" name="grey6"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="8" id="ihh-hC-VbP"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="gCv-gr-GI5" secondAttribute="bottom" id="1Nq-AW-W78"/>
+                    <constraint firstItem="lXx-JW-Beq" firstAttribute="top" secondItem="JSO-rx-Erm" secondAttribute="bottom" constant="22" id="CaA-Ib-ktd"/>
+                    <constraint firstItem="JSO-rx-Erm" firstAttribute="leading" secondItem="7Cq-Tw-1N5" secondAttribute="leading" constant="24" id="GAe-xa-qDj"/>
+                    <constraint firstAttribute="trailing" secondItem="JSO-rx-Erm" secondAttribute="trailing" constant="24" id="O0n-A4-uJR"/>
+                    <constraint firstAttribute="trailing" secondItem="lXx-JW-Beq" secondAttribute="trailing" id="QX5-zX-mHv"/>
+                    <constraint firstItem="gCv-gr-GI5" firstAttribute="leading" secondItem="7Cq-Tw-1N5" secondAttribute="leading" id="XmW-qQ-PIG"/>
+                    <constraint firstItem="lXx-JW-Beq" firstAttribute="leading" secondItem="7Cq-Tw-1N5" secondAttribute="leading" id="Y8f-Hk-SYu"/>
+                    <constraint firstAttribute="trailing" secondItem="gCv-gr-GI5" secondAttribute="trailing" id="Z1b-r6-6Iz"/>
+                    <constraint firstItem="JSO-rx-Erm" firstAttribute="top" secondItem="7Cq-Tw-1N5" secondAttribute="top" constant="40" id="c6L-Da-Am0"/>
+                    <constraint firstItem="gCv-gr-GI5" firstAttribute="top" secondItem="lXx-JW-Beq" secondAttribute="bottom" constant="38" id="gEM-wG-d1u"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="contentCollectionViewHeightConstraint" destination="dxn-9X-Iw4" id="5tR-Er-5bP"/>
+                <outlet property="contentCollectonView" destination="lXx-JW-Beq" id="J0e-jF-Lbr"/>
+            </connections>
+            <point key="canvasLocation" x="-13.043478260869566" y="-109.48660714285714"/>
+        </tableViewCell>
     </objects>
     <resources>
         <namedColor name="grey6">

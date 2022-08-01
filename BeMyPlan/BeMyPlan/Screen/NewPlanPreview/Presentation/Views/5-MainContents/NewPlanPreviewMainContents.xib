@@ -9,64 +9,66 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewPlanPreviewMainContents" customModule="BeMyPlan" customModuleProvider="target">
-            <connections>
-                <outlet property="contentTV" destination="YBa-Xw-dLz" id="2u1-ZU-Xkk"/>
-                <outlet property="placeCountDescriptionLabel" destination="nUK-dl-TcB" id="XBg-mE-Uro"/>
-            </connections>
-        </placeholder>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="371" height="1527"/>
-            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="여행 코스를 대표하는 플레이스" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eCL-JZ-NyX">
-                    <rect key="frame" x="101" y="39" width="169" height="15"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="15" id="a7T-8a-dRw"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <color key="textColor" name="grey1"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4곳을 미리 만나보세요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nUK-dl-TcB">
-                    <rect key="frame" x="120.5" y="60" width="130" height="15"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="15" id="EoY-J3-n1p"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <color key="textColor" name="grey1"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="YBa-Xw-dLz">
-                    <rect key="frame" x="0.0" y="114" width="371" height="1361"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                </tableView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Rq-7d-hoe">
-                    <rect key="frame" x="0.0" y="1519" width="371" height="8"/>
-                    <color key="backgroundColor" name="grey6"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="8" id="DL3-o3-fe0"/>
-                    </constraints>
-                </view>
-            </subviews>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-            <constraints>
-                <constraint firstItem="7Rq-7d-hoe" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="7Z1-rJ-OIb"/>
-                <constraint firstAttribute="trailing" secondItem="7Rq-7d-hoe" secondAttribute="trailing" id="8OB-3W-PMU"/>
-                <constraint firstItem="eCL-JZ-NyX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="39" id="8bb-jQ-kuU"/>
-                <constraint firstAttribute="bottom" secondItem="7Rq-7d-hoe" secondAttribute="bottom" id="Izx-qe-kqf"/>
-                <constraint firstAttribute="bottom" secondItem="YBa-Xw-dLz" secondAttribute="bottom" constant="52" id="Jzg-j1-6zK"/>
-                <constraint firstItem="nUK-dl-TcB" firstAttribute="top" secondItem="eCL-JZ-NyX" secondAttribute="bottom" constant="6" id="RuS-8w-YnD"/>
-                <constraint firstItem="nUK-dl-TcB" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Y8v-j3-ZHR"/>
-                <constraint firstItem="YBa-Xw-dLz" firstAttribute="top" secondItem="nUK-dl-TcB" secondAttribute="bottom" constant="39" id="anF-BU-Iat"/>
-                <constraint firstAttribute="trailing" secondItem="YBa-Xw-dLz" secondAttribute="trailing" id="glL-sf-8xF"/>
-                <constraint firstItem="YBa-Xw-dLz" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="jAa-bd-cq8"/>
-                <constraint firstItem="eCL-JZ-NyX" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="wvr-bZ-Mgc"/>
-            </constraints>
-            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="100.72463768115942" y="331.13839285714283"/>
-        </view>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewPlanPreviewMainContents" rowHeight="1153" id="FXH-gk-C0C" customClass="NewPlanPreviewMainContents" customModule="BeMyPlan" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="572" height="1153"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FXH-gk-C0C" id="khQ-tV-svh">
+                <rect key="frame" x="0.0" y="0.0" width="572" height="1153"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="여행 코스를 대표하는 플레이스" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAf-v9-kzQ">
+                        <rect key="frame" x="201.5" y="50" width="169" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="5OI-gK-F3j"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" name="grey1"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4곳을 미리 만나보세요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G8b-b7-ULY">
+                        <rect key="frame" x="221" y="71" width="130" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="lcL-AX-79H"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" name="grey1"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="RD1-ad-szs">
+                        <rect key="frame" x="0.0" y="125" width="572" height="976"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </tableView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wUJ-pY-b3U">
+                        <rect key="frame" x="0.0" y="1145" width="572" height="8"/>
+                        <color key="backgroundColor" name="grey6"/>
+                        <constraints>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="8" id="9cu-WX-1fD"/>
+                            <constraint firstAttribute="height" constant="8" id="iqI-gE-LF8"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="wUJ-pY-b3U" firstAttribute="leading" secondItem="khQ-tV-svh" secondAttribute="leading" id="3k9-e0-0E5"/>
+                    <constraint firstAttribute="trailing" secondItem="wUJ-pY-b3U" secondAttribute="trailing" id="42w-iE-Jtp"/>
+                    <constraint firstItem="G8b-b7-ULY" firstAttribute="top" secondItem="dAf-v9-kzQ" secondAttribute="bottom" constant="6" id="9pw-9K-hts"/>
+                    <constraint firstItem="RD1-ad-szs" firstAttribute="leading" secondItem="khQ-tV-svh" secondAttribute="leading" id="BVV-mz-WKI"/>
+                    <constraint firstItem="G8b-b7-ULY" firstAttribute="centerX" secondItem="khQ-tV-svh" secondAttribute="centerX" id="CA9-kd-hV3"/>
+                    <constraint firstItem="dAf-v9-kzQ" firstAttribute="centerX" secondItem="khQ-tV-svh" secondAttribute="centerX" id="Gdi-NF-omH"/>
+                    <constraint firstAttribute="bottom" secondItem="RD1-ad-szs" secondAttribute="bottom" constant="52" id="Jvy-9k-vYb"/>
+                    <constraint firstItem="dAf-v9-kzQ" firstAttribute="top" secondItem="khQ-tV-svh" secondAttribute="topMargin" constant="39" id="brF-uj-KoU"/>
+                    <constraint firstAttribute="bottom" secondItem="wUJ-pY-b3U" secondAttribute="bottom" id="jor-L0-txm"/>
+                    <constraint firstItem="RD1-ad-szs" firstAttribute="top" secondItem="G8b-b7-ULY" secondAttribute="bottom" constant="39" id="xVm-HB-2bi"/>
+                    <constraint firstAttribute="trailing" secondItem="RD1-ad-szs" secondAttribute="trailing" id="zWH-DG-cw8"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="contentTV" destination="RD1-ad-szs" id="C4c-Al-vCe"/>
+                <outlet property="placeCountDescriptionLabel" destination="G8b-b7-ULY" id="o9N-kG-ufa"/>
+            </connections>
+            <point key="canvasLocation" x="971.01449275362324" y="205.91517857142856"/>
+        </tableViewCell>
     </objects>
     <resources>
         <namedColor name="grey1">

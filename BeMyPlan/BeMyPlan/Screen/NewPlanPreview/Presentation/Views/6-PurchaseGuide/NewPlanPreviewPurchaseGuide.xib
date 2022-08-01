@@ -11,130 +11,90 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="NewPlanPreviewPurchaseGuide" customModule="BeMyPlan" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FNo-Lj-hYj">
-                    <rect key="frame" x="0.0" y="888" width="414" height="8"/>
-                    <color key="backgroundColor" name="grey6"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="8" id="j00-21-SyG"/>
-                    </constraints>
-                </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="여행 일정을 구매하시면 이런 내용을 볼 수 있어요!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uwm-aB-z6b">
-                    <rect key="frame" x="24" y="41" width="366" height="44"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="44" id="I7w-QV-BIb"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*구매 전에는 일부 사진과 글만 공개해요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lzH-fs-WpX">
-                    <rect key="frame" x="112.5" y="101" width="189" height="16"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="16" id="1YK-6J-AbE"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <color key="textColor" name="grey1"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="GII-4y-G5z">
-                    <rect key="frame" x="0.0" y="132" width="414" height="682"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                </tableView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hmd-zD-kg4">
-                    <rect key="frame" x="147" y="831" width="120.5" height="17"/>
-                    <attributedString key="attributedText">
-                        <fragment content="구매한">
-                            <attributes>
-                                <color key="NSColor" name="grey1"/>
-                                <font key="NSFont" size="14" name=".AppleSDGothicNeoI-Regular"/>
-                                <integer key="NSUnderline" value="1"/>
-                            </attributes>
-                        </fragment>
-                        <fragment content=" ">
-                            <attributes>
-                                <color key="NSColor" name="grey1"/>
-                                <font key="NSFont" metaFont="system" size="14"/>
-                                <integer key="NSUnderline" value="1"/>
-                            </attributes>
-                        </fragment>
-                        <fragment content="여행">
-                            <attributes>
-                                <color key="NSColor" name="grey1"/>
-                                <font key="NSFont" size="14" name=".AppleSDGothicNeoI-Regular"/>
-                                <integer key="NSUnderline" value="1"/>
-                            </attributes>
-                        </fragment>
-                        <fragment content=" ">
-                            <attributes>
-                                <color key="NSColor" name="grey1"/>
-                                <font key="NSFont" metaFont="system" size="14"/>
-                                <integer key="NSUnderline" value="1"/>
-                            </attributes>
-                        </fragment>
-                        <fragment content="일정">
-                            <attributes>
-                                <color key="NSColor" name="grey1"/>
-                                <font key="NSFont" size="14" name=".AppleSDGothicNeoI-Regular"/>
-                                <integer key="NSUnderline" value="1"/>
-                            </attributes>
-                        </fragment>
-                        <fragment content=" ">
-                            <attributes>
-                                <color key="NSColor" name="grey1"/>
-                                <font key="NSFont" metaFont="system" size="14"/>
-                                <integer key="NSUnderline" value="1"/>
-                            </attributes>
-                        </fragment>
-                        <fragment content="예시">
-                            <attributes>
-                                <color key="NSColor" name="grey1"/>
-                                <font key="NSFont" size="14" name=".AppleSDGothicNeoI-Regular"/>
-                                <integer key="NSUnderline" value="1"/>
-                            </attributes>
-                        </fragment>
-                    </attributedString>
-                    <nil key="highlightedColor"/>
-                </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9dw-gn-xFz">
-                    <rect key="frame" x="127" y="814" width="160" height="50"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="50" id="Gu6-Un-1Fb"/>
-                        <constraint firstAttribute="width" constant="160" id="Lxw-dZ-TGo"/>
-                    </constraints>
-                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                </button>
-            </subviews>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-            <constraints>
-                <constraint firstItem="lzH-fs-WpX" firstAttribute="top" secondItem="uwm-aB-z6b" secondAttribute="bottom" constant="16" id="1PA-uC-fU2"/>
-                <constraint firstItem="hmd-zD-kg4" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="4b2-ff-7dx"/>
-                <constraint firstAttribute="bottom" secondItem="FNo-Lj-hYj" secondAttribute="bottom" id="Bc6-RG-Sa3"/>
-                <constraint firstItem="lzH-fs-WpX" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="D2W-h8-s4o"/>
-                <constraint firstAttribute="trailing" secondItem="uwm-aB-z6b" secondAttribute="trailing" constant="24" id="Mvl-eU-wLA"/>
-                <constraint firstItem="FNo-Lj-hYj" firstAttribute="top" secondItem="hmd-zD-kg4" secondAttribute="bottom" constant="40" id="TL0-vS-jbc"/>
-                <constraint firstItem="GII-4y-G5z" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Tkp-qH-Nui"/>
-                <constraint firstAttribute="trailing" secondItem="FNo-Lj-hYj" secondAttribute="trailing" id="VQi-bn-UNh"/>
-                <constraint firstItem="uwm-aB-z6b" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="41" id="XPX-dg-BvS"/>
-                <constraint firstItem="GII-4y-G5z" firstAttribute="top" secondItem="lzH-fs-WpX" secondAttribute="bottom" constant="15" id="a1W-j5-oNJ"/>
-                <constraint firstItem="uwm-aB-z6b" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="24" id="eZe-OX-E8g"/>
-                <constraint firstItem="9dw-gn-xFz" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="faf-ze-06q"/>
-                <constraint firstAttribute="trailing" secondItem="GII-4y-G5z" secondAttribute="trailing" id="ve2-jG-yOa"/>
-                <constraint firstItem="9dw-gn-xFz" firstAttribute="top" secondItem="GII-4y-G5z" secondAttribute="bottom" id="xsM-IU-gVT"/>
-                <constraint firstItem="FNo-Lj-hYj" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="zXp-qd-eB9"/>
-                <constraint firstItem="FNo-Lj-hYj" firstAttribute="top" secondItem="9dw-gn-xFz" secondAttribute="bottom" constant="24" id="znB-27-sI8"/>
-            </constraints>
-            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NewPlanPreviewPurchaseGuide" rowHeight="896" id="Tng-Ii-VJT" customClass="NewPlanPreviewPurchaseGuide" customModule="BeMyPlan" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="408" height="896"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Tng-Ii-VJT" id="r0k-Kb-ip9">
+                <rect key="frame" x="0.0" y="0.0" width="408" height="896"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*구매 전에는 일부 사진과 글만 공개해요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vQm-5D-G3I">
+                        <rect key="frame" x="109.5" y="101" width="189" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="hcH-Id-NJn"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" name="grey1"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="FfA-sf-1xQ">
+                        <rect key="frame" x="0.0" y="132" width="408" height="682"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </tableView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YAe-G9-1GG">
+                        <rect key="frame" x="0.0" y="888" width="408" height="8"/>
+                        <color key="backgroundColor" name="grey6"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="8" id="8gX-3K-rs1"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vz1-9s-Spb">
+                        <rect key="frame" x="143.5" y="831" width="121" height="17"/>
+                        <attributedString key="attributedText">
+                            <fragment content="구매한 여행 일정 예시">
+                                <attributes>
+                                    <color key="NSColor" name="grey1"/>
+                                    <font key="NSFont" metaFont="system" size="14"/>
+                                    <integer key="NSUnderline" value="1"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SxK-wT-OBW">
+                        <rect key="frame" x="124" y="814" width="160" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="160" id="Oj3-hd-xdT"/>
+                            <constraint firstAttribute="height" constant="50" id="t37-UZ-RpB"/>
+                        </constraints>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="여행 일정을 구매하시면 이런 내용을 볼 수 있어요!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Trb-fx-2xR">
+                        <rect key="frame" x="24" y="41" width="360" height="44"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="44" id="A4r-gx-oo6"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="YAe-G9-1GG" secondAttribute="trailing" id="0Y5-OE-PWc"/>
+                    <constraint firstItem="vQm-5D-G3I" firstAttribute="centerX" secondItem="r0k-Kb-ip9" secondAttribute="centerX" id="37t-Ce-fNT"/>
+                    <constraint firstItem="Trb-fx-2xR" firstAttribute="leading" secondItem="r0k-Kb-ip9" secondAttribute="leading" constant="24" id="6SX-ZQ-gwu"/>
+                    <constraint firstAttribute="bottom" secondItem="YAe-G9-1GG" secondAttribute="bottom" id="MXo-FT-fO9"/>
+                    <constraint firstItem="FfA-sf-1xQ" firstAttribute="top" secondItem="vQm-5D-G3I" secondAttribute="bottom" constant="15" id="Mjg-UV-rVw"/>
+                    <constraint firstItem="Trb-fx-2xR" firstAttribute="top" secondItem="r0k-Kb-ip9" secondAttribute="top" constant="41" id="RWq-4q-sz6"/>
+                    <constraint firstItem="FfA-sf-1xQ" firstAttribute="leading" secondItem="r0k-Kb-ip9" secondAttribute="leading" id="SZJ-cG-00R"/>
+                    <constraint firstItem="SxK-wT-OBW" firstAttribute="centerX" secondItem="r0k-Kb-ip9" secondAttribute="centerX" id="aj9-Ek-Ljo"/>
+                    <constraint firstAttribute="trailing" secondItem="FfA-sf-1xQ" secondAttribute="trailing" id="cYX-ag-8c8"/>
+                    <constraint firstItem="YAe-G9-1GG" firstAttribute="leading" secondItem="r0k-Kb-ip9" secondAttribute="leading" id="d2s-Mn-TOg"/>
+                    <constraint firstItem="SxK-wT-OBW" firstAttribute="top" secondItem="FfA-sf-1xQ" secondAttribute="bottom" id="eY3-Ak-TRV"/>
+                    <constraint firstItem="YAe-G9-1GG" firstAttribute="top" secondItem="Vz1-9s-Spb" secondAttribute="bottom" constant="40" id="nGH-o9-rUz"/>
+                    <constraint firstItem="YAe-G9-1GG" firstAttribute="top" secondItem="SxK-wT-OBW" secondAttribute="bottom" constant="24" id="sAI-VW-7wE"/>
+                    <constraint firstAttribute="trailing" secondItem="Trb-fx-2xR" secondAttribute="trailing" constant="24" id="uwM-ID-KoX"/>
+                    <constraint firstItem="Vz1-9s-Spb" firstAttribute="centerX" secondItem="r0k-Kb-ip9" secondAttribute="centerX" id="vGw-MD-s19"/>
+                    <constraint firstItem="vQm-5D-G3I" firstAttribute="top" secondItem="Trb-fx-2xR" secondAttribute="bottom" constant="16" id="xBz-2X-Mou"/>
+                </constraints>
+            </tableViewCellContentView>
             <connections>
-                <outlet property="guideTableView" destination="GII-4y-G5z" id="nFR-Kg-A2b"/>
-                <outlet property="previewActionButton" destination="9dw-gn-xFz" id="gFJ-KX-8lb"/>
-                <outlet property="previewActionTitleLabel" destination="hmd-zD-kg4" id="cNa-GX-wQ4"/>
+                <outlet property="guideTableView" destination="FfA-sf-1xQ" id="l96-uh-xuN"/>
+                <outlet property="previewActionButton" destination="SxK-wT-OBW" id="IHq-cM-4HQ"/>
+                <outlet property="previewActionTitleLabel" destination="Vz1-9s-Spb" id="gtc-H1-2je"/>
             </connections>
-            <point key="canvasLocation" x="132" y="120"/>
-        </view>
+            <point key="canvasLocation" x="956.52173913043487" y="119.86607142857142"/>
+        </tableViewCell>
     </objects>
     <resources>
         <namedColor name="grey1">
