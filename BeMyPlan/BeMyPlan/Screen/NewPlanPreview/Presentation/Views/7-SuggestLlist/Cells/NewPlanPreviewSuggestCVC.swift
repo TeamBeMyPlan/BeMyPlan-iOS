@@ -9,7 +9,7 @@ import UIKit
 
 class NewPlanPreviewSuggestCVC: UICollectionViewCell,UICollectionViewRegisterable {
   static var isFromNib: Bool = true
-  var viewModel: NewPlanPreviewSuggestCellViewModel!
+  var viewModel: NewPlanPreviewSuggestCellViewModel! { didSet { bindViewModel()}}
   @IBOutlet var contentImageView: UIImageView!
   @IBOutlet var titleLabel: UILabel!
   
@@ -17,7 +17,6 @@ class NewPlanPreviewSuggestCVC: UICollectionViewCell,UICollectionViewRegisterabl
   override func awakeFromNib() {
     super.awakeFromNib()
     setUI()
-    bindViewModel()
   }
 }
 

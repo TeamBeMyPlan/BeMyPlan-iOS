@@ -8,7 +8,7 @@
 import UIKit
 
 class ImageIndexContainerView: XibView{
-  var viewModel: ImageIndexContainerViewModel! {
+  var viewModel: ImageIndexContainerViewModel? {
     didSet { setLabelIndex() }
   }
   @IBOutlet var backgroundContentView: UIView!
@@ -29,12 +29,14 @@ class ImageIndexContainerView: XibView{
 extension ImageIndexContainerView {
   private func configureUI() {
     backgroundContentView.layer.cornerRadius = 100
-    self.isHidden = viewModel.totalIndex == 1
+    if viewModel == nil { return }
+    self.isHidden = viewModel!.totalIndex == 1
   }
   
   private func setLabelIndex() {
-    currentIndexLabel.text = String(viewModel.currentIndex + 1)
-    totalIndexLabel.text = String(viewModel.totalIndex + 1)
+    if viewModel == nil { return }
+    currentIndexLabel.text = String(viewModel!.currentIndex + 1)
+    totalIndexLabel.text = String(viewModel!.totalIndex + 1)
   }
 }
 

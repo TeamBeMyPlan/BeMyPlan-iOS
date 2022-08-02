@@ -39,7 +39,7 @@
                             <constraint firstAttribute="height" constant="86" id="NHp-wS-6II"/>
                         </constraints>
                     </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0u4-8E-MIj" customClass="ImageContainerView" customModule="BeMyPlan" customModuleProvider="target">
+                    <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="0u4-8E-MIj" customClass="ImageContainerView" customModule="BeMyPlan" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="755"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>

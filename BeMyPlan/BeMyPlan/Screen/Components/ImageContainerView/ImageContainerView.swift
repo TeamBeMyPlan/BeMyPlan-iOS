@@ -16,6 +16,20 @@ class ImageContainerView: XibView{
     photoCV.dataSource = self
     photoCV.isPagingEnabled = true
   }}
+  
+  override init(frame: CGRect) {
+    super.init(frame: frame)
+    registerCell()
+  }
+  
+  required init?(coder aDecoder: NSCoder) {
+    super.init(coder: aDecoder)
+    registerCell()
+  }
+  
+  private func registerCell() {
+    ImageContainerPhotoCell.register(target: photoCV)
+  }
 }
 
 extension ImageContainerView: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
@@ -45,7 +59,9 @@ extension ImageContainerView: UIScrollViewDelegate {
 extension ImageContainerView {
   private func setCounterView() {
     imageCounterContainerView.viewModel = .init(currentIndex: self.currentIndex,
-      totalIndex: self.viewModel.imgList.count)
+                                                totalIndex: self.viewModel.imgList.count)
+    imageCounterContainerView.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.5)
+    imageCounterContainerView.layer.cornerRadius = 13
   }
 }
 

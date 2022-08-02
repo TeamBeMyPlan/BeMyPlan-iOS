@@ -9,7 +9,11 @@ import UIKit
 
 class NewPlanPreviewHeader: UITableViewCell, UITableViewRegisterable {
   static var isFromNib: Bool = true
-  var viewModel: NewPlanPreviewHeaderViewModel!
+  var viewModel: NewPlanPreviewHeaderViewModel! { didSet {
+    configureUI()
+    setImageContainerViewUI()
+
+  }}
   var currentIndex = 0 { didSet{ setImageContainerViewUI() }}
   
   @IBOutlet var imageContainerView: ImageContainerView!
@@ -47,7 +51,7 @@ extension NewPlanPreviewHeader {
 }
 
 struct NewPlanPreviewHeaderViewModel {
-  let imgList: [String] = []
+  let imgList: [String]
   let title: String
   let address: String
   let hashtag: [String]

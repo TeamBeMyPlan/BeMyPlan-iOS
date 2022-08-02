@@ -7,7 +7,8 @@
 
 import UIKit
 
-class ImageContainerPhotoCell: UICollectionViewCell {
+class ImageContainerPhotoCell: UICollectionViewCell, UICollectionViewRegisterable {
+  static var isFromNib: Bool = true
   var viewModel: ImageContainerPhotoCellViewModel! { didSet{ setImage() }}
   @IBOutlet var contentImageView: UIImageView!
 }

@@ -9,7 +9,7 @@ import UIKit
 
 class NewPlanMainContentsTVC: UITableViewCell, UITableViewRegisterable {
   static var isFromNib: Bool = true
-  var viewModel: NewPlanMainContentsCellViewModel!
+  var viewModel: NewPlanMainContentsCellViewModel! {didSet {configureUI()}}
   
   @IBOutlet var imageSlideShowView: ImageSlideShow!
   @IBOutlet var contentTextView: UITextView!

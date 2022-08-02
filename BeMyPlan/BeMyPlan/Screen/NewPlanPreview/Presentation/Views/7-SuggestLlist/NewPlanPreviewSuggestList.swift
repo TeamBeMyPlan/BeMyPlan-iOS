@@ -10,18 +10,26 @@ import UIKit
 class NewPlanPreviewSuggestList: UITableViewCell, UITableViewRegisterable{
   
   static var isFromNib: Bool = true
-  var viewModel: NewPlanPreviewSuggestViewModel!
+  var viewModel: NewPlanPreviewSuggestViewModel! {didSet {
+    contentCollectonView.reloadData()}}
   @IBOutlet var contentCollectonView: UICollectionView!
   @IBOutlet var contentCollectionViewHeightConstraint: NSLayoutConstraint!
   
   override func awakeFromNib() {
     super.awakeFromNib()
+    setDelegate()
     setLayout()
     registerCells()
   }
 }
 
 extension NewPlanPreviewSuggestList {
+  
+  private func setDelegate() {
+    contentCollectonView.delegate = self
+    contentCollectonView.dataSource = self
+  }
+  
   private func setLayout() {
     let cellWitdh = screenWidth * (160/375)
     contentCollectionViewHeightConstraint.constant = cellWitdh + 60
@@ -39,8 +47,6 @@ extension NewPlanPreviewSuggestList: UICollectionViewDelegate {
 
 extension NewPlanPreviewSuggestList: UICollectionViewDataSource {
 
-  
-  
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
       guard let suggestCell = collectionView.dequeueReusableCell(withReuseIdentifier: NewPlanPreviewSuggestCVC.className,
                                                                  for: indexPath) as? NewPlanPreviewSuggestCVC else { return UICollectionViewCell() }

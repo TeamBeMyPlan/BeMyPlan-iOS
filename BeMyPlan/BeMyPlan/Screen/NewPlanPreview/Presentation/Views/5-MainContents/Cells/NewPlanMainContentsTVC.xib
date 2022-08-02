@@ -18,7 +18,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="587"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AvF-ha-gMW" customClass="ImageSlideShow" customModule="BeMyPlan" customModuleProvider="target">
+                    <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="AvF-ha-gMW" customClass="ImageSlideShow" customModule="BeMyPlan" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="371"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>

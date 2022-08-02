@@ -36,6 +36,8 @@ struct ImageLiterals{
 	struct Preview{
 		static let scrabIcon = UIImage(named: "icon_scrab")!
 		static let scrabIconSelected = UIImage(named: "icon_scrab_selected")!
+		static let arrowUpside = UIImage(named: "dropdown_active")!
+		static let arrowDownSide = UIImage(named: "dropdown_inactive")
 	}
 	
 	struct PlanDetail{

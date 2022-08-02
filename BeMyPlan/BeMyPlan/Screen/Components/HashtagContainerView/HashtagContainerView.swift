@@ -14,6 +14,16 @@ class HashtagContainerView: XibView{
     hashtagCV.delegate = self
     hashtagCV.dataSource = self
   }}
+  
+  override init(frame: CGRect) {
+    super.init(frame: frame)
+    HashtagCVC.register(target: hashtagCV)
+  }
+  
+  required init?(coder aDecoder: NSCoder) {
+    super.init(coder: aDecoder)
+    HashtagCVC.register(target: hashtagCV)
+  }
 }
 
 extension HashtagContainerView: UICollectionViewDataSource, UICollectionViewDelegate {

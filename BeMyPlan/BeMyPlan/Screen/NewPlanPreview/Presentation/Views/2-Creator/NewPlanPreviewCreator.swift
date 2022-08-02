@@ -9,7 +9,7 @@ import UIKit
 
 final class NewPlanPreviewCreator: UITableViewCell, UITableViewRegisterable {
   static var isFromNib: Bool = true
-  var viewModel: NewPlanPreviewCreatorViewModel!
+  var viewModel: NewPlanPreviewCreatorViewModel! { didSet { configureUI()}}
   
   @IBOutlet var userImageView: UIImageView!
   @IBOutlet var authorLabel: UILabel!
@@ -18,7 +18,6 @@ final class NewPlanPreviewCreator: UITableViewCell, UITableViewRegisterable {
   
   override func awakeFromNib() {
     super.awakeFromNib()
-    configureUI()
   }
 }
 

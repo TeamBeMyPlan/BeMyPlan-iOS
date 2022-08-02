@@ -7,7 +7,10 @@
 
 import UIKit
 
-class NewPlanPreviewTermsCell: UITableViewCell {
+class NewPlanPreviewTermsCell: UITableViewCell, UITableViewRegisterable {
+  static var isFromNib: Bool = true
+  
+  var viewModel: TermDataModel!
   
   @IBOutlet var titleLabel: UILabel!
   @IBOutlet var arrowButton: UIButton!
@@ -35,4 +38,9 @@ extension NewPlanPreviewTermsCell {
       
     }
   }
+}
+
+struct TermDataModel {
+  let title: String
+  let content: String
 }

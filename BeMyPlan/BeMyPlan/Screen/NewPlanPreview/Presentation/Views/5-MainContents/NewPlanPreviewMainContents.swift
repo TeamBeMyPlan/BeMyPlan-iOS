@@ -9,14 +9,13 @@ import UIKit
 
 final class NewPlanPreviewMainContents: UITableViewCell, UITableViewRegisterable{
   static var isFromNib: Bool = true
-  var viewModel: NewPlanPreviewMainContentViewModel!
+  var viewModel: NewPlanPreviewMainContentViewModel! { didSet { configureUI()}}
   
   @IBOutlet var placeCountDescriptionLabel: UILabel!
   @IBOutlet var contentTV: UITableView!
   
   override func awakeFromNib() {
     super.awakeFromNib()
-    configureUI()
     registerCell()
   }
 }

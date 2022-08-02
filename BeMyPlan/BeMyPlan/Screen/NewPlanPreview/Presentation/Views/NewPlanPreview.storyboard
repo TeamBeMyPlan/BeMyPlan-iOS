@@ -1,29 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--New Plan PreviewVC-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NewPlanPreviewVC" id="Y6W-OH-hqX" customClass="NewPlanPreviewVC" customModule="BeMyPlan" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="flB-n4-i9I">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HWb-gT-F0y">
+                                <rect key="frame" x="0.0" y="808" width="414" height="88"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lcb-1d-ull">
+                                        <rect key="frame" x="63" y="10" width="339" height="51"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="51" id="kGB-Na-NQf"/>
+                                        </constraints>
+                                        <color key="tintColor" name="beMyBlue"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="전체 여행 코스 보러가기">
+                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="16"/>
+                                            <color key="baseBackgroundColor" name="beMyBlue"/>
+                                        </buttonConfiguration>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cah-4i-H8P">
+                                        <rect key="frame" x="18" y="22" width="24" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="24" id="eke-sg-sWI"/>
+                                            <constraint firstAttribute="height" constant="24" id="qKs-ey-0wa"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" backgroundImage="icnNotScrap"/>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AiG-CZ-wb6">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1"/>
+                                        <color key="backgroundColor" name="grey5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="FLN-SW-n4T"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="Lcb-1d-ull" firstAttribute="leading" secondItem="HWb-gT-F0y" secondAttribute="leading" constant="63" id="1Z9-f5-Y4j"/>
+                                    <constraint firstItem="AiG-CZ-wb6" firstAttribute="top" secondItem="HWb-gT-F0y" secondAttribute="top" id="HJz-B2-CEC"/>
+                                    <constraint firstAttribute="height" constant="88" id="Ky7-3B-Wc7"/>
+                                    <constraint firstItem="cah-4i-H8P" firstAttribute="top" secondItem="HWb-gT-F0y" secondAttribute="top" constant="22" id="TrI-eJ-eMq"/>
+                                    <constraint firstItem="Lcb-1d-ull" firstAttribute="top" secondItem="HWb-gT-F0y" secondAttribute="top" constant="10" id="haK-d0-v6d"/>
+                                    <constraint firstItem="AiG-CZ-wb6" firstAttribute="leading" secondItem="HWb-gT-F0y" secondAttribute="leading" id="iTh-Df-RKg"/>
+                                    <constraint firstAttribute="trailing" secondItem="Lcb-1d-ull" secondAttribute="trailing" constant="12" id="lL7-LW-vHS"/>
+                                    <constraint firstItem="cah-4i-H8P" firstAttribute="leading" secondItem="HWb-gT-F0y" secondAttribute="leading" constant="18" id="nvH-LX-s1R"/>
+                                    <constraint firstAttribute="trailing" secondItem="AiG-CZ-wb6" secondAttribute="trailing" id="zGB-1g-E9c"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="flB-n4-i9I">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aSf-kn-vMO" customClass="NewPlanPreviewNaviBar" customModule="BeMyPlan" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="90" id="prU-60-EQ3"/>
                                 </constraints>
@@ -32,16 +77,25 @@
                         <viewLayoutGuide key="safeArea" id="Rl4-bl-XnR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="flB-n4-i9I" secondAttribute="bottom" id="8va-T3-p8O"/>
+                            <constraint firstAttribute="bottom" secondItem="HWb-gT-F0y" secondAttribute="bottom" id="D2x-b5-AIP"/>
                             <constraint firstItem="flB-n4-i9I" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="FDZ-zp-Epy"/>
                             <constraint firstItem="flB-n4-i9I" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="MGD-F9-vAV"/>
                             <constraint firstItem="aSf-kn-vMO" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="doT-bO-OJL"/>
                             <constraint firstAttribute="trailing" secondItem="aSf-kn-vMO" secondAttribute="trailing" id="jFc-HL-2cG"/>
+                            <constraint firstItem="HWb-gT-F0y" firstAttribute="trailing" secondItem="Rl4-bl-XnR" secondAttribute="trailing" id="lcl-kX-ffE"/>
                             <constraint firstItem="aSf-kn-vMO" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="mdG-E5-HI8"/>
+                            <constraint firstItem="HWb-gT-F0y" firstAttribute="top" secondItem="flB-n4-i9I" secondAttribute="bottom" id="ocT-1f-QNH"/>
                             <constraint firstAttribute="trailing" secondItem="flB-n4-i9I" secondAttribute="trailing" id="uvu-5l-jQm"/>
+                            <constraint firstItem="HWb-gT-F0y" firstAttribute="leading" secondItem="Rl4-bl-XnR" secondAttribute="leading" id="w7F-fi-DcT"/>
                         </constraints>
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="bottomCTAButton" destination="Lcb-1d-ull" id="nEJ-AR-sCv"/>
+                        <outlet property="bottomScrapButton" destination="cah-4i-H8P" id="1N2-jH-dfm"/>
+                        <outlet property="mainContentTV" destination="flB-n4-i9I" id="Ojd-Ll-XSq"/>
+                        <outlet property="topNavibar" destination="aSf-kn-vMO" id="3em-2i-AXf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -49,6 +103,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="icnNotScrap" width="24" height="24"/>
+        <namedColor name="beMyBlue">
+            <color red="0.0" green="0.46666666666666667" blue="0.69019607843137254" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="grey5">
+            <color red="0.90980392156862744" green="0.91764705882352937" blue="0.92941176470588238" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

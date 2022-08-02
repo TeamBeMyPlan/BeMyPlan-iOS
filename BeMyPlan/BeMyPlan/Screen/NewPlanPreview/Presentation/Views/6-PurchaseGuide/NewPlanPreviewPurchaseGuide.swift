@@ -11,7 +11,7 @@ class NewPlanPreviewPurchaseGuide: UITableViewCell, UITableViewRegisterable {
   
   static var isFromNib: Bool = true
   var previewActionClickEvent: (() -> Void)?
-  var viewModel: NewPlanPreviewPurchaseGuideViewModel!
+  var viewModel: NewPlanPreviewPurchaseGuideViewModel! {didSet{ guideTableView.reloadData()}}
   
   @IBOutlet var guideTableView: UITableView!
   @IBOutlet var previewActionTitleLabel: UILabel!
@@ -48,7 +48,10 @@ extension NewPlanPreviewPurchaseGuide {
 
 extension NewPlanPreviewPurchaseGuide: UITableViewDelegate {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return viewModel.list.count
+    if viewModel == nil { return 0 }
+    else {
+      return viewModel.list.count
+    }
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

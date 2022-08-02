@@ -22,7 +22,7 @@
                         <rect key="frame" x="24" y="0.0" width="373" height="73"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_check" translatesAutoresizingMaskIntoConstraints="NO" id="Gfb-CQ-ZKa">
-                                <rect key="frame" x="15" y="10" width="14" height="18"/>
+                                <rect key="frame" x="15" y="9" width="14" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="14" id="Gg1-Hd-S5p"/>
                                     <constraint firstAttribute="height" constant="18" id="hbm-fN-86H"/>
@@ -50,7 +50,7 @@
                             <constraint firstItem="2Ao-bg-9qJ" firstAttribute="top" secondItem="rmI-Wo-MiI" secondAttribute="bottom" constant="6" id="3UH-YJ-lYI"/>
                             <constraint firstItem="2Ao-bg-9qJ" firstAttribute="leading" secondItem="rmI-Wo-MiI" secondAttribute="leading" id="FV8-7i-dAe"/>
                             <constraint firstItem="Gfb-CQ-ZKa" firstAttribute="leading" secondItem="K4s-4j-ItU" secondAttribute="leading" constant="15" id="QEU-K3-ZzA"/>
-                            <constraint firstItem="Gfb-CQ-ZKa" firstAttribute="top" secondItem="K4s-4j-ItU" secondAttribute="top" constant="10" id="VM9-TQ-2gl"/>
+                            <constraint firstItem="Gfb-CQ-ZKa" firstAttribute="top" secondItem="K4s-4j-ItU" secondAttribute="top" constant="9" id="VM9-TQ-2gl"/>
                             <constraint firstItem="rmI-Wo-MiI" firstAttribute="leading" secondItem="Gfb-CQ-ZKa" secondAttribute="trailing" constant="6" id="Zew-en-eKi"/>
                             <constraint firstAttribute="trailing" secondItem="rmI-Wo-MiI" secondAttribute="trailing" constant="6" id="fhd-nu-yFg"/>
                             <constraint firstAttribute="bottom" secondItem="2Ao-bg-9qJ" secondAttribute="bottom" constant="10" id="smr-6X-11c"/>

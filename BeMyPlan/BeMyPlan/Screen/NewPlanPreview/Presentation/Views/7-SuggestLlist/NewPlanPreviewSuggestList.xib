@@ -20,6 +20,9 @@
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이런 여행 코스도 추천해요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JSO-rx-Erm">
                         <rect key="frame" x="24" y="40" width="366" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="22" id="inB-mp-ATb"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>

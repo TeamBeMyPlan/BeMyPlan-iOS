@@ -18,17 +18,23 @@ class NewPlanPreviewNaviBar: XibView{
   
   override init(frame: CGRect) {
     super.init(frame: frame)
+    configureUI()
   }
   
   required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
+    configureUI()
   }
   
   private func configureUI() {
-    backButtonCircleView.layer.cornerRadius = 100
-    shareButtonCircleView.layer.cornerRadius = 100
+    backButtonCircleView.layer.cornerRadius = 18
+    shareButtonCircleView.layer.cornerRadius = 18
     backgroundView.alpha = 0
+    backgroundView.backgroundColor = .white
     backButtonCircleView.alpha = 1
     shareButtonCircleView.alpha = 1
+    backButtonCircleView.backgroundColor = .white
+    shareButtonCircleView.backgroundColor = .white
+    layoutIfNeeded()
   }
 }
