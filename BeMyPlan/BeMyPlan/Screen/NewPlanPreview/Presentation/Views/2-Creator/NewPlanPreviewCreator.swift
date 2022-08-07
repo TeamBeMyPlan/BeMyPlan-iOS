@@ -26,13 +26,15 @@ extension NewPlanPreviewCreator {
     userImageView.layer.cornerRadius = userImageView.frame.width / 2
     authorLabel.font = .getSpooqaMediumFont(size: 14)
     contentTextView.backgroundColor = .grey06
+    contentTextView.setTextWithLineHeight(text: viewModel.creatorIntroduce, lineHeightMultiple: 1.31)
     contentTextView.layer.cornerRadius = 5
     contentTextView.textContainerInset = UIEdgeInsets.init(top: 21, left: 21, bottom: 21, right: 21)
+    contentTextView.font = .systemFont(ofSize: 14)
+    contentTextView.textColor = .grey01
     
     userImageView.setImage(with: viewModel.profileImgURL)
     authorLabel.text = viewModel.authorName
     descriptionLabel.text = viewModel.authorDescription
-    contentTextView.text = viewModel.creatorIntroduce
   }
 }
 

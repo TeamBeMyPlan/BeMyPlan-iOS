@@ -23,15 +23,14 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lcb-1d-ull">
                                         <rect key="frame" x="63" y="10" width="339" height="51"/>
+                                        <color key="backgroundColor" name="beMyBlue"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="51" id="kGB-Na-NQf"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                         <color key="tintColor" name="beMyBlue"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="전체 여행 코스 보러가기">
-                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="16"/>
-                                            <color key="baseBackgroundColor" name="beMyBlue"/>
-                                        </buttonConfiguration>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="전체 여행 코스 보러가기"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cah-4i-H8P">
                                         <rect key="frame" x="18" y="22" width="24" height="24"/>

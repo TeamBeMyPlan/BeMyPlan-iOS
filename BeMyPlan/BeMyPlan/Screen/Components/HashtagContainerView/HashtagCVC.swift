@@ -9,7 +9,10 @@ import UIKit
 
 class HashtagCVC: UICollectionViewCell,UICollectionViewRegisterable {
   
-  var viewModel: HashtagCellViewModel!
+  var viewModel: HashtagCellViewModel! {
+    didSet {
+    titleLabel.text = viewModel
+    }}
   static var isFromNib: Bool = true
   
   @IBOutlet var backgroundContentView: UIView!
@@ -24,7 +27,6 @@ class HashtagCVC: UICollectionViewCell,UICollectionViewRegisterable {
 extension HashtagCVC {
   private func configureUI() {
     backgroundContentView.layer.cornerRadius = 2
-    titleLabel.text = viewModel
   }
 }
 

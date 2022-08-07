@@ -35,8 +35,12 @@ extension NewPlanPreviewHeader {
     titleLabel.text = viewModel.title
     addressLabel.text = viewModel.address
     hashtagContainerView.viewModel = .init(hashtagList: viewModel.hashtag)
+
     priceLabel.text = viewModel.price
     iconContainerView.setIconData(iconData: viewModel.iconData)
+    iconContainerView.layer.cornerRadius = 5
+    iconContainerView.layer.borderColor = UIColor.grey04.cgColor
+    iconContainerView.layer.borderWidth = 1
   }
   
   private func setImageContainerViewUI() {

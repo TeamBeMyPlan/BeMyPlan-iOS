@@ -17,7 +17,6 @@ class NewPlanPreviewVC: UIViewController {
      .suggestList, .terms, .footer]
   ]
 
-
   // MARK: - UI Component Part
   @IBOutlet var topNavibar: NewPlanPreviewNaviBar!
   @IBOutlet var mainContentTV: UITableView!
@@ -30,6 +29,7 @@ class NewPlanPreviewVC: UIViewController {
     registerCell()
     setDelegate()
     setTableView()
+    setUI()
     topNavibar.backgroundView.alpha = 0
   }
   
@@ -45,6 +45,8 @@ extension NewPlanPreviewVC {
     mainContentTV.separatorStyle = .none
     mainContentTV.contentInsetAdjustmentBehavior = .never
     mainContentTV.automaticallyAdjustsScrollIndicatorInsets = false
+    mainContentTV.allowsSelection = false
+    mainContentTV.showsVerticalScrollIndicator = false
     
     if #available(iOS 15.0, *) {
       mainContentTV.sectionHeaderTopPadding = 0.0
@@ -59,6 +61,11 @@ extension NewPlanPreviewVC {
     NewPlanPreviewSuggestList.register(target: mainContentTV)
     NewPlanPreviewTermsCell.register(target: mainContentTV)
   }
+  
+  private func setUI() {
+    bottomCTAButton.titleLabel?.font = .boldSystemFont(ofSize: 16)
+    bottomCTAButton.layer.cornerRadius = 4
+  }
 }
 
 extension NewPlanPreviewVC: UITableViewDelegate {
@@ -66,14 +73,14 @@ extension NewPlanPreviewVC: UITableViewDelegate {
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     if indexPath.section == 0 {
       switch(indexPath.row) {
-        case 0: return screenWidth * (472/375) + 288
+        case 0: return screenWidth * (472/375) + 310
         case 1: return 429
         default : return 0
       }
     } else {
       switch(indexPath.row) {
-        case 0: return 1200
-        case 1: return 600
+        case 0: return 830
+        case 1: return 620
         case 2: return screenWidth * (350/375)
         case 3: return 56
         default: return 0
@@ -138,13 +145,13 @@ extension NewPlanPreviewVC: UITableViewDataSource {
                                                             hashtag: ["해시태그","해시태그","해시태그"],
                                                             price: "1,000",
                                                             iconData: .init(theme: "힐링",
-                                                                            spotCount: "32곳",
-                                                                            restaurantCount: "12곳",
-                                                                            dayCount: "5일",
+                                                                            spotCount: "32",
+                                                                            restaurantCount: "12",
+                                                                            dayCount: "5",
                                                                             peopleCase: "친구",
                                                                             budget: "45만원",
                                                                             transport: "버스",
-                                                                            month: "8월"))
+                                                                            month: "8"))
         header.viewModel = headerViewModel
         return header
         
@@ -155,7 +162,7 @@ extension NewPlanPreviewVC: UITableViewDataSource {
         let creatorViewModel = NewPlanPreviewCreatorViewModel(profileImgURL: "https://picsum.photos/200",
                                                               authorName: "크리에이터 이름",
                                                               authorDescription: "제주를 브랜딩하는 스냅 작가",
-                                                              creatorIntroduce: "안녕하세요 ~")
+                                                              creatorIntroduce: "안녕하세요. 전직 패션 광고 AE 이자 현재 온라인 라이프스타일샵을 운영하고 있는 미니미라고 합니다. 저에게 여행이란 유유자적하며 그곳에서만 느낄 수 있는 색깔에서 영감을 얻어 가는 것이라고 생각해요. 또한 그곳에서만 맛볼 수 있는 음식을 경험하는 것도 여행의 즐거움이죠. 제가 다녀온 제주는 우연하게 발견한 명소라던가 상점이나 식당이라면 철학과 스토리를 감각적으로 풀어낸 곳들입니다. 여행지마다 직접 경험한 소소한 꿀팁들도 숨어있어요. 그럼 제주에서 경험한 멋과 맛에 대해서 차례로 소개할게요.")
         creatorCell.viewModel = creatorViewModel
         return creatorCell
         
@@ -224,4 +231,18 @@ enum NewPlanPreviewViewCase: Int{
   case suggestList
   case terms
   case footer
+}
+
+extension NewPlanPreviewVC : UIScrollViewDelegate {
+  func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    let imageHeaderHeight: CGFloat = screenWidth * (472/375) - 80
+    
+    let posY = scrollView.contentOffset.y
+    if posY < imageHeaderHeight {
+      topNavibar.backgroundView.alpha = posY / imageHeaderHeight
+
+    } else {
+      topNavibar.backgroundView.alpha = 1
+    }
+  }
 }

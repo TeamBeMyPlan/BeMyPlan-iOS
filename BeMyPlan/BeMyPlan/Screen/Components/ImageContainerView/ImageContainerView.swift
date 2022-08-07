@@ -15,6 +15,8 @@ class ImageContainerView: XibView{
     photoCV.delegate = self
     photoCV.dataSource = self
     photoCV.isPagingEnabled = true
+    photoCV.bounces = false
+    photoCV.showsHorizontalScrollIndicator = false
   }}
   
   override init(frame: CGRect) {

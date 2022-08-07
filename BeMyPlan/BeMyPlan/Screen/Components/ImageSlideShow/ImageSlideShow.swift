@@ -20,11 +20,13 @@ class ImageSlideShow: XibView{
   override init(frame: CGRect) {
     super.init(frame: frame)
     registerCell()
+    configureCV()
   }
   
   required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
     registerCell()
+    configureCV()
   }
 }
 
@@ -60,9 +62,16 @@ extension ImageSlideShow: UICollectionViewDelegate, UICollectionViewDataSource{
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let imgCell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageSlideShowCVC.className, for: indexPath) as? ImageSlideShowCVC else { return UICollectionViewCell() }
     imgCell.imageURL = self.viewModel.imgList[indexPath.row]
+    
     return imgCell
   }
   
+}
+
+extension ImageSlideShow: UICollectionViewDelegateFlowLayout {
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    return CGSize(width: bounds.width - 48, height: bounds.height)
+  }
 }
 
 final class SlideShowCollectionViewFlowLayout: UICollectionViewFlowLayout {

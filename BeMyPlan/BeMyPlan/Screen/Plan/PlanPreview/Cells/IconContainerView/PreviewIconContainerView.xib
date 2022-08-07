@@ -60,7 +60,6 @@
                                             </constraints>
                                         </view>
                                     </subviews>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="uiA-zy-fd2" secondAttribute="trailing" id="4OY-ev-ZLM"/>
                                         <constraint firstItem="nSN-Sz-IiD" firstAttribute="centerX" secondItem="Fgg-rS-4ns" secondAttribute="centerX" constant="10" id="4cn-ec-iUH"/>
@@ -98,7 +97,6 @@
                                             </constraints>
                                         </imageView>
                                     </subviews>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
                                         <constraint firstItem="1vF-XB-MC4" firstAttribute="centerY" secondItem="kKJ-sZ-A5x" secondAttribute="centerY" id="BqC-qg-4S6"/>
                                         <constraint firstItem="1vF-XB-MC4" firstAttribute="leading" secondItem="8gs-pU-oCb" secondAttribute="trailing" constant="4" id="FJY-Tm-P4a"/>
@@ -136,7 +134,6 @@
                                             </constraints>
                                         </imageView>
                                     </subviews>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
                                         <constraint firstItem="DPw-A8-lwq" firstAttribute="leading" secondItem="t3Y-70-6AI" secondAttribute="trailing" constant="4" id="2e7-5Z-bqp"/>
                                         <constraint firstItem="t3Y-70-6AI" firstAttribute="centerY" secondItem="o2o-6b-zDi" secondAttribute="centerY" id="49x-30-w1w"/>
@@ -166,7 +163,6 @@
                                             </constraints>
                                         </imageView>
                                     </subviews>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
                                         <constraint firstItem="pAH-ob-96q" firstAttribute="centerY" secondItem="hna-x2-Awd" secondAttribute="centerY" id="ZrQ-OD-EWO"/>
                                         <constraint firstItem="pAH-ob-96q" firstAttribute="leading" secondItem="jPx-bQ-CRh" secondAttribute="trailing" constant="4" id="gif-SY-tDI"/>
@@ -207,7 +203,6 @@
                                             </constraints>
                                         </view>
                                     </subviews>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
                                         <constraint firstItem="7jP-aD-ocv" firstAttribute="centerY" secondItem="4bC-wo-srp" secondAttribute="centerY" id="DYM-na-7P5"/>
                                         <constraint firstItem="Mtf-Tw-9ab" firstAttribute="centerY" secondItem="4bC-wo-srp" secondAttribute="centerY" id="Fm9-fg-Q7m"/>
@@ -245,7 +240,6 @@
                                             </constraints>
                                         </imageView>
                                     </subviews>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
                                         <constraint firstItem="QYf-I5-RtJ" firstAttribute="centerY" secondItem="GO3-7J-YoQ" secondAttribute="centerY" id="4AZ-XQ-LZd"/>
                                         <constraint firstItem="jmR-dG-CeJ" firstAttribute="leading" secondItem="QYf-I5-RtJ" secondAttribute="trailing" constant="4" id="HAR-7Z-uV1"/>
@@ -283,7 +277,6 @@
                                             </constraints>
                                         </imageView>
                                     </subviews>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
                                         <constraint firstItem="lDb-E9-JhW" firstAttribute="centerX" secondItem="Spa-qL-BFD" secondAttribute="centerX" constant="10" id="PBy-hr-c42"/>
                                         <constraint firstItem="lDb-E9-JhW" firstAttribute="centerY" secondItem="Spa-qL-BFD" secondAttribute="centerY" id="fGK-iF-Rmo"/>
@@ -313,7 +306,6 @@
                                             </constraints>
                                         </imageView>
                                     </subviews>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
                                         <constraint firstItem="hIb-Kx-1hL" firstAttribute="centerY" secondItem="NfV-5R-2t9" secondAttribute="centerY" id="98Y-I4-xEh"/>
                                         <constraint firstItem="hIb-Kx-1hL" firstAttribute="leading" secondItem="RXg-5I-d8r" secondAttribute="trailing" constant="4" id="RnG-1U-7sm"/>
@@ -326,7 +318,6 @@
                     </subviews>
                 </stackView>
             </subviews>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="96r-tu-DYT" secondAttribute="bottom" id="QgW-hA-9b6"/>
                 <constraint firstItem="96r-tu-DYT" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="w3T-et-bab"/>

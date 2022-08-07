@@ -24,6 +24,7 @@ extension NewPlanPreviewMainContents {
   private func configureUI() {
     contentTV.delegate = self
     contentTV.dataSource = self
+    contentTV.isScrollEnabled = false
     
     let fullText = placeCountDescriptionLabel.text ?? ""
     let attributedString = NSMutableAttributedString(string: fullText)

@@ -20,6 +20,7 @@ class NewPlanPreviewPurchaseGuide: UITableViewCell, UITableViewRegisterable {
   override func awakeFromNib() {
     super.awakeFromNib()
     registerCell()
+    setUI()
     setDelegate()
     setButtonActions()
   }
@@ -28,6 +29,8 @@ class NewPlanPreviewPurchaseGuide: UITableViewCell, UITableViewRegisterable {
 extension NewPlanPreviewPurchaseGuide {
   private func setUI() {
     previewActionTitleLabel.font = .getSpooqaMediumFont(size: 14)
+    guideTableView.separatorStyle = .none
+    guideTableView.isScrollEnabled = false
   }
   
   private func setDelegate() {
