@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -32,7 +32,17 @@
                     </imageView>
                     <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="0k1-OF-xMI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="435"/>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.19655422185430463" colorSpace="calibratedRGB"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="main_shade" translatesAutoresizingMaskIntoConstraints="NO" id="6BD-Up-FFb">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="435"/>
+                            </imageView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="6BD-Up-FFb" firstAttribute="top" secondItem="0k1-OF-xMI" secondAttribute="top" id="Mg6-X8-emy"/>
+                            <constraint firstAttribute="bottom" secondItem="6BD-Up-FFb" secondAttribute="bottom" id="o41-fn-45F"/>
+                            <constraint firstAttribute="trailing" secondItem="6BD-Up-FFb" secondAttribute="trailing" id="oyT-0P-wYi"/>
+                            <constraint firstItem="6BD-Up-FFb" firstAttribute="leading" secondItem="0k1-OF-xMI" secondAttribute="leading" id="wf8-dR-hQR"/>
+                        </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                             <userDefinedRuntimeAttribute type="number" keyPath="skeletonCornerRadius">
@@ -98,4 +108,7 @@
             <point key="canvasLocation" x="-90.579710144927546" y="130.24553571428572"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="main_shade" width="327" height="435"/>
+    </resources>
 </document>
