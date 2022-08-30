@@ -222,6 +222,8 @@
 		FD777FC728A0074500FDF37A /* PurchaseHistory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD777FC628A0074500FDF37A /* PurchaseHistory.storyboard */; };
 		FD777FCA28A00DD400FDF37A /* PurchaseHistoryDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD777FC828A00DD400FDF37A /* PurchaseHistoryDateCell.swift */; };
 		FD777FCB28A00DD400FDF37A /* PurchaseHistoryDateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD777FC928A00DD400FDF37A /* PurchaseHistoryDateCell.xib */; };
+		FD85026128AA6CA100369014 /* PurchaseTest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD85026028AA6CA100369014 /* PurchaseTest.storyboard */; };
+		FD85026328AA913600369014 /* PurchaseTestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD85026228AA913600369014 /* PurchaseTestVC.swift */; };
 		FD8D3A98287A96B30071036D /* NewPlanPreviewPurchaseGuideTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8D3A96287A96B30071036D /* NewPlanPreviewPurchaseGuideTVC.swift */; };
 		FD8D3A99287A96B30071036D /* NewPlanPreviewPurchaseGuideTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD8D3A97287A96B30071036D /* NewPlanPreviewPurchaseGuideTVC.xib */; };
 		FD8D3AA5287AB0700071036D /* NewPlanPreviewSuggestCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8D3AA3287AB0700071036D /* NewPlanPreviewSuggestCVC.swift */; };
@@ -242,12 +244,19 @@
 		FD9CE28E286B704000020056 /* ImageContainerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD9CE28D286B704000020056 /* ImageContainerView.xib */; };
 		FD9CE291286B716100020056 /* ImageContainerPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9CE28F286B716100020056 /* ImageContainerPhotoCell.swift */; };
 		FD9CE292286B716100020056 /* ImageContainerPhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD9CE290286B716100020056 /* ImageContainerPhotoCell.xib */; };
+		FD9DB9D628A3E766009E8AF1 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD9DB9D528A3E766009E8AF1 /* StoreKit.framework */; };
+		FD9DB9D828A3E906009E8AF1 /* NewPlanPreview + Purchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9DB9D728A3E906009E8AF1 /* NewPlanPreview + Purchase.swift */; };
+		FD9DB9DB28A3E967009E8AF1 /* IAPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9DB9DA28A3E967009E8AF1 /* IAPService.swift */; };
 		FDA2062E27C40FCC001A371D /* PlanDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA2062A27C40FCC001A371D /* PlanDetailVC.swift */; };
 		FDA2062F27C40FCC001A371D /* PlanDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDA2062B27C40FCC001A371D /* PlanDetail.storyboard */; };
 		FDA2063027C40FCC001A371D /* PlanDetailViewModel + setPreviewDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA2062C27C40FCC001A371D /* PlanDetailViewModel + setPreviewDummy.swift */; };
 		FDA2063227C40FE9001A371D /* PlanDetailRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA2063127C40FE9001A371D /* PlanDetailRepository.swift */; };
 		FDA2063427C40FF6001A371D /* PlanDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA2063327C40FF6001A371D /* PlanDetailViewModel.swift */; };
 		FDA2063627C41006001A371D /* PlanDetailEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA2063527C41006001A371D /* PlanDetailEntity.swift */; };
+		FDAC921528BE6E540097EB99 /* PurchaseConfirmView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDAC921428BE6E540097EB99 /* PurchaseConfirmView.xib */; };
+		FDAC921728BE6E650097EB99 /* PurchaseConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDAC921628BE6E650097EB99 /* PurchaseConfirmView.swift */; };
+		FDAC921A28BE79850097EB99 /* IconHelperPresentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDAC921928BE79850097EB99 /* IconHelperPresentVC.swift */; };
+		FDAC921C28BE79900097EB99 /* IconHelper.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDAC921B28BE79900097EB99 /* IconHelper.storyboard */; };
 		FDB34C3D27A6D7CE0074B6CE /* ModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB34C3C27A6D7CE0074B6CE /* ModuleFactory.swift */; };
 		FDC47DEB278951FF00A152E8 /* PreviewHeaderData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC47DEA278951FF00A152E8 /* PreviewHeaderData.swift */; };
 		FDC47DED2789521000A152E8 /* PreviewDescriptionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC47DEC2789521000A152E8 /* PreviewDescriptionData.swift */; };
@@ -562,6 +571,8 @@
 		FD777FC628A0074500FDF37A /* PurchaseHistory.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PurchaseHistory.storyboard; sourceTree = "<group>"; };
 		FD777FC828A00DD400FDF37A /* PurchaseHistoryDateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseHistoryDateCell.swift; sourceTree = "<group>"; };
 		FD777FC928A00DD400FDF37A /* PurchaseHistoryDateCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PurchaseHistoryDateCell.xib; sourceTree = "<group>"; };
+		FD85026028AA6CA100369014 /* PurchaseTest.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PurchaseTest.storyboard; sourceTree = "<group>"; };
+		FD85026228AA913600369014 /* PurchaseTestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseTestVC.swift; sourceTree = "<group>"; };
 		FD8D3A96287A96B30071036D /* NewPlanPreviewPurchaseGuideTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlanPreviewPurchaseGuideTVC.swift; sourceTree = "<group>"; };
 		FD8D3A97287A96B30071036D /* NewPlanPreviewPurchaseGuideTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewPlanPreviewPurchaseGuideTVC.xib; sourceTree = "<group>"; };
 		FD8D3AA3287AB0700071036D /* NewPlanPreviewSuggestCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlanPreviewSuggestCVC.swift; sourceTree = "<group>"; };
@@ -582,12 +593,19 @@
 		FD9CE28D286B704000020056 /* ImageContainerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageContainerView.xib; sourceTree = "<group>"; };
 		FD9CE28F286B716100020056 /* ImageContainerPhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageContainerPhotoCell.swift; sourceTree = "<group>"; };
 		FD9CE290286B716100020056 /* ImageContainerPhotoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageContainerPhotoCell.xib; sourceTree = "<group>"; };
+		FD9DB9D528A3E766009E8AF1 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		FD9DB9D728A3E906009E8AF1 /* NewPlanPreview + Purchase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewPlanPreview + Purchase.swift"; sourceTree = "<group>"; };
+		FD9DB9DA28A3E967009E8AF1 /* IAPService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPService.swift; sourceTree = "<group>"; };
 		FDA2062A27C40FCC001A371D /* PlanDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanDetailVC.swift; sourceTree = "<group>"; };
 		FDA2062B27C40FCC001A371D /* PlanDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PlanDetail.storyboard; sourceTree = "<group>"; };
 		FDA2062C27C40FCC001A371D /* PlanDetailViewModel + setPreviewDummy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PlanDetailViewModel + setPreviewDummy.swift"; sourceTree = "<group>"; };
 		FDA2063127C40FE9001A371D /* PlanDetailRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDetailRepository.swift; sourceTree = "<group>"; };
 		FDA2063327C40FF6001A371D /* PlanDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDetailViewModel.swift; sourceTree = "<group>"; };
 		FDA2063527C41006001A371D /* PlanDetailEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDetailEntity.swift; sourceTree = "<group>"; };
+		FDAC921428BE6E540097EB99 /* PurchaseConfirmView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PurchaseConfirmView.xib; sourceTree = "<group>"; };
+		FDAC921628BE6E650097EB99 /* PurchaseConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseConfirmView.swift; sourceTree = "<group>"; };
+		FDAC921928BE79850097EB99 /* IconHelperPresentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconHelperPresentVC.swift; sourceTree = "<group>"; };
+		FDAC921B28BE79900097EB99 /* IconHelper.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = IconHelper.storyboard; sourceTree = "<group>"; };
 		FDB34C3C27A6D7CE0074B6CE /* ModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleFactory.swift; sourceTree = "<group>"; };
 		FDC47DEA278951FF00A152E8 /* PreviewHeaderData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewHeaderData.swift; sourceTree = "<group>"; };
 		FDC47DEC2789521000A152E8 /* PreviewDescriptionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewDescriptionData.swift; sourceTree = "<group>"; };
@@ -665,6 +683,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FD09DD9C2785639B006DA050 /* QuartzCore.framework in Frameworks */,
+				FD9DB9D628A3E766009E8AF1 /* StoreKit.framework in Frameworks */,
 				FD09DE2D27858B41006DA050 /* Metal.framework in Frameworks */,
 				FD09DDED27856A31006DA050 /* DaumMap.framework in Frameworks */,
 				FD09DD9A27856394006DA050 /* CoreLocation.framework in Frameworks */,
@@ -679,6 +698,7 @@
 		3908C59B3D500CBFB4DD622B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FD9DB9D528A3E766009E8AF1 /* StoreKit.framework */,
 				FD09DE2C27858B41006DA050 /* Metal.framework */,
 				FD09DDAB27856A31006DA050 /* DaumMap.embeddedframework */,
 				FD09DD9F278563B1006DA050 /* libsqlite3.tbd */,
@@ -1517,6 +1537,8 @@
 				FD548720286AD93400822478 /* 7-SuggestLlist */,
 				FD54871F286AD93200822478 /* 8-Terms */,
 				FD33CA7D2898274D005E9D89 /* 9-LogoFooter */,
+				FDAC921328BE6E340097EB99 /* 100-PurchaseConfirm */,
+				FDAC921828BE796C0097EB99 /* 101-IconHelper */,
 				FD54871A286AD38F00822478 /* NewPlanPreview.storyboard */,
 			);
 			path = Views;
@@ -1526,6 +1548,9 @@
 			isa = PBXGroup;
 			children = (
 				FD54870B286ABF0E00822478 /* NewPlanPreviewVC.swift */,
+				FD9DB9D728A3E906009E8AF1 /* NewPlanPreview + Purchase.swift */,
+				FD85026028AA6CA100369014 /* PurchaseTest.storyboard */,
+				FD85026228AA913600369014 /* PurchaseTestVC.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -1616,6 +1641,7 @@
 		FD568E6C27CFE3FD0078D23C /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				FD9DB9D928A3E95C009E8AF1 /* Purchase */,
 				FDF3090C27D1435300FF783F /* ImageViewer */,
 				FD568E6D27CFE4100078D23C /* Analytics */,
 			);
@@ -1749,6 +1775,14 @@
 			path = ImageContainerView;
 			sourceTree = "<group>";
 		};
+		FD9DB9D928A3E95C009E8AF1 /* Purchase */ = {
+			isa = PBXGroup;
+			children = (
+				FD9DB9DA28A3E967009E8AF1 /* IAPService.swift */,
+			);
+			path = Purchase;
+			sourceTree = "<group>";
+		};
 		FDA2062427C40F83001A371D /* Repository */ = {
 			isa = PBXGroup;
 			children = (
@@ -1775,6 +1809,24 @@
 				FDA2062B27C40FCC001A371D /* PlanDetail.storyboard */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		FDAC921328BE6E340097EB99 /* 100-PurchaseConfirm */ = {
+			isa = PBXGroup;
+			children = (
+				FDAC921428BE6E540097EB99 /* PurchaseConfirmView.xib */,
+				FDAC921628BE6E650097EB99 /* PurchaseConfirmView.swift */,
+			);
+			path = "100-PurchaseConfirm";
+			sourceTree = "<group>";
+		};
+		FDAC921828BE796C0097EB99 /* 101-IconHelper */ = {
+			isa = PBXGroup;
+			children = (
+				FDAC921928BE79850097EB99 /* IconHelperPresentVC.swift */,
+				FDAC921B28BE79900097EB99 /* IconHelper.storyboard */,
+			);
+			path = "101-IconHelper";
 			sourceTree = "<group>";
 		};
 		FDB34C3B27A6D4AD0074B6CE /* Factory */ = {
@@ -2109,6 +2161,7 @@
 				FD4C86B8278C7A7200D37A2D /* Payment.storyboard in Resources */,
 				FDCB31AF28720070001588F7 /* ImageSlideShow.xib in Resources */,
 				FD54871B286AD38F00822478 /* NewPlanPreview.storyboard in Resources */,
+				FD85026128AA6CA100369014 /* PurchaseTest.storyboard in Resources */,
 				FD9CE27C286B49B800020056 /* HashtagContainerView.xib in Resources */,
 				FD35664E2792AF2C0082B4CE /* ScrapContainerView.xib in Resources */,
 				FD2D4DC1278D57A5002084B9 /* ProgressBar.xib in Resources */,
@@ -2118,6 +2171,7 @@
 				FD54873D286ADDB800822478 /* NewPlanPreviewMainContents.xib in Resources */,
 				FDC47E0C2789742800A152E8 /* TravelSpotCVC.xib in Resources */,
 				FD61AFA327902C7A00D39F47 /* PlanDetailSelectDayView.xib in Resources */,
+				FDAC921C28BE79900097EB99 /* IconHelper.storyboard in Resources */,
 				FD777FC428A0073500FDF37A /* PurhcaseHistoryTVC.xib in Resources */,
 				FD3566502792AF2C0082B4CE /* Scrap.storyboard in Resources */,
 				FDF980C82786D2360009A14E /* PlanList.storyboard in Resources */,
@@ -2125,6 +2179,7 @@
 				FD09DDD927856A31006DA050 /* map_pin_shadow@3x.png in Resources */,
 				FDF980EA2786F19D0009A14E /* MyPlan.storyboard in Resources */,
 				FDF980CA2786D23D0009A14E /* TravelSpot.storyboard in Resources */,
+				FDAC921528BE6E540097EB99 /* PurchaseConfirmView.xib in Resources */,
 				FD09DDE527856A31006DA050 /* noimage256.png in Resources */,
 				FD09DDD227856A31006DA050 /* map_pinup_custom@3x.png in Resources */,
 				FDF980F4278825EF0009A14E /* TabBarIconView.xib in Resources */,
@@ -2271,6 +2326,7 @@
 				FDF980C12786D14B0009A14E /* setDefaultFonts.swift in Sources */,
 				FD09DE0727857971006DA050 /* calculateTopInset.swift in Sources */,
 				F27483EE27CA398D004164F0 /* SignUpTOSVC.swift in Sources */,
+				FDAC921A28BE79850097EB99 /* IconHelperPresentVC.swift in Sources */,
 				FDF980E32786E7E90009A14E /* BaseContainerView.swift in Sources */,
 				FD4C86B0278BD17F00D37A2D /* setImage.swift in Sources */,
 				FD568E7B27CFE8200078D23C /* FirebaseAnalyticsProvider.swift in Sources */,
@@ -2329,6 +2385,7 @@
 				FDCDCB31278F4C2B002CEA15 /* PlanDetailSpotDataModel.swift in Sources */,
 				523C70A32795C3EF0073371D /* TravelSpotDataModel.swift in Sources */,
 				FD548711286ABF0E00822478 /* NewPlanPreviewVC.swift in Sources */,
+				FD9DB9DB28A3E967009E8AF1 /* IAPService.swift in Sources */,
 				FDF980FF2788C9220009A14E /* PlanPreviewVC.swift in Sources */,
 				FDC47DF12789524000A152E8 /* PreviewSummaryData.swift in Sources */,
 				FDF7FECF27A7E21600E3AB62 /* Router.swift in Sources */,
@@ -2343,6 +2400,7 @@
 				FDF981022788D49C0009A14E /* PlanPreviewWriterTVC.swift in Sources */,
 				FDCEE68C27D9D400000D8F7F /* PlanPreviewUseCase.swift in Sources */,
 				FD33CA7F2898276C005E9D89 /* NewPlanPreviewLogoFooterView.swift in Sources */,
+				FD85026328AA913600369014 /* PurchaseTestVC.swift in Sources */,
 				FD568E7127CFE6CF0078D23C /* FirebaseServiceProtocol.swift in Sources */,
 				523C70FF2799DCC10073371D /* ScrapEmptyService.swift in Sources */,
 				FDF981042788D4AB0009A14E /* PlanPreviewDescriptionTVC.swift in Sources */,
@@ -2393,6 +2451,7 @@
 				FDF7FEC527A7E14F00E3AB62 /* CoordinatorFinishOutput.swift in Sources */,
 				FD09DE2727857DE3006DA050 /* GenericResponse.swift in Sources */,
 				FDEF170C284E413000BB5001 /* SignupNC.swift in Sources */,
+				FDAC921728BE6E650097EB99 /* PurchaseConfirmView.swift in Sources */,
 				FD54872F286ADB0300822478 /* NewPlanPreviewPurchaseGuide.swift in Sources */,
 				FD09DE1527857B36006DA050 /* getClassName.swift in Sources */,
 				FD5D730F27A46BAB002DE484 /* PlanPreviewViewModel.swift in Sources */,
@@ -2411,6 +2470,7 @@
 				FD5100CE2848AF2B0037AC8E /* UserDataModel.swift in Sources */,
 				523C70AA2795EC770073371D /* TravelSpotDetailService.swift in Sources */,
 				FD09DE1327857AE1006DA050 /* successCatch + Result.swift in Sources */,
+				FD9DB9D828A3E906009E8AF1 /* NewPlanPreview + Purchase.swift in Sources */,
 				F261EC7927873A7D00AF094F /* MainCardCVC.swift in Sources */,
 				FD09DDF727857841006DA050 /* UITableViewRegisterable.swift in Sources */,
 				FD568E7627CFE7270078D23C /* LogEventType.swift in Sources */,
@@ -2581,7 +2641,7 @@
 				CODE_SIGN_ENTITLEMENTS = BeMyPlan/BeMyPlan.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2022062301;
+				CURRENT_PROJECT_VERSION = 2022081602;
 				DEVELOPMENT_TEAM = PLJU22T9YZ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2605,7 +2665,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.BeMyPlan.release;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = BeMyPlan_develop_colours;
@@ -2625,7 +2685,7 @@
 				CODE_SIGN_ENTITLEMENTS = BeMyPlan/BeMyPlan.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2022062301;
+				CURRENT_PROJECT_VERSION = 2022081602;
 				DEVELOPMENT_TEAM = PLJU22T9YZ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2649,7 +2709,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.BeMyPlan.release;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = BeMyPlan_distribution_provisioning;

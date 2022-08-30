@@ -42,6 +42,13 @@ enum BaseNotiList : String{
   case scrapButtonClicked
   case loginButtonClickedInMyPlan
   
+  case IAPServicePurchaseNotification
+  
+  case purchaseComplete
+  case restoreComplete
+  
+  case informationButtonClicked
+  
   static func makeNotiName(list : BaseNotiList) -> NSNotification.Name{
     return Notification.Name(String(describing: list))
   }

@@ -7,10 +7,11 @@
 
 import UIKit
 import RxSwift
+import StoreKit
 
 class NewPlanPreviewVC: UIViewController {
   // MARK: - Vars & Lets Part
-  
+  var products = [SKProduct]()
   private let contentList: [[NewPlanPreviewViewCase]] = [
     [.topHeader, .creator],
     [.mainContents, .purhcaseGuide,
@@ -22,6 +23,7 @@ class NewPlanPreviewVC: UIViewController {
   @IBOutlet var mainContentTV: UITableView!
   @IBOutlet var bottomCTAButton: UIButton!
   @IBOutlet var bottomScrapButton: UIButton!
+  private let layer = UIView()
   
   // MARK: - Life Cycle Part
   override func viewDidLoad() {
@@ -30,6 +32,9 @@ class NewPlanPreviewVC: UIViewController {
     setDelegate()
     setTableView()
     setUI()
+    initIAP()
+    bindButtonAction()
+    addObserver()
     topNavibar.backgroundView.alpha = 0
   }
   
@@ -65,6 +70,46 @@ extension NewPlanPreviewVC {
   private func setUI() {
     bottomCTAButton.titleLabel?.font = .boldSystemFont(ofSize: 16)
     bottomCTAButton.layer.cornerRadius = 4
+    layer.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
+  }
+  
+  private func bindButtonAction() {
+    bottomCTAButton.press {
+      self.touchIAP()
+    }
+  }
+  
+  private func addObserver() {
+    addObserverAction(.informationButtonClicked) { _ in
+      let informationVC = ModuleFactory.resolve().makeSummaryHelper()
+      self.addBlackLayer()
+      self.present(informationVC, animated: true)
+      
+      informationVC.screenDismissed = {
+        self.removeBlackLayer()
+      }
+    }
+  }
+  
+  private func addBlackLayer() {
+    layer.alpha = 0
+    view.addSubview(layer)
+    
+    layer.snp.makeConstraints { make in
+      make.edges.equalToSuperview()
+    }
+    
+    UIView.animate(withDuration: 0.6, delay: 0, options: .curveEaseInOut) {
+      self.layer.alpha = 0.6
+    }
+  }
+  
+  private func removeBlackLayer() {
+    UIView.animate(withDuration: 0.6, delay: 0, options: .curveEaseInOut) {
+      self.layer.alpha = 0
+    } completion: { _ in
+      self.layer.removeFromSuperview()
+    }
   }
 }
 

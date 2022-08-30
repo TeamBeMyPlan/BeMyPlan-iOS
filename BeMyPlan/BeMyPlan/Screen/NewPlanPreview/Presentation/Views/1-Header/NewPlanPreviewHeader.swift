@@ -49,7 +49,7 @@ extension NewPlanPreviewHeader {
   
   private func addButtonAction() {
     informationButton.press {
-      // FIXME: - 나중에 information 눌렸을 때 액션 처리 여기서
+      self.postObserverAction(.informationButtonClicked)
     }
   }
 }

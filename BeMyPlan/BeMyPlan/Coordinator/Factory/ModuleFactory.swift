@@ -48,6 +48,7 @@ protocol ModuleFactoryProtocol {
   // MARK: - Plan
   func instantiatePlanPreviewVC(postID: Int,scrapState: Bool) -> PlanPreviewVC
   func instantiatePlanDetailVC(postID: Int,isPreviewPage: Bool) -> PlanDetailVC
+  func makeSummaryHelper() -> IconHelperPresentVC
   
   // MARK: - PlanList
   func instantiatePlanListVC() -> TravelSpotDetailVC
@@ -136,6 +137,9 @@ class ModuleFactory: ModuleFactoryProtocol{
   
   func instantiateMyPlanWithdrawVC() -> MyPlanWithdrawVC {
     return MyPlanWithdrawVC.controllerFromStoryboard(.myPlan)
+  }
+  func makeSummaryHelper() -> IconHelperPresentVC {
+    return IconHelperPresentVC.controllerFromStoryboard(.iconHelper)
   }
   
   // MARK: - Payment

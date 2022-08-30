@@ -29,6 +29,7 @@ enum Storyboards: String {
   case signup = "SignUp"
   case alert = "CustomAlert"
   case indicator = "Indicator"
+  case iconHelper = "IconHelper"
 }
 
 extension UIStoryboard{

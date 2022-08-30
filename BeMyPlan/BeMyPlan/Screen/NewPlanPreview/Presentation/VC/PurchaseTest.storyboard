@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Purchase TestVC-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="PurchaseTestVC" id="Y6W-OH-hqX" customClass="PurchaseTestVC" customModule="BeMyPlan" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sij-7Z-vFs">
+                                <rect key="frame" x="50" y="30" width="275" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OHH-kF-aKI">
+                                        <rect key="frame" x="0.0" y="0.0" width="275" height="50"/>
+                                        <color key="tintColor" name="subBlue"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="1번 상품 구입">
+                                            <fontDescription key="titleFontDescription" type="system" pointSize="12"/>
+                                        </buttonConfiguration>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" name="beMyBlue"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="XoB-nN-FQb"/>
+                                </constraints>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IEb-Bc-531">
+                                <rect key="frame" x="50" y="110" width="275" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="ov2-hj-bBH"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="gray" title="구매내역 복원"/>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="여기에는 로그가 표시됩니다" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0ME-ga-4j0">
+                                <rect key="frame" x="50" y="180" width="275" height="200"/>
+                                <color key="backgroundColor" name="grey4"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="Fug-vw-ySN"/>
+                                </constraints>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qXo-bp-8uP">
+                                <rect key="frame" x="50" y="597" width="275" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="NVe-O5-Wbz"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="영수증 번호 복사하기"/>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="여기에는 영수증 번호가 표시됩니다." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="zHJ-ch-eM8">
+                                <rect key="frame" x="50" y="467" width="275" height="100"/>
+                                <color key="backgroundColor" name="grey6"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="TIQ-iF-i3I"/>
+                                </constraints>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="영수증 번호" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XOY-Zr-BFp">
+                                <rect key="frame" x="40" y="416.5" width="295" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="0ME-ga-4j0" secondAttribute="trailing" constant="50" id="02c-ON-sAL"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="zHJ-ch-eM8" secondAttribute="trailing" constant="50" id="1Wp-5R-1fO"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="sij-7Z-vFs" secondAttribute="trailing" constant="50" id="22b-a8-Jd3"/>
+                            <constraint firstItem="sij-7Z-vFs" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="30" id="FZg-87-2Us"/>
+                            <constraint firstItem="zHJ-ch-eM8" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="50" id="Riz-2I-z9T"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="qXo-bp-8uP" secondAttribute="bottom" constant="30" id="SaA-Ct-6iT"/>
+                            <constraint firstItem="XOY-Zr-BFp" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="40" id="Tjf-54-hma"/>
+                            <constraint firstItem="sij-7Z-vFs" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="50" id="Vl9-YJ-wxd"/>
+                            <constraint firstItem="0ME-ga-4j0" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="50" id="YcU-iX-3xY"/>
+                            <constraint firstItem="zHJ-ch-eM8" firstAttribute="top" secondItem="XOY-Zr-BFp" secondAttribute="bottom" constant="30" id="apY-wM-vB7"/>
+                            <constraint firstItem="IEb-Bc-531" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="50" id="ewv-a1-MxX"/>
+                            <constraint firstItem="qXo-bp-8uP" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="50" id="gxJ-6w-NjM"/>
+                            <constraint firstItem="qXo-bp-8uP" firstAttribute="top" secondItem="zHJ-ch-eM8" secondAttribute="bottom" constant="30" id="keu-oC-fwi"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="IEb-Bc-531" secondAttribute="trailing" constant="50" id="rDH-Od-F6E"/>
+                            <constraint firstItem="0ME-ga-4j0" firstAttribute="top" secondItem="IEb-Bc-531" secondAttribute="bottom" constant="30" id="sQ7-42-IC3"/>
+                            <constraint firstItem="IEb-Bc-531" firstAttribute="top" secondItem="sij-7Z-vFs" secondAttribute="bottom" constant="30" id="weX-Fm-kbj"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="qXo-bp-8uP" secondAttribute="trailing" constant="50" id="z9x-mO-cBr"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="XOY-Zr-BFp" secondAttribute="trailing" constant="40" id="zcK-09-WSi"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="copyButton" destination="qXo-bp-8uP" id="Uk7-Wv-h9p"/>
+                        <outlet property="firstButton" destination="OHH-kF-aKI" id="RIw-hM-3Kr"/>
+                        <outlet property="purchaseLogTextView" destination="0ME-ga-4j0" id="JOx-J6-rxR"/>
+                        <outlet property="receipLabel" destination="XOY-Zr-BFp" id="4cK-v1-1b7"/>
+                        <outlet property="receipTextView" destination="zHJ-ch-eM8" id="e73-Ca-xW0"/>
+                        <outlet property="restoreButton" destination="IEb-Bc-531" id="Ich-FK-xub"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="105" y="58"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="beMyBlue">
+            <color red="0.0" green="0.46666666666666667" blue="0.69019607843137254" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="grey4">
+            <color red="0.79607843137254897" green="0.81568627450980391" blue="0.84313725490196079" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="grey6">
+            <color red="0.95686274509803926" green="0.96078431372549022" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="subBlue">
+            <color red="0.0" green="0.33333333333333331" blue="0.50196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
