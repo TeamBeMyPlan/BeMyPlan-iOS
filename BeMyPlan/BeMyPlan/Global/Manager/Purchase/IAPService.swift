@@ -39,12 +39,15 @@ final class IAPService: NSObject, IAPServiceType {
     self.productsRequest?.start()
   }
   func buyProduct(_ product: SKProduct) {
+    print("buyProduct")
     SKPaymentQueue.default().add(SKPayment(product: product))
   }
   func isProductPurchased(_ productID: String) -> Bool {
     self.purchasedProductIDs.contains(productID)
   }
   func restorePurchases() {
+    print("restorePurchase")
+          
     SKPaymentQueue.default().restoreCompletedTransactions()
   }
 }
@@ -74,6 +77,7 @@ extension IAPService: SKProductsRequestDelegate {
 
 extension IAPService: SKPaymentTransactionObserver {
   func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+
     transactions.forEach {
       switch $0.transactionState {
       case .purchased:
@@ -109,11 +113,23 @@ extension IAPService: SKPaymentTransactionObserver {
     }
   }
   
+  func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
+
+    for item in queue.transactions {
+      self.deliverPurchaseNotificationFor(id: item.original?.payment.productIdentifier)
+        NotificationCenter.default.post(
+          name: BaseNotiList.makeNotiName(list: .restoreComplete),
+          object: getReceiptData()!
+        )
+    }
+  }
+  
+  
   private func deliverPurchaseNotificationFor(id: String?) {
     print("현재 IDsss",id)
 
     guard let id = id else { return }
-    
+  
     self.purchasedProductIDs.insert(id)
     UserDefaults.standard.set(true, forKey: id)
     NotificationCenter.default.post(
