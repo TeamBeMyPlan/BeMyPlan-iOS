@@ -36,5 +36,6 @@ struct NewPlanPreviewSuggestCellViewModel {
   let title: String
   let address: String
   let imgURL: String
+  let planID: Int
 }
 

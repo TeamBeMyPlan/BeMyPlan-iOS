@@ -25,15 +25,16 @@ extension NewPlanPreviewMainContents {
     contentTV.delegate = self
     contentTV.dataSource = self
     contentTV.isScrollEnabled = false
+    contentTV.separatorStyle = .none
     
     let fullText = placeCountDescriptionLabel.text ?? ""
     let attributedString = NSMutableAttributedString(string: fullText)
-    let highlightedWords = [String(viewModel.contentList.count) + "개"]
-    for highlightedWord in highlightedWords {
-      let textRange = (fullText as NSString).range(of: highlightedWord)
-      let boldFont = UIColor.bemyBlue
-      attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: boldFont, range: textRange)
-    }
+    let highlightedWords = String(viewModel.contentList.count) + "곳"
+    let textRange = (fullText as NSString).range(of: highlightedWords)
+    let boldFont = UIColor.bemyBlue
+    print("RANGE",textRange)
+    attributedString.addAttributes([.foregroundColor : UIColor.bemyBlue,
+                                    .font : UIFont.boldSystemFont(ofSize: 14)], range: textRange)
 
     placeCountDescriptionLabel.attributedText = attributedString
     placeCountDescriptionLabel.sizeToFit()

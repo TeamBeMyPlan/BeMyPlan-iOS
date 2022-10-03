@@ -19,6 +19,12 @@ extension NewPlanMainContentsTVC {
   private func configureUI() {
     contentTextView.removeMargin()
     imageSlideShowView.viewModel = .init(imgList: self.viewModel.imgURLs)
+    
+    contentTextView.setTextWithLineHeight(text: self.viewModel.contents, lineHeightMultiple: 1.31)
+    contentTextView.font = .systemFont(ofSize: 14)
+    contentTextView.textColor = .grey01
+    contentTextView.textContainer.lineBreakMode = .byWordWrapping
+    contentTextView.text = self.viewModel.contents
   }
 }
 

@@ -8,37 +8,37 @@ import Moya
 import Alamofire
 
 enum BaseAPI{
-  case sampleAPI(sample : String)
-  // MARK: - 현주
-  case getPopularTravelList
-  case getNewTravelList(page : Int)
-  case getSuggestTravelList(page : Int, sort: String)
-  
-  case getTravelSpotDetailList(area: Int, page: Int, pageSize: Int?, sort: String)
-  case getNicknameDetailList(userId: Int, page: Int, pageSize: Int?, sort: String)
-  
-  case postSocialLogin(socialToken: String, socialType: String)
+	case sampleAPI(sample : String)
+	// MARK: - 현주
+	case getPopularTravelList
+	case getNewTravelList(page : Int)
+	case getSuggestTravelList(page : Int, sort: String)
+	
+	case getTravelSpotDetailList(area: Int, page: Int, pageSize: Int?, sort: String)
+	case getNicknameDetailList(userId: Int, page: Int, pageSize: Int?, sort: String)
+	
+	case postSocialLogin(socialToken: String, socialType: String)
 	case postSocialSignUp(socialToken: String, socialType: String, nickName: String,email: String)
-  case getNickNameCheck(nickName: String)
-
-  // MARK: - 양원
-  case getTravelSpotList
-  case getRecentTripList(page: Int, pageSize: Int)
-  case getScrapEmptyList
-
-  // MARK: - Auth
+	case getNickNameCheck(nickName: String)
+	
+	// MARK: - 양원
+	case getTravelSpotList
+	case getRecentTripList(page: Int, pageSize: Int)
+	case getScrapEmptyList
+	
+	// MARK: - Auth
 	case postUserLogout
 	case deleteUserWithdraw(reason: String)
-
-  
-  // MARK: - HomeList
-  case getHomeOrderList // (최상단 부분, 구매순 정렬)
-  case getHomeRecentlyList // (최신순 정렬)
-  case getHomeBemyPlanList // (비마플 추천 데이터)
+	
+	
+	// MARK: - HomeList
+	case getHomeOrderList // (최상단 부분, 구매순 정렬)
+	case getHomeRecentlyList // (최신순 정렬)
+	case getHomeBemyPlanList // (비마플 추천 데이터)
 	
 	// MARK: - ScrapList
 	case getScrapList(lastScrapId: Int?, sort: String)
-  case postScrap(postId: Int)
+	case postScrap(postId: Int)
 	case deleteScrap(postId: Int)
 	
 	// MARK: - MyPlan
@@ -46,7 +46,7 @@ enum BaseAPI{
 	
 	// MARK: - Order
 	case postOrderPlan(postId: Int)
-
+	
 	
 	// MARK: - Plan List + Paging
 	case getRecentlyListWithPaging(lastPlanID: Int?)
@@ -58,6 +58,13 @@ enum BaseAPI{
 	case getPlanPreviewData(idx : Int)
 	case getPlanDetailData(idx : Int)
 	case getPlanDetailTransportData(idx: Int)
+	
+	// MARK: - New Plan Preview
+	case getNewPlanPreviewCreator(idx: Int)
+	case getNewPlanPreviewCourse(idx: Int)
+	case getNewPlanPreviewDetail(idx: Int)
+	case getNewPlanPreviewRecommend(spot: String)
+
 }
 
 extension BaseAPI: TargetType {
@@ -78,59 +85,67 @@ extension BaseAPI: TargetType {
       var base = Config.Network.baseURL
       switch self{
       case .sampleAPI:
-        base += ""
+        base += "/v1"
 
       case .getBuyList:
-        base += "/plan/orders"
+        base += "/v1/plan/orders"
       
     case .getPopularTravelList, .getNewTravelList, .getSuggestTravelList, .getRecentTripList
         :
-      base += "/post"
+      base += "/v1/post"
       
     case .getTravelSpotList:
-      base += "/plan/regions"
+      base += "/v1/plan/regions"
     
 		case .postUserLogout:
-			base += "/logout"
+			base += "/v1/logout"
 					
     case  .postSocialLogin:
-      base += "/login"
+      base += "/v1/login"
 					
 		case .deleteUserWithdraw:
-			base += "/signout"
+			base += "/v1/signout"
 					
 		case .postSocialSignUp:
-			base += "/signup"
+			base += "/v1/signup"
 		
 		case .getNickNameCheck:
-			base += "/user"
+			base += "/v1/user"
       
     case .getTravelSpotDetailList:
-      base += "/area"
+      base += "/v1/area"
       
     case .getNicknameDetailList:
-        base += "/user"
+        base += "/v1/user"
           
 		case  .postScrap,.deleteScrap:
-      base += "/plan/scrap"
+      base += "/v1/plan/scrap"
 					
 		case .getScrapList:
-			base += "/plan"
+			base += "/v1/plan"
       
     case .getScrapEmptyList:
-      base += "/post/random"
+      base += "/v1/post/random"
 
     case .getHomeOrderList,.getHomeRecentlyList,.getHomeBemyPlanList:
-      base += "/plans"
+      base += "/v1/plans"
 			
 		case .getRecentlyListWithPaging,
 						.getSpotPlanListWithPaging,
 						.getUserPlanListWithPaging,
-					  .getBemyPlanListWithPaging:
-			base += "/plans"
+					  .getBemyPlanListWithPaging,
+						.getPlanPreviewData,.getPlanDetailData,
+						.getPlanDetailTransportData,
+						.postOrderPlan:
+			base += "/v1/plans"
 					
-				case .getPlanPreviewData,.getPlanDetailData, .getPlanDetailTransportData,.postOrderPlan :
-				base += "/plan"
+		case .getNewPlanPreviewCreator,
+					.getNewPlanPreviewCourse,
+					.getNewPlanPreviewRecommend :
+				base += "/v2/plans"
+		case .getNewPlanPreviewDetail:
+					base += "/v2/preview"
+
       }
     guard let url = URL(string: base) else {
       fatalError("baseURL could not be configured")
@@ -173,10 +188,18 @@ extension BaseAPI: TargetType {
 
     case .getNickNameCheck:
       return "/name/check"
-			case .getHomeBemyPlanList,.getBemyPlanListWithPaging:
+		case .getHomeBemyPlanList,.getBemyPlanListWithPaging:
         return "/bemyplanPick"
-			case .postOrderPlan:
+		case .postOrderPlan:
 				return "/order"
+		case .getNewPlanPreviewCreator(let idx):
+				return "/\(idx)/creator"
+		case .getNewPlanPreviewCourse(let idx):
+				return "/\(idx)/preview"
+		case .getNewPlanPreviewRecommend:
+				return "/random"
+		case .getNewPlanPreviewDetail(let idx):
+				return "/\(idx)"
     default :
       return ""
     }
@@ -310,6 +333,9 @@ extension BaseAPI: TargetType {
 				
 			case .deleteUserWithdraw(let reason) :
 				params["reasonForWithdrawal"] = reason
+			
+			case .getNewPlanPreviewRecommend(let region):
+				params["regionCategory"] = region
     default:
       break
       
@@ -344,7 +370,7 @@ extension BaseAPI: TargetType {
 			case .sampleAPI, .getTravelSpotDetailList, .getNicknameDetailList, .getScrapList, .getNewTravelList,
 					.getSuggestTravelList, .postScrap,.deleteScrap,.getHomeOrderList,.getHomeRecentlyList,
 					.getHomeBemyPlanList,.getBuyList,.getRecentlyListWithPaging, .getSpotPlanListWithPaging,
-					.getUserPlanListWithPaging, .getBemyPlanListWithPaging,.getNickNameCheck:
+					.getUserPlanListWithPaging, .getBemyPlanListWithPaging,.getNickNameCheck,.getNewPlanPreviewRecommend:
       return URLEncoding.init(destination: .queryString, arrayEncoding: .noBrackets, boolEncoding: .literal)
     case .postSocialLogin, .postSocialSignUp :
       return JSONEncoding.default
@@ -366,7 +392,8 @@ extension BaseAPI: TargetType {
 					.getNickNameCheck,.getHomeOrderList,.getHomeRecentlyList,
 					.getHomeBemyPlanList,.getBuyList,.getRecentlyListWithPaging,
 					.getSpotPlanListWithPaging,.getUserPlanListWithPaging,
-					.getBemyPlanListWithPaging,.postOrderPlan,.deleteUserWithdraw:
+					.getBemyPlanListWithPaging,.postOrderPlan,.deleteUserWithdraw,
+					.getNewPlanPreviewRecommend:
       return .requestParameters(parameters: bodyParameters ?? [:], encoding: parameterEncoding)
     default:
       return .requestPlain

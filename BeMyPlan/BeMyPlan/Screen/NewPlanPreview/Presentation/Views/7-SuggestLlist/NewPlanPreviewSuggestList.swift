@@ -10,7 +10,7 @@ import UIKit
 class NewPlanPreviewSuggestList: UITableViewCell, UITableViewRegisterable{
   
   static var isFromNib: Bool = true
-  var viewModel: NewPlanPreviewSuggestViewModel! {didSet {
+  var viewModel: NewPlanPreviewSuggestViewModel? {didSet {
     contentCollectonView.reloadData()}}
   @IBOutlet var contentCollectonView: UICollectionView!
   @IBOutlet var contentCollectionViewHeightConstraint: NSLayoutConstraint!
@@ -49,15 +49,16 @@ extension NewPlanPreviewSuggestList: UICollectionViewDataSource {
 
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
       guard let suggestCell = collectionView.dequeueReusableCell(withReuseIdentifier: NewPlanPreviewSuggestCVC.className,
-                                                                 for: indexPath) as? NewPlanPreviewSuggestCVC else { return UICollectionViewCell() }
-      let cellViewModel = self.viewModel.list[indexPath.row]
+                                                                 for: indexPath) as? NewPlanPreviewSuggestCVC,
+            let viewModel = self.viewModel else { return UICollectionViewCell() }
+      let cellViewModel = viewModel.list[indexPath.row]
       
     suggestCell.viewModel = cellViewModel
     return suggestCell
   }
     
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return viewModel.list.count
+    return viewModel?.list.count ?? 0
   }
 }
 
@@ -70,7 +71,7 @@ extension NewPlanPreviewSuggestList: UICollectionViewDelegateFlowLayout {
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-    return 0
+    return 7
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {

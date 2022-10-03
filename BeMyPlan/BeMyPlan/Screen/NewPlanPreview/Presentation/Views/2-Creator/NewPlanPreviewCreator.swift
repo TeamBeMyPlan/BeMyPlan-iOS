@@ -31,6 +31,7 @@ extension NewPlanPreviewCreator {
     contentTextView.textContainerInset = UIEdgeInsets.init(top: 21, left: 21, bottom: 21, right: 21)
     contentTextView.font = .systemFont(ofSize: 14)
     contentTextView.textColor = .grey01
+    contentTextView.textContainer.lineBreakMode = .byWordWrapping
     
     userImageView.setImage(with: viewModel.profileImgURL)
     authorLabel.text = viewModel.authorName
@@ -43,4 +44,5 @@ struct NewPlanPreviewCreatorViewModel {
   let authorName: String
   let authorDescription: String
   let creatorIntroduce: String
+  let authorIdx: Int
 }

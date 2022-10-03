@@ -8,7 +8,7 @@
 import UIKit
 
 class ImageContainerView: XibView{
-  var viewModel: ImageContainerViewModel! { didSet{ setCounterView() }}
+  var viewModel: ImageContainerViewModel? { didSet{ setCounterView() }}
   private var currentIndex = 0 { didSet{ setCounterView() }}
   @IBOutlet var imageCounterContainerView: ImageIndexContainerView!
   @IBOutlet var photoCV: UICollectionView! { didSet {
@@ -36,17 +36,30 @@ class ImageContainerView: XibView{
 
 extension ImageContainerView: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return self.viewModel.imgList.count
+    guard let viewModel = viewModel else { return 0 }
+    return viewModel.imgList.count
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let imgCell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageContainerPhotoCell.className, for: indexPath) as? ImageContainerPhotoCell else { return UICollectionViewCell() }
-    imgCell.viewModel = .init(imgURL: self.viewModel.imgList[indexPath.row])
+    imgCell.viewModel = .init(imgURL: self.viewModel!.imgList[indexPath.row])
     return imgCell
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     return CGSize(width: self.frame.width, height: self.frame.height)
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    return .zero
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    return 0
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+    return 0
   }
 }
 
@@ -61,7 +74,7 @@ extension ImageContainerView: UIScrollViewDelegate {
 extension ImageContainerView {
   private func setCounterView() {
     imageCounterContainerView.viewModel = .init(currentIndex: self.currentIndex,
-                                                totalIndex: self.viewModel.imgList.count)
+                                                totalIndex: self.viewModel?.imgList.count ?? 0)
     imageCounterContainerView.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.5)
     imageCounterContainerView.layer.cornerRadius = 13
   }

@@ -12,11 +12,16 @@ import StoreKit
 class NewPlanPreviewVC: UIViewController {
   // MARK: - Vars & Lets Part
   var products = [SKProduct]()
-  private let contentList: [[NewPlanPreviewViewCase]] = [
+  internal var planID: Int = 2
+  private var contentList: [[NewPlanPreviewViewCase]] = [
     [.topHeader, .creator],
     [.mainContents, .purhcaseGuide,
      .suggestList, .terms, .footer]
   ]
+  private var creatorCellViewModel: NewPlanPreviewCreatorViewModel?
+  private var headerCellViewModel: NewPlanPreviewHeaderViewModel?
+  private var mainContentCellViewModel: NewPlanPreviewMainContentViewModel?
+  private var suggestCellViewModel: NewPlanPreviewSuggestViewModel?
 
   // MARK: - UI Component Part
   @IBOutlet var topNavibar: NewPlanPreviewNaviBar!
@@ -36,6 +41,10 @@ class NewPlanPreviewVC: UIViewController {
     bindButtonAction()
     addObserver()
     topNavibar.backgroundView.alpha = 0
+    fetchPlanHeaderData()
+    fetchCreatorData()
+    fetchPlanPreviewDetail()
+    fetchPlanSuggestList()
   }
   
 }
@@ -116,15 +125,19 @@ extension NewPlanPreviewVC {
 extension NewPlanPreviewVC: UITableViewDelegate {
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    let heightCalculator = NewPlanPreviewHeightCalculator.shared
     if indexPath.section == 0 {
       switch(indexPath.row) {
         case 0: return screenWidth * (472/375) + 310
-        case 1: return 429
+        case 1: return heightCalculator.calculateCreatorCellHeight(text: creatorCellViewModel?.creatorIntroduce)
         default : return 0
       }
     } else {
       switch(indexPath.row) {
-        case 0: return 830
+        case 0:
+          guard let mainContentCellViewModel = mainContentCellViewModel else { return 0 }
+          let textList = mainContentCellViewModel.contentList.map { $0.contents }
+          return heightCalculator.calculateMainCellHeight(textList: textList) + 121
         case 1: return 620
         case 2: return screenWidth * (350/375)
         case 3: return 56
@@ -181,34 +194,26 @@ extension NewPlanPreviewVC: UITableViewDataSource {
     let row = indexPath.row
     switch(contentList[section][row]) {
       case .topHeader:
+        print("TOP HEADER")
+        
         guard let header = tableView.dequeueReusableCell(withIdentifier: NewPlanPreviewHeader.className,
                                                          for: indexPath) as? NewPlanPreviewHeader
         else { return UITableViewCell() }
-        let headerViewModel = NewPlanPreviewHeaderViewModel(imgList: ["https://picsum.photos/600","https://picsum.photos/600"],
-          title: "감성을 느낄 수 있는 힐링여행",
-                                                            address: "제주 동부",
-                                                            hashtag: ["해시태그","해시태그","해시태그"],
-                                                            price: "1,000",
-                                                            iconData: .init(theme: "힐링",
-                                                                            spotCount: "32",
-                                                                            restaurantCount: "12",
-                                                                            dayCount: "5",
-                                                                            peopleCase: "친구",
-                                                                            budget: "45만원",
-                                                                            transport: "버스",
-                                                                            month: "8"))
-        header.viewModel = headerViewModel
+        guard let viewModel = self.headerCellViewModel else { return UITableViewCell() }
+        
+        header.viewModel = viewModel
+        header.setHeaderData()
         return header
         
       case .creator:
         guard let creatorCell = tableView.dequeueReusableCell(withIdentifier: NewPlanPreviewCreator.className,
                                                          for: indexPath) as? NewPlanPreviewCreator
         else { return UITableViewCell() }
-        let creatorViewModel = NewPlanPreviewCreatorViewModel(profileImgURL: "https://picsum.photos/200",
-                                                              authorName: "크리에이터 이름",
-                                                              authorDescription: "제주를 브랜딩하는 스냅 작가",
-                                                              creatorIntroduce: "안녕하세요. 전직 패션 광고 AE 이자 현재 온라인 라이프스타일샵을 운영하고 있는 미니미라고 합니다. 저에게 여행이란 유유자적하며 그곳에서만 느낄 수 있는 색깔에서 영감을 얻어 가는 것이라고 생각해요. 또한 그곳에서만 맛볼 수 있는 음식을 경험하는 것도 여행의 즐거움이죠. 제가 다녀온 제주는 우연하게 발견한 명소라던가 상점이나 식당이라면 철학과 스토리를 감각적으로 풀어낸 곳들입니다. 여행지마다 직접 경험한 소소한 꿀팁들도 숨어있어요. 그럼 제주에서 경험한 멋과 맛에 대해서 차례로 소개할게요.")
-        creatorCell.viewModel = creatorViewModel
+        
+        guard let viewModel = self.creatorCellViewModel else {
+          
+          return UITableViewCell() }
+        creatorCell.viewModel = viewModel
         return creatorCell
         
       case .mainContents:
@@ -216,8 +221,8 @@ extension NewPlanPreviewVC: UITableViewDataSource {
         guard let mainContentCell = tableView.dequeueReusableCell(withIdentifier: NewPlanPreviewMainContents.className,
                                                          for: indexPath) as? NewPlanPreviewMainContents
         else { return UITableViewCell() }
-        let mainContentViewModel = NewPlanPreviewMainContentViewModel.init(contentList: [.init(imgURLs: ["https://picsum.photos/200"], contents: "안녕하세요~")])
-        mainContentCell.viewModel = mainContentViewModel
+        guard let viewModel = self.mainContentCellViewModel else { return UITableViewCell() }
+        mainContentCell.viewModel = viewModel
         return mainContentCell
         
       case .purhcaseGuide:
@@ -239,9 +244,7 @@ extension NewPlanPreviewVC: UITableViewDataSource {
         guard let suggestCell = tableView.dequeueReusableCell(withIdentifier: NewPlanPreviewSuggestList.className,
                                                          for: indexPath) as? NewPlanPreviewSuggestList
         else { return UITableViewCell() }
-        let viewModel = NewPlanPreviewSuggestViewModel(list: [.init(title: "워케이션을 위한 카페투어",
-                                                                    address: "제주 동부",
-                                                                    imgURL: "https://picsum.photos/200")])
+        let viewModel = self.suggestCellViewModel
         suggestCell.viewModel = viewModel
         return suggestCell
         
@@ -259,8 +262,13 @@ extension NewPlanPreviewVC: UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     if section == 0 {
+      guard self.headerCellViewModel != nil
+              && self.headerCellViewModel != nil else {
+        return 0
+      }
       return contentList[0].count
     } else {
+      guard self.mainContentCellViewModel != nil else { return 0 }
       return contentList[1].count
     }
   }
@@ -290,4 +298,130 @@ extension NewPlanPreviewVC : UIScrollViewDelegate {
       topNavibar.backgroundView.alpha = 1
     }
   }
+}
+
+extension NewPlanPreviewVC {
+  private func fetchCreatorData() {
+    guard self.planID != 0 else { return }
+    BaseService.default.fetchNewPlanPreviewCreator(idx: self.planID) { result in
+        result.success { entity in
+          guard let entity = entity else { return }
+          self.creatorCellViewModel = NewPlanPreviewCreatorViewModel(profileImgURL: "https://picsum.photos/200",
+                                                                     authorName: entity.nickname,
+                                                                     authorDescription: "제주를 브랜딩하는 스냅 작가",
+                                                                     creatorIntroduce: entity.description,
+                                                                     authorIdx: entity.userID)
+          self.mainContentTV.reloadData()
+          
+        }.catch { err in
+          print("크리에이터 데이터 조회 실패")
+        }
+      }
+  }
+  
+  private func fetchPlanHeaderData() {
+    BaseService.default.fetchNewPlanPreviewCourse(idx: self.planID) { result in
+      result.success { entity in
+        guard let entity = entity else { return }
+        let iconData = PlanPreview.IconData(theme: self.makeThemeString(entity.theme),
+                                            spotCount: "\(entity.spotCount)",
+                                            restaurantCount: "\(entity.restaurantCount)",
+                                            dayCount: "\(entity.totalDay)",
+                                            peopleCase: self.makePartnerString(entity.travelPartner),
+                                            budget: self.makeBudget(entity.budget.amount),
+                                            transport: self.makeTransport(entity.travelMobility),
+                                            month: "\(entity.month)")
+        
+        self.headerCellViewModel = NewPlanPreviewHeaderViewModel(imgList: entity.thumbnail,
+                                                                 title: entity.title,
+                                                                 address: self.makeRegionString(entity.region),
+                                                                 hashtag: entity.hashtag,
+                                                                 price: self.makePrice(entity.price),
+                                                                 iconData: iconData)
+        self.mainContentTV.reloadData()
+        
+      }.catch { err in
+        print("미리보기 헤더 데이터 조회 실패")
+      }
+    }
+  }
+  
+  private func fetchPlanPreviewDetail() {
+    BaseService.default.fetchNewPlanPreviewDetail(idx: self.planID) { result in
+      result.success { entity in
+        guard let entity = entity else { return }
+        let contentList = entity.previewContents.map { content -> NewPlanMainContentsCellViewModel in
+          return NewPlanMainContentsCellViewModel(imgURLs: content.images,
+                                                  contents: content.previewContentDescription)
+        }
+        self.mainContentCellViewModel = NewPlanPreviewMainContentViewModel(contentList: contentList)
+        print(self.mainContentCellViewModel)
+        self.mainContentTV.reloadData()
+      }.catch { _ in
+        print("미리보기 상세정보 조회 실패")
+      }
+    }
+  }
+  
+  private func fetchPlanSuggestList() {
+    BaseService.default.fethcNewPlanPreviewRecommend(region: "JEJU") { result in
+      result.success { entity in
+        guard let entity = entity else { return }
+        let suggestCellViewModel = entity.map { entity -> NewPlanPreviewSuggestCellViewModel in
+          return NewPlanPreviewSuggestCellViewModel.init(title: entity.title,
+                                                         address: self.makeRegionString(entity.region.rawValue),
+                                                         imgURL: entity.thumbnailURL,
+                                                         planID: entity.planID)
+        }
+        let viewModel = NewPlanPreviewSuggestViewModel(list: suggestCellViewModel)
+        self.suggestCellViewModel = viewModel
+        self.mainContentTV.reloadData()
+      }.catch { err in
+        print("추천 리스트 조회 실패")
+      }
+    }
+  }
+}
+
+extension NewPlanPreviewVC {
+  private func makePrice(_ price: Int) -> String {
+    let numberFormatter = NumberFormatter()
+    numberFormatter.numberStyle = .decimal
+    let formattedNumber = numberFormatter.string(from: NSNumber(value: price))
+    return formattedNumber ?? ""
+  }
+  
+  private func makeRegionString(_ region: String) -> String {
+    switch(region) {
+      case "JEJUALL": return "제주시"
+      default:        return ""
+    }
+  }
+  
+  private func makeThemeString(_ theme: String) -> String {
+    switch(theme) {
+      case "HEALING" : return "힐링"
+      default        : return "미정"
+    }
+  }
+  
+  private func makePartnerString(_ partnerCase: String) -> String {
+    switch(partnerCase) {
+      case "FRIEND" : return "친구"
+      default       : return "미정"
+    }
+  }
+  
+  private func makeTransport(_ transportCase: String) -> String {
+    switch(transportCase) {
+      case "CAR"   : return "자동차"
+      default      : return "미정"
+    }
+  }
+  
+  private func makeBudget(_ budget: Int) -> String {
+    let amount = budget / 10000
+    return "\(amount)만원"
+  }
+  
 }

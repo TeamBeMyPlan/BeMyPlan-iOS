@@ -8,7 +8,7 @@
 import UIKit
 
 class HashtagContainerView: XibView{
-  var viewModel: HashtagContainerViewModel! { didSet{
+  var viewModel: HashtagContainerViewModel? { didSet{
     hashtagCV.reloadData() }}
   
   private let flowLayout: UICollectionViewFlowLayout = {
@@ -41,6 +41,7 @@ class HashtagContainerView: XibView{
 
 extension HashtagContainerView: UICollectionViewDataSource, UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    guard let viewModel = viewModel else { return 0 }
     return viewModel.hashtagList.count
   }
   
@@ -48,7 +49,7 @@ extension HashtagContainerView: UICollectionViewDataSource, UICollectionViewDele
     guard let hashtagCell = collectionView.dequeueReusableCell(withReuseIdentifier: HashtagCVC.className, for: indexPath) as? HashtagCVC
     else { return UICollectionViewCell () }
     hashtagCell.layer.cornerRadius = 2
-    hashtagCell.viewModel = self.viewModel.hashtagList[indexPath.row]
+    hashtagCell.viewModel = self.viewModel!.hashtagList[indexPath.row]
     return hashtagCell
   }
 }
@@ -57,7 +58,7 @@ extension HashtagContainerView: UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     let mockLabel = UILabel()
     mockLabel.font = .systemFont(ofSize: 10)
-    mockLabel.text = viewModel.hashtagList[indexPath.row]
+    mockLabel.text = viewModel!.hashtagList[indexPath.row]
     mockLabel.sizeToFit()
     return CGSize(width: mockLabel.frame.width + 16, height: 25)
   }

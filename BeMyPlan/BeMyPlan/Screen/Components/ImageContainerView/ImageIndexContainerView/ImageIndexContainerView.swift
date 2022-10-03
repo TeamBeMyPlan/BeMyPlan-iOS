@@ -36,7 +36,7 @@ extension ImageIndexContainerView {
   private func setLabelIndex() {
     if viewModel == nil { return }
     currentIndexLabel.text = String(viewModel!.currentIndex + 1)
-    totalIndexLabel.text = String(viewModel!.totalIndex + 1)
+    totalIndexLabel.text = String(viewModel!.totalIndex)
   }
 }
 

@@ -19,6 +19,7 @@ class PreviewIconContainerView: XibView {
   @IBOutlet var monthLabel: UILabel!
   
   func setIconData(iconData : PlanPreview.IconData){
+    print("ICON DATA",iconData)
     themeLabel.text = iconData.theme
     spotCountLabel.text = iconData.spotCount + "곳"
     restaurantCountLabel.text = iconData.restaurantCount + "곳"

@@ -9,11 +9,7 @@ import UIKit
 
 class NewPlanPreviewHeader: UITableViewCell, UITableViewRegisterable {
   static var isFromNib: Bool = true
-  var viewModel: NewPlanPreviewHeaderViewModel! { didSet {
-    configureUI()
-    setImageContainerViewUI()
-
-  }}
+  var viewModel: NewPlanPreviewHeaderViewModel!
   var currentIndex = 0 { didSet{ setImageContainerViewUI() }}
   
   @IBOutlet var imageContainerView: ImageContainerView!
@@ -31,6 +27,11 @@ class NewPlanPreviewHeader: UITableViewCell, UITableViewRegisterable {
 }
 
 extension NewPlanPreviewHeader {
+  internal func setHeaderData() {
+    configureUI()
+    setImageContainerViewUI()
+  }
+  
   private func configureUI() {
     titleLabel.text = viewModel.title
     addressLabel.text = viewModel.address
