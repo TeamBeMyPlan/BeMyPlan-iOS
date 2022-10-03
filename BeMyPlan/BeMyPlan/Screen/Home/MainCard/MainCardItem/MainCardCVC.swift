@@ -13,7 +13,7 @@ class MainCardCVC: UICollectionViewCell {
  
   @IBOutlet var mainCardImageLayer: UIView!{
     didSet{
-      mainCardImageLayer.alpha = 0
+      mainCardImageLayer.alpha = 1
     }
   }
   @IBOutlet var mainCardImageView: UIImageView!

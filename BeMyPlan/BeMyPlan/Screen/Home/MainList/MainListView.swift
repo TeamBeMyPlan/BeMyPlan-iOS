@@ -188,8 +188,7 @@ extension MainListView : UIScrollViewDelegate {
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
   }
   func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-    //    let page = Int(targetContentOffset.pointee.x / self.frame.width)
-    //
+
     let layout = self.mainListCV.collectionViewLayout as! UICollectionViewFlowLayout
     let cellWidthIncludingSpacing = layout.itemSize.width + layout.minimumLineSpacing
     var offset = targetContentOffset.pointee
