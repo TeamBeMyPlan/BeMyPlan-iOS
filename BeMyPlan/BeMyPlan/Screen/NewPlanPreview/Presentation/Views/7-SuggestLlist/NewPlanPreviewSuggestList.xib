@@ -28,10 +28,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="lXx-JW-Beq">
-                        <rect key="frame" x="0.0" y="84" width="732" height="220"/>
+                        <rect key="frame" x="0.0" y="84" width="732" height="240"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="220" id="dxn-9X-Iw4"/>
+                            <constraint firstAttribute="height" constant="240" id="dxn-9X-Iw4"/>
                         </constraints>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CLg-gc-QYf">
                             <size key="itemSize" width="128" height="128"/>
@@ -41,7 +41,7 @@
                         </collectionViewFlowLayout>
                     </collectionView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gCv-gr-GI5">
-                        <rect key="frame" x="0.0" y="342" width="732" height="8"/>
+                        <rect key="frame" x="0.0" y="362" width="732" height="8"/>
                         <color key="backgroundColor" name="grey6"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="8" id="ihh-hC-VbP"/>

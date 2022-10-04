@@ -27,6 +27,7 @@ extension NewPlanPreviewSuggestCVC {
   
   private func bindViewModel() {
     titleLabel.text = viewModel.title
+    titleLabel.sizeToFit()
     addressLabel.text = viewModel.address
     contentImageView.setImage(with: viewModel.imgURL)
   }

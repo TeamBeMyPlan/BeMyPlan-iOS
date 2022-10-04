@@ -66,7 +66,7 @@ extension NewPlanPreviewSuggestList: UICollectionViewDelegateFlowLayout {
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     let cellWitdh = screenWidth * (160/375)
-    let cellHeight = cellWitdh + 60
+    let cellHeight = cellWitdh + 80
     return CGSize(width: cellWitdh, height: cellHeight)
   }
   

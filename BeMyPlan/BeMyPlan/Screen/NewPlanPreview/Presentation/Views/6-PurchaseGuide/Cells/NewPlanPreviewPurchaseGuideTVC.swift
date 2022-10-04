@@ -18,6 +18,7 @@ class NewPlanPreviewPurchaseGuideTVC: UITableViewCell,UITableViewRegisterable {
   @IBOutlet var informationContainerView: UIView!
   override func awakeFromNib() {
     super.awakeFromNib()
+    self.setUI()
   }
 }
 

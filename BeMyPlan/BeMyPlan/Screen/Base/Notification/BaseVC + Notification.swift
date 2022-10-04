@@ -48,6 +48,9 @@ enum BaseNotiList : String{
   case restoreComplete
   
   case informationButtonClicked
+  case newPlanPreviewTermFoldClicked
+  case newPlanPreviewSectionHeaderClicked
+  case newPlanPreviewScrollIndexChanged
   
   static func makeNotiName(list : BaseNotiList) -> NSNotification.Name{
     return Notification.Name(String(describing: list))

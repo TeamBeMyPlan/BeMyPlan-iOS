@@ -11,7 +11,9 @@ class NewPlanPreviewTermsCell: UITableViewCell, UITableViewRegisterable {
   static var isFromNib: Bool = true
   
   var viewModel: TermDataModel!
+  private var type: NewPlanPreviewViewCase = .usingTerm
   
+  @IBOutlet var termImageView: UIImageView!
   @IBOutlet var titleLabel: UILabel!
   @IBOutlet var arrowButton: UIButton!
   @IBOutlet var contentTextView: UITextView!
@@ -29,13 +31,38 @@ class NewPlanPreviewTermsCell: UITableViewCell, UITableViewRegisterable {
 }
 
 extension NewPlanPreviewTermsCell {
+  internal func setFoldState(isFold: Bool) {
+    let image = isFold ? UIImage(named: "dropdown_inactive") : UIImage(named: "dropdown_active")
+    arrowButton.setBackgroundImage(image, for: .normal)
+  }
+  
+  internal func setTermType(_ type: NewPlanPreviewViewCase) {
+    self.type = type
+    switch(type) {
+      case .usingTerm:
+        termImageView.image = UIImage(named: "usingTerms")
+        titleLabel.text = "이용안내"
+        
+      case .purhcaseTerm:
+        termImageView.image = UIImage(named: "purchaseTerms")
+        titleLabel.text = "결제안내"
+
+      case .question:
+        termImageView.image = UIImage(named: "questionEmail")
+        titleLabel.text = "문의사항"
+
+
+      default: break
+    }
+  }
+  
   private func configureUI() {
     contentTextView.removeMargin()
   }
   
   private func addButtonActions() {
     expandButton.press {
-      
+      self.postObserverAction(.newPlanPreviewTermFoldClicked,object: self.type)
     }
   }
 }

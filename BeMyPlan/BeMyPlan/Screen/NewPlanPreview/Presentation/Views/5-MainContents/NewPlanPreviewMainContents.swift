@@ -11,8 +11,9 @@ final class NewPlanPreviewMainContents: UITableViewCell, UITableViewRegisterable
   static var isFromNib: Bool = true
   var viewModel: NewPlanPreviewMainContentViewModel! { didSet { configureUI()}}
   
-  @IBOutlet var placeCountDescriptionLabel: UILabel!
-  @IBOutlet var contentTV: UITableView!
+  @IBOutlet private var placeCountTopDescriptionLabel: UILabel!
+  @IBOutlet private var placeCountDescriptionLabel: UILabel!
+  @IBOutlet private var contentTV: UITableView!
   
   override func awakeFromNib() {
     super.awakeFromNib()
@@ -30,12 +31,18 @@ extension NewPlanPreviewMainContents {
     let fullText = placeCountDescriptionLabel.text ?? ""
     let attributedString = NSMutableAttributedString(string: fullText)
     let highlightedWords = String(viewModel.contentList.count) + "곳"
+    let normalWords = "을 미리 만나보세요!"
     let textRange = (fullText as NSString).range(of: highlightedWords)
+    let normalTextRange = (fullText as NSString).range(of: normalWords)
     let boldFont = UIColor.bemyBlue
-    print("RANGE",textRange)
     attributedString.addAttributes([.foregroundColor : UIColor.bemyBlue,
                                     .font : UIFont.boldSystemFont(ofSize: 14)], range: textRange)
+    attributedString.addAttributes([.foregroundColor : UIColor.grey01,
+                                    .font : UIFont.getSpooqaMediumFont(size: 14)], range: normalTextRange)
 
+    placeCountTopDescriptionLabel.font = .getSpooqaMediumFont(size: 14)
+    placeCountTopDescriptionLabel.textColor = .grey01
+    
     placeCountDescriptionLabel.attributedText = attributedString
     placeCountDescriptionLabel.sizeToFit()
   }

@@ -14,15 +14,21 @@ class NewPlanPreviewVC: UIViewController {
   var products = [SKProduct]()
   internal var planID: Int = 2
   private var contentList: [[NewPlanPreviewViewCase]] = [
-    [.topHeader, .creator],
+    [.topHeader, .creator, .recommendReason],
     [.mainContents, .purhcaseGuide,
-     .suggestList, .terms, .footer]
+     .suggestList, .usingTerm,
+     .purhcaseTerm, .question ,.footer]
   ]
   private var creatorCellViewModel: NewPlanPreviewCreatorViewModel?
   private var headerCellViewModel: NewPlanPreviewHeaderViewModel?
   private var mainContentCellViewModel: NewPlanPreviewMainContentViewModel?
   private var suggestCellViewModel: NewPlanPreviewSuggestViewModel?
-
+  private var termFoldState: [Bool] = [false,true,true]
+  
+  private var mainContentCellYPos: CGFloat = 0
+  private var purchaseGuideCellYPos: CGFloat = 0
+  private var recommendCellYPos: CGFloat = 0
+  
   // MARK: - UI Component Part
   @IBOutlet var topNavibar: NewPlanPreviewNaviBar!
   @IBOutlet var mainContentTV: UITableView!
@@ -74,6 +80,7 @@ extension NewPlanPreviewVC {
     NewPlanPreviewPurchaseGuide.register(target: mainContentTV)
     NewPlanPreviewSuggestList.register(target: mainContentTV)
     NewPlanPreviewTermsCell.register(target: mainContentTV)
+    NewPlanPreviewMockCell.register(target: mainContentTV)
   }
   
   private func setUI() {
@@ -96,6 +103,21 @@ extension NewPlanPreviewVC {
       
       informationVC.screenDismissed = {
         self.removeBlackLayer()
+      }
+    }
+    
+    addObserverAction(.newPlanPreviewTermFoldClicked) { noti in
+      if let type = noti.object as? NewPlanPreviewViewCase {
+        if type == .usingTerm { self.termFoldState[0].toggle() }
+        else if type == .purhcaseTerm { self.termFoldState[1].toggle() }
+        else if type == .question { self.termFoldState[2].toggle() }
+        self.mainContentTV.reloadData()
+      }
+    }
+
+    addObserverAction(.newPlanPreviewSectionHeaderClicked) { noti in
+      if let index = noti.object as? Int {
+        self.mainContentTV.scrollToRow(at: IndexPath.init(row: index, section: 1), at: .top, animated: true)
       }
     }
   }
@@ -130,7 +152,7 @@ extension NewPlanPreviewVC: UITableViewDelegate {
       switch(indexPath.row) {
         case 0: return screenWidth * (472/375) + 310
         case 1: return heightCalculator.calculateCreatorCellHeight(text: creatorCellViewModel?.creatorIntroduce)
-        default : return 0
+        default : return 242
       }
     } else {
       switch(indexPath.row) {
@@ -138,10 +160,12 @@ extension NewPlanPreviewVC: UITableViewDelegate {
           guard let mainContentCellViewModel = mainContentCellViewModel else { return 0 }
           let textList = mainContentCellViewModel.contentList.map { $0.contents }
           return heightCalculator.calculateMainCellHeight(textList: textList) + 121
-        case 1: return 620
-        case 2: return screenWidth * (350/375)
-        case 3: return 56
-        default: return 0
+        case 1:     return 620
+        case 2:     return screenWidth * (380/375)
+        case 3: return termFoldState[indexPath.row - 3] ? 56 : 56 + screenWidth * (108/375)
+        case 4: return termFoldState[indexPath.row - 3] ? 56 : 56 + screenWidth * (208/375)
+        case 5: return termFoldState[indexPath.row - 3] ? 56 : 56 + screenWidth * (68/375)
+        default: return 171
       }
     }
   }
@@ -153,9 +177,8 @@ extension NewPlanPreviewVC: UITableViewDataSource {
   func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
     
     if section == 1 {
-      let a = UIView()
-      a.backgroundColor = .yellow
-      return a
+      let header = NewPlanPreviewSectionHeader()
+      return header
     } else {
       return UIView()
     }
@@ -167,25 +190,9 @@ extension NewPlanPreviewVC: UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
     if section == 1 {
-      return 64
+      return 46 + 90
     } else {
       return .leastNonzeroMagnitude
-    }
-  }
-  
-  func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-    if section == 0 {
-      return NewPlanPreviewRecommendReason()
-    } else {
-      return NewPlanPreviewLogoFooterView()
-    }
-  }
-  
-  func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-    if section == 1 {
-      return 171
-    } else {
-      return 292
     }
   }
   
@@ -207,7 +214,7 @@ extension NewPlanPreviewVC: UITableViewDataSource {
         
       case .creator:
         guard let creatorCell = tableView.dequeueReusableCell(withIdentifier: NewPlanPreviewCreator.className,
-                                                         for: indexPath) as? NewPlanPreviewCreator
+                                                              for: indexPath) as? NewPlanPreviewCreator
         else { return UITableViewCell() }
         
         guard let viewModel = self.creatorCellViewModel else {
@@ -215,11 +222,21 @@ extension NewPlanPreviewVC: UITableViewDataSource {
           return UITableViewCell() }
         creatorCell.viewModel = viewModel
         return creatorCell
+      case .recommendReason:
+        guard let mockCell = tableView.dequeueReusableCell(withIdentifier: NewPlanPreviewMockCell.className,
+                                                           for: indexPath) as? NewPlanPreviewMockCell else { return UITableViewCell() }
+        let view = NewPlanPreviewRecommendReason()
+        
+        mockCell.addSubview(view)
+        view.snp.makeConstraints { make in
+          make.edges.equalToSuperview()
+        }
+        return mockCell
         
       case .mainContents:
         
         guard let mainContentCell = tableView.dequeueReusableCell(withIdentifier: NewPlanPreviewMainContents.className,
-                                                         for: indexPath) as? NewPlanPreviewMainContents
+                                                                  for: indexPath) as? NewPlanPreviewMainContents
         else { return UITableViewCell() }
         guard let viewModel = self.mainContentCellViewModel else { return UITableViewCell() }
         mainContentCell.viewModel = viewModel
@@ -227,7 +244,7 @@ extension NewPlanPreviewVC: UITableViewDataSource {
         
       case .purhcaseGuide:
         guard let purchaseGuideCell = tableView.dequeueReusableCell(withIdentifier: NewPlanPreviewPurchaseGuide.className,
-                                                         for: indexPath) as? NewPlanPreviewPurchaseGuide
+                                                                    for: indexPath) as? NewPlanPreviewPurchaseGuide
         else { return UITableViewCell() }
         let viewModel = NewPlanPreviewPurchaseGuideViewModel(list: [.init(title: "장소를 표시한 지도", subtitle: "여행 일정에 포함된 모든 장소가 지도에 다 나와있어요"),
                                                                     .init(title: "일자별 여행 코스", subtitle: "일차별 일정을 한눈에 살펴보세요"),
@@ -235,27 +252,60 @@ extension NewPlanPreviewVC: UITableViewDataSource {
                                                                     .init(title: "솔직 후기", subtitle: "여행 플레이스의 장점과 단점을 알아보세요"),
                                                                     .init(title: "가본 사람만 알 수 있는 꿀팁", subtitle: "검색으로 쉽게 안 나오는 팁들읖 챙겨가세요"),
                                                                     .init(title: "다음 장소로 이동할 때의 교통편", subtitle: "어떻게 이동했고, 몇 분이 걸렸는지 확인해보세요")
-                                                                   ])
+        ])
         
         purchaseGuideCell.viewModel = viewModel
         return purchaseGuideCell
         
       case .suggestList:
         guard let suggestCell = tableView.dequeueReusableCell(withIdentifier: NewPlanPreviewSuggestList.className,
-                                                         for: indexPath) as? NewPlanPreviewSuggestList
+                                                              for: indexPath) as? NewPlanPreviewSuggestList
         else { return UITableViewCell() }
         let viewModel = self.suggestCellViewModel
         suggestCell.viewModel = viewModel
         return suggestCell
         
-      case .terms:
+      case .usingTerm:
         guard let termCell = tableView.dequeueReusableCell(withIdentifier: NewPlanPreviewTermsCell.className,
-                                                         for: indexPath) as? NewPlanPreviewTermsCell
+                                                           for: indexPath) as? NewPlanPreviewTermsCell
         else { return UITableViewCell() }
-        let viewModel = TermDataModel(title: "이용약관", content: "이용약관")
+        let viewModel = TermDataModel(title: "이용약관", content: "")
         termCell.viewModel = viewModel
+        termCell.setFoldState(isFold: termFoldState[0])
+        termCell.setTermType(.usingTerm)
         return termCell
         
+      case .purhcaseTerm:
+        guard let termCell = tableView.dequeueReusableCell(withIdentifier: NewPlanPreviewTermsCell.className,
+                                                           for: indexPath) as? NewPlanPreviewTermsCell
+        else { return UITableViewCell() }
+        let viewModel = TermDataModel(title: "결제안내", content: "이용약관")
+        termCell.viewModel = viewModel
+        termCell.setFoldState(isFold: termFoldState[1])
+        termCell.setTermType(.purhcaseTerm)
+        
+        return termCell
+        
+      case .question:
+        guard let termCell = tableView.dequeueReusableCell(withIdentifier: NewPlanPreviewTermsCell.className,
+                                                           for: indexPath) as? NewPlanPreviewTermsCell
+        else { return UITableViewCell() }
+        let viewModel = TermDataModel(title: "문의사항", content: "이용약관")
+        termCell.viewModel = viewModel
+        termCell.setFoldState(isFold: termFoldState[2])
+        termCell.setTermType(.question)
+        
+        return termCell
+        
+      case .footer:
+        guard let mockCell = tableView.dequeueReusableCell(withIdentifier: NewPlanPreviewMockCell.className,
+                                                           for: indexPath) as? NewPlanPreviewMockCell else { return UITableViewCell() }
+        let view = NewPlanPreviewLogoFooterView()
+        mockCell.addSubview(view)
+        view.snp.makeConstraints { make in
+          make.edges.equalToSuperview()
+        }
+        return mockCell
       default: return UITableViewCell()
     }
   }
@@ -282,20 +332,36 @@ enum NewPlanPreviewViewCase: Int{
   case mainContents
   case purhcaseGuide
   case suggestList
-  case terms
+  case usingTerm
+  case purhcaseTerm
+  case question
   case footer
 }
 
 extension NewPlanPreviewVC : UIScrollViewDelegate {
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
     let imageHeaderHeight: CGFloat = screenWidth * (472/375) - 80
-    
+    let yPos = scrollView.contentOffset.y
+
     let posY = scrollView.contentOffset.y
     if posY < imageHeaderHeight {
       topNavibar.backgroundView.alpha = posY / imageHeaderHeight
-
+      
     } else {
       topNavibar.backgroundView.alpha = 1
+    }
+    
+    switch(yPos + 90 + 50) {
+      case 0 ..< purchaseGuideCellYPos :
+        postObserverAction(.newPlanPreviewScrollIndexChanged, object: 0)
+
+      case purchaseGuideCellYPos ..< recommendCellYPos :
+        postObserverAction(.newPlanPreviewScrollIndexChanged, object: 1)
+
+      case recommendCellYPos ... 10000 :
+        postObserverAction(.newPlanPreviewScrollIndexChanged, object: 2)
+
+      default: break
     }
   }
 }
@@ -304,19 +370,19 @@ extension NewPlanPreviewVC {
   private func fetchCreatorData() {
     guard self.planID != 0 else { return }
     BaseService.default.fetchNewPlanPreviewCreator(idx: self.planID) { result in
-        result.success { entity in
-          guard let entity = entity else { return }
-          self.creatorCellViewModel = NewPlanPreviewCreatorViewModel(profileImgURL: "https://picsum.photos/200",
-                                                                     authorName: entity.nickname,
-                                                                     authorDescription: "제주를 브랜딩하는 스냅 작가",
-                                                                     creatorIntroduce: entity.description,
-                                                                     authorIdx: entity.userID)
-          self.mainContentTV.reloadData()
-          
-        }.catch { err in
-          print("크리에이터 데이터 조회 실패")
-        }
+      result.success { entity in
+        guard let entity = entity else { return }
+        self.creatorCellViewModel = NewPlanPreviewCreatorViewModel(profileImgURL: "https://picsum.photos/200",
+                                                                   authorName: entity.nickname,
+                                                                   authorDescription: "제주를 브랜딩하는 스냅 작가",
+                                                                   creatorIntroduce: entity.description,
+                                                                   authorIdx: entity.userID)
+        self.mainContentTV.reloadData()
+        
+      }.catch { err in
+        print("크리에이터 데이터 조회 실패")
       }
+    }
   }
   
   private func fetchPlanHeaderData() {
@@ -355,8 +421,21 @@ extension NewPlanPreviewVC {
                                                   contents: content.previewContentDescription)
         }
         self.mainContentCellViewModel = NewPlanPreviewMainContentViewModel(contentList: contentList)
-        print(self.mainContentCellViewModel)
         self.mainContentTV.reloadData()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+          print(self.mainContentTV.rectForRow(at: IndexPath.init(row: 0, section: 0)).minY)
+          print(self.mainContentTV.rectForRow(at: IndexPath.init(row: 1, section: 0)).minY)
+          print(self.mainContentTV.rectForRow(at: IndexPath.init(row: 2, section: 0)).minY)
+          print(self.mainContentTV.rectForRow(at: IndexPath.init(row: 0, section: 1)).minY)
+          print(self.mainContentTV.rectForRow(at: IndexPath.init(row: 1, section: 1)).minY)
+          print(self.mainContentTV.rectForRow(at: IndexPath.init(row: 2, section: 1)).minY)
+
+          self.mainContentCellYPos = self.mainContentTV.rectForRow(at: IndexPath.init(row: 0, section: 1)).minY
+          self.purchaseGuideCellYPos = self.mainContentTV.rectForRow(at: IndexPath.init(row: 1, section: 1)).minY
+          self.recommendCellYPos = self.mainContentTV.rectForRow(at: IndexPath.init(row: 2, section: 1)).minY
+        }
+
       }.catch { _ in
         print("미리보기 상세정보 조회 실패")
       }
