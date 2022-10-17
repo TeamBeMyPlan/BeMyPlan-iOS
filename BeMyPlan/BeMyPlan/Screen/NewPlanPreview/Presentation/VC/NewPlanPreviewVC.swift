@@ -29,6 +29,7 @@ class NewPlanPreviewVC: UIViewController {
   private var mainContentCellYPos: CGFloat = 0
   private var purchaseGuideCellYPos: CGFloat = 0
   private var recommendCellYPos: CGFloat = 0
+  private var isPurhcased: Bool = false
   
   // MARK: - UI Component Part
   @IBOutlet var topNavibar: NewPlanPreviewNaviBar!
@@ -75,7 +76,7 @@ extension NewPlanPreviewVC {
   
   private func initPurchaseProduct() {
 
-    PlanPurchaseItem.productID = "bemyplan.purchase.test1"
+    PlanPurchaseItem.productID = "bemyplan.purchase.test3"
     PlanPurchaseItem.iapService.getProducts { [weak self] success, products in
         guard let self = self else { return }
       
@@ -93,6 +94,18 @@ extension NewPlanPreviewVC {
     
     let purhcaseState = PlanPurchaseItem.iapService.isProductPurchased(PlanPurchaseItem.productID)
     print("PURCHASE ___",purhcaseState)
+    
+    let buttonTitle = purhcaseState ? "전체 여행 코스 보러가기" : "구매하기"
+    bottomCTAButton.setTitle(buttonTitle, for: .normal)
+  }
+  
+  // 인앱 결제 버튼 눌렀을 때
+  private func purchaseActionStart() {
+    PlanPurchaseItem.iapService.buyProduct(planPurchsaeItem)
+  }
+  
+  private func pushDetailView() {
+    
   }
   
   private func registerCell() {
@@ -113,11 +126,29 @@ extension NewPlanPreviewVC {
   
   private func bindButtonAction() {
     bottomCTAButton.press {
-      self.touchIAP()
+      self.isPurhcased ? self.pushDetailView() : self.purchaseActionStart()
     }
   }
   
   private func addObserver() {
+    addObserverAction(.IAPServicePurchaseNotification) { noti in
+        guard
+            let productID = noti.object as? String,
+            self.planPurchsaeItem.productIdentifier == productID
+          else { return }
+      self.makeAlert(content: "구매가 완료되었습니다.")
+      print("구매 성공")
+    }
+    
+    addObserverAction(.purchaseComplete) { noti in
+      if let data = noti.object as? String {
+        print("영수증 번호 ===> ",data)
+        // TODO: - 구매 post 요청 보내기
+        // TODO: - post 성공하면 영수증 검증 보내기
+        // TODO: - 성공하면 구매 확정 post 보내기 하면 끝!
+      }
+    }
+  
     addObserverAction(.informationButtonClicked) { _ in
       let informationVC = ModuleFactory.resolve().makeSummaryHelper()
       self.addBlackLayer()
@@ -412,7 +443,7 @@ extension NewPlanPreviewVC {
     BaseService.default.fetchNewPlanPreviewCourse(idx: self.planID) { result in
       result.success { entity in
         guard let entity = entity else { return }
-        self.initPurchase()
+        self.initPurchaseProduct()
 
         let iconData = PlanPreview.IconData(theme: self.makeThemeString(entity.theme),
                                             spotCount: "\(entity.spotCount)",

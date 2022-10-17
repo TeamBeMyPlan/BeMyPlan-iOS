@@ -103,10 +103,6 @@ extension PurchaseTestVC {
     }
     
   }
-  
-  @objc private func restore() {
-    MyProducts.iapService.restorePurchases()
-  }
 }
 
 

@@ -1,4 +1,3 @@
-
 import StoreKit
 
 typealias ProductsRequestCompletion = (_ success: Bool, _ products: [SKProduct]?) -> Void
@@ -84,7 +83,11 @@ extension IAPService: SKPaymentTransactionObserver {
       switch $0.transactionState {
       case .purchased:
         print("completed purchased")
-        self.deliverPurchaseNotificationFor(id: $0.original?.payment.productIdentifier)
+          print($0.payment)
+          print($0.transactionState)
+          print($0.transactionIdentifier)
+          print($0.original)
+        self.deliverPurchaseNotificationFor(id: $0.payment.productIdentifier)
           NotificationCenter.default.post(
             name: BaseNotiList.makeNotiName(list: .purchaseComplete),
             object: getReceiptData()!
@@ -126,10 +129,8 @@ extension IAPService: SKPaymentTransactionObserver {
     }
   }
   
-  
   private func deliverPurchaseNotificationFor(id: String?) {
     print("현재 IDsss",id)
-
     guard let id = id else { return }
   
     self.purchasedProductIDs.insert(id)
