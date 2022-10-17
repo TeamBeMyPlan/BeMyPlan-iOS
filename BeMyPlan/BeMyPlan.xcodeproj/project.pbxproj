@@ -122,6 +122,7 @@
 		FD20C623278EF11000AC6E34 /* MyPlanWithdrawVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD20C622278EF11000AC6E34 /* MyPlanWithdrawVC.swift */; };
 		FD20C626278EF6AE00AC6E34 /* BarSelectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD20C625278EF6AE00AC6E34 /* BarSelectButton.swift */; };
 		FD20C628278EF6CA00AC6E34 /* BarFullButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD20C627278EF6CA00AC6E34 /* BarFullButton.swift */; };
+		FD2BE05528F6FD280055F953 /* PurchaseProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2BE05428F6FD280055F953 /* PurchaseProductModel.swift */; };
 		FD2C9E1327B241AF00422E6B /* manageObserverAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2C9E1227B241AF00422E6B /* manageObserverAction.swift */; };
 		FD2D4DAA278D3C55002084B9 /* PlanDetailMapContainerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD2D4DA8278D3C55002084B9 /* PlanDetailMapContainerView.xib */; };
 		FD2D4DB6278D3DB6002084B9 /* PlanDetailSummaryTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD2D4DB4278D3DB6002084B9 /* PlanDetailSummaryTVC.xib */; };
@@ -477,6 +478,7 @@
 		FD20C622278EF11000AC6E34 /* MyPlanWithdrawVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlanWithdrawVC.swift; sourceTree = "<group>"; };
 		FD20C625278EF6AE00AC6E34 /* BarSelectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarSelectButton.swift; sourceTree = "<group>"; };
 		FD20C627278EF6CA00AC6E34 /* BarFullButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarFullButton.swift; sourceTree = "<group>"; };
+		FD2BE05428F6FD280055F953 /* PurchaseProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseProductModel.swift; sourceTree = "<group>"; };
 		FD2C9E1227B241AF00422E6B /* manageObserverAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = manageObserverAction.swift; sourceTree = "<group>"; };
 		FD2D4DA8278D3C55002084B9 /* PlanDetailMapContainerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanDetailMapContainerView.xib; sourceTree = "<group>"; };
 		FD2D4DB3278D3DB6002084B9 /* PlanDetailSummaryTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDetailSummaryTVC.swift; sourceTree = "<group>"; };
@@ -1070,6 +1072,7 @@
 		FD09DE2527857DD6006DA050 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FD2BE05328F6FD100055F953 /* Purchase */,
 				F250440B2799D00E00791AB7 /* Auth */,
 				523C70B62798574D0073371D /* Home */,
 				FD5100CC2848AF1E0037AC8E /* User */,
@@ -1150,6 +1153,14 @@
 				FD20C627278EF6CA00AC6E34 /* BarFullButton.swift */,
 			);
 			path = Button;
+			sourceTree = "<group>";
+		};
+		FD2BE05328F6FD100055F953 /* Purchase */ = {
+			isa = PBXGroup;
+			children = (
+				FD2BE05428F6FD280055F953 /* PurchaseProductModel.swift */,
+			);
+			path = Purchase;
 			sourceTree = "<group>";
 		};
 		FD2D4DA2278D3B98002084B9 /* Cells */ = {
@@ -2462,6 +2473,7 @@
 				FDC47DED2789521000A152E8 /* PreviewDescriptionData.swift in Sources */,
 				FD54872D286ADAF700822478 /* NewPlanPreviewMainContents.swift in Sources */,
 				FD09DE1127857A5C006DA050 /* pressAction.swift in Sources */,
+				FD2BE05528F6FD280055F953 /* PurchaseProductModel.swift in Sources */,
 				FDC47E0D2789742800A152E8 /* TravelSpotDetailTVC.swift in Sources */,
 				FD09DE0B27857995006DA050 /* calculatePastTime.swift in Sources */,
 				FD09DE00278578C4006DA050 /* ImageLiterals.swift in Sources */,
@@ -2691,10 +2703,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = BeMyPlan/BeMyPlan.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 2022081603;
-				DEVELOPMENT_TEAM = PLJU22T9YZ;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = PLJU22T9YZ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -2720,7 +2734,8 @@
 				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.BeMyPlan.release;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = BeMyPlan_develop_colours;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = BeMyPlan_develop_colours;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "BeMyPlan-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;

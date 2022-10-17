@@ -32,6 +32,7 @@ final class IAPService: NSObject, IAPServiceType {
   }
   
   func getProducts(completion: @escaping ProductsRequestCompletion) {
+    print("GET PRODUCTS START")
     self.productsRequest?.cancel()
     self.productsCompletion = completion
     self.productsRequest = SKProductsRequest(productIdentifiers: self.productIDs)
@@ -42,6 +43,7 @@ final class IAPService: NSObject, IAPServiceType {
     print("buyProduct")
     SKPaymentQueue.default().add(SKPayment(product: product))
   }
+  
   func isProductPurchased(_ productID: String) -> Bool {
     self.purchasedProductIDs.contains(productID)
   }

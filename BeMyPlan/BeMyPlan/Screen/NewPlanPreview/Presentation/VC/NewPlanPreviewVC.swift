@@ -11,7 +11,8 @@ import StoreKit
 
 class NewPlanPreviewVC: UIViewController {
   // MARK: - Vars & Lets Part
-  var products = [SKProduct]()
+  private var planPurchsaeItem = SKProduct()
+  private var purhcaseProduct = PlanPurchaseItem()
   internal var planID: Int = 2
   private var contentList: [[NewPlanPreviewViewCase]] = [
     [.topHeader, .creator, .recommendReason],
@@ -43,7 +44,6 @@ class NewPlanPreviewVC: UIViewController {
     setDelegate()
     setTableView()
     setUI()
-    initIAP()
     bindButtonAction()
     addObserver()
     topNavibar.backgroundView.alpha = 0
@@ -71,6 +71,28 @@ extension NewPlanPreviewVC {
     if #available(iOS 15.0, *) {
       mainContentTV.sectionHeaderTopPadding = 0.0
     }
+  }
+  
+  private func initPurchaseProduct() {
+
+    PlanPurchaseItem.productID = "bemyplan.purchase.test1"
+    PlanPurchaseItem.iapService.getProducts { [weak self] success, products in
+        guard let self = self else { return }
+      
+        if success,
+           self.headerCellViewModel != nil,
+            let products = products {
+          DispatchQueue.main.async {
+
+            self.planPurchsaeItem = products.first!
+            self.headerCellViewModel!.price = self.makePrice(self.planPurchsaeItem.price.stringValue)
+            self.mainContentTV.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
+          }
+        }
+    }
+    
+    let purhcaseState = PlanPurchaseItem.iapService.isProductPurchased(PlanPurchaseItem.productID)
+    print("PURCHASE ___",purhcaseState)
   }
   
   private func registerCell() {
@@ -208,6 +230,7 @@ extension NewPlanPreviewVC: UITableViewDataSource {
         else { return UITableViewCell() }
         guard let viewModel = self.headerCellViewModel else { return UITableViewCell() }
         
+        print("HEADERVIEW",viewModel.price)
         header.viewModel = viewModel
         header.setHeaderData()
         return header
@@ -389,6 +412,8 @@ extension NewPlanPreviewVC {
     BaseService.default.fetchNewPlanPreviewCourse(idx: self.planID) { result in
       result.success { entity in
         guard let entity = entity else { return }
+        self.initPurchase()
+
         let iconData = PlanPreview.IconData(theme: self.makeThemeString(entity.theme),
                                             spotCount: "\(entity.spotCount)",
                                             restaurantCount: "\(entity.restaurantCount)",
@@ -402,7 +427,7 @@ extension NewPlanPreviewVC {
                                                                  title: entity.title,
                                                                  address: self.makeRegionString(entity.region),
                                                                  hashtag: entity.hashtag,
-                                                                 price: self.makePrice(entity.price),
+                                                                 price: self.makePrice(String(entity.price)),
                                                                  iconData: iconData)
         self.mainContentTV.reloadData()
         
@@ -463,7 +488,8 @@ extension NewPlanPreviewVC {
 }
 
 extension NewPlanPreviewVC {
-  private func makePrice(_ price: Int) -> String {
+  private func makePrice(_ price: String) -> String {
+    guard let price = Int(price) else { return "" }
     let numberFormatter = NumberFormatter()
     numberFormatter.numberStyle = .decimal
     let formattedNumber = numberFormatter.string(from: NSNumber(value: price))

@@ -29,9 +29,7 @@ extension NewPlanPreviewVC {
       print("load products \(products ?? [])")
       guard let self = self else { return }
       if success, let products = products {
-        DispatchQueue.main.async {
-          self.products = products
-        }
+
       }
     }
   }

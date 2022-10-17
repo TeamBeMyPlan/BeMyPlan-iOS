@@ -31,7 +31,7 @@ extension NewPlanPreviewHeader {
     configureUI()
     setImageContainerViewUI()
   }
-  
+    
   private func configureUI() {
     titleLabel.text = viewModel.title
     addressLabel.text = viewModel.address
@@ -60,6 +60,6 @@ struct NewPlanPreviewHeaderViewModel {
   let title: String
   let address: String
   let hashtag: [String]
-  let price: String
+  var price: String
   let iconData: PlanPreview.IconData
 }

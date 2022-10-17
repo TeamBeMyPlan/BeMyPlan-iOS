@@ -49,7 +49,7 @@ extension PurchaseTestVC {
       }
     }
     
-    MyProducts1.iapService.getProducts { [weak self] success, products in
+    PlanPurchaseItem.iapService.getProducts { [weak self] success, products in
         print("1 load products \(products ?? [])")
         guard let self = self else { return }
         if success, let products = products {
@@ -81,60 +81,19 @@ extension PurchaseTestVC {
         }
     }
     
-//    MyProducts2.iapService.getProducts { [weak self] success, products in
-//        print("2 load products \(products ?? [])")
-//        guard let self = self else { return }
-//        if success, let products = products {
-//          DispatchQueue.main.async {
-//            dump(products)
-//
-//            self.secondProducts = products
-//            self.productss.append(contentsOf: self.secondProducts)
-//
-//            var texts = "2️⃣ Second PRODUCT\n"
-//
-//            texts += dump(self.secondProducts.first!).description
-//            texts += "\n========================\n"
-//            self.purchaseLogTextView.text += texts
-//
-//          }
-//        }
-//    }
-    
-//    MyProducts3.iapService.getProducts { [weak self] success, products in
-//        print("3 load products \(products ?? [])")
-//        guard let self = self else { return }
-//        if success, let products = products {
-//          DispatchQueue.main.async {
-//            dump(products)
-//
-//            self.thirdProducts = products
-//            self.productss.append(contentsOf: self.thirdProducts)
-//
-//            var texts = "3️⃣ Thrid PRODUCT\n"
-//
-//            texts += dump(self.thirdProducts.first!).description
-//            texts += "\n========================\n"
-//            self.purchaseLogTextView.text += texts
-//
-//          }
-//        }
-//    }
-    
   }
   
   // 인앱 결제 버튼 눌렀을 때
   func touchIAP() {
     firstButton.press {
       if let product = self.firstProducts.first {
-        MyProducts1.iapService.buyProduct(product)
+        PlanPurchaseItem.iapService.buyProduct(product)
       }
     }
 
-    
     restoreButton.press {
       if let product = self.firstProducts.first {
-        MyProducts1.iapService.restorePurchases()
+        PlanPurchaseItem.iapService.restorePurchases()
       }
     }
     
@@ -148,33 +107,11 @@ extension PurchaseTestVC {
   @objc private func restore() {
     MyProducts.iapService.restorePurchases()
   }
-  
-
-  
-  
 }
 
 
-struct MyProducts1 {
-  static var productID = "com.BeMyPlan.release.plan01"
-  static var iapService: IAPServiceType = IAPService(productIDs: Set<String>([productID]))
-  
-  static func getResourceProductName(_ id: String) -> String? {
-    id.components(separatedBy: ".").last
-  }
-}
-
-struct MyProducts2 {
-  static var productID = "com.BeMyPlan.release.plan002"
-  static var iapService: IAPServiceType = IAPService(productIDs: Set<String>([productID]))
-  
-  static func getResourceProductName(_ id: String) -> String? {
-    id.components(separatedBy: ".").last
-  }
-}
-
-struct MyProducts3 {
-  static var productID = "com.BeMyPlan.release.plan003"
+struct PlanPurchaseItem {
+  static var productID = ""
   static var iapService: IAPServiceType = IAPService(productIDs: Set<String>([productID]))
   
   static func getResourceProductName(_ id: String) -> String? {
