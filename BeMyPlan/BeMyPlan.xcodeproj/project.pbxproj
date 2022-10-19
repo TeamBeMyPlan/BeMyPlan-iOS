@@ -280,6 +280,9 @@
 		FDC47E0F2789742800A152E8 /* TravelSpotDetailTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDC47E092789742800A152E8 /* TravelSpotDetailTVC.xib */; };
 		FDC47E112789742800A152E8 /* TravelSpotDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC47E0B2789742800A152E8 /* TravelSpotDetailVC.swift */; };
 		FDC47E132789875800A152E8 /* makeCellInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC47E122789875800A152E8 /* makeCellInstance.swift */; };
+		FDC5CFA72900404D005CFAB5 /* PurchaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC5CFA62900404D005CFAB5 /* PurchaseService.swift */; };
+		FDC5CFA929004AC2005CFAB5 /* PurchaseCheckModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC5CFA829004AC2005CFAB5 /* PurchaseCheckModel.swift */; };
+		FDC5CFAB29006817005CFAB5 /* PurchaseValidateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC5CFAA29006817005CFAB5 /* PurchaseValidateModel.swift */; };
 		FDCB31AF28720070001588F7 /* ImageSlideShow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDCB31AE28720070001588F7 /* ImageSlideShow.xib */; };
 		FDCB31B2287200E9001588F7 /* ImageSlideShowCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCB31B0287200E9001588F7 /* ImageSlideShowCVC.swift */; };
 		FDCB31B3287200E9001588F7 /* ImageSlideShowCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDCB31B1287200E9001588F7 /* ImageSlideShowCVC.xib */; };
@@ -639,6 +642,9 @@
 		FDC47E092789742800A152E8 /* TravelSpotDetailTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TravelSpotDetailTVC.xib; sourceTree = "<group>"; };
 		FDC47E0B2789742800A152E8 /* TravelSpotDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TravelSpotDetailVC.swift; sourceTree = "<group>"; };
 		FDC47E122789875800A152E8 /* makeCellInstance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = makeCellInstance.swift; sourceTree = "<group>"; };
+		FDC5CFA62900404D005CFAB5 /* PurchaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseService.swift; sourceTree = "<group>"; };
+		FDC5CFA829004AC2005CFAB5 /* PurchaseCheckModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseCheckModel.swift; sourceTree = "<group>"; };
+		FDC5CFAA29006817005CFAB5 /* PurchaseValidateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseValidateModel.swift; sourceTree = "<group>"; };
 		FDCB31AE28720070001588F7 /* ImageSlideShow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageSlideShow.xib; sourceTree = "<group>"; };
 		FDCB31B0287200E9001588F7 /* ImageSlideShowCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSlideShowCVC.swift; sourceTree = "<group>"; };
 		FDCB31B1287200E9001588F7 /* ImageSlideShowCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageSlideShowCVC.xib; sourceTree = "<group>"; };
@@ -993,6 +999,7 @@
 				FD5100C62848A35B0037AC8E /* PlanListService.swift */,
 				FD0562BB2849F7CF0027832A /* OrderService.swift */,
 				FDBF6A6728EAE35400E7A276 /* NewPlanPreviewService.swift */,
+				FDC5CFA62900404D005CFAB5 /* PurchaseService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -1159,6 +1166,8 @@
 			isa = PBXGroup;
 			children = (
 				FD2BE05428F6FD280055F953 /* PurchaseProductModel.swift */,
+				FDC5CFA829004AC2005CFAB5 /* PurchaseCheckModel.swift */,
+				FDC5CFAA29006817005CFAB5 /* PurchaseValidateModel.swift */,
 			);
 			path = Purchase;
 			sourceTree = "<group>";
@@ -2338,6 +2347,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FDC5CFAB29006817005CFAB5 /* PurchaseValidateModel.swift in Sources */,
 				FDF980E82786F1910009A14E /* MyPlanVC.swift in Sources */,
 				FD122DEA27D3958700469189 /* PaymentEventPopupVC.swift in Sources */,
 				FDB34C3D27A6D7CE0074B6CE /* ModuleFactory.swift in Sources */,
@@ -2399,6 +2409,7 @@
 				FDBF6A7328EB389800E7A276 /* NewPlanPreviewDetailEntity.swift in Sources */,
 				FD61AFDA2791DB9100D39F47 /* PanDirectionGesture.swift in Sources */,
 				FD8D3A98287A96B30071036D /* NewPlanPreviewPurchaseGuideTVC.swift in Sources */,
+				FDC5CFA929004AC2005CFAB5 /* PurchaseCheckModel.swift in Sources */,
 				FDA2063227C40FE9001A371D /* PlanDetailRepository.swift in Sources */,
 				FD2D4DC3278D57B7002084B9 /* ProgressBar.swift in Sources */,
 				FDC47DEF2789521C00A152E8 /* PreviewPhotoData.swift in Sources */,
@@ -2422,6 +2433,7 @@
 				FD20C61A278EDCF900AC6E34 /* BaseVC + Notification.swift in Sources */,
 				FDA2062E27C40FCC001A371D /* PlanDetailVC.swift in Sources */,
 				FDCB31B5287200F3001588F7 /* ImageSlideShow.swift in Sources */,
+				FDC5CFA72900404D005CFAB5 /* PurchaseService.swift in Sources */,
 				FD3211A927841948007D63D5 /* AppDelegate.swift in Sources */,
 				FD548710286ABF0E00822478 /* NewPlanPreviewModel.swift in Sources */,
 				FD4C86B5278BD82D00D37A2D /* PreviewIconContainerView.swift in Sources */,

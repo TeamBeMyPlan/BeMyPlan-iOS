@@ -65,6 +65,11 @@ enum BaseAPI{
 	case getNewPlanPreviewDetail(idx: Int)
 	case getNewPlanPreviewRecommend(spot: String)
 
+	// MARK: - Purchase
+	case getTravelPurchaseState(idx: Int)
+	case purchaseTravelPlan(idx: Int)
+	case validatePurchase(idx: Int, receipt: String)
+	case completePurchase(idx: Int, paymentID: Int, userID: Int)
 }
 
 extension BaseAPI: TargetType {
@@ -146,7 +151,15 @@ extension BaseAPI: TargetType {
 		case .getNewPlanPreviewDetail:
 					base += "/v2/preview"
 
-      }
+		case .purchaseTravelPlan,
+					.getTravelPurchaseState:
+					base += "/v1/plan/order"
+	
+		case .validatePurchase,
+					.completePurchase:
+				base += "/v1/payment"
+	
+				}
     guard let url = URL(string: base) else {
       fatalError("baseURL could not be configured")
     }
@@ -200,6 +213,12 @@ extension BaseAPI: TargetType {
 				return "/random"
 		case .getNewPlanPreviewDetail(let idx):
 				return "/\(idx)"
+		case .getTravelPurchaseState(let idx):
+				return "/\(idx)"
+		case .validatePurchase(let idx, _):
+			return "/\(idx)/verify"
+		case .completePurchase(let idx, _,_):
+			return "/\(idx)/confirm"
     default :
       return ""
     }
@@ -210,7 +229,9 @@ extension BaseAPI: TargetType {
   ///  각 case 별로 get,post,delete,put 인지 정의합니다.
   var method: Moya.Method {
     switch self{
-			case .sampleAPI, .postScrap, .postSocialLogin, .postSocialSignUp,.postOrderPlan:
+			case .sampleAPI, .postScrap, .postSocialLogin, .postSocialSignUp,
+					.postOrderPlan,.purchaseTravelPlan,.validatePurchase,
+					.completePurchase:
       return .post
 			case .deleteUserWithdraw,.deleteScrap:
       return .delete
@@ -336,6 +357,16 @@ extension BaseAPI: TargetType {
 			
 			case .getNewPlanPreviewRecommend(let region):
 				params["regionCategory"] = region
+				
+			case .purchaseTravelPlan(let idx):
+				params["planId"] = idx
+
+			case .validatePurchase(_, let receipt):
+				params["receipt-data"] = receipt
+				
+			case .completePurchase(_, let receipt,let userID):
+				params["paymentId"] = receipt
+				params["userId"] = userID
     default:
       break
       
@@ -393,7 +424,8 @@ extension BaseAPI: TargetType {
 					.getHomeBemyPlanList,.getBuyList,.getRecentlyListWithPaging,
 					.getSpotPlanListWithPaging,.getUserPlanListWithPaging,
 					.getBemyPlanListWithPaging,.postOrderPlan,.deleteUserWithdraw,
-					.getNewPlanPreviewRecommend:
+					.getNewPlanPreviewRecommend,.purchaseTravelPlan,.validatePurchase,
+					.completePurchase:
       return .requestParameters(parameters: bodyParameters ?? [:], encoding: parameterEncoding)
     default:
       return .requestPlain

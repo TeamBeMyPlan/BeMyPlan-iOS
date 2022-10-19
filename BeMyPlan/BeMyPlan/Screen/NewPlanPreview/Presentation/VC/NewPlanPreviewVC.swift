@@ -52,6 +52,11 @@ class NewPlanPreviewVC: UIViewController {
     fetchCreatorData()
     fetchPlanPreviewDetail()
     fetchPlanSuggestList()
+    
+    if let sessionID = UserDefaults.standard.string(forKey: UserDefaultKey.sessionID) {
+      print("SESSION ID =>",sessionID)
+    }
+  
   }
   
 }
