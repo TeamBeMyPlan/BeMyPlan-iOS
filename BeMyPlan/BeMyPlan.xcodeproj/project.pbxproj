@@ -224,6 +224,7 @@
 		FD777FCB28A00DD400FDF37A /* PurchaseHistoryDateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD777FC928A00DD400FDF37A /* PurchaseHistoryDateCell.xib */; };
 		FD85026128AA6CA100369014 /* PurchaseTest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD85026028AA6CA100369014 /* PurchaseTest.storyboard */; };
 		FD85026328AA913600369014 /* PurchaseTestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD85026228AA913600369014 /* PurchaseTestVC.swift */; };
+		FD87FD0729101B7F0063F954 /* PurchaseConfirmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD87FD0629101B7F0063F954 /* PurchaseConfirmModel.swift */; };
 		FD8D3A98287A96B30071036D /* NewPlanPreviewPurchaseGuideTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8D3A96287A96B30071036D /* NewPlanPreviewPurchaseGuideTVC.swift */; };
 		FD8D3A99287A96B30071036D /* NewPlanPreviewPurchaseGuideTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD8D3A97287A96B30071036D /* NewPlanPreviewPurchaseGuideTVC.xib */; };
 		FD8D3AA5287AB0700071036D /* NewPlanPreviewSuggestCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD8D3AA3287AB0700071036D /* NewPlanPreviewSuggestCVC.swift */; };
@@ -586,6 +587,7 @@
 		FD777FC928A00DD400FDF37A /* PurchaseHistoryDateCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PurchaseHistoryDateCell.xib; sourceTree = "<group>"; };
 		FD85026028AA6CA100369014 /* PurchaseTest.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PurchaseTest.storyboard; sourceTree = "<group>"; };
 		FD85026228AA913600369014 /* PurchaseTestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseTestVC.swift; sourceTree = "<group>"; };
+		FD87FD0629101B7F0063F954 /* PurchaseConfirmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseConfirmModel.swift; sourceTree = "<group>"; };
 		FD8D3A96287A96B30071036D /* NewPlanPreviewPurchaseGuideTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlanPreviewPurchaseGuideTVC.swift; sourceTree = "<group>"; };
 		FD8D3A97287A96B30071036D /* NewPlanPreviewPurchaseGuideTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewPlanPreviewPurchaseGuideTVC.xib; sourceTree = "<group>"; };
 		FD8D3AA3287AB0700071036D /* NewPlanPreviewSuggestCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlanPreviewSuggestCVC.swift; sourceTree = "<group>"; };
@@ -1168,6 +1170,7 @@
 				FD2BE05428F6FD280055F953 /* PurchaseProductModel.swift */,
 				FDC5CFA829004AC2005CFAB5 /* PurchaseCheckModel.swift */,
 				FDC5CFAA29006817005CFAB5 /* PurchaseValidateModel.swift */,
+				FD87FD0629101B7F0063F954 /* PurchaseConfirmModel.swift */,
 			);
 			path = Purchase;
 			sourceTree = "<group>";
@@ -2547,6 +2550,7 @@
 				523C70AA2795EC770073371D /* TravelSpotDetailService.swift in Sources */,
 				FD09DE1327857AE1006DA050 /* successCatch + Result.swift in Sources */,
 				FD9DB9D828A3E906009E8AF1 /* NewPlanPreview + Purchase.swift in Sources */,
+				FD87FD0729101B7F0063F954 /* PurchaseConfirmModel.swift in Sources */,
 				F261EC7927873A7D00AF094F /* MainCardCVC.swift in Sources */,
 				FD09DDF727857841006DA050 /* UITableViewRegisterable.swift in Sources */,
 				FD568E7627CFE7270078D23C /* LogEventType.swift in Sources */,

@@ -11,5 +11,5 @@ struct PurchaseValidateModel: Codable {
   let id: Int
   let status: String
   let transactionId: String
-  let success: String
+  let success: Bool
 }

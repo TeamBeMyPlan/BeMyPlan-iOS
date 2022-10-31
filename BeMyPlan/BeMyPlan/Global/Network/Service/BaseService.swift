@@ -8,6 +8,7 @@
 import Moya
 import Alamofire
 import RxSwift
+import SwiftyJSON
 
 fileprivate let provider: MoyaProvider<BaseAPI> = {
   let provider = MoyaProvider<BaseAPI>(endpointClosure: endpointClosure, session: DefaultAlamofireManager.shared)
@@ -36,7 +37,6 @@ class BaseService{
   var disposeBag = DisposeBag()
   private init() {}
   
-  
   func requestObjectInRx<T: Decodable>(_ target: BaseAPI) -> Observable<T?>{
     return Observable<T?>.create { observer in
       provider.rx
@@ -53,7 +53,6 @@ class BaseService{
                 observer.onError(error)
               }
             case .failure(let error):
-              print("ERRERERE")
               observer.onError(error)
           }
         }.disposed(by: self.disposeBag)
@@ -63,13 +62,17 @@ class BaseService{
   
   func requestObject<T: Decodable>(_ target: BaseAPI, completion: @escaping (Result<T?, Error>) -> Void) {
     provider.request(target) { response in
- 
+      print("RESPONSE==>")
+      dump(response)
       switch response {
         case .success(let value):
+
           do {
             let decoder = JSONDecoder()
-            let body = try decoder.decode(ResponseObject<T>.self, from: value.data)
-            completion(.success(body.data))
+            let json = JSON(value.data)
+            print(json)
+            let body = try decoder.decode(T.self, from: value.data)
+            completion(.success(body))
           } catch let error {
             completion(.failure(error))
           }
@@ -78,30 +81,6 @@ class BaseService{
             case .underlying(let error, _):
               if error.asAFError?.isSessionTaskError ?? false {
               
-              }
-            default: break
-          }
-          completion(.failure(error))
-      }
-    }
-  }
-  
-  func requestArray<T: Decodable>(_ target: BaseAPI, completion: @escaping (Result<[T], Error>) -> Void) {
-    provider.request(target) { response in
-      switch response {
-        case .success(let value):
-          do {
-            let decoder = JSONDecoder()
-            let body = try decoder.decode(ResponseObject<[T]>.self, from: value.data)
-            completion(.success(body.data ?? []))
-          } catch let error {
-            completion(.failure(error))
-          }
-        case .failure(let error):
-          switch error {
-            case .underlying(let error, _):
-              if error.asAFError?.isSessionTaskError ?? false {
-                
               }
             default: break
           }

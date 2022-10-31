@@ -30,7 +30,6 @@ enum BaseAPI{
 	case postUserLogout
 	case deleteUserWithdraw(reason: String)
 	
-	
 	// MARK: - HomeList
 	case getHomeOrderList // (최상단 부분, 구매순 정렬)
 	case getHomeRecentlyList // (최신순 정렬)
@@ -67,7 +66,7 @@ enum BaseAPI{
 
 	// MARK: - Purchase
 	case getTravelPurchaseState(idx: Int)
-	case purchaseTravelPlan(idx: Int)
+	case purchaseTravelPlan(price: Int, idx: Int)
 	case validatePurchase(idx: Int, receipt: String)
 	case completePurchase(idx: Int, paymentID: Int, userID: Int)
 }
@@ -358,7 +357,8 @@ extension BaseAPI: TargetType {
 			case .getNewPlanPreviewRecommend(let region):
 				params["regionCategory"] = region
 				
-			case .purchaseTravelPlan(let idx):
+			case .purchaseTravelPlan(let price, let idx):
+				params["orderPrice"] = price
 				params["planId"] = idx
 
 			case .validatePurchase(_, let receipt):

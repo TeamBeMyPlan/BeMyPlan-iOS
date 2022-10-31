@@ -8,6 +8,7 @@
 import Foundation
 import RxSwift
 
+
 protocol NewPlanPreviewServiceType{
   func fetchNewPlanPreviewCreator(idx: Int,completion: @escaping (Result<NewPlanPreviewCreatorEntity?, Error>) -> Void)
   func fetchNewPlanPreviewCourse(idx: Int,completion: @escaping (Result<NewPlanPreviewCourseEntity?, Error>) -> Void)

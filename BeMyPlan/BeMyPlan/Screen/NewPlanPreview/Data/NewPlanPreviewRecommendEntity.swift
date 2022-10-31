@@ -8,16 +8,17 @@
 import Foundation
 
 struct NewPlanPreviewRecommendEntity: Codable {
-    let planID: Int
-    let thumbnailURL: String
-    let title: String
-    let regionCategory: RegionCategory
-    let region: Region
+    let region: Region?
+    let title: String?
+    let thumbnailURL: String?
+    let planID: Int?
+    let regionCategory: RegionCategory?
 
     enum CodingKeys: String, CodingKey {
-        case planID = "planId"
+        case region, title
         case thumbnailURL = "thumbnailUrl"
-        case title, regionCategory, region
+        case planID = "planId"
+        case regionCategory
     }
 }
 

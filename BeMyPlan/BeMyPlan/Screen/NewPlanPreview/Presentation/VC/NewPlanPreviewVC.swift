@@ -14,6 +14,8 @@ class NewPlanPreviewVC: UIViewController {
   private var planPurchsaeItem = SKProduct()
   private var purhcaseProduct = PlanPurchaseItem()
   internal var planID: Int = 2
+  internal var orderID: Int = -1
+  internal var planPrice: Int = 0
   private var contentList: [[NewPlanPreviewViewCase]] = [
     [.topHeader, .creator, .recommendReason],
     [.mainContents, .purhcaseGuide,
@@ -81,7 +83,7 @@ extension NewPlanPreviewVC {
   
   private func initPurchaseProduct() {
 
-    PlanPurchaseItem.productID = "bemyplan.purchase.test3"
+    PlanPurchaseItem.productID = "bemyplan.purchase.test1"
     PlanPurchaseItem.iapService.getProducts { [weak self] success, products in
         guard let self = self else { return }
       
@@ -89,8 +91,11 @@ extension NewPlanPreviewVC {
            self.headerCellViewModel != nil,
             let products = products {
           DispatchQueue.main.async {
-
-            self.planPurchsaeItem = products.first!
+            if let price = Int(self.planPurchsaeItem.price.stringValue) {
+              self.planPrice = price
+            }
+            guard let product = products.first else { return }
+            self.planPurchsaeItem = product
             self.headerCellViewModel!.price = self.makePrice(self.planPurchsaeItem.price.stringValue)
             self.mainContentTV.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
           }
@@ -98,19 +103,60 @@ extension NewPlanPreviewVC {
     }
     
     let purhcaseState = PlanPurchaseItem.iapService.isProductPurchased(PlanPurchaseItem.productID)
-    print("PURCHASE ___",purhcaseState)
-    
     let buttonTitle = purhcaseState ? "전체 여행 코스 보러가기" : "구매하기"
     bottomCTAButton.setTitle(buttonTitle, for: .normal)
   }
   
   // 인앱 결제 버튼 눌렀을 때
   private func purchaseActionStart() {
+    BaseService.default.purchaseTravelPlan(price: self.planPrice,
+                                            planIdx: self.planID) { result in
+      result.success { purchaseCheckModel in
+        if let idx = purchaseCheckModel?.orderId {
+          print(" 현재 order ID ==>",idx)
+          self.orderID = idx
+        } else {
+          self.makeAlert(content: "구매에 실패하였습니다. 다시 시도해주세요.")
+        }
+      }.catch { err in
+        self.makeAlert(content: "구매에 실패하였습니다. 다시 시도해주세요.")
+      }
+    }
     PlanPurchaseItem.iapService.buyProduct(planPurchsaeItem)
   }
   
+  private func validateReceipt(receipt: String,completion: @escaping (Int) -> Void) {
+    print("ORDER ID==>",self.orderID)
+    BaseService.default.validateReceipt(orderID: self.orderID,
+                                        receipt: receipt) { result in
+      print("VALIDATE REUSLT ==>")
+      dump(result)
+      result.success { validateModel in
+        if let model = validateModel {
+          completion(model.id)
+        }
+      }
+    }
+  }
+  
+  private func confirmPurchase(purchaseID: Int,
+                               completion: @escaping () -> Void) {
+    let userID = UserDefaults.standard.integer(forKey: UserDefaultKey.userID)
+
+    BaseService.default.confirmTravelPurchase(orderID: self.orderID,
+                                              paymentId: purchaseID,
+                                              userID: userID) { result in
+      result.success { _ in
+        completion()
+      }.catch { err in
+        self.makeAlert(content: "구매에 실패하였습니다. 다시 시도해주세요.")
+      }
+    }
+  }
+  
   private func pushDetailView() {
-    
+    let detailVC = ModuleFactory.resolve().instantiatePlanDetailVC(postID: self.planID)
+    self.navigationController?.pushViewController(detailVC, animated: true)
   }
   
   private func registerCell() {
@@ -141,16 +187,20 @@ extension NewPlanPreviewVC {
             let productID = noti.object as? String,
             self.planPurchsaeItem.productIdentifier == productID
           else { return }
-      self.makeAlert(content: "구매가 완료되었습니다.")
-      print("구매 성공")
+      print("IAP SERVICE PUrchase COMPLETE")
     }
     
     addObserverAction(.purchaseComplete) { noti in
       if let data = noti.object as? String {
-        print("영수증 번호 ===> ",data)
-        // TODO: - 구매 post 요청 보내기
-        // TODO: - post 성공하면 영수증 검증 보내기
-        // TODO: - 성공하면 구매 확정 post 보내기 하면 끝!
+        print("영수증 번호==>",noti)
+        self.validateReceipt(receipt: data) { purchaseID in
+          self.confirmPurchase(purchaseID: purchaseID) {
+          
+            self.makeAlert(content: "구매가 완료되었습니다.") {
+              self.pushDetailView()
+            }
+          }
+        }
       }
     }
   
@@ -179,6 +229,8 @@ extension NewPlanPreviewVC {
       }
     }
   }
+  
+
   
   private func addBlackLayer() {
     layer.alpha = 0
@@ -476,6 +528,7 @@ extension NewPlanPreviewVC {
   private func fetchPlanPreviewDetail() {
     BaseService.default.fetchNewPlanPreviewDetail(idx: self.planID) { result in
       result.success { entity in
+        print("fetchPlanPreviewDetail",entity)
         guard let entity = entity else { return }
         let contentList = entity.previewContents.map { content -> NewPlanMainContentsCellViewModel in
           return NewPlanMainContentsCellViewModel(imgURLs: content.images,
@@ -507,19 +560,34 @@ extension NewPlanPreviewVC {
     BaseService.default.fethcNewPlanPreviewRecommend(region: "JEJU") { result in
       result.success { entity in
         guard let entity = entity else { return }
-        let suggestCellViewModel = entity.map { entity -> NewPlanPreviewSuggestCellViewModel in
-          return NewPlanPreviewSuggestCellViewModel.init(title: entity.title,
-                                                         address: self.makeRegionString(entity.region.rawValue),
-                                                         imgURL: entity.thumbnailURL,
-                                                         planID: entity.planID)
-        }
-        let viewModel = NewPlanPreviewSuggestViewModel(list: suggestCellViewModel)
-        self.suggestCellViewModel = viewModel
-        self.mainContentTV.reloadData()
+        let cellViewModel = self.makeCellViewmodel(recommendEntity: entity)
+          
+          let viewModel = NewPlanPreviewSuggestViewModel(list: cellViewModel)
+          self.suggestCellViewModel = viewModel
+          self.mainContentTV.reloadData()
+
       }.catch { err in
         print("추천 리스트 조회 실패")
       }
     }
+  }
+  
+  private func makeCellViewmodel(recommendEntity: [NewPlanPreviewRecommendEntity?]) -> [NewPlanPreviewSuggestCellViewModel] {
+    let suggestCellViewModel = recommendEntity.map { data -> NewPlanPreviewSuggestCellViewModel? in
+      guard let model = data else { return nil }
+      return NewPlanPreviewSuggestCellViewModel.init(title: model.title ?? "",
+                                                     address: self.makeRegionString(model.region?.rawValue ?? ""),
+                                                     imgURL: model.thumbnailURL ?? "",
+                                                     planID: model.planID ?? -1)
+    }
+    var result: [NewPlanPreviewSuggestCellViewModel] = []
+    
+    for item in suggestCellViewModel {
+      if item != nil {
+        result.append(item!)
+      }
+    }
+    return result
   }
 }
 
