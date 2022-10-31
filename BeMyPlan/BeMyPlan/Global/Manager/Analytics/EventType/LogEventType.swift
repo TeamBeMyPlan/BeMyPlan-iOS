@@ -12,107 +12,94 @@ enum LogEventType {
   case appFirstOpen // 앱 최초 실행
   
   // 2. 온보딩
-  case onboardingFirstOpen // 온보딩 최초 실행
-  case onboardingViewSecondPage // 온보딩 두번째 페이지 보기
-  case onboardingViewThirdPage // 온보딩 세번째 페이지 보기
-  case onboardingSkip // 온보딩 스킵
-  case onboardingComplete // 온보딩 완료
+  case view_onboarding // 온보딩 최초 실행
+  case touch_onboarding_skip // 온보딩 스킵
   
   // 3. 로그인
-  case signin(source: LoginSource) // 애플로그인,카카오로그인,둘러보기
+  case view_signin
+  case touch_signin_skip
+  case touch_kakao_signin
+  case touch_apple_signin
+  case complete_signin(method: LoginSource)
   
   // 4. 회원가입
-  case signupNickname(source: LoginSource) // 닉네임 작성 완료
-  case signupEmail(source: LoginSource) // 이메일 작성 완료
-  case signupComplete(source: LoginSource) // 회원가입 완료
+  case view_signup
+  case complete_signup(method: LoginSource)
   
-  // 5. 탭바 클릭 액션 O
-  case clickTab(source: TabSource) // 각자 탭바 클릭
+  // 5. 여행 일정 컨텐츠 뷰 미리보기
+  case view_plan_detail(title: String, creator: String)
+  case touch_purchase(title: String, creator: String, price: Int)
   
-  // 6. 홈탭 내 액션 O
-  case clickHomeRecentPlanList // 홈에서 최신목록 더보기 클릭
-  case clickHomeRecommendPlanList // 홈에서 추천목록 더보기 클릭
+  // 6. 여행 일정 구매 뷰
+  case view_plan_detail_purchased(title: String, creator: String)
+  case touch_place_marker_box
+  case touch_place_address
   
-  // 7. 여행지 뷰 O
-  case clickOpenedTravelSpot(spot: String) // 열린 여행지 클릭 + 지역 이름
-  case clickClosedTravelSpot(spot: String) // 닫힌 여행지 클릭 + 지역 이름
+  // 7. 설정 뷰
+  case view_setup
+  case complete_logout
+  case complete_withdraw
   
-  // 8. 둘러보기 -> 로그인뷰 띄워지는 경우
-  case showLoginPage(source: ViewSource) // 둘러보기 상태에서 로그인 버튼을 누르는 경로(스크랩,마이플랜,구매)
+  // 8. 결제 뷰
+  case view_purchase // 결제 선택창 뷰
 
-  // 9. 여행 일정 클릭
-  case clickTravelPlan(source :ViewSource,
-                       postIdx: String) // 여행 일정 뷰를 어디서 들어오는지 파악(홈,여행지 목록,스크랩,마이플랜)
+  case view_purchase_complete
+  case complete_puchase(planID: Int, title: String, creator: String, price: Int)
   
-  // 10. 스크랩 액션
-  case scrapTravelPlan(source: ViewSource,
-                       postIdx: String) // 스크랩 한 뷰 위치 + postIdx
-  case scrapCancelTravelPlan(source: ViewSource,
-                             postIdx: String) // 스크랩 취소한 뷰 위치 + postIdx
+  // 9. 홈 뷰
+  case view_home
+  case view_plan_latest // 최신 등록 여행 일정 뷰 렌더링
+  case view_plan_recommand // 최신 등록 여행 일정 뷰 렌더링
   
-  // 11.결제 뷰 O
-  case closePaymentView // 결제창 닫기
-  case clickPaymentMethod(source: PaymentSource) // 결제 수단 선택(카카오페이,토스,네이버페이)
-  case clickPaymentButton(postIdx: String) // 결제 버튼 누르기
+  // 10. 여행지 뷰
+  case view_destination
+  case view_plan_list
   
-  // 12. 결제 완료 뷰 O
-  case closePaymentCompleteView // 결제 완료창 닫기
-  case clickPlanDetailViewInPayment(postIdx: String) // 컨텐츠 바로보러가기 클릭 + postIdx
+  // 11. 스크랩 뷰
+  case view_scrap
+  case complete_scrap(id: Int, title: String, creator: String)
   
-  // 13. 결제 전 여행일정 예시 O
-  case clickPlanDetailExample // 구매한 여행일정 예시 버튼 클릭
+  // 12. 마이플랜 뷰
+  case view_myplan
+  case view_plan_list_purchased
+
   
-  // 14. 결제 후 여행일정 O
-  case clickAddressCopy // 주소 복사 클릭
-  case moveMapApplication(source: MapSource) // 외부 맵 어플 이동하는 경우 (네이버맵,카카오맵)
-  case alertNoMapApplication // 외부 맵 어플이 둘다 없는 경우
-  
-  // 15. 작성자 이름 클릭 O
-  case clickEditorName(source: ViewSource) // 작성자 이름 클릭
-  
-  // 16. 회원 유입 및 이탈 O
-  case enterForeGround // 홈버튼 눌러서 앱을 나가는 경우
-  case enterBackGround // 백그라운드에서 다시 앱으로 돌아오는 경우
-  case logout // 로그아웃
-  case withdrawal // 회원탈퇴
 }
 
 extension LogEventType: EventType {
   func name(for provider: ProviderType) -> String? {
     switch self {
       case .appFirstOpen:                 return "firebase_first_open"
-      case .onboardingFirstOpen:          return "onboarding_first_open"
-      case .onboardingViewSecondPage:     return "onboarding_view_second_page"
-      case .onboardingViewThirdPage:      return "onboarding_view_third_page"
-      case .onboardingSkip:               return "onboarding_skip"
-      case .onboardingComplete:           return "onboarding_complete"
-      case .signin:                       return "signin_click"
-      case .signupNickname:               return "signup_nickname"
-      case .signupEmail:                  return "signup_email"
-      case .signupComplete:               return "signup_complete"
-      case .clickTab:                     return "click_tab"
-      case .clickHomeRecentPlanList:      return "click_home_recent_list"
-      case .clickHomeRecommendPlanList:   return "click_home_recommend_list"
-      case .clickOpenedTravelSpot:        return "click_opened_travel_spot"
-      case .clickClosedTravelSpot:        return "click_closed_travel_spot"
-      case .showLoginPage:                return "move_login_page"
-      case .clickTravelPlan:              return "click_travel_plan"
-      case .scrapTravelPlan:              return "scrap_travel_plan"
-      case .scrapCancelTravelPlan:        return "scrap_cancel_travel_plan"
-      case .closePaymentView:             return "close_payment_view"
-      case .clickPaymentMethod:           return "click_payment_method"
-      case .clickPaymentButton:           return "click_payment_button"
-      case .closePaymentCompleteView:     return "close_payment_complete"
-      case .clickPlanDetailViewInPayment: return "move_plan_detail_view_in_payment"
-      case .clickPlanDetailExample:       return "click_plan_detail_example"
-      case .clickAddressCopy:             return "click_address_copy"
-      case .moveMapApplication:           return "move_map_application"
-      case .alertNoMapApplication:        return "alert_no_map_application"
-      case .clickEditorName:              return "click_editor_name"
-      case .enterForeGround:              return "enter_foreground"
-      case .enterBackGround:              return "enter_background"
-      case .logout:                       return "user_logout"
-      case .withdrawal:                   return "user_withdrawal"
+      case .view_onboarding:              return "view_onboarding"
+      case .touch_onboarding_skip:        return "touch_onboarding_skip"
+      case .view_signin:                  return "view_signin"
+      case .touch_signin_skip:            return "touch_signin_skip"
+      case .touch_kakao_signin:           return "touch_kakao_signin"
+      case .touch_apple_signin:           return "touch_apple_signin"
+      case .complete_signin:              return "complete_signin"
+      case .view_signup:                  return "view_signup"
+      case .complete_signup:              return "complete_signup"
+      case .view_plan_detail:             return "view_plan_detail"
+      case .touch_purchase:               return "touch_purchase"
+      case .view_plan_detail_purchased:   return "view_plan_detail_purchased"
+      case .touch_place_marker_box:       return "touch_place_marker_box"
+      case .touch_place_address:          return "touch_place_address"
+      case .view_setup:                   return "view_setup"
+      case .complete_logout:              return "complete_logout"
+      case .complete_withdraw:            return "complete_withdraw"
+      case .view_purchase:                return "view_purchase"
+      case .view_purchase_complete:       return "view_purchase_complete"
+      case .complete_puchase:             return "complete_puchase"
+      case .view_home:                    return "view_home"
+      case .view_plan_latest:             return "view_plan_latest"
+      case .view_plan_recommand:          return "view_plan_recommand"
+      case .view_destination:             return "view_destination"
+      case .view_plan_list:               return "view_plan_list"
+      case .view_scrap:                   return "view_scrap"
+      case .complete_scrap:               return "complete_scrap"
+      case .view_myplan:                  return "view_myplan"
+      case .view_plan_list_purchased:     return "view_plan_list_purchased"
+        
     }
   }
   
@@ -122,43 +109,45 @@ extension LogEventType: EventType {
       "userIdx": String(UserDefaults.standard.integer(forKey: "userIdx"))
     ]
     switch self {
-      case .signin(let loginSource),
-          .signupNickname(let loginSource),
-          .signupEmail(let loginSource),
-          .signupComplete(let loginSource):
-        params["loginSource"] = loginSource.rawValue
+      case .complete_signin(let method):
+        params["method"] = method.rawValue
         
-      case .clickTab(let tabSource):
-        params["tabSource"] = tabSource.rawValue
-      
-      case .clickOpenedTravelSpot(let spot),
-          .clickClosedTravelSpot(let spot):
-        params["spot"] = spot
-    
-      case .showLoginPage(let viewSource):
-        params["viewSource"] = viewSource.rawValue
-        
-      case .clickTravelPlan(let viewSource, let postIdx):
-        params["viewSource"] = viewSource.rawValue
-        params["postIdx"] = postIdx
-        
-      case .scrapTravelPlan(let viewSource, let postIdx),
-          .scrapCancelTravelPlan(let viewSource, let postIdx):
-        params["viewSource"] = viewSource.rawValue
-        params["postIdx"] = postIdx
-        
-      case .clickPaymentMethod(let paymentSource):
-        params["paymentSource"] = paymentSource.rawValue
-      
-      case .clickPaymentButton(let postIdx),
-          .clickPlanDetailViewInPayment(let postIdx):
-        params["postIdx"] = postIdx
-        
-      case .moveMapApplication(let mapSource):
-        params["mapSource"] = mapSource
+      case .complete_signup(let method):
+        params["method"] = method.rawValue
 
-      case .clickEditorName(let viewSource):
-        params["viewSource"] = viewSource
+      case .view_plan_detail(let title,
+                             let creator):
+        params["plan_title"] = title
+        params["plan_creator"] = creator
+        
+      case .touch_purchase(let title,
+                           let creator,
+                           let price):
+        params["plan_title"] = title
+        params["plan_creator"] = creator
+        params["plan_price"] = price
+        
+      case .view_plan_detail_purchased(let title,
+                                       let creator):
+        params["plan_title"] = title
+        params["plan_creator"] = creator
+
+      case .complete_puchase(let planID,
+                            let title,
+                            let creator,
+                            let price):
+        params["plan_id"] = planID
+        params["plan_title"] = title
+        params["plan_creator"] = creator
+        params["plan_price"] = price
+        
+      case .complete_scrap(let id,
+                          let title,
+                          let creator):
+        params["plan_id"] = id
+        params["plan_title"] = title
+        params["plan_creator"] = creator
+        
 
       default: break
     }
