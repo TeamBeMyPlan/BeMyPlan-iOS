@@ -43,6 +43,11 @@ extension LoginVC {
     BaseService.default.postSocialLogin(socialToken: socialToken, socialType: socialType) { result in
       result.success { [weak self] data in
         if let data = data{
+          if socialType == "KAKAO" {
+            AppLog.log(at: FirebaseAnalyticsProvider.self, .complete_signin(method: .kakao))
+          } else {
+            AppLog.log(at: FirebaseAnalyticsProvider.self, .complete_signin(method: .apple))
+          }
           UserDefaults.standard.setValue(data.nickname, forKey: UserDefaultKey.userNickname)
           UserDefaults.standard.setValue(data.sessionId, forKey: UserDefaultKey.sessionID)
             self?.moveBaseVC()

@@ -60,7 +60,7 @@ class HomeVC: UIViewController, UIGestureRecognizerDelegate {
   // MARK: - Life Cycle Part
   override func viewDidLoad() {
     super.viewDidLoad()
-
+    AppLog.log(at: FirebaseAnalyticsProvider.self, .view_home)
   }
   
   override func viewWillAppear(_ animated: Bool) {

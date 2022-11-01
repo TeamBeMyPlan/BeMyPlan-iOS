@@ -71,7 +71,6 @@ class PaymentSelectVC: UIViewController {
   // MARK: - Custom Method Part
 
   @IBAction func backButtonClicked(_ sender: Any) {
-    AppLog.log(at: FirebaseAnalyticsProvider.self, .closePaymentView)
     self.navigationController?.popViewController(animated: true)
   }
   
@@ -79,7 +78,6 @@ class PaymentSelectVC: UIViewController {
     if selectedIndex != -1{
       BaseService.default.postOrderPlan(planIdx: self.paymentData.postIdx) { result in
         result.success { _ in
-          AppLog.log(at: FirebaseAnalyticsProvider.self, .clickPaymentButton(postIdx: String(self.paymentData.postIdx)))
           self.showEventPopup()
         }.catch { _ in
           self.postObserverAction(.showNetworkError)
@@ -133,7 +131,6 @@ class PaymentSelectVC: UIViewController {
       case 1: paymentSource = .toss
       default: paymentSource = .naverPay
     }
-    AppLog.log(at: FirebaseAnalyticsProvider.self, .clickPaymentMethod(source: paymentSource))
   }
   
   private func setPriceLabel(){

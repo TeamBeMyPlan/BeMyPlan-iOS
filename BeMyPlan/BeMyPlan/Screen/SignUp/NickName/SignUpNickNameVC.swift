@@ -62,6 +62,7 @@ class SignUpNicknameVC: UIViewController {
   // MARK: - Life Cycle Part
   override func viewDidLoad() {
     super.viewDidLoad()
+    AppLog.log(at: FirebaseAnalyticsProvider.self, .view_signup)
     setStartBtnStatus() //다음 버트 비활
     addTapGesture() //다른곳 누르면 키보드 사라지는것
     addToolbar(textfields: [nicknameInputTextField]) //키보드 툴바 세팅?

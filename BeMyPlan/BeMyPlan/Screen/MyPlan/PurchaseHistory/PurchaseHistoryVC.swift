@@ -19,6 +19,7 @@ class PurchaseHistoryVC: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    AppLog.log(at: FirebaseAnalyticsProvider.self, .view_plan_list_purchased)
     setUI()
     registerCells()
     setDelegate()

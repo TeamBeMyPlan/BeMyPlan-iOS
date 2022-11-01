@@ -55,6 +55,16 @@ class TravelSpotDetailVC: UIViewController {
 
 extension TravelSpotDetailVC {
   
+  private func writeLogData() {
+    if viewType == .recently {
+      AppLog.log(at: FirebaseAnalyticsProvider.self, .view_plan_latest)
+    } else if viewType == .bemyPlanRecommend {
+      AppLog.log(at: FirebaseAnalyticsProvider.self, .view_plan_recommand)
+    } else if viewType == .travelspot {
+      AppLog.log(at: FirebaseAnalyticsProvider.self, .view_plan_list)
+    }
+  }
+  
   private func setTableViewDelegate() {
     contentTableView.delegate = self
     contentTableView.dataSource = self

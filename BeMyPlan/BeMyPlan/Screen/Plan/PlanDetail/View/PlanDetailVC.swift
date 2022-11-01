@@ -61,6 +61,7 @@ class PlanDetailVC: UIViewController {
       addObserver()
       setSkeletonView()
       viewModel.viewDidLoad()
+
     }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -99,6 +100,9 @@ class PlanDetailVC: UIViewController {
     
     viewModel.didUpdateWriterViewModel = { [weak self] writerViewModel in
       self?.writerContainerViewModel = writerViewModel
+      AppLog.log(at: FirebaseAnalyticsProvider.self, .view_plan_detail_purchased(title: writerViewModel.title,
+                                                                                 creator: writerViewModel.nickname))
+
     }
     
     viewModel.didUpdateSelectDayViewModel = { [weak self] selectDayViewModel in
@@ -149,6 +153,7 @@ class PlanDetailVC: UIViewController {
     }
     
     addObserverAction(.copyComplete) { noti in
+      AppLog.log(at: FirebaseAnalyticsProvider.self, .touch_place_address)
       self.makeVibrate()
       self.showToast(message: I18N.Alert.copyComplete)
     }

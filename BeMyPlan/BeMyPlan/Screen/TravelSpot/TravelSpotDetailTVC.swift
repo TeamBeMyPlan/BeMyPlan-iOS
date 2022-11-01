@@ -60,6 +60,7 @@ class TravelSpotDetailTVC: UITableViewCell, UITableViewRegisterable {
     let dto = ScrapRequestDTO(planID: postId,
                               scrapState: scrapState)
     postObserverAction(.scrapButtonClicked, object: dto)
+    
   }
   
   private func configureSkeleton() {

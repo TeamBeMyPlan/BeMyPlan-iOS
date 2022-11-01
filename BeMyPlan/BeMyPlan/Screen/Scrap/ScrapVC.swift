@@ -27,6 +27,7 @@ class ScrapVC: UIViewController {
     registerObserverActions()
     bottomSheetNotification()
     fetchRecomendData()
+    AppLog.log(at: FirebaseAnalyticsProvider.self, .view_scrap)
   }
   
   override func viewDidAppear(_ animated: Bool) {

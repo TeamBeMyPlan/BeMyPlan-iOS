@@ -34,6 +34,7 @@ class LoginVC: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    AppLog.log(at: FirebaseAnalyticsProvider.self, .view_signin)
     setBtnActions()
     addObserver()
   }
@@ -46,6 +47,7 @@ class LoginVC: UIViewController {
   
   @IBAction func touchUpToGoBaseView(_ sender: Any) {
     UserDefaults.standard.removeObject(forKey: UserDefaultKey.sessionID)
+    AppLog.log(at: FirebaseAnalyticsProvider.self, .touch_signin_skip)
     self.makeVibrate()
     self.moveBaseVC()
   }
@@ -63,10 +65,12 @@ class LoginVC: UIViewController {
   
   func setBtnActions() {
     self.kakaoLoginBtn.press(animated: true) {
+      AppLog.log(at: FirebaseAnalyticsProvider.self, .touch_kakao_signin)
       self.kakaoLogin()
     }
 
     self.appleLoginBtn.press(animated: true) {
+      AppLog.log(at: FirebaseAnalyticsProvider.self, .touch_apple_signin)
       self.appleLogin()
     }
   }

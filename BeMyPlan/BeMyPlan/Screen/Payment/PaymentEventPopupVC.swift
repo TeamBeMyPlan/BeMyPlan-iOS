@@ -23,7 +23,6 @@ class PaymentEventPopupVC: UIViewController {
   // MARK: - IBAction Part
 
   @IBAction func okButtonClicked(_ sender: Any) {
-    AppLog.log(at: FirebaseAnalyticsProvider.self, .clickPlanDetailViewInPayment(postIdx: String(postIdx)))
     dismiss(animated: true) {
       self.delegate?.completeButtonClicked()
     }

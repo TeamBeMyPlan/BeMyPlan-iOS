@@ -43,12 +43,10 @@ class PaymentCompleteVC: UIViewController {
   }
 
   @IBAction func closeButtonClicked(_ sender: Any) {
-    AppLog.log(at: FirebaseAnalyticsProvider.self, .closePaymentCompleteView)
     self.dismiss(animated: true, completion: nil)
   }
   
   @IBAction func showContentButtonClicked(_ sender: Any) {
-    AppLog.log(at: FirebaseAnalyticsProvider.self, .clickPlanDetailViewInPayment(postIdx: String(postIdx)))
     dismiss(animated: true) {
       self.delegate?.completeButtonClicked()
     }

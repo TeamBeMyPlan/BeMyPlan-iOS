@@ -108,7 +108,7 @@ final class OnboardingVC: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    AppLog.log(at: FirebaseAnalyticsProvider.self, .onboardingFirstOpen)
+    AppLog.log(at: FirebaseAnalyticsProvider.self, .view_onboarding)
     self.configureUI()
     self.configureImageScrollView()
     self.configureMainContentView()
@@ -130,13 +130,12 @@ private extension OnboardingVC {
       }else {
         self.moveLoginVC()
         UserDefaults.standard.setValue(true, forKey: "onboardingComplete")
-        AppLog.log(at: FirebaseAnalyticsProvider.self, .onboardingComplete)
       }
     }
     skipActionButton.press {
       self.moveLoginVC()
       UserDefaults.standard.setValue(true, forKey: "onboardingComplete")
-      AppLog.log(at: FirebaseAnalyticsProvider.self, .onboardingSkip)
+      AppLog.log(at: FirebaseAnalyticsProvider.self, .touch_onboarding_skip)
     }
   }
   

@@ -55,7 +55,6 @@ class PlanDetailWriterContainerView: XibView {
   @IBAction func nicknameButtonClicked(_ sender: Any) {
     let data = PlanWriterDataModel.init(authorName: viewModel.nickname,
                                         authorID: viewModel.authID)
-    AppLog.log(at: FirebaseAnalyticsProvider.self, .clickEditorName(source: .planDetail))
     postObserverAction(.moveNicknamePlanList, object: data)
   }
   

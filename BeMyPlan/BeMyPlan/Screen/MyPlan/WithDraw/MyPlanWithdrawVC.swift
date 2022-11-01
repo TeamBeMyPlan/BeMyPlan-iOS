@@ -60,7 +60,7 @@ class MyPlanWithdrawVC: UIViewController {
           if result{
             UserDefaults.standard.removeObject(forKey: UserDefaultKey.sessionID)
             self.makeAlert(alertCase: .simpleAlert, title: "탈퇴하기", content: "탈퇴 완료되었습니다.") {
-              AppLog.log(at: FirebaseAnalyticsProvider.self, .withdrawal)
+              AppLog.log(at: FirebaseAnalyticsProvider.self, .complete_withdraw)
               guard let loginVC = UIStoryboard.list(.login).instantiateViewController(withIdentifier: LoginNC.className) as? LoginNC else {return}
               loginVC
                 .modalPresentationStyle = .fullScreen

@@ -157,7 +157,6 @@ class PlanPreviewVC: UIViewController {
     UserDefaults.standard.removeObject(forKey: UserDefaultKey.sessionID)
     guard let loginVC = UIStoryboard.list(.login).instantiateViewController(withIdentifier: LoginNC.className) as? LoginNC else {return}
     loginVC.modalPresentationStyle = .fullScreen
-    AppLog.log(at: FirebaseAnalyticsProvider.self, .logout)
     self.present(loginVC, animated: false, completion: nil)
   }
  

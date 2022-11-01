@@ -20,6 +20,7 @@ extension BaseService: ScrapService {
   }
   
   func postScrap(postId: Int, completion: @escaping (Result<String?, Error>) -> Void) {
+    AppLog.log(at: FirebaseAnalyticsProvider.self, .complete_scrap(id: postId))
     requestObject(.postScrap(postId: postId), completion: completion)
   }
   

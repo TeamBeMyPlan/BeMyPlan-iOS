@@ -69,8 +69,6 @@ extension ScrapContainerView: SkeletonCollectionViewDataSource {
 
 extension ScrapContainerView: SkeletonCollectionViewDelegate{
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    AppLog.log(at: FirebaseAnalyticsProvider.self, .clickTravelPlan(source: .scrapView,
-                                                                    postIdx:  String(scrapDataList[indexPath.row].planID)))
     let stateModel = PlanPreviewStateModel(scrapState: scrapDataList[indexPath.row].scrapStatus,
                                            planId: scrapDataList[indexPath.row].planID,
                                            isPurchased: scrapDataList[indexPath.row].orderStatus)

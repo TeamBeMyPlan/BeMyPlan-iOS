@@ -11,8 +11,9 @@ import StoreKit
 
 class NewPlanPreviewVC: UIViewController {
   // MARK: - Vars & Lets Part
+  
+  private var logData = PlanPreviewLogData()
   private var planPurchsaeItem = SKProduct()
-  private var purhcaseProduct = PlanPurchaseItem()
   internal var planID: Int = 2
   internal var orderID: Int = -1
   internal var planPrice: Int = 0
@@ -92,6 +93,7 @@ extension NewPlanPreviewVC {
             let products = products {
           DispatchQueue.main.async {
             if let price = Int(self.planPurchsaeItem.price.stringValue) {
+              self.logData.price = price
               self.planPrice = price
             }
             guard let product = products.first else { return }
@@ -195,7 +197,8 @@ extension NewPlanPreviewVC {
         print("영수증 번호==>",noti)
         self.validateReceipt(receipt: data) { purchaseID in
           self.confirmPurchase(purchaseID: purchaseID) {
-          
+            AppLog.log(at: FirebaseAnalyticsProvider.self, .touch_purchase(title: self.logData.title,
+                                                                           creator: self.logData.creator, price: self.logData.price))
             self.makeAlert(content: "구매가 완료되었습니다.") {
               self.pushDetailView()
             }
@@ -483,6 +486,9 @@ extension NewPlanPreviewVC {
     BaseService.default.fetchNewPlanPreviewCreator(idx: self.planID) { result in
       result.success { entity in
         guard let entity = entity else { return }
+        self.logData.creator = entity.nickname
+        self.writeLogData()
+        
         self.creatorCellViewModel = NewPlanPreviewCreatorViewModel(profileImgURL: "https://picsum.photos/200",
                                                                    authorName: entity.nickname,
                                                                    authorDescription: "제주를 브랜딩하는 스냅 작가",
@@ -501,7 +507,8 @@ extension NewPlanPreviewVC {
       result.success { entity in
         guard let entity = entity else { return }
         self.initPurchaseProduct()
-
+        self.logData.title = entity.title
+        self.writeLogData()
         let iconData = PlanPreview.IconData(theme: self.makeThemeString(entity.theme),
                                             spotCount: "\(entity.spotCount)",
                                             restaurantCount: "\(entity.restaurantCount)",
@@ -523,6 +530,15 @@ extension NewPlanPreviewVC {
         print("미리보기 헤더 데이터 조회 실패")
       }
     }
+  }
+  
+  private func writeLogData() {
+    guard self.logData.creator != "",
+          self.logData.title != "" else { return }
+    
+    AppLog.log(at: FirebaseAnalyticsProvider.self, .view_plan_detail(title: self.logData.title,
+                                                                     creator: self.logData.creator))
+
   }
   
   private func fetchPlanPreviewDetail() {
@@ -633,4 +649,18 @@ extension NewPlanPreviewVC {
     return "\(amount)만원"
   }
   
+  struct PlanPreviewLogData {
+    var title: String = ""
+    var creator: String = ""
+    var price: Int = 0
+  }
+}
+
+struct PlanPurchaseItem {
+  static var productID = ""
+  static var iapService: IAPServiceType = IAPService(productIDs: Set<String>([productID]))
+  
+  static func getResourceProductName(_ id: String) -> String? {
+    id.components(separatedBy: ".").last
+  }
 }

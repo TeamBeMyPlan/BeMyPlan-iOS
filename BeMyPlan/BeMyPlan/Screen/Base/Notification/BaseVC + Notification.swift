@@ -153,13 +153,11 @@ extension BaseVC{
     NotificationCenter.default.addObserver(forName: UIApplication.willResignActiveNotification,
                                            object: nil,
                                            queue: nil) { _ in
-      AppLog.log(at: FirebaseAnalyticsProvider.self, .enterBackGround)
     }
     
     NotificationCenter.default.addObserver(forName: UIApplication.willEnterForegroundNotification,
                                            object: nil,
                                            queue: nil) { _ in
-      AppLog.log(at: FirebaseAnalyticsProvider.self, .enterForeGround)
     }
     
   }
@@ -198,7 +196,6 @@ extension BaseVC{
     UserDefaults.standard.removeObject(forKey: UserDefaultKey.sessionID)
     guard let loginVC = UIStoryboard.list(.login).instantiateViewController(withIdentifier: LoginNC.className) as? LoginNC else {return}
     loginVC.modalPresentationStyle = .fullScreen
-    AppLog.log(at: FirebaseAnalyticsProvider.self, .logout)
     self.present(loginVC, animated: false, completion: nil)
   }
 }

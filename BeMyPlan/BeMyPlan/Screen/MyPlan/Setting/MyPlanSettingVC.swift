@@ -28,6 +28,7 @@ class MyPlanSettingVC: UIViewController, MFMailComposeViewControllerDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
     addButtonActions()
+    AppLog.log(at: FirebaseAnalyticsProvider.self, .view_setup)
     setGuestMode()
   }
   
@@ -89,6 +90,7 @@ class MyPlanSettingVC: UIViewController, MFMailComposeViewControllerDelegate {
     self.makeAlert(alertCase: .requestAlert, title: "로그아웃", content: "로그아웃 하시겠습니까?") {
       BaseService.default.postUserLogout { _ in
         self.makeAlert(alertCase: .simpleAlert, title: "로그아웃", content: "로그아웃 되었습니다.") {
+          AppLog.log(at: FirebaseAnalyticsProvider.self, .complete_logout)
           self.presentLoginVC()
         }
       }
@@ -99,7 +101,6 @@ class MyPlanSettingVC: UIViewController, MFMailComposeViewControllerDelegate {
     UserDefaults.standard.removeObject(forKey: UserDefaultKey.sessionID)
     guard let loginVC = UIStoryboard.list(.login).instantiateViewController(withIdentifier: LoginNC.className) as? LoginNC else {return}
     loginVC.modalPresentationStyle = .fullScreen
-    AppLog.log(at: FirebaseAnalyticsProvider.self, .logout)
     self.present(loginVC, animated: false, completion: nil)
   }
   

@@ -102,8 +102,6 @@ class PlanDetailInformationTVC: UITableViewCell,UITableViewRegisterable {
   
   // MARK: - IBActions Part
   @IBAction func addressCopyButtonClicked(_ sender: Any) {
-    AppLog.log(at: FirebaseAnalyticsProvider.self, .clickAddressCopy)
-
     UIPasteboard.general.string = addressLabel.text ?? "" 
     postObserverAction(.copyComplete)
   }

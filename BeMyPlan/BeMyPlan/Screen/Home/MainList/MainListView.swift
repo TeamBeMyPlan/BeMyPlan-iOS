@@ -69,10 +69,8 @@ class MainListView: UIView {
     var detailCase : TravelSpotDetailType = .recently
     if type == .recently {
       detailCase = .recently
-      AppLog.log(at: FirebaseAnalyticsProvider.self, .clickHomeRecentPlanList)
     }else {
       detailCase = .bemyPlanRecommend
-      AppLog.log(at: FirebaseAnalyticsProvider.self, .clickHomeRecommendPlanList)
     }
     postObserverAction(.moveHomeToPlanList,object: detailCase)
   }
@@ -149,8 +147,7 @@ class MainListView: UIView {
 
 extension MainListView : SkeletonCollectionViewDelegate{
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    AppLog.log(at: FirebaseAnalyticsProvider.self, .clickTravelPlan(source: .homeView,
-                                                                    postIdx:  String(mainListDataList[indexPath.row].planID)))
+
     
     let stateModel = PlanPreviewStateModel(scrapState: mainListDataList[indexPath.row].scrapStatus,
                                            planId: mainListDataList[indexPath.row].planID,

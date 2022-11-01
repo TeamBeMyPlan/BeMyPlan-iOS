@@ -8,8 +8,6 @@
 import Foundation
 
 enum LogEventType {
-  // 1. 앱 최초 실행
-  case appFirstOpen // 앱 최초 실행
   
   // 2. 온보딩
   case view_onboarding // 온보딩 최초 실행
@@ -57,7 +55,7 @@ enum LogEventType {
   
   // 11. 스크랩 뷰
   case view_scrap
-  case complete_scrap(id: Int, title: String, creator: String)
+  case complete_scrap(id: Int)
   
   // 12. 마이플랜 뷰
   case view_myplan
@@ -69,7 +67,6 @@ enum LogEventType {
 extension LogEventType: EventType {
   func name(for provider: ProviderType) -> String? {
     switch self {
-      case .appFirstOpen:                 return "firebase_first_open"
       case .view_onboarding:              return "view_onboarding"
       case .touch_onboarding_skip:        return "touch_onboarding_skip"
       case .view_signin:                  return "view_signin"
@@ -141,12 +138,10 @@ extension LogEventType: EventType {
         params["plan_creator"] = creator
         params["plan_price"] = price
         
-      case .complete_scrap(let id,
-                          let title,
-                          let creator):
+      case .complete_scrap(let id):
         params["plan_id"] = id
-        params["plan_title"] = title
-        params["plan_creator"] = creator
+//        params["plan_title"] = title
+//        params["plan_creator"] = creator
         
 
       default: break

@@ -36,6 +36,7 @@ class MyPlanVC: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     setButtonAction()
+    AppLog.log(at: FirebaseAnalyticsProvider.self, .view_myplan)
   }
   
   override func viewDidLayoutSubviews() {
@@ -99,7 +100,6 @@ class MyPlanVC: UIViewController {
         UserDefaults.standard.removeObject(forKey: UserDefaultKey.sessionID)
         guard let loginVC = UIStoryboard.list(.login).instantiateViewController(withIdentifier: LoginNC.className) as? LoginNC else {return}
         loginVC.modalPresentationStyle = .fullScreen
-        AppLog.log(at: FirebaseAnalyticsProvider.self, .logout)
         self.present(loginVC, animated: false, completion: nil)
       }
     }
@@ -111,8 +111,7 @@ extension MyPlanVC: SkeletonCollectionViewDelegate{
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     makeVibrate()
-    AppLog.log(at: FirebaseAnalyticsProvider.self, .clickTravelPlan(source: .myPlanView,
-                                                                    postIdx:  String(buyContentList[indexPath.row].planID)))
+
     postObserverAction(.movePlanDetail,object: buyContentList[indexPath.row].planID)
   }
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {

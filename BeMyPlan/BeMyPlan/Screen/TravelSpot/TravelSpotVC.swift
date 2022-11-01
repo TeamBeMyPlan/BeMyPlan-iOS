@@ -25,6 +25,7 @@ class TravelSpotVC: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     configCollectionView()
+    AppLog.log(at: FirebaseAnalyticsProvider.self, .view_destination)
   }
   
   override func viewDidLayoutSubviews() {
@@ -110,10 +111,8 @@ extension TravelSpotVC: SkeletonCollectionViewDelegate {
     makeVibrate()
     if !travelSpotDataList[indexPath.row].isActivated {
       postObserverAction(.movePlanList,object: makeTravelSpotCase(travelSpotDataList[indexPath.row].name))
-      AppLog.log(at: FirebaseAnalyticsProvider.self, .clickOpenedTravelSpot(spot: travelSpotDataList[indexPath.row].name))
     }else{
       showToast(message: I18N.Alert.notOpenTravelSpot)
-      AppLog.log(at: FirebaseAnalyticsProvider.self, .clickClosedTravelSpot(spot: travelSpotDataList[indexPath.row].name))
     }
   }
 }

@@ -50,10 +50,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   
   func applicationDidBecomeActive(_ application: UIApplication) {
-    if UserDefaults.standard.bool(forKey: "isFirstOpen") == false {
-      AppLog.log(at: FirebaseAnalyticsProvider.self, .appFirstOpen)
-      UserDefaults.standard.set(true, forKey: "isFirstOpen")
-    }
   }
 }
 

@@ -136,6 +136,8 @@ class SignUpTOSVC: UIViewController {
           UserDefaults.standard.setValue(data.userId, forKey: UserDefaultKey.userID)
           UserDefaults.standard.setValue(data.sessionId, forKey: UserDefaultKey.sessionID)
           UserDefaults.standard.setValue(data.nickname, forKey: UserDefaultKey.userNickname)
+          let socialType: LogEventType.LoginSource = (self?.socialType == "KAKAO") ? .kakao : .apple
+            AppLog.log(at: FirebaseAnalyticsProvider.self, .complete_signin(method: socialType))
           
           self?.makeAlert(alertCase: .simpleAlert, title: "알림", content: "회원가입이 완료되었습니다."){
             self?.dismiss(animated: true) {

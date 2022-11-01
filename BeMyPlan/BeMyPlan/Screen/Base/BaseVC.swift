@@ -102,7 +102,6 @@ class BaseVC: UIViewController {
       case .scrap: tabSource = .scrap
       case .myPlan: tabSource = .myPlan
     }
-    AppLog.log(at: FirebaseAnalyticsProvider.self, .clickTab(source: tabSource))
   }
   private func showContainerView(){
     self.containerView.alpha = 1
