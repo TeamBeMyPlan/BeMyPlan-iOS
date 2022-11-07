@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RD9-A3-wpr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RD9-A3-wpr">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -20,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ahH-2R-fhP">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="94"/>
+                                <rect key="frame" x="0.0" y="4" width="414" height="94"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="마이 플랜" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dxq-pQ-uyC">
                                         <rect key="frame" x="174" y="60" width="66.5" height="22"/>
@@ -55,7 +55,7 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="02N-Lh-QlW">
-                                <rect key="frame" x="0.0" y="94" width="414" height="802"/>
+                                <rect key="frame" x="0.0" y="98" width="414" height="798"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="8EZ-IY-24k">
                                     <size key="itemSize" width="190" height="247"/>
@@ -368,7 +368,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yaF-U6-gRB">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="94"/>
+                                <rect key="frame" x="0.0" y="4" width="414" height="94"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="설정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="04V-fe-sUx">
                                         <rect key="frame" x="191.5" y="60" width="31.5" height="22"/>
@@ -410,7 +410,7 @@
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yor-Iy-VsZ">
-                                <rect key="frame" x="0.0" y="94" width="414" height="802"/>
+                                <rect key="frame" x="0.0" y="98" width="414" height="798"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qxC-sn-gqM">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="569"/>
@@ -689,13 +689,14 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="askButton" destination="G45-lR-VGa" id="bah-pJ-dCK"/>
+                        <outlet property="askButton" destination="HZw-Vf-KgV" id="I4k-rc-z77"/>
+                        <outlet property="buyListButton" destination="G45-lR-VGa" id="dBk-mG-F0a"/>
                         <outlet property="guestModeHideenView" destination="vDS-AL-ZRg" id="I7B-79-QiZ"/>
                         <outlet property="headerTopConstraint" destination="nTZ-Ed-v9L" id="TJI-5S-1Od"/>
                         <outlet property="logoutButton" destination="MtY-vc-6v5" id="vMZ-Pe-s6b"/>
                         <outlet property="serviceTermButton" destination="xfJ-ma-H3z" id="YQW-el-F5E"/>
-                        <outlet property="uploadButton" destination="NJ2-fQ-ilf" id="lkr-qt-SyC"/>
-                        <outlet property="withdrawButton" destination="lak-SE-Kdd" id="I3s-2n-zcX"/>
+                        <outlet property="uploadButton" destination="NJ2-fQ-ilf" id="3md-zd-ThW"/>
+                        <outlet property="withdrawButton" destination="lak-SE-Kdd" id="OZ6-Cz-bpy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IrN-G0-xsy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -711,7 +712,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bsd-zv-rUU">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="94"/>
+                                <rect key="frame" x="0.0" y="4" width="414" height="94"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="탈퇴하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hWg-wq-7lF">
                                         <rect key="frame" x="176" y="60" width="62.5" height="22"/>
@@ -754,13 +755,13 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="탈퇴하시는 이유를 알려주세요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1DS-dQ-IeO">
-                                <rect key="frame" x="24" y="124" width="193" height="19.5"/>
+                                <rect key="frame" x="24" y="128" width="193" height="19.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="직접 입력해주세요." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="t8L-nt-gs7">
-                                <rect key="frame" x="24" y="163.5" width="366" height="377.5"/>
+                                <rect key="frame" x="24" y="167.5" width="366" height="373.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" name="grey4"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -813,7 +814,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="thk-qt-N5g">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="94"/>
+                                <rect key="frame" x="0.0" y="4" width="414" height="94"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="여행 일정 크리에이터 신청" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QKd-Qk-Zti">
                                         <rect key="frame" x="115" y="60" width="184" height="22"/>
@@ -856,7 +857,7 @@
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_creator_guide" translatesAutoresizingMaskIntoConstraints="NO" id="prv-Sh-gVA">
-                                <rect key="frame" x="24" y="134" width="366" height="491.5"/>
+                                <rect key="frame" x="24" y="138" width="366" height="491.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="prv-Sh-gVA" secondAttribute="height" multiplier="327:439" id="fdn-VH-3LJ"/>
                                 </constraints>

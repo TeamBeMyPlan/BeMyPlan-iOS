@@ -16,6 +16,7 @@ class MyPlanSettingVC: UIViewController, MFMailComposeViewControllerDelegate {
   @IBOutlet var askButton: UIButton!
   @IBOutlet var serviceTermButton: UIButton!
   @IBOutlet var logoutButton: UIButton!
+  @IBOutlet var buyListButton: UIButton!
   @IBOutlet var withdrawButton: UIButton!
   @IBOutlet var guestModeHideenView: UIView!
   @IBOutlet var headerTopConstraint: NSLayoutConstraint!{
@@ -83,6 +84,11 @@ class MyPlanSettingVC: UIViewController, MFMailComposeViewControllerDelegate {
       } else {
         self.makeAlert(content: "둘러보기에서는 회원탈퇴가 불가능합니다.")
       }
+    }
+    
+    buyListButton.press {
+      let vc = ModuleFactory.resolve().instantiatePurchaseHistoryVC()
+      self.navigationController?.pushViewController(vc, animated: true)
     }
   }
   

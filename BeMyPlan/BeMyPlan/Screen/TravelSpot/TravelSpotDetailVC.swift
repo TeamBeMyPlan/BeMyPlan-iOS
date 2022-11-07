@@ -219,7 +219,6 @@ extension TravelSpotDetailVC {
   
   private func presentDataToTableView(_ entity: HomeListDataGettable) {
     addPlanData(entity.contents)
-    lastPlanId = entity.nextCursor
     contentTableView.reloadData()
   }
   
@@ -289,7 +288,8 @@ extension TravelSpotDetailVC {
     let contentYoffset = scrollView.contentOffset.y
     let distanceFromBottom = scrollView.contentSize.height - contentYoffset
     if distanceFromBottom < height {
-      fetchPlanListData()
+      // TODO: - 현재 페이징 기능 비활성화 상태
+//      fetchPlanListData()
     }
   }
 }

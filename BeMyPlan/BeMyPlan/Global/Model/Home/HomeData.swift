@@ -9,10 +9,9 @@ import Foundation
 
 struct HomeListDataGettable: Codable {
   let contents: [HomeListDataGettable.Item]
-  let nextCursor: Int
   
   struct Item : Codable{
-    let createdAt, updatedAt: String
+    let createdAt, updatedAt: [Int]?
     let planID: Int
     let thumbnailURL: String
     let title: String

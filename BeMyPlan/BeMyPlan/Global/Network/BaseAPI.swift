@@ -42,6 +42,7 @@ enum BaseAPI{
 	
 	// MARK: - MyPlan
 	case getBuyList
+	case getPurchaseHistory
 	
 	// MARK: - Order
 	case postOrderPlan(postId: Int)
@@ -157,7 +158,10 @@ extension BaseAPI: TargetType {
 		case .validatePurchase,
 					.completePurchase:
 				base += "/v1/payment"
-	
+				
+		
+		case .getPurchaseHistory:
+					base += "/v1/order/plans"
 				}
     guard let url = URL(string: base) else {
       fatalError("baseURL could not be configured")

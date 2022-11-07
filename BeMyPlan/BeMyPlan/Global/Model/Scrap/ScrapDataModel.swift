@@ -14,19 +14,22 @@ struct PlanDataGettable: Codable {
 
 // MARK: - Content
 struct PlanContent: Codable {
-    let createdAt, updatedAt: String
-    let planID: Int
-    let thumbnailURL: String
-    let title: String
-    let user: User
-    let scrapStatus, orderStatus: Bool
+  let orderStatus: Bool
+  let thumbnailURL: String
+  let updatedAt: [Int]
+  let scrapStatus: Bool
+  let planID: Int
+  let createdAt: [Int]
+  let user: User
+  let title: String
 
-    enum CodingKeys: String, CodingKey {
-        case createdAt, updatedAt
-        case planID = "planId"
-        case thumbnailURL = "thumbnailUrl"
-        case title, user, scrapStatus, orderStatus
-    }
+  enum CodingKeys: String, CodingKey {
+      case orderStatus
+      case thumbnailURL = "thumbnailUrl"
+      case updatedAt, scrapStatus
+      case planID = "planId"
+      case createdAt, user, title
+  }
 }
 
 // MARK: - User

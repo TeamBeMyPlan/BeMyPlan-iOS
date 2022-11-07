@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C7h-sA-Z8v">
-                                <rect key="frame" x="0.0" y="44" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="48" width="414" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="구매내역" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wyf-gG-ps3">
                                         <rect key="frame" x="176" y="16" width="62.5" height="22"/>
@@ -58,48 +58,20 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="전체 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lI5-Nj-Ms1">
-                                <rect key="frame" x="24" y="105" width="32" height="14.5"/>
+                                <rect key="frame" x="24" y="109" width="32" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" name="grey2"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bzc-90-CW6">
-                                <rect key="frame" x="320" y="99" width="70" height="26.5"/>
+                                <rect key="frame" x="320" y="103" width="70" height="26.5"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
-                                        <fragment content="구매">
-                                            <attributes>
-                                                <color key="NSColor" name="grey2"/>
-                                                <font key="NSFont" size="12" name=".AppleSDGothicNeoI-Regular"/>
-                                                <integer key="NSUnderline" value="1"/>
-                                            </attributes>
-                                        </fragment>
-                                        <fragment content=" ">
+                                        <fragment content="구매 내역 복원">
                                             <attributes>
                                                 <color key="NSColor" name="grey2"/>
                                                 <font key="NSFont" metaFont="cellTitle"/>
-                                                <integer key="NSUnderline" value="1"/>
-                                            </attributes>
-                                        </fragment>
-                                        <fragment content="내역">
-                                            <attributes>
-                                                <color key="NSColor" name="grey2"/>
-                                                <font key="NSFont" size="12" name=".AppleSDGothicNeoI-Regular"/>
-                                                <integer key="NSUnderline" value="1"/>
-                                            </attributes>
-                                        </fragment>
-                                        <fragment content=" ">
-                                            <attributes>
-                                                <color key="NSColor" name="grey2"/>
-                                                <font key="NSFont" metaFont="cellTitle"/>
-                                                <integer key="NSUnderline" value="1"/>
-                                            </attributes>
-                                        </fragment>
-                                        <fragment content="복원">
-                                            <attributes>
-                                                <color key="NSColor" name="grey2"/>
-                                                <font key="NSFont" size="12" name=".AppleSDGothicNeoI-Regular"/>
                                                 <integer key="NSUnderline" value="1"/>
                                             </attributes>
                                         </fragment>
@@ -107,9 +79,23 @@
                                 </state>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="YCe-NA-4f0">
-                                <rect key="frame" x="24" y="147.5" width="366" height="748.5"/>
+                                <rect key="frame" x="24" y="151.5" width="366" height="744.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d5Q-Hg-hI5">
+                                <rect key="frame" x="0.0" y="151.5" width="414" height="400"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="buy_empty_list" translatesAutoresizingMaskIntoConstraints="NO" id="F9l-en-Mag">
+                                        <rect key="frame" x="127.5" y="107" width="159" height="141"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="400" id="Ddb-7h-IvV"/>
+                                    <constraint firstItem="F9l-en-Mag" firstAttribute="centerX" secondItem="d5Q-Hg-hI5" secondAttribute="centerX" id="jex-M2-NYz"/>
+                                    <constraint firstItem="F9l-en-Mag" firstAttribute="top" secondItem="d5Q-Hg-hI5" secondAttribute="top" constant="107" id="zF7-Qh-ZN9"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -118,17 +104,21 @@
                             <constraint firstItem="YCe-NA-4f0" firstAttribute="top" secondItem="Bzc-90-CW6" secondAttribute="bottom" constant="22" id="1ed-AD-gfa"/>
                             <constraint firstItem="lI5-Nj-Ms1" firstAttribute="top" secondItem="C7h-sA-Z8v" secondAttribute="bottom" constant="11" id="5RR-qm-Ujc"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Bzc-90-CW6" secondAttribute="trailing" constant="24" id="7Gj-l9-as9"/>
+                            <constraint firstItem="d5Q-Hg-hI5" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="JUV-5Q-Gf1"/>
                             <constraint firstItem="C7h-sA-Z8v" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="QNW-Fa-HFh"/>
                             <constraint firstItem="YCe-NA-4f0" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="24" id="VGG-1r-6Js"/>
                             <constraint firstItem="C7h-sA-Z8v" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="Z9a-IJ-UgP"/>
+                            <constraint firstItem="d5Q-Hg-hI5" firstAttribute="top" secondItem="YCe-NA-4f0" secondAttribute="top" id="cBl-eK-jdU"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="YCe-NA-4f0" secondAttribute="trailing" constant="24" id="e2J-RZ-bTl"/>
                             <constraint firstItem="lI5-Nj-Ms1" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="24" id="mVu-3n-LhA"/>
                             <constraint firstAttribute="bottom" secondItem="YCe-NA-4f0" secondAttribute="bottom" id="oI9-U4-cm9"/>
                             <constraint firstItem="Bzc-90-CW6" firstAttribute="centerY" secondItem="lI5-Nj-Ms1" secondAttribute="centerY" id="vbA-eq-1LY"/>
+                            <constraint firstItem="d5Q-Hg-hI5" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="xtu-98-Zlw"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="backButton" destination="Djx-QO-M1c" id="aho-Yv-aIe"/>
+                        <outlet property="emptyView" destination="d5Q-Hg-hI5" id="KTA-Rh-4Jo"/>
                         <outlet property="historyTV" destination="YCe-NA-4f0" id="wUN-ng-Fca"/>
                         <outlet property="totalCountLabel" destination="lI5-Nj-Ms1" id="jgV-XS-G5k"/>
                     </connections>
@@ -139,6 +129,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="buy_empty_list" width="159" height="141"/>
         <image name="icnArrow" width="24" height="24"/>
         <namedColor name="grey2">
             <color red="0.36470588235294116" green="0.40784313725490196" blue="0.47843137254901963" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -9,12 +9,16 @@ import Foundation
 
 protocol MyPlanServiceType{
   func getOrderList(completion: @escaping (Result<PlanDataGettable?, Error>) -> Void)
+  func getPurchaseList(completion: @escaping (Result<PurchaseHistoryDataModel?, Error>) -> Void)
 }
 
 extension BaseService : MyPlanServiceType{
 
-  
-  func getOrderList( completion: @escaping (Result<PlanDataGettable?, Error>) -> Void) {
+    func getOrderList( completion: @escaping (Result<PlanDataGettable?, Error>) -> Void) {
     requestObject(.getBuyList, completion: completion)
+  }
+  
+  func getPurchaseList(completion: @escaping (Result<PurchaseHistoryDataModel?, Error>) -> Void) {
+    requestObject(.getPurchaseHistory, completion: completion)
   }
 }

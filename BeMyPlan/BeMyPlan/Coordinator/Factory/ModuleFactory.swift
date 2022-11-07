@@ -39,6 +39,7 @@ protocol ModuleFactoryProtocol {
   func instantiateMyPlanVC() -> MyPlanVC
   func instantiateMyPlanSettingVC() -> MyPlanSettingVC
   func instantiateMyPlanWithdrawVC() -> MyPlanWithdrawVC
+  func instantiatePurchaseHistoryVC() -> PurchaseHistoryVC
   
   // MARK: - Payment
   func instantiatePaymentSelectVC(paymentData: PaymentContentData) -> PaymentSelectVC
@@ -184,6 +185,10 @@ class ModuleFactory: ModuleFactoryProtocol{
     let vc = PlanDetailVC.controllerFromStoryboard(.planDetail)
     vc.viewModel = viewModel
     return vc
+  }
+  
+  func instantiatePurchaseHistoryVC() -> PurchaseHistoryVC {
+    return PurchaseHistoryVC.controllerFromStoryboard(.purchaseHistory)
   }
   
   // MARK: - Indicator

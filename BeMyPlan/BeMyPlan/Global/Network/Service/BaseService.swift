@@ -62,21 +62,27 @@ class BaseService{
   
   func requestObject<T: Decodable>(_ target: BaseAPI, completion: @escaping (Result<T?, Error>) -> Void) {
     provider.request(target) { response in
-      print("RESPONSE==>")
-      dump(response)
       switch response {
         case .success(let value):
 
           do {
             let decoder = JSONDecoder()
-            let json = JSON(value.data)
-            print(json)
-            let body = try decoder.decode(T.self, from: value.data)
-            completion(.success(body))
+            
+            if T.self == PurchaseHistoryDataModel.self {
+              print("====RESULT")
+              let json = JSON(value.data)
+              print(json)
+            }
+
+            
+            let body = try decoder.decode(ResponseObject<T>.self, from: value.data)
+            completion(.success(body.data))
           } catch let error {
+
             completion(.failure(error))
           }
         case .failure(let error):
+          print("ERR 발생 ",T.self)
           switch error {
             case .underlying(let error, _):
               if error.asAFError?.isSessionTaskError ?? false {

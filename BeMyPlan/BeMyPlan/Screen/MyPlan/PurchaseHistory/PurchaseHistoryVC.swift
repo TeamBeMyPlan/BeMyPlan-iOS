@@ -13,9 +13,12 @@ class PurchaseHistoryVC: UIViewController {
     didSet { setCountLabel() }
   }
   
+  @IBOutlet var emptyView: UIView!
   @IBOutlet var totalCountLabel: UILabel!
   @IBOutlet var backButton: UIButton!
   @IBOutlet var historyTV: UITableView!
+  
+  private var dateList: [String] = []
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -23,7 +26,7 @@ class PurchaseHistoryVC: UIViewController {
     setUI()
     registerCells()
     setDelegate()
-    setDummy()
+    fetchBuyList()
   }
   
 }
@@ -46,7 +49,44 @@ extension PurchaseHistoryVC {
     PurchaseHistoryDateCell.register(target: historyTV)
   }
   
+  private func fetchBuyList(){
+    BaseService.default.getPurchaseList{ result in
+      result.success { [weak self] entity in
+        guard let entity = entity else { return }
+        self?.convertPlanDataToHistoryData(entity.contents)
+      }.catch { error in
+        self.contentList.removeAll()
+        self.emptyView.isHidden = false
+      }
+    }
+  }
+  
+  private func convertPlanDataToHistoryData(_ dataList: [PurchaseContent]) {
+    
+    dateList.removeAll()
+    for item in dataList {
+      guard !item.updatedAt.isEmpty else { return }
+      let dateString = makeDateString(item.updatedAt)
+      let dateCellModel = PurhcaseHistoryDateModel(type: .date, date: dateString)
+      
+      if !dateList.contains(dateString) {
+        dateList.append(dateString)
+        contentList.append(dateCellModel)
+      }
+      
+      let purchaseModel = PurchaseHistoryContentModel(title: item.title, price: "\(item.orderPrice)원")
+      contentList.append(purchaseModel)
+      
+    }
+    
+    emptyView.isHidden = !dataList.isEmpty
+    historyTV.reloadData()
+  }
+  
   private func setDummy() {
+    let index = UserDefaults.standard.integer(forKey:UserDefaultKey.userID)
+    print("USERID",index)
+
     contentList.removeAll()
     contentList.append(PurhcaseHistoryDateModel())
     contentList.append(PurchaseHistoryContentModel(title: "111", price: "1,000원"))
@@ -65,6 +105,16 @@ extension PurchaseHistoryVC {
     contentList.append(PurhcaseHistoryDateModel(type: .date, date: "20.02.00"))
     contentList.append(PurchaseHistoryContentModel(title: "555", price: "4,000원"))
     historyTV.reloadData()
+  }
+  
+  private func makeDateString(_ data: [Int]) -> String {
+    let year = data[0]
+    let month = data[1]
+    let day = data[2]
+    
+    let monthString = month > 9 ? "\(month)" : "0\(month)"
+    let dayString = day > 9 ? "\(day)" : "0\(day)"
+    return "\(year). \(monthString). \(dayString)"
   }
   
   private func setCountLabel() {
