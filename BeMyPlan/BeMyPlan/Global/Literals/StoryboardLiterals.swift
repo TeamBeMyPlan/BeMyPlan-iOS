@@ -31,6 +31,7 @@ enum Storyboards: String {
   case indicator = "Indicator"
   case iconHelper = "IconHelper"
   case purchaseHistory = "PurchaseHistory"
+  case newPlanPreview = "NewPlanPreview"
 }
 
 extension UIStoryboard{

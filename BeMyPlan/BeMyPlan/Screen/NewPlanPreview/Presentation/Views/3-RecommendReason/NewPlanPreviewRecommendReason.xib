@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,6 +17,9 @@
                 <outletCollection property="recommendIconList" destination="Ple-fX-wRH" collectionClass="NSMutableArray" id="0we-O8-gba"/>
                 <outletCollection property="recommendIconList" destination="V92-J0-9iC" collectionClass="NSMutableArray" id="n6r-Nu-HJT"/>
                 <outletCollection property="recommendIconList" destination="gRQ-0v-Iq3" collectionClass="NSMutableArray" id="C6c-An-ESV"/>
+                <outletCollection property="containerList" destination="TOi-qN-J7P" collectionClass="NSMutableArray" id="DfO-xq-jm5"/>
+                <outletCollection property="containerList" destination="res-Db-xVq" collectionClass="NSMutableArray" id="qIa-ER-Jik"/>
+                <outletCollection property="containerList" destination="L1N-MO-emL" collectionClass="NSMutableArray" id="q7P-CK-foe"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -36,18 +39,18 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TOi-qN-J7P">
                     <rect key="frame" x="24" y="84" width="341" height="45"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;좌측은 아이콘 + 텍스트는 추천하는 이유&quot;" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oqV-B8-sOb">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;좌측은 아이콘 + 텍스트는 추천하는 이유&quot;" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oqV-B8-sOb">
                             <rect key="frame" x="47" y="14" width="284" height="17"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="☕️" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ple-fX-wRH">
-                            <rect key="frame" x="14" y="8" width="26" height="28"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1️⃣" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ple-fX-wRH">
+                            <rect key="frame" x="14" y="8" width="24" height="28"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="28" id="RG6-Gi-alc"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -55,8 +58,8 @@
                     <color key="backgroundColor" name="lightBlue"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="oqV-B8-sOb" secondAttribute="bottom" constant="14" id="9Xh-MN-1Bz"/>
-                        <constraint firstItem="Ple-fX-wRH" firstAttribute="top" secondItem="TOi-qN-J7P" secondAttribute="top" constant="8" id="CyI-bh-SlE"/>
                         <constraint firstItem="oqV-B8-sOb" firstAttribute="top" secondItem="TOi-qN-J7P" secondAttribute="top" constant="14" id="I6S-LF-eGV"/>
+                        <constraint firstItem="Ple-fX-wRH" firstAttribute="top" secondItem="oqV-B8-sOb" secondAttribute="top" constant="-6" id="SRr-WK-8Wy"/>
                         <constraint firstAttribute="trailing" secondItem="oqV-B8-sOb" secondAttribute="trailing" constant="10" id="WZB-tw-RRK"/>
                         <constraint firstItem="Ple-fX-wRH" firstAttribute="leading" secondItem="TOi-qN-J7P" secondAttribute="leading" constant="14" id="X3z-xD-obv"/>
                         <constraint firstItem="oqV-B8-sOb" firstAttribute="leading" secondItem="TOi-qN-J7P" secondAttribute="leading" constant="47" id="b8n-tL-fhG"/>
@@ -65,47 +68,47 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="res-Db-xVq">
                     <rect key="frame" x="24" y="137" width="341" height="45"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;좌측은 아이콘 + 텍스트는 추천하는 이유&quot;" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ujU-I7-nBq">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;좌측은 아이콘 + 텍스트는 추천하는 이유&quot;" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ujU-I7-nBq">
                             <rect key="frame" x="47" y="14" width="284" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="☕️" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V92-J0-9iC">
-                            <rect key="frame" x="14" y="8" width="26" height="28"/>
+                            <rect key="frame" x="14" y="8" width="24" height="28"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="28" id="hGn-jH-Ywf"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
                     <color key="backgroundColor" name="lightBlue"/>
                     <constraints>
-                        <constraint firstItem="V92-J0-9iC" firstAttribute="top" secondItem="res-Db-xVq" secondAttribute="top" constant="8" id="29h-KT-Ues"/>
                         <constraint firstAttribute="trailing" secondItem="ujU-I7-nBq" secondAttribute="trailing" constant="10" id="LPi-Am-BoJ"/>
                         <constraint firstItem="ujU-I7-nBq" firstAttribute="leading" secondItem="res-Db-xVq" secondAttribute="leading" constant="47" id="Oar-Ko-ok3"/>
                         <constraint firstItem="V92-J0-9iC" firstAttribute="leading" secondItem="res-Db-xVq" secondAttribute="leading" constant="14" id="PXI-ZO-cea"/>
                         <constraint firstAttribute="bottom" secondItem="ujU-I7-nBq" secondAttribute="bottom" constant="14" id="gQg-78-5ze"/>
                         <constraint firstItem="ujU-I7-nBq" firstAttribute="top" secondItem="res-Db-xVq" secondAttribute="top" constant="14" id="hnh-wi-vM6"/>
+                        <constraint firstItem="V92-J0-9iC" firstAttribute="top" secondItem="ujU-I7-nBq" secondAttribute="top" constant="-6" id="sQ4-bS-KSg"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L1N-MO-emL">
                     <rect key="frame" x="24" y="190" width="341" height="45"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;좌측은 아이콘 + 텍스트는 추천하는 이유&quot;" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rZI-EL-m22">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;좌측은 아이콘 + 텍스트는 추천하는 이유&quot;" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rZI-EL-m22">
                             <rect key="frame" x="47" y="14" width="284" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="☕️" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gRQ-0v-Iq3">
-                            <rect key="frame" x="14" y="8" width="26" height="28"/>
+                            <rect key="frame" x="14" y="8" width="24" height="28"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="28" id="rnC-pp-Edg"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -113,8 +116,8 @@
                     <color key="backgroundColor" name="lightBlue"/>
                     <constraints>
                         <constraint firstItem="rZI-EL-m22" firstAttribute="leading" secondItem="L1N-MO-emL" secondAttribute="leading" constant="47" id="1qu-ZS-pqT"/>
+                        <constraint firstItem="gRQ-0v-Iq3" firstAttribute="top" secondItem="rZI-EL-m22" secondAttribute="top" constant="-6" id="6O6-tS-zkI"/>
                         <constraint firstItem="rZI-EL-m22" firstAttribute="top" secondItem="L1N-MO-emL" secondAttribute="top" constant="14" id="Kew-8c-zcj"/>
-                        <constraint firstItem="gRQ-0v-Iq3" firstAttribute="top" secondItem="L1N-MO-emL" secondAttribute="top" constant="8" id="NZo-R8-FeV"/>
                         <constraint firstAttribute="trailing" secondItem="rZI-EL-m22" secondAttribute="trailing" constant="10" id="WdQ-ek-JmW"/>
                         <constraint firstItem="gRQ-0v-Iq3" firstAttribute="leading" secondItem="L1N-MO-emL" secondAttribute="leading" constant="14" id="bvJ-Bc-joQ"/>
                         <constraint firstAttribute="bottom" secondItem="rZI-EL-m22" secondAttribute="bottom" constant="14" id="rdp-E2-oE3"/>

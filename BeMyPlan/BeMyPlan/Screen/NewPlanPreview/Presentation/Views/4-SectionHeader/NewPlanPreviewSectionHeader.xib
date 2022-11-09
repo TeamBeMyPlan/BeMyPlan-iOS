@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -48,7 +48,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QAF-EQ-3Ti">
                             <rect key="frame" x="0.0" y="0.0" width="146.33333333333334" height="46"/>
                             <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o7w-lh-TaL" userLabel="line">
+                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o7w-lh-TaL" userLabel="line">
                                     <rect key="frame" x="0.0" y="44" width="146.33333333333334" height="2"/>
                                     <color key="backgroundColor" name="grey1"/>
                                     <constraints>
@@ -82,7 +82,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gkI-1G-XSd">
                             <rect key="frame" x="146.33333333333331" y="0.0" width="146.33333333333331" height="46"/>
                             <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vJ4-iA-vy5" userLabel="line">
+                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vJ4-iA-vy5" userLabel="line">
                                     <rect key="frame" x="0.0" y="44" width="146.33333333333334" height="2"/>
                                     <color key="backgroundColor" name="grey1"/>
                                     <constraints>
@@ -116,7 +116,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MLK-Jw-4fg">
                             <rect key="frame" x="292.66666666666669" y="0.0" width="146.33333333333331" height="46"/>
                             <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FSW-98-3dM" userLabel="line">
+                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FSW-98-3dM" userLabel="line">
                                     <rect key="frame" x="0.0" y="44" width="146.33333333333334" height="2"/>
                                     <color key="backgroundColor" name="grey1"/>
                                     <constraints>

@@ -83,30 +83,6 @@ extension PurchaseHistoryVC {
     historyTV.reloadData()
   }
   
-  private func setDummy() {
-    let index = UserDefaults.standard.integer(forKey:UserDefaultKey.userID)
-    print("USERID",index)
-
-    contentList.removeAll()
-    contentList.append(PurhcaseHistoryDateModel())
-    contentList.append(PurchaseHistoryContentModel(title: "111", price: "1,000원"))
-    
-    contentList.append(PurhcaseHistoryDateModel(type: .date, date: "20.00.00"))
-    contentList.append(PurchaseHistoryContentModel(title: "222", price: "4,000원"))
-    contentList.append(PurchaseHistoryContentModel(title: "223", price: "4,000원"))
-    contentList.append(PurchaseHistoryContentModel(title: "224", price: "4,000원"))
-    
-    contentList.append(PurhcaseHistoryDateModel(type: .date, date: "20.01.00"))
-    contentList.append(PurchaseHistoryContentModel(title: "333", price: "4,000원"))
-    
-    contentList.append(PurhcaseHistoryDateModel(type: .date, date: "20.02.00"))
-    contentList.append(PurchaseHistoryContentModel(title: "444", price: "4,000원"))
-    
-    contentList.append(PurhcaseHistoryDateModel(type: .date, date: "20.02.00"))
-    contentList.append(PurchaseHistoryContentModel(title: "555", price: "4,000원"))
-    historyTV.reloadData()
-  }
-  
   private func makeDateString(_ data: [Int]) -> String {
     let year = data[0]
     let month = data[1]
@@ -162,7 +138,7 @@ enum PurchaseHistoryCellType {
 
 struct PurhcaseHistoryDateModel: PurchaseHistoryDataSource {
   var type: PurchaseHistoryCellType = .date
-  var date: String = "2022.06.28"
+  var date: String = "2099.12.31"
 }
 
 struct PurchaseHistoryContentModel: PurchaseHistoryDataSource {

@@ -18,7 +18,6 @@ extension LoginVC {
         else {
           if let accessToken = oauthToken?.accessToken {
             // 액세스 토큰 받아와서 서버에게 넘겨주는 로직 작성
-            print("TOKEN",accessToken)
             self.postSocialLoginData(socialToken: accessToken, socialType: "KAKAO")
 
           }
@@ -42,12 +41,13 @@ extension LoginVC {
   func postSocialLoginData(socialToken: String, socialType: String,email: String? = nil) {
     BaseService.default.postSocialLogin(socialToken: socialToken, socialType: socialType) { result in
       result.success { [weak self] data in
-        if let data = data{
+        if let data = data {
           if socialType == "KAKAO" {
             AppLog.log(at: FirebaseAnalyticsProvider.self, .complete_signin(method: .kakao))
           } else {
             AppLog.log(at: FirebaseAnalyticsProvider.self, .complete_signin(method: .apple))
           }
+          UserDefaults.standard.setValue(data.userId, forKey: UserDefaultKey.userID)
           UserDefaults.standard.setValue(data.nickname, forKey: UserDefaultKey.userNickname)
           UserDefaults.standard.setValue(data.sessionId, forKey: UserDefaultKey.sessionID)
             self?.moveBaseVC()

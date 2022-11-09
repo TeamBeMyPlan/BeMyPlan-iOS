@@ -148,7 +148,6 @@ class MainListView: UIView {
 extension MainListView : SkeletonCollectionViewDelegate{
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
-    
     let stateModel = PlanPreviewStateModel(scrapState: mainListDataList[indexPath.row].scrapStatus,
                                            planId: mainListDataList[indexPath.row].planID,
                                            isPurchased: mainListDataList[indexPath.row].orderStatus)

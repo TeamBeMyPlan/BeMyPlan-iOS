@@ -47,7 +47,6 @@ extension NewPlanPreviewSectionHeader {
     purchaseGuideTitleLabel.textColor = .grey03
     recommendTitleLabel.textColor = .grey03
     
-    
     if index == 0 {
       mainContentLineView.isHidden = false
       mainContentTitleLabel.textColor = .grey01
@@ -73,17 +72,14 @@ extension NewPlanPreviewSectionHeader {
   private func bindButton() {
     mainContentButton.press {
       self.postObserverAction(.newPlanPreviewSectionHeaderClicked,object: 0)
-//      self.setIndex(0)
     }
     
     purchaseGuideButton.press {
       self.postObserverAction(.newPlanPreviewSectionHeaderClicked,object: 1)
-//      self.setIndex(1)
     }
     
     recommendButton.press {
       self.postObserverAction(.newPlanPreviewSectionHeaderClicked,object: 2)
-//      self.setIndex(2)
     }
   }
   

@@ -8,15 +8,24 @@
 import UIKit
 import RxSwift
 import StoreKit
+import SnapKit
 
 class NewPlanPreviewVC: UIViewController {
   // MARK: - Vars & Lets Part
   
+  enum PreviewError: Error {
+    case loadPlanIAPDataFail
+  }
+  
+  internal var planID: Int = 2
+  internal var scrapStatus: Bool = false
+  
+  private var isConfirmViewShow: Bool = false
   private var logData = PlanPreviewLogData()
   private var planPurchsaeItem = SKProduct()
-  internal var planID: Int = 2
-  internal var orderID: Int = -1
-  internal var planPrice: Int = 0
+  private var orderID: Int = -1
+  private var planPrice: Int = 0
+  private var currentSectionAnchor = 0
   private var contentList: [[NewPlanPreviewViewCase]] = [
     [.topHeader, .creator, .recommendReason],
     [.mainContents, .purhcaseGuide,
@@ -24,6 +33,7 @@ class NewPlanPreviewVC: UIViewController {
      .purhcaseTerm, .question ,.footer]
   ]
   private var creatorCellViewModel: NewPlanPreviewCreatorViewModel?
+  private var recommendViewModel: NewPlanPreviewRecommendViewModel?
   private var headerCellViewModel: NewPlanPreviewHeaderViewModel?
   private var mainContentCellViewModel: NewPlanPreviewMainContentViewModel?
   private var suggestCellViewModel: NewPlanPreviewSuggestViewModel?
@@ -35,12 +45,16 @@ class NewPlanPreviewVC: UIViewController {
   private var isPurhcased: Bool = false
   
   // MARK: - UI Component Part
+  private var purchaseConfirmView = PurchaseConfirmView()
+  private var purchaseDismissButton = UIButton()
+  private var confirmDataModel = PurchaseConfirmDataModel() { didSet { setConfirmView() } }
   @IBOutlet var topNavibar: NewPlanPreviewNaviBar!
   @IBOutlet var mainContentTV: UITableView!
   @IBOutlet var bottomCTAButton: UIButton!
   @IBOutlet var bottomScrapButton: UIButton!
   private let layer = UIView()
   
+  @IBOutlet var buyButtonContainerView: UIView!
   // MARK: - Life Cycle Part
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -55,6 +69,7 @@ class NewPlanPreviewVC: UIViewController {
     fetchCreatorData()
     fetchPlanPreviewDetail()
     fetchPlanSuggestList()
+    addConfirmView()
     
     if let sessionID = UserDefaults.standard.string(forKey: UserDefaultKey.sessionID) {
       print("SESSION ID =>",sessionID)
@@ -65,6 +80,25 @@ class NewPlanPreviewVC: UIViewController {
 }
 
 extension NewPlanPreviewVC {
+  private func addConfirmView() {
+    view.addSubview(purchaseConfirmView)
+    purchaseConfirmView.alpha = 0
+    purchaseConfirmView.snp.makeConstraints { make in
+      make.leading.trailing.equalToSuperview()
+      make.height.equalTo(337)
+      make.bottom.equalTo(buyButtonContainerView.snp.top)
+    }
+    
+    view.addSubview(purchaseDismissButton)
+    purchaseDismissButton.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.15)
+    purchaseDismissButton.alpha = 0
+    purchaseDismissButton.snp.makeConstraints { make in
+      make.top.equalToSuperview()
+      make.leading.trailing.equalToSuperview()
+      make.bottom.equalTo(purchaseConfirmView.snp.top)
+    }
+  }
+  
   private func setDelegate() {
     mainContentTV.delegate = self
     mainContentTV.dataSource = self
@@ -84,7 +118,8 @@ extension NewPlanPreviewVC {
   
   private func initPurchaseProduct() {
 
-    PlanPurchaseItem.productID = "bemyplan.purchase.test1"
+    PlanPurchaseItem.productID = PlanPurchaseItem.makeProductIdentifier(idx: self.planID)
+    print("ID +",PlanPurchaseItem.productID)
     PlanPurchaseItem.iapService.getProducts { [weak self] success, products in
         guard let self = self else { return }
       
@@ -96,7 +131,11 @@ extension NewPlanPreviewVC {
               self.logData.price = price
               self.planPrice = price
             }
-            guard let product = products.first else { return }
+         
+            guard let product = products.first else {
+//              self.showError()
+              return
+            }
             self.planPurchsaeItem = product
             self.headerCellViewModel!.price = self.makePrice(self.planPurchsaeItem.price.stringValue)
             self.mainContentTV.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
@@ -107,6 +146,12 @@ extension NewPlanPreviewVC {
     let purhcaseState = PlanPurchaseItem.iapService.isProductPurchased(PlanPurchaseItem.productID)
     let buttonTitle = purhcaseState ? "전체 여행 코스 보러가기" : "구매하기"
     bottomCTAButton.setTitle(buttonTitle, for: .normal)
+  }
+  
+  private func showError() {
+    makeAlert(content: "오류가 발생하였습니다. 다시 시도해주세요.") {
+      self.navigationController?.popViewController(animated: true)
+    }
   }
   
   // 인앱 결제 버튼 눌렀을 때
@@ -179,7 +224,36 @@ extension NewPlanPreviewVC {
   
   private func bindButtonAction() {
     bottomCTAButton.press {
-      self.isPurhcased ? self.pushDetailView() : self.purchaseActionStart()
+      
+      if self.isPurhcased {
+        self.pushDetailView()
+      } else if self.isConfirmViewShow {
+        self.purchaseActionStart()
+      } else {
+        self.showConfirmView()
+      }
+    }
+    
+    purchaseDismissButton.press {
+      self.hideConfirmView()
+    }
+  }
+  
+  private func showConfirmView() {
+    isConfirmViewShow = true
+    
+    UIView.animate(withDuration: 0.3, delay: 0) {
+      self.purchaseDismissButton.alpha = 1
+      self.purchaseConfirmView.alpha = 1
+    }
+  }
+  
+  private func hideConfirmView() {
+    isConfirmViewShow = false
+    
+    UIView.animate(withDuration: 0.3, delay: 0) {
+      self.purchaseDismissButton.alpha = 0
+      self.purchaseConfirmView.alpha = 0
     }
   }
   
@@ -219,10 +293,18 @@ extension NewPlanPreviewVC {
     
     addObserverAction(.newPlanPreviewTermFoldClicked) { noti in
       if let type = noti.object as? NewPlanPreviewViewCase {
-        if type == .usingTerm { self.termFoldState[0].toggle() }
-        else if type == .purhcaseTerm { self.termFoldState[1].toggle() }
-        else if type == .question { self.termFoldState[2].toggle() }
-        self.mainContentTV.reloadData()
+        print("CLICKEd",self.currentSectionAnchor)
+        self.postObserverAction(.newPlanPreviewScrollIndexChanged, object: self.currentSectionAnchor)
+        if type == .usingTerm { self.termFoldState[0].toggle()
+          self.mainContentTV.reloadRows(at: [IndexPath(row: 3, section: 1)], with: .none)
+        } else if type == .purhcaseTerm {
+          self.termFoldState[1].toggle()
+          self.mainContentTV.reloadRows(at: [IndexPath(row: 4, section: 1)], with: .none)
+        } else if type == .question {
+          self.termFoldState[2].toggle()
+          self.mainContentTV.reloadRows(at: [IndexPath(row: 5, section: 1)], with: .none)
+        }
+        
       }
     }
 
@@ -232,9 +314,7 @@ extension NewPlanPreviewVC {
       }
     }
   }
-  
 
-  
   private func addBlackLayer() {
     layer.alpha = 0
     view.addSubview(layer)
@@ -255,6 +335,17 @@ extension NewPlanPreviewVC {
       self.layer.removeFromSuperview()
     }
   }
+  
+  private func setConfirmView() {
+    print("confirmView")
+    guard !confirmDataModel.title.isEmpty,
+          !confirmDataModel.price.isEmpty,
+          !confirmDataModel.creator.isEmpty,
+          !confirmDataModel.imageURL.isEmpty,
+          !confirmDataModel.location.isEmpty else { return }
+    
+    purchaseConfirmView.setData(confirmDataModel)
+  }
 }
 
 extension NewPlanPreviewVC: UITableViewDelegate {
@@ -264,8 +355,9 @@ extension NewPlanPreviewVC: UITableViewDelegate {
     if indexPath.section == 0 {
       switch(indexPath.row) {
         case 0: return screenWidth * (472/375) + 310
-        case 1: return heightCalculator.calculateCreatorCellHeight(text: creatorCellViewModel?.creatorIntroduce)
-        default : return 242
+//        case 1: return heightCalculator.calculateCreatorCellHeight(text: creatorCellViewModel?.creatorIntroduce)
+        case 1: return UITableView.automaticDimension
+        default : return heightCalculator.calculateRecommendCellHeight(textList: recommendViewModel?.reasonList.map { $0.reason })
       }
     } else {
       switch(indexPath.row) {
@@ -274,7 +366,7 @@ extension NewPlanPreviewVC: UITableViewDelegate {
           let textList = mainContentCellViewModel.contentList.map { $0.contents }
           return heightCalculator.calculateMainCellHeight(textList: textList) + 121
         case 1:     return 620
-        case 2:     return screenWidth * (380/375)
+        case 2:     return screenWidth * (160/375) + 80 + 140
         case 3: return termFoldState[indexPath.row - 3] ? 56 : 56 + screenWidth * (108/375)
         case 4: return termFoldState[indexPath.row - 3] ? 56 : 56 + screenWidth * (208/375)
         case 5: return termFoldState[indexPath.row - 3] ? 56 : 56 + screenWidth * (68/375)
@@ -337,15 +429,17 @@ extension NewPlanPreviewVC: UITableViewDataSource {
         creatorCell.viewModel = viewModel
         return creatorCell
       case .recommendReason:
-        guard let mockCell = tableView.dequeueReusableCell(withIdentifier: NewPlanPreviewMockCell.className,
+        guard let recommendCell = tableView.dequeueReusableCell(withIdentifier: NewPlanPreviewMockCell.className,
                                                            for: indexPath) as? NewPlanPreviewMockCell else { return UITableViewCell() }
         let view = NewPlanPreviewRecommendReason()
         
-        mockCell.addSubview(view)
+        recommendCell.addSubview(view)
+        guard let viewModel = recommendViewModel else { return UITableViewCell() }
+        view.viewModel = viewModel
         view.snp.makeConstraints { make in
           make.edges.equalToSuperview()
         }
-        return mockCell
+        return recommendCell
         
       case .mainContents:
         
@@ -468,12 +562,15 @@ extension NewPlanPreviewVC : UIScrollViewDelegate {
     switch(yPos + 90 + 50) {
       case 0 ..< purchaseGuideCellYPos :
         postObserverAction(.newPlanPreviewScrollIndexChanged, object: 0)
+        self.currentSectionAnchor = 0
 
       case purchaseGuideCellYPos ..< recommendCellYPos :
         postObserverAction(.newPlanPreviewScrollIndexChanged, object: 1)
+        self.currentSectionAnchor = 1
 
       case recommendCellYPos ... 10000 :
         postObserverAction(.newPlanPreviewScrollIndexChanged, object: 2)
+        self.currentSectionAnchor = 2
 
       default: break
     }
@@ -488,6 +585,7 @@ extension NewPlanPreviewVC {
         guard let entity = entity else { return }
         self.logData.creator = entity.nickname
         self.writeLogData()
+        self.confirmDataModel.creator = entity.nickname
         
         self.creatorCellViewModel = NewPlanPreviewCreatorViewModel(profileImgURL: "https://picsum.photos/200",
                                                                    authorName: entity.nickname,
@@ -509,6 +607,11 @@ extension NewPlanPreviewVC {
         self.initPurchaseProduct()
         self.logData.title = entity.title
         self.writeLogData()
+        self.confirmDataModel.title = entity.title
+        self.confirmDataModel.imageURL = entity.thumbnail.first ?? ""
+        self.confirmDataModel.price = self.makePrice(String(entity.price))
+        self.confirmDataModel.location = entity.region
+        
         let iconData = PlanPreview.IconData(theme: self.makeThemeString(entity.theme),
                                             spotCount: "\(entity.spotCount)",
                                             restaurantCount: "\(entity.restaurantCount)",
@@ -517,6 +620,19 @@ extension NewPlanPreviewVC {
                                             budget: self.makeBudget(entity.budget.amount),
                                             transport: self.makeTransport(entity.travelMobility),
                                             month: "\(entity.month)")
+        
+        
+        let recommendData = entity.recommendTarget.enumerated().map { index,recommendText in
+          var icon = ""
+          switch(index) {
+            case 0:   icon = "1️⃣"
+            case 1:   icon = "2️⃣"
+            default:  icon = "3️⃣"
+          }
+          return NewPlanPreviewRecommendViewModel.RecommendData(icon: icon, reason: recommendText)
+        }
+        
+        self.recommendViewModel = NewPlanPreviewRecommendViewModel(reasonList: recommendData)
         
         self.headerCellViewModel = NewPlanPreviewHeaderViewModel(imgList: entity.thumbnail,
                                                                  title: entity.title,
@@ -554,12 +670,6 @@ extension NewPlanPreviewVC {
         self.mainContentTV.reloadData()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-          print(self.mainContentTV.rectForRow(at: IndexPath.init(row: 0, section: 0)).minY)
-          print(self.mainContentTV.rectForRow(at: IndexPath.init(row: 1, section: 0)).minY)
-          print(self.mainContentTV.rectForRow(at: IndexPath.init(row: 2, section: 0)).minY)
-          print(self.mainContentTV.rectForRow(at: IndexPath.init(row: 0, section: 1)).minY)
-          print(self.mainContentTV.rectForRow(at: IndexPath.init(row: 1, section: 1)).minY)
-          print(self.mainContentTV.rectForRow(at: IndexPath.init(row: 2, section: 1)).minY)
 
           self.mainContentCellYPos = self.mainContentTV.rectForRow(at: IndexPath.init(row: 0, section: 1)).minY
           self.purchaseGuideCellYPos = self.mainContentTV.rectForRow(at: IndexPath.init(row: 1, section: 1)).minY
@@ -662,5 +772,16 @@ struct PlanPurchaseItem {
   
   static func getResourceProductName(_ id: String) -> String? {
     id.components(separatedBy: ".").last
+  }
+  
+  static func makeProductIdentifier(idx: Int) -> String {
+    var identifier = "com.bemyplan.purchase.plan0"
+    if idx < 10 {
+      identifier += "0\(idx)"
+    } else {
+      identifier += "\(idx)"
+    }
+    
+    return identifier
   }
 }

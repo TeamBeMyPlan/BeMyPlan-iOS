@@ -87,8 +87,6 @@ class MainCardView: UIView {
   private func getCardData() {
     
     BaseService.default.getHomeOrderSortList { result in
-      print("GET CARDADATA")
-      dump(result)
       result.success { entity in
         guard let entity = entity else { return }
         self.popularList = entity.contents

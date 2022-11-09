@@ -8,7 +8,7 @@
 import Foundation
 
 struct NewPlanPreviewCourseEntity: Codable {
-    let createdAt, updatedAt: String
+    let createdAt, updatedAt: [Int]
     let planID: Int
     let title, dataDescription: String
     let thumbnail: [String]

@@ -14,6 +14,22 @@ class PurchaseConfirmView: XibView{
   @IBOutlet var titleLabel: UILabel!
   @IBOutlet var locationLabel: UILabel!
   @IBOutlet var priceLabel: UILabel!
+  @IBOutlet var termTextView: UITextView!
+  
+  override init(frame: CGRect) {
+    super.init(frame: frame)
+    setUI()
+  }
+  
+  required init?(coder aDecoder: NSCoder) {
+    super.init(coder: aDecoder)
+    setUI()
+  }
+  
+  
+  private func setUI() {
+    termTextView.removeMargin()
+  }
   
   public func setData(_ data: PurchaseConfirmDataModel) {
     thumbnailImageView.setImage(with: data.imageURL)
@@ -25,9 +41,9 @@ class PurchaseConfirmView: XibView{
 }
 
 struct PurchaseConfirmDataModel {
-  let imageURL: String
-  let creator: String
-  let title: String
-  let location: String
-  let price: String
+  var imageURL: String = ""
+  var creator: String = ""
+  var title: String = ""
+  var location: String = ""
+  var price: String = ""
 }

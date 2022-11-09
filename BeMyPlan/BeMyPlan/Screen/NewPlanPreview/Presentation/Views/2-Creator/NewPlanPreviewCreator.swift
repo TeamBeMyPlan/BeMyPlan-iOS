@@ -28,6 +28,7 @@ extension NewPlanPreviewCreator {
     contentTextView.backgroundColor = .grey06
     contentTextView.setTextWithLineHeight(text: viewModel.creatorIntroduce, lineHeightMultiple: 1.31)
     contentTextView.layer.cornerRadius = 5
+    contentTextView.removeMargin()
     contentTextView.textContainerInset = UIEdgeInsets.init(top: 21, left: 21, bottom: 21, right: 21)
     contentTextView.font = .systemFont(ofSize: 14)
     contentTextView.textColor = .grey01

@@ -68,7 +68,7 @@ class BaseService{
           do {
             let decoder = JSONDecoder()
             
-            if T.self == PurchaseHistoryDataModel.self {
+            if T.self == NewPlanPreviewCreatorEntity.self || T.self == NewPlanPreviewCourseEntity.self {
               print("====RESULT")
               let json = JSON(value.data)
               print(json)

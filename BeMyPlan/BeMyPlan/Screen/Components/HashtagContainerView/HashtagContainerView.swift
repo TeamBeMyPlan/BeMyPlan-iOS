@@ -47,7 +47,7 @@ extension HashtagContainerView: UICollectionViewDataSource, UICollectionViewDele
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let hashtagCell = collectionView.dequeueReusableCell(withReuseIdentifier: HashtagCVC.className, for: indexPath) as? HashtagCVC
-    else { return UICollectionViewCell () }
+    else { return UICollectionViewCell() }
     hashtagCell.layer.cornerRadius = 2
     hashtagCell.viewModel = self.viewModel!.hashtagList[indexPath.row]
     return hashtagCell
