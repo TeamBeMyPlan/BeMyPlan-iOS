@@ -69,6 +69,7 @@ class NewPlanPreviewVC: UIViewController {
     fetchCreatorData()
     fetchPlanPreviewDetail()
     fetchPlanSuggestList()
+    fetchScrapInfo()
     addConfirmView()
     
     if let sessionID = UserDefaults.standard.string(forKey: UserDefaultKey.sessionID) {
@@ -122,14 +123,16 @@ extension NewPlanPreviewVC {
     print("ID +",PlanPurchaseItem.productID)
     PlanPurchaseItem.iapService.getProducts { [weak self] success, products in
         guard let self = self else { return }
-      
         if success,
            self.headerCellViewModel != nil,
             let products = products {
           DispatchQueue.main.async {
             if let price = Int(self.planPurchsaeItem.price.stringValue) {
+              print(" 현재 가격 ===> ",price)
+              self.confirmDataModel.price = self.makePrice("\(price)")
               self.logData.price = price
               self.planPrice = price
+              self.setConfirmView()
             }
          
             guard let product = products.first else {
@@ -137,7 +140,11 @@ extension NewPlanPreviewVC {
               return
             }
             self.planPurchsaeItem = product
+            let price = self.planPurchsaeItem.price.stringValue
             self.headerCellViewModel!.price = self.makePrice(self.planPurchsaeItem.price.stringValue)
+            self.logData.price = Int(price) ?? 0
+            self.planPrice = Int(price) ?? 0
+            self.confirmDataModel.price = self.makePrice("\(price)")
             self.mainContentTV.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .none)
           }
         }
@@ -162,6 +169,7 @@ extension NewPlanPreviewVC {
         if let idx = purchaseCheckModel?.orderId {
           print(" 현재 order ID ==>",idx)
           self.orderID = idx
+          PlanPurchaseItem.iapService.buyProduct(self.planPurchsaeItem)
         } else {
           self.makeAlert(content: "구매에 실패하였습니다. 다시 시도해주세요.")
         }
@@ -169,7 +177,6 @@ extension NewPlanPreviewVC {
         self.makeAlert(content: "구매에 실패하였습니다. 다시 시도해주세요.")
       }
     }
-    PlanPurchaseItem.iapService.buyProduct(planPurchsaeItem)
   }
   
   private func validateReceipt(receipt: String,completion: @escaping (Int) -> Void) {
@@ -189,7 +196,7 @@ extension NewPlanPreviewVC {
   private func confirmPurchase(purchaseID: Int,
                                completion: @escaping () -> Void) {
     let userID = UserDefaults.standard.integer(forKey: UserDefaultKey.userID)
-
+    print("4 . confirm => orderID,paymentID",orderID,purchaseID,userID)
     BaseService.default.confirmTravelPurchase(orderID: self.orderID,
                                               paymentId: purchaseID,
                                               userID: userID) { result in
@@ -224,6 +231,10 @@ extension NewPlanPreviewVC {
   
   private func bindButtonAction() {
     bottomCTAButton.press {
+      guard self.planPurchsaeItem.productIdentifier != "" else {
+        self.showError()
+        return
+      }
       
       if self.isPurhcased {
         self.pushDetailView()
@@ -232,10 +243,19 @@ extension NewPlanPreviewVC {
       } else {
         self.showConfirmView()
       }
-    }
+    }   
     
     purchaseDismissButton.press {
       self.hideConfirmView()
+    }
+    
+    bottomScrapButton.press {
+      let dto = ScrapRequestDTO(planID: self.planID, scrapState: self.scrapStatus)
+
+      self.postObserverAction(.scrapButtonClicked, object: dto)
+      self.scrapStatus.toggle()
+      self.setScrapButtonImage()
+      
     }
   }
   
@@ -600,6 +620,24 @@ extension NewPlanPreviewVC {
     }
   }
   
+  private func fetchScrapInfo() {
+    BaseService.default.getScrapStatus(postId: self.planID) { result in
+      switch(result) {
+        case .success(_):
+          self.scrapStatus = true
+          self.setScrapButtonImage()
+        case .failure(_):
+          self.scrapStatus = false
+          self.setScrapButtonImage()
+      }
+    }
+  }
+  
+  private func setScrapButtonImage() {
+    let imageName = self.scrapStatus ? "icn_scrap" : "icnNotScrap"
+    bottomScrapButton.setImage(UIImage(named: imageName), for: .normal)
+  }
+  
   private func fetchPlanHeaderData() {
     BaseService.default.fetchNewPlanPreviewCourse(idx: self.planID) { result in
       result.success { entity in
@@ -609,8 +647,8 @@ extension NewPlanPreviewVC {
         self.writeLogData()
         self.confirmDataModel.title = entity.title
         self.confirmDataModel.imageURL = entity.thumbnail.first ?? ""
-        self.confirmDataModel.price = self.makePrice(String(entity.price))
-        self.confirmDataModel.location = entity.region
+        self.confirmDataModel.price = "-"
+        self.confirmDataModel.location = self.makeRegionString(entity.region)
         
         let iconData = PlanPreview.IconData(theme: self.makeThemeString(entity.theme),
                                             spotCount: "\(entity.spotCount)",
@@ -638,7 +676,7 @@ extension NewPlanPreviewVC {
                                                                  title: entity.title,
                                                                  address: self.makeRegionString(entity.region),
                                                                  hashtag: entity.hashtag,
-                                                                 price: self.makePrice(String(entity.price)),
+                                                                 price: "-",
                                                                  iconData: iconData)
         self.mainContentTV.reloadData()
         

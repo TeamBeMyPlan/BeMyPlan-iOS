@@ -14,7 +14,7 @@ typealias TotalDays = Int
 
 protocol PlanDetailRepositoryInterface {
   var networkError: ((Error) -> Void)? { get set }
-  func fetchPlanDetailData(idx: Int,onCompleted: @escaping (AuthorName,AuthorID,Title,TotalDays, [[PlanDetailDataGettable.SpotData?]]) -> Void)
+  func fetchPlanDetailData(idx: Int,isPreview: Bool,onCompleted: @escaping (AuthorName,AuthorID,Title,TotalDays, [[PlanDetailDataGettable.SpotData?]]) -> Void)
 }
 
 final class PlanDetailRepository: PlanDetailRepositoryInterface {
@@ -24,15 +24,15 @@ final class PlanDetailRepository: PlanDetailRepositoryInterface {
   private let networkService: PlanDetailServiceType
   
   // MARK: - Dependency
-  init(service: PlanDetailServiceType) {
+  init(service: PlanDetailServiceType, isPreviewMode: Bool = false) {
     self.networkService = service
   }
 }
 
 // MARK: - Methods
 extension PlanDetailRepository {
-  func fetchPlanDetailData(idx: Int, onCompleted: @escaping (AuthorName,AuthorID,Title,TotalDays,[[PlanDetailDataGettable.SpotData?]]) -> Void) {
-    networkService.getPlanDetailData(idx: idx) { [weak self] result in
+  func fetchPlanDetailData(idx: Int, isPreview: Bool = false, onCompleted: @escaping (AuthorName,AuthorID,Title,TotalDays,[[PlanDetailDataGettable.SpotData?]]) -> Void) {
+    networkService.getPlanDetailData(idx: idx, isPreview: isPreview) { [weak self] result in
       guard let self = self else {return}
       result.success { entity in
         guard let entity = entity else {return}
@@ -40,7 +40,7 @@ extension PlanDetailRepository {
         let authorID = entity.user.userID
         let title = entity.title
         let totalDays = entity.contents.count
-        self.networkService.getPlanTransportData(idx: idx) { transportResult in
+        self.networkService.getPlanTransportData(idx: idx, isPreview: isPreview) { transportResult in
           transportResult.success { transportEntity in
             guard let transportEntity = transportEntity else { return }
             let spots = self.getPlanDetailSpotData(entity, transportEntity)

@@ -44,6 +44,7 @@ extension NewPlanPreviewPurchaseGuide {
   
   private func setButtonActions() {
     previewActionButton.press {
+      self.postObserverAction(.pushToPlanDetailInPrevieMode)
       self.previewActionClickEvent?()
     }
   }

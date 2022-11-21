@@ -42,3 +42,7 @@ struct User: Codable {
         case nickname
     }
 }
+
+struct ScrapStatusModel: Codable {
+  let responseMessage: String
+}

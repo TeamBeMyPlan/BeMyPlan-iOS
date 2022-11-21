@@ -16,6 +16,10 @@ class PlanDetailInfoPhotoCVC: UICollectionViewCell,UICollectionViewRegisterable 
     super.awakeFromNib()
   }
   
+  override func prepareForReuse() {
+    contentImageView.image = nil
+  }
+  
   func setImage(url : String){
     if url != ""{
       contentImageView.setImage(with: url)

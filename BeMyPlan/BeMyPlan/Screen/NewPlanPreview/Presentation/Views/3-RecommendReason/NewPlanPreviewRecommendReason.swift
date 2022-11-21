@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NewPlanPreviewRecommendReason: XibView{
+final class NewPlanPreviewRecommendReason: XibView{
   var viewModel: NewPlanPreviewRecommendViewModel! {
     didSet{ configureUI() }}
   

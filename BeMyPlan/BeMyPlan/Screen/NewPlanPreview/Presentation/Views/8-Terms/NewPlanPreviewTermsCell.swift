@@ -19,6 +19,7 @@ class NewPlanPreviewTermsCell: UITableViewCell, UITableViewRegisterable {
   @IBOutlet var contentTextView: UITextView!
   @IBOutlet var expandButton: UIButton!
   
+  @IBOutlet var purchaseRestoreButton: UIButton!
   override func awakeFromNib() {
     super.awakeFromNib()
     configureUI()
@@ -42,15 +43,17 @@ extension NewPlanPreviewTermsCell {
       case .usingTerm:
         termImageView.image = UIImage(named: "usingTerms")
         titleLabel.text = "이용안내"
+        purchaseRestoreButton.isHidden = true
         
       case .purhcaseTerm:
         termImageView.image = UIImage(named: "purchaseTerms")
         titleLabel.text = "결제안내"
+        purchaseRestoreButton.isHidden = false
 
       case .question:
         termImageView.image = UIImage(named: "questionEmail")
         titleLabel.text = "문의사항"
-
+        purchaseRestoreButton.isHidden = true
 
       default: break
     }
@@ -63,6 +66,10 @@ extension NewPlanPreviewTermsCell {
   private func addButtonActions() {
     expandButton.press {
       self.postObserverAction(.newPlanPreviewTermFoldClicked,object: self.type)
+    }
+    
+    purchaseRestoreButton.press {
+      self.postObserverAction(.restoreButtonClicked)
     }
   }
 }

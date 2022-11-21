@@ -20,12 +20,13 @@ class PlanDetailVC: UIViewController {
   var informationCellViewModels: [PlanDetailInformationViewModel]! // tableview cells
 
   // MARK: - Vars & Lets Part
-  
+  var isPreviewMode = false
   var isFullPage = false { didSet{ foldContentTableView() }}
   var initailScrollCompleted = false
   
   // MARK: - UI Components Part
   
+  @IBOutlet var scrapButton: UIButton!
   @IBOutlet var headerTitleLabel: UILabel!
   @IBOutlet var writerContainerView: PlanDetailWriterContainerView!
   @IBOutlet var mapContainerView: PlanDetailMapContainerView!{
@@ -76,7 +77,7 @@ class PlanDetailVC: UIViewController {
   // MARK: - Custom Methods Parts
   
   @IBAction func backButtonClicked(_ sender: Any) {
-    self.navigationController?.popViewController(animated: true)
+    popAction()
   }
   
   private func bindViewModel(){
@@ -189,6 +190,22 @@ class PlanDetailVC: UIViewController {
     UIView.animate(withDuration: 0.3, delay: 0,
                    options: .curveEaseOut) {
       self.view.layoutIfNeeded()
+    }
+  }
+  
+  private func popAction() {
+    guard let navigationController = navigationController else { return }
+    
+    if isPreviewMode {
+      navigationController.popViewController(animated: true)
+    } else {
+      if navigationController.viewControllers.contains(where: { vc in
+        return vc.className == NewPlanPreviewVC.className
+      }) {
+        navigationController.popBack(2)
+      } else {
+        navigationController.popViewController(animated: true)
+      }
     }
   }
 }

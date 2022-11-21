@@ -11,12 +11,16 @@ protocol ScrapService {
   func getScrapList(lastId: Int?, sort: FilterSortCase, completion: @escaping (Result<PlanDataGettable?, Error>) -> Void)
   func postScrap(postId: Int, completion: @escaping (Result<String?, Error>) -> Void)
   func deleteScrap(postId: Int, completion: @escaping (Result<String?, Error>) -> Void)
-
+  func getScrapStatus(postId: Int, completion: @escaping (Result<ScrapStatusModel?, Error>) -> Void)
 }
 
 extension BaseService: ScrapService {
   func getScrapList(lastId: Int? = nil, sort: FilterSortCase, completion: @escaping (Result<PlanDataGettable?, Error>) -> Void) {
     requestObject(.getScrapList(lastScrapId: lastId, sort: sort.rawValue),completion: completion)
+  }
+  
+  func getScrapStatus(postId: Int, completion: @escaping (Result<ScrapStatusModel?, Error>) -> Void) {
+    requestObject(.getScrapStatus(postId: postId), completion: completion)
   }
   
   func postScrap(postId: Int, completion: @escaping (Result<String?, Error>) -> Void) {

@@ -88,6 +88,7 @@
             <connections>
                 <outlet property="authorLabel" destination="cAY-Pb-HgU" id="RDG-zq-9bc"/>
                 <outlet property="contentTextView" destination="auU-8m-WLA" id="VIV-mS-DF3"/>
+                <outlet property="creatorButton" destination="aEZ-be-1tp" id="YKK-uO-7t4"/>
                 <outlet property="descriptionLabel" destination="oNe-IX-AKl" id="34c-yW-M3E"/>
                 <outlet property="userImageView" destination="Hb9-74-KUj" id="0OB-7V-VGj"/>
             </connections>

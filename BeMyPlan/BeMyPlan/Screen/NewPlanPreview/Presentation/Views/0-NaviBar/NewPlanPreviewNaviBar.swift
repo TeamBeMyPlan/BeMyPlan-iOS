@@ -19,11 +19,13 @@ class NewPlanPreviewNaviBar: XibView{
   override init(frame: CGRect) {
     super.init(frame: frame)
     configureUI()
+    bindButtonAction()
   }
   
   required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
     configureUI()
+    bindButtonAction()
   }
   
   private func configureUI() {
@@ -36,5 +38,11 @@ class NewPlanPreviewNaviBar: XibView{
     backButtonCircleView.backgroundColor = .white
     shareButtonCircleView.backgroundColor = .white
     layoutIfNeeded()
+  }
+  
+  private func bindButtonAction() {
+    backButton.press {
+      self.postObserverAction(.navigationPop)
+    }
   }
 }

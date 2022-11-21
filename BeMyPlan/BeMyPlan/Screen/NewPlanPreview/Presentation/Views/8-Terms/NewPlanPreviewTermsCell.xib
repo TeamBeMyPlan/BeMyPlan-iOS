@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -59,6 +59,14 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VNm-9l-iP4">
                                 <rect key="frame" x="0.0" y="0.0" width="466" height="179"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nCV-kS-hjJ">
+                                <rect key="frame" x="20" y="150" width="90" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="90" id="GGU-AK-a9s"/>
+                                    <constraint firstAttribute="height" constant="60" id="yxI-Nj-w5k"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" name="grey5"/>
                         <constraints>
@@ -66,7 +74,9 @@
                             <constraint firstAttribute="bottom" secondItem="EU4-Kw-kPA" secondAttribute="bottom" constant="24" id="830-17-vnh"/>
                             <constraint firstItem="EU4-Kw-kPA" firstAttribute="top" secondItem="prI-00-OSO" secondAttribute="top" constant="24" id="DfI-vP-3pe"/>
                             <constraint firstItem="VNm-9l-iP4" firstAttribute="leading" secondItem="prI-00-OSO" secondAttribute="leading" id="HVC-Wn-I2o"/>
+                            <constraint firstItem="nCV-kS-hjJ" firstAttribute="leading" secondItem="prI-00-OSO" secondAttribute="leading" constant="20" id="Jbe-G9-oUc"/>
                             <constraint firstItem="VNm-9l-iP4" firstAttribute="top" secondItem="prI-00-OSO" secondAttribute="top" id="g79-fx-uDo"/>
+                            <constraint firstItem="nCV-kS-hjJ" firstAttribute="top" secondItem="prI-00-OSO" secondAttribute="top" constant="150" id="ga4-P3-ysn"/>
                             <constraint firstAttribute="bottom" secondItem="VNm-9l-iP4" secondAttribute="bottom" id="lnH-bU-uOD"/>
                             <constraint firstAttribute="trailing" secondItem="VNm-9l-iP4" secondAttribute="trailing" id="ngW-pV-Kn3"/>
                             <constraint firstItem="EU4-Kw-kPA" firstAttribute="leading" secondItem="prI-00-OSO" secondAttribute="leading" constant="24" id="xyz-Cn-Q4L"/>
@@ -98,6 +108,7 @@
                 <outlet property="arrowButton" destination="DBh-Pi-QnO" id="DrA-jc-eT3"/>
                 <outlet property="contentTextView" destination="EU4-Kw-kPA" id="zvQ-wT-cEr"/>
                 <outlet property="expandButton" destination="0lb-k4-k1n" id="sf1-3m-nbk"/>
+                <outlet property="purchaseRestoreButton" destination="nCV-kS-hjJ" id="yME-5x-gN9"/>
                 <outlet property="termImageView" destination="VNm-9l-iP4" id="f38-Vi-F6K"/>
                 <outlet property="titleLabel" destination="zOy-Fo-1BZ" id="KiZ-Qo-dcO"/>
             </connections>

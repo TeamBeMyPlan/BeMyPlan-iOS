@@ -39,10 +39,35 @@ extension NewPlanPreviewSuggestList {
   private func registerCells() {
     NewPlanPreviewSuggestCVC.register(target: contentCollectonView)
   }
+  
+  private func moveDetailView(planID: Int) {
+    let dataModel = PlanPreviewStateModel(scrapState: false, planId: planID, isPurchased: true)
+    postObserverAction(.movePlanPreview,object: dataModel)
+  }
+  
+  private func movePreviewView(planID: Int) {
+    let dataModel = PlanPreviewStateModel(scrapState: false, planId: planID, isPurchased: false)
+    postObserverAction(.movePlanPreview,object: dataModel)
+  }
 }
 
 extension NewPlanPreviewSuggestList: UICollectionViewDelegate {
-  
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    guard let item = viewModel?.list[indexPath.row] else { return }
+    
+    BaseService.default.getPurchaseState(planIdx: item.planID) { result in
+      result.success { model in
+        if let model = model,
+           model.responseMessage == "해당 여행일정을 구매할 수 있습니다." {
+          self.movePreviewView(planID: item.planID)
+        } else {
+          self.moveDetailView(planID: item.planID)
+        }
+      }.catch { _ in
+        self.movePreviewView(planID: item.planID)
+      }
+    }
+  }
 }
 
 extension NewPlanPreviewSuggestList: UICollectionViewDataSource {

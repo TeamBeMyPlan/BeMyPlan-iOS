@@ -49,6 +49,8 @@ extension NewPlanPreviewHeader {
   }
   
   private func addButtonAction() {
+    
+    
     informationButton.press {
       self.postObserverAction(.informationButtonClicked)
     }

@@ -88,35 +88,35 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iw4-Pz-T2g">
-                    <rect key="frame" x="24" y="225.5" width="470" height="1"/>
+                    <rect key="frame" x="24" y="227" width="470" height="1"/>
                     <color key="backgroundColor" name="grey6"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="Sip-bC-Jec"/>
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="상품 금액" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="07a-Ap-d1w">
-                    <rect key="frame" x="24" y="182" width="45" height="11"/>
+                    <rect key="frame" x="24" y="182" width="45" height="14"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="11" id="12p-qd-FJ6"/>
+                        <constraint firstAttribute="height" constant="14" id="12p-qd-FJ6"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <color key="textColor" name="grey3"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1,000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MVi-kR-PMW">
-                    <rect key="frame" x="405" y="169.5" width="71" height="32"/>
+                    <rect key="frame" x="405" y="171" width="71" height="32"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                     <color key="textColor" red="0.19215686274509802" green="0.21568627450980393" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="원" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="egx-kb-glC">
-                    <rect key="frame" x="478" y="176.5" width="16" height="22"/>
+                    <rect key="frame" x="478" y="178" width="16" height="22"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                     <color key="textColor" red="0.19215686269999999" green="0.2156862745" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="·" textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="2" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iK2-Qk-UgM">
-                    <rect key="frame" x="24" y="250.5" width="4" height="14.5"/>
+                    <rect key="frame" x="24" y="252" width="4" height="14.5"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="4" id="nMM-PF-Rjb"/>
                         <constraint firstAttribute="height" constant="14.5" id="x80-tq-h8o"/>
@@ -126,7 +126,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="비마이플랜에서 제공되는 콘텐츠의 저작권은 크리에이터 또는  제공처에 있으며, 이를 무단 이용하는 경우 저작권법 등에 따라 법적 책임을 질 수 있습니다. " textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lhQ-qv-WkU">
-                    <rect key="frame" x="38" y="250.5" width="456" height="59"/>
+                    <rect key="frame" x="38" y="252" width="456" height="59"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <color key="textColor" name="grey3"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>

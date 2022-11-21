@@ -16,4 +16,8 @@ class ProgressBar: XibView {
       self.layoutIfNeeded()
     }
   }
+  
+  func clear(ratio: CGFloat) {
+    percentBarTrailingConstraint.constant = (1 - ratio) * self.frame.width
+  }
 }

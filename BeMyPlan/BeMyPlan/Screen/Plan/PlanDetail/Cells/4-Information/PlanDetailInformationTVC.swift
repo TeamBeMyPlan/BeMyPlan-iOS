@@ -90,6 +90,7 @@ class PlanDetailInformationTVC: UITableViewCell,UITableViewRegisterable {
     registerCells()
     setUI()
     configureSkeleton()
+    
   }
   
   override func prepareForReuse() {
@@ -107,6 +108,12 @@ class PlanDetailInformationTVC: UITableViewCell,UITableViewRegisterable {
   }
   
   // MARK: - Custom Methods Parts
+  
+  private func resetUI() {
+    if viewModel.imgUrls.count >= 1 {
+      progressBar.clear(ratio: CGFloat((1)) / CGFloat(viewModel.imgUrls.count))
+    }
+  }
   
   private func setUI(){
     contentCV.layer.cornerRadius = 5
@@ -205,8 +212,8 @@ class PlanDetailInformationTVC: UITableViewCell,UITableViewRegisterable {
   private func registerCells(){
     PlanDetailInfoPhotoCVC.register(target: contentCV)
   }
-  
 }
+
 extension PlanDetailInformationTVC : UICollectionViewDataSource{
 
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -253,6 +260,3 @@ extension PlanDetailInformationTVC : UIScrollViewDelegate{
     lastPointee = scrollView.contentOffset.x
   }
 }
-
-
-

@@ -180,6 +180,7 @@ class ModuleFactory: ModuleFactoryProtocol{
                                         repository: repository)
     let vc = PlanDetailVC.controllerFromStoryboard(.planDetail)
     vc.viewModel = viewModel
+    vc.isPreviewMode = isPreviewPage
     return vc
   }
   

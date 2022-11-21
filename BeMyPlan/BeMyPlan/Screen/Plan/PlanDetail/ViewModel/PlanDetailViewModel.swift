@@ -65,8 +65,8 @@ class PlanDetailViewModel: PlanDetailViewModelType {
   
   // MARK: - DI
   private var repository: PlanDetailRepositoryInterface
-  let postID: Int
-  let isPreviewPage: Bool
+  private let postID: Int
+  private let isPreviewPage: Bool
   
   init(postId: Int,isPreviewPage: Bool,repository: PlanDetailRepositoryInterface){
     self.postID = postId
@@ -142,7 +142,7 @@ extension PlanDetailViewModel {
 // MARK: - Logics
 extension PlanDetailViewModel {
   private func fetchDataFromRepository(completion: @escaping () -> Void){
-    repository.fetchPlanDetailData(idx: postID) { [weak self]
+    repository.fetchPlanDetailData(idx: postID, isPreview: isPreviewPage) { [weak self]
       writer, authorID, title, totalDay, spots in
       guard let self = self else {return}
       self.locationList.removeAll()

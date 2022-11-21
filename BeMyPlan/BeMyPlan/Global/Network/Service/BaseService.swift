@@ -62,14 +62,16 @@ class BaseService{
   
   func requestObject<T: Decodable>(_ target: BaseAPI, completion: @escaping (Result<T?, Error>) -> Void) {
     provider.request(target) { response in
+      print("====> response")
+      dump(response)
       switch response {
         case .success(let value):
 
           do {
             let decoder = JSONDecoder()
             
-            if T.self == NewPlanPreviewCreatorEntity.self || T.self == NewPlanPreviewCourseEntity.self {
-              print("====RESULT")
+            if T.self == PlanDetailDataEntity.self || T.self == [PlanDetailTransportEntity].self {
+              print("==== RESULT")
               let json = JSON(value.data)
               print(json)
             }
@@ -85,6 +87,7 @@ class BaseService{
           print("ERR 발생 ",T.self)
           switch error {
             case .underlying(let error, _):
+              print("ERR 메세지",error.asAFError?.errorDescription)
               if error.asAFError?.isSessionTaskError ?? false {
               
               }

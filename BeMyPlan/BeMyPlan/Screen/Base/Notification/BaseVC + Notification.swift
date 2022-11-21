@@ -52,6 +52,11 @@ enum BaseNotiList : String{
   case newPlanPreviewSectionHeaderClicked
   case newPlanPreviewScrollIndexChanged
   
+  case restoreButtonClicked
+  case pushToPlanDetailInPrevieMode
+  
+  case navigationPop
+  
   static func makeNotiName(list : BaseNotiList) -> NSNotification.Name{
     return Notification.Name(String(describing: list))
   }
@@ -63,6 +68,10 @@ extension BaseVC{
     addObserverAction(.showIndicator) { _ in
       let indicatorVC = self.factory.instantiateIndicatorVC()
       self.present(indicatorVC, animated: true, completion: nil)
+    }
+    
+    addObserverAction(.navigationPop) { _ in
+      self.navigationController?.popViewController(animated: true)
     }
     
     addObserverAction(.hideIndicator) { _ in
@@ -87,6 +96,10 @@ extension BaseVC{
       self.navigationController?.pushViewController(withdrawVC, animated: true)
     }
     
+    addObserverAction(.restoreButtonClicked) { _ in
+      self.makeAlert(content: "구매 복원이 완료되었습니다.")
+    }
+    
     // Home
     
     addObserverAction(.movePlanPreview) { noti in
@@ -101,6 +114,11 @@ extension BaseVC{
         }
 
       }
+    }
+    
+    addObserverAction(.pushToPlanDetailInPrevieMode) { _ in
+      let detailVC = ModuleFactory.resolve().instantiatePlanDetailVC(postID: -1,isPreviewPage: true)
+      self.navigationController?.pushViewController(detailVC, animated: true)
     }
     
     addObserverAction(.movePlanDetail) { noti in

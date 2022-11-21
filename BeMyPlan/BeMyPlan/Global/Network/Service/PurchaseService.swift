@@ -8,14 +8,14 @@
 import Foundation
 
 protocol PurchaseServiceType{
-  func getPurchaseState(planIdx: Int,completion: @escaping (Result<Bool?, Error>) -> Void)
+  func getPurchaseState(planIdx: Int,completion: @escaping (Result<PurchaseStatusModel?, Error>) -> Void)
   func purchaseTravelPlan(price: Int, planIdx: Int,completion: @escaping (Result<PurchaseCheckModel?, Error>) -> Void)
   func validateReceipt(orderID: Int,receipt:String,completion: @escaping (Result<PurchaseValidateModel?, Error>) -> Void)
   func confirmTravelPurchase(orderID: Int,paymentId: Int, userID: Int,completion: @escaping (Result<PurchaseConfirmModel?, Error>) -> Void)
 }
 
 extension BaseService : PurchaseServiceType {
-  func getPurchaseState(planIdx: Int,completion: @escaping (Result<Bool?, Error>) -> Void) {
+  func getPurchaseState(planIdx: Int,completion: @escaping (Result<PurchaseStatusModel?, Error>) -> Void) {
     requestObject(.getTravelPurchaseState(idx: planIdx), completion: completion)
   }
   

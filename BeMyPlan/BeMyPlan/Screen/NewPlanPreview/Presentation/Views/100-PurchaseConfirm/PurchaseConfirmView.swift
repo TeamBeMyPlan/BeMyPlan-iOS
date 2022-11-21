@@ -26,7 +26,6 @@ class PurchaseConfirmView: XibView{
     setUI()
   }
   
-  
   private func setUI() {
     termTextView.removeMargin()
   }

@@ -132,6 +132,8 @@ class SignUpTOSVC: UIViewController {
   private func postSocialSignUpData() {
     BaseService.default.postSocialSignUp(socialToken: userToken , socialType: socialType, nickName: nickname, email: email) { result in
       result.success{ [weak self] data in
+        print("회원가입 성공 ===>",data)
+
         if let data = data {
           UserDefaults.standard.setValue(data.userId, forKey: UserDefaultKey.userID)
           UserDefaults.standard.setValue(data.sessionId, forKey: UserDefaultKey.sessionID)

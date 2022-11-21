@@ -216,6 +216,7 @@
 		FD61AFDC2791DC6E00D39F47 /* UINavigation + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD61AFDB2791DC6E00D39F47 /* UINavigation + Extension.swift */; };
 		FD66701327E314C300296E4A /* PreviewBodyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD66701227E314C300296E4A /* PreviewBodyData.swift */; };
 		FD6934DC286199A30003A818 /* encodeURLWithKorean.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6934DB286199A30003A818 /* encodeURLWithKorean.swift */; };
+		FD6A94882922BC2F0074EAC2 /* PurchaseStatusModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6A94872922BC2F0074EAC2 /* PurchaseStatusModel.swift */; };
 		FD777FC028A006D800FDF37A /* PurchaseHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD777FBF28A006D800FDF37A /* PurchaseHistoryVC.swift */; };
 		FD777FC328A0073500FDF37A /* PurhcaseHistoryTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD777FC128A0073500FDF37A /* PurhcaseHistoryTVC.swift */; };
 		FD777FC428A0073500FDF37A /* PurhcaseHistoryTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD777FC228A0073500FDF37A /* PurhcaseHistoryTVC.xib */; };
@@ -576,6 +577,7 @@
 		FD61AFDB2791DC6E00D39F47 /* UINavigation + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigation + Extension.swift"; sourceTree = "<group>"; };
 		FD66701227E314C300296E4A /* PreviewBodyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewBodyData.swift; sourceTree = "<group>"; };
 		FD6934DB286199A30003A818 /* encodeURLWithKorean.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = encodeURLWithKorean.swift; sourceTree = "<group>"; };
+		FD6A94872922BC2F0074EAC2 /* PurchaseStatusModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseStatusModel.swift; sourceTree = "<group>"; };
 		FD777FBF28A006D800FDF37A /* PurchaseHistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseHistoryVC.swift; sourceTree = "<group>"; };
 		FD777FC128A0073500FDF37A /* PurhcaseHistoryTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurhcaseHistoryTVC.swift; sourceTree = "<group>"; };
 		FD777FC228A0073500FDF37A /* PurhcaseHistoryTVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PurhcaseHistoryTVC.xib; sourceTree = "<group>"; };
@@ -1166,6 +1168,7 @@
 				FDC5CFA829004AC2005CFAB5 /* PurchaseCheckModel.swift */,
 				FDC5CFAA29006817005CFAB5 /* PurchaseValidateModel.swift */,
 				FD87FD0629101B7F0063F954 /* PurchaseConfirmModel.swift */,
+				FD6A94872922BC2F0074EAC2 /* PurchaseStatusModel.swift */,
 			);
 			path = Purchase;
 			sourceTree = "<group>";
@@ -2524,6 +2527,7 @@
 				FD777FCA28A00DD400FDF37A /* PurchaseHistoryDateCell.swift in Sources */,
 				FD2D9C5C2797DC4B00688A42 /* PlanDetailMapContainerView.swift in Sources */,
 				FDF7FED227A7E2B900E3AB62 /* BaseCoordinator.swift in Sources */,
+				FD6A94882922BC2F0074EAC2 /* PurchaseStatusModel.swift in Sources */,
 				FD09DE092785797B006DA050 /* addToolBar.swift in Sources */,
 				FD09DDF527857809006DA050 /* Config.swift in Sources */,
 				FD33CA8428982833005E9D89 /* NewPlanPreviewTermsCell.swift in Sources */,
@@ -2702,7 +2706,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2022081603;
+				CURRENT_PROJECT_VERSION = 2022111601;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = PLJU22T9YZ;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2748,7 +2752,7 @@
 				CODE_SIGN_ENTITLEMENTS = BeMyPlan/BeMyPlan.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2022081603;
+				CURRENT_PROJECT_VERSION = 2022111601;
 				DEVELOPMENT_TEAM = PLJU22T9YZ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

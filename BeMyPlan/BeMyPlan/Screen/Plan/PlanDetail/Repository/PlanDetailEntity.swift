@@ -8,7 +8,7 @@
 import Foundation
 
 struct PlanDetailDataEntity: Codable {
-    let createdAt, updatedAt: String
+    let createdAt, updatedAt: [Int]?
     let planID: Int
     let title: String
     let user: User
@@ -28,17 +28,16 @@ struct Content: Codable {
 
 // MARK: - Spot
 struct Spot: Codable {
-    let createdAt, updatedAt: String
+    let createdAt, updatedAt: [Int]?
     let name: String
     let latitude, longitude: Double
     let tip, review: String?
     let images: [PlanDetailImage]
 }
 
-
 // MARK: - Image
 struct PlanDetailImage: Codable {
-    let createdAt, updatedAt: String
+    let createdAt, updatedAt: [Int]?
     let imageID: Int
     let url: String
 
@@ -48,4 +47,3 @@ struct PlanDetailImage: Codable {
         case url
     }
 }
-

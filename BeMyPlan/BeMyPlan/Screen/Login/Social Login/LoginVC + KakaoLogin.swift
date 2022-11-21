@@ -39,8 +39,13 @@ extension LoginVC {
   }
     
   func postSocialLoginData(socialToken: String, socialType: String,email: String? = nil) {
+    
+    UserDefaults.standard.setValue(socialType, forKey: UserDefaultKey.userLoginSocialPlatform)
+
+    print("SOCIAL TOKEN",socialToken)
     BaseService.default.postSocialLogin(socialToken: socialToken, socialType: socialType) { result in
       result.success { [weak self] data in
+        print("로그인 토큰",data?.token)
         if let data = data {
           if socialType == "KAKAO" {
             AppLog.log(at: FirebaseAnalyticsProvider.self, .complete_signin(method: .kakao))
@@ -50,6 +55,7 @@ extension LoginVC {
           UserDefaults.standard.setValue(data.userId, forKey: UserDefaultKey.userID)
           UserDefaults.standard.setValue(data.nickname, forKey: UserDefaultKey.userNickname)
           UserDefaults.standard.setValue(data.sessionId, forKey: UserDefaultKey.sessionID)
+          UserDefaults.standard.setValue(data.token, forKey: UserDefaultKey.userToken)
             self?.moveBaseVC()
           }
       }.catch {error in

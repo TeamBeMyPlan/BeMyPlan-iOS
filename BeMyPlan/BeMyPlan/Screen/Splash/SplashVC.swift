@@ -29,7 +29,7 @@ class SplashVC: UIViewController {
   
   // MARK: - Custom Method Part
   
-  private func startSplash(){
+  private func startSplash() {
     UIView.animateKeyframes(withDuration: 2.5, delay: 0, options: .allowUserInteraction) {
       UIView.addKeyframe(withRelativeStartTime: 1/6,
                          relativeDuration: 1/3) {
@@ -41,10 +41,14 @@ class SplashVC: UIViewController {
         self.splashIconNoTitle.alpha = 0
       }
     } completion: { _ in
-      if let sessionID = UserDefaults.standard.string(forKey: UserDefaultKey.sessionID) {
-        self.moveBaseVC()
-      }else {
-        UserDefaults.standard.bool(forKey: "onboardingComplete") ? self.moveLoginVC() : self.moveOnboardingVC()
+      self.checkTokenValid { loginSuccess in
+        
+        print(" 로그인 상태 ",loginSuccess)
+        if loginSuccess {
+          self.moveBaseVC()
+        } else {
+          UserDefaults.standard.bool(forKey: "onboardingComplete") ? self.moveLoginVC() : self.moveBaseVC()
+        }
       }
     }
   }
@@ -65,5 +69,15 @@ class SplashVC: UIViewController {
     let onboardingVC = factory.instantiateOnboardingVC()
     onboardingVC.modalPresentationStyle = .fullScreen
     self.present(onboardingVC, animated: false, completion: nil)
+  }
+  
+  private func checkTokenValid(completion: @escaping (Bool) -> Void) {
+    BaseService.default.getOrderList { result in
+      result.success { _ in
+        completion(true)
+      }.catch { _ in
+        completion(false)
+      }
+    }
   }
 }

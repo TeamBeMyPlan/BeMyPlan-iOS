@@ -11,4 +11,5 @@ struct AuthDataGettable : Codable{
   let nickname : String
   let sessionId: String
   let userId: Int
+  let token: String
 }

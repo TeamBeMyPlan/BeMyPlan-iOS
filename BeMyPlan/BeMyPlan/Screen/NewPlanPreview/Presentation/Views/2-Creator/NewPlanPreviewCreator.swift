@@ -16,8 +16,10 @@ final class NewPlanPreviewCreator: UITableViewCell, UITableViewRegisterable {
   @IBOutlet var descriptionLabel: UILabel!
   @IBOutlet var contentTextView: UITextView!
   
+  @IBOutlet var creatorButton: UIButton!
   override func awakeFromNib() {
     super.awakeFromNib()
+    bindButtonAction()
   }
 }
 
@@ -37,6 +39,14 @@ extension NewPlanPreviewCreator {
     userImageView.setImage(with: viewModel.profileImgURL)
     authorLabel.text = viewModel.authorName
     descriptionLabel.text = viewModel.authorDescription
+  }
+  
+  private func bindButtonAction() {
+    creatorButton.press {
+      let creatorModel = PlanWriterDataModel(authorName: self.viewModel.authorName,
+                                             authorID: self.viewModel.authorIdx)
+      self.postObserverAction(.moveNicknamePlanList,object: creatorModel)
+    }
   }
 }
 
